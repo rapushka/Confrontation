@@ -12,12 +12,23 @@ namespace Confrontation.Editor
 
 		public void GenerateField(int height, int width)
 		{
-			if (_field is not null)
-			{
-				Object.DestroyImmediate(_field.Root.gameObject);
-			}
+			DestroyOldField();
+			GenerateNewField(height, width);
+		}
 
+		private static void DestroyOldField()
+		{
+			var root = Object.FindObjectOfType<CellsRoot>();
+			if (root == true)
+			{
+				Object.DestroyImmediate(root);
+			}
+		}
+
+		private void GenerateNewField(int height, int width)
+		{
 			_field = new Field(CellPrefab, height, width);
+			_field.Root.gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
 		}
 	}
