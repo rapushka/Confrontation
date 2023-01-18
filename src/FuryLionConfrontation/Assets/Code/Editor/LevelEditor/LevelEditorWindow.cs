@@ -21,17 +21,17 @@ namespace Confrontation.Editor
 		// ReSharper disable Unity.PerformanceCriticalCodeInvocation - we don't care about performance in Editor
 		private void OnGUI()
 		{
-			GUILayout.Button("Generate field").OnClick(GenerateField);
+			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
 
 			GUILayout.BeginHorizontal();
 			{
-				_height = EditorGUILayout.IntField("Height", _height);
+				_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
 			}
 			GUILayout.EndHorizontal();
 
 			GUILayout.BeginHorizontal();
 			{
-				_width = EditorGUILayout.IntField(nameof(_width).ToUpper(), _height);
+				_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
 			}
 			GUILayout.EndHorizontal();
 		}
