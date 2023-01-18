@@ -1,11 +1,13 @@
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Code
 {
 	public class Field : IInitializable
 	{
-		private const int FieldSizes = 20;
+		private const int FieldWidth = 10;
+		private const int FieldHeight = 20;
 
 		private readonly Cell _cellPrefab;
 		private readonly Cell[,] _cells;
@@ -15,29 +17,21 @@ namespace Code
 		{
 			_cellPrefab = cellPrefab;
 
-			_cells = new Cell[FieldSizes, FieldSizes];
+			_cells = new Cell[FieldWidth, FieldHeight];
 		}
 
 		public void Initialize() => GenerateField();
 
-		private void GenerateField()
-		{
-			for (var i = 0; i < FieldSizes; i++)
-			{
-				for (var j = 0; j < FieldSizes; j++)
-				{
-					CreateHexagonFor(new Vector2Int(i, j));
-				}
-			}
-		}
+		private void GenerateField() => _cells.Select(CreateHexagon);
 
-		private void CreateHexagonFor(Vector2Int coordinates)
+		private Cell CreateHexagon(int i, int j)
 		{
+			var coordinates = new Vector2Int(i, j);
 			var cell = Object.Instantiate(_cellPrefab);
 			cell.Coordinates = coordinates;
-			_cells[coordinates.x, coordinates.y] = cell;
-
 			cell.transform.position = coordinates.CalculatePosition();
+
+			return cell;
 		}
 	}
 }
