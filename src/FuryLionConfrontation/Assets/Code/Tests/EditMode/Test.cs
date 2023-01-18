@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Reflection;
 using Confrontation;
 using FluentAssertions;
 using NUnit.Framework;
@@ -13,9 +12,7 @@ public class Test
 		// Arrange.
 		var prefab = new GameObject().AddComponent<Cell>();
 		var field = new Field(prefab);
-		var cells = (Cell[,])typeof(Field)
-		                     .GetField("_cells", BindingFlags.Instance | BindingFlags.NonPublic)
-		                     !.GetValue(field);
+		var cells = field.GetCells();
 
 		// Act.
 		field.Initialize();
