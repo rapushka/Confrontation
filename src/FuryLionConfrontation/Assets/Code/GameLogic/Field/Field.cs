@@ -15,21 +15,34 @@ namespace Code
 		{
 			const int cellsCount = 20;
 
-			for (var x = 0; x < cellsCount; x++)
+			for (var i = 0; i < cellsCount; i++)
 			{
-				for (var z = 0; z < cellsCount; z++)
+				for (var j = 0; j < cellsCount; j++)
 				{
-					var cell = Object.Instantiate(_cellPrefab);
-					cell.Coordinates = new Vector2Int(x, z);
-
-					var position = cell.transform.position;
-					position.x = z % 2 == 0 ? x : x + 0.5f;
-					position.y = 0;
-					position.z = z * (3 / (2 * Mathf.Sqrt(3)));
-
-					cell.transform.position = position;
+					CreateHexagonAt(i, j);
 				}
 			}
 		}
+
+		private void CreateHexagonAt(int i, int j)
+		{
+			var cell = Object.Instantiate(_cellPrefab);
+			cell.Coordinates = new Vector2Int(i, j);
+
+			cell.transform.position = CalculatePosition(i, j);
+		}
+
+		private static Vector3 CalculatePosition(int x, int z)
+			=> new()
+			{
+				x = x + HorizontalOffset(z),
+				z = z * VerticalDistance(),
+			};
+
+		private static float HorizontalOffset(int z) => IsEven(z) ? 0 : 0.5f;
+
+		private static float VerticalDistance() => 3 / (2 * Mathf.Sqrt(3));
+
+		private static bool IsEven(int z) => z % 2 == 0;
 	}
 }
