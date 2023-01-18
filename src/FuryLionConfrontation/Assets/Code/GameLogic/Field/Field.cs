@@ -1,7 +1,7 @@
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace Code
+namespace Confrontation
 {
 	public class Field : IInitializable
 	{

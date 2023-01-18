@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Code
+namespace Confrontation
 {
 	public class BootstrapInstaller : MonoInstaller
 	{

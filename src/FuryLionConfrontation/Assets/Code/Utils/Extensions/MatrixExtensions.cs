@@ -1,6 +1,6 @@
 using System;
 
-namespace Code
+namespace Confrontation
 {
 	public static class MatrixExtensions
 	{

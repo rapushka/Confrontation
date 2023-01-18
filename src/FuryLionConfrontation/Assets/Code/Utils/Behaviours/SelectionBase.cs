@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code
+namespace Confrontation
 {
 	[SelectionBase] public class SelectionBase : MonoBehaviour { }
 }

@@ -1,4 +1,4 @@
-namespace Code
+namespace Confrontation
 {
 	public static class MathExtensions
 	{

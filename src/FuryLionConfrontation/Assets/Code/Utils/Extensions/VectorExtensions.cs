@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code
+namespace Confrontation
 {
 	public static class VectorExtensions
 	{

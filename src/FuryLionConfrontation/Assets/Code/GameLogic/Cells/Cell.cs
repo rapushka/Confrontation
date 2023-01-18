@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code
+namespace Confrontation
 {
 	public class Cell : MonoBehaviour
 	{
