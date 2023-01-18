@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Confrontation
+namespace Code
 {
 	public class BootstrapInstaller : MonoInstaller
 	{
