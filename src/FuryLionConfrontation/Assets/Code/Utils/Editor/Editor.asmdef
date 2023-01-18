@@ -1,0 +1,18 @@
+{
+    "name": "Editor",
+    "rootNamespace": "Confrontation.Editor",
+    "references": [
+        "GUID:e1a2ffc3ef2dc5738bb976188c02bcde"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
