@@ -6,19 +6,19 @@ namespace Confrontation
 {
 	public class Field : IInitializable
 	{
-		private const int FieldHeight = 20;
-		private const int FieldWidth = 10;
+		private const int Height = 20;
+		private const int Width = 10;
 
 		private readonly Cell _cellPrefab;
 		private readonly Cell[,] _cells;
 		private readonly Transform _root;
 
 		[Inject]
-		public Field(Cell cellPrefab)
+		public Field(Cell cellPrefab, int height = Height, int width = Width)
 		{
 			_cellPrefab = cellPrefab;
 
-			_cells = new Cell[FieldHeight, FieldWidth];
+			_cells = new Cell[height, width];
 			_root = new GameObject("Cells Root").transform;
 		}
 
