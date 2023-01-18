@@ -20,8 +20,20 @@ namespace Confrontation.Editor
 		private void OnGUI()
 		{
 			GUILayout.Button("Generate field").OnClick(GenerateField);
-			_height = int.Parse(GUILayout.TextField("Height"));
-			_width = int.Parse(GUILayout.TextField("Width"));
+
+			GUILayout.BeginHorizontal();
+			{
+				GUILayout.Label("Height");
+				int.TryParse(GUILayout.TextField(_height.ToString()), out _height);
+			}
+			GUILayout.EndHorizontal();
+			
+			GUILayout.BeginHorizontal();
+			{
+				GUILayout.Label("Width");
+				int.TryParse(GUILayout.TextField(_width.ToString()), out _width);
+			}
+			GUILayout.EndHorizontal();
 		}
 
 		private void GenerateField()
