@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7681935771677845605}
+  - component: {fileID: 2658176221267997969}
+  - component: {fileID: -5694887582495005184}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -32,6 +34,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2658176221267997969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659737280244776947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Position>k__BackingField: {x: 0, y: 0}
+  <Owner>k__BackingField: {fileID: 0}
+  <Building>k__BackingField: {fileID: 0}
+--- !u!114 &-5694887582495005184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659737280244776947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c35f6fdf7dc44fa97cbd8b74222b4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2517759171727602779
 PrefabInstance:
   m_ObjectHideFlags: 0

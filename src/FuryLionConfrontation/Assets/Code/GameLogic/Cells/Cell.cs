@@ -1,14 +1,16 @@
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Code
 {
-	public class Cell
+	public class Cell : MonoBehaviour
 	{
-		[CanBeNull] private Player _owner;
-		[CanBeNull] private Building _building;
+		[field: SerializeField] public Vector2Int Coordinates { get; set; }
+		[field: SerializeField] public Player     Owner       { get; private set; }
+		[field: SerializeField] public Building   Building    { get; private set; }
 
-		public bool IsNeutral => _owner is null;
+		public bool IsNeutral => Owner is null;
 
-		public bool IsEmpty => _building is null;
+		public bool IsEmpty => Building is null;
 	}
 }

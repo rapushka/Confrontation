@@ -1,4 +1,6 @@
+using UnityEngine;
+
 namespace Code
 {
-	public class Player { }
+	public class Player : MonoBehaviour{ }
 }
