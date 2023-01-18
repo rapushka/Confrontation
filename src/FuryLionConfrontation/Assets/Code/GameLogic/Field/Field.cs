@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -6,8 +5,8 @@ namespace Code
 {
 	public class Field : IInitializable
 	{
-		private const int FieldWidth = 10;
 		private const int FieldHeight = 20;
+		private const int FieldWidth = 10;
 
 		private readonly Cell _cellPrefab;
 		private readonly Cell[,] _cells;
@@ -17,7 +16,7 @@ namespace Code
 		{
 			_cellPrefab = cellPrefab;
 
-			_cells = new Cell[FieldWidth, FieldHeight];
+			_cells = new Cell[FieldHeight, FieldWidth];
 		}
 
 		public void Initialize() => GenerateField();
@@ -26,10 +25,10 @@ namespace Code
 
 		private Cell CreateHexagon(int i, int j)
 		{
-			var coordinates = new Vector2Int(i, j);
+			var coordinates = new Coordinates(i, j);
 			var cell = Object.Instantiate(_cellPrefab);
 			cell.Coordinates = coordinates;
-			cell.transform.position = coordinates.CalculatePosition();
+			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 
 			return cell;
 		}
