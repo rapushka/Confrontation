@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
@@ -43,32 +41,6 @@ namespace Confrontation.Editor
 			var cellPrefab = Resources.Load<Cell>("Prefabs/Cell");
 			var field = new Field(cellPrefab, _height, _width);
 			field.GenerateField();
-		}
-	}
-
-	public static class StringExtensions
-	{
-		public static string Format(this string @this)
-		{
-			var chars = @this.ToCharArray().ToList();
-
-			if (chars.First() == '_')
-			{
-				chars.RemoveAt(index: 0);
-			}
-
-			chars[0] = char.ToUpper(chars[0]);
-
-			for (var i = 1; i < chars.Count; i++)
-			{
-				if (char.IsUpper(chars[i]))
-				{
-					chars.Insert(index: i, item: ' ');
-					i++;
-				}
-			}
-			
-			return new string(chars.ToArray());
 		}
 	}
 }
