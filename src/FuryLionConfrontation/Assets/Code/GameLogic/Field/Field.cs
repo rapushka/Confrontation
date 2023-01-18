@@ -11,7 +11,6 @@ namespace Confrontation
 
 		private readonly Cell _cellPrefab;
 		private readonly Cell[,] _cells;
-		private readonly Transform _root;
 
 		[Inject]
 		public Field(Cell cellPrefab, int height = Height, int width = Width)
@@ -19,8 +18,10 @@ namespace Confrontation
 			_cellPrefab = cellPrefab;
 
 			_cells = new Cell[height, width];
-			_root = new GameObject("Cells Root").transform;
+			Root = new GameObject("Cells Root").transform;
 		}
+
+		public Transform Root { get; }
 
 		public void Initialize() => GenerateField();
 
@@ -29,7 +30,7 @@ namespace Confrontation
 		private Cell CreateHexagon(int i, int j)
 		{
 			var coordinates = new Coordinates(i, j);
-			var cell = Object.Instantiate(_cellPrefab, _root);
+			var cell = Object.Instantiate(_cellPrefab, Root);
 			cell.Coordinates = coordinates;
 			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 

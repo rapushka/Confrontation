@@ -5,9 +5,15 @@ namespace Confrontation.Editor
 {
 	public partial class LevelEditorWindow : EditorWindow
 	{
+		private readonly LevelEditor _levelEditor;
 		private int _height;
 		private int _width;
 
+		public LevelEditorWindow()
+		{
+			_levelEditor = new LevelEditor();
+		}
+		
 		[MenuItem("Tools/Confrontation/LevelEditor")]
 		private static void ShowWindow()
 		{
@@ -21,20 +27,15 @@ namespace Confrontation.Editor
 		{
 			Utils.AsHorizontalGroup(SizesIntFields);
 
-			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
+			GUILayout.Button(nameof(LevelEditor.GenerateField).Format()).OnClick(GenerateField);
 		}
+
+		private void GenerateField() => _levelEditor.GenerateField(_height, _width);
 
 		private void SizesIntFields()
 		{
 			_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
 			_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
-		}
-
-		private void GenerateField()
-		{
-			var cellPrefab = Resources.Load<Cell>("Prefabs/Cell");
-			var field = new Field(cellPrefab, _height, _width);
-			field.GenerateField();
 		}
 	}
 }
