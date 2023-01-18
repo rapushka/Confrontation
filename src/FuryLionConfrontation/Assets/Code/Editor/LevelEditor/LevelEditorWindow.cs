@@ -1,11 +1,9 @@
-using System.Globalization;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
 
 namespace Confrontation.Editor
 {
-	public class LevelEditorWindow : EditorWindow
+	public partial class LevelEditorWindow : EditorWindow
 	{
 		private int _height;
 		private int _width;
@@ -21,19 +19,15 @@ namespace Confrontation.Editor
 		// ReSharper disable Unity.PerformanceCriticalCodeInvocation - we don't care about performance in Editor
 		private void OnGUI()
 		{
+			Utils.AsHorizontalGroup(SizesIntFields);
+
 			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
+		}
 
-			GUILayout.BeginHorizontal();
-			{
-				_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
-			}
-			GUILayout.EndHorizontal();
-
-			GUILayout.BeginHorizontal();
-			{
-				_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
-			}
-			GUILayout.EndHorizontal();
+		private void SizesIntFields()
+		{
+			_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
+			_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
 		}
 
 		private void GenerateField()
