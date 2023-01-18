@@ -5,6 +5,9 @@ namespace Confrontation.Editor
 {
 	public class LevelEditorWindow : EditorWindow
 	{
+		private int _height;
+		private int _width;
+
 		[MenuItem("Tools/Confrontation/LevelEditor")]
 		private static void ShowWindow()
 		{
@@ -17,12 +20,14 @@ namespace Confrontation.Editor
 		private void OnGUI()
 		{
 			GUILayout.Button("Generate field").OnClick(GenerateField);
+			_height = int.Parse(GUILayout.TextField("Height"));
+			_width = int.Parse(GUILayout.TextField("Width"));
 		}
 
 		private void GenerateField()
 		{
 			var cellPrefab = Resources.Load<Cell>("Prefabs/Cell");
-			var field = new Field(cellPrefab);
+			var field = new Field(cellPrefab, _height, _width);
 			field.GenerateField();
 		}
 	}
