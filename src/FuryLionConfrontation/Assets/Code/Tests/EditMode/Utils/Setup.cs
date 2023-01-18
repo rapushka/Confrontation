@@ -1,6 +1,6 @@
 using Confrontation;
 
-namespace Tests.EditMode
+namespace Confrontation.Tests
 {
 	public static class Setup
 	{

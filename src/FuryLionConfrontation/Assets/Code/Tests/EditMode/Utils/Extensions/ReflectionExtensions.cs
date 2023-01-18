@@ -1,7 +1,7 @@
 using System.Reflection;
 using Confrontation;
 
-namespace Tests.EditMode
+namespace Confrontation.Tests
 {
 	public static class ReflectionExtensions
 	{

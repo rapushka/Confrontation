@@ -1,9 +1,8 @@
 using System.Linq;
-using Confrontation;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Tests.EditMode
+namespace Confrontation.Tests
 {
 	public class FieldTests
 	{
@@ -14,7 +13,7 @@ namespace Tests.EditMode
 			var field = Setup.Field();
 
 			// Act.
-			field.Initialize();
+			field.GenerateField();
 
 			// Assert.
 			var cells = field.GetCells().Cast<Cell>();

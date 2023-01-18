@@ -21,7 +21,7 @@ namespace Confrontation
 
 		public void Initialize() => GenerateField();
 
-		private void GenerateField() => _cells.Select(CreateHexagon);
+		public void GenerateField() => _cells.Select(CreateHexagon);
 
 		private Cell CreateHexagon(int i, int j)
 		{

@@ -1,7 +1,7 @@
 using Confrontation;
 using UnityEngine;
 
-namespace Tests.EditMode
+namespace Confrontation.Tests
 {
 	public static class Create
 	{

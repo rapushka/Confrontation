@@ -23,7 +23,7 @@ namespace Confrontation.Editor
 		{
 			var cellPrefab = Resources.Load<Cell>("Prefabs/Cell");
 			var field = new Field(cellPrefab);
-			field.Initialize();
+			field.GenerateField();
 		}
 	}
 }
