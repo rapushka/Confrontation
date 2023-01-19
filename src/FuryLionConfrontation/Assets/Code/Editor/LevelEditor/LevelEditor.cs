@@ -55,8 +55,17 @@ namespace Confrontation.Editor
 			}
 
 			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
+			village.AddCellToRegion(cell);
+
 			cell.Building = village;
 		}
+
+		private Level AssemblyLevel()
+			=> new()
+			{
+				Cells = _field.GetCells(),
+				Players = new Player.Data[] { new() { Name = "Player" } },
+			};
 
 		private static bool PreCondition(Cell cell)
 		{
@@ -74,12 +83,5 @@ namespace Confrontation.Editor
 
 			return false;
 		}
-
-		private Level AssemblyLevel()
-			=> new()
-			{
-				Cells = _field.GetCells(),
-				Players = new Player.Data[] { new() { Name = "Player" } },
-			};
 	}
 }
