@@ -60,7 +60,7 @@ namespace Confrontation.Editor
 			cell.Building = village;
 		}
 
-		private Level AssemblyLevel()
+		private Level.Data AssemblyLevel()
 			=> new()
 			{
 				Cells = _field.GetCells(),

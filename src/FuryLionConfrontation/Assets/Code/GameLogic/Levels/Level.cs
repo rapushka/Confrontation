@@ -1,11 +1,18 @@
 using System;
+using UnityEngine;
 
 namespace Confrontation
 {
-	[Serializable]
-	public class Level
+	public class Level : MonoBehaviour
 	{
-		public Cell.Data[,] Cells   { get; set; }
-		public Player.Data[]     Players { get; set; }
+		[field: SerializeField] public Data Value { get; set; }
+
+		[Serializable]
+		public class Data
+		{
+			[field: SerializeField] public Cell.Data[,]  Cells    { get; set; }
+			[field: SerializeField] public Player.Data[] Players  { get; set; }
+			[field: SerializeField] public Village[]     Villages { get; set; }
+		}
 	}
 }

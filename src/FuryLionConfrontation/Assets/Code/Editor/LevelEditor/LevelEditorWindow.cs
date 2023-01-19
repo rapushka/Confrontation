@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace Confrontation.Editor
@@ -26,11 +27,8 @@ namespace Confrontation.Editor
 			Utils.AsHorizontalGroup(SizesIntFields);
 
 			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
-
 			GUILayout.Button(nameof(Serialize).Format()).OnClick(Serialize);
-
 			GUILayout.Button(nameof(SelectionToVillage).Format()).OnClick(SelectionToVillage);
-
 			GUILayout.Button(nameof(_levelEditor.UpdateField).Format()).OnClick(_levelEditor.UpdateField);
 		}
 
