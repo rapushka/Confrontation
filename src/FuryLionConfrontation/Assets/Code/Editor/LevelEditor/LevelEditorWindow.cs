@@ -34,7 +34,19 @@ namespace Confrontation.Editor
 			// var selected = Selection.activeTransform.gameObject;
 		}
 
-		private void GenerateField() => _levelEditor.GenerateField(_height, _width);
+		private void GenerateField()
+		{
+			_levelEditor.GenerateField(_height, _width);
+			SaveAll();
+		}
+
+		private static void SaveAll()
+		{
+			foreach (var monoBehaviour in FindObjectsOfType<MonoBehaviour>())
+			{
+				EditorUtility.SetDirty(monoBehaviour);
+			}
+		}
 
 		private void SizesIntFields()
 		{
