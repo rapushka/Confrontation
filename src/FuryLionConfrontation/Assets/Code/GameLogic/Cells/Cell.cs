@@ -5,22 +5,20 @@ namespace Confrontation
 {
 	public class Cell : MonoBehaviour
 	{
-		[field: SerializeField] public CellData Data { get; set; }
+		[field: SerializeField] public Data Value { get; set; }
 
-		public bool IsNeutral => Data.IsNeutral;
+		[Serializable]
+		public class Data
+		{
+			private const int None = -1;
 
-		public bool IsEmpty => Data.IsEmpty;
-	}
+			public Coordinates Coordinates   { get; set; }
+			public int         OwnerPlayerId { get; set; } = None;
+			public int         BuildingId    { get; set; } = None;
 
-	[Serializable]
-	public class CellData
-	{
-		public Coordinates Coordinates;
-		public int OwnerPlayerId = -1;
-		public int BuildingId = -1;
-		
-		public bool IsNeutral => OwnerPlayerId == -1;
+			public bool IsNeutral => OwnerPlayerId == None;
 
-		public bool IsEmpty => BuildingId == -1;
+			public bool IsEmpty => BuildingId == None;
+		}
 	}
 }

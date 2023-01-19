@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Confrontation.Editor
 		{
 			_levelEditor = new LevelEditor();
 		}
-		
+
 		[MenuItem("Tools/Confrontation/LevelEditor")]
 		private static void ShowWindow()
 		{
@@ -29,7 +30,7 @@ namespace Confrontation.Editor
 			Utils.AsHorizontalGroup(SizesIntFields);
 
 			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
-			
+
 			GUILayout.Button(nameof(Serialize).Format()).OnClick(Serialize);
 		}
 
@@ -43,8 +44,16 @@ namespace Confrontation.Editor
 
 		private void Serialize()
 		{
-			var cell = new CellData();
-			var json = JsonConvert.SerializeObject(cell, Formatting.Indented);
+			var level = new Level
+			{
+				Cells = new Cell.Data[,]
+				{
+					{ new(), new() },
+					{ new(), new() },
+				},
+				Players = new Player.Data[] { new() { Name = "Player" } },
+			};
+			var json = JsonConvert.SerializeObject(level, Formatting.Indented);
 			Debug.Log(json);
 		}
 	}
