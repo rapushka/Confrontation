@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,7 +28,9 @@ namespace Confrontation.Editor
 		{
 			Utils.AsHorizontalGroup(SizesIntFields);
 
-			GUILayout.Button(nameof(LevelEditor.GenerateField).Format()).OnClick(GenerateField);
+			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
+			
+			GUILayout.Button(nameof(Serialize).Format()).OnClick(Serialize);
 		}
 
 		private void GenerateField() => _levelEditor.GenerateField(_height, _width);
@@ -36,6 +39,13 @@ namespace Confrontation.Editor
 		{
 			_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
 			_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
+		}
+
+		private void Serialize()
+		{
+			var cell = new CellData();
+			var json = JsonConvert.SerializeObject(cell, Formatting.Indented);
+			Debug.Log(json);
 		}
 	}
 }

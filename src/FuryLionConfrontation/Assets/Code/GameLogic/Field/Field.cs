@@ -31,7 +31,7 @@ namespace Confrontation
 		{
 			var coordinates = new Coordinates(i, j);
 			var cell = Object.Instantiate(_cellPrefab, Root);
-			cell.Coordinates = coordinates;
+			cell.Data.Coordinates = coordinates;
 			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 
 			return cell;

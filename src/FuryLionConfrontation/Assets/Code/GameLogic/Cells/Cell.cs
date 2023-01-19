@@ -1,16 +1,26 @@
-using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
 namespace Confrontation
 {
 	public class Cell : MonoBehaviour
 	{
-		[field: SerializeField] public Coordinates Coordinates { get; set; }
-		[field: SerializeField] public Player     Owner       { get; private set; }
-		[field: SerializeField] public Building   Building    { get; private set; }
+		[field: SerializeField] public CellData Data { get; set; }
 
-		public bool IsNeutral => Owner is null;
+		public bool IsNeutral => Data.IsNeutral;
 
-		public bool IsEmpty => Building is null;
+		public bool IsEmpty => Data.IsEmpty;
+	}
+
+	[Serializable]
+	public class CellData
+	{
+		public Coordinates Coordinates;
+		public int OwnerPlayerId = -1;
+		public int BuildingId = -1;
+		
+		public bool IsNeutral => OwnerPlayerId == -1;
+
+		public bool IsEmpty => BuildingId == -1;
 	}
 }

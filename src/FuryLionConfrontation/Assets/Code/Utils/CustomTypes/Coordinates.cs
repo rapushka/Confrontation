@@ -1,13 +1,15 @@
+using System;
 using UnityEngine;
 
 namespace Confrontation
 {
+	[Serializable]
 	public struct Coordinates
 	{
 		private const float NoOffset = 0f;
 		private const float Offset = 0.5f;
 
-		private Vector2Int _vector;
+		[SerializeField] private Vector2Int _vector;
 
 		public Coordinates(int row, int column) => _vector = new Vector2Int(row, column);
 
