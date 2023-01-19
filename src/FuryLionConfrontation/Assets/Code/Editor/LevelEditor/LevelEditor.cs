@@ -55,7 +55,7 @@ namespace Confrontation.Editor
 			}
 
 			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
-			village.CellsInRegion.Add(cell);
+			village.Value.CellsInRegion.Add(cell);
 
 			cell.Building = village;
 		}
@@ -101,7 +101,7 @@ namespace Confrontation.Editor
 
 			foreach (var village in Object.FindObjectsOfType<Village>())
 			{
-				foreach (var cell in village.CellsInRegion)
+				foreach (var cell in village.Value.CellsInRegion)
 				{
 					cell.GetComponentInChildren<Renderer>().material = regionMaterial;
 				}

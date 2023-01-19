@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Confrontation.Editor
 	public class LevelCustomInspector : UnityEditor.Editor
 	{
 		private Level Target => (Level)target;
-		
+
 		// ReSharper disable Unity.PerformanceCriticalCodeInvocation - we don't care about performance in Editor
 		public override void OnInspectorGUI()
 		{
@@ -16,6 +17,7 @@ namespace Confrontation.Editor
 			base.OnInspectorGUI();
 		}
 
-		private void CollectVillages() => Target.Value.Villages = FindObjectsOfType<Village>();
+		private void CollectVillages()
+			=> Target.Value.Villages = FindObjectsOfType<Village>().Select((v) => v.Value).ToArray();
 	}
 }
