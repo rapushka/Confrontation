@@ -84,7 +84,7 @@ namespace Confrontation.Tests
 		}
 		
 		[Test]
-		public void WhenToVillage_AndCallTwice_ThenCreateVillage()
+		public void WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village()
 		{
 			// Arrange.
 			var levelEditor = Create.LevelEditor();
