@@ -67,5 +67,36 @@ namespace Confrontation.Tests
 			var countOfCells = Object.FindObjectsOfType<Cell>().Length;
 			countOfCells.Should().Be(height * width);
 		}
+
+		[Test]
+		public void WhenToVillage_AndOnEmptyCell_ThenCreateVillage()
+		{
+			// Arrange.
+			var levelEditor = Create.LevelEditor();
+			var cell = Setup.Cell();
+
+			// Act.
+			levelEditor.ToVillage(cell);
+
+			// Assert.
+			var countOfVillages = cell.GetComponentsInChildren<Village>().Length;
+			countOfVillages.Should().Be(1);
+		}
+		
+		[Test]
+		public void WhenToVillage_AndCallTwice_ThenCreateVillage()
+		{
+			// Arrange.
+			var levelEditor = Create.LevelEditor();
+			var cell = Setup.Cell();
+
+			// Act.
+			levelEditor.ToVillage(cell);
+			levelEditor.ToVillage(cell);
+
+			// Assert.
+			var countOfVillages = cell.GetComponentsInChildren<Village>().Length;
+			countOfVillages.Should().Be(1);
+		}
 	}
 }

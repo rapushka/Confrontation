@@ -1,9 +1,4 @@
-using UnityEngine;
-
 namespace Confrontation
 {
-	public class Village : MonoBehaviour
-	{
-		
-	}
+	public class Village : Building { }
 }

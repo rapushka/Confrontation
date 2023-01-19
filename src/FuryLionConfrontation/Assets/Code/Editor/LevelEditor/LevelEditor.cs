@@ -49,13 +49,30 @@ namespace Confrontation.Editor
 		public void ToVillage(GameObject gameObject)
 		{
 			var cell = gameObject.GetComponent<Cell>();
-			if (cell == false)
+			if (PreCondition(cell))
 			{
-				Debug.Log("Selected object isn't cell!");
 				return;
 			}
 
 			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
+			cell.Building = village;
+		}
+
+		private static bool PreCondition(Cell cell)
+		{
+			if (cell == false)
+			{
+				Debug.LogWarning("Selected object isn't cell!");
+				return true;
+			}
+
+			if (cell.Building == true)
+			{
+				Debug.LogWarning("Cell is already Village!");
+				return true;
+			}
+
+			return false;
 		}
 
 		private Level AssemblyLevel()
