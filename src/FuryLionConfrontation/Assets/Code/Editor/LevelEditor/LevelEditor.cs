@@ -55,7 +55,7 @@ namespace Confrontation.Editor
 			}
 
 			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
-			village.AddCellToRegion(cell);
+			village.CellsInRegion.Add(cell);
 
 			cell.Building = village;
 		}
@@ -82,6 +82,30 @@ namespace Confrontation.Editor
 			}
 
 			return false;
+		}
+
+		public void UpdateField()
+		{
+			if (_field is null)
+			{
+				return;
+			}
+
+			var defaultMaterial = Resources.Load<Material>("Materials/HexagonsAsset/Default");
+			var regionMaterial = Resources.Load<Material>("Materials/HexagonsAsset/Red");
+
+			foreach (var cell in Object.FindObjectsOfType<Cell>())
+			{
+				cell.GetComponentInChildren<Renderer>().material = defaultMaterial;
+			}
+
+			foreach (var village in Object.FindObjectsOfType<Village>())
+			{
+				foreach (var cell in village.CellsInRegion)
+				{
+					cell.GetComponentInChildren<Renderer>().material = regionMaterial;
+				}
+			}
 		}
 	}
 }

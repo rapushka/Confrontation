@@ -30,6 +30,8 @@ namespace Confrontation.Editor
 			GUILayout.Button(nameof(Serialize).Format()).OnClick(Serialize);
 
 			GUILayout.Button(nameof(SelectionToVillage).Format()).OnClick(SelectionToVillage);
+
+			GUILayout.Button(nameof(_levelEditor.UpdateField).Format()).OnClick(_levelEditor.UpdateField);
 		}
 
 		private void SizesIntFields()
