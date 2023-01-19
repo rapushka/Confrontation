@@ -6,6 +6,17 @@ namespace Confrontation
 	public class Cell : MonoBehaviour
 	{
 		[field: SerializeField] public Data Value { get; set; }
+		[SerializeField] private Building _building;
+
+		public Building Building
+		{
+			get => _building;
+			set
+			{
+				_building = value;
+				Value.BuildingId = 0;
+			}
+		}
 
 		[Serializable]
 		public class Data

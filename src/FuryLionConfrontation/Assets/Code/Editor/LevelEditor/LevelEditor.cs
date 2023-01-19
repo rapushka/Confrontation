@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Confrontation.Editor
@@ -21,15 +22,31 @@ namespace Confrontation.Editor
 			var root = Object.FindObjectOfType<CellsRoot>();
 			if (root == true)
 			{
-				Object.DestroyImmediate(root);
+				Object.DestroyImmediate(root.gameObject);
 			}
 		}
 
 		private void GenerateNewField(int height, int width)
 		{
 			_field = new Field(CellPrefab, height, width);
-			_field.Root.gameObject.AddComponent<CellsRoot>();
+			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
+		}
+
+		public void Serialize()
+		{
+			if (_field is null)
+			{
+				return;
+			}
+
+			var level = new Level
+			{
+				Cells = _field.GetCells(),
+				Players = new Player.Data[] { new() { Name = "Player" } },
+			};
+			var json = JsonConvert.SerializeObject(level, Formatting.Indented);
+			Debug.Log(json);
 		}
 	}
 }

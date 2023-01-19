@@ -1,13 +1,16 @@
 using System.Reflection;
-using Confrontation;
+using UnityEngine;
 
-namespace Confrontation.Tests
+namespace Confrontation.Editor
 {
 	public static class ReflectionExtensions
 	{
-		private const string Cells = "_cells";
+		private const string CellsFieldName = "_cells";
+		private const string RootFieldName = "_root";
 
-		public static Cell[,] GetCells(this Field @this) => @this.GetPrivate<Cell[,]>(Cells);
+		public static Cell.Data[,] GetCells(this Field @this) => @this.GetPrivate<Cell.Data[,]>(CellsFieldName);
+
+		public static Transform GetRoot(this Field @this) => @this.GetPrivate<Transform>(RootFieldName);
 
 		public static T GetPrivate<T>(this object @this, string fieldName)
 			=> @this.GetFieldValue<T>(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);

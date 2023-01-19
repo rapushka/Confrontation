@@ -1,4 +1,3 @@
-using Confrontation.Editor;
 using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace Confrontation.Tests
 		public void WhenGenerateField_Once_ThenShouldBeSingleField()
 		{
 			// Arrange.
-			var levelEditor = new LevelEditor();
+			var levelEditor = Create.LevelEditor();
 
 			// Act.
 			levelEditor.GenerateField(1, 1);
@@ -25,7 +24,7 @@ namespace Confrontation.Tests
 		public void WhenGenerateField_Twice_ThenShouldBeSingleField()
 		{
 			// Arrange.
-			var levelEditor = new LevelEditor();
+			var levelEditor = Create.LevelEditor();
 
 			// Act.
 			levelEditor.GenerateField(1, 1);
@@ -42,9 +41,26 @@ namespace Confrontation.Tests
 			// Arrange.
 			const int height = 2;
 			const int width = 3;
-			var levelEditor = new LevelEditor();
+			var levelEditor = Create.LevelEditor();
 
 			// Act.
+			levelEditor.GenerateField(height, width);
+
+			// Assert.
+			var countOfCells = Object.FindObjectsOfType<Cell>().Length;
+			countOfCells.Should().Be(height * width);
+		}
+
+		[Test]
+		public void WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame()
+		{
+			// Arrange.
+			const int height = 2;
+			const int width = 3;
+			var levelEditor = Create.LevelEditor();
+
+			// Act.
+			levelEditor.GenerateField(height, width);
 			levelEditor.GenerateField(height, width);
 
 			// Assert.
