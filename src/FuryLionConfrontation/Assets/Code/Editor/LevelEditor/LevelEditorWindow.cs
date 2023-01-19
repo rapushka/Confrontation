@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace Confrontation.Editor
 
 			GUILayout.Button(nameof(Serialize).Format()).OnClick(Serialize);
 
-			// var selected = Selection.activeTransform.gameObject;
+			GUILayout.Button(nameof(SelectionToVillage).Format()).OnClick(SelectionToVillage);
 		}
 
 		private void SizesIntFields()
@@ -43,7 +44,13 @@ namespace Confrontation.Editor
 			SaveAll();
 		}
 
-		private void Serialize() => _levelEditor.Serialize();
+		private void Serialize() => Debug.Log(_levelEditor.Serialize());
+
+		private void SelectionToVillage()
+		{
+			var selected = Selection.gameObjects.First();
+			_levelEditor.ToVillage(selected);
+		}
 
 		private static void SaveAll()
 		{

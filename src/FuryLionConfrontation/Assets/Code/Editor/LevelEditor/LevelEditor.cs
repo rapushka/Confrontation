@@ -11,6 +11,8 @@ namespace Confrontation.Editor
 
 		private static Cell CellPrefab => Resources.Load<Cell>("Prefabs/Cell");
 
+		private static Village VillagePrefab => Resources.Load<Village>("Prefabs/Village");
+
 		public void GenerateField(int height, int width)
 		{
 			DestroyOldField();
@@ -33,20 +35,34 @@ namespace Confrontation.Editor
 			_field.GenerateField();
 		}
 
-		public void Serialize()
+		public string Serialize()
 		{
 			if (_field is null)
 			{
+				return $"{nameof(_field).Format()} is null";
+			}
+
+			var level = AssemblyLevel();
+			return JsonConvert.SerializeObject(level, Formatting.Indented);
+		}
+
+		public void ToVillage(GameObject gameObject)
+		{
+			var cell = gameObject.GetComponent<Cell>();
+			if (cell == false)
+			{
+				Debug.Log("Selected object isn't cell!");
 				return;
 			}
 
-			var level = new Level
+			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
+		}
+
+		private Level AssemblyLevel()
+			=> new()
 			{
 				Cells = _field.GetCells(),
 				Players = new Player.Data[] { new() { Name = "Player" } },
 			};
-			var json = JsonConvert.SerializeObject(level, Formatting.Indented);
-			Debug.Log(json);
-		}
 	}
 }
