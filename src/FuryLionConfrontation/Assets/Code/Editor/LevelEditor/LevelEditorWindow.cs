@@ -9,10 +9,7 @@ namespace Confrontation.Editor
 		private int _height;
 		private int _width;
 
-		public LevelEditorWindow()
-		{
-			_levelEditor = new LevelEditor();
-		}
+		public LevelEditorWindow() => _levelEditor = new LevelEditor();
 
 		[MenuItem("Tools/Confrontation/LevelEditor")]
 		private static void ShowWindow()
@@ -34,11 +31,19 @@ namespace Confrontation.Editor
 			// var selected = Selection.activeTransform.gameObject;
 		}
 
+		private void SizesIntFields()
+		{
+			_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
+			_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
+		}
+
 		private void GenerateField()
 		{
 			_levelEditor.GenerateField(_height, _width);
 			SaveAll();
 		}
+
+		private void Serialize() => _levelEditor.Serialize();
 
 		private static void SaveAll()
 		{
@@ -47,13 +52,5 @@ namespace Confrontation.Editor
 				EditorUtility.SetDirty(monoBehaviour);
 			}
 		}
-
-		private void SizesIntFields()
-		{
-			_height = EditorGUILayout.IntField(nameof(_height).Format(), _height);
-			_width = EditorGUILayout.IntField(nameof(_width).Format(), _width);
-		}
-
-		private void Serialize() => _levelEditor.Serialize();
 	}
 }
