@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -41,7 +42,7 @@ namespace Confrontation
 			return cell;
 		}
 
-		private bool IsVillage(Cell cell) => _level.VillagesCoordinates.Contains(cell.Coordinates);
+		private bool IsVillage(Cell cell) => _level.Regions.Any((r) => r.VillageCoordinates == cell.Coordinates);
 
 		public void ToVillage(Cell cell)
 		{

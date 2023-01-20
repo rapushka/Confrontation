@@ -18,6 +18,11 @@ namespace Confrontation
 			Column = column;
 		}
 
+		public static bool operator ==(Coordinates left, Coordinates right)
+			=> left.Row == right.Row && left.Column == right.Column;
+
+		public static bool operator !=(Coordinates left, Coordinates right) => !(left == right);
+
 		// https://www.redblobgames.com/grids/hexagons/
 		public Vector2 CalculatePosition() => new(Column + HorizontalOffset(Row), Row * VerticalDistance());
 

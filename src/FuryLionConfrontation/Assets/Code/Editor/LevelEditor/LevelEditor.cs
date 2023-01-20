@@ -51,7 +51,7 @@ namespace Confrontation.Editor
 			var serializableLevel = new
 			{
 				level.Sizes,
-				VillagesPositions = level.VillagesCoordinates
+				VillagesPositions = level.Regions
 			};
 			return JsonConvert.SerializeObject(serializableLevel, Formatting.Indented);
 		}
