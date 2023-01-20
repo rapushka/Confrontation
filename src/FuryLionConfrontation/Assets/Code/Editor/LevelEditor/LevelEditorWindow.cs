@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Confrontation.Editor

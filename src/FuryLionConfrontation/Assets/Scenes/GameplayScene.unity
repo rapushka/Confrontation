@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cellPrefab: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
+  _level: {fileID: 11400000, guid: e4b04d0679fa63414862519239d2f23a, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.60876167, y: -0, z: -0, w: 0.79335326}
-  m_LocalPosition: {x: 4.88, y: 17.76, z: 3.05}
+  m_LocalPosition: {x: 4.76, y: 17.38, z: 1.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

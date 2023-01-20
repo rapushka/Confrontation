@@ -10,8 +10,8 @@ namespace Confrontation
 		private readonly Cell.Data[,] _cells;
 		private readonly Transform _root;
 
+		[Inject] public Field(Cell cellPrefab, Coordinates sizes) : this(cellPrefab, sizes.Row, sizes.Column) { }
 
-		[Inject]
 		public Field(Cell cellPrefab, int height, int width)
 		{
 			_cellPrefab = cellPrefab;
