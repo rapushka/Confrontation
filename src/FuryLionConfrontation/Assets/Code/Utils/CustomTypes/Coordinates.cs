@@ -9,13 +9,14 @@ namespace Confrontation
 		private const float NoOffset = 0f;
 		private const float Offset = 0.5f;
 
-		[SerializeField] private Vector2Int _vector;
+		[field: SerializeField] public int Row    { get; private set; }
+		[field: SerializeField] public int Column { get; private set; }
 
-		public Coordinates(int row, int column) => _vector = new Vector2Int(row, column);
-
-		public int Row => _vector.x;
-
-		public int Column => _vector.y;
+		public Coordinates(int row, int column)
+		{
+			Row = row;
+			Column = column;
+		}
 
 		// https://www.redblobgames.com/grids/hexagons/
 		public Vector2 CalculatePosition() => new(Column + HorizontalOffset(Row), Row * VerticalDistance());
