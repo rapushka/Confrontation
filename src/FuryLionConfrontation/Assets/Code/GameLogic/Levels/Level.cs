@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,14 +8,6 @@ namespace Confrontation
 	{
 		[field: SerializeField] public Sizes Sizes { get; set; }
 
-		[field: SerializeField] public List<RegionData> Regions { get; private set; } = new();
-	}
-
-	[Serializable]
-	public class RegionData
-	{
-		[field: SerializeField] public Coordinates VillageCoordinates { get; private set; }
-
-		[field: SerializeField] public List<Coordinates> CellsInRegion { get; private set; }
+		[field: SerializeField] public List<Region> Regions { get; private set; } = new();
 	}
 }
