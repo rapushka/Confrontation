@@ -49,7 +49,7 @@ namespace Confrontation.Editor.Tests
 			// Arrange.
 			var field = Setup.Field(height: 2, width: 2);
 			field.AddRegion(Setup.Region(row: 0, column: 0));
-			field.GetRegions().Single().CellsInRegion.Add(Setup.Cell(row: 0, column: 1).Coordinates);
+			field.AddCellToFirstRegion(Setup.Cell(row: 0, column: 1));
 
 			// Act.
 			field.GenerateField();
@@ -65,7 +65,7 @@ namespace Confrontation.Editor.Tests
 			// Arrange.
 			var field = Setup.Field();
 			field.AddRegion(Setup.Region(row: 0, column: 0));
-			field.GetRegions().Single().CellsInRegion.Add(Setup.Cell(row: 0, column: 0).Coordinates);
+			field.AddCellToFirstRegion(Setup.Cell(row: 0, column: 0));
 
 			// Act.
 			field.GenerateField();

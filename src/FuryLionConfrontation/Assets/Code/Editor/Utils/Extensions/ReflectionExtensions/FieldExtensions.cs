@@ -6,6 +6,9 @@ namespace Confrontation.Editor
 {
 	public static class FieldExtensions
 	{
+		public static void AddCellToFirstRegion(this Field @this, Cell cell)
+			=> @this.GetRegions().First().CellsInRegion.Add(cell.Coordinates);
+
 		public static void AddRegion(this Field @this, Region region) => @this.GetRegions().Add(region);
 
 		public static List<Region> GetRegions(this Field @this)
