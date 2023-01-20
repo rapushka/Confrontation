@@ -83,7 +83,7 @@ namespace Confrontation.Editor.Tests
 			var cell = Setup.Cell();
 
 			// Act.
-			levelEditor.ToVillage(cell);
+			levelEditor.ToVillage(cell.gameObject);
 
 			// Assert.
 			var countOfVillages = cell.GetComponentsInChildren<Village>().Length;
@@ -98,8 +98,8 @@ namespace Confrontation.Editor.Tests
 			var cell = Setup.Cell();
 
 			// Act.
-			levelEditor.ToVillage(cell);
-			levelEditor.ToVillage(cell);
+			levelEditor.ToVillage(cell.gameObject);
+			levelEditor.ToVillage(cell.gameObject);
 
 			// Assert.
 			var countOfVillages = cell.GetComponentsInChildren<Village>().Length;

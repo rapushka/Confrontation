@@ -24,7 +24,12 @@ namespace Confrontation.Editor.Tests
 			return level;
 		}
 
-		public static GameObject Cell() => Object.Instantiate(Create.CellPrefab()).gameObject;
+		public static Cell Cell(int row = 1, int column = 1)
+		{
+			var cell = Object.Instantiate(Create.CellPrefab());
+			cell.Coordinates = new Coordinates(row, column);
+			return cell;
+		}
 
 		public static LevelEditor LevelEditor(int height = 0, int width = 0)
 		{

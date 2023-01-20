@@ -24,7 +24,7 @@ namespace Confrontation.Editor.Tests
 			field.GenerateField();
 
 			// Assert.
-			var cells = field.GetCells().Cast<Cell>();
+			var cells = field.GetCells();
 			cells.All((c) => c is not null).Should().BeTrue();
 		}
 
@@ -33,7 +33,7 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Setup.Field();
-			field.AddRegion(new Coordinates(1, 1));
+			field.AddRegion(Setup.Region());
 
 			// Act.
 			field.GenerateField();
@@ -41,6 +41,38 @@ namespace Confrontation.Editor.Tests
 			// Assert.
 			var countOfVillages = Object.FindObjectsOfType<Village>().Length;
 			countOfVillages.Should().Be(1);
+		}
+
+		[Test]
+		public void WhenGenerateField_AndLevelContainRegionWith1Cells_ThenVillageMustHave1CellsInRegion()
+		{
+			// Arrange.
+			var field = Setup.Field(height: 2, width: 2);
+			field.AddRegion(Setup.Region(row: 0, column: 0));
+			field.GetRegions().Single().CellsInRegion.Add(Setup.Cell(row: 0, column: 1).Coordinates);
+
+			// Act.
+			field.GenerateField();
+
+			// Assert.
+			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
+			countOfCellsInRegion.Should().Be(1);
+		}
+
+		[Test]
+		public void WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave1CellsInRegion()
+		{
+			// Arrange.
+			var field = Setup.Field();
+			field.AddRegion(Setup.Region(row: 0, column: 0));
+			field.GetRegions().Single().CellsInRegion.Add(Setup.Cell(row: 0, column: 0).Coordinates);
+
+			// Act.
+			field.GenerateField();
+
+			// Assert.
+			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
+			countOfCellsInRegion.Should().Be(1);
 		}
 	}
 }

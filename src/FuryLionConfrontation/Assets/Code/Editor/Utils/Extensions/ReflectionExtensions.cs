@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -12,19 +13,18 @@ namespace Confrontation.Editor
 		private const string VillageCoordinatesPropertyName = "VillageCoordinates";
 		private const string LevelFieldName = "_level";
 
-		public static void AddRegion(this Field @this, Coordinates villageCoordinates)
-			=> @this.GetPrivateField<Level>(LevelFieldName)
-			        .GetPropertyValue<List<Region>>(RegionsPropertyName)
-			        .Add(NewRegion(villageCoordinates));
+		public static void AddRegion(this Field @this, Region region) => @this.GetRegions().Add(region);
 
-		private static Region NewRegion(Coordinates villageCoordinates)
-		{
-			var region = new Region();
-			region.SetPrivateProperty("VillageCoordinates", villageCoordinates);
-			return region;
-		}
+		public static List<Region> GetRegions(this Field @this)
+			=> @this.GetLevel().GetPropertyValue<List<Region>>(RegionsPropertyName);
 
-		public static Cell[,] GetCells(this Field @this) => @this.GetPrivateField<Cell[,]>(CellsFieldName);
+		public static Level GetLevel(this Field @this) => @this.GetPrivateField<Level>(LevelFieldName);
+
+		public static IEnumerable<Village> GetVillages(this Field @this)
+			=> @this.GetCells().Select((c) => c.Building).OfType<Village>();
+
+		public static IEnumerable<Cell> GetCells(this Field @this)
+			=> @this.GetPrivateField<Cell[,]>(CellsFieldName).Cast<Cell>();
 
 		public static Transform GetRoot(this Field @this) => @this.GetPrivateField<Transform>(RootFieldName);
 
@@ -36,13 +36,13 @@ namespace Confrontation.Editor
 
 		public static T GetPrivateField<T>(this object @this, string fieldName)
 			=> @this.GetFieldValue<T>(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
-		
+
 		public static void SetPrivateProperty<T>(this object @this, string propertyName, T value)
 			=> @this.SetPropertyValue(propertyName, value);
 
 		private static T GetFieldValue<T>(this object @this, string fieldName, BindingFlags flags)
 			=> (T)@this.GetType().GetField(fieldName, flags)!.GetValue(@this);
-		
+
 		private static T GetPropertyValue<T>(this object @this, string fieldName)
 			=> (T)@this.GetType().GetProperty(fieldName)!.GetValue(@this);
 

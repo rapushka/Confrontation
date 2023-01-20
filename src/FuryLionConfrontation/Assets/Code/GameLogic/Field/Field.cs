@@ -8,10 +8,11 @@ namespace Confrontation
 	public class Field : IInitializable
 	{
 		private readonly Cell _cellPrefab;
+		private readonly Village _villagePrefab;
+
 		private readonly Level _level;
 		private readonly Cell[,] _cells;
 		private readonly Transform _root;
-		private readonly Village _villagePrefab;
 
 		private ILookup<Coordinates, Coordinates> _regions;
 
