@@ -10,11 +10,13 @@ namespace Confrontation
 		private readonly Level _level;
 		private readonly Cell[,] _cells;
 		private readonly Transform _root;
+		private readonly Village _villagePrefab;
 
 		[Inject]
-		public Field(Cell cellPrefab, Level level)
+		public Field(Cell cellPrefab, Village villagePrefab, Level level)
 		{
 			_cellPrefab = cellPrefab;
+			_villagePrefab = villagePrefab;
 			_level = level;
 
 			_cells = new Cell[_level.Sizes.Height, _level.Sizes.Width];
@@ -31,8 +33,22 @@ namespace Confrontation
 			var cell = Object.Instantiate(original: _cellPrefab, parent: _root);
 			cell.Coordinates = coordinates;
 			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
+			if (IsVillage(cell))
+			{
+				ToVillage(cell);
+			}
 
 			return cell;
 		}
+
+		public void ToVillage(Cell cell)
+		{
+			var village = Object.Instantiate(original: _villagePrefab, parent: cell.transform);
+
+			village.CellsInRegion.Add(cell);
+			cell.Building = village;
+		}
+
+		private bool IsVillage(Cell cell) => _level.VillagesCoordinates.Contains(cell.Coordinates);
 	}
 }

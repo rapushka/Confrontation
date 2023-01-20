@@ -72,7 +72,7 @@ namespace Confrontation.Editor.Tests
 		public void WhenToVillage_AndOnEmptyCell_ThenCreateVillage()
 		{
 			// Arrange.
-			var levelEditor = Create.LevelEditor();
+			var levelEditor = Setup.LevelEditor();
 			var cell = Setup.Cell();
 
 			// Act.
@@ -82,12 +82,12 @@ namespace Confrontation.Editor.Tests
 			var countOfVillages = cell.GetComponentsInChildren<Village>().Length;
 			countOfVillages.Should().Be(1);
 		}
-		
+
 		[Test]
 		public void WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village()
 		{
 			// Arrange.
-			var levelEditor = Create.LevelEditor();
+			var levelEditor = Setup.LevelEditor();
 			var cell = Setup.Cell();
 
 			// Act.

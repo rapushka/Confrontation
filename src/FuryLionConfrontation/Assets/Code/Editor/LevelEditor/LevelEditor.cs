@@ -34,8 +34,8 @@ namespace Confrontation.Editor
 		{
 			var level = Object.Instantiate(LevelScriptableObject);
 			level.Sizes = new Sizes(height, width);
-			
-			_field = new Field(CellPrefab, level);
+
+			_field = new Field(CellPrefab, VillagePrefab, level);
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
 		}
@@ -47,43 +47,46 @@ namespace Confrontation.Editor
 				return $"{nameof(_field).Format()} is null";
 			}
 
-			var level = AssemblyLevel();
-			var serializableLevel = new { level.Sizes,
-				VillagesPositions = level.VillagesCoordinates };
+			var level = ScriptableObject.CreateInstance<Level>();
+			var serializableLevel = new
+			{
+				level.Sizes,
+				VillagesPositions = level.VillagesCoordinates
+			};
 			return JsonConvert.SerializeObject(serializableLevel, Formatting.Indented);
 		}
 
 		public void ToVillage(GameObject gameObject)
 		{
-			var cell = gameObject.GetComponent<Cell>();
-			if (PreCondition(cell))
+			if (IsCanBeVillage(gameObject, out var cell))
 			{
-				return;
+				_field!.ToVillage(cell);
 			}
-
-			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
-			village.CellsInRegion.Add(cell);
-
-			cell.Building = village;
 		}
 
-		private Level AssemblyLevel() => new();
-
-		private static bool PreCondition(Cell cell)
+		private bool IsCanBeVillage(GameObject gameObject, out Cell cell)
 		{
+			cell = gameObject.GetComponent<Cell>();
+
+			if (_field is null)
+			{
+				Debug.LogWarning("Field must be not null!");
+				return false;
+			}
+
 			if (cell == false)
 			{
 				Debug.LogWarning("Selected object isn't cell!");
-				return true;
+				return false;
 			}
 
 			if (cell.IsEmpty == false)
 			{
 				Debug.LogWarning("Cell is already taken!");
-				return true;
+				return false;
 			}
 
-			return false;
+			return true;
 		}
 
 		public void UpdateField()
