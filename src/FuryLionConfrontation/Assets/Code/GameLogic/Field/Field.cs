@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -13,6 +14,8 @@ namespace Confrontation
 		private readonly Transform _root;
 		private readonly Village _villagePrefab;
 
+		private Lookup<Coordinates, Coordinates> _regions;
+
 		[Inject]
 		public Field(Cell cellPrefab, Village villagePrefab, Level level)
 		{
@@ -26,7 +29,43 @@ namespace Confrontation
 
 		public void Initialize() => GenerateField();
 
-		public void GenerateField() => _cells.Select(CreateHexagon);
+		public void GenerateField()
+		{
+			RegionsToLookup();
+
+			_cells.Select(CreateHexagon);
+
+			DivideByRegions();
+		}
+
+		public void ToVillage(Cell cell)
+		{
+			var village = Object.Instantiate(original: _villagePrefab, parent: cell.transform);
+			cell.Building = village;
+		}
+
+		private void RegionsToLookup()
+			=> _regions = (Lookup<Coordinates, Coordinates>)ToEnumerableOfTuples()
+				.ToLookup((x) => x.VillageCoordinates, (x) => x.Coordinates);
+
+		private void DivideByRegions()
+		{
+			foreach (var region in _regions)
+			{
+				var coordinatesOfVillage = region.Key;
+				var village = (Village)_cells[coordinatesOfVillage.Row, coordinatesOfVillage.Column].Building;
+				foreach (var coordinatesOfCell in region)
+				{
+					var cell = _cells[coordinatesOfCell.Row, coordinatesOfCell.Column];
+					
+					village.CellsInRegion.Add(cell);
+				}
+			}
+		}
+
+		private IEnumerable<(Coordinates VillageCoordinates, Coordinates Coordinates)> ToEnumerableOfTuples()
+			=> _level.Regions
+			         .SelectMany((r) => r.CellsInRegion, (r, c) => (r.VillageCoordinates, Coordinates: c));
 
 		private Cell CreateHexagon(int i, int j)
 		{
@@ -43,13 +82,5 @@ namespace Confrontation
 		}
 
 		private bool IsVillage(Cell cell) => _level.Regions.Any((r) => r.VillageCoordinates == cell.Coordinates);
-
-		public void ToVillage(Cell cell)
-		{
-			var village = Object.Instantiate(original: _villagePrefab, parent: cell.transform);
-
-			village.CellsInRegion.Add(cell);
-			cell.Building = village;
-		}
 	}
 }
