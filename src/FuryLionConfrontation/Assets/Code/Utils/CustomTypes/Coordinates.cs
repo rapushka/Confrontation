@@ -26,13 +26,13 @@ namespace Confrontation
 		public static bool operator ==(Coordinates left, Coordinates right)
 			=> left.Row == right.Row && left.Column == right.Column;
 
-		public override int GetHashCode() => HashCode.Combine(Row, Column);
-
-		public bool Equals(Coordinates other) => Row == other.Row && Column == other.Column;
+		public static bool operator !=(Coordinates left, Coordinates right) => !(left == right);
 
 		public override bool Equals(object obj) => obj is Coordinates other && Equals(other);
 
-		public static bool operator !=(Coordinates left, Coordinates right) => !(left == right);
+		public bool Equals(Coordinates other) => Row == other.Row && Column == other.Column;
+
+		public override int GetHashCode() => HashCode.Combine(Row, Column);
 
 		private static float HorizontalOffset(int row) => row.IsEven() ? NoOffset : Offset;
 
