@@ -1,6 +1,5 @@
 using FluentAssertions;
 using NUnit.Framework;
-using Confrontation.Editor;
 
 namespace Confrontation.Editor.Tests
 {

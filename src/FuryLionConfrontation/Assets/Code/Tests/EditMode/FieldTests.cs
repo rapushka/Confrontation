@@ -1,5 +1,4 @@
 using System.Linq;
-using Confrontation.Editor;
 using FluentAssertions;
 using NUnit.Framework;
 

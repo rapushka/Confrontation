@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Confrontation.Editor.Tests
+namespace Confrontation.Editor
 {
 	public static class Setup
 	{
