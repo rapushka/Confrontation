@@ -6,13 +6,6 @@ namespace Confrontation.Editor.Tests
 {
 	public static class Setup
 	{
-		public static Field FieldWithRegion(int count = 1, int column = 1)
-		{
-			var regions = Regions(count, column);
-			var level = Level(regions);
-			return Field(level);
-		}
-
 		public static Field Field(int height = 1, int width = 1) => Field(Level(height, width));
 
 		public static Field Field(Level level) => Create.Field(Create.CellPrefab(), Create.VillagePrefab(), level);
@@ -40,7 +33,7 @@ namespace Confrontation.Editor.Tests
 			return levelEditor;
 		}
 
-		private static List<Region> Regions(int count = 1, int column = 1)
+		public static List<Region> Regions(int count = 1, int column = 1)
 			=> new(Enumerable.Range(1, count).Select((i) => Region(i, column)));
 
 		public static Region Region(int row = 1, int column = 1)

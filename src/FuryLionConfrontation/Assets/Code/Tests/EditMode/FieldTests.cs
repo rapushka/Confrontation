@@ -29,10 +29,11 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndLevelContain1Village_ThenShouldBe1Village()
+		public void WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
 		{
 			// Arrange.
-			var field = Setup.FieldWithRegion();
+			var field = Setup.Field();
+			field.AddRegion(new Coordinates(1, 1));
 
 			// Act.
 			field.GenerateField();
