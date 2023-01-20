@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
+  - {fileID: 5}
   - {fileID: 11}
   - {fileID: 16}
   m_Position:
@@ -25,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 477
+  controlID: 12561
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -34,26 +35,39 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
+  m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
+    m_Text: Inspector
+    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 16
+    x: 1367
     y: 103
-    width: 442
-    height: 356
+    width: 536
+    height: 848
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+  m_ObjectsLockedBeforeSerialization: []
+  m_InstanceIDsLockedBeforeSerialization: 
+  m_PreviewResizer:
+    m_CachedPref: -160
+    m_ControlHash: -371814159
+    m_PrefName: Preview_InspectorPreview
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 0
+  m_GlobalObjectId: 
+  m_InspectorMode: 0
+  m_LockTracker:
+    m_IsLocked: 0
+  m_PreviewWindow: {fileID: 0}
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -63,101 +77,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 4}
-  - {fileID: 9}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1050
-    height: 869
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 16192, y: 16192}
-  vertical: 1
-  controlID: 478
---- !u!114 &4
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 5}
-  - {fileID: 6}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1050
-    height: 377
-  m_MinSize: {x: 200, y: 100}
-  m_MaxSize: {x: 16192, y: 8096}
-  vertical: 0
-  controlID: 479
---- !u!114 &5
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 443
-    height: 377
-  m_MinSize: {x: 101, y: 121}
+    width: 465
+    height: 869
+  m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 2}
+  m_ActualView: {fileID: 4}
   m_Panes:
-  - {fileID: 2}
+  - {fileID: 4}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &6
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 443
-    y: 0
-    width: 607
-    height: 377
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 8}
-  m_Panes:
-  - {fileID: 7}
-  - {fileID: 8}
-  m_Selected: 1
-  m_LastSelected: 0
---- !u!114 &7
+--- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,10 +114,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 459
+    x: 16
     y: 103
-    width: 605
-    height: 356
+    width: 464
+    height: 848
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -191,7 +128,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 596, y: 335}
+  m_TargetSize: {x: 1080, y: 1920}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -200,16 +137,16 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 07000000000000000000000005000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -302.5
-    m_HBaseRangeMax: 302.5
-    m_VBaseRangeMin: -167.5
-    m_VBaseRangeMax: 167.5
+    m_HBaseRangeMin: -540
+    m_HBaseRangeMax: 540
+    m_VBaseRangeMin: -960
+    m_VBaseRangeMax: 960
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -227,28 +164,108 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 605
-      height: 335
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 302.5, y: 167.5}
+      width: 464
+      height: 827
+    m_Scale: {x: 0.42962962, y: 0.42962962}
+    m_Translation: {x: 232, y: 413.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -302.5
-      y: -167.5
-      width: 605
-      height: 335
+      x: -540
+      y: -962.4569
+      width: 1080
+      height: 1924.9138
     m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 605, y: 356}
+  m_defaultScale: 0.42962962
+  m_LastWindowPixelSize: {x: 464, y: 848}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000000000000
+  m_LowResolutionForAspectRatios: 01000001000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
+--- !u!114 &5
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 6}
+  - {fileID: 9}
+  m_Position:
+    serializedVersion: 2
+    x: 465
+    y: 0
+    width: 585
+    height: 869
+  m_MinSize: {x: 100, y: 200}
+  m_MaxSize: {x: 8096, y: 16192}
+  vertical: 1
+  controlID: 12486
+--- !u!114 &6
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: ConsoleWindow
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 585
+    height: 377
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 7}
+  m_Panes:
+  - {fileID: 7}
+  - {fileID: 8}
+  m_Selected: 0
+  m_LastSelected: 1
+--- !u!114 &7
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Console
+    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 481
+    y: 103
+    width: 583
+    height: 356
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,9 +286,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 459
+    x: 481
     y: 103
-    width: 605
+    width: 583
     height: 356
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -290,22 +307,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Plugins/Low Poly Hexagons/Assets/Models/Hexagons
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
-  m_StartGridSize: 96
+  m_StartGridSize: 56
   m_LastFolders:
-  - Assets/Plugins/Low Poly Hexagons/Assets/Models/Hexagons
-  m_LastFoldersGridSize: 96
+  - Assets
+  m_LastFoldersGridSize: 56
   m_LastProjectPath: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 9a630000
-    m_LastClickedID: 25498
-    m_ExpandedIDs: ffffffff0000000090630000926300009463000096630000986300009c6300009e630000a0630000a2630000ba63000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 565f0000
+    m_LastClickedID: 24406
+    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009c6300009e630000a0630000a2630000ba630000be630000c0630000ea920000f4920000f0c0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -333,7 +350,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009a6300009c6300009e630000a0630000a2630000be630000
+    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009c6300009e630000a0630000a2630000ba630000be630000c0630000ea920000f4920000f0c0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -358,9 +375,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 68eaffff
-    m_LastClickedInstanceID: -5528
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -385,8 +402,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 1212}
-    m_GridSize: 96
+    m_ScrollPosition: {x: 0, y: 0}
+    m_GridSize: 56
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 213
 --- !u!114 &9
@@ -406,10 +423,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 377
-    width: 1050
+    width: 585
     height: 492
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -435,9 +452,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 16
+    x: 481
     y: 480
-    width: 1049
+    width: 583
     height: 471
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -536,7 +553,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
@@ -673,9 +690,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.0590408, y: -2.0360146, z: 3.516068}
+    m_Target: {x: 4.1821947, y: -5.7064724, z: 4.016396}
     speed: 2
-    m_Value: {x: 2.0590408, y: -2.0360146, z: 3.516068}
+    m_Value: {x: 4.1821947, y: -5.7064724, z: 4.016396}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -722,13 +739,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.39131513, y: 0.032002147, z: -0.01360914, w: -0.91961724}
+    m_Target: {x: -0.4876984, y: -0.3045914, z: 0.18648992, w: -0.7967004}
     speed: 2
-    m_Value: {x: -0.39130875, y: 0.032001626, z: -0.013608918, w: -0.9196022}
+    m_Value: {x: -0.48646986, y: -0.30485016, z: 0.1860201, w: -0.797377}
   m_Size:
-    m_Target: 2.7972074
+    m_Target: 5.976453
     speed: 2
-    m_Value: 2.7972074
+    m_Value: 5.719094
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -777,7 +794,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 561
+  controlID: 12446
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -835,23 +852,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 68eaffff
-      m_LastClickedID: -5528
-      m_ExpandedIDs: 48dfffff30e0ffffd2e1ffff66e3ffff90e4ffffa8eaffffceeafffffaeaffffa2f5ffffc8f5ffffdcf6ffffecf7fffffcf8ffff12faffff30fbffff
+      m_SelectedIDs: 1e63feff
+      m_LastClickedID: -105698
+      m_ExpandedIDs: 6a5efeff9260feffce62feff3863feffd063feff0664feff6666feffc06afeffd46efeff4871feffb274feff6a77feffc67afeff347efeffc67efeff2a82feff7285feff7489feffa48afeff168bfeff948bfeff0c8cfeff208dfeff848dfeffe290feff3e91feffd893feff4296feffc496feffa699feff109afeff86a0feff80a2fefff2a4feff74a5fefffea5feffcea8feff3aa9feff78abfeff62aefeffc6b0feff40b1feff6eb2feff9cb3feff4eb4feffc4b4feff1eb7feffa0bafeff7ebdfeff22c2feff74c5feffd419ffffded1ffff30fbffff34fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Cell(Clone)
+        m_OriginalName: Cell(Clone)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -105746
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 12}
       m_SearchString: 
@@ -928,7 +945,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Prefabs
+    - Assets/Resources/ScriptableObjects
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -942,7 +959,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 685a0000
     m_LastClickedID: 23144
-    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009a6300009c6300009e630000a0630000a2630000be630000
+    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009c6300009e630000a0630000a2630000ba630000be630000c0630000ea920000f4920000f0c0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -967,10 +984,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 68eaffff
+    scrollPos: {x: 0, y: 60}
+    m_SelectedIDs: 1e63feff
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009a6300009c6300009e630000a0630000a2630000be630000
+    m_ExpandedIDs: ffffffff00000000906300009263000096630000986300009c6300009e630000a0630000a2630000ba630000be630000c0630000ea920000f4920000f0c0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -995,8 +1012,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 68eaffff
-    m_LastClickedInstanceID: -5528
+    m_SelectedInstanceIDs: 1e63feff
+    m_LastClickedInstanceID: -105698
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -1036,7 +1053,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: LevelEditorWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -1045,14 +1062,14 @@ MonoBehaviour:
     y: 0
     width: 537
     height: 869
-  m_MinSize: {x: 101, y: 121}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 18}
+  m_ActualView: {fileID: 2}
   m_Panes:
+  - {fileID: 2}
   - {fileID: 17}
-  - {fileID: 18}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1061,55 +1078,14 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Inspector
-    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 1367
-    y: 103
-    width: 536
-    height: 848
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-  m_ObjectsLockedBeforeSerialization: []
-  m_InstanceIDsLockedBeforeSerialization: 
-  m_PreviewResizer:
-    m_CachedPref: -160
-    m_ControlHash: -371814159
-    m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
-  m_GlobalObjectId: 
-  m_InspectorMode: 0
-  m_LockTracker:
-    m_IsLocked: 0
-  m_PreviewWindow: {fileID: 0}
---- !u!114 &18
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c38d0bcfd1be43719fa22e1c6e9f5c12, type: 3}
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: LevelEditorWindow
+    m_Text: Test Runner
     m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
@@ -1122,3 +1098,525 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+  m_Spl:
+    ID: 14035
+    splitterInitialOffset: 0
+    currentActiveSplitter: -1
+    realSizes:
+    - 583
+    - 195
+    relativeSizes:
+    - 0.75
+    - 0.25
+    minSizes:
+    - 32
+    - 32
+    maxSizes:
+    - 0
+    - 0
+    lastTotalSize: 778
+    splitSize: 6
+    xOffset: 0
+    m_Version: 1
+    oldRealSizes: 
+    oldMinSizes: 
+    oldMaxSizes: 
+    oldSplitSize: 0
+  m_TestTypeToolbarIndex: 1
+  m_PlayModeTestListGUI:
+    m_Window: {fileID: 0}
+    m_NewResultList: []
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories: []
+    m_SelectedOption: 0
+  m_EditModeTestListGUI:
+    m_Window: {fileID: 17}
+    m_NewResultList:
+    - id: 1000
+      uniqueId: '[FuryLionConfrontation][suite]'
+      name: FuryLionConfrontation
+      fullName: FuryLionConfrontation
+      resultStatus: 2
+      duration: 0.111223
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1015
+      uniqueId: '[Tests.dll][suite]'
+      name: Tests.dll
+      fullName: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/ScriptAssemblies/Tests.dll
+      resultStatus: 2
+      duration: 0.0860319
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[FuryLionConfrontation][suite]'
+    - id: 1016
+      uniqueId: Tests.dll/[Confrontation][suite]
+      name: Confrontation
+      fullName: Confrontation
+      resultStatus: 2
+      duration: 0.0827157
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1015
+      parentUniqueId: '[Tests.dll][suite]'
+    - id: 1017
+      uniqueId: Tests.dll/Confrontation/[Editor][suite]
+      name: Editor
+      fullName: Confrontation.Editor
+      resultStatus: 2
+      duration: 0.0794213
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1016
+      parentUniqueId: Tests.dll/[Confrontation][suite]
+    - id: 1018
+      uniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
+      name: Tests
+      fullName: Confrontation.Editor.Tests
+      resultStatus: 2
+      duration: 0.0760277
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1017
+      parentUniqueId: Tests.dll/Confrontation/[Editor][suite]
+    - id: 1001
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
+      name: FieldTests
+      fullName: Confrontation.Editor.Tests.FieldTests
+      resultStatus: 2
+      duration: 0.013362
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1018
+      parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
+    - id: 1002
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements]
+      name: WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
+      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
+      resultStatus: 1
+      duration: 0.0064832
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
+    - id: 1003
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village]
+      name: WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      resultStatus: 2
+      duration: 0.0022852
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at System.Linq.Enumerable+<SelectManyIterator>d__167`3[TSource,TCollection,TResult].MoveNext
+        () [0x00060] in <a3536978e9984063a5ca6c790db4d471>:0 \n  at System.Linq.Lookup`2[TKey,TElement].Create[TSource]
+        (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult]
+        keySelector, System.Func`2[T,TResult] elementSelector, System.Collections.Generic.IEqualityComparer`1[T]
+        comparer) [0x00031] in <a3536978e9984063a5ca6c790db4d471>:0 \n  at System.Linq.Enumerable.ToLookup[TSource,TKey,TElement]
+        (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult]
+        keySelector, System.Func`2[T,TResult] elementSelector, System.Collections.Generic.IEqualityComparer`1[T]
+        comparer) [0x0002a] in <a3536978e9984063a5ca6c790db4d471>:0 \n  at System.Linq.Enumerable.ToLookup[TSource,TKey,TElement]
+        (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult]
+        keySelector, System.Func`2[T,TResult] elementSelector) [0x00000] in <a3536978e9984063a5ca6c790db4d471>:0
+        \n  at Confrontation.Field.RegionsToLookup () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:48
+        \n  at Confrontation.Field.GenerateField () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:34
+        \n  at Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+        () [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/FieldTests.cs:39
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
+    - id: 1003
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+      name: LevelEditorTests
+      fullName: Confrontation.Editor.Tests.LevelEditorTests
+      resultStatus: 2
+      duration: 0.0352181
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1018
+      parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
+    - id: 1006
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_And2By3_ThenShouldBe6Cells]
+      name: WhenGenerateField_And2By3_ThenShouldBe6Cells
+      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_And2By3_ThenShouldBe6Cells
+      resultStatus: 1
+      duration: 0.002817
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+    - id: 1007
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame]
+      name: WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame
+      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame
+      resultStatus: 1
+      duration: 0.00528
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+    - id: 1004
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField]
+      name: WhenGenerateField_Once_ThenShouldBeSingleField
+      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField
+      resultStatus: 2
+      duration: 0.0021928
+      messages: 'System.IndexOutOfRangeException : Index was outside the bounds of
+        the array.'
+      output: 
+      stacktrace: "  at Confrontation.Field.DivideByRegions () [0x0001b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:56
+        \n  at Confrontation.Field.GenerateField () [0x0001d] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:38
+        \n  at Confrontation.Editor.LevelEditor.GenerateNewField (System.Int32 height,
+        System.Int32 width) [0x00044] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:40
+        \n  at Confrontation.Editor.LevelEditor.GenerateField (System.Int32 height,
+        System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:21
+        \n  at Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField
+        () [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/LevelEditorTests.cs:16
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+    - id: 1005
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Twice_ThenShouldBeSingleField]
+      name: WhenGenerateField_Twice_ThenShouldBeSingleField
+      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Twice_ThenShouldBeSingleField
+      resultStatus: 2
+      duration: 0.0020818
+      messages: 'System.IndexOutOfRangeException : Index was outside the bounds of
+        the array.'
+      output: 
+      stacktrace: "  at Confrontation.Field.DivideByRegions () [0x0001b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:56
+        \n  at Confrontation.Field.GenerateField () [0x0001d] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:38
+        \n  at Confrontation.Editor.LevelEditor.GenerateNewField (System.Int32 height,
+        System.Int32 width) [0x00044] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:40
+        \n  at Confrontation.Editor.LevelEditor.GenerateField (System.Int32 height,
+        System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:21
+        \n  at Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Twice_ThenShouldBeSingleField
+        () [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/LevelEditorTests.cs:30
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+    - id: 1009
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village]
+      name: WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village
+      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village
+      resultStatus: 2
+      duration: 0.0018669
+      messages: 'System.IndexOutOfRangeException : Index was outside the bounds of
+        the array.'
+      output: 
+      stacktrace: "  at Confrontation.Field.DivideByRegions () [0x0001b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:56
+        \n  at Confrontation.Field.GenerateField () [0x0001d] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:38
+        \n  at Confrontation.Editor.LevelEditor.GenerateNewField (System.Int32 height,
+        System.Int32 width) [0x00044] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:40
+        \n  at Confrontation.Editor.LevelEditor.GenerateField (System.Int32 height,
+        System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:21
+        \n  at Confrontation.Editor.Tests.Setup.LevelEditor (System.Int32 height,
+        System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/Setup.cs:32
+        \n  at Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village
+        () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/LevelEditorTests.cs:90
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+    - id: 1008
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnEmptyCell_ThenCreateVillage]
+      name: WhenToVillage_AndOnEmptyCell_ThenCreateVillage
+      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnEmptyCell_ThenCreateVillage
+      resultStatus: 2
+      duration: 0.0020171
+      messages: 'System.IndexOutOfRangeException : Index was outside the bounds of
+        the array.'
+      output: 
+      stacktrace: "  at Confrontation.Field.DivideByRegions () [0x0001b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:56
+        \n  at Confrontation.Field.GenerateField () [0x0001d] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:38
+        \n  at Confrontation.Editor.LevelEditor.GenerateNewField (System.Int32 height,
+        System.Int32 width) [0x00044] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:40
+        \n  at Confrontation.Editor.LevelEditor.GenerateField (System.Int32 height,
+        System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:21
+        \n  at Confrontation.Editor.Tests.Setup.LevelEditor (System.Int32 height,
+        System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/Setup.cs:32
+        \n  at Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnEmptyCell_ThenCreateVillage
+        () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/LevelEditorTests.cs:75
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+    - id: 1010
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+      name: StringFormatterTests
+      fullName: Confrontation.Editor.Tests.StringFormatterTests
+      resultStatus: 1
+      duration: 0.0232986
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1018
+      parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
+    - id: 1013
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCase_ThenAddSpaces]
+      name: WhenFormat_AndCamelCase_ThenAddSpaces
+      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCase_ThenAddSpaces
+      resultStatus: 1
+      duration: 0.0046647
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+    - id: 1014
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper]
+      name: WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
+      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
+      resultStatus: 1
+      duration: 0.0004164
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+    - id: 1011
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndLowerFirst_ThenUpperFirst]
+      name: WhenFormat_AndLowerFirst_ThenUpperFirst
+      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndLowerFirst_ThenUpperFirst
+      resultStatus: 1
+      duration: 0.0003133
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+    - id: 1012
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst]
+      name: WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
+      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
+      resultStatus: 1
+      duration: 0.0001793
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+    m_ResultText: "WhenGenerateField_Once_ThenShouldBeSingleField (0,002s)\n---\nSystem.IndexOutOfRangeException
+      : Index was outside the bounds of the array.\n---\nat Confrontation.Field.DivideByRegions
+      () [0x0001b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:56
+      \n  at Confrontation.Field.GenerateField () [0x0001d] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:38
+      \n  at Confrontation.Editor.LevelEditor.GenerateNewField (System.Int32 height,
+      System.Int32 width) [0x00044] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:40
+      \n  at Confrontation.Editor.LevelEditor.GenerateField (System.Int32 height,
+      System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:21
+      \n  at Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField
+      () [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/LevelEditorTests.cs:16
+      \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0"
+    m_ResultStacktrace: "  at Confrontation.Field.DivideByRegions () [0x0001b] in
+      /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:56
+      \n  at Confrontation.Field.GenerateField () [0x0001d] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/Field.cs:38
+      \n  at Confrontation.Editor.LevelEditor.GenerateNewField (System.Int32 height,
+      System.Int32 width) [0x00044] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:40
+      \n  at Confrontation.Editor.LevelEditor.GenerateField (System.Int32 height,
+      System.Int32 width) [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Editor/LevelEditor/LevelEditor.cs:21
+      \n  at Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField
+      () [0x00005] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/LevelEditorTests.cs:16
+      \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 7e04906c
+      m_LastClickedID: 1821377662
+      m_ExpandedIDs: fd40468b1a2293992896b2c9bafc28ce579587d1470ea8f6e557abf736608cf8020bbf017c14ac18c616ce3cffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized

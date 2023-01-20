@@ -9,6 +9,6 @@ namespace Confrontation
 	{
 		[field: SerializeField] public Coordinates VillageCoordinates { get; private set; }
 
-		[field: SerializeField] public List<Coordinates> CellsInRegion { get; private set; }
+		[field: SerializeField] public List<Coordinates> CellsInRegion { get; private set; } = new();
 	}
 }

@@ -32,7 +32,7 @@ namespace Confrontation.Editor
 
 		private void GenerateNewField(int height, int width)
 		{
-			var level = Object.Instantiate(LevelScriptableObject);
+			var level = ScriptableObject.CreateInstance<Level>();
 			level.Sizes = new Sizes(height, width);
 
 			_field = new Field(CellPrefab, VillagePrefab, level);

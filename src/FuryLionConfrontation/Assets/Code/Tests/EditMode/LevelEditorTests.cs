@@ -6,6 +6,13 @@ namespace Confrontation.Editor.Tests
 {
 	public class LevelEditorTests
 	{
+		[TearDown]
+		public void TearDown()
+		{
+			Destroy.All<CellsRoot>();
+			Destroy.All<Cell>();
+		}
+
 		[Test]
 		public void WhenGenerateField_Once_ThenShouldBeSingleField()
 		{
