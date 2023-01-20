@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a680fbabd1406cb656aa9baa4b35b3, type: 3}
   m_Name: Level
   m_EditorClassIdentifier: 
-  <Value>k__BackingField:
-    <Sizes>k__BackingField:
-      _vector: {x: 15, y: 10}
-    <VillagesPositions>k__BackingField:
-    - _vector: {x: 1, y: 1}
+  <Sizes>k__BackingField:
+    <Width>k__BackingField: 5
+    <Height>k__BackingField: 5
+  <VillagesCoordinates>k__BackingField:
+  - <Row>k__BackingField: 1
+    <Column>k__BackingField: 1

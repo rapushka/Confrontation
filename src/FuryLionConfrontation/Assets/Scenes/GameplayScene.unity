@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cellPrefab: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
+  _villagePrefab: {fileID: 7971290585587501546, guid: 45861229625f2702d9c25b5518581862, type: 3}
   _level: {fileID: 11400000, guid: e4b04d0679fa63414862519239d2f23a, type: 2}
 --- !u!1 &705507993
 GameObject:
