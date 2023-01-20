@@ -2,7 +2,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using Confrontation.Editor;
 
-namespace Confrontation.Tests
+namespace Confrontation.Editor.Tests
 {
 	public class StringFormatterTests
 	{

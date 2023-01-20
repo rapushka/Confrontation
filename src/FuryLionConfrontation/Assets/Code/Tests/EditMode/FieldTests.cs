@@ -3,7 +3,7 @@ using Confrontation.Editor;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Confrontation.Tests
+namespace Confrontation.Editor.Tests
 {
 	public class FieldTests
 	{
