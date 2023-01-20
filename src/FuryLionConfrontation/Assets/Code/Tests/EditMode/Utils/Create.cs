@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Confrontation.Editor
+namespace Confrontation.Editor.Tests
 {
 	public static class Create
 	{
@@ -10,8 +10,6 @@ namespace Confrontation.Editor
 
 		public static LevelEditor LevelEditor() => new();
 
-		public static Level Level() => Object.Instantiate(LevelScriptableObject());
-
-		public static Level LevelScriptableObject() => Resources.Load<Level>("ScriptableObjects/Level");
+		public static Level Level() => ScriptableObject.CreateInstance<Level>();
 	}
 }

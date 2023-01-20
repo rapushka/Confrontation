@@ -34,6 +34,7 @@ namespace Confrontation.Editor
 		{
 			var level = Object.Instantiate(LevelScriptableObject);
 			level.Sizes = new Sizes(height, width);
+			
 			_field = new Field(CellPrefab, level);
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();

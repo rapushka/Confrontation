@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Confrontation.Editor
+namespace Confrontation.Editor.Tests
 {
 	public static class Setup
 	{
 		public static Field Field(int height = 1, int width = 1)
 			=> Create.Field(Create.CellPrefab(), Level(height, width));
 
-		private static Level Level(int height = 1, int width = 1)
+		public static Level Level(int height = 1, int width = 1)
 		{
 			var level = Create.Level();
 			level.Sizes = new Sizes(height, width);
