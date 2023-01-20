@@ -15,6 +15,14 @@ MonoBehaviour:
   <Sizes>k__BackingField:
     <Width>k__BackingField: 5
     <Height>k__BackingField: 5
-  <VillagesCoordinates>k__BackingField:
-  - <Row>k__BackingField: 1
-    <Column>k__BackingField: 1
+  <Regions>k__BackingField:
+  - <VillageCoordinates>k__BackingField:
+      <Row>k__BackingField: 1
+      <Column>k__BackingField: 1
+    <CellsInRegion>k__BackingField:
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 1
+    - <Row>k__BackingField: 0
+      <Column>k__BackingField: 1
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 0
