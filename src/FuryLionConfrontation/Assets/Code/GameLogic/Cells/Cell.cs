@@ -21,11 +21,11 @@ namespace Confrontation
 		[Serializable]
 		public class Data
 		{
-			private const int None = -1;
+			[field: SerializeField] public Coordinates Coordinates   { get; set; }
+			[field: SerializeField] public int         OwnerPlayerId { get; set; } = None;
+			[field: SerializeField] public int         BuildingId    { get; set; } = None;
 
-			public Coordinates Coordinates   { get; set; }
-			public int         OwnerPlayerId { get; set; } = None;
-			public int         BuildingId    { get; set; } = None;
+			private const int None = -1;
 
 			public bool IsNeutral => OwnerPlayerId == None;
 

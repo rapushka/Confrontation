@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level
   m_EditorClassIdentifier: 
   <Value>k__BackingField:
-    <Players>k__BackingField: []
-    <Villages>k__BackingField: []
     <Sizes>k__BackingField:
       _vector: {x: 15, y: 10}
+    <VillagesPositions>k__BackingField:
+    - _vector: {x: 1, y: 1}

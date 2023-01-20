@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,7 +16,6 @@ namespace Confrontation.Editor
 			GUILayout.Button(nameof(CollectVillages).Format()).OnClick(CollectVillages);
 		}
 
-		private void CollectVillages()
-			=> Target.Value.Villages = FindObjectsOfType<Village>().Select((v) => v.Value).ToArray();
+		private void CollectVillages() { }
 	}
 }

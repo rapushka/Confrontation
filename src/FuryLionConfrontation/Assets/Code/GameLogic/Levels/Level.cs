@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Confrontation
@@ -11,10 +12,8 @@ namespace Confrontation
 		[Serializable]
 		public class Data
 		{
-			[field: SerializeField] public Cell.Data[,]   Cells    { get; set; }
-			[field: SerializeField] public Player.Data[]  Players  { get; set; }
-			[field: SerializeField] public Village.Data[] Villages { get; set; }
-			[field: SerializeField] public Coordinates    Sizes    { get; private set; }
+			[field: SerializeField] public Coordinates       Sizes             { get; private set; }
+			[field: SerializeField] public List<Coordinates> VillagesPositions { get; private set; }
 		}
 	}
 }

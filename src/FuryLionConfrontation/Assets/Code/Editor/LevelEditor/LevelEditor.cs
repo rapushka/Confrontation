@@ -60,12 +60,7 @@ namespace Confrontation.Editor
 			cell.Building = village;
 		}
 
-		private Level.Data AssemblyLevel()
-			=> new()
-			{
-				Cells = _field.GetCells(),
-				Players = new Player.Data[] { new() { Name = "Player" } },
-			};
+		private Level.Data AssemblyLevel() => new();
 
 		private static bool PreCondition(Cell cell)
 		{
