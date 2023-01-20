@@ -12,9 +12,9 @@ namespace Confrontation.Editor
 		// ReSharper disable Unity.PerformanceCriticalCodeInvocation - we don't care about performance in Editor
 		public override void OnInspectorGUI()
 		{
-			GUILayout.Button(nameof(CollectVillages).Format()).OnClick(CollectVillages);
-
 			base.OnInspectorGUI();
+
+			GUILayout.Button(nameof(CollectVillages).Format()).OnClick(CollectVillages);
 		}
 
 		private void CollectVillages()
