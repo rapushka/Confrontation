@@ -1,15 +1,21 @@
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Confrontation.Editor.Tests
 {
 	public class FieldTests
 	{
-		[TearDown] public void TearDown() => Destroy.All<Cell>();
+		[TearDown]
+		public void TearDown()
+		{
+			Destroy.All<Cell>();
+			Destroy.All<Village>();
+		}
 
 		[Test]
-		public void WhenFieldInitialize_AndIsWasEmpty_ThenShouldNotContainNullElements()
+		public void WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements()
 		{
 			// Arrange.
 			var field = Setup.Field();
@@ -20,6 +26,20 @@ namespace Confrontation.Editor.Tests
 			// Assert.
 			var cells = field.GetCells().Cast<Cell>();
 			cells.All((c) => c is not null).Should().BeTrue();
+		}
+
+		[Test]
+		public void WhenGenerateField_AndLevelContain1Village_ThenShouldBe1Village()
+		{
+			// Arrange.
+			var field = Setup.FieldWithRegion();
+
+			// Act.
+			field.GenerateField();
+
+			// Assert.
+			var countOfVillages = Object.FindObjectsOfType<Village>().Length;
+			countOfVillages.Should().Be(1);
 		}
 	}
 }

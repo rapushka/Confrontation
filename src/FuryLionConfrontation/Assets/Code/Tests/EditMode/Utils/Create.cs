@@ -14,5 +14,6 @@ namespace Confrontation.Editor.Tests
 		public static LevelEditor LevelEditor() => new();
 
 		public static Level Level() => ScriptableObject.CreateInstance<Level>();
+		public static Region Region() => new();
 	}
 }
