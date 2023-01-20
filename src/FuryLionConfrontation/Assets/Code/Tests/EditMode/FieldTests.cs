@@ -19,7 +19,7 @@ namespace Confrontation.Tests
 			field.GenerateField();
 
 			// Assert.
-			var cells = field.GetCells().Cast<Cell.Data>();
+			var cells = field.GetCells().Cast<Cell>();
 			cells.All((c) => c is not null).Should().BeTrue();
 		}
 	}

@@ -43,7 +43,8 @@ namespace Confrontation.Editor
 			}
 
 			var level = AssemblyLevel();
-			return JsonConvert.SerializeObject(level, Formatting.Indented);
+			var serializableLevel = new { level.Sizes, level.VillagesPositions };
+			return JsonConvert.SerializeObject(serializableLevel, Formatting.Indented);
 		}
 
 		public void ToVillage(GameObject gameObject)
@@ -55,12 +56,12 @@ namespace Confrontation.Editor
 			}
 
 			var village = Object.Instantiate(original: VillagePrefab, parent: cell.transform);
-			village.Value.CellsInRegion.Add(cell);
+			village.CellsInRegion.Add(cell);
 
 			cell.Building = village;
 		}
 
-		private Level.Data AssemblyLevel() => new();
+		private Level AssemblyLevel() => new();
 
 		private static bool PreCondition(Cell cell)
 		{
@@ -70,9 +71,9 @@ namespace Confrontation.Editor
 				return true;
 			}
 
-			if (cell.Building == true)
+			if (cell.IsEmpty == false)
 			{
-				Debug.LogWarning("Cell is already Village!");
+				Debug.LogWarning("Cell is already taken!");
 				return true;
 			}
 
@@ -96,7 +97,7 @@ namespace Confrontation.Editor
 
 			foreach (var village in Object.FindObjectsOfType<Village>())
 			{
-				foreach (var cell in village.Value.CellsInRegion)
+				foreach (var cell in village.CellsInRegion)
 				{
 					cell.GetComponentInChildren<Renderer>().material = regionMaterial;
 				}

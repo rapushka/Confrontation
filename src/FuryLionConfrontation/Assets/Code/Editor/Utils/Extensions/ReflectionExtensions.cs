@@ -8,7 +8,7 @@ namespace Confrontation.Editor
 		private const string CellsFieldName = "_cells";
 		private const string RootFieldName = "_root";
 
-		public static Cell.Data[,] GetCells(this Field @this) => @this.GetPrivate<Cell.Data[,]>(CellsFieldName);
+		public static Cell[,] GetCells(this Field @this) => @this.GetPrivate<Cell[,]>(CellsFieldName);
 
 		public static Transform GetRoot(this Field @this) => @this.GetPrivate<Transform>(RootFieldName);
 

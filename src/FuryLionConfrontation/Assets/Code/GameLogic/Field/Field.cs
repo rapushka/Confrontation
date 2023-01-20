@@ -7,7 +7,7 @@ namespace Confrontation
 	public class Field : IInitializable
 	{
 		private readonly Cell _cellPrefab;
-		private readonly Cell.Data[,] _cells;
+		private readonly Cell[,] _cells;
 		private readonly Transform _root;
 
 		[Inject] public Field(Cell cellPrefab, Coordinates sizes) : this(cellPrefab, sizes.Row, sizes.Column) { }
@@ -16,7 +16,7 @@ namespace Confrontation
 		{
 			_cellPrefab = cellPrefab;
 
-			_cells = new Cell.Data[height, width];
+			_cells = new Cell[height, width];
 			_root = new GameObject("Cells Root").transform;
 		}
 
@@ -24,14 +24,14 @@ namespace Confrontation
 
 		public void GenerateField() => _cells.Select(CreateHexagon);
 
-		private Cell.Data CreateHexagon(int i, int j)
+		private Cell CreateHexagon(int i, int j)
 		{
 			var coordinates = new Coordinates(i, j);
 			var cell = Object.Instantiate(original: _cellPrefab, parent: _root);
-			cell.Value.Coordinates = coordinates;
+			cell.Coordinates = coordinates;
 			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 
-			return cell.Value;
+			return cell;
 		}
 	}
 }
