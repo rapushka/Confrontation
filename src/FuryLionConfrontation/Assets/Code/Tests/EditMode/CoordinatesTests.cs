@@ -1,5 +1,6 @@
 using FluentAssertions;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Confrontation.Editor.Tests
 {
@@ -23,14 +24,16 @@ namespace Confrontation.Editor.Tests
 		public void WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866()
 		{
 			// Arrange.
-			var coordinates = Create.Coordinates(row: 1, column: 1);
+			const int row = 1;
+			const int column = 1;
+			var coordinates = Create.Coordinates(row, column);
 
 			// Act.
 			var position = coordinates.CalculatePosition();
 
 			// Assert.
-			position.x.Should().Be(1.5f);
-			position.y.Should().BeGreaterThan(0.8f).And.BeLessThan(0.9f);
+			position.x.Should().Be(column * Constants.HexagonWidth + Constants.HorizontalOffsetForOddRows);
+			position.y.Should().Be(Constants.HexagonWidth * 3 / (2 * Mathf.Sqrt(3)));
 		}
 	}
 }
