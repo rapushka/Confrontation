@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public static class MatrixExtensions
 	{
-		public static void Select<T>(this T[,] @this, Func<int, int, T> action)
+		public static void Set<T>(this T[,] @this, Func<int, int, T> action)
 		{
 			for (var i = 0; i < @this.GetLength(0); i++)
 			{

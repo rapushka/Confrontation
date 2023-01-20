@@ -5,7 +5,7 @@ namespace Confrontation.Editor.Tests
 	public static class Create
 	{
 		public static Field Field(Cell cellPrefab, Village villagePrefab, Level level)
-			=> new(cellPrefab, villagePrefab, level);
+			=> new(level, cellPrefab, villagePrefab);
 
 		public static Cell CellPrefab() => new GameObject().AddComponent<Cell>();
 

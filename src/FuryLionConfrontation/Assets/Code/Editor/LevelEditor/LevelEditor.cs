@@ -13,8 +13,6 @@ namespace Confrontation.Editor
 
 		private static Village VillagePrefab => Resources.Load<Village>("Prefabs/Village");
 
-		private static Level LevelScriptableObject => Resources.Load<Level>("ScriptableObjects/Level");
-
 		public void GenerateField(int height, int width)
 		{
 			DestroyOldField();
@@ -35,7 +33,7 @@ namespace Confrontation.Editor
 			var level = ScriptableObject.CreateInstance<Level>();
 			level.Sizes = new Sizes(height, width);
 
-			_field = new Field(CellPrefab, VillagePrefab, level);
+			_field = new Field(level, CellPrefab, VillagePrefab);
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
 		}

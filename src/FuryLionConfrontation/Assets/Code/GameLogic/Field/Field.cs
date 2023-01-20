@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -14,14 +13,14 @@ namespace Confrontation
 		private readonly Transform _root;
 		private readonly Village _villagePrefab;
 
-		private Lookup<Coordinates, Coordinates> _regions;
+		private ILookup<Coordinates, Coordinates> _regions;
 
 		[Inject]
-		public Field(Cell cellPrefab, Village villagePrefab, Level level)
+		public Field(Level level, Cell cellPrefab, Village villagePrefab)
 		{
+			_level = level;
 			_cellPrefab = cellPrefab;
 			_villagePrefab = villagePrefab;
-			_level = level;
 
 			_cells = new Cell[_level.Sizes.Height, _level.Sizes.Width];
 			_root = new GameObject("Cells Root").transform;
@@ -33,7 +32,7 @@ namespace Confrontation
 		{
 			RegionsToLookup();
 
-			_cells.Select(CreateHexagon);
+			_cells.Set(CreateHexagon);
 
 			DivideByRegions();
 		}
@@ -45,27 +44,8 @@ namespace Confrontation
 		}
 
 		private void RegionsToLookup()
-			=> _regions = (Lookup<Coordinates, Coordinates>)ToEnumerableOfTuples()
-				.ToLookup((x) => x.VillageCoordinates, (x) => x.Coordinates);
-
-		private void DivideByRegions()
-		{
-			foreach (var region in _regions)
-			{
-				var coordinatesOfVillage = region.Key;
-				var village = (Village)_cells[coordinatesOfVillage.Row, coordinatesOfVillage.Column].Building;
-				foreach (var coordinatesOfCell in region)
-				{
-					var cell = _cells[coordinatesOfCell.Row, coordinatesOfCell.Column];
-					
-					village.CellsInRegion.Add(cell);
-				}
-			}
-		}
-
-		private IEnumerable<(Coordinates VillageCoordinates, Coordinates Coordinates)> ToEnumerableOfTuples()
-			=> _level.Regions
-			         .SelectMany((r) => r.CellsInRegion, (r, c) => (r.VillageCoordinates, Coordinates: c));
+			=> _regions = _level.Regions.SelectMany((r) => r.CellsInRegion, (r, c) => (r.VillageCoordinates, Cell: c))
+			                    .ToLookup((x) => x.VillageCoordinates, (x) => x.Cell);
 
 		private Cell CreateHexagon(int i, int j)
 		{
@@ -81,6 +61,21 @@ namespace Confrontation
 			return cell;
 		}
 
-		private bool IsVillage(Cell cell) => _level.Regions.Any((r) => r.VillageCoordinates == cell.Coordinates);
+		private void DivideByRegions()
+		{
+			foreach (var region in _regions)
+			{
+				var coordinatesOfVillage = region.Key;
+				var village = (Village)_cells[coordinatesOfVillage.Row, coordinatesOfVillage.Column].Building;
+				foreach (var coordinatesOfCell in region)
+				{
+					var cell = _cells[coordinatesOfCell.Row, coordinatesOfCell.Column];
+
+					village.CellsInRegion.Add(cell);
+				}
+			}
+		}
+
+		private bool IsVillage(Cell cell) => _regions.Contains(key: cell.Coordinates);
 	}
 }

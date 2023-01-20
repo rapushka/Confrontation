@@ -12,7 +12,7 @@ namespace Confrontation
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
-			Container.BindInterfacesTo<Field>().FromInstance(new Field(_cellPrefab, _villagePrefab, _level));
+			Container.BindInterfacesTo<Field>().FromInstance(new Field(_level, _cellPrefab, _villagePrefab));
 		}
 	}
 }
