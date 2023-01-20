@@ -13,6 +13,8 @@ namespace Confrontation.Editor
 
 		private static Village VillagePrefab => Resources.Load<Village>("Prefabs/Village");
 
+		private static Level LevelScriptableObject => Resources.Load<Level>("ScriptableObjects/Level");
+
 		public void GenerateField(int height, int width)
 		{
 			DestroyOldField();
@@ -30,7 +32,9 @@ namespace Confrontation.Editor
 
 		private void GenerateNewField(int height, int width)
 		{
-			_field = new Field(CellPrefab, height, width);
+			var level = Object.Instantiate(LevelScriptableObject);
+			level.Sizes = new Sizes(height, width);
+			_field = new Field(CellPrefab, level);
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
 		}
@@ -43,7 +47,8 @@ namespace Confrontation.Editor
 			}
 
 			var level = AssemblyLevel();
-			var serializableLevel = new { level.Sizes, level.VillagesPositions };
+			var serializableLevel = new { level.Sizes,
+				VillagesPositions = level.VillagesCoordinates };
 			return JsonConvert.SerializeObject(serializableLevel, Formatting.Indented);
 		}
 

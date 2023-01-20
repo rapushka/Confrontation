@@ -4,11 +4,16 @@ namespace Confrontation.Tests
 {
 	public static class Setup
 	{
-		public static Field Field(int height = 1, int width = 1) => Create.Field(Create.CellPrefab(), height, width);
+		public static Field Field(int height = 1, int width = 1)
+			=> Create.Field(Create.CellPrefab(), Level(height, width));
 
-		public static GameObject Cell()
+		private static Level Level(int height = 1, int width = 1)
 		{
-			return Object.Instantiate(Create.CellPrefab()).gameObject;
+			var level = Create.Level();
+			level.Sizes = new Sizes(height, width);
+			return level;
 		}
+
+		public static GameObject Cell() => Object.Instantiate(Create.CellPrefab()).gameObject;
 	}
 }

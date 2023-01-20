@@ -6,7 +6,8 @@ namespace Confrontation
 	[CreateAssetMenu(menuName = "Confrontation/Level", fileName = "Level")]
 	public class Level : ScriptableObject
 	{
-		[field: SerializeField] public Coordinates       Sizes             { get; private set; }
-		[field: SerializeField] public List<Coordinates> VillagesPositions { get; private set; }
+		[field: SerializeField] public Sizes Sizes { get; set; }
+
+		[field: SerializeField] public List<Coordinates> VillagesCoordinates { get; private set; }
 	}
 }
