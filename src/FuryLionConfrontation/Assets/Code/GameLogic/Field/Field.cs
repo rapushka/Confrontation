@@ -41,6 +41,8 @@ namespace Confrontation
 			return cell;
 		}
 
+		private bool IsVillage(Cell cell) => _level.VillagesCoordinates.Contains(cell.Coordinates);
+
 		public void ToVillage(Cell cell)
 		{
 			var village = Object.Instantiate(original: _villagePrefab, parent: cell.transform);
@@ -48,7 +50,5 @@ namespace Confrontation
 			village.CellsInRegion.Add(cell);
 			cell.Building = village;
 		}
-
-		private bool IsVillage(Cell cell) => _level.VillagesCoordinates.Contains(cell.Coordinates);
 	}
 }
