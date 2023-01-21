@@ -14,7 +14,7 @@ namespace Confrontation.Editor.Tests
 		public static LevelEditor LevelEditor() => new();
 
 		public static Level Level() => ScriptableObject.CreateInstance<Level>();
-		public static Region Region() => new();
+		public static Village.Data Region() => new();
 		public static Coordinates Coordinates(int row = 0, int column = 0) => new(row, column);
 	}
 }

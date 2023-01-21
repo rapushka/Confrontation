@@ -46,7 +46,7 @@ namespace Confrontation
 
 		private void RegionsToLookup()
 			=> _regions = _level.Regions
-			                    .SelectMany((r) => r.CellsInRegion, (r, c) => (r.VillageCoordinates, Cell: c))
+			                    .SelectMany((r) => r.Cells, (r, c) => (VillageCoordinates: r.Coordinates, Cell: c))
 			                    .ToLookup((x) => x.VillageCoordinates, (x) => x.Cell);
 
 		private Cell CreateHexagon(int i, int j)
