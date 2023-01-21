@@ -31,7 +31,7 @@ namespace Confrontation.Editor
 		private void GenerateNewField(int height, int width)
 		{
 			var level = ScriptableObject.CreateInstance<Level>();
-			level.Sizes = new Sizes(height, width);
+			level.SetSizes(new Sizes(height, width));
 
 			_field = new Field(level, CellPrefab, VillagePrefab, new AssetsService());
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();

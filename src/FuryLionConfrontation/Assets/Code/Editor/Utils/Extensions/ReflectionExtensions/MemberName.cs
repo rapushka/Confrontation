@@ -7,5 +7,6 @@ namespace Confrontation.Editor
 		public const string Regions = "Regions";
 		public const string VillageCoordinates = "Coordinates";
 		public const string Level = "_level";
+		public const string Sizes = "Sizes";
 	}
 }

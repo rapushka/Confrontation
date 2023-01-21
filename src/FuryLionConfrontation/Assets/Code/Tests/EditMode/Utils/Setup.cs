@@ -20,7 +20,7 @@ namespace Confrontation.Editor.Tests
 		public static Level Level(int height = 1, int width = 1)
 		{
 			var level = Create.Level();
-			level.Sizes = new Sizes(height, width);
+			level.SetSizes(new Sizes(height, width));
 			return level;
 		}
 

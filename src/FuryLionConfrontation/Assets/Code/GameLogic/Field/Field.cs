@@ -14,7 +14,7 @@ namespace Confrontation
 
 		private readonly Transform _root;
 		private readonly IAssetsService _assets;
-		
+
 		private ILookup<Coordinates, Coordinates> _regions;
 
 		[Inject]

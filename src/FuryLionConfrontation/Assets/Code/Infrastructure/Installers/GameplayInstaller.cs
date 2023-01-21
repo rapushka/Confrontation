@@ -12,8 +12,10 @@ namespace Confrontation
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
-			var assetsService = new AssetsService();
-			Container.BindInterfacesTo<Field>().FromInstance(new Field(_level, _cellPrefab, _villagePrefab, assetsService));
+			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
+			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
+
+			// new Field(_level, _cellPrefab, _villagePrefab, new AssetsService())
 		}
 	}
 }
