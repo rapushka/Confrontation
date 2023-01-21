@@ -14,6 +14,6 @@ namespace Confrontation
 
 		public void ToNeutralRegion() => _materialByRegion.ChangeMaterialToNeutral();
 
-		public void ToRedRegion() => _materialByRegion.ChangeMaterialToNeutral();
+		public void ToRedRegion() => _materialByRegion.ChangeMaterialToRed();
 	}
 }
