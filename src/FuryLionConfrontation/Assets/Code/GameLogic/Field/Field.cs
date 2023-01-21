@@ -1,4 +1,5 @@
 using System.Linq;
+using Confrontation.View;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -74,6 +75,7 @@ namespace Confrontation
 					var cell = _cells[coordinatesOfCell.Row, coordinatesOfCell.Column];
 
 					village.CellsInRegion.Add(cell);
+					cell.GetComponent<MaterialByRegion>().ChangeMaterialToRed();
 				}
 			}
 		}
