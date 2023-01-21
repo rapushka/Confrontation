@@ -7,6 +7,7 @@ namespace Confrontation
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
+			Container.BindInterfacesTo<GameBootstrapper>().AsSingle();
 		}
 	}
 }

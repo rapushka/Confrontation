@@ -7,8 +7,8 @@ namespace Confrontation
 
 		public static class SceneName
 		{
-			private const string BootstrapScene = "BootstrapScene";
-			private const string GameplayScene = "GameplayScene";
+			public const string BootstrapScene = "BootstrapScene";
+			public const string GameplayScene = "GameplayScene";
 		}
 	}
 }
