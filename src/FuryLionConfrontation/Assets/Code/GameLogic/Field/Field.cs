@@ -26,7 +26,7 @@ namespace Confrontation
 			_assets = assets;
 
 			_cells = new Cell[_level.Sizes.Height, _level.Sizes.Width];
-			_root = new GameObject("Cells Root").transform;
+			_root = _assets.Instantiate("Cells Root").transform;
 		}
 
 		public void Initialize() => GenerateField();
@@ -34,9 +34,7 @@ namespace Confrontation
 		public void GenerateField()
 		{
 			RegionsToLookup();
-
 			_cells.Set(CreateHexagon);
-
 			DivideByRegions();
 		}
 

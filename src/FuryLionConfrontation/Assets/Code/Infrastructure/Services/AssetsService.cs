@@ -5,6 +5,8 @@ namespace Confrontation
 	public interface IAssetsService
 	{
 		T Instantiate<T>(T original, Transform parent) where T : Object;
+
+		GameObject Instantiate(string name);
 	}
 
 	public class AssetsService : IAssetsService
@@ -12,5 +14,7 @@ namespace Confrontation
 		public T Instantiate<T>(T original, Transform parent)
 			where T : Object
 			=> Object.Instantiate(original, parent);
+
+		public GameObject Instantiate(string name) => new(name);
 	}
 }
