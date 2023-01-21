@@ -13,8 +13,6 @@ namespace Confrontation
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(_resources).AsSingle();
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
-
-			// new Field(_level, _cellPrefab, _villagePrefab, new AssetsService())
 		}
 	}
 }

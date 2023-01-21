@@ -8,7 +8,8 @@ namespace Confrontation.Editor.Tests
 	{
 		public static Field Field(int height = 1, int width = 1) => Field(Level(height, width));
 
-		public static Field Field(Level level) => Create.Field(Create.CellPrefab(), Create.VillagePrefab(), level);
+		public static Field Field(Level level)
+			=> Create.Field(ResourcesService(Create.CellPrefab(), Create.VillagePrefab(), level));
 
 		public static Level Level(List<Village.Data> regions, int height = 1, int width = 1)
 		{

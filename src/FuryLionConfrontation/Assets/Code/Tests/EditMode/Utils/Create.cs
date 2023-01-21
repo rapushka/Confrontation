@@ -4,8 +4,7 @@ namespace Confrontation.Editor.Tests
 {
 	public static class Create
 	{
-		public static Field Field(Cell cellPrefab, Village villagePrefab, Level level)
-			=> new(Setup.ResourcesService(cellPrefab, villagePrefab, level), AssetsService());
+		public static Field Field(IResourcesService resourcesService) => new(resourcesService, AssetsService());
 
 		private static AssetsService AssetsService() => new();
 

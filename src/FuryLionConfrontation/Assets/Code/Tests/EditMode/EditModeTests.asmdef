@@ -6,7 +6,9 @@
         "UnityEditor.TestRunner",
         "BoundfoxStudios.FluentAssertions",
         "Core",
-        "Editor"
+        "Editor",
+        "Zenject-TestFramework",
+        "Zenject"
     ],
     "includePlatforms": [
         "Editor"

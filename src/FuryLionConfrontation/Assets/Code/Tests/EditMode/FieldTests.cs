@@ -1,15 +1,31 @@
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Confrontation.Editor.Tests
 {
-	public class FieldTests
+	[TestFixture]
+	public class FieldTests : ZenjectUnitTestFixture
 	{
+		[SetUp]
+		public void SetUp()
+		{
+			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/Resources");
+			
+			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
+			Container.Bind<Field>().AsSingle();
+			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
+		}
+
 		[TearDown]
 		public void TearDown()
 		{
+			Container.UnbindAll();
+
 			Destroy.All<Cell>();
 			Destroy.All<Village>();
 		}
@@ -18,7 +34,7 @@ namespace Confrontation.Editor.Tests
 		public void WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements()
 		{
 			// Arrange.
-			var field = Setup.Field();
+			var field = Container.Resolve<Field>();
 
 			// Act.
 			field.GenerateField();
@@ -32,8 +48,7 @@ namespace Confrontation.Editor.Tests
 		public void WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
 		{
 			// Arrange.
-			var field = Setup.Field();
-			field.AddRegion(Setup.Region());
+			var field = Container.Resolve<Field>();
 
 			// Act.
 			field.GenerateField();
@@ -44,35 +59,31 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndLevelContainRegionWith1Cells_ThenVillageMustHave1CellsInRegion()
+		public void WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageMustHave7CellsInRegion()
 		{
 			// Arrange.
-			var field = Setup.Field(height: 2, width: 2);
-			field.AddRegion(Setup.Region(row: 0, column: 0));
-			field.AddCellToFirstRegion(Setup.Cell(row: 0, column: 1));
+			var field = Container.Resolve<Field>();
 
 			// Act.
 			field.GenerateField();
 
 			// Assert.
 			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
-			countOfCellsInRegion.Should().Be(1);
+			countOfCellsInRegion.Should().Be(7);
 		}
 
 		[Test]
-		public void WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave1CellsInRegion()
+		public void WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave7CellsInRegion()
 		{
 			// Arrange.
-			var field = Setup.Field();
-			field.AddRegion(Setup.Region(row: 0, column: 0));
-			field.AddCellToFirstRegion(Setup.Cell(row: 0, column: 0));
+			var field = Container.Resolve<Field>();
 
 			// Act.
 			field.GenerateField();
 
 			// Assert.
 			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
-			countOfCellsInRegion.Should().Be(1);
+			countOfCellsInRegion.Should().Be(7);
 		}
 	}
 }
