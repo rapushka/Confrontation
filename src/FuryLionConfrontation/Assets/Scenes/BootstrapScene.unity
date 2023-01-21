@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2061141920}
   - component: {fileID: 2061141919}
+  - component: {fileID: 2061141921}
   m_Layer: 0
-  m_Name: SceneContext
+  m_Name: BootstrapContext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 2061141921}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -186,3 +188,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2061141921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061141918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7db2a849fbd4abca22fa4a970444eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

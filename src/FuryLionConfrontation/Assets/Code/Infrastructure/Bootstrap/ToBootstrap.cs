@@ -2,11 +2,11 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameBootstrapper : IInitializable
+	public class ToBootstrap : IInitializable
 	{
 		private readonly ISceneTransferService _sceneTransfer;
 
-		[Inject] public GameBootstrapper(ISceneTransferService sceneTransfer) => _sceneTransfer = sceneTransfer;
+		[Inject] public ToBootstrap(ISceneTransferService sceneTransfer) => _sceneTransfer = sceneTransfer;
 
 		public void Initialize() => _sceneTransfer.ToScene(Constants.SceneName.BootstrapScene);
 	}

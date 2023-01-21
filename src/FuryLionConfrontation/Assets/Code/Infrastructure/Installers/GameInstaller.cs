@@ -8,6 +8,7 @@ namespace Confrontation
 		public override void InstallBindings()
 		{
 			Container.Bind<ISceneTransferService>().To<SceneTransferService>().AsSingle();
+			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
 		}
 	}
 }

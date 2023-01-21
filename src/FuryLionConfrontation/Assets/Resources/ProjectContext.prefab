@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8799660599946209830}
   - component: {fileID: 6142311805057827553}
-  - component: {fileID: 8044492416952246398}
+  - component: {fileID: -7189998579532789237}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 8044492416952246398}
+  - {fileID: -7189998579532789237}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
       _missingHandlerDefaultResponse: 2
       _requireStrictUnsubscribe: 0
       _defaultAsyncTickPriority: 1
---- !u!114 &8044492416952246398
+--- !u!114 &-7189998579532789237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,9 +71,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2230433671550222700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa523f8ec4f64486ab9fe00f20173c85, type: 3}
+  m_Script: {fileID: 11500000, guid: 13bf8063016d4ce5bcbe52478a6475f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cellPrefab: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
-  _villagePrefab: {fileID: 7971290585587501546, guid: 45861229625f2702d9c25b5518581862, type: 3}
-  _level: {fileID: 11400000, guid: e4b04d0679fa63414862519239d2f23a, type: 2}
