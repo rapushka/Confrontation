@@ -14,7 +14,8 @@ namespace Confrontation.Editor
 		public static List<Village.Data> GetRegions(this Field @this)
 			=> @this.GetLevel().GetPropertyValue<List<Village.Data>>(MemberName.Regions);
 
-		public static Level GetLevel(this Field @this) => @this.GetPrivateField<Level>(MemberName.Level);
+		public static Level GetLevel(this Field @this)
+			=> @this.GetPrivateField<IResourcesService>(MemberName.Resources).GetPropertyValue<Level>(MemberName.CurrentLevel);
 
 		public static IEnumerable<Village> GetVillages(this Field @this)
 			=> @this.GetCells().Select((c) => c.Building).OfType<Village>();

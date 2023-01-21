@@ -5,8 +5,18 @@ namespace Confrontation
 	public class Cell : MonoBehaviour
 	{
 		[SerializeField] private MaterialByRegion _materialByRegion;
+		[SerializeField] private Coordinates _coordinates;
 
-		[field: SerializeField] public Coordinates Coordinates { get; set; }
+		
+		public Coordinates Coordinates
+		{
+			get => _coordinates;
+			set
+			{
+				transform.position = value.CalculatePosition().AsTopDown();
+				_coordinates = value;
+			}
+		}
 
 		[field: SerializeField] public Building Building { get; set; }
 

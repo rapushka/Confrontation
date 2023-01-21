@@ -26,31 +26,22 @@ namespace Confrontation
 
 		public void GenerateField()
 		{
-			RegionsToLookup();
-			_cells.Set(CreateHexagon);
+			_regions = _resources.CurrentLevel.RegionsAsLookup();
+			_cells.SetForEach(CreateHexagon);
 			DivideByRegions();
 		}
 
-		public void ToVillage(Cell cell)
-		{
-			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
-			cell.Building = village;
-		}
-
-		private void RegionsToLookup()
-			=> _regions = _resources.CurrentLevel.Regions
-			                        .SelectMany((r) => r.Cells, (r, c) => (VillageCoordinates: r.Coordinates, Cell: c))
-			                        .ToLookup((x) => x.VillageCoordinates, (x) => x.Cell);
+		public void CreateVillage(Cell cell) 
+			=> cell.Building = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
 
 		private Cell CreateHexagon(int i, int j)
 		{
 			var coordinates = new Coordinates(i, j);
 			var cell = _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells);
 			cell.Coordinates = coordinates;
-			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 			if (IsVillage(cell))
 			{
-				ToVillage(cell);
+				CreateVillage(cell);
 			}
 
 			return cell;

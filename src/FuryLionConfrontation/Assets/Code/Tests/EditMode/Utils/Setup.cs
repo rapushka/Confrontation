@@ -47,5 +47,14 @@ namespace Confrontation.Editor.Tests
 			region.SetVillageCoordinates(new Coordinates(row, column));
 			return region;
 		}
+
+		public static ResourcesService ResourcesService(Cell cellPrefab, Village villagePrefab, Level level)
+		{
+			var resources = ScriptableObject.CreateInstance<ResourcesService>();
+			resources.SetPrivateProperty("CellPrefab", cellPrefab);
+			resources.SetPrivateProperty("VillagePrefab", villagePrefab);
+			resources.SetPrivateProperty("CurrentLevel", level);
+			return resources;
+		}
 	}
 }

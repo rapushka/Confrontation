@@ -57,7 +57,7 @@ namespace Confrontation.Editor
 		{
 			if (IsCanBeVillage(gameObject, out var cell))
 			{
-				_field!.ToVillage(cell);
+				_field!.CreateVillage(cell);
 			}
 		}
 

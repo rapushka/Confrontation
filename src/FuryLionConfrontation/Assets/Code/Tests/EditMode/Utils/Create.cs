@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Confrontation.Editor.Tests
@@ -6,10 +5,10 @@ namespace Confrontation.Editor.Tests
 	public static class Create
 	{
 		public static Field Field(Cell cellPrefab, Village villagePrefab, Level level)
-			=> new(ResourcesService(), new AssetsService());
+			=> new(Setup.ResourcesService(cellPrefab, villagePrefab, level), AssetsService());
 
-		public static ResourcesService ResourcesService() => throw new NotImplementedException();
-		
+		private static AssetsService AssetsService() => new();
+
 		public static Cell CellPrefab() => Resources.Load<Cell>("Prefabs/Cell");
 
 		public static Village VillagePrefab() => new GameObject().AddComponent<Village>();
