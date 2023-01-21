@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _materialByRegion: {fileID: 6799698658610089963}
   <Coordinates>k__BackingField:
     <Row>k__BackingField: 0
     <Column>k__BackingField: 0

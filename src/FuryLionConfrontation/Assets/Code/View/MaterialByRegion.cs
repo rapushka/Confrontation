@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Confrontation.View
+namespace Confrontation
 {
 	public class MaterialByRegion : MonoBehaviour
 	{
