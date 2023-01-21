@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Confrontation
@@ -9,11 +8,6 @@ namespace Confrontation
 	{
 		[field: SerializeField] public Sizes Sizes { get; private set; }
 
-		[field: SerializeField] public List<Village.Data> Regions { get; private set; } = new();
-
-		public ILookup<Coordinates, Coordinates> RegionsAsLookup()
-			=> Regions
-			   .SelectMany((r) => r.Cells, (r, c) => (VillageCoordinates: r.Coordinates, Cell: c))
-			   .ToLookup((x) => x.VillageCoordinates, (x) => x.Cell);
+		[field: SerializeField] public List<Village.Data> Regions { get; private set; }
 	}
 }

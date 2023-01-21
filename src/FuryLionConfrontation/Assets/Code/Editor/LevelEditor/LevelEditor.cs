@@ -9,7 +9,7 @@ namespace Confrontation.Editor
 	{
 		[CanBeNull] private Field _field;
 
-		private static ResourcesService ResourcesService 
+		private static ResourcesService ResourcesService
 			=> Resources.Load<ResourcesService>("ScriptableObjects/Resources");
 
 		public void GenerateField(int height, int width)
@@ -31,7 +31,7 @@ namespace Confrontation.Editor
 		{
 			var level = ScriptableObject.CreateInstance<Level>();
 			level.SetSizes(new Sizes(height, width));
-			
+
 			_field = new Field(ResourcesService, new AssetsService());
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
@@ -53,13 +53,7 @@ namespace Confrontation.Editor
 			return JsonConvert.SerializeObject(serializableLevel, Formatting.Indented);
 		}
 
-		public void ToVillage(GameObject gameObject)
-		{
-			if (IsCanBeVillage(gameObject, out var cell))
-			{
-				_field!.CreateVillage(cell);
-			}
-		}
+		public void ToVillage(GameObject gameObject) { }
 
 		private bool IsCanBeVillage(GameObject gameObject, out Cell cell)
 		{

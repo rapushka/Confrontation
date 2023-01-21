@@ -7,10 +7,8 @@ namespace Confrontation
 	{
 		private readonly IResourcesService _resources;
 		private readonly IAssetsService _assets;
-		
-		private readonly Cell[,] _cells;
 
-		private ILookup<Coordinates, Coordinates> _regions;
+		private readonly Cell[,] _cells;
 
 		[Inject]
 		public Field(IResourcesService resources, IAssetsService assets)
@@ -26,43 +24,38 @@ namespace Confrontation
 
 		public void GenerateField()
 		{
-			_regions = _resources.CurrentLevel.RegionsAsLookup();
 			_cells.SetForEach(CreateHexagon);
-			DivideByRegions();
+			DivideIntoRegions();
 		}
 
-		public void CreateVillage(Cell cell) 
-			=> cell.Building = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
-
-		private Cell CreateHexagon(int i, int j)
+		private void DivideIntoRegions()
 		{
-			var coordinates = new Coordinates(i, j);
-			var cell = _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells);
-			cell.Coordinates = coordinates;
-			if (IsVillage(cell))
+			foreach (var region in _resources.CurrentLevel.Regions)
 			{
-				CreateVillage(cell);
-			}
-
-			return cell;
-		}
-
-		private void DivideByRegions()
-		{
-			foreach (var region in _regions)
-			{
-				var coordinatesOfVillage = region.Key;
-				var village = (Village)_cells[coordinatesOfVillage.Row, coordinatesOfVillage.Column].Building;
-				foreach (var coordinatesOfCell in region)
+				var villageCoordinates = region.Coordinates;
+				var village = CreateVillage(_cells[villageCoordinates.Row, villageCoordinates.Column]);
+				foreach (var cell in region.Cells.Select((cc) => _cells[cc.Row, cc.Column]))
 				{
-					var cell = _cells[coordinatesOfCell.Row, coordinatesOfCell.Column];
-
 					village.CellsInRegion.Add(cell);
 					cell.ToRedRegion();
 				}
 			}
 		}
 
-		private bool IsVillage(Cell cell) => _regions.Contains(key: cell.Coordinates);
+		private Village CreateVillage(Cell cell)
+		{
+			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
+			cell.Building = village;
+			return village;
+		}
+
+		private Cell CreateHexagon(int i, int j)
+		{
+			var coordinates = new Coordinates(i, j);
+			var cell = _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells);
+			cell.Coordinates = coordinates;
+
+			return cell;
+		}
 	}
 }
