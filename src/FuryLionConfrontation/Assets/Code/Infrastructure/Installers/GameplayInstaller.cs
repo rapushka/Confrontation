@@ -5,14 +5,13 @@ namespace Confrontation
 {
 	public class GameplayInstaller : MonoInstaller
 	{
-		[SerializeField] private Cell _cellPrefab;
-		[SerializeField] private Village _villagePrefab;
-		[SerializeField] private Level _level;
+		[SerializeField] private ResourcesService _resources;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
+			Container.Bind<IResourcesService>().FromInstance(_resources).AsSingle();
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
 
 			// new Field(_level, _cellPrefab, _villagePrefab, new AssetsService())

@@ -9,9 +9,8 @@ namespace Confrontation.Editor
 	{
 		[CanBeNull] private Field _field;
 
-		private static Cell CellPrefab => Resources.Load<Cell>("Prefabs/Cell");
-
-		private static Village VillagePrefab => Resources.Load<Village>("Prefabs/Village");
+		private static ResourcesService ResourcesService 
+			=> Resources.Load<ResourcesService>("ScriptableObjects/Resources");
 
 		public void GenerateField(int height, int width)
 		{
@@ -32,8 +31,8 @@ namespace Confrontation.Editor
 		{
 			var level = ScriptableObject.CreateInstance<Level>();
 			level.SetSizes(new Sizes(height, width));
-
-			_field = new Field(level, CellPrefab, VillagePrefab, new AssetsService());
+			
+			_field = new Field(ResourcesService, new AssetsService());
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
 			_field.GenerateField();
 		}

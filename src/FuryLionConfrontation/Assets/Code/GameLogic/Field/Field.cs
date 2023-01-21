@@ -1,32 +1,25 @@
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
 	public class Field : IInitializable
 	{
-		private readonly Cell _cellPrefab;
-		private readonly Village _villagePrefab;
-
-		private readonly Level _level;
-		private readonly Cell[,] _cells;
-
-		private readonly Transform _root;
+		private readonly IResourcesService _resources;
 		private readonly IAssetsService _assets;
+		
+		private readonly Cell[,] _cells;
 
 		private ILookup<Coordinates, Coordinates> _regions;
 
 		[Inject]
-		public Field(Level level, Cell cellPrefab, Village villagePrefab, IAssetsService assets)
+		public Field(IResourcesService resources, IAssetsService assets)
 		{
-			_level = level;
-			_cellPrefab = cellPrefab;
-			_villagePrefab = villagePrefab;
+			_resources = resources;
 			_assets = assets;
 
-			_cells = new Cell[_level.Sizes.Height, _level.Sizes.Width];
-			_root = _assets.Instantiate("Cells Root").transform;
+			var levelSizes = resources.CurrentLevel.Sizes;
+			_cells = new Cell[levelSizes.Height, levelSizes.Width];
 		}
 
 		public void Initialize() => GenerateField();
@@ -40,19 +33,19 @@ namespace Confrontation
 
 		public void ToVillage(Cell cell)
 		{
-			var village = _assets.Instantiate(original: _villagePrefab, parent: cell.transform);
+			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
 			cell.Building = village;
 		}
 
 		private void RegionsToLookup()
-			=> _regions = _level.Regions
-			                    .SelectMany((r) => r.Cells, (r, c) => (VillageCoordinates: r.Coordinates, Cell: c))
-			                    .ToLookup((x) => x.VillageCoordinates, (x) => x.Cell);
+			=> _regions = _resources.CurrentLevel.Regions
+			                        .SelectMany((r) => r.Cells, (r, c) => (VillageCoordinates: r.Coordinates, Cell: c))
+			                        .ToLookup((x) => x.VillageCoordinates, (x) => x.Cell);
 
 		private Cell CreateHexagon(int i, int j)
 		{
 			var coordinates = new Coordinates(i, j);
-			var cell = _assets.Instantiate(original: _cellPrefab, parent: _root);
+			var cell = _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells);
 			cell.Coordinates = coordinates;
 			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 			if (IsVillage(cell))
