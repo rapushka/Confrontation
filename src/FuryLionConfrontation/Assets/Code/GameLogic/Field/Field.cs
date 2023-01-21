@@ -1,7 +1,6 @@
 using System.Linq;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Confrontation
 {
@@ -12,16 +11,19 @@ namespace Confrontation
 
 		private readonly Level _level;
 		private readonly Cell[,] _cells;
-		private readonly Transform _root;
 
+		private readonly Transform _root;
+		private readonly IAssetsService _assets;
+		
 		private ILookup<Coordinates, Coordinates> _regions;
 
 		[Inject]
-		public Field(Level level, Cell cellPrefab, Village villagePrefab)
+		public Field(Level level, Cell cellPrefab, Village villagePrefab, IAssetsService assets)
 		{
 			_level = level;
 			_cellPrefab = cellPrefab;
 			_villagePrefab = villagePrefab;
+			_assets = assets;
 
 			_cells = new Cell[_level.Sizes.Height, _level.Sizes.Width];
 			_root = new GameObject("Cells Root").transform;
@@ -40,7 +42,7 @@ namespace Confrontation
 
 		public void ToVillage(Cell cell)
 		{
-			var village = Object.Instantiate(original: _villagePrefab, parent: cell.transform);
+			var village = _assets.Instantiate(original: _villagePrefab, parent: cell.transform);
 			cell.Building = village;
 		}
 
@@ -52,7 +54,7 @@ namespace Confrontation
 		private Cell CreateHexagon(int i, int j)
 		{
 			var coordinates = new Coordinates(i, j);
-			var cell = Object.Instantiate(original: _cellPrefab, parent: _root);
+			var cell = _assets.Instantiate(original: _cellPrefab, parent: _root);
 			cell.Coordinates = coordinates;
 			cell.transform.position = coordinates.CalculatePosition().AsTopDown();
 			if (IsVillage(cell))

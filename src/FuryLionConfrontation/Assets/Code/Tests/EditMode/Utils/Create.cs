@@ -5,7 +5,7 @@ namespace Confrontation.Editor.Tests
 	public static class Create
 	{
 		public static Field Field(Cell cellPrefab, Village villagePrefab, Level level)
-			=> new(level, cellPrefab, villagePrefab);
+			=> new(level, cellPrefab, villagePrefab, new AssetsService());
 
 		public static Cell CellPrefab() => Resources.Load<Cell>("Prefabs/Cell");
 
