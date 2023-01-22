@@ -34,7 +34,7 @@ namespace Confrontation.Editor
 
 			_field = new Field(ResourcesService, new AssetsService());
 			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
-			_field.GenerateField();
+			_field.Initialize();
 		}
 
 		public string Serialize()

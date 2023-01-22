@@ -36,7 +36,7 @@ namespace Confrontation.Editor.Tests
 			var field = Container.Resolve<Field>();
 
 			// Act.
-			field.GenerateField();
+			field.Initialize();
 
 			// Assert.
 			var cells = field.GetCells();
@@ -51,7 +51,7 @@ namespace Confrontation.Editor.Tests
 			var regions = Container.Resolve<Regions>();
 
 			// Act.
-			field.GenerateField();
+			field.Initialize();
 			regions.Initialize();
 
 			// Assert.
@@ -67,7 +67,7 @@ namespace Confrontation.Editor.Tests
 			var regions = Container.Resolve<Regions>();
 
 			// Act.
-			field.GenerateField();
+			field.Initialize();
 			regions.Initialize();
 
 			// Assert.
@@ -83,7 +83,7 @@ namespace Confrontation.Editor.Tests
 			var regions = Container.Resolve<Regions>();
 
 			// Act.
-			field.GenerateField();
+			field.Initialize();
 			regions.Initialize();
 
 			// Assert.

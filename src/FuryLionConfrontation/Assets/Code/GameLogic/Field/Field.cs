@@ -20,7 +20,7 @@ namespace Confrontation
 
 		public void Initialize() => GenerateField();
 
-		public void GenerateField() => Cells.SetForEach(CreateHexagon);
+		private void GenerateField() => Cells.SetForEach(CreateHexagon);
 
 		private Cell CreateHexagon(int i, int j)
 			=> _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells)
