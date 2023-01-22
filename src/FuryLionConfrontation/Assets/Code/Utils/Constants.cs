@@ -11,9 +11,6 @@ namespace Confrontation
 			public const string GameplayScene = "GameplayScene";
 		}
 
-		public static class Identifiers
-		{
-			public const string CurrentLevel = nameof(CurrentLevel);
-		}
+		public const int NeutralRegion = 0;
 	}
 }

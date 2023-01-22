@@ -6,10 +6,10 @@ namespace Confrontation
 	[CreateAssetMenu(menuName = "Confrontation/Level", fileName = "Level")]
 	public class Level : ScriptableObject
 	{
+		[field: SerializeField] public int PlayersCount { get; private set; }
+
 		[field: SerializeField] public Sizes Sizes { get; private set; }
 
 		[field: SerializeField] public List<Region> Regions { get; private set; }
-
-		[field: SerializeField] public int PlayersCount { get; private set; }
 	}
 }
