@@ -24,6 +24,8 @@ MonoBehaviour:
     <Cells>k__BackingField:
     - <Row>k__BackingField: 1
       <Column>k__BackingField: 1
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 2
   - <OwnerPlayerId>k__BackingField: 2
     <Coordinates>k__BackingField:
       <Row>k__BackingField: 3
