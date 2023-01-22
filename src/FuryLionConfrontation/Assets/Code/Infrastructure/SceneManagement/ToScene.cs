@@ -10,7 +10,7 @@ namespace Confrontation
 
 		protected abstract string SceneName { get; }
 
-		public void Initialize()
+		public virtual void Initialize()
 		{
 			if (_sceneTransfer.IsCurrentScene(SceneName) == false)
 			{
