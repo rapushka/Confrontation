@@ -7,7 +7,6 @@ namespace Confrontation
 		[SerializeField] private MaterialByRegion _materialByRegion;
 		[SerializeField] private Coordinates _coordinates;
 
-		
 		public Coordinates Coordinates
 		{
 			get => _coordinates;
