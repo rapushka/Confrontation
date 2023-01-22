@@ -9,5 +9,7 @@ namespace Confrontation
 		[field: SerializeField] public Sizes Sizes { get; private set; }
 
 		[field: SerializeField] public List<Region> Regions { get; private set; }
+
+		[field: SerializeField] public int PlayersCount { get; private set; }
 	}
 }
