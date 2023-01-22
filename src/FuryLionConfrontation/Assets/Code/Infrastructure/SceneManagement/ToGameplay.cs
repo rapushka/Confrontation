@@ -4,19 +4,19 @@ namespace Confrontation
 {
 	public class ToGameplay : ToScene
 	{
-		private readonly LoadingCurtain _loadingCurtain;
+		private readonly UiMediator _mediator;
 
 		[Inject]
-		public ToGameplay(ISceneTransferService sceneTransfer, LoadingCurtain loadingCurtain) :
-			base(sceneTransfer)
-			=> _loadingCurtain = loadingCurtain;
+		public ToGameplay(ISceneTransferService sceneTransfer, UiMediator mediator)
+			: base(sceneTransfer)
+			=> _mediator = mediator;
 
 		protected override string SceneName => Constants.SceneName.GameplayScene;
 
 		public override void Initialize()
 		{
 			base.Initialize();
-			_loadingCurtain.Hide();
+			_mediator.HideLoadingCurtain();
 		}
 	}
 }

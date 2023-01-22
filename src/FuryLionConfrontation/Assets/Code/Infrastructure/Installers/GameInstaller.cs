@@ -13,6 +13,7 @@ namespace Confrontation
 			var loadingCurtain = Instantiate(_loadingCurtainPrefab);
 
 			Container.Bind<LoadingCurtain>().FromInstance(loadingCurtain).AsSingle();
+			Container.Bind<UiMediator>().AsSingle();
 			Container.Bind<ISceneTransferService>().To<SceneTransferService>().AsSingle();
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
 		}

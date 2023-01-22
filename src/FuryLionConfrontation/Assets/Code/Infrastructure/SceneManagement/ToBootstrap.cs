@@ -4,18 +4,18 @@ namespace Confrontation
 {
 	public class ToBootstrap : ToScene
 	{
-		private readonly LoadingCurtain _loadingCurtain;
+		private readonly UiMediator _mediator;
 
 		[Inject]
-		public ToBootstrap(ISceneTransferService sceneTransfer, LoadingCurtain loadingCurtain)
+		public ToBootstrap(ISceneTransferService sceneTransfer, UiMediator mediator)
 			: base(sceneTransfer)
-			=> _loadingCurtain = loadingCurtain;
+			=> _mediator = mediator;
 
 		protected override string SceneName => Constants.SceneName.BootstrapScene;
 
 		public override void Initialize()
 		{
-			_loadingCurtain.ShowImmediately();
+			_mediator.ShowImmediatelyLoadingCurtain();
 			base.Initialize();
 		}
 	}
