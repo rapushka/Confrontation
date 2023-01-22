@@ -13,6 +13,7 @@ namespace Confrontation
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(_resources).AsSingle();
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
+			Container.BindInterfacesAndSelfTo<Regions>().AsSingle();
 		}
 	}
 }

@@ -1,4 +1,3 @@
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
@@ -8,8 +7,6 @@ namespace Confrontation
 		private readonly IResourcesService _resources;
 		private readonly IAssetsService _assets;
 
-		private readonly Cell[,] _cells;
-
 		[Inject]
 		public Field(IResourcesService resources, IAssetsService assets)
 		{
@@ -17,37 +14,14 @@ namespace Confrontation
 			_assets = assets;
 
 			var levelSizes = resources.CurrentLevel.Sizes;
-			_cells = new Cell[levelSizes.Height, levelSizes.Width];
+			Cells = new Cell[levelSizes.Height, levelSizes.Width];
 		}
+
+		public Cell[,] Cells { get; }
 
 		public void Initialize() => GenerateField();
 
-		public void GenerateField()
-		{
-			_cells.SetForEach(CreateHexagon);
-			DivideIntoRegions();
-		}
-
-		private void DivideIntoRegions()
-		{
-			foreach (var region in _resources.CurrentLevel.Regions)
-			{
-				var villageCoordinates = region.Coordinates;
-				var village = CreateVillage(_cells[villageCoordinates.Row, villageCoordinates.Column]);
-				foreach (var cell in region.Cells.Select((cc) => _cells[cc.Row, cc.Column]))
-				{
-					village.CellsInRegion.Add(cell);
-					cell.ToRedRegion();
-				}
-			}
-		}
-
-		private Village CreateVillage(Cell cell)
-		{
-			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
-			cell.Building = village;
-			return village;
-		}
+		public void GenerateField() => Cells.SetForEach(CreateHexagon);
 
 		private Cell CreateHexagon(int i, int j)
 		{
