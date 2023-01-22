@@ -23,15 +23,13 @@ namespace Confrontation
 		private void DivideIntoRegions() => _resources.CurrentLevel.Regions.Select(AsTuple).ForEach(MarkRegion);
 
 		private (Village Village, List<Coordinates> Coordinates) AsTuple(Village.Data region)
-			=> (CreateVillage(AsCells(region.Coordinates)), region.Cells);
+			=> (CreateVillage(_field.Cells[region.Coordinates]), region.Cells);
 
 		private void MarkRegion((Village Village, List<Coordinates> Coordinates) region)
-			=> region.Coordinates.Select(AsCells).ForEach(region.Village.AddCellToRegion);
+			=> region.Coordinates.Select((c) => _field.Cells[c]).ForEach(region.Village.AddCellToRegion);
 
 		private Village CreateVillage(Cell cell)
 			=> _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform)
 			          .With((v) => cell.Building = v);
-
-		private Cell AsCells(Coordinates coordinates) => _field.Cells[coordinates.Row, coordinates.Column];
 	}
 }

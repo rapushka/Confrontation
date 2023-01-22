@@ -13,11 +13,10 @@ namespace Confrontation
 			_resources = resources;
 			_assets = assets;
 
-			var levelSizes = _resources.CurrentLevel.Sizes;
-			Cells = new Cell[levelSizes.Height, levelSizes.Width];
+			Cells = new CoordinatedMatrix<Cell>(_resources.CurrentLevel.Sizes);
 		}
 
-		public Cell[,] Cells { get; }
+		public CoordinatedMatrix<Cell> Cells { get; }
 
 		public void Initialize() => GenerateField();
 
