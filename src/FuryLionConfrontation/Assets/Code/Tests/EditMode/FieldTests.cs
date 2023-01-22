@@ -60,7 +60,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageMustHave7CellsInRegion()
+		public void WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion()
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
@@ -76,7 +76,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave7CellsInRegion()
+		public void WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion()
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
