@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _materialByRegion: {fileID: 6799698658610089963}
-  <Coordinates>k__BackingField:
+  _coordinates:
     <Row>k__BackingField: 0
     <Column>k__BackingField: 0
   <Building>k__BackingField: {fileID: 0}
@@ -77,8 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 3816002609166723370}
-  _neutralMaterial: {fileID: 2100000, guid: 5839f5ef5f98eb59abf6f0669f408def, type: 2}
-  _redMaterial: {fileID: 2100000, guid: cd45bf495c8ec95898d0f630fba2f269, type: 2}
+  _playersColorsSheet: {fileID: 11400000, guid: 366f7ed56f2fd01f79f0bbd44c009b93, type: 2}
 --- !u!1001 &3816002609169019210
 PrefabInstance:
   m_ObjectHideFlags: 0

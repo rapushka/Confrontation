@@ -5,11 +5,13 @@ namespace Confrontation
 	public class MaterialByRegion : MonoBehaviour
 	{
 		[SerializeField] private Renderer _renderer;
-		[SerializeField] private Material _neutralMaterial;
-		[SerializeField] private Material _redMaterial;
+		[SerializeField] private PlayersColorsSheet _playersColorsSheet;
 
-		public void ChangeMaterialToNeutral() => _renderer.material = _neutralMaterial;
+		public void ChangeMaterialToNeutral() => ChangeMaterialTo(playerId: 0);
 
-		public void ChangeMaterialToRed() => _renderer.material = _redMaterial;
+		public void ChangeMaterialToRed() => ChangeMaterialTo(playerId: 1);
+
+		public void ChangeMaterialTo(int playerId)
+			=> _renderer.material.color = _playersColorsSheet.GetColorFor(playerId);
 	}
 }

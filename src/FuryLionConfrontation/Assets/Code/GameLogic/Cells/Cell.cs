@@ -21,8 +21,8 @@ namespace Confrontation
 
 		public bool IsEmpty => Building is null;
 
-		public void ToNeutralRegion() => _materialByRegion.ChangeMaterialToNeutral();
+		public void ToNeutralRegion() => _materialByRegion.ChangeMaterialTo(0);
 
-		public void ToRedRegion() => _materialByRegion.ChangeMaterialToRed();
+		public void ToPlayer(int playerId) => _materialByRegion.ChangeMaterialTo(playerId);
 	}
 }

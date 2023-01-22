@@ -16,7 +16,7 @@ MonoBehaviour:
     <Width>k__BackingField: 5
     <Height>k__BackingField: 5
   <Regions>k__BackingField:
-  - <OwnerPlayerNumber>k__BackingField: 1
+  - <OwnerPlayerId>k__BackingField: 1
     <Coordinates>k__BackingField:
       <Row>k__BackingField: 1
       <Column>k__BackingField: 1
@@ -35,4 +35,4 @@ MonoBehaviour:
       <Column>k__BackingField: 2
     - <Row>k__BackingField: 0
       <Column>k__BackingField: 2
-  <PlayersCount>k__BackingField: 0
+  <PlayersCount>k__BackingField: 2
