@@ -55,31 +55,6 @@ namespace Confrontation.Editor
 
 		public void ToVillage(GameObject gameObject) { }
 
-		private bool IsCanBeVillage(GameObject gameObject, out Cell cell)
-		{
-			cell = gameObject.GetComponent<Cell>();
-
-			if (_field is null)
-			{
-				Debug.LogWarning("Field must be not null!");
-				return false;
-			}
-
-			if (cell == false)
-			{
-				Debug.LogWarning("Selected object isn't cell!");
-				return false;
-			}
-
-			if (cell.IsEmpty == false)
-			{
-				Debug.LogWarning("Cell is already taken!");
-				return false;
-			}
-
-			return true;
-		}
-
 		public void UpdateField()
 		{
 			if (_field is null)

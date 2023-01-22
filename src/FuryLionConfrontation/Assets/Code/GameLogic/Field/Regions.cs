@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Zenject;
 
@@ -19,19 +20,15 @@ namespace Confrontation
 
 		public void Initialize() => DivideIntoRegions();
 
-		private void DivideIntoRegions()
-		{
-			foreach (var region in _resources.CurrentLevel.Regions)
-			{
-				var villageCoordinates = region.Coordinates;
-				var village = CreateVillage(_field.Cells[villageCoordinates.Row, villageCoordinates.Column]);
-				foreach (var cell in region.Cells.Select((cc) => _field.Cells[cc.Row, cc.Column]))
-				{
-					village.CellsInRegion.Add(cell);
-					cell.ToRedRegion();
-				}
-			}
-		}
+		private void DivideIntoRegions() => _resources.CurrentLevel.Regions.Select(AsTuple).ForEach(MarkRegion);
+
+		private void MarkRegion((Village Village, List<Coordinates> Coordinates) region)
+			=> region.Coordinates.Select(AsCells).ForEach(region.Village.AddCellToRegion);
+
+		private (Village Village, List<Coordinates> Coordinates) AsTuple(Village.Data region)
+			=> (CreateVillage(_field.Cells[region.Coordinates.Row, region.Coordinates.Column]), region.Cells);
+
+		private Cell AsCells(Coordinates cellCoordinates) => _field.Cells[cellCoordinates.Row, cellCoordinates.Column];
 
 		private Village CreateVillage(Cell cell)
 		{

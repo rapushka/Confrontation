@@ -1,9 +1,7 @@
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
