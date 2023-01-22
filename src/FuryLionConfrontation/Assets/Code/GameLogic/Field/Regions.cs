@@ -22,7 +22,7 @@ namespace Confrontation
 
 		private void DivideIntoRegions() => _resources.CurrentLevel.Regions.Select(AsTuple).ForEach(MarkRegion);
 
-		private (Village Village, List<Coordinates> Coordinates) AsTuple(Village.Data region)
+		private (Village Village, List<Coordinates> Coordinates) AsTuple(Region region)
 			=> (CreateVillage(_field.Cells[region.Coordinates]), region.Cells);
 
 		private void MarkRegion((Village Village, List<Coordinates> Coordinates) region)
