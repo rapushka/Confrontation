@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
-  - {fileID: 5}
+  - {fileID: 4}
   - {fileID: 10}
   - {fileID: 15}
   m_Position:
@@ -26,62 +26,8 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 71
+  controlID: 12677
 --- !u!114 &2
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 481
-    y: 103
-    width: 583
-    height: 356
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
---- !u!114 &3
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 465
-    height: 869
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 4}
-  m_Panes:
-  - {fileID: 4}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +49,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 16
     y: 103
-    width: 464
+    width: 463
     height: 848
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -123,7 +69,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
-  m_Stats: 0
+  m_Stats: 1
   m_SelectedSizes: 07000000000000000000000005000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -142,7 +88,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -151,10 +97,10 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 464
+      width: 463
       height: 827
-    m_Scale: {x: 0.42962962, y: 0.42962962}
-    m_Translation: {x: 232, y: 413.5}
+    m_Scale: {x: 0.4287037, y: 0.4287037}
+    m_Translation: {x: 231.5, y: 413.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -162,18 +108,44 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -540
-      y: -962.4569
+      y: -964.53564
       width: 1080
-      height: 1924.9138
+      height: 1929.0713
     m_MinimalGUI: 1
-  m_defaultScale: 0.42962962
-  m_LastWindowPixelSize: {x: 464, y: 848}
+  m_defaultScale: 0.4287037
+  m_LastWindowPixelSize: {x: 463, y: 848}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &5
+--- !u!114 &3
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: GameView
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 464
+    height: 869
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 2}
+  m_Panes:
+  - {fileID: 2}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,19 +158,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 6}
+  - {fileID: 5}
   - {fileID: 8}
   m_Position:
     serializedVersion: 2
-    x: 465
+    x: 464
     y: 0
     width: 585
     height: 869
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 72
---- !u!114 &6
+  controlID: 12678
+--- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,12 +191,40 @@ MonoBehaviour:
     height: 377
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 2}
+  m_ActualView: {fileID: 6}
   m_Panes:
-  - {fileID: 2}
+  - {fileID: 6}
   - {fileID: 7}
   m_Selected: 0
   m_LastSelected: 1
+--- !u!114 &6
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Console
+    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 480
+    y: 103
+    width: 583
+    height: 356
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,22 +266,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Plugins/Low Poly Hexagons/Assets/Models/Hexagons
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-  - Assets
+  - Assets/Plugins/Low Poly Hexagons/Assets/Models/Hexagons
   m_LastFoldersGridSize: 56
   m_LastProjectPath: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 565f0000
-    m_LastClickedID: 24406
-    m_ExpandedIDs: 00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000
+    m_SelectedIDs: ae600000
+    m_LastClickedID: 24750
+    m_ExpandedIDs: ffffffff00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000f25f00004c910000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -309,7 +309,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000
+    m_ExpandedIDs: ffffffff00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000f25f00004c910000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -334,9 +334,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 72f3ffff
+    m_LastClickedInstanceID: -3214
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 477}
     m_GridSize: 56
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 213
@@ -384,8 +384,8 @@ MonoBehaviour:
     y: 377
     width: 585
     height: 492
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
@@ -411,7 +411,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 481
+    x: 480
     y: 480
     width: 583
     height: 471
@@ -425,7 +425,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -101, y: -1}
+      snapOffsetDelta: {x: -101, y: -26}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
       index: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
       id: unity-search-toolbar
       index: 1
@@ -469,7 +469,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
       index: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Light Settings
       index: 0
@@ -513,7 +513,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
       index: 1
@@ -524,7 +524,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Cloth Constraints
       index: 2
@@ -535,7 +535,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Cloth Collisions
       index: 3
@@ -546,7 +546,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Navmesh Display
       index: 4
@@ -557,7 +557,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Agent Display
       index: 5
@@ -568,7 +568,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Obstacle Display
       index: 6
@@ -579,7 +579,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Occlusion Culling
       index: 7
@@ -590,7 +590,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Physics Debugger
       index: 8
@@ -601,7 +601,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Scene Visibility
       index: 9
@@ -612,7 +612,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
       index: 10
@@ -641,21 +641,21 @@ MonoBehaviour:
       layout: 4
   m_WindowGUID: 2592caa49f4e04f3e8601e759704c36e
   m_Gizmos: 1
-  m_OverrideSceneCullingMask: 0
-  m_SceneIsLit: 0
+  m_OverrideSceneCullingMask: 6917529027641081856
+  m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.2533164, y: -1.0880785, z: 1.5811963}
+    m_Target: {x: -2.245604, y: 1.4475822, z: 0.38158345}
     speed: 2
-    m_Value: {x: -1.2533164, y: -1.0880785, z: 1.5811963}
+    m_Value: {x: -2.245604, y: 1.4475822, z: 0.38158345}
   m_RenderMode: 0
   m_CameraMode:
-    drawMode: 0
-    name: Shaded
+    drawMode: 2
+    name: Shaded Wireframe
     section: Shading Mode
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
@@ -698,13 +698,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.25348967, y: -0.31732863, z: 0.0884441, w: 0.909524}
+    m_Target: {x: -0.051075988, y: 0.9032083, z: -0.11221346, w: -0.4111844}
     speed: 2
-    m_Value: {x: 0.26083136, y: -0.32467, z: 0.09364725, w: 0.9043156}
+    m_Value: {x: -0.050737634, y: 0.9044114, z: -0.11236291, w: -0.408461}
   m_Size:
-    m_Target: 2.14441
+    m_Target: 1.120953
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 1.120953
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -746,14 +746,14 @@ MonoBehaviour:
   - {fileID: 13}
   m_Position:
     serializedVersion: 2
-    x: 1050
+    x: 1049
     y: 0
     width: 301
     height: 869
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 110
+  controlID: 12532
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -773,8 +773,8 @@ MonoBehaviour:
     y: 0
     width: 301
     height: 381
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -800,7 +800,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1066
+    x: 1065
     y: 103
     width: 299
     height: 360
@@ -811,9 +811,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f45f0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d2f4ffff5a600000
+      m_ExpandedIDs: 823dfefff23dfeff3e3efeffa043feff804efeff705bfeff4a63feff986bfefff273feff1676feff4878feff1280feffde87feffcc94feffa4a1feff98aefeff2cbcfeffe8c3feff5accfeff82cefeff4ad6feff6adefeffaeebfeffcaecfeff4eeffeffbeeffefffeeffeffd6fafeffd203ffff320cffff1415ffffdc1dffff1226ffff982effffd82fffffda32fffff235ffff383bffffa83bffff5041ffff1242fffffe44ffff3047ffff9248ffff0249ffffe849ffffdc4fffff7c55fffffa57ffff9658ffffb85afffffe5affff3260ffffb669ffffec6cfffff870ffffec72ffff5476ffffe876ffff1a7affff827dfffff080ffff6082ffffc095ffffb698ffff1699ffff5a99fffffe9dffff709effffb69effff68a8ffffaea8ffff1aaeffff5eaeffff86b6ffffb8b9ffff18beffff4ec1ffff2ec5ffff44c6ffffdcc6fffffec9fffff6ceffff8ad0ffff1ed1ffff92d2ffff28d3ffff78d4ffffc2d5ffff30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -829,7 +829,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 11}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -883,7 +883,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1066
+    x: 1065
     y: 484
     width: 299
     height: 467
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Plugins
+    - Assets/Code/Tests/EditMode
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -918,7 +918,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 685a0000
     m_LastClickedID: 23144
-    m_ExpandedIDs: 00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000
+    m_ExpandedIDs: ffffffff00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000f25f00004c910000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -944,9 +944,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f45f0000
-    m_LastClickedID: 24564
-    m_ExpandedIDs: ffffffff00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff00000000a85f0000aa5f0000ac5f0000ae5f0000b05f0000b25f0000b45f0000b65f0000b85f0000ba5f0000bc5f0000be5f0000c05f0000f25f00004c910000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -971,8 +971,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f45f0000
-    m_LastClickedInstanceID: 24564
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -1017,12 +1017,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1351
+    x: 1350
     y: 0
-    width: 537
+    width: 538
     height: 869
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -1049,9 +1049,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1367
+    x: 1366
     y: 103
-    width: 536
+    width: 537
     height: 848
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1090,24 +1090,24 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1367
+    x: 1366
     y: 103
-    width: 536
+    width: 537
     height: 848
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 32267
-    splitterInitialOffset: 0
+    ID: 12693
+    splitterInitialOffset: 525
     currentActiveSplitter: -1
     realSizes:
-    - 583
-    - 195
+    - 457
+    - 321
     relativeSizes:
-    - 0.75
-    - 0.25
+    - 0.5874036
+    - 0.4125964
     minSizes:
     - 32
     - 32
@@ -1124,15 +1124,31 @@ MonoBehaviour:
     oldSplitSize: 0
   m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
-    m_Window: {fileID: 0}
-    m_NewResultList: []
+    m_Window: {fileID: 17}
+    m_NewResultList:
+    - id: 1029
+      uniqueId: '[FuryLionConfrontation][suite]'
+      name: FuryLionConfrontation
+      fullName: FuryLionConfrontation
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
     m_ResultText: 
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 
+      m_ExpandedIDs: 2896b2c9ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1156,7 +1172,8 @@ MonoBehaviour:
       NotRunHidden: 0
       m_SearchString: 
       selectedCategoryMask: 0
-      availableCategories: []
+      availableCategories:
+      - Uncategorized
     m_SelectedOption: 0
   m_EditModeTestListGUI:
     m_Window: {fileID: 17}
@@ -1166,7 +1183,7 @@ MonoBehaviour:
       name: FuryLionConfrontation
       fullName: FuryLionConfrontation
       resultStatus: 1
-      duration: 0.0459137
+      duration: 0.2126203
       messages: 
       output: 
       stacktrace: 
@@ -1182,7 +1199,7 @@ MonoBehaviour:
       name: Tests.dll
       fullName: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/ScriptAssemblies/Tests.dll
       resultStatus: 1
-      duration: 0.0198586
+      duration: 0.1752473
       messages: 
       output: 
       stacktrace: 
@@ -1198,7 +1215,7 @@ MonoBehaviour:
       name: Confrontation
       fullName: Confrontation
       resultStatus: 1
-      duration: 0.0168284
+      duration: 0.1716779
       messages: 
       output: 
       stacktrace: 
@@ -1214,7 +1231,7 @@ MonoBehaviour:
       name: Editor
       fullName: Confrontation.Editor
       resultStatus: 1
-      duration: 0.0130483
+      duration: 0.1679878
       messages: 
       output: 
       stacktrace: 
@@ -1230,7 +1247,7 @@ MonoBehaviour:
       name: Tests
       fullName: Confrontation.Editor.Tests
       resultStatus: 1
-      duration: 0.0095621
+      duration: 0.1643852
       messages: 
       output: 
       stacktrace: 
@@ -1246,7 +1263,7 @@ MonoBehaviour:
       name: CoordinatesTests
       fullName: Confrontation.Editor.Tests.CoordinatesTests
       resultStatus: 1
-      duration: 0.0053846
+      duration: 0.0397865
       messages: 
       output: 
       stacktrace: 
@@ -1262,7 +1279,7 @@ MonoBehaviour:
       name: WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
       fullName: Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
       resultStatus: 1
-      duration: 0.0005485
+      duration: 0.0194605
       messages: 
       output: 
       stacktrace: 
@@ -1279,7 +1296,7 @@ MonoBehaviour:
       name: WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
       fullName: Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
       resultStatus: 1
-      duration: 0.000108
+      duration: 0.0004895
       messages: 
       output: 
       stacktrace: 
@@ -1296,7 +1313,7 @@ MonoBehaviour:
       name: FieldTests
       fullName: Confrontation.Editor.Tests.FieldTests
       resultStatus: 1
-      duration: 0.0774513
+      duration: 0.0966519
       messages: 
       output: 
       stacktrace: 
@@ -1312,7 +1329,7 @@ MonoBehaviour:
       name: WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
       fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
       resultStatus: 1
-      duration: 0.0197713
+      duration: 0.062209
       messages: 
       output: 
       stacktrace: 
@@ -1329,7 +1346,7 @@ MonoBehaviour:
       name: WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
       fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
       resultStatus: 1
-      duration: 0.00444
+      duration: 0.0082461
       messages: 
       output: 
       stacktrace: 
@@ -1341,79 +1358,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-    - id: 1054
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith1Cells_ThenVillageMustHave1CellsInRegion]
-      name: WhenGenerateField_AndLevelContainRegionWith1Cells_ThenVillageMustHave1CellsInRegion
-      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith1Cells_ThenVillageMustHave1CellsInRegion
-      resultStatus: 1
-      duration: 0.0103912
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1051
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-    - id: 1005
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave1CellsInRegion]
-      name: WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave1CellsInRegion
-      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageMustHave1CellsInRegion
-      resultStatus: 1
-      duration: 0.00533
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-    - id: 1003
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
-      name: LevelEditorTests
-      fullName: Confrontation.Editor.Tests.LevelEditorTests
-      resultStatus: 1
-      duration: 0.0524751
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1018
-      parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
-    - id: 1006
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_And2By3_ThenShouldBe6Cells]
-      name: WhenGenerateField_And2By3_ThenShouldBe6Cells
-      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_And2By3_ThenShouldBe6Cells
-      resultStatus: 1
-      duration: 0.0044906
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
     - id: 1007
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame]
-      name: WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame
-      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_AndTwice_ThenCellsCountShouldBeSame
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion]
+      name: WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
+      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
       resultStatus: 1
-      duration: 0.0024014
+      duration: 0.0041914
       messages: 
       output: 
       stacktrace: 
@@ -1423,67 +1373,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1003
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
-    - id: 1004
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField]
-      name: WhenGenerateField_Once_ThenShouldBeSingleField
-      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Once_ThenShouldBeSingleField
-      resultStatus: 1
-      duration: 0.0014298
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
-    - id: 1005
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Twice_ThenShouldBeSingleField]
-      name: WhenGenerateField_Twice_ThenShouldBeSingleField
-      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenGenerateField_Twice_ThenShouldBeSingleField
-      resultStatus: 1
-      duration: 0.0012857
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
-    - id: 1009
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village]
-      name: WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village
-      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnCellWithVillage_ThenShouldBe1Village
-      resultStatus: 1
-      duration: 0.0110644
-      messages: 
-      output: 'Cell is already taken!
-
-'
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+      parentId: 1004
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
     - id: 1008
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/LevelEditorTests/[Tests][Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnEmptyCell_ThenCreateVillage]
-      name: WhenToVillage_AndOnEmptyCell_ThenCreateVillage
-      fullName: Confrontation.Editor.Tests.LevelEditorTests.WhenToVillage_AndOnEmptyCell_ThenCreateVillage
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion]
+      name: WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
+      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
       resultStatus: 1
-      duration: 0.0053158
+      duration: 0.002813
       messages: 
       output: 
       stacktrace: 
@@ -1493,14 +1390,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1003
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.LevelEditorTests][suite]
+      parentId: 1004
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
     - id: 1010
       uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
       name: StringFormatterTests
       fullName: Confrontation.Editor.Tests.StringFormatterTests
       resultStatus: 1
-      duration: 0.0385384
+      duration: 0.0233669
       messages: 
       output: 
       stacktrace: 
@@ -1516,7 +1413,7 @@ MonoBehaviour:
       name: WhenFormat_AndCamelCase_ThenAddSpaces
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCase_ThenAddSpaces
       resultStatus: 1
-      duration: 0.0068623
+      duration: 0.0049587
       messages: 
       output: 
       stacktrace: 
@@ -1533,7 +1430,7 @@ MonoBehaviour:
       name: WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
       resultStatus: 1
-      duration: 0.0004226
+      duration: 0.0003531
       messages: 
       output: 
       stacktrace: 
@@ -1550,7 +1447,7 @@ MonoBehaviour:
       name: WhenFormat_AndLowerFirst_ThenUpperFirst
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndLowerFirst_ThenUpperFirst
       resultStatus: 1
-      duration: 0.0002489
+      duration: 0.0002838
       messages: 
       output: 
       stacktrace: 
@@ -1567,7 +1464,7 @@ MonoBehaviour:
       name: WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
       resultStatus: 1
-      duration: 0.0002438
+      duration: 0.0001528
       messages: 
       output: 
       stacktrace: 
@@ -1579,13 +1476,14 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1010
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
-    m_ResultText: CoordinatesTests (0,005s)
+    m_ResultText: WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
+      (0,062s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a8b32610
-      m_LastClickedID: 270971816
-      m_ExpandedIDs: fd40468b1a2293992896b2c9bafc28ce470ea8f6e557abf736608cf8020bbf01a8b32610c616ce3cffffff7f
+      m_SelectedIDs: f4447e31
+      m_LastClickedID: 830358772
+      m_ExpandedIDs: fd40468b1a2293992896b2c9bafc28ce579587d1470ea8f6e557abf736608cf8020bbf017c14ac18c616ce3cffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
