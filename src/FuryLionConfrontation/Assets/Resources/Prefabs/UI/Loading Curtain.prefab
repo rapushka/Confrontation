@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 7583141516844208947}
   - component: {fileID: 7583141516844208946}
   - component: {fileID: 7583141516844208949}
+  - component: {fileID: 3615310031561314296}
+  - component: {fileID: -4147878831010672411}
   m_Layer: 5
   m_Name: Loading Curtain
   m_TagString: Untagged
@@ -177,3 +179,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &3615310031561314296
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583141516844208948}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-4147878831010672411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583141516844208948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5c8f8dca724900910d8455a0760eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curtain: {fileID: 3615310031561314296}
+  _step: 0.03

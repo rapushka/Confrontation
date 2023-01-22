@@ -4,18 +4,18 @@ namespace Confrontation
 {
 	public class ToBootstrap : ToScene
 	{
-		private readonly SignalBus _signalBus;
+		private readonly LoadingCurtain _loadingCurtain;
 
 		[Inject]
-		public ToBootstrap(ISceneTransferService sceneTransfer, SignalBus signalBus)
+		public ToBootstrap(ISceneTransferService sceneTransfer, LoadingCurtain loadingCurtain)
 			: base(sceneTransfer)
-			=> _signalBus = signalBus;
+			=> _loadingCurtain = loadingCurtain;
 
 		protected override string SceneName => Constants.SceneName.BootstrapScene;
 
 		public override void Initialize()
 		{
-			_signalBus.Fire<LoadingCurtainShowImmediately>();
+			_loadingCurtain.ShowImmediately();
 			base.Initialize();
 		}
 	}

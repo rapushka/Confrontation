@@ -13,18 +13,6 @@ namespace Confrontation
 			Container.Bind<ISceneTransferService>().To<SceneTransferService>().AsSingle();
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
 			Container.BindInterfacesTo<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
-
-			BindSignals();
-		}
-
-		private void BindSignals()
-		{
-			Container
-				.BindSignalTo<LoadingCurtainShowImmediately, LoadingCurtain>((x) => x.ShowImmediately)
-				.BindSignalTo<LoadingCurtainHideImmediately, LoadingCurtain>((x) => x.HideImmediately)
-				.BindSignalTo<LoadingCurtainHide, LoadingCurtain>((x) => x.Hide)
-				.BindSignalTo<LoadingCurtainShow, LoadingCurtain>((x) => x.Show)
-				;
 		}
 	}
 }
