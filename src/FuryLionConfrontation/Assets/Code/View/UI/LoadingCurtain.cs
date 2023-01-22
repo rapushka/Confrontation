@@ -11,17 +11,6 @@ namespace Confrontation
 
 		private void Awake() => DontDestroyOnLoad(this);
 
-		public void Handle(ToggleCurtainSignal signal) => GetAction(signal).Invoke();
-
-		private Action GetAction(ToggleCurtainSignal signal)
-			=> signal.ToEnable
-				? signal.Immediately
-					? ShowImmediately
-					: Show
-				: signal.Immediately
-					? HideImmediately
-					: Hide;
-
 		public void Show() => StartCoroutine(FadeTo(@while: (a) => a < 1, step: _step, atEnd: Enable));
 
 		public void Hide() => StartCoroutine(FadeTo(@while: (a) => a > 0, step: _step * -1, atEnd: Disable));
