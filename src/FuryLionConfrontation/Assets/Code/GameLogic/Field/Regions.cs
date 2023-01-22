@@ -31,10 +31,7 @@ namespace Confrontation
 		private Cell AsCells(Coordinates cellCoordinates) => _field.Cells[cellCoordinates.Row, cellCoordinates.Column];
 
 		private Village CreateVillage(Cell cell)
-		{
-			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform);
-			cell.Building = village;
-			return village;
-		}
+			=> _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform)
+			          .With((v) => cell.Building = v);
 	}
 }

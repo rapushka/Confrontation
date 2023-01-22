@@ -24,12 +24,7 @@ namespace Confrontation
 		public void GenerateField() => Cells.SetForEach(CreateHexagon);
 
 		private Cell CreateHexagon(int i, int j)
-		{
-			var coordinates = new Coordinates(i, j);
-			var cell = _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells);
-			cell.Coordinates = coordinates;
-
-			return cell;
-		}
+			=> _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells)
+			          .With((c) => c.Coordinates = new Coordinates(i, j));
 	}
 }
