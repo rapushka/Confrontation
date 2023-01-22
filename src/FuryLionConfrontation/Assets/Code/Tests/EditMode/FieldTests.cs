@@ -17,8 +17,9 @@ namespace Confrontation.Editor.Tests
 			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/Resources");
 			
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
-			Container.Bind<Field>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
+			Container.Bind<Field>().AsSingle();
+			Container.Bind<Regions>().AsSingle();
 		}
 
 		[TearDown]
@@ -49,9 +50,11 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
+			var regions = Container.Resolve<Regions>();
 
 			// Act.
 			field.GenerateField();
+			regions.Initialize();
 
 			// Assert.
 			var countOfVillages = Object.FindObjectsOfType<Village>().Length;
@@ -63,9 +66,11 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
+			var regions = Container.Resolve<Regions>();
 
 			// Act.
 			field.GenerateField();
+			regions.Initialize();
 
 			// Assert.
 			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
@@ -77,9 +82,11 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
+			var regions = Container.Resolve<Regions>();
 
 			// Act.
 			field.GenerateField();
+			regions.Initialize();
 
 			// Assert.
 			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;

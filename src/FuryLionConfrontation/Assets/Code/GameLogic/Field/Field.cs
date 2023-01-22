@@ -13,7 +13,7 @@ namespace Confrontation
 			_resources = resources;
 			_assets = assets;
 
-			var levelSizes = resources.CurrentLevel.Sizes;
+			var levelSizes = _resources.CurrentLevel.Sizes;
 			Cells = new Cell[levelSizes.Height, levelSizes.Width];
 		}
 

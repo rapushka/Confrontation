@@ -21,7 +21,7 @@ namespace Confrontation.Editor
 			=> @this.GetCells().Select((c) => c.Building).OfType<Village>();
 
 		public static IEnumerable<Cell> GetCells(this Field @this)
-			=> @this.GetPrivateField<Cell[,]>(MemberName.Cells).Cast<Cell>();
+			=> @this.GetPropertyValue<Cell[,]>(MemberName.Cells).Cast<Cell>();
 
 		public static Transform GetRoot(this Field @this) => @this.GetPrivateField<Transform>(MemberName.Root);
 	}
