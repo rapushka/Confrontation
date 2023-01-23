@@ -33,6 +33,6 @@ namespace Confrontation
 
 		public bool IsEmpty => Building is null;
 
-		private bool IsPlayerOwn(int playerId) => RelatedRegion.OwnerPlayerId == playerId;
+		private bool IsBelongTo(int playerId) => RelatedRegion.OwnerPlayerId == playerId;
 	}
 }

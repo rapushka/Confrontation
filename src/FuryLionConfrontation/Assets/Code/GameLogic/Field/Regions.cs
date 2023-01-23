@@ -30,8 +30,5 @@ namespace Confrontation
 			              .With((v) => v.OwnerPlayerId = region.OwnerPlayerId)
 			              .With((v) => cell.Building = v);
 		}
-
-		private bool IsPlayerOwn(int playerId, Coordinates coordinates) 
-			=> _field.Cells[coordinates].RelatedRegion.OwnerPlayerId == playerId;
 	}
 }
