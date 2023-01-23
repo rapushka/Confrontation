@@ -27,6 +27,7 @@ namespace Confrontation
 		{
 			var ownerCell = _field.Cells[region.VillageCoordinates];
 			var village = InstantiateVillage(ownerCell);
+			village.OwnerPlayerId = region.OwnerPlayerId;
 			ownerCell.Building = village;
 			return village;
 		}

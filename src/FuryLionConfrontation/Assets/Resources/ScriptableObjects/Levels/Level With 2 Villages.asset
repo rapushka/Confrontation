@@ -18,18 +18,18 @@ MonoBehaviour:
     <Height>k__BackingField: 5
   <Regions>k__BackingField:
   - <OwnerPlayerId>k__BackingField: 1
-    <Coordinates>k__BackingField:
+    <VillageCoordinates>k__BackingField:
       <Row>k__BackingField: 1
       <Column>k__BackingField: 1
-    <Cells>k__BackingField:
+    <CellsCoordinates>k__BackingField:
     - <Row>k__BackingField: 1
       <Column>k__BackingField: 1
     - <Row>k__BackingField: 1
       <Column>k__BackingField: 2
   - <OwnerPlayerId>k__BackingField: 2
-    <Coordinates>k__BackingField:
+    <VillageCoordinates>k__BackingField:
       <Row>k__BackingField: 3
       <Column>k__BackingField: 3
-    <Cells>k__BackingField:
+    <CellsCoordinates>k__BackingField:
     - <Row>k__BackingField: 3
       <Column>k__BackingField: 3
