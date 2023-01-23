@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingCurtainPrefab: {fileID: -4147878831010672411, guid: 3a3d6ac60cde7b7c9b3a13587e5eeaac, type: 3}
+  _user: {fileID: 11400000, guid: 18abc074787e98d10b73cc0c1ecbac46, type: 2}
