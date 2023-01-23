@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -16,21 +18,20 @@ namespace Confrontation
 		private void ToRegion(Region region)
 		{
 			var village = CreateVillage(region);
-			region.Cells.Select((c) => _field.Cells[c]).ForEach((c) => BindCellToRegion(village, c));
+			GetCellsFrom(region).ForEach(village.AddToRegion);
 		}
+
+		private IEnumerable<Cell> GetCellsFrom(Region region) => region.CellsCoordinates.Select((c) => _field.Cells[c]);
 
 		private Village CreateVillage(Region region)
 		{
 			var ownerCell = _field.Cells[region.Coordinates];
-			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: ownerCell.transform);
+			var village = InstantiateVillage(ownerCell);
 			ownerCell.Building = village;
 			return village;
 		}
 
-		private void BindCellToRegion(Village village, Cell cell)
-		{
-			cell.RelatedRegion = village;
-			village.CellsInRegion.Add(cell);
-		}
+		private Village InstantiateVillage(Component ownerCell)
+			=> _assets.Instantiate(original: _resources.VillagePrefab, parent: ownerCell.transform);
 	}
 }

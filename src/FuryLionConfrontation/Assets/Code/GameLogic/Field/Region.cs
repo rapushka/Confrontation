@@ -11,6 +11,6 @@ namespace Confrontation
 
 		[field: SerializeField] public Coordinates Coordinates { get; private set; }
 
-		[field: SerializeField] public List<Coordinates> Cells { get; private set; } = new();
+		[field: SerializeField] public List<Coordinates> CellsCoordinates { get; private set; } = new();
 	}
 }

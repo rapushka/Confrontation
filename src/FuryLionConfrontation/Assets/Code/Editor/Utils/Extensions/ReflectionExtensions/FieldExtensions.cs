@@ -7,7 +7,7 @@ namespace Confrontation.Editor
 	public static class FieldExtensions
 	{
 		public static void AddCellToFirstRegion(this Field @this, Cell cell)
-			=> @this.GetRegions().First().Cells.Add(cell.Coordinates);
+			=> @this.GetRegions().First().CellsCoordinates.Add(cell.Coordinates);
 
 		public static void AddRegion(this Field @this, Region villageData) => @this.GetRegions().Add(villageData);
 
