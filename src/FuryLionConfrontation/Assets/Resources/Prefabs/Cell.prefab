@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: {fileID: 6799698658610089963}
+  _mouseClickReceiver: {fileID: 6810082751015482067}
 --- !u!114 &6799698658610089963
 MonoBehaviour:
   m_ObjectHideFlags: 0

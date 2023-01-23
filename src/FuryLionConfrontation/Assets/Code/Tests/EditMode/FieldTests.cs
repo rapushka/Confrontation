@@ -18,6 +18,7 @@ namespace Confrontation.Editor.Tests
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
 			Container.Bind<Field>().AsSingle();
 			Container.Bind<Regions>().AsSingle();
+			Container.Bind<FieldClickEmit>().AsSingle();
 		}
 
 		[TearDown]

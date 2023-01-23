@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -6,9 +7,12 @@ namespace Confrontation
 	public class Cell : MonoBehaviour
 	{
 		[SerializeField] private RegionColor _color;
+		[SerializeField] private MouseClickReceiver _mouseClickReceiver;
 
 		private Coordinates _coordinates;
 		private Village _relatedRegion;
+
+		public event Action<Coordinates> MouseClick; 
 
 		[CanBeNull] public Building Building { get; set; }
 
@@ -33,5 +37,10 @@ namespace Confrontation
 				_coordinates = value;
 			}
 		}
+
+		private void OnEnable() => _mouseClickReceiver.MouseClick += OnMouseClick;
+		private void OnDisable() => _mouseClickReceiver.MouseClick -= OnMouseClick;
+
+		private void OnMouseClick() => MouseClick?.Invoke(Coordinates);
 	}
 }

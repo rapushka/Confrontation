@@ -34,5 +34,7 @@ namespace Confrontation
 		private static float HorizontalOffset(int row) => row.IsEven() ? 0f : Constants.HorizontalOffsetForOddRows;
 
 		private static float VerticalDistance() => Constants.HexagonWidth * 3 / (2 * Mathf.Sqrt(3));
+
+		public override string ToString() => $"{nameof(Row)}: {Row}, {nameof(Column)}: {Column}";
 	}
 }
