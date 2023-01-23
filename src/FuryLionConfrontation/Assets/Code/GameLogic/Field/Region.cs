@@ -9,7 +9,7 @@ namespace Confrontation
 	{
 		[field: SerializeField] public int OwnerPlayerId { get; private set; }
 
-		[field: SerializeField] public Coordinates Coordinates { get; private set; }
+		[field: SerializeField] public Coordinates VillageCoordinates { get; private set; }
 
 		[field: SerializeField] public List<Coordinates> CellsCoordinates { get; private set; } = new();
 	}

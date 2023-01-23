@@ -25,7 +25,7 @@ namespace Confrontation
 
 		private Village CreateVillage(Region region)
 		{
-			var ownerCell = _field.Cells[region.Coordinates];
+			var ownerCell = _field.Cells[region.VillageCoordinates];
 			var village = InstantiateVillage(ownerCell);
 			ownerCell.Building = village;
 			return village;
