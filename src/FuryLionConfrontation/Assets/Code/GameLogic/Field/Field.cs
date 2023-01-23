@@ -6,12 +6,13 @@ namespace Confrontation
 	{
 		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly IAssetsService _assets;
+		[Inject] private readonly User _user;
 
 		public CoordinatedMatrix<Cell> Cells { get; private set; }
 
 		public void Initialize()
 		{
-			Cells = new CoordinatedMatrix<Cell>(_resources.CurrentLevel.Sizes);
+			Cells = new CoordinatedMatrix<Cell>(_user.SelectedLevel.Sizes);
 			GenerateField();
 		}
 

@@ -6,7 +6,6 @@ namespace Confrontation
 	{
 		Cell    CellPrefab    { get; }
 		Village VillagePrefab { get; }
-		Level   CurrentLevel  { get; }
 	}
 
 	[CreateAssetMenu(menuName = "Confrontation/Resources", fileName = "Resources")]
@@ -14,6 +13,5 @@ namespace Confrontation
 	{
 		[field: SerializeField] public Cell    CellPrefab    { get; private set; }
 		[field: SerializeField] public Village VillagePrefab { get; private set; }
-		[field: SerializeField] public Level   CurrentLevel  { get; private set; }
 	}
 }

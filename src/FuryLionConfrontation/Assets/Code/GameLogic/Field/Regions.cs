@@ -10,10 +10,11 @@ namespace Confrontation
 		[Inject] private readonly Field _field;
 		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly IAssetsService _assets;
+		[Inject] private readonly User _user;
 
 		public void Initialize() => DivideIntoRegions();
 
-		private void DivideIntoRegions() => _resources.CurrentLevel.Regions.ForEach(ToRegion);
+		private void DivideIntoRegions() => _user.SelectedLevel.Regions.ForEach(ToRegion);
 
 		private void ToRegion(Region region)
 		{
