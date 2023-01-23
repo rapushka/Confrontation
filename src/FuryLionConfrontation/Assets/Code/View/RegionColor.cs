@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public class MaterialByRegion : MonoBehaviour
+	public class RegionColor : MonoBehaviour
 	{
 		[SerializeField] private Renderer _renderer;
 		[SerializeField] private PlayersColorsSheet _playersColorsSheet;

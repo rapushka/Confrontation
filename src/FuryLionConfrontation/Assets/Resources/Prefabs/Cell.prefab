@@ -59,10 +59,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 6799698658610089963}
+  _color: {fileID: 6799698658610089963}
   _coordinates:
     <Row>k__BackingField: 0
     <Column>k__BackingField: 0
+  _relatedRegion: {fileID: 0}
   <Building>k__BackingField: {fileID: 0}
 --- !u!114 &6799698658610089963
 MonoBehaviour:

@@ -5,7 +5,8 @@ namespace Confrontation
 {
 	public class Cell : MonoBehaviour
 	{
-		[SerializeField] private MaterialByRegion _materialByRegion;
+		[SerializeField] private RegionColor _color;
+		[Header("Game logic data")]
 		[SerializeField] private Coordinates _coordinates;
 		[SerializeField] private Village _relatedRegion;
 
@@ -16,7 +17,7 @@ namespace Confrontation
 			get => _relatedRegion;
 			set
 			{
-				_materialByRegion.ChangeMaterialTo(value.OwnerPlayerId);
+				_color.ChangeMaterialTo(value.OwnerPlayerId);
 				_relatedRegion = value;
 			}
 		}
@@ -32,7 +33,5 @@ namespace Confrontation
 		}
 
 		public bool IsEmpty => Building is null;
-
-		private bool IsBelongTo(int playerId) => RelatedRegion.OwnerPlayerId == playerId;
 	}
 }
