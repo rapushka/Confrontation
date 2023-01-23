@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public class Player : ScriptableObject
+	public class Player
 	{
 		[field: SerializeField] public int Id { get; private set; }
 	}

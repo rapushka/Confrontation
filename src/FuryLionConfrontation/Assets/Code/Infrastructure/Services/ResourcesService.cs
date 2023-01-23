@@ -8,7 +8,7 @@ namespace Confrontation
 		Village VillagePrefab { get; }
 	}
 
-	[CreateAssetMenu(menuName = "Confrontation/Resources", fileName = "Resources")]
+	[CreateAssetMenu(fileName = "Resources", menuName = nameof(Confrontation) + "/Resources")]
 	public class ResourcesService : ScriptableObject, IResourcesService
 	{
 		[field: SerializeField] public Cell    CellPrefab    { get; private set; }

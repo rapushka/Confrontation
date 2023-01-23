@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	[CreateAssetMenu(menuName = "Confrontation/Level", fileName = "Level")]
+	[CreateAssetMenu(fileName = "Level", menuName = nameof(Confrontation) + "/Level")]
 	public class Level : ScriptableObject
 	{
 		[field: SerializeField] public int PlayersCount { get; private set; }
