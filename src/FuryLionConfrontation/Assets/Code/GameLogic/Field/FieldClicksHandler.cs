@@ -1,0 +1,28 @@
+using System;
+using Zenject;
+
+namespace Confrontation
+{
+	public class FieldClicksHandler : IInitializable
+	{
+		[Inject] private readonly Field _field;
+		[Inject] private readonly User _user;
+		[Inject] private readonly UiMediator _uiMediator;
+
+		public void Initialize() => _field.Cells.ForEach((c) => c.MouseClick += OnCellMouseClick);
+
+		private void OnCellMouseClick(Cell cell) => DecideWhatToDoWith(cell).Invoke();
+
+		private Action DecideWhatToDoWith(Cell cell)
+			=> cell.IsBelongTo(_user.Player.Id)
+				? ShowRelevantMenu(cell)
+				: DoNothing;
+
+		private Action ShowRelevantMenu(Cell cell)
+			=> cell.IsEmpty
+				? _uiMediator.ShowBuildMenu
+				: _uiMediator.ShowBuildingMenu;
+
+		private static void DoNothing() { }
+	}
+}

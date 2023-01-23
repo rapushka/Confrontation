@@ -14,7 +14,7 @@ namespace Confrontation
 			Container.Bind<IResourcesService>().FromInstance(_resources).AsSingle();
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
 			Container.BindInterfacesAndSelfTo<Regions>().AsSingle();
-			Container.BindInterfacesAndSelfTo<FieldClickEmit>().AsSingle();
+			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 		}
 	}
 }

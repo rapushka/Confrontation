@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -10,5 +11,9 @@ namespace Confrontation
 		public void ShowImmediatelyLoadingCurtain() => _loadingCurtain.ShowImmediately();
 		public void HideLoadingCurtain()            => _loadingCurtain.Hide();
 		public void HideImmediatelyLoadingCurtain() => _loadingCurtain.HideImmediately();
+
+		public void ShowBuildMenu() => Debug.Log(nameof(ShowBuildMenu));
+
+		public void ShowBuildingMenu() => Debug.Log(nameof(ShowBuildingMenu));
 	}
 }
