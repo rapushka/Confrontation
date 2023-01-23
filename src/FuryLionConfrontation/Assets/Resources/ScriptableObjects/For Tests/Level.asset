@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a680fbabd1406cb656aa9baa4b35b3, type: 3}
+  m_Name: Level
+  m_EditorClassIdentifier: 
+  <Sizes>k__BackingField:
+    <Width>k__BackingField: 5
+    <Height>k__BackingField: 5
+  <Regions>k__BackingField:
+  - <OwnerPlayerId>k__BackingField: 1
+    <Coordinates>k__BackingField:
+      <Row>k__BackingField: 1
+      <Column>k__BackingField: 1
+    <Cells>k__BackingField:
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 0
+    - <Row>k__BackingField: 2
+      <Column>k__BackingField: 1
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 1
+    - <Row>k__BackingField: 0
+      <Column>k__BackingField: 1
+    - <Row>k__BackingField: 2
+      <Column>k__BackingField: 2
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 2
+    - <Row>k__BackingField: 0
+      <Column>k__BackingField: 2
+  <PlayersCount>k__BackingField: 2

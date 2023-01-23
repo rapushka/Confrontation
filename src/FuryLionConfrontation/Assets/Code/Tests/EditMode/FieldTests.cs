@@ -12,7 +12,7 @@ namespace Confrontation.Editor.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/Resources");
+			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/For Tests/Resources");
 			
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();

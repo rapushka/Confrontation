@@ -9,13 +9,10 @@ namespace Confrontation.Editor
 	{
 		[CanBeNull] private Field _field;
 
-		private static ResourcesService ResourcesService
-			=> Resources.Load<ResourcesService>("ScriptableObjects/Resources");
-
 		public void GenerateField(int height, int width)
 		{
 			DestroyOldField();
-			GenerateNewField(height, width);
+			GenerateNewField();
 		}
 
 		private static void DestroyOldField()
@@ -27,15 +24,7 @@ namespace Confrontation.Editor
 			}
 		}
 
-		private void GenerateNewField(int height, int width)
-		{
-			var level = ScriptableObject.CreateInstance<Level>();
-			level.SetSizes(new Sizes(height, width));
-
-			_field = new Field(ResourcesService, new AssetsService());
-			_field.GetRoot().gameObject.AddComponent<CellsRoot>();
-			_field.Initialize();
-		}
+		private void GenerateNewField() { }
 
 		public string Serialize()
 		{

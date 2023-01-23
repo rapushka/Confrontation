@@ -4,21 +4,16 @@ namespace Confrontation
 {
 	public class Field : IInitializable
 	{
-		private readonly IResourcesService _resources;
-		private readonly IAssetsService _assets;
+		[Inject] private readonly IResourcesService _resources;
+		[Inject] private readonly IAssetsService _assets;
 
-		[Inject]
-		public Field(IResourcesService resources, IAssetsService assets)
+		public CoordinatedMatrix<Cell> Cells { get; private set; }
+
+		public void Initialize()
 		{
-			_resources = resources;
-			_assets = assets;
-
 			Cells = new CoordinatedMatrix<Cell>(_resources.CurrentLevel.Sizes);
+			GenerateField();
 		}
-
-		public CoordinatedMatrix<Cell> Cells { get; }
-
-		public void Initialize() => GenerateField();
 
 		private void GenerateField() => Cells.SetForEach(CreateHexagon);
 

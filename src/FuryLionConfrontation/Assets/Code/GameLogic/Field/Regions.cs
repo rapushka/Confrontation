@@ -5,17 +5,9 @@ namespace Confrontation
 {
 	public class Regions : IInitializable
 	{
-		private readonly Field _field;
-		private readonly IResourcesService _resources;
-		private readonly IAssetsService _assets;
-
-		[Inject]
-		public Regions(Field field, IResourcesService resources, IAssetsService assets)
-		{
-			_field = field;
-			_resources = resources;
-			_assets = assets;
-		}
+		[Inject] private readonly Field _field;
+		[Inject] private readonly IResourcesService _resources;
+		[Inject] private readonly IAssetsService _assets;
 
 		public void Initialize() => DivideIntoRegions();
 

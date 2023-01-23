@@ -4,7 +4,13 @@ namespace Confrontation.Editor.Tests
 {
 	public static class Create
 	{
-		public static Field Field(IResourcesService resourcesService) => new(resourcesService, AssetsService());
+		public static Field Field(IResourcesService resourcesService)
+		{
+			var field = new Field();
+			field.SetPrivateField("_resources", resourcesService);
+			field.SetPrivateField("_assets", AssetsService());
+			return field;
+		}
 
 		private static AssetsService AssetsService() => new();
 
@@ -15,7 +21,9 @@ namespace Confrontation.Editor.Tests
 		public static LevelEditor LevelEditor() => new();
 
 		public static Level Level() => ScriptableObject.CreateInstance<Level>();
+
 		public static Region Region() => new();
+
 		public static Coordinates Coordinates(int row = 0, int column = 0) => new(row, column);
 	}
 }
