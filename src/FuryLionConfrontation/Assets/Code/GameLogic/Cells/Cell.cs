@@ -6,11 +6,13 @@ namespace Confrontation
 	public class Cell : MonoBehaviour
 	{
 		[SerializeField] private RegionColor _color;
-		[Header("Game logic data")]
-		[SerializeField] private Coordinates _coordinates;
-		[SerializeField] private Village _relatedRegion;
 
-		[field: SerializeField] [CanBeNull] public Building Building { get; set; }
+		private Coordinates _coordinates;
+		private Village _relatedRegion;
+
+		[CanBeNull] public Building Building { get; set; }
+
+		public bool IsEmpty => Building is null;
 
 		public Village RelatedRegion
 		{
@@ -31,7 +33,5 @@ namespace Confrontation
 				_coordinates = value;
 			}
 		}
-
-		public bool IsEmpty => Building is null;
 	}
 }

@@ -14,21 +14,23 @@ namespace Confrontation
 		private void DivideIntoRegions() => _resources.CurrentLevel.Regions.ForEach(ToRegion);
 
 		private void ToRegion(Region region)
-			=> region.Cells.Select((c) => _field.Cells[c]).ForEach((c) => BindCellToRegion(region, c));
-
-		private void BindCellToRegion(Region region, Cell cell)
 		{
 			var village = CreateVillage(region);
-			village.CellsInRegion.Add(cell);
-			cell.RelatedRegion = village;
+			region.Cells.Select((c) => _field.Cells[c]).ForEach((c) => BindCellToRegion(village, c));
 		}
 
 		private Village CreateVillage(Region region)
 		{
-			var cell = _field.Cells[region.Coordinates];
-			return _assets.Instantiate(original: _resources.VillagePrefab, parent: cell.transform)
-			              .With((v) => v.OwnerPlayerId = region.OwnerPlayerId)
-			              .With((v) => cell.Building = v);
+			var ownerCell = _field.Cells[region.Coordinates];
+			var village = _assets.Instantiate(original: _resources.VillagePrefab, parent: ownerCell.transform);
+			ownerCell.Building = village;
+			return village;
+		}
+
+		private void BindCellToRegion(Village village, Cell cell)
+		{
+			cell.RelatedRegion = village;
+			village.CellsInRegion.Add(cell);
 		}
 	}
 }
