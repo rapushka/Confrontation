@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Confrontation
@@ -6,6 +7,19 @@ namespace Confrontation
 	{
 		[SerializeField] private MaterialByRegion _materialByRegion;
 		[SerializeField] private Coordinates _coordinates;
+		[SerializeField] private Village _relatedRegion;
+
+		[field: SerializeField] [CanBeNull] public Building Building { get; set; }
+
+		public Village RelatedRegion
+		{
+			get => _relatedRegion;
+			set
+			{
+				_materialByRegion.ChangeMaterialTo(value.OwnerPlayerId);
+				_relatedRegion = value;
+			}
+		}
 
 		public Coordinates Coordinates
 		{
@@ -17,10 +31,8 @@ namespace Confrontation
 			}
 		}
 
-		[field: SerializeField] public Building Building { get; set; }
-
 		public bool IsEmpty => Building is null;
 
-		public void ToRegion(int playerId) => _materialByRegion.ChangeMaterialTo(playerId);
+		private bool IsPlayerOwn(int playerId) => RelatedRegion.OwnerPlayerId == playerId;
 	}
 }

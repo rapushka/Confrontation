@@ -14,7 +14,14 @@ namespace Confrontation
 		private void DivideIntoRegions() => _resources.CurrentLevel.Regions.ForEach(ToRegion);
 
 		private void ToRegion(Region region)
-			=> region.Cells.Select((c) => _field.Cells[c]).ForEach(CreateVillage(region).CellsInRegion.Add);
+			=> region.Cells.Select((c) => _field.Cells[c]).ForEach((c) => BindCellToRegion(region, c));
+
+		private void BindCellToRegion(Region region, Cell cell)
+		{
+			var village = CreateVillage(region);
+			village.CellsInRegion.Add(cell);
+			cell.RelatedRegion = village;
+		}
 
 		private Village CreateVillage(Region region)
 		{
@@ -23,5 +30,8 @@ namespace Confrontation
 			              .With((v) => v.OwnerPlayerId = region.OwnerPlayerId)
 			              .With((v) => cell.Building = v);
 		}
+
+		private bool IsPlayerOwn(int playerId, Coordinates coordinates) 
+			=> _field.Cells[coordinates].RelatedRegion.OwnerPlayerId == playerId;
 	}
 }

@@ -1,19 +1,11 @@
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
 {
 	public class CellsColorSetter : IInitializable
 	{
-		private readonly Field _field;
-		private readonly IResourcesService _resources;
-
-		[Inject]
-		public CellsColorSetter(Field field, IResourcesService resources)
-		{
-			_field = field;
-			_resources = resources;
-		}
+		[Inject] private readonly Field _field;
+		[Inject] private readonly IResourcesService _resources;
 
 		public void Initialize() => MarkCells();
 
@@ -23,9 +15,8 @@ namespace Confrontation
 			_resources.CurrentLevel.Regions.ForEach(ToRegion);
 		}
 
-		private static void ToNeutral(Cell cell) => cell.ToRegion(Constants.NeutralRegion);
+		private static void ToNeutral(Cell cell) { }
 
-		private void ToRegion(Region region)
-			=> region.Cells.Select((cc) => _field.Cells[cc]).ForEach((c) => c.ToRegion(region.OwnerPlayerId));
+		private void ToRegion(Region region) { }
 	}
 }
