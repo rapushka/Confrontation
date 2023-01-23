@@ -12,6 +12,6 @@ namespace Confrontation
 		public void HideLoadingCurtain()            => _loadingCurtain.Hide();
 		public void HideImmediatelyLoadingCurtain() => _loadingCurtain.HideImmediately();
 		public void ShowBuildMenu()                 => _windows.Show<BuildWindow>();
-		public void ShowBuildingMenu()              => _windows.Show<BuildWindow>();
+		public void ShowBuildingMenu()              => _windows.Show<BuildingWindow>();
 	}
 }

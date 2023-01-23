@@ -4,5 +4,6 @@ namespace Confrontation
 	{
 		Common,
 		Cells,
+		Windows,
 	}
 }

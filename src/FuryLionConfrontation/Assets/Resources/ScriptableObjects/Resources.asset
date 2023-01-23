@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CellPrefab>k__BackingField: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
   <VillagePrefab>k__BackingField: {fileID: 7971290585587501546, guid: 45861229625f2702d9c25b5518581862, type: 3}
-  <CurrentLevel>k__BackingField: {fileID: 11400000, guid: e8099c717c1610b72baa04c90496391f, type: 2}
+  <Canvas>k__BackingField: {fileID: 2594996161190989429, guid: 1d203464e11898394b83551d6701c32a, type: 3}
