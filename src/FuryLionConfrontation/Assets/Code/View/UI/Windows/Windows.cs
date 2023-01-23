@@ -8,7 +8,7 @@ namespace Confrontation
 
 		private WindowBase _currentWindow;
 
-		public void Open<TWindow>()
+		public void Show<TWindow>()
 			where TWindow : WindowBase
 		{
 			HideCurrent();
@@ -17,7 +17,7 @@ namespace Confrontation
 			_currentWindow.Show();
 		}
 
-		public void Close() => HideCurrent();
+		public void Hide() => HideCurrent();
 
 		private void HideCurrent()
 		{

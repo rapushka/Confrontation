@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -6,14 +5,13 @@ namespace Confrontation
 	public class UiMediator
 	{
 		[Inject] private readonly LoadingCurtain _loadingCurtain;
+		[Inject] private readonly Windows _windows;
 
 		public void ShowLoadingCurtain()            => _loadingCurtain.Show();
 		public void ShowImmediatelyLoadingCurtain() => _loadingCurtain.ShowImmediately();
 		public void HideLoadingCurtain()            => _loadingCurtain.Hide();
 		public void HideImmediatelyLoadingCurtain() => _loadingCurtain.HideImmediately();
-
-		public void ShowBuildMenu() => Debug.Log(nameof(ShowBuildMenu));
-
-		public void ShowBuildingMenu() => Debug.Log(nameof(ShowBuildingMenu));
+		public void ShowBuildMenu()                 => _windows.Show<BuildWindow>();
+		public void ShowBuildingMenu()              => _windows.Show<BuildWindow>();
 	}
 }
