@@ -9,6 +9,11 @@ namespace Confrontation
 
 		public void Initialize() => _field.Cells.ForEach((c) => c.MouseClick += OnCellMouseClick);
 
-		private void OnCellMouseClick(Coordinates coordinates) => Debug.Log("coordinates = " + coordinates);
+		private void OnCellMouseClick(Cell cell)
+		{
+			const int currentPlayerId = 1;
+
+			Debug.Log($"isBelongToCurrentPlayer = {cell.IsBelongTo(currentPlayerId)}");
+		}
 	}
 }

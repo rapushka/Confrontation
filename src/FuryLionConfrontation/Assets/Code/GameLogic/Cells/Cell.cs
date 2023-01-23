@@ -12,7 +12,7 @@ namespace Confrontation
 		private Coordinates _coordinates;
 		private Village _relatedRegion;
 
-		public event Action<Coordinates> MouseClick; 
+		public event Action<Cell> MouseClick; 
 
 		[CanBeNull] public Building Building { get; set; }
 
@@ -41,6 +41,9 @@ namespace Confrontation
 		private void OnEnable() => _mouseClickReceiver.MouseClick += OnMouseClick;
 		private void OnDisable() => _mouseClickReceiver.MouseClick -= OnMouseClick;
 
-		private void OnMouseClick() => MouseClick?.Invoke(Coordinates);
+		private void OnMouseClick() => MouseClick?.Invoke(this);
+
+		public bool IsBelongTo(int currentPlayerId) 
+			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == currentPlayerId;
 	}
 }
