@@ -79,3 +79,4 @@ MonoBehaviour:
   _resources: {fileID: 11400000, guid: 3ff89a2d7a641949b92024b89ae72519, type: 2}
   _windows:
   - {fileID: -5024561093601434687, guid: 3c816cc6fea24563aa7f1ab518318f81, type: 3}
+  - {fileID: -5024561093601434687, guid: d25c7733bc1605a4ea0875237fa75480, type: 3}
