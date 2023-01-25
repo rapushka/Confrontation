@@ -11,7 +11,11 @@ namespace Confrontation
 
 		public void Initialize() => _field.Cells.ForEach((c) => c.MouseClick += OnCellMouseClick);
 
-		private void OnCellMouseClick(Cell cell) => DecideWhatToDoWith(cell).Invoke();
+		private void OnCellMouseClick(Cell cell)
+		{
+			_user.Player.ClickedCell = cell;
+			DecideWhatToDoWith(cell).Invoke();
+		}
 
 		private Action DecideWhatToDoWith(Cell cell)
 			=> cell.IsBelongTo(_user.Player.Id)

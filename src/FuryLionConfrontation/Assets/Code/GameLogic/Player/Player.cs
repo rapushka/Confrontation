@@ -7,5 +7,7 @@ namespace Confrontation
 	public class Player
 	{
 		[field: SerializeField] public int Id { get; private set; }
+
+		public Cell ClickedCell { get; set; }
 	}
 }
