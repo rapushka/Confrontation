@@ -8,17 +8,30 @@ namespace Confrontation
 		[Inject] private readonly WindowBase.FactoryBase _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;
 		[Inject] private readonly IAssetsService _assets;
+		[Inject] private readonly IResourcesService _resources;
 
 		private readonly TypedDictionary<WindowBase> _cashedWindows = new();
 		private WindowBase _currentWindow;
+		private RectTransform _canvas;
 
 		public void Show<TWindow>()
 			where TWindow : WindowBase
 		{
 			HideCurrent();
 
+			CreateCanvas();
 			_currentWindow = GetOrAdd<TWindow>();
 			_currentWindow.Show();
+		}
+
+		private void CreateCanvas()
+		{
+			if (_canvas == true)
+			{
+				return;
+			}
+
+			_canvas = _assets.Instantiate(_resources.Canvas);
 		}
 
 		public void Hide() => HideCurrent();
@@ -33,7 +46,7 @@ namespace Confrontation
 
 			var windowPrefab = _windowsPrefabs.Get<TWindow>();
 			window = (TWindow)_windowsFactory.Create(windowPrefab);
-			Debug.Log($"Created window of type {window.GetType().Name}");
+			window.transform.SetParent(_canvas);
 			_cashedWindows.Add(window);
 
 			return window;

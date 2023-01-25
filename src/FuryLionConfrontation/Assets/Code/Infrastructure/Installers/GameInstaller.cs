@@ -30,15 +30,23 @@ namespace Confrontation
 
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
 
+			BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
+			BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
+
+			BindPrefabFactory<WindowBase, WindowBase.FactoryBase, CustomWindowFactory>();
+		}
+
+		private void BindPrefabFactory<TContract, TFactory>()
+			where TFactory : PlaceholderFactory<Object, TContract>
+			=> BindPrefabFactory<TContract, TFactory, PrefabFactory<TContract>>();
+
+		private void BindPrefabFactory<TContract, TFactory, TActualFactory>()
+			where TFactory : PlaceholderFactory<Object, TContract>
+			where TActualFactory : IFactory<Object, TContract>
+		{
 			Container
-				.BindFactory<Object, BuildWindow, BuildWindow.Factory>()
-				.FromFactory<PrefabFactory<BuildWindow>>();
-			Container
-				.BindFactory<Object, BuildingWindow, BuildingWindow.Factory>()
-				.FromFactory<PrefabFactory<BuildingWindow>>();
-			Container
-				.BindFactory<Object, WindowBase, WindowBase.FactoryBase>()
-				.FromFactory<CustomWindowFactory>();
+				.BindFactory<Object, TContract, TFactory>()
+				.FromFactory<TActualFactory>();
 		}
 	}
 }
