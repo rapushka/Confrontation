@@ -11,6 +11,6 @@ namespace Confrontation
 
 		public void Hide() => _window.SetActive(false);
 
-		public class FactoryBase : PlaceholderFactory<Object, WindowBase> { }
+		public class Factory : PlaceholderFactory<Object, WindowBase> { }
 	}
 }

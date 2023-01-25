@@ -5,7 +5,7 @@ namespace Confrontation
 {
 	public class Windows
 	{
-		[Inject] private readonly WindowBase.FactoryBase _windowsFactory;
+		[Inject] private readonly WindowBase.Factory _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly IResourcesService _resources;
@@ -36,20 +36,18 @@ namespace Confrontation
 			_canvas = _assets.Instantiate(_resources.Canvas);
 		}
 
-		private WindowBase GetOrAdd<TWindow>() where TWindow : WindowBase
-		{
-			var window = _cashedWindows.GetValueOrDefault<TWindow>();
-			if (window is not null)
-			{
-				return window;
-			}
+		private WindowBase GetOrAdd<TWindow>()
+			where TWindow : WindowBase
+			=> _cashedWindows.ContainsKey<TWindow>()
+				? _cashedWindows.Get<TWindow>()
+				: CreateNewWindow<TWindow>();
 
-			var windowPrefab = _windowsPrefabs.Get<TWindow>();
-			window = (TWindow)_windowsFactory.Create(windowPrefab)
-			                                 .With((w) => w.transform.SetParent(_canvas))
-			                                 .With(_cashedWindows.Add);
-			return window;
-		}
+		private TWindow CreateNewWindow<TWindow>()
+			where TWindow : WindowBase
+			=> _windowsFactory.Create(_windowsPrefabs.Get<TWindow>())
+			                  .With((w) => w.transform.SetParent(_canvas))
+			                  .Cast<WindowBase, TWindow>()
+			                  .With(_cashedWindows.Add);
 
 		private void HideCurrent()
 		{

@@ -5,6 +5,6 @@ namespace Confrontation
 {
 	public class BuildWindow : WindowBase
 	{
-		public class Factory : PlaceholderFactory<Object, BuildWindow> { }
+		public new class Factory : PlaceholderFactory<Object, BuildWindow> { }
 	}
 }

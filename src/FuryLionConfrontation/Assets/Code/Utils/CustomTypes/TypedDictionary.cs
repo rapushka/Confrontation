@@ -20,8 +20,6 @@ namespace Confrontation
 			where TChild : T
 			=> _dictionary.Add(typeof(TChild), value);
 
-		public TChild GetValueOrDefault<TChild>()
-			where TChild : T
-			=> (TChild)_dictionary.GetValueOrDefault(typeof(TChild));
+		public bool ContainsKey<TChild>() where TChild : T => _dictionary.ContainsKey(typeof(TChild));
 	}
 }
