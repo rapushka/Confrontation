@@ -47,6 +47,7 @@ namespace Confrontation
 			var windowPrefab = _windowsPrefabs.Get<TWindow>();
 			window = (TWindow)_windowsFactory.Create(windowPrefab);
 			window.transform.SetParent(_canvas);
+			window.GetComponent<RectTransform>().ForceUpdateRectTransforms();
 			_cashedWindows.Add(window);
 
 			return window;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2594996161190989427}
   - component: {fileID: 2594996161190989426}
   m_Layer: 0
-  m_Name: Windows Root
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
