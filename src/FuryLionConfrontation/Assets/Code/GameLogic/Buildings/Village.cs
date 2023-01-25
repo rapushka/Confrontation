@@ -5,8 +5,6 @@ namespace Confrontation
 {
 	public class Village : Building
 	{
-		[field: SerializeField] public int OwnerPlayerId { get; set; }
-
 		[field: SerializeField] public List<Cell> CellsInRegion { get; private set; } = new();
 
 		public void AddToRegion(Cell cell)
