@@ -24,6 +24,8 @@ namespace Confrontation
 			_currentWindow.Show();
 		}
 
+		public void Hide() => HideCurrent();
+
 		private void CreateCanvas()
 		{
 			if (_canvas == true)
@@ -34,8 +36,6 @@ namespace Confrontation
 			_canvas = _assets.Instantiate(_resources.Canvas);
 		}
 
-		public void Hide() => HideCurrent();
-
 		private WindowBase GetOrAdd<TWindow>() where TWindow : WindowBase
 		{
 			var window = _cashedWindows.GetValueOrDefault<TWindow>();
@@ -45,11 +45,9 @@ namespace Confrontation
 			}
 
 			var windowPrefab = _windowsPrefabs.Get<TWindow>();
-			window = (TWindow)_windowsFactory.Create(windowPrefab);
-			window.transform.SetParent(_canvas);
-			window.GetComponent<RectTransform>().ForceUpdateRectTransforms();
-			_cashedWindows.Add(window);
-
+			window = (TWindow)_windowsFactory.Create(windowPrefab)
+			                                 .With((w) => w.transform.SetParent(_canvas))
+			                                 .With(_cashedWindows.Add);
 			return window;
 		}
 
