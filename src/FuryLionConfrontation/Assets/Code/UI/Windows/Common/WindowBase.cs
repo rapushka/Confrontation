@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
@@ -9,5 +10,7 @@ namespace Confrontation
 		public void Show() => _window.SetActive(true);
 
 		public void Hide() => _window.SetActive(false);
+
+		public class FactoryBase : PlaceholderFactory<Object, WindowBase> { }
 	}
 }

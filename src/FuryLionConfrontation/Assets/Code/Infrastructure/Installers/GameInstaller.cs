@@ -29,6 +29,16 @@ namespace Confrontation
 			Container.Bind<UiMediator>().AsSingle();
 
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
+
+			Container
+				.BindFactory<Object, BuildWindow, BuildWindow.Factory>()
+				.FromFactory<PrefabFactory<BuildWindow>>();
+			Container
+				.BindFactory<Object, BuildingWindow, BuildingWindow.Factory>()
+				.FromFactory<PrefabFactory<BuildingWindow>>();
+			Container
+				.BindFactory<Object, WindowBase, WindowBase.FactoryBase>()
+				.FromFactory<CustomWindowFactory>();
 		}
 	}
 }

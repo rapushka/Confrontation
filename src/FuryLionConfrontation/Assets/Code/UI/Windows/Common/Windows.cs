@@ -1,9 +1,11 @@
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
 	public class Windows
 	{
+		[Inject] private readonly WindowBase.FactoryBase _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;
 		[Inject] private readonly IAssetsService _assets;
 
@@ -30,7 +32,8 @@ namespace Confrontation
 			}
 
 			var windowPrefab = _windowsPrefabs.Get<TWindow>();
-			window = _assets.Instantiate(windowPrefab, InstantiateGroup.Windows);
+			window = (TWindow)_windowsFactory.Create(windowPrefab);
+			Debug.Log($"Created window of type {window.GetType().Name}");
 			_cashedWindows.Add(window);
 
 			return window;
