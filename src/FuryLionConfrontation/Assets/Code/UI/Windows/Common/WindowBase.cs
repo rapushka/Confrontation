@@ -15,6 +15,6 @@ namespace Confrontation
 
 		public abstract WindowBase Accept(IWindowVisitor windowVisitor);
 
-		public class Factory : PlaceholderFactory<Object, WindowBase> { }
+		public class Factory : PlaceholderFactory<WindowBase, WindowBase> { }
 	}
 }

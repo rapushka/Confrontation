@@ -31,7 +31,7 @@ namespace Confrontation
 
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
-			Container.BindPrefabFactory<WindowBase, WindowBase.Factory, CustomWindowFactory>();
+			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<CustomWindowFactory>();
 		}
 	}
 }
