@@ -10,7 +10,7 @@ namespace Confrontation
 		public Building Create(Building prefab, Transform ownerCell, int ownerPlayerId)
 		{
 			var building = _assets.Instantiate(prefab, parent: ownerCell);
-			building.StaticData.OwnerPlayerId = ownerPlayerId;
+			building.OwnerPlayerId = ownerPlayerId;
 			return building;
 		}
 	}

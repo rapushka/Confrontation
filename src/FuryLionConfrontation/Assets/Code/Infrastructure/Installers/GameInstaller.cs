@@ -16,10 +16,12 @@ namespace Confrontation
 		public override void InstallBindings()
 		{
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
-			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
+			Container.BindInstance(_user).AsSingle();
 			Container.BindInstance(_canvasPrefab).AsSingle();
 			Container.BindInstance(Instantiate(_loadingCurtainPrefab)).AsSingle();
 			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
+
+			Container.Bind<ILevelSelector>().To<LevelCreator>().AsSingle();
 
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();

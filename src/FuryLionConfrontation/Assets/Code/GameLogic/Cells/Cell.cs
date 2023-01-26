@@ -23,7 +23,7 @@ namespace Confrontation
 			get => _relatedRegion;
 			set
 			{
-				_color.ChangeMaterialTo(value.StaticData.OwnerPlayerId);
+				_color.ChangeMaterialTo(value.OwnerPlayerId);
 				_relatedRegion = value;
 			}
 		}
@@ -44,6 +44,6 @@ namespace Confrontation
 		private void OnMouseClick() => MouseClick?.Invoke(this);
 
 		public bool IsBelongTo(int currentPlayerId)
-			=> RelatedRegion is not null && RelatedRegion.StaticData.OwnerPlayerId == currentPlayerId;
+			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == currentPlayerId;
 	}
 }

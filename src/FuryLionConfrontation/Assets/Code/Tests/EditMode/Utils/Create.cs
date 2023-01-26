@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Confrontation.Editor.Tests
@@ -10,7 +11,7 @@ namespace Confrontation.Editor.Tests
 
 		public static LevelEditor LevelEditor() => new();
 
-		public static Level Level() => ScriptableObject.CreateInstance<Level>();
+		public static Level Level() => throw new NotImplementedException();
 
 		public static Region Region() => new();
 

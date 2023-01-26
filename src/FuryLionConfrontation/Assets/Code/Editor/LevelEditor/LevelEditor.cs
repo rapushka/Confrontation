@@ -1,6 +1,7 @@
+using System;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Confrontation.Editor
 {
@@ -28,18 +29,7 @@ namespace Confrontation.Editor
 
 		public string Serialize()
 		{
-			if (_field is null)
-			{
-				return $"{nameof(_field).Format()} is null";
-			}
-
-			var level = ScriptableObject.CreateInstance<Level>();
-			var serializableLevel = new
-			{
-				level.Sizes,
-				VillagesPositions = level.Regions
-			};
-			return JsonConvert.SerializeObject(serializableLevel, Formatting.Indented);
+			throw new NotImplementedException();
 		}
 
 		public void ToVillage(GameObject gameObject) { }
