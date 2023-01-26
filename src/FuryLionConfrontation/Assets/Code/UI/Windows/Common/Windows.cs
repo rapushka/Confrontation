@@ -1,5 +1,4 @@
 using JetBrains.Annotations;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,50 +7,36 @@ namespace Confrontation
 	{
 		[Inject] private readonly WindowBase.Factory _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;
-		[Inject] private readonly IAssetsService _assets;
-		[Inject] private readonly RectTransform _canvasPrefab;
+		[Inject] private readonly UiMediator _uiMediator;
 
 		private readonly TypedDictionary<WindowBase> _cashedWindows = new();
 
 		[CanBeNull] private WindowBase _currentWindow;
-		[CanBeNull] private RectTransform _canvas;
 
 		public void Show<TWindow>()
 			where TWindow : WindowBase
 		{
 			HideCurrent();
-
-			CreateCanvas();
-			_currentWindow = GetOrAdd<TWindow>();
-			_currentWindow!.Show();
+			_currentWindow = SwitchCurrentTo<TWindow>();
+			_currentWindow.Show();
 		}
 
 		public void Hide() => HideCurrent();
 
-		private void CreateCanvas()
-		{
-			if (_canvas == false)
-			{
-				_canvas = _assets.Instantiate(_canvasPrefab);
-			}
-		}
-
-		private WindowBase GetOrAdd<TWindow>()
+		[NotNull]
+		private WindowBase SwitchCurrentTo<TWindow>()
 			where TWindow : WindowBase
-			=> _cashedWindows.ContainsKey<TWindow>()
-				? _cashedWindows.Get<TWindow>()
-				: CreateNewWindow<TWindow>();
+			=> _cashedWindows.GetOrAdd(createNew: CreateNewWindow<TWindow>);
 
 		private TWindow CreateNewWindow<TWindow>()
 			where TWindow : WindowBase
 			=> _windowsFactory.Create(_windowsPrefabs.Get<TWindow>())
-			                  .With((w) => w.transform.SetParent(_canvas))
-			                  .Cast<WindowBase, TWindow>()
-			                  .With(_cashedWindows.Add);
+			                  .With((w) => w.transform.SetParent(_uiMediator.Canvas))
+			                  .Cast<WindowBase, TWindow>();
 
 		private void HideCurrent()
 		{
-			if (_currentWindow != null)
+			if (_currentWindow is not null)
 			{
 				_currentWindow.Hide();
 			}

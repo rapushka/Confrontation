@@ -16,10 +16,16 @@ namespace Confrontation
 			where TChild : T
 			=> (TChild)_dictionary[typeof(TChild)];
 
-		public void Add<TChild>(TChild value)
+		public TChild GetOrAdd<TChild>(Func<TChild> createNew)
+			where TChild : T
+			=> ContainsKey<TChild>()
+				? Get<TChild>()
+				: createNew.Invoke().With(Add);
+
+		private bool ContainsKey<TChild>() where TChild : T => _dictionary.ContainsKey(typeof(TChild));
+
+		private void Add<TChild>(TChild value)
 			where TChild : T
 			=> _dictionary.Add(typeof(TChild), value);
-
-		public bool ContainsKey<TChild>() where TChild : T => _dictionary.ContainsKey(typeof(TChild));
 	}
 }
