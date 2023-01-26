@@ -13,6 +13,8 @@ namespace Confrontation
 
 		public virtual void Hide() => _window.SetActive(false);
 
+		public abstract WindowBase Accept(IWindowVisitor windowVisitor);
+
 		public class Factory : PlaceholderFactory<Object, WindowBase> { }
 	}
 }

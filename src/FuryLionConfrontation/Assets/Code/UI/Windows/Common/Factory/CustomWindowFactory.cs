@@ -1,20 +1,20 @@
-using System;
 using Zenject;
 using Object = UnityEngine.Object;
+// ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
 namespace Confrontation
 {
-	public class CustomWindowFactory : PrefabFactory<WindowBase>
+	public class CustomWindowFactory : PrefabFactory<WindowBase>, IWindowVisitor
 	{
 		[Inject] private readonly BuildWindow.Factory _buildWindowFactory;
 		[Inject] private readonly BuildingWindow.Factory _buildingWindowFactory;
 
-		public override WindowBase Create(Object window)
-			=> window switch
-			{
-				BuildWindow    => _buildWindowFactory.Create(window),
-				BuildingWindow => _buildingWindowFactory.Create(window),
-				var _          => throw new ArgumentException(),
-			};
+		private WindowBase _window;
+
+		public override WindowBase Create(Object window) => ((WindowBase)window).Accept(this);
+
+		public WindowBase Visit(BuildWindow window) => _buildWindowFactory.Create(window);
+
+		public WindowBase Visit(BuildingWindow window) => _buildingWindowFactory.Create(window);
 	}
 }
