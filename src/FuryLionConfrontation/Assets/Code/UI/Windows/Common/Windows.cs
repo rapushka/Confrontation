@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using Zenject;
 
@@ -8,11 +9,12 @@ namespace Confrontation
 		[Inject] private readonly WindowBase.Factory _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;
 		[Inject] private readonly IAssetsService _assets;
-		[Inject] private readonly IResourcesService _resources;
+		[Inject] private readonly RectTransform _canvasPrefab;
 
 		private readonly TypedDictionary<WindowBase> _cashedWindows = new();
-		private WindowBase _currentWindow;
-		private RectTransform _canvas;
+
+		[CanBeNull] private WindowBase _currentWindow;
+		[CanBeNull] private RectTransform _canvas;
 
 		public void Show<TWindow>()
 			where TWindow : WindowBase
@@ -21,19 +23,17 @@ namespace Confrontation
 
 			CreateCanvas();
 			_currentWindow = GetOrAdd<TWindow>();
-			_currentWindow.Show();
+			_currentWindow!.Show();
 		}
 
 		public void Hide() => HideCurrent();
 
 		private void CreateCanvas()
 		{
-			if (_canvas == true)
+			if (_canvas == false)
 			{
-				return;
+				_canvas = _assets.Instantiate(_canvasPrefab);
 			}
-
-			_canvas = _assets.Instantiate(_resources.Canvas);
 		}
 
 		private WindowBase GetOrAdd<TWindow>()

@@ -26,6 +26,10 @@ MonoBehaviour:
       <Column>k__BackingField: 1
     - <Row>k__BackingField: 1
       <Column>k__BackingField: 2
+    - <Row>k__BackingField: 1
+      <Column>k__BackingField: 0
+    - <Row>k__BackingField: 0
+      <Column>k__BackingField: 1
   - <OwnerPlayerId>k__BackingField: 2
     <VillageCoordinates>k__BackingField:
       <Row>k__BackingField: 3
