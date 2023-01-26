@@ -13,8 +13,8 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<Regions>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 
-			Container.BindFactory<Component, int, Village, Village.Factory>()
-			         .FromFactory<CustomVillageFactory>();
+			Container.BindFactory<Component, int, Building, Building.Factory>()
+			         .FromFactory<CustomBuildingFactory>();
 		}
 	}
 }

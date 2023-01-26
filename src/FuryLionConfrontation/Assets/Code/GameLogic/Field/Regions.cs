@@ -8,7 +8,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly Field _field;
 		[Inject] private readonly ILevelSelector _levelSelector;
-		[Inject] private readonly Village.Factory _villageFactory;
+		[Inject] private readonly Building.Factory _villageFactory;
 
 		public void Initialize() => DivideIntoRegions();
 
@@ -25,7 +25,7 @@ namespace Confrontation
 		private Village CreateVillage(Region region)
 		{
 			var ownerCell = _field.Cells[region.VillageCoordinates];
-			var village = _villageFactory.Create(ownerCell, region.OwnerPlayerId);
+			var village = _villageFactory.Create<Village>(ownerCell, region.OwnerPlayerId);
 			ownerCell.Building = village;
 			return village;
 		}

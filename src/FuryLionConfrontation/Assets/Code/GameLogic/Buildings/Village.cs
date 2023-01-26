@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace Confrontation
 {
@@ -13,7 +12,5 @@ namespace Confrontation
 			CellsInRegion.Add(cell);
 			cell.RelatedRegion = this;
 		}
-
-		public class Factory : PlaceholderFactory<Component, int, Village> { }
 	}
 }
