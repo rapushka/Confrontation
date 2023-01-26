@@ -9,9 +9,9 @@ namespace Confrontation
 
 		[SerializeField] private GameObject _window;
 
-		public void Show() => _window.SetActive(true);
+		public virtual void Show() => _window.SetActive(true);
 
-		public void Hide() => _window.SetActive(false);
+		public virtual void Hide() => _window.SetActive(false);
 
 		public class Factory : PlaceholderFactory<Object, WindowBase> { }
 	}
