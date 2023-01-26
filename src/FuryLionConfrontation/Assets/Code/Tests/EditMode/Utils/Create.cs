@@ -4,16 +4,6 @@ namespace Confrontation.Editor.Tests
 {
 	public static class Create
 	{
-		public static Field Field(IResourcesService resourcesService)
-		{
-			var field = new Field();
-			field.SetPrivateField("_resources", resourcesService);
-			field.SetPrivateField("_assets", AssetsService());
-			return field;
-		}
-
-		private static AssetsService AssetsService() => new();
-
 		public static Cell CellPrefab() => Resources.Load<Cell>("Prefabs/Cell");
 
 		public static Village VillagePrefab() => new GameObject().AddComponent<Village>();

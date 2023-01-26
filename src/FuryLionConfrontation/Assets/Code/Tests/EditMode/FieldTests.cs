@@ -37,7 +37,6 @@ namespace Confrontation.Editor.Tests
 			var field = Container.Resolve<Field>();
 
 			// Act.
-			field.Initialize();
 
 			// Assert.
 			var cells = field.GetCells();
@@ -48,11 +47,9 @@ namespace Confrontation.Editor.Tests
 		public void WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
 		{
 			// Arrange.
-			var field = Container.Resolve<Field>();
 			var regions = Container.Resolve<Regions>();
 
 			// Act.
-			field.Initialize();
 			regions.Initialize();
 
 			// Assert.
@@ -68,7 +65,7 @@ namespace Confrontation.Editor.Tests
 			var regions = Container.Resolve<Regions>();
 
 			// Act.
-			field.Initialize();
+			// field.Initialize();
 			regions.Initialize();
 
 			// Assert.
@@ -84,7 +81,6 @@ namespace Confrontation.Editor.Tests
 			var regions = Container.Resolve<Regions>();
 
 			// Act.
-			field.Initialize();
 			regions.Initialize();
 
 			// Assert.

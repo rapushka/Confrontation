@@ -8,6 +8,7 @@ namespace Confrontation
 		public override void InstallBindings()
 		{
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
+			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<Regions>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 		}

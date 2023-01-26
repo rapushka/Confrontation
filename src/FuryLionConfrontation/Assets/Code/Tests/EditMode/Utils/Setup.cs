@@ -6,11 +6,6 @@ namespace Confrontation.Editor.Tests
 {
 	public static class Setup
 	{
-		public static Field Field(int height = 1, int width = 1) => Field(Level(height, width));
-
-		public static Field Field(Level level)
-			=> Create.Field(ResourcesService(Create.CellPrefab(), Create.VillagePrefab(), level));
-
 		public static Level Level(List<Region> regions, int height = 1, int width = 1)
 		{
 			var level = Level(height, width);

@@ -18,7 +18,7 @@ namespace Confrontation
 			var typedDictionary = new TypedDictionary<WindowBase>(_windows);
 
 			Container.Bind<IResourcesService>().FromInstance(_resources).AsSingle();
-			Container.Bind<User>().FromInstance(_user).AsSingle();
+			Container.BindInterfacesTo<User>().FromInstance(_user).AsSingle();
 			Container.Bind<LoadingCurtain>().FromInstance(loadingCurtain).AsSingle();
 			Container.Bind<TypedDictionary<WindowBase>>().FromInstance(typedDictionary).AsSingle();
 
