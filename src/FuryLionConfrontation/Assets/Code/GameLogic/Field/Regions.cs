@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,13 +7,12 @@ namespace Confrontation
 	public class Regions : IInitializable
 	{
 		[Inject] private readonly Field _field;
-		[Inject] private readonly IResourcesService _resources;
-		[Inject] private readonly IAssetsService _assets;
-		[Inject] private readonly User _user;
+		[Inject] private readonly ILevelSelector _levelSelector;
+		[Inject] private readonly Village.Factory _villageFactory;
 
 		public void Initialize() => DivideIntoRegions();
 
-		private void DivideIntoRegions() => _user.SelectedLevel.Regions.ForEach(ToRegion);
+		private void DivideIntoRegions() => _levelSelector.SelectedLevel.Regions.ForEach(ToRegion);
 
 		private void ToRegion(Region region)
 		{
@@ -27,13 +25,9 @@ namespace Confrontation
 		private Village CreateVillage(Region region)
 		{
 			var ownerCell = _field.Cells[region.VillageCoordinates];
-			var village = InstantiateVillage(ownerCell);
-			village.OwnerPlayerId = region.OwnerPlayerId;
+			var village = _villageFactory.Create(ownerCell, region.OwnerPlayerId);
 			ownerCell.Building = village;
 			return village;
 		}
-
-		private Village InstantiateVillage(Component ownerCell)
-			=> _assets.Instantiate(original: _resources.VillagePrefab, parent: ownerCell.transform);
 	}
 }
