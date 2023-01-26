@@ -10,10 +10,11 @@ namespace Confrontation
 		{
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
-			Container.BindInterfacesAndSelfTo<Regions>().AsSingle();
+			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 
-			Container.BindFactory<Component, int, Building, Building.Factory>()
+			Container.BindFactory<Building, Transform, int, Building, Building.Factory>()
 			         .FromFactory<CustomBuildingFactory>();
 		}
 	}

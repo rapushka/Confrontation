@@ -17,7 +17,7 @@ namespace Confrontation.Editor.Tests
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
 			Container.Bind<Field>().AsSingle();
-			Container.Bind<Regions>().AsSingle();
+			Container.Bind<RegionsGenerator>().AsSingle();
 			Container.Bind<FieldClicksHandler>().AsSingle();
 		}
 
@@ -47,7 +47,7 @@ namespace Confrontation.Editor.Tests
 		public void WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
 		{
 			// Arrange.
-			var regions = Container.Resolve<Regions>();
+			var regions = Container.Resolve<RegionsGenerator>();
 
 			// Act.
 			regions.Initialize();
@@ -62,7 +62,7 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
-			var regions = Container.Resolve<Regions>();
+			var regions = Container.Resolve<RegionsGenerator>();
 
 			// Act.
 			// field.Initialize();
@@ -78,7 +78,7 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
-			var regions = Container.Resolve<Regions>();
+			var regions = Container.Resolve<RegionsGenerator>();
 
 			// Act.
 			regions.Initialize();

@@ -3,19 +3,15 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class CustomBuildingFactory : IFactory<Component, int, Building>
+	public class CustomBuildingFactory : IFactory<Building, Transform, int, Building>
 	{
-		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly IAssetsService _assets;
 
-		public Building Create(Component ownerCell, int ownerPlayerId)
+		public Building Create(Building prefab, Transform ownerCell, int ownerPlayerId)
 		{
-			var village = Instantiate(ownerCell);
-			village.OwnerPlayerId = ownerPlayerId;
-			return village;
+			var building = _assets.Instantiate(prefab, parent: ownerCell);
+			building.StaticData.OwnerPlayerId = ownerPlayerId;
+			return building;
 		}
-		
-		private Village Instantiate(Component ownerCell)
-			=> _assets.Instantiate(original: _resources.VillagePrefab, parent: ownerCell.transform);
 	}
 }

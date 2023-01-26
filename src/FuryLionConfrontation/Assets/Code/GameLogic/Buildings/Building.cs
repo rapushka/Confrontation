@@ -1,17 +1,26 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
+	[Serializable]
 	public abstract class Building : MonoBehaviour
 	{
-		[field: SerializeField] public int OwnerPlayerId { get; set; }
-
-		public class Factory : PlaceholderFactory<Component, int, Building>
+		public Data StaticData { get; set; } = new();
+		
+		[Serializable]
+		public class Data
 		{
-			public T Create<T>(Component parent, int ownerId)
+			[field: SerializeField] public int         OwnerPlayerId { get; set; }
+			[field: SerializeField] public Coordinates Coordinates   { get; private set; }
+		}
+
+		public class Factory : PlaceholderFactory<Building, Transform, int, Building>
+		{
+			public T Create<T>(Building prefab, Transform ownerCell, int ownerId)
 				where T : Building
-				=> (T)base.Create(parent, ownerId);
+				=> (T)base.Create(prefab, ownerCell, ownerId);
 		}
 	}
 }

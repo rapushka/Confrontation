@@ -11,5 +11,6 @@ namespace Confrontation
 		[field: SerializeField] public Sizes Sizes { get; private set; }
 
 		[field: SerializeField] public List<Region> Regions { get; private set; }
+		[field: SerializeField] public List<Building.Data> Buildings { get; private set; }
 	}
 }
