@@ -16,7 +16,8 @@ namespace Confrontation
 		{
 			var fieldCell = _field.Cells[data.Coordinates];
 			var ownerId = fieldCell.RelatedRegion.OwnerPlayerId;
-			_buildingsFactory.Create(data.Prefab, fieldCell.transform, ownerId);
+			var building = _buildingsFactory.Create(data.Prefab, fieldCell.transform, ownerId);
+			fieldCell.Building = building;
 		}
 	}
 }

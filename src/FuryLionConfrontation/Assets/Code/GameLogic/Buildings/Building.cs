@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -15,12 +14,5 @@ namespace Confrontation
 				where T : Building
 				=> (T)base.Create(prefab, ownerCell, ownerId);
 		}
-	}
-
-	[Serializable]
-	public class BuildingData
-	{
-		public Building    Prefab      { get; set; }
-		public Coordinates Coordinates { get; set; }
 	}
 }
