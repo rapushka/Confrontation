@@ -35,7 +35,7 @@ namespace Confrontation
 
 		private void BindPrefabs()
 		{
-			Container.BindInstance(Instantiate(_loadingCurtainPrefab)).AsSingle();
+			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
 			Container.BindInstance(_canvasPrefab).AsSingle();
