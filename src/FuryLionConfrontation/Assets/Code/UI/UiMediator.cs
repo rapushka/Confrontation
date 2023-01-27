@@ -21,6 +21,6 @@ namespace Confrontation
 		public void HideImmediatelyLoadingCurtain()      => _loadingCurtain.HideImmediately();
 		public void ShowWindow<T>() where T : WindowBase => _windows.Show<T>();
 		public void HideWindow()                         => _windows.Hide();
-		public void Build(Building building)             { }
+		public void Build(Building building)             => Debug.Log("In this moment will be created building:)");
 	}
 }

@@ -8,7 +8,7 @@ namespace Confrontation
 		[SerializeField] private Button _button;
 
 		private void OnEnable()  => _button.onClick.AddListener(OnButtonClick);
-		private void OnDisable() => _button.onClick.AddListener(OnButtonClick);
+		private void OnDisable() => _button.onClick.RemoveListener(OnButtonClick);
 
 		protected abstract void OnButtonClick();
 	}

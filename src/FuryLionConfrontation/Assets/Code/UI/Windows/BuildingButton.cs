@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +9,15 @@ namespace Confrontation
 		[Inject] private readonly Building _building;
 		[Inject] private readonly UiMediator _uiMediator;
 
-		protected override void OnButtonClick() => _uiMediator.Build(_building);
+		[SerializeField] private TextMeshProUGUI _textMesh;
+
+		private void Start() => _textMesh.text = _building.name;
+
+		protected override void OnButtonClick()
+		{
+			_uiMediator.Build(_building);
+			_uiMediator.HideWindow();
+		}
 
 		public class Factory : PlaceholderFactory<Building, BuildingButton>
 		{
