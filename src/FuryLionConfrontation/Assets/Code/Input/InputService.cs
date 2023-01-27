@@ -1,19 +1,23 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Confrontation
 {
-	public class TouchInputService : MonoBehaviour
+	public class InputService : MonoBehaviour, IInputService
 	{
-		private readonly Raycaster _raycaster = new();
-
+		private Camera _camera;
 		private InputActions _actions;
 		private InputAction _touchPress;
 		private InputAction _touchPosition;
 
+		public event Action<ClickReceiver> Clicked;
+
+		private Camera Camera => _camera ??= Camera.main;
+
 		private void Awake()
 		{
-			// DontDestroyOnLoad(gameObject);
+			DontDestroyOnLoad(gameObject);
 			_actions = new InputActions();
 			_touchPress = _actions.Gameplay.TouchPress;
 			_touchPosition = _actions.Gameplay.TouchPosition;
@@ -28,7 +32,12 @@ namespace Confrontation
 		private void OnClickPerformed(InputAction.CallbackContext context)
 		{
 			var touchPosition = _touchPosition.ReadValue<Vector2>();
-			_raycaster.DetectObject(touchPosition);
+			var ray = Camera.ScreenPointToRay(touchPosition);
+			if (Physics.Raycast(ray, out var hit)
+			    && hit.collider.TryGetComponent<ClickReceiver>(out var receiver))
+			{
+				Clicked?.Invoke(receiver);
+			}
 		}
 	}
 }

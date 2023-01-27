@@ -12,6 +12,7 @@ namespace Confrontation
 		[SerializeField] private RectTransform _canvasPrefab;
 		[SerializeField] private List<WindowBase> _windows;
 		[SerializeField] private BuildingButton _buildingButton;
+		[SerializeField] private InputService _inputService;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
@@ -39,6 +40,7 @@ namespace Confrontation
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
 			Container.BindInstance(_canvasPrefab).AsSingle();
 			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
+			Container.BindInstance<IInputService>(_inputService).AsSingle();
 		}
 
 		private void BindFactories()

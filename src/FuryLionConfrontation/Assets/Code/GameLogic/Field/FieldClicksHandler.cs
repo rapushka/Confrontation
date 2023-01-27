@@ -5,13 +5,15 @@ namespace Confrontation
 {
 	public class FieldClicksHandler : IInitializable
 	{
-		[Inject] private readonly Field _field;
 		[Inject] private readonly User _user;
 		[Inject] private readonly UiMediator _uiMediator;
+		[Inject] private readonly IInputService _inputService;
 
-		public void Initialize() { }
+		public void Initialize() => _inputService.Clicked += OnClick;
 
-		private void OnCellMouseClick(Cell cell)
+		private void OnClick(ClickReceiver clickReceiver) => OnCellClick(clickReceiver.Cell);
+
+		private void OnCellClick(Cell cell)
 		{
 			_user.Player.ClickedCell = cell;
 			DecideWhatToDoWith(cell).Invoke();
