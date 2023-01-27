@@ -81,3 +81,4 @@ MonoBehaviour:
   _windows:
   - {fileID: -5024561093601434687, guid: 3c816cc6fea24563aa7f1ab518318f81, type: 3}
   - {fileID: 1460419005113335688, guid: d25c7733bc1605a4ea0875237fa75480, type: 3}
+  _buildingButton: {fileID: -4646616829452299902, guid: a50e8c8821030da4c92d92133d4a4105, type: 3}

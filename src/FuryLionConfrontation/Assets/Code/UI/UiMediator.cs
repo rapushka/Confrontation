@@ -14,12 +14,13 @@ namespace Confrontation
 		[CanBeNull] private RectTransform _canvas;
 
 		public RectTransform Canvas => _canvas ??= _assets.Instantiate(_canvasPrefab);
-		
+
 		public void ShowLoadingCurtain()                 => _loadingCurtain.Show();
 		public void ShowImmediatelyLoadingCurtain()      => _loadingCurtain.ShowImmediately();
 		public void HideLoadingCurtain()                 => _loadingCurtain.Hide();
 		public void HideImmediatelyLoadingCurtain()      => _loadingCurtain.HideImmediately();
 		public void ShowWindow<T>() where T : WindowBase => _windows.Show<T>();
 		public void HideWindow()                         => _windows.Hide();
+		public void Build(Building building)             { }
 	}
 }
