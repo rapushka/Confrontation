@@ -9,7 +9,7 @@ namespace Confrontation
 		[Inject] private readonly User _user;
 		[Inject] private readonly UiMediator _uiMediator;
 
-		public void Initialize() => _field.Cells.ForEach((c) => c.MouseClick += OnCellMouseClick);
+		public void Initialize() { }
 
 		private void OnCellMouseClick(Cell cell)
 		{
