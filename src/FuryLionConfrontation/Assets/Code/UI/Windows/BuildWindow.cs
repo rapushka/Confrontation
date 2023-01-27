@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -8,11 +9,13 @@ namespace Confrontation
 		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly BuildingButton.Factory _buildingButtonFactory;
 
+		[SerializeField] private Transform _buttonsRoot;
+
 		private void Start()
 		{
 			foreach (var buildButton in _resources.Buildings)
 			{
-				_buildingButtonFactory.Create(buildButton);
+				_buildingButtonFactory.Create(buildButton, _buttonsRoot);
 			}
 		}
 
