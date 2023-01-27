@@ -10,6 +10,7 @@ namespace Confrontation
 		[Inject] private readonly Windows _windows;
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly RectTransform _canvasPrefab;
+		[Inject] private readonly BuildingSpawner _buildingSpawner;
 
 		[CanBeNull] private RectTransform _canvas;
 
@@ -21,6 +22,6 @@ namespace Confrontation
 		public void HideImmediatelyLoadingCurtain()      => _loadingCurtain.HideImmediately();
 		public void ShowWindow<T>() where T : WindowBase => _windows.Show<T>();
 		public void HideWindow()                         => _windows.Hide();
-		public void Build(Building building)             => Debug.Log("In this moment will be created building:)");
+		public void Build(Building building)             => _buildingSpawner.Build(building);
 	}
 }

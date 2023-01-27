@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -13,9 +12,6 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
-
-			Container.BindFactory<Building, Transform, int, Building, Building.Factory>()
-			         .FromFactory<CustomBuildingFactory>();
 		}
 	}
 }

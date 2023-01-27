@@ -1030,7 +1030,7 @@ namespace Zenject
                         subContext.MemberType = subType;
                         // By making this optional this means that all injected fields of type List<>
                         // will pass validation, which could be error prone, but I think this is better
-                        // than always requiring that they explicitly mark their list types as optional
+                        // than always requiring that they explicitly mark their list types as optionalBuildSpawner
                         subContext.Optional = true;
 
                         return ResolveAll(subContext);
