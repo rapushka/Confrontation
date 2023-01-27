@@ -7,18 +7,15 @@ using Zenject;
 namespace Confrontation.Editor.Tests
 {
 	[TestFixture]
-	public class FieldTests : ZenjectUnitTestFixture
+	public class FieldGeneratorTests : ZenjectUnitTestFixture
 	{
 		[SetUp]
 		public void SetUp()
 		{
-			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/For Tests/Resources");
-			
-			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
-			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
+			Container.Bind<ILevelSelector>().To<LevelCreator>().AsSingle();
+
 			Container.Bind<Field>().AsSingle();
-			Container.Bind<RegionsGenerator>().AsSingle();
-			Container.Bind<FieldClicksHandler>().AsSingle();
+			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 		}
 
 		[TearDown]
@@ -31,16 +28,18 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements()
+		public void WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements()
 		{
 			// Arrange.
 			var field = Container.Resolve<Field>();
+			var generator = Container.Resolve<FieldGenerator>();
 
 			// Act.
+			generator.Initialize();
 
 			// Assert.
-			var cells = field.GetCells();
-			cells.All((c) => c is not null).Should().BeTrue();
+			var cells = field.Cells;
+			cells.Should().AllBeOfType<Cell>();
 		}
 
 		[Test]
