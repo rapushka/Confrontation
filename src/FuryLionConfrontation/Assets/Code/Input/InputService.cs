@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Confrontation
@@ -31,15 +34,30 @@ namespace Confrontation
 
 		private void OnClickPerformed(InputAction.CallbackContext context)
 		{
-			Debug.Log("OnClickPerformed");
+			if (IsPointerOverUIObject())
+			{
+				return;
+			}
+
 			var touchPosition = _touchPosition.ReadValue<Vector2>();
 			var ray = Camera.ScreenPointToRay(touchPosition);
 			if (Physics.Raycast(ray, out var hit)
 			    && hit.collider.TryGetComponent<ClickReceiver>(out var receiver))
 			{
-				Debug.Log("Clicked?.Invoke");
 				Clicked?.Invoke(receiver);
 			}
+		}
+
+		private static bool IsPointerOverUIObject()
+		{
+			var eventDataCurrentPosition = new PointerEventData(EventSystem.current)
+			{
+				position = new Vector2(Input.mousePosition.x, Input.mousePosition.y),
+			};
+			var results = new List<RaycastResult>();
+			EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+			
+			return results.Any();
 		}
 	}
 }
