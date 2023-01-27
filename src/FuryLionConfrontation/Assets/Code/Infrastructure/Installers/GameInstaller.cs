@@ -40,7 +40,7 @@ namespace Confrontation
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
 			Container.BindInstance(_canvasPrefab).AsSingle();
 			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
-			Container.BindInstance<IInputService>(_inputService).AsSingle();
+			Container.Bind<IInputService>().FromComponentInNewPrefab(_inputService).AsSingle();
 		}
 
 		private void BindFactories()

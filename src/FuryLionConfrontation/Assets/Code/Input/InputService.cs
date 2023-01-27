@@ -31,11 +31,13 @@ namespace Confrontation
 
 		private void OnClickPerformed(InputAction.CallbackContext context)
 		{
+			Debug.Log("OnClickPerformed");
 			var touchPosition = _touchPosition.ReadValue<Vector2>();
 			var ray = Camera.ScreenPointToRay(touchPosition);
 			if (Physics.Raycast(ray, out var hit)
 			    && hit.collider.TryGetComponent<ClickReceiver>(out var receiver))
 			{
+				Debug.Log("Clicked?.Invoke");
 				Clicked?.Invoke(receiver);
 			}
 		}
