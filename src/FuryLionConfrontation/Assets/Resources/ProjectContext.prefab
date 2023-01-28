@@ -79,7 +79,7 @@ MonoBehaviour:
   _resources: {fileID: 11400000, guid: 3ff89a2d7a641949b92024b89ae72519, type: 2}
   _canvasPrefab: {fileID: 2594996161190989429, guid: 1d203464e11898394b83551d6701c32a, type: 3}
   _windows:
-  - {fileID: -5024561093601434687, guid: 3c816cc6fea24563aa7f1ab518318f81, type: 3}
+  - {fileID: 4738565569929036377, guid: 344cbf5c20d0230b68b5a84891ce6a73, type: 3}
   - {fileID: 1460419005113335688, guid: d25c7733bc1605a4ea0875237fa75480, type: 3}
   _buildingButton: {fileID: -4646616829452299902, guid: a50e8c8821030da4c92d92133d4a4105, type: 3}
   _inputService: {fileID: 368739459117762899, guid: ce31c2c4d72f7b1b384ffd94c228b960, type: 3}
