@@ -37,6 +37,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Tap"",
+                    ""type"": ""Button"",
+                    ""id"": ""85a1faa7-465a-4cd7-b226-8ee802e17d23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Press"",
                     ""type"": ""Button"",
                     ""id"": ""2f61e972-1021-461f-ad85-14f5a808860d"",
@@ -49,24 +58,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Release"",
                     ""type"": ""Button"",
                     ""id"": ""6dccd0f6-1cba-4b2b-a611-e6c855b3f80a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Click"",
-                    ""type"": ""Button"",
-                    ""id"": ""4a5916f5-b55e-40b5-bf8b-6e2c083c1899"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Tap"",
-                    ""type"": ""Button"",
-                    ""id"": ""85a1faa7-465a-4cd7-b226-8ee802e17d23"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -109,17 +100,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7df93191-8b05-46e4-8a90-329f0717b2a3"",
-                    ""path"": ""<Touchscreen>/Press"",
-                    ""interactions"": ""Press,Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": ""Touch"",
-                    ""action"": ""Click"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e154ef76-c204-4420-975a-1c399becb362"",
                     ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
@@ -149,10 +129,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_CursorPosition = m_Gameplay.FindAction("CursorPosition", throwIfNotFound: true);
+        m_Gameplay_Tap = m_Gameplay.FindAction("Tap", throwIfNotFound: true);
         m_Gameplay_Press = m_Gameplay.FindAction("Press", throwIfNotFound: true);
         m_Gameplay_Release = m_Gameplay.FindAction("Release", throwIfNotFound: true);
-        m_Gameplay_Click = m_Gameplay.FindAction("Click", throwIfNotFound: true);
-        m_Gameplay_Tap = m_Gameplay.FindAction("Tap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -213,19 +192,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_CursorPosition;
+    private readonly InputAction m_Gameplay_Tap;
     private readonly InputAction m_Gameplay_Press;
     private readonly InputAction m_Gameplay_Release;
-    private readonly InputAction m_Gameplay_Click;
-    private readonly InputAction m_Gameplay_Tap;
     public struct GameplayActions
     {
         private @InputActions m_Wrapper;
         public GameplayActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @CursorPosition => m_Wrapper.m_Gameplay_CursorPosition;
+        public InputAction @Tap => m_Wrapper.m_Gameplay_Tap;
         public InputAction @Press => m_Wrapper.m_Gameplay_Press;
         public InputAction @Release => m_Wrapper.m_Gameplay_Release;
-        public InputAction @Click => m_Wrapper.m_Gameplay_Click;
-        public InputAction @Tap => m_Wrapper.m_Gameplay_Tap;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,18 +215,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @CursorPosition.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCursorPosition;
                 @CursorPosition.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCursorPosition;
                 @CursorPosition.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCursorPosition;
+                @Tap.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
+                @Tap.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
+                @Tap.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
                 @Press.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPress;
                 @Press.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPress;
                 @Press.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPress;
                 @Release.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRelease;
                 @Release.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRelease;
                 @Release.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRelease;
-                @Click.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnClick;
-                @Click.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnClick;
-                @Click.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnClick;
-                @Tap.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
-                @Tap.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
-                @Tap.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -257,18 +231,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @CursorPosition.started += instance.OnCursorPosition;
                 @CursorPosition.performed += instance.OnCursorPosition;
                 @CursorPosition.canceled += instance.OnCursorPosition;
+                @Tap.started += instance.OnTap;
+                @Tap.performed += instance.OnTap;
+                @Tap.canceled += instance.OnTap;
                 @Press.started += instance.OnPress;
                 @Press.performed += instance.OnPress;
                 @Press.canceled += instance.OnPress;
                 @Release.started += instance.OnRelease;
                 @Release.performed += instance.OnRelease;
                 @Release.canceled += instance.OnRelease;
-                @Click.started += instance.OnClick;
-                @Click.performed += instance.OnClick;
-                @Click.canceled += instance.OnClick;
-                @Tap.started += instance.OnTap;
-                @Tap.performed += instance.OnTap;
-                @Tap.canceled += instance.OnTap;
             }
         }
     }
@@ -285,9 +256,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnCursorPosition(InputAction.CallbackContext context);
+        void OnTap(InputAction.CallbackContext context);
         void OnPress(InputAction.CallbackContext context);
         void OnRelease(InputAction.CallbackContext context);
-        void OnClick(InputAction.CallbackContext context);
-        void OnTap(InputAction.CallbackContext context);
     }
 }

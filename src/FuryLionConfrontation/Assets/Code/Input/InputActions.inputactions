@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "85a1faa7-465a-4cd7-b226-8ee802e17d23",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Press",
                     "type": "Button",
                     "id": "2f61e972-1021-461f-ad85-14f5a808860d",
@@ -27,24 +36,6 @@
                     "name": "Release",
                     "type": "Button",
                     "id": "6dccd0f6-1cba-4b2b-a611-e6c855b3f80a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Click",
-                    "type": "Button",
-                    "id": "4a5916f5-b55e-40b5-bf8b-6e2c083c1899",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Tap",
-                    "type": "Button",
-                    "id": "85a1faa7-465a-4cd7-b226-8ee802e17d23",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -82,17 +73,6 @@
                     "processors": "",
                     "groups": "Touch",
                     "action": "Release",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7df93191-8b05-46e4-8a90-329f0717b2a3",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "Press,Press(behavior=1)",
-                    "processors": "",
-                    "groups": "Touch",
-                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
