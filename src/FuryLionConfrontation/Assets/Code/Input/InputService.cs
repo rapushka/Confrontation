@@ -9,6 +9,8 @@ namespace Confrontation
 {
 	public class InputService : MonoBehaviour, IInputService
 	{
+		private readonly DragAndDrop _dragAndDrop = new();
+
 		private Camera _camera;
 		private InputActions _actions;
 		private InputAction _cursorPosition;
@@ -17,6 +19,8 @@ namespace Confrontation
 		private InputAction _actionTap;
 
 		public event Action<ClickReceiver> Clicked;
+
+		public event Action<ClickReceiver, ClickReceiver> Dragged;
 
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
@@ -43,6 +47,8 @@ namespace Confrontation
 			_actionPress.performed += OnPress;
 			_actionRelease.performed += OnRelease;
 			_actionTap.performed += OnTap;
+
+			_dragAndDrop.Dragged += DraggedInvoke;
 		}
 
 		private void OnDestroy()
@@ -50,15 +56,17 @@ namespace Confrontation
 			_actionPress.performed -= OnPress;
 			_actionRelease.performed -= OnRelease;
 			_actionTap.performed -= OnTap;
+
+			_dragAndDrop.Dragged -= DraggedInvoke;
 		}
 
-		private void OnPress(InputAction.CallbackContext context)
-			=> RaycastToCursor((r) => Debug.Log($"Press on position {r.transform.position}"));
+		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(_dragAndDrop.StartDragging);
 
-		private void OnRelease(InputAction.CallbackContext context)
-			=> RaycastToCursor((r) => Debug.Log($"Release on position {r.transform.position}"));
+		private void OnRelease(InputAction.CallbackContext context) => RaycastToCursor(_dragAndDrop.StopDragging);
 
 		private void OnTap(InputAction.CallbackContext context) => RaycastToCursor((r) => Clicked?.Invoke(r));
+
+		private void DraggedInvoke(ClickReceiver startAt, ClickReceiver endAt) => Dragged?.Invoke(startAt, endAt);
 
 		private void RaycastToCursor(Action<ClickReceiver> onHit)
 		{
