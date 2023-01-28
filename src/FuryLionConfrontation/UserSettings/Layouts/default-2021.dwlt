@@ -8,30 +8,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PixelRect:
-    serializedVersion: 2
-    x: 222
-    y: 124
-    width: 868
-    height: 754
-  m_ShowMode: 0
-  m_Title: Package Manager
-  m_RootView: {fileID: 4}
-  m_MinSize: {x: 800, y: 271}
-  m_MaxSize: {x: 4000, y: 4021}
-  m_Maximized: 0
---- !u!114 &2
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -41,64 +17,14 @@ MonoBehaviour:
     x: 16
     y: 48
     width: 1888
-    height: 919
+    height: 967
   m_ShowMode: 4
-  m_Title: Console
-  m_RootView: {fileID: 5}
+  m_Title: Test Runner
+  m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
---- !u!114 &3
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: PackageManagerWindow
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 868
-    height: 754
-  m_MinSize: {x: 800, y: 250}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
-  m_Panes:
-  - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &4
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 3}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 868
-    height: 754
-  m_MinSize: {x: 800, y: 271}
-  m_MaxSize: {x: 4000, y: 4021}
-  vertical: 0
-  controlID: 13041
---- !u!114 &5
+--- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,22 +37,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 6}
-  - {fileID: 8}
-  - {fileID: 7}
+  - {fileID: 3}
+  - {fileID: 5}
+  - {fileID: 4}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1888
-    height: 919
+    height: 967
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
   m_UseBottomView: 1
   m_BottomViewHeight: 20
---- !u!114 &6
+--- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
---- !u!114 &7
+--- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,12 +90,12 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 899
+    y: 947
     width: 1888
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
---- !u!114 &8
+--- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,21 +108,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 9}
+  - {fileID: 6}
+  - {fileID: 7}
   - {fileID: 10}
   - {fileID: 13}
-  - {fileID: 16}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 30
     width: 1888
-    height: 869
+    height: 917
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 10949
---- !u!114 &9
+  controlID: 8100
+--- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,15 +140,15 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 403
-    height: 869
+    height: 917
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 19}
+  - {fileID: 15}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &10
+--- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,19 +161,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 11}
-  - {fileID: 12}
+  - {fileID: 8}
+  - {fileID: 9}
   m_Position:
     serializedVersion: 2
     x: 403
     y: 0
-    width: 641
-    height: 869
+    width: 639
+    height: 917
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10950
---- !u!114 &11
+  controlID: 8106
+--- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,17 +190,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 641
-    height: 548
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 18}
+    width: 639
+    height: 577
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 18}
-  - {fileID: 20}
+  - {fileID: 16}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &12
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,17 +216,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 548
-    width: 641
-    height: 321
+    y: 577
+    width: 639
+    height: 340
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 18}
   m_Panes:
-  - {fileID: 21}
+  - {fileID: 18}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &13
+--- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,19 +239,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 14}
-  - {fileID: 15}
+  - {fileID: 11}
+  - {fileID: 12}
   m_Position:
     serializedVersion: 2
-    x: 1044
+    x: 1042
     y: 0
     width: 301
-    height: 869
+    height: 917
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10910
---- !u!114 &14
+  controlID: 8122
+--- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,15 +269,15 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 301
-    height: 382
+    height: 402
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 22}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 22}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &15
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,17 +293,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 382
+    y: 402
     width: 301
-    height: 487
+    height: 515
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 23}
+  m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 23}
+  - {fileID: 20}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &16
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,80 +313,65 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1345
+    x: 1343
     y: 0
-    width: 543
-    height: 869
+    width: 545
+    height: 917
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 21}
+  m_Panes:
+  - {fileID: 14}
+  - {fileID: 21}
+  m_Selected: 1
+  m_LastSelected: 0
+--- !u!114 &14
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 24}
-  m_Panes:
-  - {fileID: 24}
-  - {fileID: 25}
-  m_Selected: 0
-  m_LastSelected: 1
---- !u!114 &17
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13953, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 800, y: 250}
-  m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Package Manager
-    m_Image: {fileID: -2824328813065806953, guid: 0000000000000000d000000000000000, type: 0}
+    m_Text: Inspector
+    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 222
-    y: 124
-    width: 868
-    height: 733
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
---- !u!114 &18
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 419
+    x: 1359
     y: 103
-    width: 639
-    height: 527
+    width: 544
+    height: 896
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &19
+  m_ObjectsLockedBeforeSerialization: []
+  m_InstanceIDsLockedBeforeSerialization: 
+  m_PreviewResizer:
+    m_CachedPref: -160
+    m_ControlHash: -371814159
+    m_PrefName: Preview_InspectorPreview
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 0
+  m_GlobalObjectId: 
+  m_InspectorMode: 0
+  m_LockTracker:
+    m_IsLocked: 0
+  m_PreviewWindow: {fileID: 0}
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,7 +394,7 @@ MonoBehaviour:
     x: 16
     y: 103
     width: 402
-    height: 848
+    height: 896
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -494,7 +405,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1440, y: 2960}
+  m_TargetSize: {x: 1080, y: 2340}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -503,16 +414,16 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 0700000000000000000000000b000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 07000000000000000000000012000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -720
-    m_HBaseRangeMax: 720
-    m_VBaseRangeMin: -1480
-    m_VBaseRangeMax: 1480
+    m_HBaseRangeMin: -540
+    m_HBaseRangeMax: 540
+    m_VBaseRangeMin: -1170
+    m_VBaseRangeMax: 1170
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -531,28 +442,56 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 402
-      height: 827
-    m_Scale: {x: 0.27916667, y: 0.27916667}
-    m_Translation: {x: 201, y: 413.5}
+      height: 875
+    m_Scale: {x: 0.37222221, y: 0.37222221}
+    m_Translation: {x: 201, y: 437.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -720
-      y: -1481.194
-      width: 1440
-      height: 2962.388
+      x: -540
+      y: -1175.3732
+      width: 1080
+      height: 2350.7463
     m_MinimalGUI: 1
-  m_defaultScale: 0.27916667
-  m_LastWindowPixelSize: {x: 402, y: 848}
+  m_defaultScale: 0.37222221
+  m_LastWindowPixelSize: {x: 402, y: 896}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &20
+--- !u!114 &16
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Console
+    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 419
+    y: 103
+    width: 637
+    height: 556
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -572,16 +511,16 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 419
+    x: 439
     y: 103
-    width: 639
-    height: 527
+    width: 619
+    height: 557
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: level
+    m_NameFilter: curtain
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -595,7 +534,7 @@ MonoBehaviour:
     m_Folders:
     - Assets/Code/Editor/Utils
     m_Globs: []
-    m_OriginalText: level
+    m_OriginalText: curtain
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
@@ -606,9 +545,9 @@ MonoBehaviour:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 4}
-    m_SelectedIDs: c8630000
-    m_LastClickedID: 25544
-    m_ExpandedIDs: ffffffff00000000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e85f0000ea5f0000ec5f0000ee5f0000f25f0000f45f0000f65f0000f85f0000fa5f000062600000c063000000ca9a3b
+    m_SelectedIDs: 3c660000
+    m_LastClickedID: 26172
+    m_ExpandedIDs: ffffffff00000000de620000e0620000e2620000e4620000e6620000e8620000ea620000ec620000ee620000f0620000f2620000f4620000f6620000f86200009e63000030660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -636,7 +575,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f0000f25f0000f45f0000f65f0000f85f0000fa5f0000fc5f0000746000007860000044630000
+    m_ExpandedIDs: ffffffff00000000de620000e0620000e2620000e4620000e6620000e8620000ea620000ec620000ee620000f0620000f2620000f4620000f6620000f86200009e63000030660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -661,8 +600,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d8630000
-    m_LastClickedInstanceID: 25560
+    m_SelectedInstanceIDs: ec650000
+    m_LastClickedInstanceID: 26092
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -692,7 +631,7 @@ MonoBehaviour:
     m_GridSize: 56
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 213
---- !u!114 &21
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -713,9 +652,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 419
-    y: 651
-    width: 639
-    height: 300
+    y: 680
+    width: 637
+    height: 319
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -726,8 +665,8 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -101, y: -26}
-      snapCorner: 3
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 0
       id: Tool Settings
       index: 0
       layout: 1
@@ -950,9 +889,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.9092009, y: -15.130016, z: 8.828164}
+    m_Target: {x: 2.196, y: 10.136, z: -2.7959998}
     speed: 2
-    m_Value: {x: 1.9092009, y: -15.130016, z: 8.828164}
+    m_Value: {x: 2.196, y: 10.136, z: -2.7959998}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -999,13 +938,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.5127932, y: -0.030380365, z: 0.018161893, w: -0.8577828}
+    m_Target: {x: -0.37328058, y: 0.30462188, z: -0.13124439, w: -0.8663956}
     speed: 2
-    m_Value: {x: -0.51279294, y: -0.03038035, z: 0.018161884, w: -0.85778236}
+    m_Value: {x: -0.3732807, y: 0.304622, z: -0.13124444, w: -0.8663959}
   m_Size:
-    m_Target: 10
+    m_Target: 12.124355
     speed: 2
-    m_Value: 10
+    m_Value: 12.124355
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1023,14 +962,14 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: -0.08514467, y: 0.86396754, z: -0.15615359, w: -0.4710897}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &22
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1050,10 +989,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1060
+    x: 1058
     y: 103
     width: 299
-    height: 361
+    height: 381
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1061,25 +1000,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d8630000
+      m_SelectedIDs: 3c270000
       m_LastClickedID: 0
-      m_ExpandedIDs: 1009ffff6209ffffbe0affffc40affffcc2cffff1e2dffff7a2effff802effff8c3dffff143effff3a3effff823effff544dffffa64dffff024fffff084fffffbe5bffff105cffff705dffff825dffff266affff2a6affff886effff467effff767fffff7a7fffffce83ffff928fffff968fffffb88fffffd48fffffe48fffffec93ffffc4adffffc8adffffdcadffffe6adffffeaadffff16aeffff36b2ffffe2bdfffffebdffff0ebeffff18beffff1cbeffff58c2ffffe2d8ffff30fbffff
+      m_ExpandedIDs: 64b3feffcab3feff2ab4feff68b5feffaeb6feff28b7feffe4bdfeff02befeff48bffeff74c0feffa2c1feff6ac3feff56c5feffa8c5feff40c7feff46c7feff40d3feff8cd3feff24d5feff2ad5feffc8d5feffbcd6feff40d7feff76ddfefff4fdfeff44fefeffd8fffeffdefffeff102effff622efffffa2fffff0030ffff3646ffff3a46ffff944affff3e50ffff4250ffffa054ffffbc59ffff0c5affffa45bffffaa5bffff667bffff6a7bffffc67fffff3097ffff8097ffff1899ffff1e99ffff6ac4ffffe0f5ffff32f6ffffcaf7ffffd6f7ffff2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Main Camera
+        m_OriginalName: Main Camera
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 31468
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 14}
+        m_ClientGUIView: {fileID: 11}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1087,7 +1026,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 55301fdce315ea5f3bae22aa608491ea
---- !u!114 &23
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1107,10 +1046,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1060
-    y: 485
+    x: 1058
+    y: 505
     width: 299
-    height: 466
+    height: 494
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1128,7 +1067,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Code/GameLogic/Levels
+    - Assets/Plugins/Zenject/OptionalExtras/TestFramework
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -1142,7 +1081,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 685a0000
     m_LastClickedID: 23144
-    m_ExpandedIDs: ffffffff00000000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f0000f25f0000f45f0000f65f0000f85f0000fa5f0000fc5f0000746000007860000044630000
+    m_ExpandedIDs: ffffffff00000000de620000e0620000e2620000e4620000e6620000e8620000ea620000ec620000ee620000f0620000f2620000f4620000f6620000f86200009e63000030660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1167,10 +1106,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 268}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f0000f25f0000f45f0000f65f0000f85f0000fa5f0000fc5f0000746000007860000044630000
+    m_ExpandedIDs: ffffffff00000000de620000e2620000e4620000e6620000e8620000ea620000ee620000f0620000f2620000f4620000f6620000f8620000fa6200008e6300009e63000030660000786700000c7b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1186,7 +1125,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 15}
+      m_ClientGUIView: {fileID: 0}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -1226,48 +1165,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 115
---- !u!114 &24
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Inspector
-    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 1361
-    y: 103
-    width: 542
-    height: 848
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-  m_ObjectsLockedBeforeSerialization: []
-  m_InstanceIDsLockedBeforeSerialization: 
-  m_PreviewResizer:
-    m_CachedPref: -160
-    m_ControlHash: -371814159
-    m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
-  m_GlobalObjectId: 
-  m_InspectorMode: 0
-  m_LockTracker:
-    m_IsLocked: 0
-  m_PreviewWindow: {fileID: 0}
---- !u!114 &25
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1287,21 +1185,21 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1361
+    x: 1359
     y: 103
-    width: 542
-    height: 848
+    width: 544
+    height: 896
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 3869
+    ID: 8162
     splitterInitialOffset: 525
     currentActiveSplitter: -1
     realSizes:
-    - 457
-    - 321
+    - 485
+    - 341
     relativeSizes:
     - 0.5874036
     - 0.4125964
@@ -1311,7 +1209,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 778
+    lastTotalSize: 826
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -1321,7 +1219,7 @@ MonoBehaviour:
     oldSplitSize: 0
   m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
-    m_Window: {fileID: 25}
+    m_Window: {fileID: 21}
     m_NewResultList:
     - id: 1029
       uniqueId: '[FuryLionConfrontation][suite]'
@@ -1373,14 +1271,14 @@ MonoBehaviour:
       - Uncategorized
     m_SelectedOption: 0
   m_EditModeTestListGUI:
-    m_Window: {fileID: 25}
+    m_Window: {fileID: 21}
     m_NewResultList:
     - id: 1000
       uniqueId: '[FuryLionConfrontation][suite]'
       name: FuryLionConfrontation
       fullName: FuryLionConfrontation
       resultStatus: 2
-      duration: 0.2393755
+      duration: 0.047954
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -1396,7 +1294,7 @@ MonoBehaviour:
       name: Tests.dll
       fullName: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/ScriptAssemblies/Tests.dll
       resultStatus: 2
-      duration: 0.1972016
+      duration: 0.0209608
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -1412,7 +1310,7 @@ MonoBehaviour:
       name: Confrontation
       fullName: Confrontation
       resultStatus: 2
-      duration: 0.1930529
+      duration: 0.0185882
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -1428,7 +1326,7 @@ MonoBehaviour:
       name: Editor
       fullName: Confrontation.Editor
       resultStatus: 2
-      duration: 0.1891568
+      duration: 0.0152288
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -1444,7 +1342,7 @@ MonoBehaviour:
       name: Tests
       fullName: Confrontation.Editor.Tests
       resultStatus: 2
-      duration: 0.1857382
+      duration: 0.01166
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -1460,7 +1358,7 @@ MonoBehaviour:
       name: CoordinatesTests
       fullName: Confrontation.Editor.Tests.CoordinatesTests
       resultStatus: 1
-      duration: 0.0367013
+      duration: 0.0303786
       messages: 
       output: 
       stacktrace: 
@@ -1476,7 +1374,7 @@ MonoBehaviour:
       name: WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
       fullName: Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
       resultStatus: 1
-      duration: 0.0177435
+      duration: 0.0160813
       messages: 
       output: 
       stacktrace: 
@@ -1493,7 +1391,7 @@ MonoBehaviour:
       name: WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
       fullName: Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
       resultStatus: 1
-      duration: 0.0005158
+      duration: 0.000353
       messages: 
       output: 
       stacktrace: 
@@ -1505,12 +1403,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.CoordinatesTests][suite]
-    - id: 1001
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-      name: FieldTests
-      fullName: Confrontation.Editor.Tests.FieldTests
+    - id: 1009
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests][suite]
+      name: FieldGeneratorTests
+      fullName: Confrontation.Editor.Tests.FieldGeneratorTests
       resultStatus: 2
-      duration: 0.1184537
+      duration: 0.004703
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -1519,265 +1417,143 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1018
+      parentId: 1017
       parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
-    - id: 1002
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements]
-      name: WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
-      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndIsWasEmpty_ThenShouldNotContainNullElements
-      resultStatus: 1
-      duration: 0.0099855
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-    - id: 1003
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village]
+    - id: 1011
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldGeneratorTests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village]
       name: WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      fullName: Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
       resultStatus: 2
-      duration: 0.0564882
-      messages: Expected countOfVillages to be 1, but found 7.
-      output: 'Instantiating material due to calling renderer.material during edit
-        mode. This will leak materials into the scene. You most likely want to use
-        renderer.sharedMaterial instead.
-
-        Instantiating material due to calling
-        renderer.material during edit mode. This will leak materials into the scene.
-        You most likely want to use renderer.sharedMaterial instead.
-
-        Instantiating
-        material due to calling renderer.material during edit mode. This will leak
-        materials into the scene. You most likely want to use renderer.sharedMaterial
-        instead.
-
-        Instantiating material due to calling renderer.material
-        during edit mode. This will leak materials into the scene. You most likely
-        want to use renderer.sharedMaterial instead.
-
-        Instantiating material
-        due to calling renderer.material during edit mode. This will leak materials
-        into the scene. You most likely want to use renderer.sharedMaterial instead.
-
-        Instantiating
-        material due to calling renderer.material during edit mode. This will leak
-        materials into the scene. You most likely want to use renderer.sharedMaterial
-        instead.
-
-        Instantiating material due to calling renderer.material
-        during edit mode. This will leak materials into the scene. You most likely
-        want to use renderer.sharedMaterial instead.
+      duration: 0.1457533
+      messages: 'Zenject.ZenjectException : Unable to resolve ''RegionsGenerator''.
+        Object graph:
 
 '
-      stacktrace: 'at FluentAssertions.Execution.LateBoundTestFramework.Throw (System.String
-        message) [0x00055] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/LateBoundTestFramework.cs:22
-
-        at
-        FluentAssertions.Execution.TestFrameworkProvider.Throw (System.String message)
-        [0x00011] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/TestFrameworkProvider.cs:34
-
-        at
-        FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure (System.String
-        message) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/DefaultAssertionStrategy.cs:25
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-        failReasonFunc) [0x00043] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:274
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-        failReasonFunc) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:246
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.String message,
-        System.Object[] args) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:296
-
-        at
-        FluentAssertions.Numeric.NumericAssertions`2[T,TAssertions].Be (T expected,
-        System.String because, System.Object[] becauseArgs) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Numeric/NumericAssertions.cs:60
-
-        at
-        Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-        () [0x00029] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/FieldTests.cs:59
-
-'
+      output: 
+      stacktrace: "  at Zenject.DiContainer.Resolve (Zenject.InjectContext context)
+        [0x00150] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:1044
+        \n  at Zenject.DiContainer.ResolveId (System.Type contractType, System.Object
+        identifier) [0x0000f] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2433
+        \n  at Zenject.DiContainer.Resolve (System.Type contractType) [0x00000] in
+        /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2420
+        \n  at Zenject.DiContainer.Resolve[TContract] () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2415
+        \n  at Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+        () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/FieldGeneratorTests.cs:51
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-    - id: 1007
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion]
+      parentId: 1009
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests][suite]
+    - id: 1012
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldGeneratorTests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion]
       name: WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
-      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
+      fullName: Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
       resultStatus: 2
-      duration: 0.0155473
-      messages: Expected countOfCellsInRegion to be 7, but found 1.
-      output: 'Instantiating material due to calling renderer.material during edit
-        mode. This will leak materials into the scene. You most likely want to use
-        renderer.sharedMaterial instead.
-
-        Instantiating material due to calling
-        renderer.material during edit mode. This will leak materials into the scene.
-        You most likely want to use renderer.sharedMaterial instead.
-
-        Instantiating
-        material due to calling renderer.material during edit mode. This will leak
-        materials into the scene. You most likely want to use renderer.sharedMaterial
-        instead.
-
-        Instantiating material due to calling renderer.material
-        during edit mode. This will leak materials into the scene. You most likely
-        want to use renderer.sharedMaterial instead.
-
-        Instantiating material
-        due to calling renderer.material during edit mode. This will leak materials
-        into the scene. You most likely want to use renderer.sharedMaterial instead.
-
-        Instantiating
-        material due to calling renderer.material during edit mode. This will leak
-        materials into the scene. You most likely want to use renderer.sharedMaterial
-        instead.
-
-        Instantiating material due to calling renderer.material
-        during edit mode. This will leak materials into the scene. You most likely
-        want to use renderer.sharedMaterial instead.
+      duration: 0.0062589
+      messages: 'Zenject.ZenjectException : Unable to resolve ''RegionsGenerator''.
+        Object graph:
 
 '
-      stacktrace: 'at FluentAssertions.Execution.LateBoundTestFramework.Throw (System.String
-        message) [0x00055] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/LateBoundTestFramework.cs:22
-
-        at
-        FluentAssertions.Execution.TestFrameworkProvider.Throw (System.String message)
-        [0x00011] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/TestFrameworkProvider.cs:34
-
-        at
-        FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure (System.String
-        message) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/DefaultAssertionStrategy.cs:25
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-        failReasonFunc) [0x00043] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:274
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-        failReasonFunc) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:246
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.String message,
-        System.Object[] args) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:296
-
-        at
-        FluentAssertions.Numeric.NumericAssertions`2[T,TAssertions].Be (T expected,
-        System.String because, System.Object[] becauseArgs) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Numeric/NumericAssertions.cs:60
-
-        at
-        Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
-        () [0x00037] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/FieldTests.cs:75
-
-'
+      output: 
+      stacktrace: "  at Zenject.DiContainer.Resolve (Zenject.InjectContext context)
+        [0x00150] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:1044
+        \n  at Zenject.DiContainer.ResolveId (System.Type contractType, System.Object
+        identifier) [0x0000f] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2433
+        \n  at Zenject.DiContainer.Resolve (System.Type contractType) [0x00000] in
+        /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2420
+        \n  at Zenject.DiContainer.Resolve[TContract] () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2415
+        \n  at Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
+        () [0x0000b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/FieldGeneratorTests.cs:64
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1004
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
-    - id: 1008
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldTests/[Tests][Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion]
+      parentId: 1009
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests][suite]
+    - id: 1013
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldGeneratorTests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion]
       name: WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
-      fullName: Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
+      fullName: Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
       resultStatus: 2
-      duration: 0.0133791
-      messages: Expected countOfCellsInRegion to be 7, but found 1.
-      output: 'Instantiating material due to calling renderer.material during edit
-        mode. This will leak materials into the scene. You most likely want to use
-        renderer.sharedMaterial instead.
-
-        Instantiating material due to calling
-        renderer.material during edit mode. This will leak materials into the scene.
-        You most likely want to use renderer.sharedMaterial instead.
-
-        Instantiating
-        material due to calling renderer.material during edit mode. This will leak
-        materials into the scene. You most likely want to use renderer.sharedMaterial
-        instead.
-
-        Instantiating material due to calling renderer.material
-        during edit mode. This will leak materials into the scene. You most likely
-        want to use renderer.sharedMaterial instead.
-
-        Instantiating material
-        due to calling renderer.material during edit mode. This will leak materials
-        into the scene. You most likely want to use renderer.sharedMaterial instead.
-
-        Instantiating
-        material due to calling renderer.material during edit mode. This will leak
-        materials into the scene. You most likely want to use renderer.sharedMaterial
-        instead.
-
-        Instantiating material due to calling renderer.material
-        during edit mode. This will leak materials into the scene. You most likely
-        want to use renderer.sharedMaterial instead.
+      duration: 0.0021421
+      messages: 'Zenject.ZenjectException : Unable to resolve ''RegionsGenerator''.
+        Object graph:
 
 '
-      stacktrace: 'at FluentAssertions.Execution.LateBoundTestFramework.Throw (System.String
-        message) [0x00055] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/LateBoundTestFramework.cs:22
-
-        at
-        FluentAssertions.Execution.TestFrameworkProvider.Throw (System.String message)
-        [0x00011] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/TestFrameworkProvider.cs:34
-
-        at
-        FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure (System.String
-        message) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/DefaultAssertionStrategy.cs:25
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-        failReasonFunc) [0x00043] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:274
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-        failReasonFunc) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:246
-
-        at
-        FluentAssertions.Execution.AssertionScope.FailWith (System.String message,
-        System.Object[] args) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:296
-
-        at
-        FluentAssertions.Numeric.NumericAssertions`2[T,TAssertions].Be (T expected,
-        System.String because, System.Object[] becauseArgs) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Numeric/NumericAssertions.cs:60
-
-        at
-        Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
-        () [0x00037] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/FieldTests.cs:91
-
-'
+      output: 
+      stacktrace: "  at Zenject.DiContainer.Resolve (Zenject.InjectContext context)
+        [0x00150] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:1044
+        \n  at Zenject.DiContainer.ResolveId (System.Type contractType, System.Object
+        identifier) [0x0000f] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2433
+        \n  at Zenject.DiContainer.Resolve (System.Type contractType) [0x00000] in
+        /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2420
+        \n  at Zenject.DiContainer.Resolve[TContract] () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Plugins/Zenject/Source/Main/DiContainer.cs:2415
+        \n  at Confrontation.Editor.Tests.FieldGeneratorTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
+        () [0x0000b] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/FieldGeneratorTests.cs:80
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1004
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldTests][suite]
+      parentId: 1009
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests][suite]
+    - id: 1010
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldGeneratorTests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements]
+      name: WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+      fullName: Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+      resultStatus: 2
+      duration: 0.0028346
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Confrontation.FieldGenerator+<>c__DisplayClass5_0.<CreateHexagon>b__0
+        (Confrontation.Cell c) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:17
+        \n  at Confrontation.GenericExtensions.With[T] (T this, System.Action`1[T]
+        action) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Utils/Extensions/GenericExtensions.cs:9
+        \n  at Confrontation.FieldGenerator.CreateHexagon (System.Int32 i, System.Int32
+        j) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:16
+        \n  at Confrontation.CoordinatedMatrix`1[T].SetForEach (System.Func`3[T1,T2,TResult]
+        action) [0x00008] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Utils/CustomTypes/CoordinatedMatrix.cs:34
+        \n  at Confrontation.FieldGenerator.GenerateField () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:13
+        \n  at Confrontation.FieldGenerator.Initialize () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:11
+        \n  at Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+        () [0x00016] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/FieldGeneratorTests.cs:40
+        \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
+        System.Globalization.CultureInfo culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests][suite]
     - id: 1010
       uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
       name: StringFormatterTests
       fullName: Confrontation.Editor.Tests.StringFormatterTests
       resultStatus: 1
-      duration: 0.0258264
+      duration: 0.0221349
       messages: 
       output: 
       stacktrace: 
@@ -1793,7 +1569,7 @@ MonoBehaviour:
       name: WhenFormat_AndCamelCase_ThenAddSpaces
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCase_ThenAddSpaces
       resultStatus: 1
-      duration: 0.0042214
+      duration: 0.0051928
       messages: 
       output: 
       stacktrace: 
@@ -1810,7 +1586,7 @@ MonoBehaviour:
       name: WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
       resultStatus: 1
-      duration: 0.0003972
+      duration: 0.0004146
       messages: 
       output: 
       stacktrace: 
@@ -1827,7 +1603,7 @@ MonoBehaviour:
       name: WhenFormat_AndLowerFirst_ThenUpperFirst
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndLowerFirst_ThenUpperFirst
       resultStatus: 1
-      duration: 0.0002434
+      duration: 0.0002933
       messages: 
       output: 
       stacktrace: 
@@ -1844,7 +1620,7 @@ MonoBehaviour:
       name: WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
       fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
       resultStatus: 1
-      duration: 0.0001781
+      duration: 0.0002205
       messages: 
       output: 
       stacktrace: 
@@ -1856,116 +1632,159 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1010
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
-    m_ResultText: 'WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-      (0,056s)
-
-      ---
-
-      Expected countOfVillages to be 1, but found 7.
-
-      ---
-
-      at
-      FluentAssertions.Execution.LateBoundTestFramework.Throw (System.String message)
-      [0x00055] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/LateBoundTestFramework.cs:22
-
-      at
-      FluentAssertions.Execution.TestFrameworkProvider.Throw (System.String message)
-      [0x00011] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/TestFrameworkProvider.cs:34
-
-      at
-      FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure (System.String
-      message) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/DefaultAssertionStrategy.cs:25
-
-      at
-      FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-      failReasonFunc) [0x00043] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:274
-
-      at
-      FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-      failReasonFunc) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:246
-
-      at
-      FluentAssertions.Execution.AssertionScope.FailWith (System.String message,
-      System.Object[] args) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:296
-
-      at
-      FluentAssertions.Numeric.NumericAssertions`2[T,TAssertions].Be (T expected,
-      System.String because, System.Object[] becauseArgs) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Numeric/NumericAssertions.cs:60
-
-      at
-      Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-      () [0x00029] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/FieldTests.cs:59
-
-      ---
-
-      Instantiating
-      material due to calling renderer.material during edit mode. This will leak
-      materials into the scene. You most likely want to use renderer.sharedMaterial
-      instead.
-
-      Instantiating material due to calling renderer.material during
-      edit mode. This will leak materials into the scene. You most likely want to
-      use renderer.sharedMaterial instead.
-
-      Instantiating material due to calling
-      renderer.material during edit mode. This will leak materials into the scene.
-      You most likely want to use renderer.sharedMaterial instead.
-
-      Instantiating
-      material due to calling renderer.material during edit mode. This will leak
-      materials into the scene. You most likely want to use renderer.sharedMaterial
-      instead.
-
-      Instantiating material due to calling renderer.material during
-      edit mode. This will leak materials into the scene. You most likely want to
-      use renderer.sharedMaterial instead.
-
-      Instantiating material due to calling
-      renderer.material during edit mode. This will leak materials into the scene.
-      You most likely want to use renderer.sharedMaterial instead.
-
-      Instantiating
-      material due to calling renderer.material during edit mode. This will leak
-      materials into the scene. You most likely want to use renderer.sharedMaterial
-      instead.'
-    m_ResultStacktrace: 'at FluentAssertions.Execution.LateBoundTestFramework.Throw
-      (System.String message) [0x00055] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/LateBoundTestFramework.cs:22
-
-      at
-      FluentAssertions.Execution.TestFrameworkProvider.Throw (System.String message)
-      [0x00011] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/TestFrameworkProvider.cs:34
-
-      at
-      FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure (System.String
-      message) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/DefaultAssertionStrategy.cs:25
-
-      at
-      FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-      failReasonFunc) [0x00043] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:274
-
-      at
-      FluentAssertions.Execution.AssertionScope.FailWith (System.Func`1[TResult]
-      failReasonFunc) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:246
-
-      at
-      FluentAssertions.Execution.AssertionScope.FailWith (System.String message,
-      System.Object[] args) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Execution/AssertionScope.cs:296
-
-      at
-      FluentAssertions.Numeric.NumericAssertions`2[T,TAssertions].Be (T expected,
-      System.String because, System.Object[] becauseArgs) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/PackageCache/com.boundfoxstudios.fluentassertions@ac405b32a6/Runtime/FluentAssertions/Numeric/NumericAssertions.cs:60
-
-      at
-      Confrontation.Editor.Tests.FieldTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-      () [0x00029] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/FieldTests.cs:59
-
-'
+    - id: 1025
+      uniqueId: '[Zenject-TestFramework.dll][suite]'
+      name: Zenject-TestFramework.dll
+      fullName: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/ScriptAssemblies/Zenject-TestFramework.dll
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[FuryLionConfrontation][suite]'
+    - id: 1026
+      uniqueId: Zenject-TestFramework.dll/[Zenject][suite]
+      name: Zenject
+      fullName: Zenject
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1025
+      parentUniqueId: '[Zenject-TestFramework.dll][suite]'
+    - id: 1027
+      uniqueId: Zenject-TestFramework.dll/Zenject/[Tests][suite]
+      name: Tests
+      fullName: Zenject.Tests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1026
+      parentUniqueId: Zenject-TestFramework.dll/[Zenject][suite]
+    - id: 1028
+      uniqueId: Zenject-TestFramework.dll/Zenject/Tests/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute][suite]
+      name: AutoSubstitute
+      fullName: Zenject.Tests.AutoSubstitute
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1027
+      parentUniqueId: Zenject-TestFramework.dll/Zenject/[Tests][suite]
+    - id: 1022
+      uniqueId: Zenject-TestFramework.dll/Zenject/Tests/AutoSubstitute/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute.TestAutoSubstitute][suite]
+      name: TestAutoSubstitute
+      fullName: Zenject.Tests.AutoSubstitute.TestAutoSubstitute
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1028
+      parentUniqueId: Zenject-TestFramework.dll/Zenject/Tests/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute][suite]
+    - id: 1023
+      uniqueId: Zenject-TestFramework.dll/Zenject/Tests/AutoSubstitute/TestAutoSubstitute/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute.TestAutoSubstitute.Test1]
+      name: Test1
+      fullName: Zenject.Tests.AutoSubstitute.TestAutoSubstitute.Test1
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1022
+      parentUniqueId: Zenject-TestFramework.dll/Zenject/Tests/AutoSubstitute/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute.TestAutoSubstitute][suite]
+    - id: 1024
+      uniqueId: Zenject-TestFramework.dll/Zenject/Tests/AutoSubstitute/TestAutoSubstitute/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute.TestAutoSubstitute.TestFactories]
+      name: TestFactories
+      fullName: Zenject.Tests.AutoSubstitute.TestAutoSubstitute.TestFactories
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1022
+      parentUniqueId: Zenject-TestFramework.dll/Zenject/Tests/AutoSubstitute/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute.TestAutoSubstitute][suite]
+    m_ResultText: "WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+      (0,003s)\n---\nSystem.NullReferenceException : Object reference not set to
+      an instance of an object\n---\nat Confrontation.FieldGenerator+<>c__DisplayClass5_0.<CreateHexagon>b__0
+      (Confrontation.Cell c) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:17
+      \n  at Confrontation.GenericExtensions.With[T] (T this, System.Action`1[T]
+      action) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Utils/Extensions/GenericExtensions.cs:9
+      \n  at Confrontation.FieldGenerator.CreateHexagon (System.Int32 i, System.Int32
+      j) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:16
+      \n  at Confrontation.CoordinatedMatrix`1[T].SetForEach (System.Func`3[T1,T2,TResult]
+      action) [0x00008] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Utils/CustomTypes/CoordinatedMatrix.cs:34
+      \n  at Confrontation.FieldGenerator.GenerateField () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:13
+      \n  at Confrontation.FieldGenerator.Initialize () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:11
+      \n  at Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+      () [0x00016] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/FieldGeneratorTests.cs:40
+      \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0"
+    m_ResultStacktrace: "  at Confrontation.FieldGenerator+<>c__DisplayClass5_0.<CreateHexagon>b__0
+      (Confrontation.Cell c) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:17
+      \n  at Confrontation.GenericExtensions.With[T] (T this, System.Action`1[T]
+      action) [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Utils/Extensions/GenericExtensions.cs:9
+      \n  at Confrontation.FieldGenerator.CreateHexagon (System.Int32 i, System.Int32
+      j) [0x00014] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:16
+      \n  at Confrontation.CoordinatedMatrix`1[T].SetForEach (System.Func`3[T1,T2,TResult]
+      action) [0x00008] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Utils/CustomTypes/CoordinatedMatrix.cs:34
+      \n  at Confrontation.FieldGenerator.GenerateField () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:13
+      \n  at Confrontation.FieldGenerator.Initialize () [0x00000] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/GameLogic/Field/FieldGenerator.cs:11
+      \n  at Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+      () [0x00016] in /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Assets/Code/Tests/EditMode/Utils/FieldGeneratorTests.cs:40
+      \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n 
+      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x0006a] in <05089c1b6989455fb1452c627044bac4>:0 "
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f4875062
-      m_LastClickedID: 1649444852
-      m_ExpandedIDs: fd40468b1a2293992896b2c9bafc28ce579587d1470ea8f6e557abf736608cf8020bbf017c14ac18c616ce3cffffff7f
+      m_SelectedIDs: 457d7737
+      m_LastClickedID: 930577733
+      m_ExpandedIDs: fd40468b1a2293992896b2c9bafc28ce579587d1470ea8f6e557abf736608cf8020bbf017c14ac18c616ce3c28b08d79ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

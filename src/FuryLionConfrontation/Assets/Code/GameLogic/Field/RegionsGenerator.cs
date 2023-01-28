@@ -24,8 +24,6 @@ namespace Confrontation
 			GetCellsFrom(region).ForEach(village.AddToRegion);
 		}
 
-		private IEnumerable<Cell> GetCellsFrom(Region region) => region.CellsCoordinates.Select((c) => _field.Cells[c]);
-
 		private Village CreateVillage(Region region)
 		{
 			var ownerCell = _field.Cells[region.VillageCoordinates];
@@ -33,6 +31,8 @@ namespace Confrontation
 			ownerCell.Building = village;
 			return village;
 		}
+
+		private IEnumerable<Cell> GetCellsFrom(Region region) => region.CellsCoordinates.Select((c) => _field.Cells[c]);
 
 		private Village Create(Region region, Component ownerCell)
 			=> _buildingsFactory.Create<Village>(VillagePrefab, ownerCell.transform, region.OwnerPlayerId);
