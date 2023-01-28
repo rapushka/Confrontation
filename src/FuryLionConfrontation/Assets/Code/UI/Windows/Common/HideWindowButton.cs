@@ -6,6 +6,6 @@ namespace Confrontation
 	{
 		[Inject] private readonly UiMediator _uiMediator;
 
-		protected override void OnButtonClick() => _uiMediator.HideWindow();
+		protected override void OnButtonClick() => _uiMediator.CloseCurrentWindow();
 	}
 }

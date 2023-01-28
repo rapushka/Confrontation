@@ -26,8 +26,8 @@ namespace Confrontation
 
 		private Action ShowRelevantMenu(Cell cell)
 			=> cell.IsEmpty
-				? _uiMediator.ShowWindow<BuildWindow>
-				: _uiMediator.ShowWindow<BuildingWindow>;
+				? _uiMediator.OpenWindow<BuildWindow>
+				: _uiMediator.OpenWindow<BuildingWindow>;
 
 		private static void DoNothing() { }
 	}

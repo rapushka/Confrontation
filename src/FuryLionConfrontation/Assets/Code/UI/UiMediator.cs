@@ -20,8 +20,8 @@ namespace Confrontation
 		public void ShowImmediatelyLoadingCurtain()      => _loadingCurtain.ShowImmediately();
 		public void HideLoadingCurtain()                 => _loadingCurtain.Hide();
 		public void HideImmediatelyLoadingCurtain()      => _loadingCurtain.HideImmediately();
-		public void ShowWindow<T>() where T : WindowBase => _windows.Show<T>();
-		public void HideWindow()                         => _windows.Hide();
+		public void OpenWindow<T>() where T : WindowBase => _windows.Open<T>();
+		public void CloseCurrentWindow()                 => _windows.Close();
 		public void Build(Building building)             => _buildingSpawner.Build(building);
 	}
 }

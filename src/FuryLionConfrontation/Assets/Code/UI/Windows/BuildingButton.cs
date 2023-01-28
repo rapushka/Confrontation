@@ -16,7 +16,7 @@ namespace Confrontation
 		protected override void OnButtonClick()
 		{
 			_uiMediator.Build(_building);
-			_uiMediator.HideWindow();
+			_uiMediator.CloseCurrentWindow();
 		}
 
 		public class Factory : PlaceholderFactory<Building, BuildingButton>

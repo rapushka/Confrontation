@@ -13,15 +13,15 @@ namespace Confrontation
 
 		[CanBeNull] private WindowBase _currentWindow;
 
-		public void Show<TWindow>()
+		public void Open<TWindow>()
 			where TWindow : WindowBase
 		{
-			HideCurrent();
+			CloseCurrent();
 			_currentWindow = SwitchCurrentTo<TWindow>();
-			_currentWindow.Show();
+			_currentWindow.Open();
 		}
 
-		public void Hide() => HideCurrent();
+		public void Close() => CloseCurrent();
 
 		[NotNull]
 		private WindowBase SwitchCurrentTo<TWindow>()
@@ -34,11 +34,11 @@ namespace Confrontation
 			                  .With((w) => w.transform.SetParent(_uiMediator.Canvas))
 			                  .Cast<WindowBase, TWindow>();
 
-		private void HideCurrent()
+		private void CloseCurrent()
 		{
 			if (_currentWindow is not null)
 			{
-				_currentWindow.Hide();
+				_currentWindow.Close();
 			}
 		}
 	}

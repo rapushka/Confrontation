@@ -9,9 +9,9 @@ namespace Confrontation
 
 		[SerializeField] private GameObject _window;
 
-		public virtual void Show() => _window.SetActive(true);
+		public virtual void Open() => _window.SetActive(true);
 
-		public virtual void Hide() => _window.SetActive(false);
+		public virtual void Close() => _window.SetActive(false);
 
 		public abstract WindowBase Accept(IWindowVisitor windowVisitor);
 
