@@ -23,7 +23,7 @@ namespace Confrontation.Editor.Tests
 		{
 			var cell = Create.Cell();
 			var regionColor = cell.gameObject.AddComponent<RegionColor>();
-			regionColor.ChangeMaterialTo(default);
+			regionColor.ChangeColorTo(default);
 			cell.SetPrivateField(FieldColor, regionColor);
 			return cell;
 		}

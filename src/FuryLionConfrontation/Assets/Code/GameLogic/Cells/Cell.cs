@@ -8,21 +8,14 @@ namespace Confrontation
 		[SerializeField] private RegionColor _color;
 
 		private Coordinates _coordinates;
-		private Village _relatedRegion;
 
 		[CanBeNull] public Building Building { get; set; }
 
 		public bool IsEmpty => Building is null;
 
-		public Village RelatedRegion
-		{
-			get => _relatedRegion;
-			set
-			{
-				_color.ChangeMaterialTo(value.OwnerPlayerId);
-				_relatedRegion = value;
-			}
-		}
+		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
+		
+		public Village RelatedRegion { get; set; }
 
 		public Coordinates Coordinates
 		{

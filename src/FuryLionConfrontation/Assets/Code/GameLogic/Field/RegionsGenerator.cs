@@ -14,6 +14,8 @@ namespace Confrontation
 
 		private Village VillagePrefab => _resourcesService.VillagePrefab;
 
+		public List<Village> Villages { get; } = new();
+
 		public void Initialize() => DivideIntoRegions();
 
 		private void DivideIntoRegions() => _levelSelector.SelectedLevel.Regions.ForEach(ToRegion);
@@ -22,6 +24,7 @@ namespace Confrontation
 		{
 			var village = CreateVillage(region);
 			GetCellsFrom(region).ForEach(village.AddToRegion);
+			Villages.Add(village);
 		}
 
 		private Village CreateVillage(Region region)

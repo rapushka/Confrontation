@@ -7,7 +7,7 @@ namespace Confrontation
 		[SerializeField] private Renderer _renderer;
 		[SerializeField] private PlayersColorsSheet _playersColorsSheet;
 
-		public void ChangeMaterialTo(int playerId)
+		public void ChangeColorTo(int playerId)
 			=> _renderer.material.color = _playersColorsSheet.GetColorFor(playerId);
 	}
 }

@@ -10,6 +10,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<CellsPainter>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 		}
