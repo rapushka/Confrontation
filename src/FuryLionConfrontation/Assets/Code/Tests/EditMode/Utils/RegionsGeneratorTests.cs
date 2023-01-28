@@ -12,9 +12,21 @@ namespace Confrontation.Editor.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			Container.BindFactory<Building, Transform, int, Building, Building.Factory>()
-			         .FromFactory<CustomBuildingFactory>();
-			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
+			Container.BindField();
+			Container.BindFieldGenerator();
+			Container.BindRegionsGenerator();
+
+			var fieldGenerator = Container.Resolve<FieldGenerator>();
+			fieldGenerator.Initialize();
+		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			Container.UnbindAll();
+
+			Destroy.All<Cell>();
+			Destroy.All<Village>();
 		}
 
 		[Test]
@@ -39,7 +51,6 @@ namespace Confrontation.Editor.Tests
 			var regions = Container.Resolve<RegionsGenerator>();
 
 			// Act.
-			// field.Initialize();
 			regions.Initialize();
 
 			// Assert.

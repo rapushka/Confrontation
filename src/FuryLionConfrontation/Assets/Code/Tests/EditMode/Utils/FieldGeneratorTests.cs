@@ -1,6 +1,5 @@
 using FluentAssertions;
 using NUnit.Framework;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
@@ -11,16 +10,14 @@ namespace Confrontation.Editor.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			Container.SetupFieldGenerator();
+			Container.BindField();
+			Container.BindFieldGenerator();
 		}
 
 		[TearDown]
 		public void TearDown()
 		{
 			Container.UnbindAll();
-
-			Destroy.All<Cell>();
-			Destroy.All<Village>();
 		}
 
 		[Test]

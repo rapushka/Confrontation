@@ -8,5 +8,7 @@ namespace Confrontation.Editor.Tests
 
 		public static ResourcesService ResourcesService()
 			=> Resources.Load<ResourcesService>("ScriptableObjects/Resources");
+
+		public static Cell Cell() => new GameObject().AddComponent<Cell>();
 	}
 }
