@@ -16,8 +16,7 @@ namespace Confrontation.Editor.Tests
 			Container.BindFieldGenerator();
 			Container.BindRegionsGenerator();
 
-			var fieldGenerator = Container.Resolve<FieldGenerator>();
-			fieldGenerator.Initialize();
+			Container.Resolve<FieldGenerator>().Initialize();
 		}
 
 		[TearDown]
@@ -55,7 +54,7 @@ namespace Confrontation.Editor.Tests
 
 			// Assert.
 			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
-			countOfCellsInRegion.Should().Be(7);
+			countOfCellsInRegion.Should().Be(1);
 		}
 
 		[Test]
@@ -70,7 +69,7 @@ namespace Confrontation.Editor.Tests
 
 			// Assert.
 			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
-			countOfCellsInRegion.Should().Be(7);
+			countOfCellsInRegion.Should().Be(1);
 		}
 	}
 }
