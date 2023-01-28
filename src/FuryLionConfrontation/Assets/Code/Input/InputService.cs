@@ -11,8 +11,9 @@ namespace Confrontation
 	{
 		private Camera _camera;
 		private InputActions _actions;
-		private InputAction _touchPress;
-		private InputAction _touchPosition;
+		private InputAction _actionPress;
+		private InputAction _cursorPosition;
+		private InputAction _actionRelease;
 
 		public event Action<ClickReceiver> Clicked;
 
@@ -22,24 +23,33 @@ namespace Confrontation
 		{
 			DontDestroyOnLoad(gameObject);
 			_actions = new InputActions();
-			_touchPress = _actions.Gameplay.TouchPress;
-			_touchPosition = _actions.Gameplay.TouchPosition;
+			_actionPress = _actions.Gameplay.Press;
+			_cursorPosition = _actions.Gameplay.CursorPosition;
+			_actionRelease = _actions.Gameplay.Release;
 		}
 
 		private void OnEnable() => _actions.Enable();
 
 		private void OnDisable() => _actions.Disable();
 
-		private void Start() => _touchPress.performed += OnClickPerformed;
+		private void Start()
+		{
+			_actions.Gameplay.Tap.performed += (_) => Debug.Log("You fast clicked");
+			_actions.Gameplay.Press.performed += (_) => Debug.Log("You start long press");
+			_actions.Gameplay.Release.performed += (_) => Debug.Log("You end long press");
+		}
 
 		private void OnClickPerformed(InputAction.CallbackContext context)
 		{
-			if (IsPointerOverUIObject())
+			if (IsPointerOverUIObject() == false)
 			{
-				return;
+				ClickAtObject();
 			}
+		}
 
-			var touchPosition = _touchPosition.ReadValue<Vector2>();
+		private void ClickAtObject()
+		{
+			var touchPosition = _cursorPosition.ReadValue<Vector2>();
 			var ray = Camera.ScreenPointToRay(touchPosition);
 			if (Physics.Raycast(ray, out var hit)
 			    && hit.collider.TryGetComponent<ClickReceiver>(out var receiver))
@@ -56,7 +66,7 @@ namespace Confrontation
 			};
 			var results = new List<RaycastResult>();
 			EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-			
+
 			return results.Any();
 		}
 	}
