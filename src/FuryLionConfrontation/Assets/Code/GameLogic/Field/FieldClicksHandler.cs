@@ -9,9 +9,26 @@ namespace Confrontation
 		[Inject] private readonly UiMediator _uiMediator;
 		[Inject] private readonly IInputService _inputService;
 
-		public void Initialize() => _inputService.Clicked += OnClick;
+		public void Initialize()
+		{
+			_inputService.Clicked += OnClick;
+			_inputService.Dragged += OnDrag;
+		}
+
+		private void OnDrag(ClickReceiver startReceiver, ClickReceiver endReceiver)
+			=> OnCellsDrag(startReceiver.Cell, endReceiver.Cell);
 
 		private void OnClick(ClickReceiver clickReceiver) => OnCellClick(clickReceiver.Cell);
+
+		private void OnCellsDrag(Cell startCell, Cell endCell)
+		{
+			if (startCell.HaveUnits
+			    && endCell.IsEmpty == false
+			    && endCell.Building is Village)
+			{
+				startCell.UnitsSquads!.TargetCell = endCell;
+			}
+		}
 
 		private void OnCellClick(Cell cell)
 		{

@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace Confrontation
 {
@@ -22,7 +21,6 @@ namespace Confrontation
 			    && endReceiver.Equals(_startReceiver) == false)
 			{
 				Dragged?.Invoke(_startReceiver, endReceiver);
-				Debug.Log($"{_startReceiver.transform.position} -> {endReceiver.transform.position}");
 			}
 
 			_startReceiver = null;
