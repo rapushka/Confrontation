@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Confrontation
 {
 	public static class Constants
@@ -12,5 +14,7 @@ namespace Confrontation
 		}
 
 		public const int NeutralRegion = 0;
+		public const float Epsilon = 0.001f;
+		public static readonly Vector3 VerticalOffsetAboveCell = Vector3.up * 0.2f;
 	}
 }
