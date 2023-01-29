@@ -6,7 +6,8 @@ namespace Confrontation
 	public class Cell : MonoBehaviour
 	{
 		[SerializeField] private RegionColor _color;
-		[field: SerializeField] [CanBeNull] public UnitsSquad UnitsSquads { get; private set; }
+
+		[CanBeNull] public UnitsSquad UnitsSquads { get; set; }
 
 		private Coordinates _coordinates;
 
