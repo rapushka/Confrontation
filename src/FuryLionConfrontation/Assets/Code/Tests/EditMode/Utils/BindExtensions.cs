@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
@@ -20,8 +19,8 @@ namespace Confrontation.Editor.Tests
 
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
-			@this.BindFactory<Building, Transform, int, Building, Building.Factory>()
-			     .FromFactory<CustomBuildingFactory>();
+			@this.BindFactory<Building, Building, Building.Factory>()
+			         .FromFactory<PrefabFactory<Building>>();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 		}
 	}

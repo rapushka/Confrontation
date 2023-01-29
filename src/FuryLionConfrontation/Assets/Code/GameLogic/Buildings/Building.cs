@@ -8,19 +8,27 @@ namespace Confrontation
 		public int  OwnerPlayerId { get; set; }
 		public Cell RelatedCell   { get; set; }
 
-		public class Factory : PlaceholderFactory<Building, Transform, int, Building>
+		public class Factory : PlaceholderFactory<Building, Building>
 		{
+			public T Create<T>(T prefab, Transform ownerCell, int ownerId)
+				where T : Building
+			{
+				var building = base.Create(prefab);
+				building.transform.SetParent(ownerCell, worldPositionStays: false);
+				building.OwnerPlayerId = ownerId;
+				return (T)building;
+			}
+
 			public Building Create(Building prefab, Cell cell)
 			{
-				var ownerId = cell.RelatedRegion.OwnerPlayerId;
-				var building = Create(prefab, cell.transform, ownerId);
+				var building = Create(prefab, cell.transform, cell.RelatedRegion.OwnerPlayerId);
 				cell.Building = building;
 				return building;
 			}
 
-			public T Create<T>(Building prefab, Transform ownerCell, int ownerId)
+			public T Create<T>(Building prefab)
 				where T : Building
-				=> (T)base.Create(prefab, ownerCell, ownerId);
+				=> (T)base.Create(prefab);
 		}
 	}
 }

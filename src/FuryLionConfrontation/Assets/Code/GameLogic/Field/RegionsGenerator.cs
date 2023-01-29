@@ -38,6 +38,6 @@ namespace Confrontation
 		private IEnumerable<Cell> GetCellsFrom(Region region) => region.CellsCoordinates.Select((c) => _field.Cells[c]);
 
 		private Village Create(Region region, Component ownerCell)
-			=> _buildingsFactory.Create<Village>(VillagePrefab, ownerCell.transform, region.OwnerPlayerId);
+			=> _buildingsFactory.Create(VillagePrefab, ownerCell.transform, region.OwnerPlayerId);
 	}
 }

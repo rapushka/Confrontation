@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabb18e29a05430c8a6dfd557da3dc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productionSpeed: 1
+  <CoolDownDuration>k__BackingField: 5
   <UnitPrefab>k__BackingField: {fileID: -6484238923440550980, guid: b7f59dfba32262695a11b048572c0f66, type: 3}
 --- !u!114 &2305448757740132536
 MonoBehaviour:

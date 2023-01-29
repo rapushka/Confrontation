@@ -49,8 +49,8 @@ namespace Confrontation
 			Container.BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
 			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<CustomWindowFactory>();
 
-			Container.BindFactory<Building, Transform, int, Building, Building.Factory>()
-			         .FromFactory<CustomBuildingFactory>();
+			Container.BindFactory<Building, Building, Building.Factory>()
+			         .FromFactory<PrefabFactory<Building>>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 			         .FromComponentInNewPrefab(_buildingButton);
