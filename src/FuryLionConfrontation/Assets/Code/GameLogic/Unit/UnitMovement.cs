@@ -11,6 +11,7 @@ namespace Confrontation
 
 		private Cell _targetCell;
 		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
+		private Vector3 _initialTransformForward;
 
 		public event Action TargetReached;
 
@@ -23,6 +24,9 @@ namespace Confrontation
 		public void MoveTo(Cell target)
 		{
 			_targetCell = target;
+
+			_initialTransformForward = transform.forward;
+			transform.forward = (TargetPosition - CurrentPosition).normalized;
 			StartCoroutine(MoveToTarget());
 		}
 
