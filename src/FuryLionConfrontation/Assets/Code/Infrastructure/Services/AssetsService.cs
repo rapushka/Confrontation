@@ -9,6 +9,7 @@ namespace Confrontation
 		GameObject Instantiate(string name);
 
 		T Instantiate<T>(T original, Transform parent) where T : Object;
+		T Instantiate<T>(T original, Vector3 position) where T : Object;
 
 		T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common) where T : Object;
 	}
@@ -20,6 +21,10 @@ namespace Confrontation
 		public GameObject Instantiate(string name) => new(name);
 
 		public T Instantiate<T>(T original, Transform parent) where T : Object => Object.Instantiate(original, parent);
+
+		public T Instantiate<T>(T original, Vector3 position)
+			where T : Object
+			=> Object.Instantiate(original, position, Quaternion.identity);
 
 		public T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common) where T : Object
 			=> Object.Instantiate(original, GetTransformFor(group));

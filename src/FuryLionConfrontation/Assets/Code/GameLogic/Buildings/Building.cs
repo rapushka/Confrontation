@@ -23,6 +23,7 @@ namespace Confrontation
 			{
 				var building = Create(prefab, cell.transform, cell.RelatedRegion.OwnerPlayerId);
 				cell.Building = building;
+				building.RelatedCell = cell;
 				return building;
 			}
 

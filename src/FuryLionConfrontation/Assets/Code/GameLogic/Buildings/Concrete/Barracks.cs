@@ -11,11 +11,11 @@ namespace Confrontation
 
 		[field: SerializeField] public UnitsSquad UnitPrefab { get; private set; }
 
-		private UnitsSquad _currentSquad;
-
 		public float PassedDuration { get; set; }
 
-		private bool HaveSquad => _currentSquad == true;
+		private bool HaveSquad => RelatedCell.UnitsSquads == true;
+
+		private Vector3 InitialUnitPosition => transform.position + Constants.VerticalOffsetAboveCell;
 
 		public void Action() => CreateUnit();
 
@@ -23,12 +23,13 @@ namespace Confrontation
 		{
 			if (HaveSquad)
 			{
-				_currentSquad.QuantityOfUnits++;
+				RelatedCell.UnitsSquads!.QuantityOfUnits++;
 			}
 			else
 			{
-				_currentSquad = _assets.Instantiate(UnitPrefab);
-				_currentSquad.QuantityOfUnits = 1;
+				RelatedCell.UnitsSquads = _assets.Instantiate(UnitPrefab, InitialUnitPosition);
+				RelatedCell.UnitsSquads!.LocationCell = RelatedCell;
+				RelatedCell.UnitsSquads.QuantityOfUnits = 1;
 			}
 		}
 	}
