@@ -6,6 +6,7 @@ namespace Confrontation
 	public class UnitsSquad : MonoBehaviour
 	{
 		[SerializeField] private UnitMovement _unitMovement;
+		[SerializeField] private UnitAnimator _animator;
 
 		[CanBeNull] private Cell _targetCell;
 
@@ -27,6 +28,7 @@ namespace Confrontation
 			set
 			{
 				_unitMovement.MoveTo(value);
+				_animator.StartMoving();
 				_targetCell = value;
 			}
 		}
@@ -35,6 +37,7 @@ namespace Confrontation
 		{
 			LocationCell = _targetCell;
 			_targetCell = null;
+			_animator.StopMoving();
 		}
 	}
 }
