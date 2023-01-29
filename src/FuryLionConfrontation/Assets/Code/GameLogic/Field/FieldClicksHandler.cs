@@ -22,8 +22,7 @@ namespace Confrontation
 
 		private void OnCellsDrag(Cell startCell, Cell endCell)
 		{
-			if (startCell.HaveUnits
-			    && endCell.IsEmpty == false
+			if (startCell.HaveUnits 
 			    && endCell.Building is Village)
 			{
 				startCell.UnitsSquads!.TargetCell = endCell;
