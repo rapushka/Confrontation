@@ -12,7 +12,9 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CellsPainter>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
+
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
+			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 		}
 	}
 }
