@@ -11,9 +11,7 @@ namespace Confrontation
 		[CanBeNull] private Cell _targetCell;
 		[SerializeField] private Cell _locationCell;
 
-		private void Start() => _unitMovement.TargetReached += OnTargetCellReached;
-
-		private void OnDestroy() => _unitMovement.TargetReached -= OnTargetCellReached;
+		[field: SerializeField] public int QuantityOfUnits { get; set; }
 
 		public Player Owner { get; set; }
 
@@ -23,11 +21,17 @@ namespace Confrontation
 			set
 			{
 				_locationCell = value;
+				if (value.UnitsSquads == true
+				    && value.UnitsSquads != this)
+				{
+					var squadOnCell = value.UnitsSquads;
+					QuantityOfUnits += squadOnCell!.QuantityOfUnits;
+					Destroy(squadOnCell.gameObject);
+				}
+
 				_locationCell.UnitsSquads = this;
 			}
 		}
-
-		public int QuantityOfUnits { get; set; }
 
 		[CanBeNull]
 		public Cell TargetCell
@@ -41,6 +45,10 @@ namespace Confrontation
 				_targetCell = value;
 			}
 		}
+
+		private void Start() => _unitMovement.TargetReached += OnTargetCellReached;
+
+		private void OnDestroy() => _unitMovement.TargetReached -= OnTargetCellReached;
 
 		private void OnTargetCellReached()
 		{

@@ -8,6 +8,7 @@ namespace Confrontation
 		[Inject] private readonly User _user;
 		[Inject] private readonly UiMediator _uiMediator;
 		[Inject] private readonly IInputService _inputService;
+		[Inject] private readonly Orders _orders;
 
 		public void Initialize()
 		{
@@ -16,18 +17,9 @@ namespace Confrontation
 		}
 
 		private void OnDrag(ClickReceiver startReceiver, ClickReceiver endReceiver)
-			=> OnCellsDrag(startReceiver.Cell, endReceiver.Cell);
+			=> _orders.GiveOrder(startReceiver.Cell, endReceiver.Cell);
 
 		private void OnClick(ClickReceiver clickReceiver) => OnCellClick(clickReceiver.Cell);
-
-		private void OnCellsDrag(Cell startCell, Cell endCell)
-		{
-			if (startCell.HaveUnits 
-			    && endCell.Building is Village)
-			{
-				startCell.UnitsSquads!.TargetCell = endCell;
-			}
-		}
 
 		private void OnCellClick(Cell cell)
 		{

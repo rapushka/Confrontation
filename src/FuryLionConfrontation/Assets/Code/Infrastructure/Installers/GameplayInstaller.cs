@@ -13,6 +13,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<CellsPainter>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 
+			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 		}
