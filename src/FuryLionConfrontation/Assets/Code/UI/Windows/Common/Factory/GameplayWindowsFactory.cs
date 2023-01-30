@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class CustomWindowFactory : IFactory<WindowBase, WindowBase>, IWindowVisitor
+	public class GameplayWindowsFactory : IFactory<WindowBase, WindowBase>, IWindowVisitor
 	{
 		[Inject] private readonly BuildWindow.Factory _buildWindowFactory;
 		[Inject] private readonly BuildingWindow.Factory _buildingWindowFactory;

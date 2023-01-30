@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Windows
+	public class GameplayWindows
 	{
 		[Inject] private readonly WindowBase.Factory _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;

@@ -23,6 +23,8 @@ namespace Confrontation
 			Container.Bind<BuildingSpawner>().AsSingle();
 			Container.Bind<GameplayUiMediator>().AsSingle();
 
+			Container.Bind<GameplayWindows>().AsSingle();
+
 			BindFactory();
 		}
 
@@ -35,6 +37,8 @@ namespace Confrontation
 
 			Container.BindFactory<Building, Building, Building.Factory>()
 			         .FromFactory<PrefabFactory<Building>>();
+
+			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<GameplayWindowsFactory>();
 		}
 	}
 }

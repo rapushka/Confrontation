@@ -23,7 +23,6 @@ namespace Confrontation
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
 
-			Container.Bind<Windows>().AsSingle();
 			Container.Bind<GameUiMediator>().AsSingle();
 
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
@@ -43,7 +42,6 @@ namespace Confrontation
 
 		private void BindFactories()
 		{
-			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<CustomWindowFactory>();
 		}
 	}
 }
