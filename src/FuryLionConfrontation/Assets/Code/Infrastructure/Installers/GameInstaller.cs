@@ -11,7 +11,6 @@ namespace Confrontation
 		[SerializeField] private ResourcesService _resources;
 		[SerializeField] private RectTransform _canvasPrefab;
 		[SerializeField] private List<WindowBase> _windows;
-		[SerializeField] private BuildingButton _buildingButton;
 		[SerializeField] private InputService _inputService;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
@@ -25,8 +24,7 @@ namespace Confrontation
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
 
 			Container.Bind<Windows>().AsSingle();
-			Container.Bind<UiMediator>().AsSingle();
-			Container.Bind<BuildingSpawner>().AsSingle();
+			Container.Bind<GameUiMediator>().AsSingle();
 
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
 
@@ -45,15 +43,7 @@ namespace Confrontation
 
 		private void BindFactories()
 		{
-			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
-			Container.BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
 			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<CustomWindowFactory>();
-
-			Container.BindFactory<Building, Building, Building.Factory>()
-			         .FromFactory<PrefabFactory<Building>>();
-
-			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
-			         .FromComponentInNewPrefab(_buildingButton);
 		}
 	}
 }

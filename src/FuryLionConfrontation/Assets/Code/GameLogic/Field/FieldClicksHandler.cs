@@ -6,7 +6,7 @@ namespace Confrontation
 	public class FieldClicksHandler : IInitializable
 	{
 		[Inject] private readonly User _user;
-		[Inject] private readonly UiMediator _uiMediator;
+		[Inject] private readonly GameUiMediator _gameUiMediator;
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly Orders _orders;
 
@@ -34,8 +34,8 @@ namespace Confrontation
 
 		private Action ShowRelevantMenu(Cell cell)
 			=> cell.IsEmpty
-				? _uiMediator.OpenWindow<BuildWindow>
-				: _uiMediator.OpenWindow<BuildingWindow>;
+				? _gameUiMediator.OpenWindow<BuildWindow>
+				: _gameUiMediator.OpenWindow<BuildingWindow>;
 
 		private static void DoNothing() { }
 	}

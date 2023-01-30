@@ -5,18 +5,17 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class CoolDownActionsHandler : IInitializable, ITickable
+	public class CoolDownActionsHandler : ITickable
 	{
 		[Inject] private readonly BuildingsGenerator _buildingsGenerator;
 
-		private IEnumerable<IActorWithCoolDown> _actorsWithCoolDown;
-
-		public void Initialize() => _actorsWithCoolDown = _buildingsGenerator.Buildings.OfType<IActorWithCoolDown>();
+		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
+			=> _buildingsGenerator.Buildings.OfType<IActorWithCoolDown>();
 
 		public void Tick()
 		{
 			var deltaTime = Time.deltaTime;
-			foreach (var actor in _actorsWithCoolDown)
+			foreach (var actor in ActorsWithCoolDown)
 			{
 				actor.PassedDuration += deltaTime;
 

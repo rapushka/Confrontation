@@ -7,7 +7,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly WindowBase.Factory _windowsFactory;
 		[Inject] private readonly TypedDictionary<WindowBase> _windowsPrefabs;
-		[Inject] private readonly UiMediator _uiMediator;
+		[Inject] private readonly GameUiMediator _gameUiMediator;
 
 		private readonly TypedDictionary<WindowBase> _cashedWindows = new();
 
@@ -31,7 +31,7 @@ namespace Confrontation
 		private TWindow CreateNewWindow<TWindow>()
 			where TWindow : WindowBase
 			=> _windowsFactory.Create(_windowsPrefabs.Get<TWindow>())
-			                  .With((w) => w.transform.SetParent(_uiMediator.Canvas))
+			                  .With((w) => w.transform.SetParent(_gameUiMediator.Canvas))
 			                  .Cast<WindowBase, TWindow>();
 
 		private void CloseCurrent()

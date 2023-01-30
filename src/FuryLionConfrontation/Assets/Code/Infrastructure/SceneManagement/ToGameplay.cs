@@ -4,10 +4,10 @@ namespace Confrontation
 {
 	public class ToGameplay : ToScene
 	{
-		private readonly UiMediator _mediator;
+		private readonly GameUiMediator _mediator;
 
 		[Inject]
-		public ToGameplay(ISceneTransferService sceneTransfer, UiMediator mediator)
+		public ToGameplay(ISceneTransferService sceneTransfer, GameUiMediator mediator)
 			: base(sceneTransfer)
 			=> _mediator = mediator;
 

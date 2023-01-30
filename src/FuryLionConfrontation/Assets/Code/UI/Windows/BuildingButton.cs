@@ -7,7 +7,8 @@ namespace Confrontation
 	public class BuildingButton : ButtonBase
 	{
 		[Inject] private readonly Building _building;
-		[Inject] private readonly UiMediator _uiMediator;
+		[Inject] private readonly GameplayUiMediator _gameplayUiMediator;
+		[Inject] private readonly GameUiMediator _gameUiMediator;
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
@@ -15,8 +16,8 @@ namespace Confrontation
 
 		protected override void OnButtonClick()
 		{
-			_uiMediator.Build(_building);
-			_uiMediator.CloseCurrentWindow();
+			_gameplayUiMediator.Build(_building);
+			_gameUiMediator.CloseCurrentWindow();
 		}
 
 		public class Factory : PlaceholderFactory<Building, BuildingButton>

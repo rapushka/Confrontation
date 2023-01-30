@@ -4,8 +4,8 @@ namespace Confrontation
 {
 	public class HideWindowButton : ButtonBase
 	{
-		[Inject] private readonly UiMediator _uiMediator;
+		[Inject] private readonly GameUiMediator _gameUiMediator;
 
-		protected override void OnButtonClick() => _uiMediator.CloseCurrentWindow();
+		protected override void OnButtonClick() => _gameUiMediator.CloseCurrentWindow();
 	}
 }
