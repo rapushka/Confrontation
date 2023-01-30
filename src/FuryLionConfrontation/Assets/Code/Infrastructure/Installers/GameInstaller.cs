@@ -26,8 +26,6 @@ namespace Confrontation
 			Container.Bind<GameUiMediator>().AsSingle();
 
 			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
-
-			BindFactories();
 		}
 
 		private void BindPrefabs()
@@ -38,10 +36,6 @@ namespace Confrontation
 			Container.BindInstance(_canvasPrefab).AsSingle();
 			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
 			Container.Bind<IInputService>().FromComponentInNewPrefab(_inputService).AsSingle();
-		}
-
-		private void BindFactories()
-		{
 		}
 	}
 }
