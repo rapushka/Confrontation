@@ -39,7 +39,8 @@ namespace Confrontation
 		{
 			_locationCell.UnitsSquads = null;
 
-			if (quantityToMove < QuantityOfUnits)
+			if (quantityToMove < QuantityOfUnits
+			    && quantityToMove > 0)
 			{
 				FormNewSquad(quantityToMove);
 			}
