@@ -35,9 +35,8 @@ namespace Confrontation
 		{
 			var squad = _assets.Instantiate(UnitPrefab, InitialUnitPosition);
 			squad.OwnerPlayerId = RelatedCell.RelatedRegion.OwnerPlayerId;
-			squad!.LocationCell = RelatedCell;
+			squad!.SetLocation(RelatedCell);
 			squad.QuantityOfUnits = 1;
-			RelatedCell.UnitsSquads = squad;
 		}
 	}
 }

@@ -2863,6 +2863,7 @@ GameObject:
   - component: {fileID: 5079142124888409487}
   - component: {fileID: 2547840534391355026}
   - component: {fileID: 2645443025243697774}
+  - component: {fileID: 1518563021216549159}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -2922,7 +2923,7 @@ MonoBehaviour:
   _unitMovement: {fileID: 5079142124888409487}
   _animator: {fileID: 2547840534391355026}
   _quantityOfUnitsInSquadView: {fileID: 4932106679340135184}
-  _locationCell: {fileID: 0}
+  _unitOrderPerformer: {fileID: 1518563021216549159}
 --- !u!114 &5079142124888409487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2962,6 +2963,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c35f6fdf7dc44fa97cbd8b74222b4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1518563021216549159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098297294174609041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1231bd5938426b8e60e8ced34a4b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitsSquad: {fileID: -6484238923440550980}
 --- !u!1 &1098304054989784807
 GameObject:
   m_ObjectHideFlags: 0
@@ -6778,7 +6792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a19772d29694a4082bfaa2f1c8e68a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _custom: 1
 --- !u!1 &8239011307609748648
 GameObject:
   m_ObjectHideFlags: 0
