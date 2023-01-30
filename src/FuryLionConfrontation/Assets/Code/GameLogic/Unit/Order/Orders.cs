@@ -4,10 +4,15 @@ namespace Confrontation
 	{
 		public void GiveOrder(Cell startCell, Cell endCell)
 		{
-			if (startCell.HaveUnits 
+			if (startCell.HaveUnits
 			    && endCell.Building is Village)
 			{
-				startCell.UnitsSquads!.TargetCell = endCell;
+				var squad = startCell.UnitsSquads!;
+				var quantityToMove = startCell.Building is Barracks
+					? squad.QuantityOfUnits
+					: squad.QuantityOfUnits / 2;
+
+				squad.MoveTo(endCell, quantityToMove);
 			}
 		}
 	}

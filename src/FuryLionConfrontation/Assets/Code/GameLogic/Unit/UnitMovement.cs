@@ -24,13 +24,15 @@ namespace Confrontation
 		{
 			_targetCell = target;
 
-			transform.forward = (TargetPosition - CurrentPosition).normalized;
+			LookAtTarget();
 			StartCoroutine(MoveToTarget());
 		}
 
+		private void LookAtTarget() => transform.forward = (TargetPosition - CurrentPosition).normalized;
+
 		private IEnumerator MoveToTarget()
 		{
-			while (IsReachTarget() == false)
+			while (IsTargetReach() == false)
 			{
 				_transform.position = MoveTowardsTarget();
 				yield return _waitForFixedUpdate;
@@ -41,6 +43,6 @@ namespace Confrontation
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
-		private bool IsReachTarget() => Vector3.Distance(CurrentPosition, TargetPosition) < Constants.Epsilon;
+		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Constants.Epsilon;
 	}
 }

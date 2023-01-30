@@ -8,10 +8,12 @@ namespace Confrontation
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitAnimator _animator;
 		[SerializeField] private QuantityOfUnitsInSquadView _quantityOfUnitsInSquadView;
-		[SerializeField] private Cell _locationCell;
 
+		private Cell _locationCell;
 		private int _quantityOfUnits;
 		[CanBeNull] private Cell _targetCell;
+
+		public Player Owner { get; set; }
 
 		public int QuantityOfUnits
 		{
@@ -23,11 +25,8 @@ namespace Confrontation
 			}
 		}
 
-		public Player Owner { get; set; }
-
 		public Cell LocationCell
 		{
-			get => _locationCell;
 			set
 			{
 				_locationCell = value;
@@ -36,30 +35,44 @@ namespace Confrontation
 			}
 		}
 
+		public void MoveTo(Cell targetCell, int quantityToMove)
+		{
+			_locationCell.UnitsSquads = null;
+
+			if (quantityToMove < QuantityOfUnits)
+			{
+				FormNewSquad(quantityToMove);
+			}
+
+			_locationCell = null;
+			_targetCell = targetCell;
+			_unitMovement.MoveTo(_targetCell);
+			_animator.StartMoving();
+		}
+
+		private void FormNewSquad(int quantity)
+		{
+			var newSquad = Instantiate(this);
+			newSquad.LocationCell = _locationCell;
+			newSquad.QuantityOfUnits = quantity;
+			QuantityOfUnits -= quantity;
+		}
+
 		private void MergeWithOtherSquad(Cell cell)
 		{
 			if (IsCellAlreadyPlaced(cell))
 			{
-				var squadOnCell = cell.UnitsSquads;
-				QuantityOfUnits += squadOnCell!.QuantityOfUnits;
-				Destroy(squadOnCell.gameObject);
+				Merge(cell.UnitsSquads);
 			}
+		}
+
+		private void Merge(UnitsSquad squadOnCell)
+		{
+			QuantityOfUnits += squadOnCell!.QuantityOfUnits;
+			Destroy(squadOnCell.gameObject);
 		}
 
 		private bool IsCellAlreadyPlaced(Cell value) => value.UnitsSquads == true && value.UnitsSquads != this;
-
-		[CanBeNull]
-		public Cell TargetCell
-		{
-			get => _targetCell;
-			set
-			{
-				_locationCell.UnitsSquads = null;
-				_unitMovement.MoveTo(value);
-				_animator.StartMoving();
-				_targetCell = value;
-			}
-		}
 
 		private void Start() => _unitMovement.TargetReached += OnTargetCellReached;
 
