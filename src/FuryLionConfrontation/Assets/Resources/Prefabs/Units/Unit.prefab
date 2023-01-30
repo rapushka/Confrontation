@@ -2922,7 +2922,8 @@ MonoBehaviour:
   _unitMovement: {fileID: 5079142124888409487}
   _animator: {fileID: 2547840534391355026}
   _locationCell: {fileID: 0}
-  <QuantityOfUnits>k__BackingField: 0
+  _quantityOfUnits: 0
+  _quantityOfUnitsInSquadView: {fileID: 6441230295073394692}
 --- !u!114 &5079142124888409487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6880,3 +6881,32 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6971080089631614183, guid: 65656db752a9e0dd58c86655c64019dc, type: 3}
   m_PrefabInstance: {fileID: 6681204457699541311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6334755122975308084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 815708121274480651, guid: 65656db752a9e0dd58c86655c64019dc, type: 3}
+  m_PrefabInstance: {fileID: 6681204457699541311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6441230295073394692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334755122975308084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09eaa3321d924c69abca95e7adf78fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMesh: {fileID: 8081343193472317081}
+--- !u!114 &8081343193472317081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3215247835670788006, guid: 65656db752a9e0dd58c86655c64019dc, type: 3}
+  m_PrefabInstance: {fileID: 6681204457699541311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334755122975308084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

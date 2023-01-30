@@ -7,11 +7,21 @@ namespace Confrontation
 	{
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitAnimator _animator;
-
-		[CanBeNull] private Cell _targetCell;
+		[SerializeField] private QuantityOfUnitsInSquadView _quantityOfUnitsInSquadView;
 		[SerializeField] private Cell _locationCell;
 
-		[field: SerializeField] public int QuantityOfUnits { get; set; }
+		private int _quantityOfUnits;
+		[CanBeNull] private Cell _targetCell;
+
+		public int QuantityOfUnits
+		{
+			get => _quantityOfUnits;
+			set
+			{
+				_quantityOfUnits = value;
+				_quantityOfUnitsInSquadView.UpdateValue(value);
+			}
+		}
 
 		public Player Owner { get; set; }
 
@@ -21,17 +31,22 @@ namespace Confrontation
 			set
 			{
 				_locationCell = value;
-				if (value.UnitsSquads == true
-				    && value.UnitsSquads != this)
-				{
-					var squadOnCell = value.UnitsSquads;
-					QuantityOfUnits += squadOnCell!.QuantityOfUnits;
-					Destroy(squadOnCell.gameObject);
-				}
-
+				MergeWithOtherSquad(value);
 				_locationCell.UnitsSquads = this;
 			}
 		}
+
+		private void MergeWithOtherSquad(Cell cell)
+		{
+			if (IsCellAlreadyPlaced(cell))
+			{
+				var squadOnCell = cell.UnitsSquads;
+				QuantityOfUnits += squadOnCell!.QuantityOfUnits;
+				Destroy(squadOnCell.gameObject);
+			}
+		}
+
+		private bool IsCellAlreadyPlaced(Cell value) => value.UnitsSquads == true && value.UnitsSquads != this;
 
 		[CanBeNull]
 		public Cell TargetCell
