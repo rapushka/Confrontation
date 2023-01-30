@@ -27,10 +27,17 @@ namespace Confrontation
 			}
 			else
 			{
-				RelatedCell.UnitsSquads = _assets.Instantiate(UnitPrefab, InitialUnitPosition);
-				RelatedCell.UnitsSquads!.LocationCell = RelatedCell;
-				RelatedCell.UnitsSquads.QuantityOfUnits = 1;
+				CreateNewSquad();
 			}
+		}
+
+		private void CreateNewSquad()
+		{
+			var squad = _assets.Instantiate(UnitPrefab, InitialUnitPosition);
+			squad.OwnerPlayerId = RelatedCell.RelatedRegion.OwnerPlayerId;
+			squad!.LocationCell = RelatedCell;
+			squad.QuantityOfUnits = 1;
+			RelatedCell.UnitsSquads = squad;
 		}
 	}
 }

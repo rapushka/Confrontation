@@ -13,7 +13,7 @@ namespace Confrontation
 		private int _quantityOfUnits;
 		[CanBeNull] private Cell _targetCell;
 
-		public Player Owner { get; set; }
+		public int OwnerPlayerId { get; set; }
 
 		public int QuantityOfUnits
 		{
@@ -32,6 +32,16 @@ namespace Confrontation
 				_locationCell = value;
 				MergeWithOtherSquad(value);
 				_locationCell.UnitsSquads = this;
+				CaptureRegion(_locationCell);
+			}
+		}
+
+		private void CaptureRegion(Cell cell)
+		{
+			cell.RelatedRegion.OwnerPlayerId = OwnerPlayerId;
+			foreach (var cellInRegion in cell.RelatedRegion.CellsInRegion)
+			{
+				cellInRegion.SetColor(OwnerPlayerId);
 			}
 		}
 
@@ -54,6 +64,7 @@ namespace Confrontation
 		private void FormNewSquad(int quantity)
 		{
 			var newSquad = Instantiate(this);
+			newSquad.OwnerPlayerId = OwnerPlayerId;
 			newSquad.LocationCell = _locationCell;
 			newSquad.QuantityOfUnits = quantity;
 			QuantityOfUnits -= quantity;

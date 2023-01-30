@@ -30,7 +30,7 @@ namespace Confrontation
 			}
 		}
 
-		public bool IsBelongTo(int currentPlayerId)
-			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == currentPlayerId;
+		public bool IsBelongTo(int playerId)
+			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == playerId;
 	}
 }
