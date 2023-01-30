@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class FieldClicksHandler : IInitializable
+	public class FieldClicksHandler : IInitializable, IDisposable
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
@@ -14,6 +14,12 @@ namespace Confrontation
 		{
 			_inputService.Clicked += OnClick;
 			_inputService.Dragged += OnDrag;
+		}
+
+		public void Dispose()
+		{
+			_inputService.Clicked -= OnClick;
+			_inputService.Dragged -= OnDrag;
 		}
 
 		private void OnDrag(ClickReceiver startReceiver, ClickReceiver endReceiver)
