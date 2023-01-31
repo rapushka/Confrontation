@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Confrontation.Editor
 {
-	public partial class LevelEditorWindow : EditorWindow
+	public class LevelEditorWindow : EditorWindow
 	{
 		private readonly LevelEditor _levelEditor;
 		private int _height;
@@ -23,7 +23,7 @@ namespace Confrontation.Editor
 		// ReSharper disable Unity.PerformanceCriticalCodeInvocation - we don't care about performance in Editor
 		private void OnGUI()
 		{
-			Utils.AsHorizontalGroup(SizesIntFields);
+			EditorGUILayoutUtils.AsHorizontalGroup(SizesIntFields);
 
 			GUILayout.Button(nameof(GenerateField).Format()).OnClick(GenerateField);
 			GUILayout.Button(nameof(Serialize).Format()).OnClick(Serialize);
