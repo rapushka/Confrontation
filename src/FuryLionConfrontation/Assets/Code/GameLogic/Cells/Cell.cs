@@ -11,22 +11,44 @@ namespace Confrontation
 
 		[CanBeNull] public Building Building { get; set; }
 
-		public bool IsEmpty   => Building is null;
-		public bool HaveUnits => UnitsSquads is not null;
-
-		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
-
 		public Village RelatedRegion { get; set; }
+
+		public bool IsEmpty => Building is null;
+
+		public bool HasUnits => UnitsSquads is not null;
 
 		public Coordinates Coordinates
 		{
 			set => transform.position = value.CalculatePosition().AsTopDown();
 		}
 
-		public bool IsBelongTo(Player player)
-			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == player.Id;
+		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
+
+		public bool IsBelongTo(Player player) => RelatedRegion is not null && RelatedRegion.OwnerPlayerId == player.Id;
 
 		public void MakeRegionNeutral() => RelatedRegion.SetOwner(Constants.NeutralRegion);
 
+		public void ChangeOwnerTo(int newOwnerId)
+		{
+			AppropriateBuildingTo(newOwnerId);
+			AppropriateUnitsTo(newOwnerId);
+			SetColor(newOwnerId);
+		}
+
+		private void AppropriateUnitsTo(int newOwnerId)
+		{
+			if (HasUnits)
+			{
+				UnitsSquads!.OwnerPlayerId = newOwnerId;
+			}
+		}
+
+		private void AppropriateBuildingTo(int newOwnerId)
+		{
+			if (IsEmpty == false)
+			{
+				Building!.OwnerPlayerId = newOwnerId;
+			}
+		}
 	}
 }

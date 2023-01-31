@@ -30,19 +30,22 @@ namespace Confrontation
 		private void OnCellClick(Cell cell)
 		{
 			_user.Player.ClickedCell = cell;
-			DecideWhatToDoWith(cell).Invoke();
+			if (cell.IsBelongTo(_user.Player))
+			{
+				ShowRelevantMenu(cell);
+			}
 		}
 
-		private Action DecideWhatToDoWith(Cell cell)
-			=> cell.IsBelongTo(_user.Player)
-				? ShowRelevantMenu(cell)
-				: DoNothing;
-
-		private Action ShowRelevantMenu(Cell cell)
-			=> cell.IsEmpty
-				? _uiMediator.OpenWindow<BuildWindow>
-				: _uiMediator.OpenWindow<BuildingWindow>;
-
-		private static void DoNothing() { }
+		private void ShowRelevantMenu(Cell cell)
+		{
+			if (cell.IsEmpty)
+			{
+				_uiMediator.OpenWindow<BuildWindow>();
+			}
+			else
+			{
+				_uiMediator.OpenWindow<BuildingWindow>();
+			}
+		}
 	}
 }

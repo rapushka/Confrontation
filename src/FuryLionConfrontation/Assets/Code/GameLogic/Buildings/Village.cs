@@ -16,9 +16,9 @@ namespace Confrontation
 		public void SetOwner(int newOwnerId)
 		{
 			OwnerPlayerId = newOwnerId;
-			foreach (var cellInRegion in CellsInRegion)
+			foreach (var cell in CellsInRegion)
 			{
-				cellInRegion.SetColor(newOwnerId);
+				cell.ChangeOwnerTo(newOwnerId);
 			}
 		}
 	}

@@ -8,7 +8,7 @@ namespace Confrontation
 
 		public void GiveOrder(Cell startCell, Cell endCell)
 		{
-			if (startCell.HaveUnits
+			if (startCell.HasUnits
 			    && startCell.IsBelongTo(_user.Player)
 			    && endCell.Building is Village)
 			{
