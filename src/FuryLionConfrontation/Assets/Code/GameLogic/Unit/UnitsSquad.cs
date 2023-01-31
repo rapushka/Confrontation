@@ -27,7 +27,7 @@ namespace Confrontation
 			}
 		}
 
-		public void SetLocation(Cell cell) => _unitOrderPerformer.LocationCell = cell;
+		public void SetLocation(Cell cell) => _unitOrderPerformer.SetLocation(cell);
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
