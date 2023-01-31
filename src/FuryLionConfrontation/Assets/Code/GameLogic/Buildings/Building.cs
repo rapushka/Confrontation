@@ -10,6 +10,14 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<Building, Building>
 		{
+			public T Create<T>(T prefab, Cell ownerCell, int ownerId)
+				where T : Building
+			{
+				var building = Create(prefab, ownerCell.transform, ownerId);
+				building.RelatedCell = ownerCell;
+				return building;
+			}
+
 			public T Create<T>(T prefab, Transform ownerCell, int ownerId)
 				where T : Building
 			{
