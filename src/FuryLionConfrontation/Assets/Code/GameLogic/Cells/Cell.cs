@@ -25,5 +25,8 @@ namespace Confrontation
 
 		public bool IsBelongTo(Player player)
 			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == player.Id;
+
+		public void MakeRegionNeutral() => RelatedRegion.SetOwner(Constants.NeutralRegion);
+
 	}
 }

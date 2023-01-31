@@ -12,5 +12,14 @@ namespace Confrontation
 			CellsInRegion.Add(cell);
 			cell.RelatedRegion = this;
 		}
+
+		public void SetOwner(int newOwnerId)
+		{
+			OwnerPlayerId = newOwnerId;
+			foreach (var cellInRegion in CellsInRegion)
+			{
+				cellInRegion.SetColor(newOwnerId);
+			}
+		}
 	}
 }

@@ -12,13 +12,7 @@ namespace Confrontation
 
 		public Cell LocationCell
 		{
-			set
-			{
-				_locationCell = value;
-				MergeWithOtherSquad(value);
-				_locationCell.UnitsSquads = _unitsSquad;
-				CaptureRegion(_locationCell);
-			}
+			set => DoActionWithOtherSquad(value);
 		}
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
@@ -41,20 +35,21 @@ namespace Confrontation
 			_targetCell = null;
 		}
 
-		private void MergeWithOtherSquad(Cell cell)
+		private void DoActionWithOtherSquad(Cell cell)
 		{
-			if (IsCellAlreadyPlaced(cell))
+			if (IsCellAlreadyPlaced(cell) == false)
 			{
-				Merge(cell.UnitsSquads);
+				CaptureRegion(_locationCell);
+				return;
 			}
-		}
 
-		private void CaptureRegion(Cell cell)
-		{
-			cell.RelatedRegion.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
-			foreach (var cellInRegion in cell.RelatedRegion.CellsInRegion)
+			if (IsHaveSameOwner(cell))
 			{
-				cellInRegion.SetColor(_unitsSquad.OwnerPlayerId);
+				MergeWith(cell.UnitsSquads);
+			}
+			else
+			{
+				FightWithSquadOn(cell);
 			}
 		}
 
@@ -69,10 +64,50 @@ namespace Confrontation
 
 		private bool IsCellAlreadyPlaced(Cell value) => value.UnitsSquads == true && value.UnitsSquads != _unitsSquad;
 
-		private void Merge(UnitsSquad squadOnCell)
+		private bool IsHaveSameOwner(Cell cell)
+			=> cell.RelatedRegion.OwnerPlayerId == _locationCell.RelatedRegion.OwnerPlayerId;
+
+		private void MergeWith(UnitsSquad squadOnCell)
 		{
-			_unitsSquad.QuantityOfUnits += squadOnCell!.QuantityOfUnits;
-			Destroy(squadOnCell.gameObject);
+			squadOnCell.QuantityOfUnits += _unitsSquad.QuantityOfUnits;
+			Destroy(_unitsSquad.gameObject);
+		}
+
+		private void FightWithSquadOn(Cell cell)
+		{
+			var enemySquad = cell.UnitsSquads!;
+
+			if (_unitsSquad.QuantityOfUnits > enemySquad.QuantityOfUnits)
+			{
+				_unitsSquad.QuantityOfUnits -= enemySquad.QuantityOfUnits;
+				Destroy(enemySquad.gameObject);
+				CaptureRegion(cell);
+			}
+			else if (_unitsSquad.QuantityOfUnits < enemySquad.QuantityOfUnits)
+			{
+				enemySquad.QuantityOfUnits -= _unitsSquad.QuantityOfUnits;
+				Destroy(_unitsSquad.gameObject);
+			}
+			else
+			{
+				cell.UnitsSquads = null;
+				Destroy(_unitsSquad.gameObject);
+				Destroy(enemySquad.gameObject);
+				cell.MakeRegionNeutral();
+			}
+		}
+
+		private void AppropriateCell(Cell cell)
+		{
+			_locationCell = cell;
+			cell.UnitsSquads = _unitsSquad;
+		}
+
+		private void CaptureRegion(Cell cell)
+		{
+			AppropriateCell(cell);
+
+			cell.RelatedRegion.SetOwner(_unitsSquad.OwnerPlayerId);
 		}
 	}
 }
