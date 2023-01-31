@@ -59,6 +59,11 @@ namespace Confrontation
 						Prefab = Resources.Load<Building>("Prefabs/Buildings/Barracks"),
 						Coordinates = new Coordinates(0, 2),
 					},
+					new()
+					{
+						Prefab = Resources.Load<Building>("Prefabs/Buildings/Barracks"),
+						Coordinates = new Coordinates(4, 3),
+					},
 				},
 			};
 	}

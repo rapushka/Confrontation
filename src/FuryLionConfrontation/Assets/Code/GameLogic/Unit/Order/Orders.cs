@@ -1,10 +1,15 @@
+using Zenject;
+
 namespace Confrontation
 {
 	public class Orders
 	{
+		[Inject] private readonly User _user;
+
 		public void GiveOrder(Cell startCell, Cell endCell)
 		{
 			if (startCell.HaveUnits
+			    && startCell.IsBelongTo(_user.Player)
 			    && endCell.Building is Village)
 			{
 				var squad = startCell.UnitsSquads!;

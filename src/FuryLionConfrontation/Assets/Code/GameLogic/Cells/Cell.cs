@@ -9,8 +9,6 @@ namespace Confrontation
 
 		[CanBeNull] public UnitsSquad UnitsSquads { get; set; }
 
-		private Coordinates _coordinates;
-
 		[CanBeNull] public Building Building { get; set; }
 
 		public bool IsEmpty   => Building is null;
@@ -22,15 +20,10 @@ namespace Confrontation
 
 		public Coordinates Coordinates
 		{
-			get => _coordinates;
-			set
-			{
-				transform.position = value.CalculatePosition().AsTopDown();
-				_coordinates = value;
-			}
+			set => transform.position = value.CalculatePosition().AsTopDown();
 		}
 
-		public bool IsBelongTo(int playerId)
-			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == playerId;
+		public bool IsBelongTo(Player player)
+			=> RelatedRegion is not null && RelatedRegion.OwnerPlayerId == player.Id;
 	}
 }

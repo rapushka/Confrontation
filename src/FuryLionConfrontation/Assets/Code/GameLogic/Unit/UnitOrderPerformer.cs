@@ -60,7 +60,7 @@ namespace Confrontation
 
 		private void FormNewSquad(int quantity)
 		{
-			var newSquad = Object.Instantiate(_unitsSquad);
+			var newSquad = Instantiate(_unitsSquad);
 			newSquad.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
 			newSquad.SetLocation(_locationCell);
 			newSquad.QuantityOfUnits = quantity;
@@ -72,7 +72,7 @@ namespace Confrontation
 		private void Merge(UnitsSquad squadOnCell)
 		{
 			_unitsSquad.QuantityOfUnits += squadOnCell!.QuantityOfUnits;
-			Object.Destroy(squadOnCell.gameObject);
+			Destroy(squadOnCell.gameObject);
 		}
 	}
 }

@@ -34,7 +34,7 @@ namespace Confrontation
 		}
 
 		private Action DecideWhatToDoWith(Cell cell)
-			=> cell.IsBelongTo(_user.Player.Id)
+			=> cell.IsBelongTo(_user.Player)
 				? ShowRelevantMenu(cell)
 				: DoNothing;
 
