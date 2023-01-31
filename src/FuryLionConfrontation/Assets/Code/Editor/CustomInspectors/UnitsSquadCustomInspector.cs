@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace Confrontation.Editor
 {
-	[CustomEditor(typeof(UnitOrderPerformer))]
-	public class UnitsOrderPerformerCustomInspector : UnityEditor.Editor
+	[CustomEditor(typeof(UnitsSquad))]
+	public class UnitsSquadCustomInspector : UnityEditor.Editor
 	{
-		private UnitOrderPerformer Target => (UnitOrderPerformer)target;
+		private Cell _targetCell;
+
+		private UnitsSquad Target => (UnitsSquad)target;
 
 		// ReSharper disable Unity.PerformanceCriticalCodeInvocation - We don't care about performance in editor
 		public override void OnInspectorGUI()
@@ -15,15 +17,15 @@ namespace Confrontation.Editor
 
 			GUILayout.Label("Debug tools");
 			EditorGUILayoutUtils.AsHorizontalGroup(TargetCellObjectField);
-			GUILayout.Button(nameof(MoveTo).Format()).OnClick(MoveTo);
+			GUILayout.Button(nameof(MoveToTargetCell).Format()).OnClick(MoveToTargetCell);
 		}
 
 		private void TargetCellObjectField()
 		{
 			GUILayout.Label("Target Cell: ");
-			Target.UpdateTargetCell(via: (c) => c.AsObjectField());
+			_targetCell = _targetCell.AsObjectField();
 		}
 
-		private void MoveTo() => Target.MoveTo(Target.GetTargetCell(), Target.GetQuantityOfUnits());
+		private void MoveToTargetCell() => Target.MoveTo(_targetCell, Target.QuantityOfUnits);
 	}
 }
