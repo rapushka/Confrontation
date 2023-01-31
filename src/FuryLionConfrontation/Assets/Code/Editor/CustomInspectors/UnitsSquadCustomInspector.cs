@@ -26,6 +26,6 @@ namespace Confrontation.Editor
 			_targetCell = _targetCell.AsObjectField();
 		}
 
-		private void MoveToTargetCell() => Target.MoveTo(_targetCell, Target.QuantityOfUnits);
+		private void MoveToTargetCell() => Target.MoveTo(_targetCell);
 	}
 }

@@ -29,6 +29,8 @@ namespace Confrontation
 
 		public void SetLocation(Cell cell) => _unitOrderPerformer.SetLocation(cell);
 
+		public void MoveTo(Cell targetCell) => MoveTo(targetCell, QuantityOfUnits);
+
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
 			_unitOrderPerformer.MoveTo(targetCell, quantityToMove);

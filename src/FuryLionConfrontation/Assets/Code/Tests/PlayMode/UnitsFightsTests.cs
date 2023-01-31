@@ -8,23 +8,30 @@ using Zenject;
 
 public class UnitsFightsTests : SceneTestFixture
 {
+	private readonly WaitForSeconds _waitForZenjectInitialization = new(1f);
 	private const int UserPlayerId = 1;
 
 	[UnityTest]
-	public IEnumerator
-		WhenSquadWith1UnitMoveToOtherCell_AndOnOtherCellIsEnemySquadWith1Unit_ThenCellShouldBecomeNeutral()
+	public IEnumerator WhenUnitsSquadMovedToVillage_AndUnitsSquadContain1Unit_ThenVillageShouldHave1Unit()
 	{
 		yield return LoadScene(Constants.SceneName.GameplayScene);
+		yield return _waitForZenjectInitialization;
 
 		// Arrange.
-		var enemyVillage = Object.FindObjectsOfType<Village>().Single((v) => v.OwnerPlayerId != UserPlayerId);
-		var cell = enemyVillage.RelatedCell;
-		
+		var village = Object.FindObjectsOfType<Village>().First(BelongToEnemy);
+		var cellWithVillage = village.RelatedCell;
+		var barracks = Object.FindObjectsOfType<Barracks>().First(BelongToEnemy);
 
 		// Act.
+		barracks.Action();
+		var unitsSquad = barracks.RelatedCell.UnitsSquads!;
+		unitsSquad.MoveTo(cellWithVillage);
+		yield return new WaitUntil(() => cellWithVillage.UnitsSquads == true);
 
 		// Assert.
-		var owner = cell.RelatedRegion.OwnerPlayerId;
-		owner.Should().Be(Constants.NeutralRegion);
+		var unitsQuantity = cellWithVillage.UnitsSquads!.QuantityOfUnits;
+		unitsQuantity.Should().Be(1);
 	}
+
+	private static bool BelongToEnemy(Building building) => building.OwnerPlayerId != UserPlayerId;
 }
