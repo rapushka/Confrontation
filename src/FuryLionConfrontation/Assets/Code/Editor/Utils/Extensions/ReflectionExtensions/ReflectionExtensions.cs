@@ -17,7 +17,7 @@ namespace Confrontation.Editor
 			=> (T)@this.GetType().GetField(fieldName, flags)!.GetValue(@this);
 
 		private static void SetFieldValue<T>(this object @this, string fieldName, BindingFlags flags, T value)
-			=> @this.GetType().GetProperty(fieldName, flags)!.SetValue(@this, value);
+			=> @this.GetType().GetField(fieldName, flags)!.SetValue(@this, value);
 
 		public static T GetPropertyValue<T>(this object @this, string fieldName)
 			=> (T)@this.GetType().GetProperty(fieldName)!.GetValue(@this);
