@@ -21,6 +21,10 @@ namespace Confrontation
 		public event Action<ClickReceiver> Clicked;
 
 		public event Action<ClickReceiver, ClickReceiver> Dragged;
+		public event Action<Vector3> DragStart;
+		public event Action DragEnd;
+
+		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
@@ -60,9 +64,19 @@ namespace Confrontation
 			_dragAndDrop.Dragged -= DraggedInvoke;
 		}
 
-		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(_dragAndDrop.StartDragging);
+		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(StartDragging);
 
-		private void OnRelease(InputAction.CallbackContext context) => RaycastToCursor(_dragAndDrop.StopDragging);
+		private void StartDragging(ClickReceiver receiver)
+		{
+			DragStart?.Invoke(receiver.transform.position);
+			_dragAndDrop.StartDragging(receiver);
+		}
+
+		private void OnRelease(InputAction.CallbackContext context)
+		{
+			DragEnd?.Invoke();
+			RaycastToCursor(_dragAndDrop.StopDragging);
+		}
 
 		private void OnTap(InputAction.CallbackContext context) => RaycastToCursor((r) => Clicked?.Invoke(r));
 

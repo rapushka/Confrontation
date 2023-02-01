@@ -1,17 +1,19 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
 {
 	public class GameplayInstaller : MonoInstaller
 	{
-		[FormerlySerializedAs("_buildingButton")] [SerializeField] private BuildingButton _buildingButtonPrefab;
+		[SerializeField] private BuildingButton _buildingButtonPrefab;
 		[SerializeField] private UnitsSquad _unitPrefab;
+		[SerializeField] private LineRenderer _orderLineRenderer;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
+			Container.BindInstance(_orderLineRenderer).AsSingle();
+
 			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
@@ -21,10 +23,10 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
+			Container.BindInterfacesAndSelfTo<OrderDirectionLineRenderer>().AsSingle();
 
 			Container.Bind<BuildingSpawner>().AsSingle();
 			Container.Bind<GameplayUiMediator>().AsSingle();
-
 			Container.Bind<GameplayWindows>().AsSingle();
 
 			BindFactory();
