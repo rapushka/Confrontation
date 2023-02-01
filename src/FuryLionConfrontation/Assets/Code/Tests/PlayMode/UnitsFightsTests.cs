@@ -10,7 +10,7 @@ namespace Confrontation.Editor.PlayModeTests
 {
 	public class UnitsFightsTests : SceneTestFixture
 	{
-		private readonly WaitForSeconds _waitForZenjectInitialization = new(1f);
+		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 1f);
 		private const int UserPlayerId = 1;
 		private bool _isSquadReachTarget;
 
@@ -18,6 +18,19 @@ namespace Confrontation.Editor.PlayModeTests
 		{
 			yield return LoadScene(Constants.SceneName.GameplayScene);
 			yield return _waitForZenjectInitialization;
+		}
+
+		[UnityTest]
+		public IEnumerator _0_WhenSceneLoaded_AndResolveVillages_ThenShouldNotContainNulls()
+		{
+			yield return CommonSetUp();
+
+			var context = ProjectContext.Instance.Container.Resolve<SceneContextRegistry>()
+			                                               .TryGetSceneContextForScene(Constants.SceneName.GameplayScene);
+
+			var buildings = context.Container.Resolve<BuildingsGenerator>().Buildings;
+
+			buildings.Count((b) => b == true).Should().Be(buildings.Count);
 		}
 
 		[UnityTest]
@@ -45,11 +58,10 @@ namespace Confrontation.Editor.PlayModeTests
 		public IEnumerator
 			_2_WhenSquadWith1UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellShouldBecomeNeutral()
 		{
-			yield return LoadScene(Constants.SceneName.GameplayScene);
-			yield return _waitForZenjectInitialization;
+			yield return CommonSetUp();
 
 			// Arrange.
-			var buildings = Object.FindObjectsOfType<Building>();
+			var buildings = SceneContainer.Resolve<BuildingsGenerator>().Buildings;
 			var cellWithEnemyVillage = buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
 			var enemyUnits = Spawn.Units(buildings, BelongToEnemy);
