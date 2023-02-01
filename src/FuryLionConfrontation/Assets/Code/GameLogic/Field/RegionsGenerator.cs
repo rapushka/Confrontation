@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -11,6 +10,7 @@ namespace Confrontation
 		[Inject] private readonly IResourcesService _resourcesService;
 		[Inject] private readonly ILevelSelector _levelSelector;
 		[Inject] private readonly Building.Factory _buildingsFactory;
+		[Inject] private readonly BuildingsGenerator _buildingsGenerator;
 
 		private Village VillagePrefab => _resourcesService.VillagePrefab;
 
@@ -25,6 +25,7 @@ namespace Confrontation
 			var village = CreateVillage(region);
 			GetCellsFrom(region).ForEach(village.AddToRegion);
 			Villages.Add(village);
+			_buildingsGenerator.Buildings.Add(village);
 		}
 
 		private Village CreateVillage(Region region)
