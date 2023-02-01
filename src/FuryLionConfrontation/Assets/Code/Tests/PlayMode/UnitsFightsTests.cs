@@ -12,12 +12,14 @@ namespace Confrontation.Editor.PlayModeTests
 	{
 		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 1f);
 		private const int UserPlayerId = 1;
-		private bool _isSquadReachTarget;
+		private DiContainer _container;
 
 		private IEnumerator CommonSetUp()
 		{
 			yield return LoadScene(Constants.SceneName.GameplayScene);
 			yield return _waitForZenjectInitialization;
+
+			_container = GetActualContainer();
 		}
 
 		[UnityTest]
@@ -25,10 +27,7 @@ namespace Confrontation.Editor.PlayModeTests
 		{
 			yield return CommonSetUp();
 
-			var context = ProjectContext.Instance.Container.Resolve<SceneContextRegistry>()
-			                                               .TryGetSceneContextForScene(Constants.SceneName.GameplayScene);
-
-			var buildings = context.Container.Resolve<BuildingsGenerator>().Buildings;
+			var buildings = _container.Resolve<BuildingsGenerator>().Buildings;
 
 			buildings.Count((b) => b == true).Should().Be(buildings.Count);
 		}
@@ -61,31 +60,31 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return CommonSetUp();
 
 			// Arrange.
-			var buildings = SceneContainer.Resolve<BuildingsGenerator>().Buildings;
+			var buildings = _container.Resolve<BuildingsGenerator>().Buildings;
 			var cellWithEnemyVillage = buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
 			var enemyUnits = Spawn.Units(buildings, BelongToEnemy);
 			var friendlyUnits = Spawn.Units(buildings, BelongToPlayer);
 
 			// Act.
-			enemyUnits.MoveTo(cellWithEnemyVillage);
+			enemyUnits.MoveTo(cellWithEnemyVillage, quantityToMove: 1);
 			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
 
-			friendlyUnits.GetUnitMovement().TargetReached += OnTargetReached;
-			friendlyUnits.MoveTo(cellWithEnemyVillage);
-			yield return new WaitUntil(() => _isSquadReachTarget);
-			_isSquadReachTarget = false;
-			friendlyUnits.GetUnitMovement().TargetReached -= OnTargetReached;
+			friendlyUnits.MoveTo(cellWithEnemyVillage, quantityToMove: 1);
+			yield return friendlyUnits.WaitForTargetReach();
 
 			// Assert.
 			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
 			owner.Should().Be(Constants.NeutralRegion);
 		}
 
-		private void OnTargetReached() => _isSquadReachTarget = true;
-
 		private static bool BelongToPlayer(Building building) => building.OwnerPlayerId == UserPlayerId;
 
 		private static bool BelongToEnemy(Building building) => building.OwnerPlayerId != UserPlayerId;
+
+		private static DiContainer GetActualContainer()
+			=> ProjectContext.Instance.Container.Resolve<SceneContextRegistry>()
+			                 .TryGetSceneContextForScene(Constants.SceneName.GameplayScene)
+			                 .Container;
 	}
 }

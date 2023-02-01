@@ -1,11 +1,23 @@
+using System.Collections;
 using Confrontation;
 using Confrontation.Editor;
+using UnityEngine;
 
 public static class UnitsSquadExtensions
 {
-	public static Cell GetLocationCell(this UnitsSquad @this)
-		=> @this.GetPrivateField<UnitOrderPerformer>("_unitOrderPerformer").GetPrivateField<Cell>("_locationCell");
+	private static bool _isSquadReachTarget;
+
+	public static IEnumerator WaitForTargetReach(this UnitsSquad @this)
+	{
+		@this.GetUnitMovement().TargetReached += OnTargetReached;
+		yield return new WaitUntil(() => _isSquadReachTarget);
+		_isSquadReachTarget = false;
+		@this.GetUnitMovement().TargetReached -= OnTargetReached;
+	}
 
 	public static UnitMovement GetUnitMovement(this UnitsSquad @this)
 		=> @this.GetPrivateField<UnitMovement>("_unitMovement");
+
+	private static void OnTargetReached() => _isSquadReachTarget = true;
+
 }
