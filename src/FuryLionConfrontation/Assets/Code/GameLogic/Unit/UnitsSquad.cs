@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
@@ -42,6 +43,20 @@ namespace Confrontation
 		{
 			_unitOrderPerformer.PlaceInCell();
 			_animator.StopMoving();
+		}
+
+		public class Factory : PlaceholderFactory<UnitsSquad>
+		{
+			public UnitsSquad Create(Vector3 position, Cell cell)
+			{
+				var unitsSquad = base.Create();
+				unitsSquad.transform.position = position;
+				unitsSquad.OwnerPlayerId = cell.RelatedRegion.OwnerPlayerId;
+				unitsSquad.SetLocation(cell);
+				unitsSquad.QuantityOfUnits = 1;
+
+				return unitsSquad;
+			}
 		}
 	}
 }

@@ -5,11 +5,9 @@ namespace Confrontation
 {
 	public class Barracks : Building, IActorWithCoolDown
 	{
-		[Inject] private readonly IAssetsService _assets;
+		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 
 		[field: SerializeField] public float CoolDownDuration { get; private set; } = 10f;
-
-		[field: SerializeField] public UnitsSquad UnitPrefab { get; private set; }
 
 		public float PassedDuration { get; set; }
 
@@ -27,16 +25,8 @@ namespace Confrontation
 			}
 			else
 			{
-				CreateNewSquad();
+				_unitsFactory.Create(InitialUnitPosition, RelatedCell);
 			}
-		}
-
-		private void CreateNewSquad()
-		{
-			var squad = _assets.Instantiate(UnitPrefab, InitialUnitPosition);
-			squad.OwnerPlayerId = RelatedCell.RelatedRegion.OwnerPlayerId;
-			squad.SetLocation(RelatedCell);
-			squad.QuantityOfUnits = 1;
 		}
 	}
 }

@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
 {
 	public class GameplayInstaller : MonoInstaller
 	{
-		[SerializeField] private BuildingButton _buildingButton;
+		[FormerlySerializedAs("_buildingButton")] [SerializeField] private BuildingButton _buildingButtonPrefab;
+		[SerializeField] private UnitsSquad _unitPrefab;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
@@ -33,12 +35,13 @@ namespace Confrontation
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
-			         .FromComponentInNewPrefab(_buildingButton);
+			         .FromComponentInNewPrefab(_buildingButtonPrefab);
 
-			Container.BindFactory<Building, Building, Building.Factory>()
-			         .FromFactory<PrefabFactory<Building>>();
+			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
 
 			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<GameplayWindowsFactory>();
+
+			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
 		}
 	}
 }

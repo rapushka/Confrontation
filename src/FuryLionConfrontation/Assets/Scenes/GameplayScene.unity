@@ -200,7 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa523f8ec4f64486ab9fe00f20173c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buildingButton: {fileID: -4646616829452299902, guid: a50e8c8821030da4c92d92133d4a4105, type: 3}
+  _buildingButtonPrefab: {fileID: -4646616829452299902, guid: a50e8c8821030da4c92d92133d4a4105, type: 3}
+  _unitPrefab: {fileID: -6484238923440550980, guid: b7f59dfba32262695a11b048572c0f66, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
