@@ -21,6 +21,7 @@ namespace Confrontation
 			Container.Bind<ILevelSelector>().To<LevelCreator>().AsSingle();
 
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
+			Container.BindInterfacesTo<TimeService>().AsSingle();
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
 
 			Container.Bind<GameUiMediator>().AsSingle();

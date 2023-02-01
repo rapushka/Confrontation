@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class UnitMovement : MonoBehaviour
 	{
+		[Inject] private readonly ITimeService _timeService;
+
 		[SerializeField] private Transform _transform;
 		[SerializeField] private float _speed = 1f;
 
@@ -14,7 +17,7 @@ namespace Confrontation
 
 		public event Action TargetReached;
 
-		private float ScaledSpeed => _speed * Time.fixedDeltaTime;
+		private float ScaledSpeed => _speed * _timeService.FixedDeltaTime;
 
 		private Vector3 TargetPosition => _targetCell.transform.position + Constants.VerticalOffsetAboveCell;
 

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,13 +7,14 @@ namespace Confrontation
 	public class CoolDownActionsHandler : ITickable
 	{
 		[Inject] private readonly BuildingsGenerator _buildingsGenerator;
+		[Inject] private readonly ITimeService _timeService;
 
 		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
 			=> _buildingsGenerator.Buildings.OfType<IActorWithCoolDown>();
 
 		public void Tick()
 		{
-			var deltaTime = Time.deltaTime;
+			var deltaTime = _timeService.DeltaTime;
 			foreach (var actor in ActorsWithCoolDown)
 			{
 				actor.PassedDuration += deltaTime;
