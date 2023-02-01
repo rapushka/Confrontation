@@ -4,9 +4,7 @@ namespace Confrontation
 {
 	public abstract class ToScene : IInitializable
 	{
-		private readonly ISceneTransferService _sceneTransfer;
-
-		protected ToScene(ISceneTransferService sceneTransfer) => _sceneTransfer = sceneTransfer;
+		[Inject] private readonly ISceneTransferService _sceneTransfer;
 
 		protected abstract string SceneName { get; }
 
