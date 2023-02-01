@@ -65,22 +65,76 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return CommonSetUp();
 
 			// Arrange.
-			const int quantityToMove = 1;
+			const int userQuantity = 1;
+			const int enemyQuantity = 1;
 			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
 			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy);
 			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer);
 
 			// Act.
-			enemyUnits.MoveTo(cellWithEnemyVillage, quantityToMove);
+			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
 			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
 
-			friendlyUnits.MoveTo(cellWithEnemyVillage, quantityToMove);
+			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
 			yield return friendlyUnits.WaitForTargetReach();
 
 			// Assert.
 			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
 			owner.Should().Be(Constants.NeutralRegion);
+		}
+
+		[UnityTest]
+		public IEnumerator
+			_3_WhenSquadWith1UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith2Units_ThenCellOwnerShouldStaySame()
+		{
+			yield return CommonSetUp();
+
+			// Arrange.
+			const int userQuantity = 1;
+			const int enemyQuantity = 2;
+			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+
+			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy, quantity: enemyQuantity);
+			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer);
+			var initialOwner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+
+			// Act.
+			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
+			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
+
+			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
+			yield return friendlyUnits.WaitForTargetReach();
+
+			// Assert.
+			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+			owner.Should().Be(initialOwner);
+		}
+		
+		[UnityTest]
+		public IEnumerator
+			_4_WhenSquadWith2UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellOwnerShouldBecomeToUser()
+		{
+			yield return CommonSetUp();
+
+			// Arrange.
+			const int userQuantity = 2;
+			const int enemyQuantity = 1;
+			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+
+			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy);
+			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer, quantity: userQuantity);
+
+			// Act.
+			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
+			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
+
+			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
+			yield return friendlyUnits.WaitForTargetReach();
+
+			// Assert.
+			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+			owner.Should().Be(UserPlayerId);
 		}
 
 		private static bool BelongToPlayer(Building building) => building.OwnerPlayerId == UserPlayerId;
