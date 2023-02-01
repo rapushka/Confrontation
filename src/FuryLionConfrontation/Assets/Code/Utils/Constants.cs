@@ -11,7 +11,7 @@ namespace Confrontation
 		{
 			public const string BootstrapScene = "BootstrapScene";
 			public const string GameplayScene = "GameplayScene";
-			public const string LevelEditorScene = "GameplayScene";
+			public const string LevelEditorScene = "LevelEditorScene";
 		}
 
 		public const int NeutralRegion = 0;
