@@ -16,6 +16,13 @@ namespace Confrontation.Editor.PlayModeTests
 		private DiContainer _container;
 		private List<Building> _buildings;
 
+		public override void SetUp()
+		{
+			base.SetUp();
+
+			Time.timeScale = 10f;
+		}
+
 		private IEnumerator CommonSetUp()
 		{
 			yield return LoadScene(Constants.SceneName.GameplayScene);

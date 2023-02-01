@@ -47,13 +47,13 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<UnitsSquad>
 		{
-			public UnitsSquad Create(Vector3 position, Cell cell)
+			public UnitsSquad Create(Vector3 position, Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
 			{
 				var unitsSquad = base.Create();
 				unitsSquad.transform.position = position;
-				unitsSquad.OwnerPlayerId = cell.RelatedRegion.OwnerPlayerId;
+				unitsSquad.OwnerPlayerId = ownerPlayerId;
 				unitsSquad.SetLocation(cell);
-				unitsSquad.QuantityOfUnits = 1;
+				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
 				return unitsSquad;
 			}

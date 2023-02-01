@@ -1,10 +1,13 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class UnitOrderPerformer : MonoBehaviour
 	{
+		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
+
 		[SerializeField] private UnitsSquad _unitsSquad;
 
 		private Cell _locationCell;
@@ -50,17 +53,13 @@ namespace Confrontation
 
 		private void FormNewSquad(int quantity)
 		{
-			var newSquad = Instantiate(_unitsSquad);
-			newSquad.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
-			newSquad.SetLocation(_locationCell);
-			newSquad.QuantityOfUnits = quantity;
+			_unitsFactory.Create(transform.position, _locationCell, _unitsSquad.OwnerPlayerId, quantity);
 			_unitsSquad.QuantityOfUnits -= quantity;
 		}
 
 		private bool IsCellAlreadyPlaced(Cell value) => value.UnitsSquads == true && value.UnitsSquads != _unitsSquad;
 
-		private bool IsHaveSameOwner(Cell cell)
-			=> cell.RelatedRegion.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
+		private bool IsHaveSameOwner(Cell cell) => cell.RelatedRegion.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
 
 		private void MergeWith(UnitsSquad squadOnCell)
 		{
