@@ -1,18 +1,20 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Confrontation.Editor.PlayModeTests
 {
 	public class UnitsFightsTests : SceneTestFixture
 	{
-		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 1f);
 		private const int UserPlayerId = 1;
+		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 1f);
+
 		private DiContainer _container;
+		private List<Building> _buildings;
 
 		private IEnumerator CommonSetUp()
 		{
@@ -20,16 +22,21 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return _waitForZenjectInitialization;
 
 			_container = GetActualContainer();
+			_buildings = Resolve.Buildings(_container);
 		}
 
+		private static DiContainer GetActualContainer()
+			=> ProjectContext.Instance.Container.Resolve<SceneContextRegistry>()
+			                 .TryGetSceneContextForScene(Constants.SceneName.GameplayScene)
+			                 .Container;
+
 		[UnityTest]
-		public IEnumerator _0_WhenSceneLoaded_AndResolveVillages_ThenShouldNotContainNulls()
+		public IEnumerator _0_WhenSceneLoaded_AndResolveVillages_ThenShouldNotContainUnityNulls()
 		{
 			yield return CommonSetUp();
 
-			var buildings = _container.Resolve<BuildingsGenerator>().Buildings;
-
-			buildings.Count((b) => b == true).Should().Be(buildings.Count);
+			// Assert.
+			_buildings.Count((b) => b == true).Should().Be(_buildings.Count);
 		}
 
 		[UnityTest]
@@ -38,19 +45,17 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return CommonSetUp();
 
 			// Arrange.
-			var village = Object.FindObjectsOfType<Village>().First(BelongToEnemy);
-			var cellWithVillage = village.RelatedCell;
-			var barracks = Object.FindObjectsOfType<Barracks>().First(BelongToEnemy);
+			const int quantityToMove = 1;
+			var units = Spawn.Units(_buildings, BelongToEnemy);
+			var cellWithVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
 			// Act.
-			barracks.Action();
-			var unitsSquad = barracks.RelatedCell.UnitsSquads!;
-			unitsSquad.MoveTo(cellWithVillage);
+			units.MoveTo(cellWithVillage, quantityToMove);
 			yield return new WaitUntil(() => cellWithVillage.HasUnits);
 
 			// Assert.
 			var unitsQuantityInVillage = cellWithVillage.UnitsSquads!.QuantityOfUnits;
-			unitsQuantityInVillage.Should().Be(1);
+			unitsQuantityInVillage.Should().Be(quantityToMove);
 		}
 
 		[UnityTest]
@@ -60,17 +65,17 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return CommonSetUp();
 
 			// Arrange.
-			var buildings = _container.Resolve<BuildingsGenerator>().Buildings;
-			var cellWithEnemyVillage = buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			const int quantityToMove = 1;
+			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
-			var enemyUnits = Spawn.Units(buildings, BelongToEnemy);
-			var friendlyUnits = Spawn.Units(buildings, BelongToPlayer);
+			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy);
+			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer);
 
 			// Act.
-			enemyUnits.MoveTo(cellWithEnemyVillage, quantityToMove: 1);
+			enemyUnits.MoveTo(cellWithEnemyVillage, quantityToMove);
 			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
 
-			friendlyUnits.MoveTo(cellWithEnemyVillage, quantityToMove: 1);
+			friendlyUnits.MoveTo(cellWithEnemyVillage, quantityToMove);
 			yield return friendlyUnits.WaitForTargetReach();
 
 			// Assert.
@@ -81,10 +86,5 @@ namespace Confrontation.Editor.PlayModeTests
 		private static bool BelongToPlayer(Building building) => building.OwnerPlayerId == UserPlayerId;
 
 		private static bool BelongToEnemy(Building building) => building.OwnerPlayerId != UserPlayerId;
-
-		private static DiContainer GetActualContainer()
-			=> ProjectContext.Instance.Container.Resolve<SceneContextRegistry>()
-			                 .TryGetSceneContextForScene(Constants.SceneName.GameplayScene)
-			                 .Container;
 	}
 }
