@@ -4,15 +4,15 @@ namespace Confrontation
 {
 	public abstract class ToScene : IInitializable
 	{
-		[Inject] private readonly ISceneTransferService _sceneTransfer;
+		[Inject] protected readonly ISceneTransferService SceneTransfer;
 
 		protected abstract string SceneName { get; }
 
 		public virtual void Initialize()
 		{
-			if (_sceneTransfer.IsCurrentScene(SceneName) == false)
+			if (SceneTransfer.IsCurrentScene(SceneName) == false)
 			{
-				_sceneTransfer.ToScene(SceneName);
+				SceneTransfer.ToScene(SceneName);
 			}
 		}
 	}

@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class ToBootstrap : ToScene
+	public class Bootstrapper : ToScene
 	{
 		[Inject] private readonly GameUiMediator _mediator;
 
@@ -10,6 +10,13 @@ namespace Confrontation
 
 		public override void Initialize()
 		{
+#if UNITY_EDITOR
+			if (SceneTransfer.IsCurrentScene(Constants.SceneName.LevelEditorScene))
+			{
+				return;
+			}
+#endif
+
 			_mediator.ShowImmediatelyLoadingCurtain();
 			base.Initialize();
 		}

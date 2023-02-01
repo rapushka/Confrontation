@@ -26,7 +26,12 @@ namespace Confrontation
 
 			Container.Bind<GameUiMediator>().AsSingle();
 
-			Container.BindInterfacesTo<ToBootstrap>().AsSingle();
+			RunGameOrLevelEditor();
+		}
+
+		private void RunGameOrLevelEditor()
+		{
+			Container.BindInterfacesTo<Bootstrapper>().AsSingle();
 		}
 
 		private void BindPrefabs()

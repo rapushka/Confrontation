@@ -347,11 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &18498179
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,11 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &27460801
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,11 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &57357538
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,11 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &85098091
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,11 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &91729035
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,11 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &109027735
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,11 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &115346263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,11 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &156379726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,11 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &175215735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,11 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &200139570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,11 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &218921583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,11 +1638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &257541256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,11 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &284689616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,11 +2254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &321787721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,11 +2396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &349961108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,11 +2455,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
+--- !u!1 &365431521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 365431525}
+  - component: {fileID: 365431524}
+  - component: {fileID: 365431523}
+  - component: {fileID: 365431522}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &365431522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365431521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &365431523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365431521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &365431524
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365431521}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &365431525
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365431521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1200945995}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &379493922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,11 +2781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &406836392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,11 +2840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &441835821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,11 +2982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &457464704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,11 +3041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &467124781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,11 +3184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &506839014
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,11 +3326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &510131020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,11 +3468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &514318023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3518,11 +3527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &518018307
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,11 +3586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &555698374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,11 +3645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &556265720
 GameObject:
   m_ObjectHideFlags: 0
@@ -3707,11 +3704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &579583208
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,11 +3763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &626310533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,11 +3822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &627226488
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,11 +3964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &637586658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,11 +4106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &652878130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,11 +4165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &718527209
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,11 +4307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &734624639
 GameObject:
   m_ObjectHideFlags: 0
@@ -4646,11 +4615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &750571814
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,11 +4674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &751225406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4855,11 +4816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &772520660
 GameObject:
   m_ObjectHideFlags: 0
@@ -4918,11 +4875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &778174302
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,11 +4934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &782433047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5044,11 +4993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &789862088
 GameObject:
   m_ObjectHideFlags: 0
@@ -5190,11 +5135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &801841504
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,11 +5194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &814108445
 GameObject:
   m_ObjectHideFlags: 0
@@ -5399,11 +5336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &838932339
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,11 +5561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &879511446
 GameObject:
   m_ObjectHideFlags: 0
@@ -5774,11 +5703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &943973475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,11 +6011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &974458802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6243,11 +6164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &987714955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,11 +6223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &990114774
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,11 +6365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1029859945
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,11 +6507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1048807736
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,11 +6649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1070337334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6807,11 +6708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1070704624
 GameObject:
   m_ObjectHideFlags: 0
@@ -6870,11 +6767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1073979370
 GameObject:
   m_ObjectHideFlags: 0
@@ -7016,11 +6909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1084336554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7162,11 +7051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1105958030
 GameObject:
   m_ObjectHideFlags: 0
@@ -7308,11 +7193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1110665528
 GameObject:
   m_ObjectHideFlags: 0
@@ -7371,11 +7252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1125654570
 GameObject:
   m_ObjectHideFlags: 0
@@ -7434,11 +7311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1127685197
 GameObject:
   m_ObjectHideFlags: 0
@@ -7580,11 +7453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1161637988
 GameObject:
   m_ObjectHideFlags: 0
@@ -7726,11 +7595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1186674663
 GameObject:
   m_ObjectHideFlags: 0
@@ -7789,11 +7654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1191119709
 GameObject:
   m_ObjectHideFlags: 0
@@ -8043,6 +7904,132 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197205039}
   m_Mesh: {fileID: 4300000, guid: a594cd8ba6e867f4699aa3d16d755581, type: 3}
+--- !u!1001 &1200945994
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 365431525}
+    m_Modifications:
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_text
+      value: Use Editor Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_fontSize
+      value: 58.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369559, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_Name
+      value: Text
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+--- !u!224 &1200945995 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+  m_PrefabInstance: {fileID: 1200945994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1205287431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8350,11 +8337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1250809533
 GameObject:
   m_ObjectHideFlags: 0
@@ -8413,11 +8396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1257290553
 GameObject:
   m_ObjectHideFlags: 0
@@ -8559,11 +8538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1278877472
 GameObject:
   m_ObjectHideFlags: 0
@@ -8622,11 +8597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1279844205
 GameObject:
   m_ObjectHideFlags: 0
@@ -8685,11 +8656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1287990129
 GameObject:
   m_ObjectHideFlags: 0
@@ -8748,11 +8715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1291984131
 GameObject:
   m_ObjectHideFlags: 0
@@ -8811,11 +8774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1313316423
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,11 +9082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1340407295
 GameObject:
   m_ObjectHideFlags: 0
@@ -9270,11 +9225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1372979831
 GameObject:
   m_ObjectHideFlags: 0
@@ -9416,11 +9367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1406622172
 GameObject:
   m_ObjectHideFlags: 0
@@ -9645,11 +9592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1415775411
 GameObject:
   m_ObjectHideFlags: 0
@@ -9708,11 +9651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1423256257
 GameObject:
   m_ObjectHideFlags: 0
@@ -10020,11 +9959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1460823432
 GameObject:
   m_ObjectHideFlags: 0
@@ -10332,11 +10267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1483673369
 GameObject:
   m_ObjectHideFlags: 0
@@ -10478,11 +10409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1507762341
 GameObject:
   m_ObjectHideFlags: 0
@@ -10707,11 +10634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1542277149
 GameObject:
   m_ObjectHideFlags: 0
@@ -11434,11 +11357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1632172071
 GameObject:
   m_ObjectHideFlags: 0
@@ -11746,11 +11665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1665577738
 GameObject:
   m_ObjectHideFlags: 0
@@ -11809,11 +11724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1673612159
 GameObject:
   m_ObjectHideFlags: 0
@@ -11955,11 +11866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1715458467
 GameObject:
   m_ObjectHideFlags: 0
@@ -12185,6 +12092,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CellsInRegion>k__BackingField: []
+--- !u!1 &1771843009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771843012}
+  - component: {fileID: 1771843011}
+  - component: {fileID: 1771843010}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1771843010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771843009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1771843011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771843009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1771843012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771843009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778854267
 GameObject:
   m_ObjectHideFlags: 0
@@ -12326,11 +12301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1783383901
 GameObject:
   m_ObjectHideFlags: 0
@@ -12389,11 +12360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1787213170
 GameObject:
   m_ObjectHideFlags: 0
@@ -12452,11 +12419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1797875133
 GameObject:
   m_ObjectHideFlags: 0
@@ -12681,11 +12644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1813982415
 GameObject:
   m_ObjectHideFlags: 0
@@ -12827,11 +12786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1841024372
 GameObject:
   m_ObjectHideFlags: 0
@@ -12973,11 +12928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1851156157
 GameObject:
   m_ObjectHideFlags: 0
@@ -13095,11 +13046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1861271604
 GameObject:
   m_ObjectHideFlags: 0
@@ -13573,11 +13520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1920324484
 GameObject:
   m_ObjectHideFlags: 0
@@ -13636,11 +13579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1956525068
 GameObject:
   m_ObjectHideFlags: 0
@@ -13782,11 +13721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1967719103
 GameObject:
   m_ObjectHideFlags: 0
@@ -13845,11 +13780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &1976424300
 GameObject:
   m_ObjectHideFlags: 0
@@ -14157,11 +14088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2028258410
 GameObject:
   m_ObjectHideFlags: 0
@@ -14220,11 +14147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2031064141
 GameObject:
   m_ObjectHideFlags: 0
@@ -14366,11 +14289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2054954356
 GameObject:
   m_ObjectHideFlags: 0
@@ -14512,11 +14431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2059073433
 GameObject:
   m_ObjectHideFlags: 0
@@ -14575,11 +14490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2063179210
 GameObject:
   m_ObjectHideFlags: 0
@@ -14638,11 +14549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2063959762
 GameObject:
   m_ObjectHideFlags: 0
@@ -14701,11 +14608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2067480395
 GameObject:
   m_ObjectHideFlags: 0
@@ -15013,11 +14916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
 --- !u!1 &2128664868
 GameObject:
   m_ObjectHideFlags: 0
@@ -15242,8 +15141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e37fb8b9f244243ae48aae8c4920058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materialByRegion: {fileID: 0}
-  <Coordinates>k__BackingField:
-    <Row>k__BackingField: 0
-    <Column>k__BackingField: 0
-  <Building>k__BackingField: {fileID: 0}
+  _color: {fileID: 0}
