@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameplayInstaller : MonoInstaller
+	public class GameplayInstaller : MonoInstaller<GameplayInstaller>
 	{
 		[SerializeField] private BuildingButton _buildingButtonPrefab;
 		[SerializeField] private UnitsSquad _unitPrefab;
