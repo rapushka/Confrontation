@@ -6,7 +6,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly IAssetsService _assets;
-		[Inject] private readonly Field _field;
+		[Inject] private readonly IField _field;
 
 		public void Initialize() => GenerateField();
 

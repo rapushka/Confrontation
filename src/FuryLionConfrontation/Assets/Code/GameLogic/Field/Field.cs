@@ -2,7 +2,12 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Field
+	public interface IField
+	{
+		CoordinatedMatrix<Cell> Cells { get; }
+	}
+
+	public class Field : IField
 	{
 		[Inject]
 		public Field(ILevelSelector levelSelector)

@@ -14,7 +14,8 @@ namespace Confrontation
 		{
 			Container.BindInstance(_orderLineRenderer).AsSingle();
 
-			Container.BindInterfacesAndSelfTo<Field>().AsSingle();
+			Container.Bind<IField>().To<Field>().AsSingle();
+
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CellsPainter>().AsSingle();

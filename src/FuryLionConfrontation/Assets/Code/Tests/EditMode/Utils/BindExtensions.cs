@@ -14,7 +14,7 @@ namespace Confrontation.Editor.Tests
 		public static void BindField(this DiContainer @this)
 		{
 			@this.Bind<ILevelSelector>().To<TestLevelCreator>().AsSingle();
-			@this.Bind<Field>().AsSingle();
+			@this.Bind<IField>().To<Field>().AsSingle();
 		}
 
 		public static void BindRegionsGenerator(this DiContainer @this)

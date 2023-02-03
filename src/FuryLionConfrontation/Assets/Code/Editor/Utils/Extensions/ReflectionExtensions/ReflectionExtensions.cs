@@ -4,6 +4,12 @@ namespace Confrontation.Editor
 {
 	public static class ReflectionExtensions
 	{
+		public static void InvokePrivateMethod(this object @this, string methodName, params object[] parameters)
+			=> @this.InvokeMethod(methodName, BindingFlags.NonPublic | BindingFlags.Instance, parameters);
+
+		public static void InvokeMethod(this object @this, string methodName, BindingFlags bindingFlags, params object[] parameters)
+			=> @this.GetType().GetMethod(methodName, bindingFlags)!.Invoke(@this, parameters);
+
 		public static T GetPrivateField<T>(this object @this, string fieldName)
 			=> @this.GetFieldValue<T>(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
 
