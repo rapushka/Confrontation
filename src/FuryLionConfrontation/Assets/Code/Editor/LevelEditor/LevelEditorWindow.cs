@@ -1,3 +1,4 @@
+using NSubstitute;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -24,7 +25,9 @@ namespace Confrontation.Editor
 			Container.Bind<FieldGenerator>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
 			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
-			Container.Bind<IField>().FromSubstitute();
+			var field = Substitute.For<IField>();
+			field.Cells.Returns(new CoordinatedMatrix<Cell>(new Sizes(2, 4)));
+			Container.Bind<IField>().FromInstance(field).AsSingle();
 
 			Container.BindInterfacesTo<LevelEditor>().AsSingle();
 		}
@@ -47,7 +50,7 @@ namespace Confrontation.Editor
 
 		private void Generate()
 		{
-			_fieldGenerator.InvokePrivateMethod("CreateHexagon", _height, _width);
+			_fieldGenerator.Initialize();
 		}
 	}
 }
