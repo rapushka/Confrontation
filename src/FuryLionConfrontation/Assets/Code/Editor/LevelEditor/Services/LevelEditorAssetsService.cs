@@ -1,12 +1,20 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation.Editor
 {
-	public class LevelEditorAssetsService : IAssetsService
+	public class LevelEditorAssetsService : IInitializable, IAssetsService
 	{
 		private Transform _root;
 
-		public LevelEditorAssetsService() => CreateRoot();
+		public void Initialize()
+		{
+			_root = GameObject.Find(nameof(_root))?.transform;
+			if (_root == false)
+			{
+				CreateRoot();
+			}
+		}
 
 		public GameObject Instantiate(string name)
 		{
@@ -35,6 +43,6 @@ namespace Confrontation.Editor
 			CreateRoot();
 		}
 
-		private void CreateRoot() => _root = new GameObject("Root").transform;
+		private void CreateRoot() => _root = new GameObject(nameof(_root)).transform;
 	}
 }
