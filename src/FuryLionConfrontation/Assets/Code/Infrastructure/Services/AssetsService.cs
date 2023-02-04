@@ -14,6 +14,8 @@ namespace Confrontation
 			where T : Object;
 
 		T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common) where T : Object;
+
+		void Destroy(GameObject target);
 	}
 
 	public class AssetsService : IAssetsService
@@ -30,6 +32,8 @@ namespace Confrontation
 
 		public T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common) where T : Object
 			=> Object.Instantiate(original, GetTransformFor(group));
+
+		public void Destroy(GameObject target) => Object.Destroy(target);
 
 		private Transform GetTransformFor(InstantiateGroup group)
 		{

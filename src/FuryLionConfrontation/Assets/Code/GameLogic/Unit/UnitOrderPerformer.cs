@@ -7,6 +7,7 @@ namespace Confrontation
 	public class UnitOrderPerformer : MonoBehaviour
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
+		[Inject] private readonly IAssetsService _assets;
 
 		[SerializeField] private UnitsSquad _unitsSquad;
 
@@ -64,7 +65,7 @@ namespace Confrontation
 		private void MergeWith(UnitsSquad squadOnCell)
 		{
 			squadOnCell.QuantityOfUnits += _unitsSquad.QuantityOfUnits;
-			Destroy(_unitsSquad.gameObject);
+			_assets.Destroy(_unitsSquad.gameObject);
 		}
 
 		private void FightWithSquadOn(Cell cell)
@@ -74,7 +75,7 @@ namespace Confrontation
 			if (_unitsSquad.QuantityOfUnits > enemySquad.QuantityOfUnits)
 			{
 				_unitsSquad.QuantityOfUnits -= enemySquad.QuantityOfUnits;
-				Destroy(enemySquad.gameObject);
+				_assets.Destroy(enemySquad.gameObject);
 				CaptureRegion(cell);
 				return;
 			}
@@ -82,15 +83,15 @@ namespace Confrontation
 			if (_unitsSquad.QuantityOfUnits < enemySquad.QuantityOfUnits)
 			{
 				enemySquad.QuantityOfUnits -= _unitsSquad.QuantityOfUnits;
-				Destroy(_unitsSquad.gameObject);
+				_assets.Destroy(_unitsSquad.gameObject);
 				return;
 			}
 
 			if (_unitsSquad.QuantityOfUnits == enemySquad.QuantityOfUnits)
 			{
 				cell.UnitsSquads = null;
-				Destroy(_unitsSquad.gameObject);
-				Destroy(enemySquad.gameObject);
+				_assets.Destroy(_unitsSquad.gameObject);
+				_assets.Destroy(enemySquad.gameObject);
 				cell.MakeRegionNeutral();
 			}
 		}
