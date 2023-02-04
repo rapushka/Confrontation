@@ -6,7 +6,7 @@ namespace Confrontation
 {
 	public class RegionsGenerator : IInitializable
 	{
-		[Inject] private readonly Field _field;
+		[Inject] private readonly IField _field;
 		[Inject] private readonly IResourcesService _resourcesService;
 		[Inject] private readonly ILevelSelector _levelSelector;
 		[Inject] private readonly Building.Factory _buildingsFactory;

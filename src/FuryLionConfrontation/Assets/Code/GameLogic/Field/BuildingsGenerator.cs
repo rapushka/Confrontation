@@ -8,7 +8,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly ILevelSelector _levelSelector;
 		[Inject] private readonly Building.Factory _buildingsFactory;
-		[Inject] private readonly Field _field;
+		[Inject] private readonly IField _field;
 
 		public List<Building> Buildings { get; } = new();
 
