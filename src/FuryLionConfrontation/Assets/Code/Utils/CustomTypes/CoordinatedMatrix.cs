@@ -12,6 +12,7 @@ namespace Confrontation
 		public CoordinatedMatrix(Coordinates coordinates) => _matrix = new T[coordinates.Row, coordinates.Column];
 
 		public CoordinatedMatrix(Sizes sizes) => _matrix = new T[sizes.Height, sizes.Width];
+		public CoordinatedMatrix(int height, int width) => _matrix = new T[height, width];
 
 		public T this[Coordinates coordinates]
 		{

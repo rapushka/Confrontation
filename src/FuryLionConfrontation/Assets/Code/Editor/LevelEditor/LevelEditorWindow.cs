@@ -50,7 +50,11 @@ namespace Confrontation.Editor
 
 		private void Generate()
 		{
+			_fieldGenerator.GetPrivateField<IField>("_field").Cells.Returns(NewField());
+			
 			_fieldGenerator.Initialize();
 		}
+
+		private CoordinatedMatrix<Cell> NewField() => new(_height, _width);
 	}
 }
