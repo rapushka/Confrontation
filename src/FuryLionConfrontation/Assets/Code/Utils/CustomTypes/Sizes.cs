@@ -6,8 +6,8 @@ namespace Confrontation
 	[Serializable]
 	public struct Sizes
 	{
-		[field: SerializeField] public int Width  { get; private set; }
-		[field: SerializeField] public int Height { get; private set; }
+		[field: SerializeField] public int Width  { get; set; }
+		[field: SerializeField] public int Height { get; set; }
 
 		public Sizes(int height, int width)
 		{
