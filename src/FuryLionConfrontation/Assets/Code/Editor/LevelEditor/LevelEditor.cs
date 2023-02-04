@@ -8,13 +8,16 @@ namespace Confrontation.Editor
 	{
 		[Inject] private readonly FieldGenerator _fieldGenerator;
 		[Inject] private readonly LevelEditorAssetsService _assets;
+		private const int Indent = 25;
 
 		public void GuiRender()
 		{
-			GUILayout.Button(nameof(Generate).Pretty()).OnClick(Generate);
+			GUILayout.Space(Indent);
+			GUILayout.Button(nameof(GenerateField).Pretty()).OnClick(GenerateField);
+			GUILayout.Space(Indent);
 		}
 
-		private void Generate()
+		private void GenerateField()
 		{
 			_assets.CleanRoot();
 			_fieldGenerator.Initialize();

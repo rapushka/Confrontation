@@ -25,6 +25,7 @@ namespace Confrontation.Editor
 			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/Resources");
 
 			Container.Bind<FieldGenerator>().AsSingle();
+			Container.BindInterfacesTo<LevelEditor>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
 			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle(); 
 			Container.BindInterfacesTo<ConfigurableField>().AsSingle();
@@ -34,7 +35,6 @@ namespace Confrontation.Editor
 			Container.BindInstance(_fieldState);
 			Container.BindInstance(_playersState);
 
-			Container.BindInterfacesTo<LevelEditor>().AsSingle();
 		}
 	}
 }
