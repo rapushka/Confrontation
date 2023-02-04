@@ -10,6 +10,7 @@ namespace Confrontation.Editor
 	public class PlayersConfigurator : IInitializable, IGuiRenderable
 	{
 		[Inject] private readonly State _state;
+
 		private ReorderableList _list;
 
 		public void Initialize()
@@ -32,19 +33,23 @@ namespace Confrontation.Editor
 			_list.DoLayoutList();
 		}
 
+		// ReSharper disable once MemberCanBeMadeStatic.Local - is use _state field
 		private void DrawHeader(Rect rect) => EditorGUI.LabelField(rect, nameof(_state.Players));
 
 		private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
-			var item = _state.Players[index];
-			item.Id = index + 1;
+			var player = _state.Players[index];
+			player.Id = index + 1;
 			rect.height = EditorGUIUtility.singleLineHeight;
 
 			EditorGUI.LabelField(rect, "Player");
+
 			rect.x += 50;
-			EditorGUI.LabelField(rect, item.Id.ToString());
+			EditorGUI.LabelField(rect, player.Id.ToString());
+
 			rect.x += 50;
-			EditorGUI.IntField(rect, item.Id);
+
+			player.Capital = player.Capital.AsObjectField(rect);
 		}
 
 		private void UpdateListSize(int playersCount)

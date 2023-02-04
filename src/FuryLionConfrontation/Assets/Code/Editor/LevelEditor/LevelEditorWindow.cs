@@ -26,9 +26,9 @@ namespace Confrontation.Editor
 
 			Container.Bind<FieldGenerator>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
-			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle(); // 
+			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle(); 
 			Container.BindInterfacesTo<ConfigurableField>().AsSingle();
-			Container.BindInterfacesAndSelfTo<PlayersConfigurator>().AsSingle(); // 
+			Container.BindInterfacesAndSelfTo<PlayersConfigurator>().AsSingle(); 
 
 			Container.BindInstance(_fieldState);
 			Container.BindInstance(_playersState);
