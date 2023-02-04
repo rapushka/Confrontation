@@ -12,10 +12,22 @@ namespace Confrontation.Editor
 
 		public void GuiRender()
 		{
-			_state.Sizes.Height = EditorGUILayout.IntField(_state.Sizes.Height);
-			_state.Sizes.Width = EditorGUILayout.IntField(_state.Sizes.Width);
-			
+			EditorGUILayoutUtils.AsHorizontalGroup(Height);
+			EditorGUILayoutUtils.AsHorizontalGroup(Width);
+
 			Cells = new CoordinatedMatrix<Cell>(_state.Sizes);
+		}
+
+		private void Height()
+		{
+			EditorGUILayout.PrefixLabel(nameof(_state.Sizes.Height));
+			_state.Sizes.Height = EditorGUILayout.IntField(_state.Sizes.Height);
+		}
+
+		private void Width()
+		{
+			EditorGUILayout.PrefixLabel(nameof(_state.Sizes.Width));
+			_state.Sizes.Width = EditorGUILayout.IntField(_state.Sizes.Width);
 		}
 
 		[Serializable]
