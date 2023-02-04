@@ -31,6 +31,7 @@ namespace Confrontation.Editor
 			Container.BindInterfacesTo<ConfigurableField>().AsSingle();
 			Container.BindInterfacesAndSelfTo<PlayersConfigurator>().AsSingle(); 
 			Container.BindInterfacesTo<BuildingsCreator>().AsSingle();
+			Container.BindInterfacesTo<CellsRegionGizmoDrawer>().AsSingle();
 
 			Container.BindInstance(_fieldState);
 			Container.BindInstance(_playersState);
