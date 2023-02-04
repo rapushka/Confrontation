@@ -10,6 +10,7 @@ namespace Confrontation.Editor
 	{
 		[Inject] private readonly FieldGenerator _fieldGenerator;
 		[Inject] private State _state;
+		[Inject] private readonly LevelEditorAssetsService _assets;
 
 		public void GuiRender()
 		{
@@ -21,6 +22,7 @@ namespace Confrontation.Editor
 
 		private void Generate()
 		{
+			_assets.CleanRoot();
 			_fieldGenerator.GetPrivateField<IField>("_field").Cells.Returns(NewField());
 			_fieldGenerator.Initialize();
 		}

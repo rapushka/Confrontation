@@ -25,7 +25,7 @@ namespace Confrontation.Editor
 
 			Container.Bind<FieldGenerator>().AsSingle();
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
-			Container.Bind<IAssetsService>().To<AssetsService>().AsSingle();
+			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle(); // 
 			Container.Bind<IField>().FromSubstitute().AsSingle();
 
 			Container.BindInstance(_state);

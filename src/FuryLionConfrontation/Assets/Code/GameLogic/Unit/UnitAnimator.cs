@@ -6,12 +6,12 @@ namespace Confrontation
 	{
 		[SerializeField] private Animator _animator;
 
-		private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+		private static readonly int _isMoving = Animator.StringToHash("IsMoving");
 
 		public void StartMoving() => ToggleMoving(true);
 
 		public void StopMoving() => ToggleMoving(false);
 
-		private void ToggleMoving(bool isMoving) => _animator.SetBool(IsMoving, isMoving);
+		private void ToggleMoving(bool isMoving) => _animator.SetBool(_isMoving, isMoving);
 	}
 }
