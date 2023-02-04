@@ -17,25 +17,32 @@ namespace Confrontation.Editor
 		{
 			GUILayout.Label("Actions Perform to Selected Cells");
 			GUILayout.Button(nameof(BuildCapital).Pretty()).OnClick(BuildCapital);
+			GUILayout.Button(nameof(BuildVillage).Pretty()).OnClick(BuildVillage);
 			GUILayout.Button(nameof(DestroyBuilding).Pretty()).OnClick(DestroyBuilding);
 		}
 
-		private void BuildCapital() => SelectedCells.Where((c) => c.IsEmpty).ForEach(CreateCapitalOnCell);
+		private void BuildCapital() => SelectedCells.Where((c) => c.IsEmpty).ForEach(BuildCapitalOnCell);
+
+		private void BuildVillage() => SelectedCells.Where((c) => c.IsEmpty).ForEach(BuildVillageOnCell);
 
 		private void DestroyBuilding() => SelectedCells.Where((c) => c.IsEmpty == false).ForEach(DestroyBuildingOnCell);
 
-		private void CreateCapitalOnCell(Cell cell)
-		{
-			var capital = _assets.Instantiate(_resources.CapitalPrefab, cell.transform);
-			capital.RelatedCell = cell;
-			cell.Building = capital;
-		}
+		private void BuildCapitalOnCell(Cell cell) => BuildBuilding(cell, _resources.CapitalPrefab);
+
+		private void BuildVillageOnCell(Cell cell) => BuildBuilding(cell, _resources.VillagePrefab);
 
 		private void DestroyBuildingOnCell(Cell cell)
 		{
 			var building = cell.Building!;
 			_assets.Destroy(building.gameObject);
 			cell.Building = null;
+		}
+
+		private void BuildBuilding(Cell cell, Building buildingPrefab)
+		{
+			var building = _assets.Instantiate(buildingPrefab, cell.transform);
+			building.RelatedCell = cell;
+			cell.Building = building;
 		}
 	}
 }
