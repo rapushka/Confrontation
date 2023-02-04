@@ -12,7 +12,7 @@ namespace Confrontation.Editor.Tests
 			var name = "width";
 
 			// Act.
-			name = name.Format();
+			name = name.Pretty();
 
 			// Assert.
 			name.Should().Be("Width");
@@ -25,7 +25,7 @@ namespace Confrontation.Editor.Tests
 			var name = "_width";
 
 			// Act.
-			name = name.Format();
+			name = name.Pretty();
 
 			// Assert.
 			name.Should().Be("Width");
@@ -38,7 +38,7 @@ namespace Confrontation.Editor.Tests
 			var name = "someText";
 
 			// Act.
-			name = name.Format();
+			name = name.Pretty();
 
 			// Assert.
 			name.Should().Be("Some Text");
@@ -51,7 +51,7 @@ namespace Confrontation.Editor.Tests
 			var name = "_someAnotherText";
 
 			// Act.
-			name = name.Format();
+			name = name.Pretty();
 
 			// Assert.
 			name.Should().Be("Some Another Text");

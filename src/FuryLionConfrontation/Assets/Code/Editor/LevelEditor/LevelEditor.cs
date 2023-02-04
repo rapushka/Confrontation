@@ -11,7 +11,7 @@ namespace Confrontation.Editor
 
 		public void GuiRender()
 		{
-			GUILayout.Button(nameof(Generate).Format()).OnClick(Generate);
+			GUILayout.Button(nameof(Generate).Pretty()).OnClick(Generate);
 		}
 
 		private void Generate()

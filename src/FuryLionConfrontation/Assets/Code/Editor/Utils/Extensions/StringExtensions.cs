@@ -5,7 +5,7 @@ namespace Confrontation.Editor
 {
 	public static class StringExtensions
 	{
-		public static string Format(this string @this)
+		public static string Pretty(this string @this)
 			=> @this
 			   .ToCharArray()
 			   .ToList()
