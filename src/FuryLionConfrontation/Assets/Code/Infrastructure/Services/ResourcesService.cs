@@ -7,6 +7,7 @@ namespace Confrontation
 	{
 		Cell           CellPrefab    { get; }
 		Village        VillagePrefab { get; }
+		Capital        CapitalPrefab { get; }
 		List<Building> Buildings     { get; }
 	}
 
@@ -15,6 +16,7 @@ namespace Confrontation
 	{
 		[field: SerializeField] public Cell           CellPrefab    { get; private set; }
 		[field: SerializeField] public Village        VillagePrefab { get; private set; }
+		[field: SerializeField] public Capital        CapitalPrefab { get; private set; }
 		[field: SerializeField] public List<Building> Buildings     { get; private set; }
 	}
 }

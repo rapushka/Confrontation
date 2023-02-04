@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686997808771183188}
-  - component: {fileID: 7971290585587501546}
+  - component: {fileID: 4447535946289149498}
   - component: {fileID: 2305448757740132536}
   m_Layer: 0
   m_Name: Capital
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7971290585587501546
+--- !u!114 &4447535946289149498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5771020657915353660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8878b07f7984a9c9b2d2d3ee51a421a, type: 3}
+  m_Script: {fileID: 11500000, guid: d7fe3965f35043e5b5cf286c7fc88489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <CellsInRegion>k__BackingField: []
