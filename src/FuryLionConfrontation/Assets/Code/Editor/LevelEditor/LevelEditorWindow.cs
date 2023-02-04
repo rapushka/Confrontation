@@ -6,7 +6,8 @@ namespace Confrontation.Editor
 {
 	public class LevelEditorWindow : ZenjectEditorWindow
 	{
-		[SerializeField] private ConfigurableField.State _state;
+		[SerializeField] private ConfigurableField.State _fieldState;
+		[SerializeField] private PlayersConfigurator.State _playersState;
 
 		private GameObject _rootForLevel;
 
@@ -27,8 +28,10 @@ namespace Confrontation.Editor
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
 			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle(); // 
 			Container.BindInterfacesTo<ConfigurableField>().AsSingle();
+			Container.BindInterfacesAndSelfTo<PlayersConfigurator>().AsSingle(); // 
 
-			Container.BindInstance(_state);
+			Container.BindInstance(_fieldState);
+			Container.BindInstance(_playersState);
 
 			Container.BindInterfacesTo<LevelEditor>().AsSingle();
 		}
