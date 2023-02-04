@@ -4,15 +4,15 @@ using Zenject;
 
 namespace Confrontation.Editor
 {
-	public class CellsRegionGizmoDrawer : IGuiRenderable
+	public class CellsRegionGizmoDrawer : IInitializable, IGuiRenderable
 	{
 		private static bool _drawGizmosForCellsRegions;
 
+		public void Initialize() => _drawGizmosForCellsRegions = true;
+
 		public void GuiRender()
-		{
-			_drawGizmosForCellsRegions
+			=> _drawGizmosForCellsRegions
 				= EditorGUILayout.Toggle(nameof(_drawGizmosForCellsRegions).Pretty(), _drawGizmosForCellsRegions);
-		}
 
 		[DrawGizmo(GizmoType.Selected | GizmoType.NonSelected)]
 		private static void DrawGizmoForMyScript(Cell cell, GizmoType gizmoType)

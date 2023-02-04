@@ -24,18 +24,18 @@ namespace Confrontation.Editor
 		{
 			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/Resources");
 
+			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
+
 			Container.Bind<FieldGenerator>().AsSingle();
 			Container.BindInterfacesTo<LevelEditor>().AsSingle();
-			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
-			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle(); 
+			Container.BindInterfacesAndSelfTo<LevelEditorAssetsService>().AsSingle();
 			Container.BindInterfacesTo<ConfigurableField>().AsSingle();
-			Container.BindInterfacesAndSelfTo<PlayersConfigurator>().AsSingle(); 
+			Container.BindInterfacesAndSelfTo<PlayersConfigurator>().AsSingle();
 			Container.BindInterfacesTo<BuildingsCreator>().AsSingle();
 			Container.BindInterfacesTo<CellsRegionGizmoDrawer>().AsSingle();
 
 			Container.BindInstance(_fieldState);
 			Container.BindInstance(_playersState);
-
 		}
 	}
 }
