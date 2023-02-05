@@ -6,6 +6,9 @@ namespace Confrontation.Editor
 {
 	public class CellsPlayerColorSphereGizmoDrawer : IInitializable, IGuiRenderable
 	{
+		private const float GizmoRadius = 0.25f;
+		private const int IdForRandomColors = 999;
+
 		private static bool _drawGizmosColorOfOwner;
 
 		public void Initialize() => _drawGizmosColorOfOwner = true;
@@ -22,12 +25,10 @@ namespace Confrontation.Editor
 				return;
 			}
 
-			if (cell.RelatedRegion == true)
-			{
-				GizmoUtils.SetColorBy(cell.RelatedRegion.OwnerPlayerId);
-			}
+			var id = cell.RelatedRegion == true ? cell.RelatedRegion.OwnerPlayerId : IdForRandomColors;
+			GizmoUtils.SetColorBy(id);
 
-			Gizmos.DrawSphere(cell.transform.position, 0.25f);
+			Gizmos.DrawSphere(cell.transform.position, GizmoRadius);
 		}
 	}
 }
