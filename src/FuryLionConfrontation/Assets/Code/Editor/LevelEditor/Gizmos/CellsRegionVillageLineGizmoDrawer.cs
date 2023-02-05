@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation.Editor
 {
-	public class CellsRegionGizmoDrawer : IInitializable, IGuiRenderable
+	public class CellsRegionVillageLineGizmoDrawer : IInitializable, IGuiRenderable
 	{
 		private static bool _drawLineToRegionVillage;
 		private static float _verticalOffset = 0.25f;
