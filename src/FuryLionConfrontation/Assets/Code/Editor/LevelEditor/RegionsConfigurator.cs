@@ -80,6 +80,7 @@ namespace Confrontation.Editor
 		private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
 			var village = _state.Villages[index];
+			village.RelatedCell.RelatedRegion = village;
 			rect.height = EditorGUIUtility.singleLineHeight;
 
 			DrawVillagePosition(rect, village);
@@ -89,6 +90,13 @@ namespace Confrontation.Editor
 			DrawCellsHeader(rect, village);
 
 			DrawCellsElements(rect, village);
+
+			if (Selection.gameObjects.WithComponent<Cell>().Contains(village.RelatedCell)
+			    || Selection.gameObjects.WithComponent<Building>().Contains(village))
+			{
+				rect.x += 200;
+				EditorGUI.LabelField(rect, "<- Selected");
+			}
 		}
 
 		private static void DrawVillagePosition(Rect rect, Village village)
@@ -99,16 +107,22 @@ namespace Confrontation.Editor
 
 		private static void DrawPlayerOwner(Rect rect, Village village)
 		{
-			rect.x += 150;
+			rect.y += EditorGUIUtility.singleLineHeight;
+			rect.x += 50;
 
 			EditorGUI.LabelField(rect, "Player Owner: ");
 			rect.x += 100;
+			rect.width = 50;
+
 			village.OwnerPlayerId = EditorGUI.IntField(rect, village.OwnerPlayerId);
 		}
 
 		private static void DrawCellsHeader(Rect rect, Village village)
 		{
 			rect.y += EditorGUIUtility.singleLineHeight;
+			rect.y += EditorGUIUtility.singleLineHeight;
+			rect.x += 50;
+
 			EditorGUI.LabelField(rect, $"{nameof(village.CellsInRegion)}: ");
 
 			rect.width = 50;
@@ -120,20 +134,28 @@ namespace Confrontation.Editor
 
 		private static void DrawCellsElements(Rect rect, Village village)
 		{
-			rect.x -= 100;
+			rect.x += 50;
+			rect.y += EditorGUIUtility.singleLineHeight;
+			rect.y += EditorGUIUtility.singleLineHeight;
+
 			for (var i = 0; i < village.CellsInRegion.Count; i++)
 			{
 				var cell = village.CellsInRegion[i];
 				rect.y += EditorGUIUtility.singleLineHeight;
 				rect.width = 150;
 				village.CellsInRegion[i] = cell.AsObjectField(rect);
+
+				if (cell == true)
+				{
+					cell.RelatedRegion = village;
+				}
 			}
 		}
 
 		private float SetElementHeight(int index)
 		{
 			var cells = _state.Villages[index].CellsInRegion;
-			return EditorGUIUtility.singleLineHeight * (cells.Count + 2) + 5;
+			return EditorGUIUtility.singleLineHeight * (cells.Count + 3) + 5;
 		}
 
 		[Serializable]

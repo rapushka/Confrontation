@@ -853,7 +853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CellsInRegion>k__BackingField:
-  - {fileID: 0}
+  - {fileID: 1647019687}
+  - {fileID: 410291814}
 --- !u!1 &185010995
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,9 +3389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8878b07f7984a9c9b2d2d3ee51a421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CellsInRegion>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
+  <CellsInRegion>k__BackingField: []
 --- !u!1 &784461394
 GameObject:
   m_ObjectHideFlags: 0
@@ -6587,7 +6586,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CellsInRegion>k__BackingField:
-  - {fileID: 0}
+  - {fileID: 1506390808}
+  - {fileID: 851388709}
+  - {fileID: 946793584}
 --- !u!1 &1647019685
 GameObject:
   m_ObjectHideFlags: 0
