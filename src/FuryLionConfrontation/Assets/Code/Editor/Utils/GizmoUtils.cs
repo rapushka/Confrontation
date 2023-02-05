@@ -7,6 +7,7 @@ namespace Confrontation.Editor
 		public static void SetColorBy(int id)
 			=> Gizmos.color = id switch
 			{
+				-1     => Color.clear,
 				0     => Color.white,
 				1     => Color.cyan,
 				2     => Color.red,

@@ -7,7 +7,7 @@ namespace Confrontation.Editor
 	public class CellsPlayerColorSphereGizmoDrawer : IInitializable, IGuiRenderable
 	{
 		private const float GizmoRadius = 0.25f;
-		private const int IdForRandomColors = 999;
+		private const int IdForRandomColors = -1;
 
 		private static bool _drawGizmosColorOfOwner;
 

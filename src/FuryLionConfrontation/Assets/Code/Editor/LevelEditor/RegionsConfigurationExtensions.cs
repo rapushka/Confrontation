@@ -6,6 +6,9 @@ namespace Confrontation.Editor
 {
 	public static class RegionsConfigurationExtensions
 	{
+		private static float HorizontalStep => 50;
+		private static float VerticalStep => EditorGUIUtility.singleLineHeight;
+
 		public static void Draw(this Rect rect, Village village)
 		{
 			rect.DrawVillagePosition(village);
@@ -23,26 +26,25 @@ namespace Confrontation.Editor
 
 		private static void DrawPlayerOwner(this Rect rect, Village village)
 		{
-			rect.y += EditorGUIUtility.singleLineHeight;
-			rect.x += 50;
+			rect.y += VerticalStep;
+			rect.x += HorizontalStep;
 
 			EditorGUI.LabelField(rect, "Player Owner: ");
-			rect.x += 100;
-			rect.width = 50;
+			rect.x += HorizontalStep * 2;
+			rect.width = HorizontalStep;
 
 			village.OwnerPlayerId = EditorGUI.IntField(rect, village.OwnerPlayerId);
 		}
 
 		private static void DrawCellsHeader(this Rect rect, Village village)
 		{
-			rect.y += EditorGUIUtility.singleLineHeight;
-			rect.y += EditorGUIUtility.singleLineHeight;
-			rect.x += 50;
+			rect.y += VerticalStep * 2;
+			rect.x += HorizontalStep;
 
 			EditorGUI.LabelField(rect, $"{nameof(village.CellsInRegion)}: ");
 
-			rect.width = 50;
-			rect.x += 100;
+			rect.width = HorizontalStep;
+			rect.x += HorizontalStep * 2;
 
 			var newLength = EditorGUI.IntField(rect, village.CellsInRegion.Count);
 			village.CellsInRegion.Resize(newLength, null);
@@ -50,15 +52,14 @@ namespace Confrontation.Editor
 
 		private static void DrawCellsElements(this Rect rect, Village village)
 		{
-			rect.x += 50;
-			rect.y += EditorGUIUtility.singleLineHeight;
-			rect.y += EditorGUIUtility.singleLineHeight;
+			rect.x += HorizontalStep;
+			rect.y += VerticalStep * 2;
 
 			for (var i = 0; i < village.CellsInRegion.Count; i++)
 			{
 				var cell = village.CellsInRegion[i];
-				rect.y += EditorGUIUtility.singleLineHeight;
-				rect.width = 150;
+				rect.y += VerticalStep;
+				rect.width = HorizontalStep * 3;
 				village.CellsInRegion[i] = cell.AsObjectField(rect);
 
 				if (cell == true)
@@ -73,7 +74,7 @@ namespace Confrontation.Editor
 			if (Selection.gameObjects.WithComponent<Cell>().Contains(village.RelatedCell)
 			    || Selection.gameObjects.WithComponent<Building>().Contains(village))
 			{
-				rect.x += 200;
+				rect.x += HorizontalStep * 4;
 				EditorGUI.LabelField(rect, "<- Selected");
 			}
 		}
