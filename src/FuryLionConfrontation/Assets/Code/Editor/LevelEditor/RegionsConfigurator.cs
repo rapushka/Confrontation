@@ -82,20 +82,45 @@ namespace Confrontation.Editor
 			var village = _state.Villages[index];
 			rect.height = EditorGUIUtility.singleLineHeight;
 
+			DrawVillagePosition(rect, village);
+
+			DrawPlayerOwner(rect, village);
+
+			DrawCellsHeader(rect, village);
+
+			DrawCellsElements(rect, village);
+		}
+
+		private static void DrawVillagePosition(Rect rect, Village village)
+		{
 			var position = village.RelatedCell.transform.position;
 			EditorGUI.LabelField(rect, $"{village.GetType().Name.Pretty()} ({position.x:F2}; {position.z:F2})");
+		}
 
+		private static void DrawPlayerOwner(Rect rect, Village village)
+		{
 			rect.x += 150;
 
 			EditorGUI.LabelField(rect, "Player Owner: ");
+			rect.x += 100;
+			village.OwnerPlayerId = EditorGUI.IntField(rect, village.OwnerPlayerId);
+		}
 
+		private static void DrawCellsHeader(Rect rect, Village village)
+		{
 			rect.y += EditorGUIUtility.singleLineHeight;
 			EditorGUI.LabelField(rect, $"{nameof(village.CellsInRegion)}: ");
 
 			rect.width = 50;
+			rect.x += 100;
+
 			var newLength = EditorGUI.IntField(rect, village.CellsInRegion.Count);
 			village.CellsInRegion.Resize(newLength, null);
+		}
 
+		private static void DrawCellsElements(Rect rect, Village village)
+		{
+			rect.x -= 100;
 			for (var i = 0; i < village.CellsInRegion.Count; i++)
 			{
 				var cell = village.CellsInRegion[i];
@@ -103,14 +128,12 @@ namespace Confrontation.Editor
 				rect.width = 150;
 				village.CellsInRegion[i] = cell.AsObjectField(rect);
 			}
-
-			rect.x += 50;
 		}
 
 		private float SetElementHeight(int index)
 		{
-			var village = _state.Villages[index];
-			return EditorGUIUtility.singleLineHeight * (village.CellsInRegion.Count + 2) + 5;
+			var cells = _state.Villages[index].CellsInRegion;
+			return EditorGUIUtility.singleLineHeight * (cells.Count + 2) + 5;
 		}
 
 		[Serializable]
