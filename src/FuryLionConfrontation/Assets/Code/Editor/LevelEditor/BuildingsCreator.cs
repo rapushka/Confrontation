@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -10,6 +11,9 @@ namespace Confrontation.Editor
 	{
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly IResourcesService _resources;
+
+		public event Action<Building> BuildingAdd;
+		public event Action<Building> BuildingRemove;
 
 		private static IEnumerable<Cell> SelectedCells => Selection.gameObjects.WithComponent<Cell>();
 
@@ -34,6 +38,8 @@ namespace Confrontation.Editor
 		private void DestroyBuildingOnCell(Cell cell)
 		{
 			var building = cell.Building!;
+			BuildingRemove?.Invoke(building);
+
 			_assets.Destroy(building.gameObject);
 			cell.Building = null;
 		}
@@ -41,6 +47,8 @@ namespace Confrontation.Editor
 		private void BuildBuilding(Cell cell, Building buildingPrefab)
 		{
 			var building = _assets.Instantiate(buildingPrefab, cell.transform);
+			BuildingAdd?.Invoke(building);
+
 			building.RelatedCell = cell;
 			cell.Building = building;
 		}

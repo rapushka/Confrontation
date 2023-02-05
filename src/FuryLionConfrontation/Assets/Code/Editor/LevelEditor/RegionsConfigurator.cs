@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Confrontation.Editor
 {
-	public class RegionsConfigurator : IInitializable, IGuiRenderable
+	public class RegionsConfigurator : IInitializable, IGuiRenderable, IDisposable
 	{
 		[Inject] private readonly State _state;
 		[Inject] private readonly PlayersConfigurator _players;
+		[Inject] private readonly BuildingsCreator _buildingsCreator;
 
 		private ReorderableList _list;
 
@@ -28,6 +27,9 @@ namespace Confrontation.Editor
 				displayAddButton: false,
 				displayRemoveButton: false
 			);
+
+			_buildingsCreator.BuildingAdd += OnBuildingAdd;
+			_buildingsCreator.BuildingRemove += OnBuildingRemove;
 		}
 
 		public void GuiRender()
@@ -35,7 +37,29 @@ namespace Confrontation.Editor
 			_list.drawHeaderCallback = DrawHeader;
 			_list.drawElementCallback = DrawElement;
 
-			_list.DoLayoutList();
+			_list.DoLayoutList(); 
+		}
+
+		public void Dispose()
+		{
+			_buildingsCreator.BuildingAdd -= OnBuildingAdd;
+			_buildingsCreator.BuildingRemove -= OnBuildingRemove;
+		}
+
+		private void OnBuildingAdd(Building building)
+		{
+			if (building is Village village)
+			{
+				_state.Villages.Add(village);
+			}
+		}
+
+		private void OnBuildingRemove(Building building)
+		{
+			if (building is Village village)
+			{
+				_state.Villages.Remove(village);
+			}
 		}
 
 		private void DrawHeader(Rect rect)
@@ -58,7 +82,7 @@ namespace Confrontation.Editor
 
 			rect.x += 150;
 			rect.width = 50;
-			
+
 			var newLength = EditorGUI.IntField(rect, village.CellsInRegion.Count);
 			village.CellsInRegion.Resize(newLength, null);
 
