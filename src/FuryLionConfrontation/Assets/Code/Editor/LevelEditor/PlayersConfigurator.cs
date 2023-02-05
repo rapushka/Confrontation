@@ -33,7 +33,7 @@ namespace Confrontation.Editor
 
 			rect.x += 50;
 			rect.width = 50;
-			
+
 			var newLength = EditorGUI.IntField(rect, _state.Players.Count);
 			_state.Players.Resize(newLength);
 		}

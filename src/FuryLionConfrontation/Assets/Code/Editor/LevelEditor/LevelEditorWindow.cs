@@ -11,6 +11,7 @@ namespace Confrontation.Editor
 		[SerializeField] private ConfigurableField.State _fieldState;
 		[SerializeField] private PlayersConfigurator.State _playersState;
 		[SerializeField] private RegionsConfigurator.State _regionsState;
+		private Vector2 _scroll;
 
 		[MenuItem("Tools/" + nameof(Confrontation) + "/Level Editor")]
 		private static void ShowWindow()
@@ -22,7 +23,9 @@ namespace Confrontation.Editor
 
 		public override void OnGUI()
 		{
+			_scroll = EditorGUILayout.BeginScrollView(_scroll);
 			base.OnGUI();
+			EditorGUILayout.EndScrollView();
 
 			GUILayout.Button(nameof(SaveAll).Pretty()).OnClick(SaveAll);
 		}

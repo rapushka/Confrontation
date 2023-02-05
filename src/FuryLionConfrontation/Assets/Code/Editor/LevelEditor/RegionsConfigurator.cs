@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Confrontation.Editor
 {
@@ -18,6 +20,8 @@ namespace Confrontation.Editor
 		public void Initialize()
 		{
 			_state.Villages ??= new List<Village>();
+			_state.Villages = _state.Villages.Union(Object.FindObjectsOfType<Village>()).ToList();
+
 			_list = new ReorderableList
 			(
 				_state.Villages,
@@ -36,8 +40,9 @@ namespace Confrontation.Editor
 		{
 			_list.drawHeaderCallback = DrawHeader;
 			_list.drawElementCallback = DrawElement;
+			_list.elementHeightCallback = SetElementHeight;
 
-			_list.DoLayoutList(); 
+			_list.DoLayoutList();
 		}
 
 		public void Dispose()
@@ -81,12 +86,31 @@ namespace Confrontation.Editor
 			EditorGUI.LabelField(rect, $"{village.GetType().Name.Pretty()} ({position.x:F2}; {position.z:F2})");
 
 			rect.x += 150;
-			rect.width = 50;
 
+			EditorGUI.LabelField(rect, "Player Owner: ");
+
+			rect.y += EditorGUIUtility.singleLineHeight;
+			EditorGUI.LabelField(rect, $"{nameof(village.CellsInRegion)}: ");
+
+			rect.width = 50;
 			var newLength = EditorGUI.IntField(rect, village.CellsInRegion.Count);
 			village.CellsInRegion.Resize(newLength, null);
 
+			for (var i = 0; i < village.CellsInRegion.Count; i++)
+			{
+				var cell = village.CellsInRegion[i];
+				rect.y += EditorGUIUtility.singleLineHeight;
+				rect.width = 150;
+				village.CellsInRegion[i] = cell.AsObjectField(rect);
+			}
+
 			rect.x += 50;
+		}
+
+		private float SetElementHeight(int index)
+		{
+			var village = _state.Villages[index];
+			return EditorGUIUtility.singleLineHeight * (village.CellsInRegion.Count + 2) + 5;
 		}
 
 		[Serializable]
