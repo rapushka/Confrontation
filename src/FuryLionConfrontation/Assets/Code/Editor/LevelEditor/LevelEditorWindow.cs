@@ -47,6 +47,7 @@ namespace Confrontation.Editor
 			Container.BindInterfacesTo<RegionsConfigurator>().AsSingle();
 
 			Container.BindInterfacesTo<CellsPlayerGizmoDrawer>().AsSingle();
+			Container.BindInterfacesTo<CellsRegionGizmoDrawer>().AsSingle();
 
 			Container.BindInstance(_fieldState);
 			Container.BindInstance(_playersState);

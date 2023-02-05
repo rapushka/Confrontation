@@ -6,18 +6,18 @@ namespace Confrontation.Editor
 {
 	public class CellsPlayerGizmoDrawer : IInitializable, IGuiRenderable
 	{
-		private static bool _drawGizmosForCellsRegions;
+		private static bool _drawGizmosColorOfOwner;
 
-		public void Initialize() => _drawGizmosForCellsRegions = true;
+		public void Initialize() => _drawGizmosColorOfOwner = true;
 
 		public void GuiRender()
-			=> _drawGizmosForCellsRegions
-				= EditorGUILayout.Toggle(nameof(_drawGizmosForCellsRegions).Pretty(), _drawGizmosForCellsRegions);
+			=> _drawGizmosColorOfOwner
+				= EditorGUILayout.Toggle(nameof(_drawGizmosColorOfOwner).Pretty(), _drawGizmosColorOfOwner);
 
 		[DrawGizmo(GizmoType.Selected | GizmoType.NonSelected)]
 		private static void DrawGizmoForMyScript(Cell cell, GizmoType gizmoType)
 		{
-			if (_drawGizmosForCellsRegions == false)
+			if (_drawGizmosColorOfOwner == false)
 			{
 				return;
 			}

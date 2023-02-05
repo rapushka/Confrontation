@@ -12,7 +12,6 @@ namespace Confrontation.Editor
 	public class RegionsConfigurator : IInitializable, IGuiRenderable, IDisposable
 	{
 		[Inject] private readonly State _state;
-		[Inject] private readonly PlayersConfigurator _players;
 		[Inject] private readonly BuildingsCreator _buildingsCreator;
 
 		private ReorderableList _list;
