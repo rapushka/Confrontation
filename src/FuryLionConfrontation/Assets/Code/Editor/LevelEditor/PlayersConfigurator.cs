@@ -21,20 +21,22 @@ namespace Confrontation.Editor
 
 		public void GuiRender()
 		{
-			var playersCount = _state.Players.Count;
-			EditorGUILayout.PrefixLabel(nameof(_state.Players.Count));
-
-			playersCount = EditorGUILayout.IntField(playersCount);
-
-			UpdateListSize(playersCount);
 			_list.drawHeaderCallback = DrawHeader;
 			_list.drawElementCallback = DrawElement;
 
 			_list.DoLayoutList();
 		}
 
-		// ReSharper disable once MemberCanBeMadeStatic.Local - is use _state field
-		private void DrawHeader(Rect rect) => EditorGUI.LabelField(rect, nameof(_state.Players));
+		private void DrawHeader(Rect rect)
+		{
+			EditorGUI.LabelField(rect, nameof(_state.Players));
+
+			rect.x += 50;
+			rect.width = 50;
+			
+			var newLength = EditorGUI.IntField(rect, _state.Players.Count);
+			_state.Players.Resize(newLength);
+		}
 
 		private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
@@ -48,16 +50,9 @@ namespace Confrontation.Editor
 			EditorGUI.LabelField(rect, player.Id.ToString());
 
 			rect.x += 50;
+			rect.width = 150;
 
 			player.Capital = player.Capital.AsObjectField(rect);
-		}
-
-		private void UpdateListSize(int playersCount)
-		{
-			if (playersCount != _state.Players.Count)
-			{
-				_state.Players.Resize(playersCount);
-			}
 		}
 
 		[Serializable]

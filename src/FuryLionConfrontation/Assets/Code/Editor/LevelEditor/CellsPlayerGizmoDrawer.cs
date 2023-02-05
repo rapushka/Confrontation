@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation.Editor
 {
-	public class CellsRegionGizmoDrawer : IInitializable, IGuiRenderable
+	public class CellsPlayerGizmoDrawer : IInitializable, IGuiRenderable
 	{
 		private static bool _drawGizmosForCellsRegions;
 

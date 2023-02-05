@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -21,15 +20,6 @@ namespace Confrontation.Editor
 		{
 			_assets.CleanRoot();
 			_fieldGenerator.Initialize();
-			SaveAll();
-		}
-		
-		private static void SaveAll()
-		{
-			foreach (var monoBehaviour in Object.FindObjectsOfType<MonoBehaviour>())
-			{
-				EditorUtility.SetDirty(monoBehaviour);
-			}
 		}
 	}
 }
