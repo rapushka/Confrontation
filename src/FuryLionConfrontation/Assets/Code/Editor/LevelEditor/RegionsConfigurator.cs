@@ -36,8 +36,6 @@ namespace Confrontation.Editor
 			_list.drawElementCallback = DrawElement;
 
 			_list.DoLayoutList();
-
-			_state.Villages = Object.FindObjectsOfType<Village>().ToList();
 		}
 
 		private void DrawHeader(Rect rect)
@@ -58,10 +56,13 @@ namespace Confrontation.Editor
 			var position = village.RelatedCell.transform.position;
 			EditorGUI.LabelField(rect, $"{village.GetType().Name.Pretty()} ({position.x:F2}; {position.z:F2})");
 
-			rect.x += 50;
+			rect.x += 150;
+			rect.width = 50;
+			
+			var newLength = EditorGUI.IntField(rect, village.CellsInRegion.Count);
+			village.CellsInRegion.Resize(newLength, null);
 
 			rect.x += 50;
-			rect.width = 150;
 		}
 
 		[Serializable]
