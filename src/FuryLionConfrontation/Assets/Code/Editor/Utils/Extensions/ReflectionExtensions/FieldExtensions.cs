@@ -5,7 +5,7 @@ namespace Confrontation.Editor
 {
 	public static class FieldExtensions
 	{
-		public static IEnumerable<Village> GetVillages(this ConfigurableField @this)
+		public static IEnumerable<Village> GetVillages(this IField @this)
 			=> @this.Cells.Select((c) => c.Building).OfType<Village>();
 	}
 }

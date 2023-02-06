@@ -24,7 +24,7 @@ namespace Confrontation.Editor.Tests
 		public void WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements()
 		{
 			// Arrange.
-			var field = Container.Resolve<ConfigurableField>();
+			var field = Container.Resolve<IField>();
 			var generator = Container.Resolve<FieldGenerator>();
 
 			// Act.
