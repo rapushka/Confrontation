@@ -6,6 +6,7 @@ using System.Linq;
 namespace Confrontation
 {
 	public class CoordinatedMatrix<T> : IEnumerable<T>
+		where T : ICoordinated
 	{
 		private readonly T[,] _matrix;
 

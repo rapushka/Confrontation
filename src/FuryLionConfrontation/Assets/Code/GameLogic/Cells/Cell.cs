@@ -3,9 +3,11 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public class Cell : MonoBehaviour
+	public class Cell : MonoBehaviour, ICoordinated
 	{
 		[SerializeField] private RegionColor _color;
+
+		private Coordinates _coordinates;
 
 		[CanBeNull] public UnitsSquad UnitsSquads { get; set; }
 
@@ -19,7 +21,12 @@ namespace Confrontation
 
 		public Coordinates Coordinates
 		{
-			set => transform.position = value.CalculatePosition().AsTopDown();
+			get => _coordinates;
+			set
+			{
+				_coordinates = value;
+				transform.position = _coordinates.CalculatePosition().AsTopDown();
+			}
 		}
 
 		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
