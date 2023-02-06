@@ -23,6 +23,8 @@ namespace Confrontation
 			}
 		}
 
+		protected IField Field => _field;
+
 		public class Factory : PlaceholderFactory<Building, Building>
 		{
 			public T Create<T>(T prefab, Cell ownerCell, int ownerId)

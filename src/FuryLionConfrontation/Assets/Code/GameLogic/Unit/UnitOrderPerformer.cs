@@ -31,7 +31,7 @@ namespace Confrontation
 
 			if (IsHaveSameOwner(cell))
 			{
-				MergeWith(cell.UnitsSquads);
+				MergeWith(cell.LocatedUnits);
 			}
 			else
 			{
@@ -59,7 +59,7 @@ namespace Confrontation
 			_unitsSquad.QuantityOfUnits -= quantity;
 		}
 
-		private bool IsCellAlreadyPlaced(Cell cell) => cell.UnitsSquads == true && cell.UnitsSquads != _unitsSquad;
+		private bool IsCellAlreadyPlaced(Cell cell) => cell.LocatedUnits == true && cell.LocatedUnits != _unitsSquad;
 
 		private bool IsHaveSameOwner(Cell cell) => cell.RelatedRegion.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
 
@@ -71,23 +71,48 @@ namespace Confrontation
 
 		private void FightWithSquadOn(Cell cell)
 		{
-			var enemySquad = cell.UnitsSquads!;
+			var enemySquad = cell.LocatedUnits!;
 
+			if (IsOurVictory(cell, enemySquad))
+			{
+				return;
+			}
+
+			if (IsEnemyVictory(enemySquad))
+			{
+				return;
+			}
+
+			IsDraw(cell, enemySquad);
+		}
+
+		private bool IsOurVictory(Cell cell, UnitsSquad enemySquad)
+		{
 			if (_unitsSquad.QuantityOfUnits > enemySquad.QuantityOfUnits)
 			{
 				_unitsSquad.QuantityOfUnits -= enemySquad.QuantityOfUnits;
 				_assets.Destroy(enemySquad.gameObject);
 				CaptureRegion(cell);
-				return;
+				return true;
 			}
 
+			return false;
+		}
+
+		private bool IsEnemyVictory(UnitsSquad enemySquad)
+		{
 			if (_unitsSquad.QuantityOfUnits < enemySquad.QuantityOfUnits)
 			{
 				enemySquad.QuantityOfUnits -= _unitsSquad.QuantityOfUnits;
 				_assets.Destroy(_unitsSquad.gameObject);
-				return;
+				return true;
 			}
 
+			return false;
+		}
+
+		private void IsDraw(Cell cell, UnitsSquad enemySquad)
+		{
 			if (_unitsSquad.QuantityOfUnits == enemySquad.QuantityOfUnits)
 			{
 				_field.LocatedUnits.Remove(_unitsSquad);

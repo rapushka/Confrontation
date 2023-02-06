@@ -61,7 +61,7 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return new WaitUntil(() => cellWithVillage.HasUnits);
 
 			// Assert.
-			var unitsQuantityInVillage = cellWithVillage.UnitsSquads!.QuantityOfUnits;
+			var unitsQuantityInVillage = cellWithVillage.LocatedUnits!.QuantityOfUnits;
 			unitsQuantityInVillage.Should().Be(quantityToMove);
 		}
 

@@ -12,7 +12,7 @@ namespace Confrontation
 			    && startCell.IsBelongTo(_user.Player)
 			    && endCell.Building is Village)
 			{
-				var squad = startCell.UnitsSquads!;
+				var squad = startCell.LocatedUnits!;
 				var quantityToMove = startCell.Building is Barracks
 					? squad.QuantityOfUnits
 					: squad.QuantityOfUnits / 2;

@@ -11,7 +11,9 @@ namespace Confrontation
 
 		public float PassedDuration { get; set; }
 
-		private bool HaveSquad => RelatedCell.UnitsSquads == true;
+		private bool HaveSquad => LocatedUnits is not null;
+
+		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
 		private Vector3 InitialUnitPosition => transform.position + Constants.VerticalOffsetAboveCell;
 
@@ -21,7 +23,7 @@ namespace Confrontation
 		{
 			if (HaveSquad)
 			{
-				RelatedCell.UnitsSquads!.QuantityOfUnits++;
+				LocatedUnits.QuantityOfUnits++;
 			}
 			else
 			{

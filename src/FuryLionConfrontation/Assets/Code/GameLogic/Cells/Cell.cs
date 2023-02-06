@@ -12,7 +12,7 @@ namespace Confrontation
 
 		private Coordinates _coordinates;
 
-		[CanBeNull] public UnitsSquad UnitsSquads => _field.LocatedUnits[Coordinates];
+		[CanBeNull] public UnitsSquad LocatedUnits => _field.LocatedUnits[Coordinates];
 
 		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 
@@ -20,7 +20,7 @@ namespace Confrontation
 
 		public bool IsEmpty => Building is null;
 
-		public bool HasUnits => UnitsSquads is not null;
+		public bool HasUnits => LocatedUnits is not null;
 
 		public Coordinates Coordinates
 		{
@@ -33,8 +33,6 @@ namespace Confrontation
 			}
 		}
 
-		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
-
 		public bool IsBelongTo(Player player) => RelatedRegion is not null && RelatedRegion.OwnerPlayerId == player.Id;
 
 		public void MakeRegionNeutral() => RelatedRegion.SetOwner(Constants.NeutralRegion);
@@ -46,11 +44,14 @@ namespace Confrontation
 			SetColor(newOwnerId);
 		}
 
+		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
+
 		private void AppropriateUnitsTo(int newOwnerId)
 		{
-			if (HasUnits)
+			var units = _field.LocatedUnits[Coordinates];
+			if (units == true)
 			{
-				UnitsSquads!.OwnerPlayerId = newOwnerId;
+				units.OwnerPlayerId = newOwnerId;
 			}
 		}
 

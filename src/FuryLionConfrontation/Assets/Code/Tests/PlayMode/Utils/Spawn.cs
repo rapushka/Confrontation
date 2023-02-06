@@ -13,7 +13,7 @@ namespace Confrontation.Editor.PlayModeTests
 			{
 				barracks.Action();
 			}
-			return barracks.RelatedCell.UnitsSquads!;
+			return barracks.RelatedCell.LocatedUnits!;
 		}
 	}
 }
