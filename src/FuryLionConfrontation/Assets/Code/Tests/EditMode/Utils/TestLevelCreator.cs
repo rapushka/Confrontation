@@ -14,7 +14,7 @@ namespace Confrontation.Editor.Tests
 			{
 				PlayersCount = 2,
 				Sizes = new Sizes(5, 5),
-				Regions = new List<Region>
+				Regions = new List<RegionData>
 				{
 					new()
 					{

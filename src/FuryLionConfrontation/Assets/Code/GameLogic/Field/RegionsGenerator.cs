@@ -20,25 +20,25 @@ namespace Confrontation
 
 		private void DivideIntoRegions() => _levelSelector.SelectedLevel.Regions.ForEach(ToRegion);
 
-		private void ToRegion(Region region)
+		private void ToRegion(RegionData regionData)
 		{
-			var village = CreateVillage(region);
-			GetCellsFrom(region).ForEach(village.AddToRegion);
+			var village = CreateVillage(regionData);
+			GetCellsFrom(regionData).ForEach(village.AddToRegion);
 			Villages.Add(village);
 			_buildingsGenerator.Buildings.Add(village);
 		}
 
-		private Village CreateVillage(Region region)
+		private Village CreateVillage(RegionData regionData)
 		{
-			var ownerCell = _field.Cells[region.VillageCoordinates];
-			var village = Create(region, ownerCell);
+			var ownerCell = _field.Cells[regionData.VillageCoordinates];
+			var village = Create(regionData, ownerCell);
 			_field.Buildings.Add(village);
 			return village;
 		}
 
-		private IEnumerable<Cell> GetCellsFrom(Region region) => region.CellsCoordinates.Select((c) => _field.Cells[c]);
+		private IEnumerable<Cell> GetCellsFrom(RegionData regionData) => regionData.CellsCoordinates.Select((c) => _field.Cells[c]);
 
-		private Village Create(Region region, Cell ownerCell)
-			=> _buildingsFactory.Create(VillagePrefab, ownerCell, region.OwnerPlayerId);
+		private Village Create(RegionData regionData, Cell ownerCell)
+			=> _buildingsFactory.Create(VillagePrefab, ownerCell, regionData.OwnerPlayerId);
 	}
 }

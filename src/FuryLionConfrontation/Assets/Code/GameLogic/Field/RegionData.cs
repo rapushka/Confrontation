@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Confrontation
 {
 	[Serializable]
-	public class Region
+	public class RegionData
 	{
 		public int               OwnerPlayerId      { get; set; }
 		public Coordinates       VillageCoordinates { get; set; }
