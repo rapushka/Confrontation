@@ -12,7 +12,7 @@ namespace Confrontation
 
 		private Coordinates _coordinates;
 
-		[CanBeNull] public UnitsSquad UnitsSquads { get; set; }
+		[CanBeNull] public UnitsSquad UnitsSquads => _field.LocatedUnits[Coordinates];
 
 		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 

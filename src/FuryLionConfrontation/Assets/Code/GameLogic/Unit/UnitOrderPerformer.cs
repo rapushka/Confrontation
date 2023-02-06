@@ -8,6 +8,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 		[Inject] private readonly IAssetsService _assets;
+		[Inject] private readonly IField _field;
 
 		[SerializeField] private UnitsSquad _unitsSquad;
 
@@ -40,7 +41,7 @@ namespace Confrontation
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
-			_locationCell.UnitsSquads = null;
+			_field.LocatedUnits.Remove(_unitsSquad);
 
 			if (quantityToMove < _unitsSquad.QuantityOfUnits
 			    && quantityToMove > 0)
@@ -58,7 +59,7 @@ namespace Confrontation
 			_unitsSquad.QuantityOfUnits -= quantity;
 		}
 
-		private bool IsCellAlreadyPlaced(Cell value) => value.UnitsSquads == true && value.UnitsSquads != _unitsSquad;
+		private bool IsCellAlreadyPlaced(Cell cell) => cell.UnitsSquads == true && cell.UnitsSquads != _unitsSquad;
 
 		private bool IsHaveSameOwner(Cell cell) => cell.RelatedRegion.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
 
@@ -89,7 +90,7 @@ namespace Confrontation
 
 			if (_unitsSquad.QuantityOfUnits == enemySquad.QuantityOfUnits)
 			{
-				cell.UnitsSquads = null;
+				_field.LocatedUnits.Remove(_unitsSquad);
 				_assets.Destroy(_unitsSquad.gameObject);
 				_assets.Destroy(enemySquad.gameObject);
 				cell.MakeRegionNeutral();
@@ -98,15 +99,9 @@ namespace Confrontation
 
 		private void CaptureRegion(Cell cell)
 		{
-			AppropriateCell(cell);
+			_unitsSquad.Coordinates = cell.Coordinates;
 
 			cell.RelatedRegion.SetOwner(_unitsSquad.OwnerPlayerId);
-		}
-
-		private void AppropriateCell(Cell cell)
-		{
-			_locationCell = cell;
-			cell.UnitsSquads = _unitsSquad;
 		}
 	}
 }

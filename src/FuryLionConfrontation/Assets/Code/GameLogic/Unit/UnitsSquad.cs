@@ -5,12 +5,15 @@ namespace Confrontation
 {
 	public class UnitsSquad : MonoBehaviour, ICoordinated
 	{
+		[Inject] private readonly IField _field;
+
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitAnimator _animator;
 		[SerializeField] private QuantityOfUnitsInSquadView _quantityOfUnitsInSquadView;
 		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
 
 		private int _quantityOfUnits;
+		private Coordinates _coordinates;
 
 		private void OnEnable() => _unitMovement.TargetReached += OnTargetCellReached;
 
@@ -18,7 +21,15 @@ namespace Confrontation
 
 		public int OwnerPlayerId { get; set; }
 
-		public Coordinates Coordinates { get; set; }
+		public Coordinates Coordinates
+		{
+			get => _coordinates;
+			set
+			{
+				_coordinates = value;
+				_field.LocatedUnits.Add(this);
+			}
+		}
 
 		public int QuantityOfUnits
 		{
@@ -31,8 +42,6 @@ namespace Confrontation
 		}
 
 		public void SetLocation(Cell cell) => _unitOrderPerformer.SetLocation(cell);
-
-		public void MoveTo(Cell targetCell) => MoveTo(targetCell, QuantityOfUnits);
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
@@ -54,6 +63,7 @@ namespace Confrontation
 				var unitsSquad = base.Create();
 				unitsSquad.transform.position = position;
 				unitsSquad.OwnerPlayerId = ownerPlayerId;
+				unitsSquad.Coordinates = cell.Coordinates;
 				unitsSquad.SetLocation(cell);
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
