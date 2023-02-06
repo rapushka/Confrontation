@@ -3,10 +3,12 @@ using Zenject;
 
 namespace Confrontation
 {
-	public abstract class Building : MonoBehaviour
+	public abstract class Building : MonoBehaviour, ICoordinated
 	{
 		public int  OwnerPlayerId { get; set; }
 		public Cell RelatedCell   { get; set; }
+
+		public Coordinates Coordinates { get; set; }
 
 		public class Factory : PlaceholderFactory<Building, Building>
 		{
