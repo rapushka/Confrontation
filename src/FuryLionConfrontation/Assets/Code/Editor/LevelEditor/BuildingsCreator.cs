@@ -25,46 +25,32 @@ namespace Confrontation.Editor
 		public void GuiRender()
 		{
 			GUILayout.Label("Actions Perform to Selected Cells");
-			GUILayout.Button(nameof(BuildCapital).Pretty()).OnClick(BuildCapital);
-			GUILayout.Button(nameof(BuildVillage).Pretty()).OnClick(BuildVillage);
-			GUILayout.Button(nameof(BuildBarrack).Pretty()).OnClick(BuildBarrack);
-			GUILayout.Button(nameof(BuildGoldenMine).Pretty()).OnClick(BuildGoldenMine);
+			GUILayout.Button("Build Capital").OnClick(() => Build(_resources.CapitalPrefab));
+			GUILayout.Button("Build Village").OnClick(() => Build(_resources.VillagePrefab));
+			GUILayout.Button("Build Barrack").OnClick(() => Build(BarrackPrefab));
+			GUILayout.Button("Build Golden Mine").OnClick(() => Build(GoldenMinePrefab));
 			GUILayout.Button(nameof(DestroyBuilding).Pretty()).OnClick(DestroyBuilding);
 		}
 
-		private void BuildCapital() => SelectedCells.Where((c) => c.IsEmpty).ForEach(BuildCapitalOnCell);
-
-		private void BuildVillage() => SelectedCells.Where((c) => c.IsEmpty).ForEach(BuildVillageOnCell);
-
-		private void BuildBarrack() => SelectedCells.Where((c) => c.IsEmpty).ForEach(BuildBarrackOnCell);
-
-		private void BuildGoldenMine() => SelectedCells.Where((c) => c.IsEmpty).ForEach(BuildGoldenMineOnCell);
-
+		private void Build(Building prefab)
+			=> SelectedCells.Where((c) => c.IsEmpty).ForEach((c) => BuildOnCell(c, prefab));
 		private void DestroyBuilding() => SelectedCells.Where((c) => c.IsEmpty == false).ForEach(DestroyBuildingOnCell);
 
-		private void BuildCapitalOnCell(Cell cell) => BuildBuilding(cell, _resources.CapitalPrefab);
-
-		private void BuildVillageOnCell(Cell cell) => BuildBuilding(cell, _resources.VillagePrefab);
-
-		private void BuildBarrackOnCell(Cell cell) => BuildBuilding(cell, BarrackPrefab);
-
-		private void BuildGoldenMineOnCell(Cell cell) => BuildBuilding(cell, GoldenMinePrefab);
+		private void BuildOnCell(Cell cell, Building prefab)
+		{
+			var building = _assets.Instantiate(prefab, cell.transform);
+			BuildingAdd?.Invoke(building);
+			building.Coordinates = cell.Coordinates;
+		}
 
 		private void DestroyBuildingOnCell(Cell cell)
 		{
-			var building = cell.Building!;
+			var building = _field.Buildings[cell.Coordinates];
+
 			BuildingRemove?.Invoke(building);
-
 			_field.Buildings.Remove(building);
-			_assets.Destroy(building.gameObject);
-			cell.Building = null;
-		}
 
-		private void BuildBuilding(Cell cell, Building buildingPrefab)
-		{
-			var building = _assets.Instantiate(buildingPrefab, cell.transform);
-			BuildingAdd?.Invoke(building);
-			building.Coordinates = cell.Coordinates;
+			_assets.Destroy(building.gameObject);
 		}
 	}
 }

@@ -14,11 +14,7 @@ namespace Confrontation
 
 		[CanBeNull] public UnitsSquad UnitsSquads { get; set; }
 
-		[CanBeNull] public Building Building
-		{
-			get => _field.Buildings[Coordinates];
-			set => _field.Buildings.Add(value);
-		}
+		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 
 		public Village RelatedRegion { get; set; }
 
@@ -60,9 +56,10 @@ namespace Confrontation
 
 		private void AppropriateBuildingTo(int newOwnerId)
 		{
-			if (IsEmpty == false)
+			var building = _field.Buildings[Coordinates];
+			if (building == true)
 			{
-				Building!.OwnerPlayerId = newOwnerId;
+				building.OwnerPlayerId = newOwnerId;
 			}
 		}
 

@@ -53,7 +53,7 @@ namespace Confrontation.Editor.Tests
 			regions.Initialize();
 
 			// Assert.
-			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
+			var countOfCellsInRegion = field.Buildings.OfType<Village>().Single().CellsInRegion.Count;
 			countOfCellsInRegion.Should().Be(1);
 		}
 
@@ -68,7 +68,7 @@ namespace Confrontation.Editor.Tests
 			regions.Initialize();
 
 			// Assert.
-			var countOfCellsInRegion = field.GetVillages().Single().CellsInRegion.Count;
+			var countOfCellsInRegion = field.Buildings.OfType<Village>().Single().CellsInRegion.Count;
 			countOfCellsInRegion.Should().Be(1);
 		}
 	}
