@@ -2,12 +2,6 @@ using Zenject;
 
 namespace Confrontation
 {
-	public interface IField
-	{
-		CoordinatedMatrix<Cell>     Cells     { get; }
-		CoordinatedMatrix<Building> Buildings { get; }
-	}
-
 	public class Field : IField, IInitializable
 	{
 		[Inject] private ILevelSelector _levelSelector;

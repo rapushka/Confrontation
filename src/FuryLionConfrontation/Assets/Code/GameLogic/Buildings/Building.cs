@@ -19,7 +19,7 @@ namespace Confrontation
 			set
 			{
 				_coordinates = value;
-				BuildingsStorage.Buildings.Add(this);
+				_field.Buildings.Add(this);
 			}
 		}
 

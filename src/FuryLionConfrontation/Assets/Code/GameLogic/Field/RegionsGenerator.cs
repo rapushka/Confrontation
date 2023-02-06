@@ -32,7 +32,7 @@ namespace Confrontation
 		{
 			var ownerCell = _field.Cells[region.VillageCoordinates];
 			var village = Create(region, ownerCell);
-			BuildingsStorage.Buildings.Add(village);
+			_field.Buildings.Add(village);
 			return village;
 		}
 

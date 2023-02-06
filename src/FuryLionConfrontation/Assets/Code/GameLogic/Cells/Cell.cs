@@ -1,10 +1,13 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class Cell : MonoBehaviour, ICoordinated
 	{
+		[Inject] private readonly IField _field;
+
 		[SerializeField] private RegionColor _color;
 
 		private Coordinates _coordinates;
@@ -13,8 +16,8 @@ namespace Confrontation
 
 		[CanBeNull] public Building Building
 		{
-			get => BuildingsStorage.Buildings[Coordinates];
-			set => BuildingsStorage.Buildings.Add(value);
+			get => _field.Buildings[Coordinates];
+			set => _field.Buildings.Add(value);
 		}
 
 		public Village RelatedRegion { get; set; }

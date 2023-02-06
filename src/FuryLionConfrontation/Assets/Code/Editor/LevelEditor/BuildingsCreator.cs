@@ -9,6 +9,7 @@ namespace Confrontation.Editor
 {
 	public class BuildingsCreator : IGuiRenderable
 	{
+		[Inject] private readonly IField _field;
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly IResourcesService _resources;
 
@@ -54,7 +55,7 @@ namespace Confrontation.Editor
 			var building = cell.Building!;
 			BuildingRemove?.Invoke(building);
 
-			BuildingsStorage.Buildings.Remove(building);
+			_field.Buildings.Remove(building);
 			_assets.Destroy(building.gameObject);
 			cell.Building = null;
 		}
