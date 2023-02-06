@@ -5,8 +5,11 @@ namespace Confrontation
 {
 	public abstract class Building : MonoBehaviour, ICoordinated
 	{
-		public int  OwnerPlayerId { get; set; }
-		public Cell RelatedCell   { get; set; }
+		[Inject] private readonly IField _field;
+
+		public int OwnerPlayerId { get; set; }
+
+		public Cell RelatedCell => _field.Cells[Coordinates];
 
 		public Coordinates Coordinates { get; set; }
 
@@ -16,7 +19,7 @@ namespace Confrontation
 				where T : Building
 			{
 				var building = Create(prefab, ownerCell.transform, ownerId);
-				building.RelatedCell = ownerCell;
+				building.Coordinates = ownerCell.Coordinates;
 				return building;
 			}
 
@@ -32,8 +35,7 @@ namespace Confrontation
 			public Building Create(Building prefab, Cell cell)
 			{
 				var building = Create(prefab, cell.transform, cell.RelatedRegion.OwnerPlayerId);
-				cell.Building = building;
-				building.RelatedCell = cell;
+				building.Coordinates = cell.Coordinates;
 				return building;
 			}
 

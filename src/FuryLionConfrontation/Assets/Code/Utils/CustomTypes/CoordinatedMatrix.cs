@@ -27,6 +27,8 @@ namespace Confrontation
 			set => _matrix[sizes.Height, sizes.Width] = value;
 		}
 
+		public void Add(T item) => this[item.Coordinates] = item;
+
 		public void SetForEach(Func<int, int, T> action)
 		{
 			for (var i = 0; i < _matrix.GetLength(0); i++)

@@ -62,9 +62,7 @@ namespace Confrontation.Editor
 		{
 			var building = _assets.Instantiate(buildingPrefab, cell.transform);
 			BuildingAdd?.Invoke(building);
-
-			building.RelatedCell = cell;
-			cell.Building = building;
+			building.Coordinates = cell.Coordinates;
 		}
 	}
 }
