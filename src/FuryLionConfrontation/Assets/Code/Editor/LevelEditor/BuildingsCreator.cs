@@ -54,6 +54,7 @@ namespace Confrontation.Editor
 			var building = cell.Building!;
 			BuildingRemove?.Invoke(building);
 
+			BuildingsStorage.Buildings.Remove(building);
 			_assets.Destroy(building.gameObject);
 			cell.Building = null;
 		}

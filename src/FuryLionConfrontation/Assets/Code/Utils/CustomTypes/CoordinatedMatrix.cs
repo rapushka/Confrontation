@@ -29,6 +29,8 @@ namespace Confrontation
 
 		public void Add(T item) => this[item.Coordinates] = item;
 
+		public void Remove(T item) => this[item.Coordinates] = default;
+
 		public void SetForEach(Func<int, int, T> action)
 		{
 			for (var i = 0; i < _matrix.GetLength(0); i++)

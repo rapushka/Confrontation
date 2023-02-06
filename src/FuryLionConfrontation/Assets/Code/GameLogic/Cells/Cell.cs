@@ -11,7 +11,11 @@ namespace Confrontation
 
 		[CanBeNull] public UnitsSquad UnitsSquads { get; set; }
 
-		[CanBeNull] public Building Building { get; set; }
+		[CanBeNull] public Building Building
+		{
+			get => BuildingsStorage.Buildings[Coordinates];
+			set => BuildingsStorage.Buildings.Add(value);
+		}
 
 		public Village RelatedRegion { get; set; }
 
@@ -25,6 +29,7 @@ namespace Confrontation
 			set
 			{
 				_coordinates = value;
+				
 				transform.position = _coordinates.CalculatePosition().AsTopDown();
 			}
 		}

@@ -7,11 +7,21 @@ namespace Confrontation
 	{
 		[Inject] private readonly IField _field;
 
+		private Coordinates _coordinates;
+
 		public int OwnerPlayerId { get; set; }
 
 		public Cell RelatedCell => _field.Cells[Coordinates];
 
-		public Coordinates Coordinates { get; set; }
+		public Coordinates Coordinates
+		{
+			get => _coordinates;
+			set
+			{
+				_coordinates = value;
+				BuildingsStorage.Buildings.Add(this);
+			}
+		}
 
 		public class Factory : PlaceholderFactory<Building, Building>
 		{
