@@ -1,16 +1,17 @@
+using System.Linq;
 using Zenject;
 
 namespace Confrontation
 {
 	public class CellsPainter : IInitializable
 	{
-		[Inject] private readonly RegionsGenerator _regions;
+		[Inject] private readonly IField _field;
 
 		public void Initialize() => PaintCells();
 
 		private void PaintCells()
 		{
-			foreach (var village in _regions.Villages)
+			foreach (var village in _field.Buildings.OfType<Village>())
 			{
 				foreach (var cell in village.CellsInRegion)
 				{

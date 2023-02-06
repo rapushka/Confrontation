@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686997808771183188}
-  - component: {fileID: 7971290585587501546}
+  - component: {fileID: 8409872167996123710}
   - component: {fileID: 2305448757740132536}
   m_Layer: 0
   m_Name: Village
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7971290585587501546
+--- !u!114 &8409872167996123710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5771020657915353660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8878b07f7984a9c9b2d2d3ee51a421a, type: 3}
+  m_Script: {fileID: 11500000, guid: e47ae358905f4665989c29cf3d1d9535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CellsInRegion>k__BackingField: []
 --- !u!114 &2305448757740132536
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,11 +6,11 @@ namespace Confrontation
 {
 	public class CoolDownActionsHandler : ITickable
 	{
-		[Inject] private readonly BuildingsGenerator _buildingsGenerator;
 		[Inject] private readonly ITimeService _timeService;
+		[Inject] private readonly IField _field;
 
 		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
-			=> _buildingsGenerator.Buildings.OfType<IActorWithCoolDown>();
+			=> _field.Buildings.OfType<IActorWithCoolDown>();
 
 		public void Tick()
 		{

@@ -31,10 +31,10 @@ namespace Confrontation
 			Container.Bind<GameplayUiMediator>().AsSingle();
 			Container.Bind<GameplayWindows>().AsSingle();
 
-			BindFactory();
+			BindFactories();
 		}
 
-		private void BindFactory()
+		private void BindFactories()
 		{
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
@@ -47,6 +47,7 @@ namespace Confrontation
 
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
 			Container.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefab(_cellPrefab);
+			Container.BindFactory<Region, Region.Factory>();
 		}
 	}
 }
