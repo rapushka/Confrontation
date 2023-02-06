@@ -18,7 +18,7 @@ namespace Confrontation.Editor
 				= EditorGUILayout.Toggle(nameof(_drawGizmosColorOfOwner).Pretty(), _drawGizmosColorOfOwner);
 
 		[DrawGizmo(GizmoType.Selected | GizmoType.NonSelected)]
-		private static void DrawGizmoForMyScript(Cell cell, GizmoType gizmoType)
+		private static void DrawGizmo(Cell cell, GizmoType gizmoType)
 		{
 			if (_drawGizmosColorOfOwner == false)
 			{

@@ -22,7 +22,7 @@ namespace Confrontation.Editor
 		}
 
 		[DrawGizmo(GizmoType.Selected | GizmoType.NonSelected)]
-		private static void DrawGizmoForMyScript(Cell cell, GizmoType gizmoType)
+		private static void DrawGizmo(Cell cell, GizmoType gizmoType)
 		{
 			if (_drawLineToRegionVillage == false
 			    || cell.RelatedRegion == false)
