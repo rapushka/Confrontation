@@ -8,8 +8,9 @@ namespace Confrontation.Editor
 	{
 		[Inject] private State _state;
 
-		public CoordinatedMatrix<Cell>     Cells     { get; private set; }
-		public CoordinatedMatrix<Building> Buildings { get; private set; }
+		public CoordinatedMatrix<Cell>       Cells     { get; private set; }
+		public CoordinatedMatrix<Building>   Buildings { get; private set; }
+		public CoordinatedMatrix<UnitsSquad> Units     { get; private set; }
 
 		public void GuiRender()
 		{
@@ -18,6 +19,7 @@ namespace Confrontation.Editor
 
 			Cells = new CoordinatedMatrix<Cell>(_state.Sizes);
 			Buildings = new CoordinatedMatrix<Building>(_state.Sizes);
+			Units = new CoordinatedMatrix<UnitsSquad>(_state.Sizes);
 		}
 
 		private void Height()

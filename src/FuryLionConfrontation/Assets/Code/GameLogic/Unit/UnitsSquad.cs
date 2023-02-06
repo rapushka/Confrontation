@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class UnitsSquad : MonoBehaviour
+	public class UnitsSquad : MonoBehaviour, ICoordinated
 	{
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitAnimator _animator;
@@ -17,6 +17,8 @@ namespace Confrontation
 		private void OnDisable() => _unitMovement.TargetReached -= OnTargetCellReached;
 
 		public int OwnerPlayerId { get; set; }
+
+		public Coordinates Coordinates { get; set; }
 
 		public int QuantityOfUnits
 		{
