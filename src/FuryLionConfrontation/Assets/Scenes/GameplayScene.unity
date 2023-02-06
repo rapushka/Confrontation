@@ -203,6 +203,7 @@ MonoBehaviour:
   _buildingButtonPrefab: {fileID: -4646616829452299902, guid: a50e8c8821030da4c92d92133d4a4105, type: 3}
   _unitPrefab: {fileID: -6484238923440550980, guid: b7f59dfba32262695a11b048572c0f66, type: 3}
   _orderLineRenderer: {fileID: 286574869}
+  _cellPrefab: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
 --- !u!1 &286574868
 GameObject:
   m_ObjectHideFlags: 0

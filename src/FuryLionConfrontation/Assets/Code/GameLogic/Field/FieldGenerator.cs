@@ -4,16 +4,17 @@ namespace Confrontation
 {
 	public class FieldGenerator : IInitializable
 	{
-		[Inject] private readonly IResourcesService _resources;
-		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly IField _field;
+		[Inject] private readonly Cell.Factory _cellsFactory;
 
 		public void Initialize() => GenerateField();
 
-		private void GenerateField() => _field.Cells.SetForEach(CreateHexagon);
+		private void GenerateField() => _field.Cells.DoubleFor(CreateHexagon);
 
-		private Cell CreateHexagon(int i, int j)
-			=> _assets.Instantiate(original: _resources.CellPrefab, InstantiateGroup.Cells)
-			          .With((c) => c.Coordinates = new Coordinates(i, j));
+		private void CreateHexagon(int i, int j)
+		{
+			var cell = _cellsFactory.Create();
+			cell.Coordinates = new Coordinates(i, j);
+		}
 	}
 }

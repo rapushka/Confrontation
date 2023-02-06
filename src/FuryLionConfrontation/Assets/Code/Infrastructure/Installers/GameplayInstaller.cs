@@ -8,6 +8,7 @@ namespace Confrontation
 		[SerializeField] private BuildingButton _buildingButtonPrefab;
 		[SerializeField] private UnitsSquad _unitPrefab;
 		[SerializeField] private LineRenderer _orderLineRenderer;
+		[SerializeField] private Cell _cellPrefab;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
@@ -45,6 +46,7 @@ namespace Confrontation
 			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<GameplayWindowsFactory>();
 
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
+			Container.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefab(_cellPrefab);
 		}
 	}
 }

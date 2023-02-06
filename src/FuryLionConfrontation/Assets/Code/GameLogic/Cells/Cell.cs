@@ -32,7 +32,7 @@ namespace Confrontation
 			set
 			{
 				_coordinates = value;
-				
+				_field.Cells.Add(this);
 				transform.position = _coordinates.CalculatePosition().AsTopDown();
 			}
 		}

@@ -31,13 +31,13 @@ namespace Confrontation
 
 		public void Remove(T item) => this[item.Coordinates] = default;
 
-		public void SetForEach(Func<int, int, T> action)
+		public void DoubleFor(Action<int, int> action)
 		{
 			for (var i = 0; i < _matrix.GetLength(0); i++)
 			{
 				for (var j = 0; j < _matrix.GetLength(1); j++)
 				{
-					_matrix[i, j] = action.Invoke(i, j);
+					action.Invoke(i, j);
 				}
 			}
 		}
