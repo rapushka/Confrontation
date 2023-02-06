@@ -65,5 +65,7 @@ namespace Confrontation
 				Building!.OwnerPlayerId = newOwnerId;
 			}
 		}
+
+		public class Factory : PlaceholderFactory<Cell> { }
 	}
 }

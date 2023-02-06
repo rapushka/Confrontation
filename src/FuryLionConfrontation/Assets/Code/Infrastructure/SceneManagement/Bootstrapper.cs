@@ -10,13 +10,6 @@ namespace Confrontation
 
 		public override void Initialize()
 		{
-#if UNITY_EDITOR
-			if (SceneTransfer.IsCurrentScene(Constants.SceneName.LevelEditorScene))
-			{
-				return;
-			}
-#endif
-
 			_mediator.ShowImmediatelyLoadingCurtain();
 			base.Initialize();
 		}
