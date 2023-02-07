@@ -12,7 +12,6 @@ namespace Confrontation
 
 		[SerializeField] private UnitsSquad _unitsSquad;
 
-		private Cell _locationCell;
 		[CanBeNull] private Cell _targetCell;
 
 		public void PlaceInCell()
@@ -49,13 +48,12 @@ namespace Confrontation
 				FormNewSquad(quantityToMove);
 			}
 
-			_locationCell = null;
 			_targetCell = targetCell;
 		}
 
 		private void FormNewSquad(int quantity)
 		{
-			_unitsFactory.Create(transform.position, _locationCell, _unitsSquad.OwnerPlayerId, quantity);
+			_unitsFactory.Create(transform.position, _unitsSquad.LocationCell, _unitsSquad.OwnerPlayerId, quantity);
 			_unitsSquad.QuantityOfUnits -= quantity;
 		}
 

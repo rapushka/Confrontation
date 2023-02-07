@@ -21,6 +21,8 @@ namespace Confrontation
 
 		public int OwnerPlayerId { get; set; }
 
+		public Cell LocationCell => _field.Cells[Coordinates];
+		
 		public Coordinates Coordinates
 		{
 			get => _coordinates;
