@@ -3,21 +3,13 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class CellsPainter : IInitializable
+	public class CellsPainter : IInitializable, ITickable
 	{
 		[Inject] private readonly IField _field;
 
-		public void Initialize() => PaintCells();
+		public void Initialize() { }
 
-		private void PaintCells()
-		{
-			foreach (var village in _field.Buildings.OfType<Village>())
-			{
-				foreach (var cell in village.CellsInRegion)
-				{
-					cell.SetColor(_field.Regions[village.Coordinates].OwnerPlayerId);
-				}
-			}
-		}
+		public void Tick() { }
+
 	}
 }

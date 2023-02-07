@@ -26,6 +26,7 @@ namespace Confrontation
 				_field.Regions[coordinates] = region;
 			}
 
+			region.UpdateCellsColor();
 			_field.Buildings.Add(village);
 		}
 
