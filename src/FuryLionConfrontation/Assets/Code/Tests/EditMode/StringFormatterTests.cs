@@ -6,7 +6,7 @@ namespace Confrontation.Editor.Tests
 	public class StringFormatterTests
 	{
 		[Test]
-		public void WhenFormat_AndLowerFirst_ThenUpperFirst()
+		public void _1_WhenFormat_AndLowerFirst_ThenUpperFirst()
 		{
 			// Arrange.
 			var name = "width";
@@ -19,7 +19,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst()
+		public void _2_WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst()
 		{
 			// Arrange.
 			var name = "_width";
@@ -32,7 +32,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenFormat_AndCamelCase_ThenAddSpaces()
+		public void _3_WhenFormat_AndCamelCase_ThenAddSpaces()
 		{
 			// Arrange.
 			var name = "someText";
@@ -45,7 +45,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper()
+		public void _4_WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper()
 		{
 			// Arrange.
 			var name = "_someAnotherText";

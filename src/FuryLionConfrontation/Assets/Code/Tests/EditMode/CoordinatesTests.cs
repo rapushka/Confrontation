@@ -7,7 +7,7 @@ namespace Confrontation.Editor.Tests
 	public class CoordinatesTests
 	{
 		[Test]
-		public void WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0()
+		public void _1_WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0()
 		{
 			// Arrange.
 			var coordinates = Create.Coordinates(row: 0, column: 0);
@@ -21,7 +21,7 @@ namespace Confrontation.Editor.Tests
 		}
 		
 		[Test]
-		public void WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866()
+		public void _2_WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866()
 		{
 			// Arrange.
 			const int row = 1;

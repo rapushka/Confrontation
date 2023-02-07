@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
@@ -30,7 +29,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
+		public void _1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
 		{
 			// Arrange.
 			var regions = Container.Resolve<RegionsGenerator>();
@@ -45,7 +44,7 @@ namespace Confrontation.Editor.Tests
 
 		[Test]
 		public void
-			WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion()
+			_2_WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion()
 		{
 			// Arrange.
 			var field = Container.Resolve<IField>();
@@ -60,7 +59,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion()
+		public void _3_WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion()
 		{
 			// Arrange.
 			var field = Container.Resolve<IField>();
