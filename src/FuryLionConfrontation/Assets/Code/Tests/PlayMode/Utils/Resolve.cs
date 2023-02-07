@@ -7,6 +7,7 @@ namespace Confrontation.Editor.PlayModeTests
 	public static class Resolve
 	{
 		public static List<Building> Buildings(DiContainer container) 
-			=> container.Resolve<IField>().Buildings.ToList();
+			// ReSharper disable once RedundantEnumerableCastCall - this remove nulls
+			=> container.Resolve<IField>().Buildings.OfType<Building>().ToList();
 	}
 }

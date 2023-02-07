@@ -43,7 +43,8 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return CommonSetUp();
 
 			// Assert.
-			_buildings.Count((b) => b == true).Should().Be(_buildings.Count);
+			var countOfNullBuildings = _buildings.Count((b) => b == false);
+			countOfNullBuildings.Should().Be(0);
 		}
 
 		[UnityTest]

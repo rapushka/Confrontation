@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
@@ -43,7 +44,8 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion()
+		public void
+			WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion()
 		{
 			// Arrange.
 			var field = Container.Resolve<IField>();
@@ -53,12 +55,12 @@ namespace Confrontation.Editor.Tests
 			regions.Initialize();
 
 			// Assert.
-			var countOfCellsInRegion = field.Buildings.OfType<Village>().Single().CellsInRegion.Count();
-			countOfCellsInRegion.Should().Be(1);
+			var countOfCellsInRegion = field.Buildings.OfType<Village>().Single().CellsInRegion.ToList().Count;
+			countOfCellsInRegion.Should().Be(2);
 		}
 
 		[Test]
-		public void WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion()
+		public void WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion()
 		{
 			// Arrange.
 			var field = Container.Resolve<IField>();
@@ -68,8 +70,9 @@ namespace Confrontation.Editor.Tests
 			regions.Initialize();
 
 			// Assert.
-			var countOfCellsInRegion = field.Buildings.OfType<Village>().Single().CellsInRegion.Count();
-			countOfCellsInRegion.Should().Be(1);
+			var village = field.Buildings.OfType<Village>().Single();
+			var cellsInRegion = village.CellsInRegion.ToList();
+			cellsInRegion.Should().Contain(village.RelatedCell);
 		}
 	}
 }

@@ -21,10 +21,12 @@ namespace Confrontation.Editor.Tests
 
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
-			@this.BindFactory<Building, Building, Building.Factory>()
-			         .FromFactory<PrefabFactory<Building>>();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
+
+			@this.BindFactory<Building, Building, Building.Factory>()
+			     .FromFactory<PrefabFactory<Building>>();
+			@this.BindFactory<Region, Region.Factory>();
 		}
 	}
 }
