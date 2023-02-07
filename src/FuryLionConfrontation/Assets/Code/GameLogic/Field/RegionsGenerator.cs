@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
@@ -23,8 +21,6 @@ namespace Confrontation
 			var region = _regionsFactory.Create(regionData);
 			var village = CreateVillage(regionData);
 
-			GetCellsFrom(regionData).ForEach(village.AddToRegion);
-
 			foreach (var coordinates in regionData.CellsCoordinates)
 			{
 				_field.Regions[coordinates] = region;
@@ -36,14 +32,11 @@ namespace Confrontation
 		private Village CreateVillage(RegionData regionData)
 		{
 			var ownerCell = _field.Cells[regionData.VillageCoordinates];
-			var village = Create(regionData, ownerCell);
+			var village = Create(ownerCell);
 			return village;
 		}
 
-		private IEnumerable<Cell> GetCellsFrom(RegionData regionData)
-			=> regionData.CellsCoordinates.Select((c) => _field.Cells[c]);
-
-		private Village Create(RegionData regionData, Cell ownerCell)
-			=> _buildingsFactory.Create(VillagePrefab, ownerCell, regionData.OwnerPlayerId);
+		private Village Create(Cell ownerCell)
+			=> _buildingsFactory.Create(VillagePrefab, ownerCell);
 	}
 }

@@ -9,8 +9,6 @@ namespace Confrontation
 
 		private Coordinates _coordinates;
 
-		public int OwnerPlayerId { get; set; }
-
 		public Cell RelatedCell => _field.Cells[Coordinates];
 
 		public Coordinates Coordinates
@@ -27,33 +25,28 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<Building, Building>
 		{
-			public T Create<T>(T prefab, Cell ownerCell, int ownerId)
+			public T Create<T>(T prefab, Cell ownerCell)
 				where T : Building
 			{
-				var building = Create(prefab, ownerCell.transform, ownerId);
+				var building = Create(prefab, ownerCell.transform);
 				building.Coordinates = ownerCell.Coordinates;
 				return building;
 			}
 
-			public T Create<T>(T prefab, Transform ownerCell, int ownerId)
+			public T Create<T>(T prefab, Transform ownerCell)
 				where T : Building
 			{
 				var building = base.Create(prefab);
 				building.transform.SetParent(ownerCell, worldPositionStays: false);
-				building.OwnerPlayerId = ownerId;
 				return (T)building;
 			}
 
 			public Building Create(Building prefab, Cell cell)
 			{
-				var building = Create(prefab, cell.transform, cell.RelatedRegion.OwnerPlayerId);
+				var building = Create(prefab, cell.transform);
 				building.Coordinates = cell.Coordinates;
 				return building;
 			}
-
-			public T Create<T>(Building prefab)
-				where T : Building
-				=> (T)base.Create(prefab);
 		}
 	}
 }

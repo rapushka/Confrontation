@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -6,6 +7,8 @@ namespace Confrontation.Editor
 {
 	public class CellsPlayerColorSphereGizmoDrawer : IInitializable, IGuiRenderable
 	{
+		[Inject] private readonly IField _field;
+
 		private const float GizmoRadius = 0.25f;
 		private const int IdForRandomColors = -1;
 
@@ -25,7 +28,7 @@ namespace Confrontation.Editor
 				return;
 			}
 
-			var id = cell.RelatedRegion == true ? cell.RelatedRegion.OwnerPlayerId : IdForRandomColors;
+			var id = cell.OwnerPlayerId;
 			GizmoUtils.SetColorBy(id);
 
 			Gizmos.DrawSphere(cell.transform.position, GizmoRadius);

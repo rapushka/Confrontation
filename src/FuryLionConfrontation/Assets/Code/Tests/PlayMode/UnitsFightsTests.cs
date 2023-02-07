@@ -87,7 +87,7 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return friendlyUnits.WaitForTargetReach();
 
 			// Assert.
-			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+			var owner = cellWithEnemyVillage.OwnerPlayerId;
 			owner.Should().Be(Constants.NeutralRegion);
 		}
 
@@ -104,7 +104,7 @@ namespace Confrontation.Editor.PlayModeTests
 
 			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy, quantity: enemyQuantity);
 			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer);
-			var initialOwner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+			var initialOwner = cellWithEnemyVillage.OwnerPlayerId;
 
 			// Act.
 			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
@@ -114,7 +114,7 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return friendlyUnits.WaitForTargetReach();
 
 			// Assert.
-			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+			var owner = cellWithEnemyVillage.OwnerPlayerId;
 			owner.Should().Be(initialOwner);
 		}
 		
@@ -140,12 +140,12 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return friendlyUnits.WaitForTargetReach();
 
 			// Assert.
-			var owner = cellWithEnemyVillage.RelatedRegion.OwnerPlayerId;
+			var owner = cellWithEnemyVillage.OwnerPlayerId;
 			owner.Should().Be(UserPlayerId);
 		}
 
-		private static bool BelongToPlayer(Building building) => building.OwnerPlayerId == UserPlayerId;
+		private static bool BelongToPlayer(Building building) => building.RelatedCell.OwnerPlayerId == UserPlayerId;
 
-		private static bool BelongToEnemy(Building building) => building.OwnerPlayerId != UserPlayerId;
+		private static bool BelongToEnemy(Building building) => building.RelatedCell.OwnerPlayerId != UserPlayerId;
 	}
 }

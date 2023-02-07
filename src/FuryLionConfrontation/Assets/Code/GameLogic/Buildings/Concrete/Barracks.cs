@@ -27,7 +27,7 @@ namespace Confrontation
 			}
 			else
 			{
-				_unitsFactory.Create(InitialUnitPosition, RelatedCell, RelatedCell.RelatedRegion.OwnerPlayerId);
+				_unitsFactory.Create(InitialUnitPosition, RelatedCell, RelatedCell.OwnerPlayerId);
 			}
 		}
 	}

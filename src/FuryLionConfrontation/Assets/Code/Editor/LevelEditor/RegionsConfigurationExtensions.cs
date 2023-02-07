@@ -33,7 +33,7 @@ namespace Confrontation.Editor
 			rect.x += HorizontalStep * 2;
 			rect.width = HorizontalStep;
 
-			village.OwnerPlayerId = EditorGUI.IntField(rect, village.OwnerPlayerId);
+			village.RelatedCell.OwnerPlayerId = EditorGUI.IntField(rect, village.RelatedCell.OwnerPlayerId);
 		}
 
 		private static void DrawCellsHeader(this Rect rect, Village village)
@@ -45,9 +45,6 @@ namespace Confrontation.Editor
 
 			rect.width = HorizontalStep;
 			rect.x += HorizontalStep * 2;
-
-			var newLength = EditorGUI.IntField(rect, village.CellsInRegion.Count);
-			village.CellsInRegion.Resize(newLength, null);
 		}
 
 		private static void DrawCellsElements(this Rect rect, Village village)
@@ -55,12 +52,13 @@ namespace Confrontation.Editor
 			rect.x += HorizontalStep;
 			rect.y += VerticalStep * 2;
 
-			for (var i = 0; i < village.CellsInRegion.Count; i++)
+			var cellsInRegion = village.CellsInRegion.ToList();
+			for (var i = 0; i < cellsInRegion.Count; i++)
 			{
-				var cell = village.CellsInRegion[i];
+				var cell = cellsInRegion[i];
 				rect.y += VerticalStep;
 				rect.width = HorizontalStep * 3;
-				village.CellsInRegion[i] = cell.AsObjectField(rect);
+				cellsInRegion[i] = cell.AsObjectField(rect);
 
 				if (cell == true)
 				{

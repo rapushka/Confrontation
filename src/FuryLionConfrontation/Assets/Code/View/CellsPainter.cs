@@ -15,7 +15,7 @@ namespace Confrontation
 			{
 				foreach (var cell in village.CellsInRegion)
 				{
-					cell.SetColor(village.OwnerPlayerId);
+					cell.SetColor(_field.Regions[village.Coordinates].OwnerPlayerId);
 				}
 			}
 		}

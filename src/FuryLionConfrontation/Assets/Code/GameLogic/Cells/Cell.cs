@@ -16,6 +16,12 @@ namespace Confrontation
 
 		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 
+		public int OwnerPlayerId
+		{
+			get => _field.Regions[Coordinates].OwnerPlayerId;
+			set => _field.Regions[Coordinates].OwnerPlayerId = value;
+		}
+
 		public Village RelatedRegion { get; set; }
 
 		public bool IsEmpty => Building is null;
@@ -33,36 +39,11 @@ namespace Confrontation
 			}
 		}
 
-		public bool IsBelongTo(Player player) => RelatedRegion is not null && RelatedRegion.OwnerPlayerId == player.Id;
+		public bool IsBelongTo(Player player) => OwnerPlayerId == player.Id;
 
 		public void MakeRegionNeutral() => RelatedRegion.SetOwner(Constants.NeutralRegion);
 
-		public void ChangeOwnerTo(int newOwnerId)
-		{
-			AppropriateBuildingTo(newOwnerId);
-			AppropriateUnitsTo(newOwnerId);
-			SetColor(newOwnerId);
-		}
-
 		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
-
-		private void AppropriateUnitsTo(int newOwnerId)
-		{
-			var units = _field.LocatedUnits[Coordinates];
-			if (units == true)
-			{
-				units.OwnerPlayerId = newOwnerId;
-			}
-		}
-
-		private void AppropriateBuildingTo(int newOwnerId)
-		{
-			var building = _field.Buildings[Coordinates];
-			if (building == true)
-			{
-				building.OwnerPlayerId = newOwnerId;
-			}
-		}
 
 		public class Factory : PlaceholderFactory<Cell> { }
 	}

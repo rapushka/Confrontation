@@ -1,25 +1,26 @@
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 
 namespace Confrontation
 {
 	public class Village : Building
 	{
-		[field: SerializeField] public List<Cell> CellsInRegion { get; private set; } = new();
-
-		public void AddToRegion(Cell cell)
+		public IEnumerable<Cell> CellsInRegion
 		{
-			CellsInRegion.Add(cell);
-			cell.RelatedRegion = this;
-		}
-
-		public void SetOwner(int newOwnerId)
-		{
-			OwnerPlayerId = newOwnerId;
-			foreach (var cell in CellsInRegion)
+			get
 			{
-				cell.ChangeOwnerTo(newOwnerId);
+				var region = Field.Regions[Coordinates];
+
+				var regionsCoordinates = Field.Regions.Where((r) => r == region)
+				                              .Select((r) => r.Coordinates);
+
+				foreach (var coordinates in regionsCoordinates)
+				{
+					yield return Field.Cells[coordinates];
+				}
 			}
 		}
+
+		public void SetOwner(int newOwnerId) => Field.Regions[Coordinates].OwnerPlayerId = newOwnerId;
 	}
 }

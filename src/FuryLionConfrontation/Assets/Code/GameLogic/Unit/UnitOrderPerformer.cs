@@ -61,7 +61,7 @@ namespace Confrontation
 
 		private bool IsCellAlreadyPlaced(Cell cell) => cell.LocatedUnits == true && cell.LocatedUnits != _unitsSquad;
 
-		private bool IsHaveSameOwner(Cell cell) => cell.RelatedRegion.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
+		private bool IsHaveSameOwner(Cell cell) => cell.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
 
 		private void MergeWith(UnitsSquad squadOnCell)
 		{
