@@ -43,7 +43,7 @@ namespace Confrontation
 			}
 		}
 
-		public void SetLocation(Cell cell) => _unitOrderPerformer.SetLocation(cell);
+		private void Locate(Cell cell) => _unitOrderPerformer.Locate(cell);
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
@@ -66,7 +66,7 @@ namespace Confrontation
 				unitsSquad.transform.position = position;
 				unitsSquad.OwnerPlayerId = ownerPlayerId;
 				unitsSquad.Coordinates = cell.Coordinates;
-				unitsSquad.SetLocation(cell);
+				unitsSquad.Locate(cell);
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
 				return unitsSquad;

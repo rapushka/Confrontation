@@ -11,8 +11,7 @@ namespace Confrontation
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
 
-		private IEnumerable<Cell> CellsInRegion
-			=> _field.Cells.Where((c) => c is not null && c.OwnerPlayerId == OwnerPlayerId);
+		private IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
 
 		public int OwnerPlayerId
 		{

@@ -1,3 +1,4 @@
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using Zenject;
@@ -16,11 +17,11 @@ namespace Confrontation
 
 		public void PlaceInCell()
 		{
-			SetLocation(_targetCell);
+			Locate(_targetCell);
 			_targetCell = null;
 		}
 
-		public void SetLocation(Cell cell)
+		public void Locate(Cell cell)
 		{
 			if (IsCellAlreadyPlaced(cell) == false)
 			{
@@ -123,8 +124,16 @@ namespace Confrontation
 		private void CaptureRegion(Cell cell)
 		{
 			_unitsSquad.Coordinates = cell.Coordinates;
-
 			cell.RelatedRegion!.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
+
+			var region = _field.Regions[cell.Coordinates];
+			foreach (var cellInRegion in _field.Cells.Where((c) => c.RelatedRegion == region))
+			{
+				if (cellInRegion.LocatedUnits is not null)
+				{
+					cellInRegion.LocatedUnits!.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
+				}
+			}
 		}
 	}
 }
