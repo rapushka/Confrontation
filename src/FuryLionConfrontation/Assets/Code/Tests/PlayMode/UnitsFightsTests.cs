@@ -54,12 +54,12 @@ namespace Confrontation.Editor.PlayModeTests
 
 			// Arrange.
 			const int quantityToMove = 1;
-			var units = Spawn.Units(_buildings, BelongToEnemy);
+			var units = Spawn.Units(_buildings, that: BelongToEnemy);
 			var cellWithVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
 			// Act.
 			units.MoveTo(cellWithVillage, quantityToMove);
-			yield return new WaitUntil(() => cellWithVillage.HasUnits);
+			yield return units.WaitForTargetReach();
 
 			// Assert.
 			var unitsQuantityInVillage = cellWithVillage.LocatedUnits!.QuantityOfUnits;
@@ -77,12 +77,12 @@ namespace Confrontation.Editor.PlayModeTests
 			const int enemyQuantity = 1;
 			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
-			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy);
-			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer);
+			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy);
+			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer);
 
 			// Act.
 			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
-			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
+			yield return enemyUnits.WaitForTargetReach();
 
 			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
 			yield return friendlyUnits.WaitForTargetReach();
@@ -103,13 +103,13 @@ namespace Confrontation.Editor.PlayModeTests
 			const int enemyQuantity = 2;
 			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
-			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy, quantity: enemyQuantity);
-			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer);
+			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy, quantity: enemyQuantity);
+			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer);
 			var initialOwner = cellWithEnemyVillage.OwnerPlayerId;
 
 			// Act.
 			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
-			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
+			yield return enemyUnits.WaitForTargetReach();
 
 			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
 			yield return friendlyUnits.WaitForTargetReach();
@@ -118,7 +118,7 @@ namespace Confrontation.Editor.PlayModeTests
 			var owner = cellWithEnemyVillage.OwnerPlayerId;
 			owner.Should().Be(initialOwner);
 		}
-		
+
 		[UnityTest]
 		public IEnumerator
 			_4_WhenSquadWith2UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellOwnerShouldBecomeToUser()
@@ -135,7 +135,7 @@ namespace Confrontation.Editor.PlayModeTests
 
 			// Act.
 			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
-			yield return new WaitUntil(() => cellWithEnemyVillage.HasUnits);
+			yield return enemyUnits.WaitForTargetReach();
 
 			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
 			yield return friendlyUnits.WaitForTargetReach();
@@ -143,6 +143,31 @@ namespace Confrontation.Editor.PlayModeTests
 			// Assert.
 			var owner = cellWithEnemyVillage.OwnerPlayerId;
 			owner.Should().Be(UserPlayerId);
+		}
+
+		[UnityTest]
+		public IEnumerator _5_WhenSquadWith2UnitsMoveToOtherCell_AndTheyStartFromVillage_ThenSend1UnitAndLeave1Unit()
+		{
+			yield return CommonSetUp();
+
+			// Arrange.
+			const int quantityToSpawn = 2;
+			const int quantityToSend = 1;
+
+			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer, quantity: quantityToSpawn);
+			var cellWithVillage = _buildings.OfType<Village>().First(BelongToPlayer).RelatedCell;
+			var otherCell = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+
+			// Act.
+			friendlyUnits.MoveTo(cellWithVillage, quantityToSpawn);
+			yield return friendlyUnits.WaitForTargetReach();
+
+			friendlyUnits.MoveTo(otherCell, quantityToSend);
+			yield return friendlyUnits.WaitForTargetReach();
+			
+			// Assert.
+			cellWithVillage.LocatedUnits!.QuantityOfUnits.Should().Be(1);
+			otherCell.LocatedUnits!.QuantityOfUnits.Should().Be(1);
 		}
 
 		private static bool BelongToPlayer(Building building) => building.RelatedCell.OwnerPlayerId == UserPlayerId;

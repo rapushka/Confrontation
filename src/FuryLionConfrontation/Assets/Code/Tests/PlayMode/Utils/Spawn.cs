@@ -6,14 +6,25 @@ namespace Confrontation.Editor.PlayModeTests
 {
 	public static class Spawn
 	{
-		public static UnitsSquad Units(IEnumerable<Building> buildings, Func<Barracks, bool> predicate, int quantity = 1)
+		public static UnitsSquad Units(IEnumerable<Building> buildings, Func<Barracks, bool> that, int quantity = 1)
 		{
-			var barracks = buildings.OfType<Barracks>().First(predicate);
+			var barracks = buildings.OfType<Barracks>().First(that);
+			return barracks.SpawnUnits(quantity);
+		}
+	}
+
+	public static class SpawnExtensions
+	{
+		public static UnitsSquad SpawnUnit(this Barracks @this) => @this.SpawnUnits(quantity: 1);
+
+		public static UnitsSquad SpawnUnits(this Barracks @this, int quantity)
+		{
 			for (var i = 0; i < quantity; i++)
 			{
-				barracks.Action();
+				@this.Action();
 			}
-			return barracks.RelatedCell.LocatedUnits!;
+
+			return @this.RelatedCell.LocatedUnits!;
 		}
 	}
 }

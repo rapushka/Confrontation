@@ -17,12 +17,13 @@ namespace Confrontation
 
 		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 
+		[CanBeNull] public Region RelatedRegion => _field.Regions[Coordinates];
+
 		public int OwnerPlayerId
 		{
-			get => _field.Regions[Coordinates].OwnerPlayerId;
+			get => _field.Regions[Coordinates]?.OwnerPlayerId ?? -1;
 			set => _field.Regions[Coordinates].OwnerPlayerId = value;
 		}
-		public Region RelatedRegion => _field.Regions[Coordinates];
 
 		public Cell CellWithVillage
 		{
@@ -52,7 +53,7 @@ namespace Confrontation
 
 		public bool IsBelongTo(Player player) => OwnerPlayerId == player.Id;
 
-		public void MakeRegionNeutral() => RelatedRegion.OwnerPlayerId = Constants.NeutralRegion;
+		public void MakeRegionNeutral() => RelatedRegion!.OwnerPlayerId = Constants.NeutralRegion;
 
 		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
 
