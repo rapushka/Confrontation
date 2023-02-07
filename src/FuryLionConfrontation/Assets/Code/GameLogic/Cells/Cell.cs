@@ -1,4 +1,3 @@
-using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using Zenject;
@@ -25,16 +24,7 @@ namespace Confrontation
 			set => _field.Regions[Coordinates].OwnerPlayerId = value;
 		}
 
-		public Cell CellWithVillage
-		{
-			get
-			{
-				var currentRegion = _field.Regions[Coordinates];
-				var villages = _field.Buildings.OfType<Village>();
-
-				return villages.Single((v) => v.RelatedRegion == currentRegion).RelatedCell;
-			}
-		}
+		public Cell CellWithVillage => _field.Cells[_field.Regions[Coordinates].Coordinates];
 
 		public bool IsEmpty => Building is null;
 

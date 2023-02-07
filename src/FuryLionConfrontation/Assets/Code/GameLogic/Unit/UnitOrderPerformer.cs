@@ -125,15 +125,6 @@ namespace Confrontation
 		{
 			_unitsSquad.Coordinates = cell.Coordinates;
 			cell.RelatedRegion!.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
-
-			var region = _field.Regions[cell.Coordinates];
-			foreach (var cellInRegion in _field.Cells.Where((c) => c.RelatedRegion == region))
-			{
-				if (cellInRegion.LocatedUnits is not null)
-				{
-					cellInRegion.LocatedUnits!.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
-				}
-			}
 		}
 	}
 }

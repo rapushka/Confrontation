@@ -20,6 +20,7 @@ namespace Confrontation
 			{
 				_ownerPlayerId = value;
 				UpdateCellsColor();
+				UpdateOwnerOfUnitsInRegion();
 			}
 		}
 
@@ -37,7 +38,19 @@ namespace Confrontation
 		{
 			foreach (var cell in CellsInRegion)
 			{
-				_field.Cells[cell.Coordinates].SetColor(cell.OwnerPlayerId);
+				cell.SetColor(OwnerPlayerId);
+			}
+		}
+
+		
+		private void UpdateOwnerOfUnitsInRegion()
+		{
+			foreach (var cellInRegion in _field.Cells.Where((c) => c.RelatedRegion == this))
+			{
+				if (cellInRegion.LocatedUnits is not null)
+				{
+					cellInRegion.LocatedUnits!.OwnerPlayerId = OwnerPlayerId;
+				}
 			}
 		}
 
@@ -46,8 +59,8 @@ namespace Confrontation
 			public Region Create(RegionData data)
 			{
 				var region = base.Create();
-				region.Coordinates = data.VillageCoordinates;
 				region.OwnerPlayerId = data.OwnerPlayerId;
+				region.Coordinates = data.VillageCoordinates;
 				return region;
 			}
 		}
