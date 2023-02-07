@@ -170,6 +170,33 @@ namespace Confrontation.Editor.PlayModeTests
 			otherCell.LocatedUnits!.QuantityOfUnits.Should().Be(1);
 		}
 
+		[UnityTest]
+		public IEnumerator
+			_6_WhenFriendlySquadCaptureEnemyCell_AndRecentlyEnemyUnitsMoveToOurVillage_ThenVillageShouldStayFriendly()
+		{
+			yield return CommonSetUp();
+
+			// Arrange.
+			const int userQuantity = 1;
+			const int enemyQuantity = 1;
+			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			var cellWithFriendlyVillage = _buildings.OfType<Village>().First(BelongToPlayer).RelatedCell;
+
+			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer, quantity: userQuantity);
+			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy, quantity: enemyQuantity);
+
+			// Act.
+			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
+			yield return friendlyUnits.WaitForTargetReach();
+
+			enemyUnits.MoveTo(cellWithFriendlyVillage, enemyQuantity);
+			yield return enemyUnits.WaitForTargetReach();
+
+			// Assert.
+			var owner = cellWithFriendlyVillage.OwnerPlayerId;
+			owner.Should().Be(UserPlayerId);
+		}
+		
 		private static bool BelongToPlayer(Building building) => building.RelatedCell.OwnerPlayerId == UserPlayerId;
 
 		private static bool BelongToEnemy(Building building) => building.RelatedCell.OwnerPlayerId != UserPlayerId;
