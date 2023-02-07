@@ -7,13 +7,13 @@ namespace Confrontation.Editor
 	public static class RegionsConfigurationExtensions
 	{
 		private static float HorizontalStep => 50;
-		private static float VerticalStep => EditorGUIUtility.singleLineHeight;
+		private static float VerticalStep   => EditorGUIUtility.singleLineHeight;
 
 		public static void Draw(this Rect rect, Village village)
 		{
 			rect.DrawVillagePosition(village);
 			rect.DrawPlayerOwner(village);
-			rect.DrawCellsHeader(village);
+			rect.DrawCellsHeader();
 			rect.DrawCellsElements(village);
 			rect.DrawSelectedIndicator(village);
 		}
@@ -36,12 +36,12 @@ namespace Confrontation.Editor
 			village.RelatedCell.OwnerPlayerId = EditorGUI.IntField(rect, village.RelatedCell.OwnerPlayerId);
 		}
 
-		private static void DrawCellsHeader(this Rect rect, Village village)
+		private static void DrawCellsHeader(this Rect rect)
 		{
 			rect.y += VerticalStep * 2;
 			rect.x += HorizontalStep;
 
-			EditorGUI.LabelField(rect, $"{nameof(village.CellsInRegion)}: ");
+			EditorGUI.LabelField(rect, "CellsInRegion: ");
 
 			rect.width = HorizontalStep;
 			rect.x += HorizontalStep * 2;
@@ -59,11 +59,6 @@ namespace Confrontation.Editor
 				rect.y += VerticalStep;
 				rect.width = HorizontalStep * 3;
 				cellsInRegion[i] = cell.AsObjectField(rect);
-
-				if (cell == true)
-				{
-					cell.RelatedRegion = village;
-				}
 			}
 		}
 

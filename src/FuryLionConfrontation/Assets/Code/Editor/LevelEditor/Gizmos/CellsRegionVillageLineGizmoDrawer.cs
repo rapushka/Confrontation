@@ -25,14 +25,14 @@ namespace Confrontation.Editor
 		private static void DrawGizmo(Cell cell, GizmoType gizmoType)
 		{
 			if (_drawLineToRegionVillage == false
-			    || cell.RelatedRegion == false)
+			    || cell.RelatedRegion is null)
 			{
 				return;
 			}
 
 			GizmoUtils.SetColorBy(cell.OwnerPlayerId);
 
-			var village = cell.RelatedRegion.RelatedCell;
+			var village = cell.CellWithVillage;
 			Gizmos.DrawLine(cell.transform.position + VerticalOffset, village.transform.position + VerticalOffset);
 		}
 	}

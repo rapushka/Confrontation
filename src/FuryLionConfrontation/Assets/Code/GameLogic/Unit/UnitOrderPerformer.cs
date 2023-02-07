@@ -126,7 +126,7 @@ namespace Confrontation
 		{
 			_unitsSquad.Coordinates = cell.Coordinates;
 
-			cell.RelatedRegion.SetOwner(_unitsSquad.OwnerPlayerId);
+			cell.RelatedRegion.OwnerPlayerId = _unitsSquad.OwnerPlayerId;
 		}
 	}
 }

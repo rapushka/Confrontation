@@ -10,6 +10,8 @@ namespace Confrontation
 		private Coordinates _coordinates;
 
 		public Cell RelatedCell => _field.Cells[Coordinates];
+		
+		public Region RelatedRegion => _field.Regions[Coordinates];
 
 		public Coordinates Coordinates
 		{

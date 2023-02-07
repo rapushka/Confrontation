@@ -1,3 +1,4 @@
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using Zenject;
@@ -21,8 +22,18 @@ namespace Confrontation
 			get => _field.Regions[Coordinates].OwnerPlayerId;
 			set => _field.Regions[Coordinates].OwnerPlayerId = value;
 		}
+		public Region RelatedRegion => _field.Regions[Coordinates];
 
-		public Village RelatedRegion { get; set; }
+		public Cell CellWithVillage
+		{
+			get
+			{
+				var currentRegion = _field.Regions[Coordinates];
+				var villages = _field.Buildings.OfType<Village>();
+
+				return villages.Single((v) => v.RelatedRegion == currentRegion).RelatedCell;
+			}
+		}
 
 		public bool IsEmpty => Building is null;
 
@@ -41,7 +52,7 @@ namespace Confrontation
 
 		public bool IsBelongTo(Player player) => OwnerPlayerId == player.Id;
 
-		public void MakeRegionNeutral() => RelatedRegion.SetOwner(Constants.NeutralRegion);
+		public void MakeRegionNeutral() => RelatedRegion.OwnerPlayerId = Constants.NeutralRegion;
 
 		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
 

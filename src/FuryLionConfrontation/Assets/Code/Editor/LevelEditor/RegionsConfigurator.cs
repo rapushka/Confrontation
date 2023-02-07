@@ -79,10 +79,6 @@ namespace Confrontation.Editor
 		private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
 			var village = _state.Villages[index];
-			if (village.RelatedCell == true)
-			{
-				village.RelatedCell.RelatedRegion = village;
-			}
 
 			rect.height = EditorGUIUtility.singleLineHeight;
 

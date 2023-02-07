@@ -20,7 +20,5 @@ namespace Confrontation
 				}
 			}
 		}
-
-		public void SetOwner(int newOwnerId) => Field.Regions[Coordinates].OwnerPlayerId = newOwnerId;
 	}
 }

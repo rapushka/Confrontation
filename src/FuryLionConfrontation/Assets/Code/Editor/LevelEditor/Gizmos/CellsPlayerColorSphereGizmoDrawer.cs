@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -7,10 +6,7 @@ namespace Confrontation.Editor
 {
 	public class CellsPlayerColorSphereGizmoDrawer : IInitializable, IGuiRenderable
 	{
-		[Inject] private readonly IField _field;
-
 		private const float GizmoRadius = 0.25f;
-		private const int IdForRandomColors = -1;
 
 		private static bool _drawGizmosColorOfOwner;
 
