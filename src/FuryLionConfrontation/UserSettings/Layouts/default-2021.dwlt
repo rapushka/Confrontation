@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1872
     height: 903
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -73,7 +73,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: Mobile
+  m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 719
+  controlID: 95
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,10 +139,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 374
+    width: 375
     height: 853
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -165,14 +165,14 @@ MonoBehaviour:
   - {fileID: 9}
   m_Position:
     serializedVersion: 2
-    x: 374
+    x: 375
     y: 0
     width: 640
     height: 853
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 216
+  controlID: 96
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 640
     height: 301
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -220,8 +220,8 @@ MonoBehaviour:
     y: 301
     width: 640
     height: 552
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -244,14 +244,14 @@ MonoBehaviour:
   - {fileID: 12}
   m_Position:
     serializedVersion: 2
-    x: 1014
+    x: 1015
     y: 0
     width: 298
     height: 853
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 161
+  controlID: 29
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 298
     height: 372
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -314,23 +314,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1312
+    x: 1313
     y: 0
-    width: 560
+    width: 559
     height: 853
-  m_MinSize: {x: 276, y: 71}
+  m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 14}
   - {fileID: 22}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -351,9 +351,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1336
+    x: 1337
     y: 111
-    width: 559
+    width: 558
     height: 832
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -394,7 +394,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 24
     y: 111
-    width: 373
+    width: 374
     height: 832
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -442,10 +442,10 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 373
+      width: 374
       height: 811
-    m_Scale: {x: 0.34537038, y: 0.34537038}
-    m_Translation: {x: 186.5, y: 405.5}
+    m_Scale: {x: 0.3462963, y: 0.3462963}
+    m_Translation: {x: 187, y: 405.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -453,12 +453,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -540
-      y: -1174.1018
+      y: -1170.9625
       width: 1080
-      height: 2348.2036
+      height: 2341.925
     m_MinimalGUI: 1
-  m_defaultScale: 0.34537038
-  m_LastWindowPixelSize: {x: 373, y: 832}
+  m_defaultScale: 0.3462963
+  m_LastWindowPixelSize: {x: 374, y: 832}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
@@ -484,7 +484,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 398
+    x: 399
     y: 111
     width: 638
     height: 280
@@ -548,7 +548,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 94e80000
     m_LastClickedID: 59540
-    m_ExpandedIDs: 000000003e6d0000406d0000426d0000446d0000466d0000486d00004a6d00004c6d00004e6d0000506d0000526d0000546d0000566d0000586d00005a6d00005c6d00005e6d0000606d0000626d0000646d0000666d0000686d0000
+    m_ExpandedIDs: 0000000030670000326700003467000036670000386700003a6700003c6700003e67000040670000426700004467000046670000486700004a6700004c6700004e67000050670000526700005467000056670000586700005a6700005c670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -576,7 +576,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e6d0000406d0000426d0000446d0000466d0000486d00004a6d00004c6d00004e6d0000506d0000526d0000546d0000566d0000586d00005a6d00005c6d00005e6d0000606d0000626d0000646d0000666d0000686d0000
+    m_ExpandedIDs: 0000000030670000326700003467000036670000386700003a6700003c6700003e67000040670000426700004467000046670000486700004a6700004c6700004e67000050670000526700005467000056670000586700005a6700005c670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -750,7 +750,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 398
+    x: 399
     y: 412
     width: 638
     height: 531
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.39287484, y: 0.2481666, z: -0.11041359, w: 0.8786892}
     speed: 2
-    m_Value: {x: 0.39134726, y: 0.2496228, z: -0.11061593, w: 0.878806}
+    m_Value: {x: 0.392831, y: 0.24813892, z: -0.11040127, w: 0.8785912}
   m_Size:
     m_Target: 2.7729561
     speed: 2
@@ -1088,7 +1088,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1038
+    x: 1039
     y: 111
     width: 296
     height: 351
@@ -1099,9 +1099,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 066f0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6874feffba74feffd277feff2078fefff8ccfeffbccdfeff0acefeff56f3feffe2f4feff30f5feff084affff544bffffa24bffff7aa0ffff76a2ffffc4a2ffff70a3ffffd8a4ffff26a5ffffa8f7ffff0afaffff2cfbffff96950000
+      m_ExpandedIDs: 026affff506affff9ae9ffff3ef9ffff2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1145,7 +1145,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1038
+    x: 1039
     y: 483
     width: 296
     height: 460
@@ -1165,8 +1165,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scenes
+    m_Folders: []
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -1180,7 +1179,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 685a0000
     m_LastClickedID: 23144
-    m_ExpandedIDs: 000000003e6d0000406d0000426d0000446d0000466d0000486d00004a6d00004c6d00004e6d0000506d0000526d0000546d0000566d0000586d00005a6d00005c6d00005e6d0000606d0000626d0000646d0000666d0000686d0000
+    m_ExpandedIDs: 0000000030670000326700003467000036670000386700003a6700003c6700003e67000040670000426700004467000046670000486700004a6700004c6700004e67000050670000526700005467000056670000586700005a6700005c670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1205,10 +1204,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 434}
+    scrollPos: {x: 0, y: 425}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000003e6d0000406d0000426d0000446d0000466d0000486d00004a6d00004c6d00004e6d0000506d0000526d0000546d0000566d0000586d00005a6d00005c6d00005e6d0000606d0000626d0000646d0000666d0000686d0000e86e0000
+    m_ExpandedIDs: ffffffff0000000030670000326700003467000036670000386700003a6700003c6700003e67000040670000426700004467000046670000486700004a6700004c6700004e67000050670000526700005467000056670000586700005a6700005c670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1284,16 +1283,16 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1336
+    x: 1337
     y: 111
-    width: 559
+    width: 558
     height: 832
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 281
+    ID: 280
     splitterInitialOffset: 370
     currentActiveSplitter: -1
     realSizes:
@@ -1316,7 +1315,7 @@ MonoBehaviour:
     oldMinSizes: 
     oldMaxSizes: 
     oldSplitSize: 0
-  m_TestTypeToolbarIndex: 1
+  m_TestTypeToolbarIndex: 0
   m_PlayModeTestListGUI:
     m_Window: {fileID: 22}
     m_NewResultList:
@@ -1325,7 +1324,7 @@ MonoBehaviour:
       name: FuryLionConfrontation
       fullName: FuryLionConfrontation
       resultStatus: 1
-      duration: 3.4466317
+      duration: 6.895713
       messages: 
       output: 
       stacktrace: 
@@ -1341,7 +1340,7 @@ MonoBehaviour:
       name: TestsPlayMode.dll
       fullName: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/ScriptAssemblies/TestsPlayMode.dll
       resultStatus: 1
-      duration: 3.1897247
+      duration: 6.621494
       messages: 
       output: 
       stacktrace: 
@@ -1357,7 +1356,7 @@ MonoBehaviour:
       name: Confrontation
       fullName: Confrontation
       resultStatus: 1
-      duration: 3.178737
+      duration: 6.607796
       messages: 
       output: 
       stacktrace: 
@@ -1373,7 +1372,7 @@ MonoBehaviour:
       name: Editor
       fullName: Confrontation.Editor
       resultStatus: 1
-      duration: 3.1717331
+      duration: 6.5996947
       messages: 
       output: 
       stacktrace: 
@@ -1389,7 +1388,7 @@ MonoBehaviour:
       name: PlayModeTests
       fullName: Confrontation.Editor.PlayModeTests
       resultStatus: 1
-      duration: 3.1653607
+      duration: 6.5925117
       messages: 
       output: 
       stacktrace: 
@@ -1405,7 +1404,7 @@ MonoBehaviour:
       name: UnitsFightsTests
       fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests
       resultStatus: 1
-      duration: 3.1576157
+      duration: 6.5850177
       messages: 
       output: 
       stacktrace: 
@@ -1421,7 +1420,7 @@ MonoBehaviour:
       name: _0_WhenSceneLoaded_AndResolveVillages_ThenShouldNotContainUnityNulls
       fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._0_WhenSceneLoaded_AndResolveVillages_ThenShouldNotContainUnityNulls
       resultStatus: 1
-      duration: 0.6845498
+      duration: 0.7635888
       messages: 
       output: 'Loading scene ''GameplayScene'' for testing
 
@@ -1440,7 +1439,7 @@ MonoBehaviour:
       name: _1_WhenUnitsSquadMovedToVillage_AndUnitsSquadContain1Unit_ThenVillageShouldHave1Unit
       fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._1_WhenUnitsSquadMovedToVillage_AndUnitsSquadContain1Unit_ThenVillageShouldHave1Unit
       resultStatus: 1
-      duration: 0.3810135
+      duration: 0.4047685
       messages: 
       output: 'Loading scene ''GameplayScene'' for testing
 
@@ -1459,7 +1458,7 @@ MonoBehaviour:
       name: _2_WhenSquadWith1UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellShouldBecomeNeutral
       fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._2_WhenSquadWith1UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellShouldBecomeNeutral
       resultStatus: 1
-      duration: 0.692543
+      duration: 0.695598
       messages: 
       output: 'Loading scene ''GameplayScene'' for testing
 
@@ -1478,7 +1477,7 @@ MonoBehaviour:
       name: _3_WhenSquadWith1UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith2Units_ThenCellOwnerShouldStaySame
       fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._3_WhenSquadWith1UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith2Units_ThenCellOwnerShouldStaySame
       resultStatus: 1
-      duration: 0.6905242
+      duration: 0.7972275
       messages: 
       output: 'Loading scene ''GameplayScene'' for testing
 
@@ -1497,7 +1496,7 @@ MonoBehaviour:
       name: _4_WhenSquadWith2UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellOwnerShouldBecomeToUser
       fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._4_WhenSquadWith2UnitMoveToOtherCell_AndOtherCellHasEnemySquadWith1Unit_ThenCellOwnerShouldBecomeToUser
       resultStatus: 1
-      duration: 0.6865275
+      duration: 1.3925943
       messages: 
       output: 'Loading scene ''GameplayScene'' for testing
 
@@ -1511,7 +1510,45 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: TestsPlayMode.dll/Confrontation/Editor/PlayModeTests/[TestsPlayMode][Confrontation.Editor.PlayModeTests.UnitsFightsTests][suite]
-    m_ResultText: UnitsFightsTests (3,158s)
+    - id: 1097
+      uniqueId: TestsPlayMode.dll/Confrontation/Editor/PlayModeTests/UnitsFightsTests/[TestsPlayMode][Confrontation.Editor.PlayModeTests.UnitsFightsTests._5_WhenSquadWith2UnitsMoveToOtherCell_AndTheyStartFromVillage_ThenSend1UnitAndLeave1Unit]
+      name: _5_WhenSquadWith2UnitsMoveToOtherCell_AndTheyStartFromVillage_ThenSend1UnitAndLeave1Unit
+      fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._5_WhenSquadWith2UnitsMoveToOtherCell_AndTheyStartFromVillage_ThenSend1UnitAndLeave1Unit
+      resultStatus: 1
+      duration: 1.3766052
+      messages: 
+      output: 'Loading scene ''GameplayScene'' for testing
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1091
+      parentUniqueId: TestsPlayMode.dll/Confrontation/Editor/PlayModeTests/[TestsPlayMode][Confrontation.Editor.PlayModeTests.UnitsFightsTests][suite]
+    - id: 1098
+      uniqueId: TestsPlayMode.dll/Confrontation/Editor/PlayModeTests/UnitsFightsTests/[TestsPlayMode][Confrontation.Editor.PlayModeTests.UnitsFightsTests._6_WhenFriendlySquadCaptureEnemyCell_AndRecentlyEnemyUnitsMoveToOurVillage_ThenVillageShouldStayFriendly]
+      name: _6_WhenFriendlySquadCaptureEnemyCell_AndRecentlyEnemyUnitsMoveToOurVillage_ThenVillageShouldStayFriendly
+      fullName: Confrontation.Editor.PlayModeTests.UnitsFightsTests._6_WhenFriendlySquadCaptureEnemyCell_AndRecentlyEnemyUnitsMoveToOurVillage_ThenVillageShouldStayFriendly
+      resultStatus: 1
+      duration: 1.1273936
+      messages: 
+      output: 'Loading scene ''GameplayScene'' for testing
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1091
+      parentUniqueId: TestsPlayMode.dll/Confrontation/Editor/PlayModeTests/[TestsPlayMode][Confrontation.Editor.PlayModeTests.UnitsFightsTests][suite]
+    m_ResultText: UnitsFightsTests (6,585s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -1551,9 +1588,9 @@ MonoBehaviour:
       uniqueId: '[FuryLionConfrontation][suite]'
       name: FuryLionConfrontation
       fullName: FuryLionConfrontation
-      resultStatus: 1
-      duration: 0.5336356
-      messages: 
+      resultStatus: 2
+      duration: 0.3247876
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1567,9 +1604,9 @@ MonoBehaviour:
       uniqueId: '[Tests.dll][suite]'
       name: Tests.dll
       fullName: /home/rapushka/Projects/Unity/FuryLionConfrontation/src/FuryLionConfrontation/Library/ScriptAssemblies/Tests.dll
-      resultStatus: 1
-      duration: 0.299852
-      messages: 
+      resultStatus: 2
+      duration: 0.2817479
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1583,9 +1620,9 @@ MonoBehaviour:
       uniqueId: Tests.dll/[Confrontation][suite]
       name: Confrontation
       fullName: Confrontation
-      resultStatus: 1
-      duration: 0.2944178
-      messages: 
+      resultStatus: 2
+      duration: 0.2810296
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1599,9 +1636,9 @@ MonoBehaviour:
       uniqueId: Tests.dll/Confrontation/[Editor][suite]
       name: Editor
       fullName: Confrontation.Editor
-      resultStatus: 1
-      duration: 0.2903662
-      messages: 
+      resultStatus: 2
+      duration: 0.2743594
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1615,9 +1652,9 @@ MonoBehaviour:
       uniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
       name: Tests
       fullName: Confrontation.Editor.Tests
-      resultStatus: 1
-      duration: 0.2862696
-      messages: 
+      resultStatus: 2
+      duration: 0.2738886
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1632,7 +1669,7 @@ MonoBehaviour:
       name: CoordinatesTests
       fullName: Confrontation.Editor.Tests.CoordinatesTests
       resultStatus: 1
-      duration: 0.0400498
+      duration: 0.030381
       messages: 
       output: 
       stacktrace: 
@@ -1643,12 +1680,12 @@ MonoBehaviour:
       categories: []
       parentId: 1079
       parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
-    - id: 1058
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/CoordinatesTests/[Tests][Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0]
-      name: WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
-      fullName: Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
+    - id: 1002
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/CoordinatesTests/[Tests][Confrontation.Editor.Tests.CoordinatesTests._1_WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0]
+      name: _1_WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
+      fullName: Confrontation.Editor.Tests.CoordinatesTests._1_WhenCalculatePosition_AndRowIs0AndColumnIs0_ThenPositionShouldBeXIs0AndYIs0
       resultStatus: 1
-      duration: 0.0180985
+      duration: 0.0155724
       messages: 
       output: 
       stacktrace: 
@@ -1658,14 +1695,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1057
+      parentId: 1001
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.CoordinatesTests][suite]
     - id: 1003
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/CoordinatesTests/[Tests][Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866]
-      name: WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
-      fullName: Confrontation.Editor.Tests.CoordinatesTests.WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/CoordinatesTests/[Tests][Confrontation.Editor.Tests.CoordinatesTests._2_WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866]
+      name: _2_WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
+      fullName: Confrontation.Editor.Tests.CoordinatesTests._2_WhenCalculatePosition_AndRowIs1AndColumnIs1_ThenPositionShouldBeXIs1dot5AndYIs0dot866
       resultStatus: 1
-      duration: 0.0003577
+      duration: 0.0003092
       messages: 
       output: 
       stacktrace: 
@@ -1682,7 +1719,7 @@ MonoBehaviour:
       name: FieldGeneratorTests
       fullName: Confrontation.Editor.Tests.FieldGeneratorTests
       resultStatus: 1
-      duration: 0.1406469
+      duration: 0.1187906
       messages: 
       output: 
       stacktrace: 
@@ -1693,12 +1730,12 @@ MonoBehaviour:
       categories: []
       parentId: 1017
       parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
-    - id: 1010
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldGeneratorTests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements]
-      name: WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
-      fullName: Confrontation.Editor.Tests.FieldGeneratorTests.WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+    - id: 1005
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/FieldGeneratorTests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests._1_WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements]
+      name: _1_WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
+      fullName: Confrontation.Editor.Tests.FieldGeneratorTests._1_WhenInitialized_AndFieldWasEmpty_ThenFieldShouldNotContainEmptyElements
       resultStatus: 1
-      duration: 0.1119044
+      duration: 0.0998071
       messages: 
       output: 
       stacktrace: 
@@ -1708,15 +1745,15 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1009
+      parentId: 1004
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.FieldGeneratorTests][suite]
     - id: 1011
       uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests][suite]
       name: RegionsGeneratorTests
       fullName: Confrontation.Editor.Tests.RegionsGeneratorTests
-      resultStatus: 1
-      duration: 0.0763012
-      messages: 
+      resultStatus: 2
+      duration: 0.0968104
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1726,63 +1763,237 @@ MonoBehaviour:
       categories: []
       parentId: 1018
       parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
-    - id: 1012
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/RegionsGeneratorTests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village]
-      name: WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-      fullName: Confrontation.Editor.Tests.RegionsGeneratorTests.WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
-      resultStatus: 1
-      duration: 0.0262044
-      messages: 
-      output: 
-      stacktrace: 
+    - id: 1007
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/RegionsGeneratorTests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests._1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village]
+      name: _1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      fullName: Confrontation.Editor.Tests.RegionsGeneratorTests._1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      resultStatus: 2
+      duration: 0.0261644
+      messages: 'Unhandled log message: ''[Error] Instantiating material due to calling
+        renderer.material during edit mode. This will leak materials into the scene.
+        You most likely want to use renderer.sharedMaterial instead.''. Use UnityEngine.TestTools.LogAssert.Expect'
+      output: 'Instantiating material due to calling renderer.material during edit
+        mode. This will leak materials into the scene. You most likely want to use
+        renderer.sharedMaterial instead.
+
+        Instantiating material due to calling
+        renderer.material during edit mode. This will leak materials into the scene.
+        You most likely want to use renderer.sharedMaterial instead.
+
+'
+      stacktrace: 'UnityEngine.Renderer:get_material ()
+
+        Confrontation.RegionColor:ChangeColorTo
+        (int) (at Assets/Code/View/RegionColor.cs:11)
+
+        Confrontation.Cell:SetColor
+        (int) (at Assets/Code/GameLogic/Cells/Cell.cs:48)
+
+        Confrontation.Region:UpdateCellsColor
+        () (at Assets/Code/GameLogic/Field/Regions/Region.cs:42)
+
+        Confrontation.RegionsGenerator:ToRegion
+        (Confrontation.Region/Data) (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:29)
+
+        System.Collections.Generic.List`1<Confrontation.Region/Data>:ForEach
+        (System.Action`1<Confrontation.Region/Data>)
+
+        Confrontation.RegionsGenerator:DivideIntoRegions
+        () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:17)
+
+        Confrontation.RegionsGenerator:Initialize
+        () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:15)
+
+        Confrontation.Editor.Tests.RegionsGeneratorTests:_1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+        () (at Assets/Code/Tests/EditMode/RegionsGeneratorTests.cs:38)
+
+        System.Reflection.MethodBase:Invoke
+        (object,object[])
+
+        NUnit.Framework.Internal.Reflect:InvokeMethod
+        (System.Reflection.MethodInfo,object,object[])
+
+        NUnit.Framework.Internal.MethodWrapper:Invoke
+        (object,object[])
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:Execute
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions
+        ()
+
+
+'
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1011
+      parentId: 1006
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests][suite]
-    - id: 1013
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/RegionsGeneratorTests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion]
-      name: WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
-      fullName: Confrontation.Editor.Tests.RegionsGeneratorTests.WhenGenerateField_AndLevelContainRegionWith7Cells_ThenVillageShouldHave7CellsInRegion
-      resultStatus: 1
-      duration: 0.004062
-      messages: 
-      output: 
-      stacktrace: 
+    - id: 1008
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/RegionsGeneratorTests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests._2_WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion]
+      name: _2_WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion
+      fullName: Confrontation.Editor.Tests.RegionsGeneratorTests._2_WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion
+      resultStatus: 2
+      duration: 0.0092114
+      messages: 'Unhandled log message: ''[Error] Instantiating material due to calling
+        renderer.material during edit mode. This will leak materials into the scene.
+        You most likely want to use renderer.sharedMaterial instead.''. Use UnityEngine.TestTools.LogAssert.Expect'
+      output: 'Instantiating material due to calling renderer.material during edit
+        mode. This will leak materials into the scene. You most likely want to use
+        renderer.sharedMaterial instead.
+
+        Instantiating material due to calling
+        renderer.material during edit mode. This will leak materials into the scene.
+        You most likely want to use renderer.sharedMaterial instead.
+
+'
+      stacktrace: 'UnityEngine.Renderer:get_material ()
+
+        Confrontation.RegionColor:ChangeColorTo
+        (int) (at Assets/Code/View/RegionColor.cs:11)
+
+        Confrontation.Cell:SetColor
+        (int) (at Assets/Code/GameLogic/Cells/Cell.cs:48)
+
+        Confrontation.Region:UpdateCellsColor
+        () (at Assets/Code/GameLogic/Field/Regions/Region.cs:42)
+
+        Confrontation.RegionsGenerator:ToRegion
+        (Confrontation.Region/Data) (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:29)
+
+        System.Collections.Generic.List`1<Confrontation.Region/Data>:ForEach
+        (System.Action`1<Confrontation.Region/Data>)
+
+        Confrontation.RegionsGenerator:DivideIntoRegions
+        () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:17)
+
+        Confrontation.RegionsGenerator:Initialize
+        () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:15)
+
+        Confrontation.Editor.Tests.RegionsGeneratorTests:_2_WhenGenerateField_AndLevelContainRegionWithVillageAndCellOnSeparateCell_ThenVillageShouldHave2CellsInRegion
+        () (at Assets/Code/Tests/EditMode/RegionsGeneratorTests.cs:54)
+
+        System.Reflection.MethodBase:Invoke
+        (object,object[])
+
+        NUnit.Framework.Internal.Reflect:InvokeMethod
+        (System.Reflection.MethodInfo,object,object[])
+
+        NUnit.Framework.Internal.MethodWrapper:Invoke
+        (object,object[])
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:Execute
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions
+        ()
+
+
+'
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1011
+      parentId: 1006
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests][suite]
-    - id: 1014
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/RegionsGeneratorTests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion]
-      name: WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
-      fullName: Confrontation.Editor.Tests.RegionsGeneratorTests.WhenGenerateField_AndVillageAndCellInRegionOnSameCell_ThenVillageShouldHave7CellsInRegion
-      resultStatus: 1
-      duration: 0.0031741
-      messages: 
-      output: 
-      stacktrace: 
+    - id: 1009
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/RegionsGeneratorTests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests._3_WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion]
+      name: _3_WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion
+      fullName: Confrontation.Editor.Tests.RegionsGeneratorTests._3_WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion
+      resultStatus: 2
+      duration: 0.0075041
+      messages: 'Unhandled log message: ''[Error] Instantiating material due to calling
+        renderer.material during edit mode. This will leak materials into the scene.
+        You most likely want to use renderer.sharedMaterial instead.''. Use UnityEngine.TestTools.LogAssert.Expect'
+      output: 'Instantiating material due to calling renderer.material during edit
+        mode. This will leak materials into the scene. You most likely want to use
+        renderer.sharedMaterial instead.
+
+        Instantiating material due to calling
+        renderer.material during edit mode. This will leak materials into the scene.
+        You most likely want to use renderer.sharedMaterial instead.
+
+'
+      stacktrace: 'UnityEngine.Renderer:get_material ()
+
+        Confrontation.RegionColor:ChangeColorTo
+        (int) (at Assets/Code/View/RegionColor.cs:11)
+
+        Confrontation.Cell:SetColor
+        (int) (at Assets/Code/GameLogic/Cells/Cell.cs:48)
+
+        Confrontation.Region:UpdateCellsColor
+        () (at Assets/Code/GameLogic/Field/Regions/Region.cs:42)
+
+        Confrontation.RegionsGenerator:ToRegion
+        (Confrontation.Region/Data) (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:29)
+
+        System.Collections.Generic.List`1<Confrontation.Region/Data>:ForEach
+        (System.Action`1<Confrontation.Region/Data>)
+
+        Confrontation.RegionsGenerator:DivideIntoRegions
+        () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:17)
+
+        Confrontation.RegionsGenerator:Initialize
+        () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:15)
+
+        Confrontation.Editor.Tests.RegionsGeneratorTests:_3_WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion
+        () (at Assets/Code/Tests/EditMode/RegionsGeneratorTests.cs:69)
+
+        System.Reflection.MethodBase:Invoke
+        (object,object[])
+
+        NUnit.Framework.Internal.Reflect:InvokeMethod
+        (System.Reflection.MethodInfo,object,object[])
+
+        NUnit.Framework.Internal.MethodWrapper:Invoke
+        (object,object[])
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        NUnit.Framework.Internal.Commands.TestMethodCommand:Execute
+        (NUnit.Framework.Internal.ITestExecutionContext)
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions
+        ()
+
+
+'
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1011
+      parentId: 1006
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.RegionsGeneratorTests][suite]
     - id: 1010
       uniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
       name: StringFormatterTests
       fullName: Confrontation.Editor.Tests.StringFormatterTests
       resultStatus: 1
-      duration: 0.0225769
+      duration: 0.0228908
       messages: 
       output: 
       stacktrace: 
@@ -1793,46 +2004,12 @@ MonoBehaviour:
       categories: []
       parentId: 1018
       parentUniqueId: Tests.dll/Confrontation/Editor/[Tests][suite]
-    - id: 1013
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCase_ThenAddSpaces]
-      name: WhenFormat_AndCamelCase_ThenAddSpaces
-      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCase_ThenAddSpaces
-      resultStatus: 1
-      duration: 0.0046906
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1010
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
-    - id: 1014
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper]
-      name: WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
-      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
-      resultStatus: 1
-      duration: 0.0003757
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1010
-      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
     - id: 1011
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndLowerFirst_ThenUpperFirst]
-      name: WhenFormat_AndLowerFirst_ThenUpperFirst
-      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndLowerFirst_ThenUpperFirst
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests._1_WhenFormat_AndLowerFirst_ThenUpperFirst]
+      name: _1_WhenFormat_AndLowerFirst_ThenUpperFirst
+      fullName: Confrontation.Editor.Tests.StringFormatterTests._1_WhenFormat_AndLowerFirst_ThenUpperFirst
       resultStatus: 1
-      duration: 0.0002857
+      duration: 0.0040905
       messages: 
       output: 
       stacktrace: 
@@ -1845,11 +2022,45 @@ MonoBehaviour:
       parentId: 1010
       parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
     - id: 1012
-      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst]
-      name: WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
-      fullName: Confrontation.Editor.Tests.StringFormatterTests.WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests._2_WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst]
+      name: _2_WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
+      fullName: Confrontation.Editor.Tests.StringFormatterTests._2_WhenFormat_AndUnderScoreLowerFirst_ThenUpperFirst
       resultStatus: 1
-      duration: 0.000207
+      duration: 0.0003812
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+    - id: 1013
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests._3_WhenFormat_AndCamelCase_ThenAddSpaces]
+      name: _3_WhenFormat_AndCamelCase_ThenAddSpaces
+      fullName: Confrontation.Editor.Tests.StringFormatterTests._3_WhenFormat_AndCamelCase_ThenAddSpaces
+      resultStatus: 1
+      duration: 0.000662
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/Confrontation/Editor/Tests/[Tests][Confrontation.Editor.Tests.StringFormatterTests][suite]
+    - id: 1014
+      uniqueId: Tests.dll/Confrontation/Editor/Tests/StringFormatterTests/[Tests][Confrontation.Editor.Tests.StringFormatterTests._4_WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper]
+      name: _4_WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
+      fullName: Confrontation.Editor.Tests.StringFormatterTests._4_WhenFormat_AndCamelCaseWithUnderScore_ThenAddSpacesAndFirstToUpper
+      resultStatus: 1
+      duration: 0.0002832
       messages: 
       output: 
       stacktrace: 
@@ -1975,12 +2186,125 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1022
       parentUniqueId: Zenject-TestFramework.dll/Zenject/Tests/AutoSubstitute/[Zenject-TestFramework][Zenject.Tests.AutoSubstitute.TestAutoSubstitute][suite]
-    m_ResultText: FuryLionConfrontation (0,534s)
-    m_ResultStacktrace: 
+    m_ResultText: '_1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      (0,026s)
+
+      ---
+
+      Unhandled log message: ''[Error] Instantiating material
+      due to calling renderer.material during edit mode. This will leak materials
+      into the scene. You most likely want to use renderer.sharedMaterial instead.''.
+      Use UnityEngine.TestTools.LogAssert.Expect
+
+      ---
+
+      UnityEngine.Renderer:get_material
+      ()
+
+      Confrontation.RegionColor:ChangeColorTo (int) (at Assets/Code/View/RegionColor.cs:11)
+
+      Confrontation.Cell:SetColor
+      (int) (at Assets/Code/GameLogic/Cells/Cell.cs:48)
+
+      Confrontation.Region:UpdateCellsColor
+      () (at Assets/Code/GameLogic/Field/Regions/Region.cs:42)
+
+      Confrontation.RegionsGenerator:ToRegion
+      (Confrontation.Region/Data) (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:29)
+
+      System.Collections.Generic.List`1<Confrontation.Region/Data>:ForEach
+      (System.Action`1<Confrontation.Region/Data>)
+
+      Confrontation.RegionsGenerator:DivideIntoRegions
+      () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:17)
+
+      Confrontation.RegionsGenerator:Initialize
+      () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:15)
+
+      Confrontation.Editor.Tests.RegionsGeneratorTests:_1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      () (at Assets/Code/Tests/EditMode/RegionsGeneratorTests.cs:38)
+
+      System.Reflection.MethodBase:Invoke
+      (object,object[])
+
+      NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
+
+      NUnit.Framework.Internal.MethodWrapper:Invoke
+      (object,object[])
+
+      NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod
+      (NUnit.Framework.Internal.ITestExecutionContext)
+
+      NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod
+      (NUnit.Framework.Internal.ITestExecutionContext)
+
+      NUnit.Framework.Internal.Commands.TestMethodCommand:Execute
+      (NUnit.Framework.Internal.ITestExecutionContext)
+
+      UnityEditor.EditorApplication:Internal_CallUpdateFunctions
+      ()
+
+      ---
+
+      Instantiating material due to calling renderer.material
+      during edit mode. This will leak materials into the scene. You most likely
+      want to use renderer.sharedMaterial instead.
+
+      Instantiating material
+      due to calling renderer.material during edit mode. This will leak materials
+      into the scene. You most likely want to use renderer.sharedMaterial instead.'
+    m_ResultStacktrace: 'UnityEngine.Renderer:get_material ()
+
+      Confrontation.RegionColor:ChangeColorTo
+      (int) (at Assets/Code/View/RegionColor.cs:11)
+
+      Confrontation.Cell:SetColor
+      (int) (at Assets/Code/GameLogic/Cells/Cell.cs:48)
+
+      Confrontation.Region:UpdateCellsColor
+      () (at Assets/Code/GameLogic/Field/Regions/Region.cs:42)
+
+      Confrontation.RegionsGenerator:ToRegion
+      (Confrontation.Region/Data) (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:29)
+
+      System.Collections.Generic.List`1<Confrontation.Region/Data>:ForEach
+      (System.Action`1<Confrontation.Region/Data>)
+
+      Confrontation.RegionsGenerator:DivideIntoRegions
+      () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:17)
+
+      Confrontation.RegionsGenerator:Initialize
+      () (at Assets/Code/GameLogic/Field/RegionsGenerator.cs:15)
+
+      Confrontation.Editor.Tests.RegionsGeneratorTests:_1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village
+      () (at Assets/Code/Tests/EditMode/RegionsGeneratorTests.cs:38)
+
+      System.Reflection.MethodBase:Invoke
+      (object,object[])
+
+      NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
+
+      NUnit.Framework.Internal.MethodWrapper:Invoke
+      (object,object[])
+
+      NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod
+      (NUnit.Framework.Internal.ITestExecutionContext)
+
+      NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod
+      (NUnit.Framework.Internal.ITestExecutionContext)
+
+      NUnit.Framework.Internal.Commands.TestMethodCommand:Execute
+      (NUnit.Framework.Internal.ITestExecutionContext)
+
+      UnityEditor.EditorApplication:Internal_CallUpdateFunctions
+      ()
+
+
+'
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2896b2c9
-      m_LastClickedID: -911043032
+      m_SelectedIDs: d582b8f6
+      m_LastClickedID: -155680043
       m_ExpandedIDs: fd40468b1a2293992896b2c9bafc28ce579587d1470ea8f6e557abf736608cf8020bbf017c14ac18c616ce3ca96c5b6428b08d79ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0

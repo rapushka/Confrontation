@@ -90,8 +90,7 @@ namespace Confrontation.Editor
 
 		private float SetElementHeight(int index)
 		{
-			var cells = _state.Villages[index].CellsInRegion;
-			return EditorGUIUtility.singleLineHeight * (cells.Count() + 3) + 5;
+			return EditorGUIUtility.singleLineHeight;
 		}
 
 		[Serializable]
