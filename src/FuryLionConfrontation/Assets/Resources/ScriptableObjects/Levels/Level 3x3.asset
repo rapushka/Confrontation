@@ -24,28 +24,29 @@ MonoBehaviour:
     - _row: 0
       _column: 0
     - _row: 0
-      _column: 0
+      _column: 1
     - _row: 0
-      _column: 0
-    - _row: 0
+      _column: 2
+    - _row: 1
       _column: 0
   - <OwnerPlayerId>k__BackingField: 2
     <VillageCoordinates>k__BackingField:
-      _row: 0
-      _column: 0
+      _row: 2
+      _column: 2
     <CellsCoordinates>k__BackingField:
     - _row: 1
+      _column: 1
+    - _row: 1
       _column: 2
-    - _row: 0
+    - _row: 2
       _column: 0
-    - _row: 0
-      _column: 0
-    - _row: 0
-      _column: 0
-    - _row: 0
-      _column: 0
+    - _row: 2
+      _column: 1
+    - _row: 2
+      _column: 2
   <Buildings>k__BackingField:
-  - <Prefab>k__BackingField: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
-    <Coordinates>k__BackingField:
+  - _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
+    _coordinates:
       _row: 0
-      _column: 0
+      _column: 2
+    _selectionIndex: 2

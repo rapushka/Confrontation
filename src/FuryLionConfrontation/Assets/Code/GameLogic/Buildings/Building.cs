@@ -27,8 +27,22 @@ namespace Confrontation
 		[Serializable]
 		public class Data
 		{
-			[field: SerializeField] public Building    Prefab      { get; set; }
-			[field: SerializeField] public Coordinates Coordinates { get; set; }
+			[SerializeField] private Building _prefab;
+			[SerializeField] private Coordinates _coordinates;
+
+			[SerializeField] private int _selectionIndex;
+
+			public Building Prefab
+			{
+				get => _prefab;
+				set => _prefab = value;
+			}
+
+			public Coordinates Coordinates
+			{
+				get => _coordinates;
+				set => _coordinates = value;
+			}
 		}
 
 		public class Factory : PlaceholderFactory<Building, Building>
