@@ -7,10 +7,10 @@ namespace Confrontation.Editor.Tests
 	{
 		public TestLevelCreator() => SelectedLevel = Create();
 
-		public Level SelectedLevel { get; }
+		public ILevel SelectedLevel { get; }
 
-		private static Level Create()
-			=> new()
+		private static ILevel Create()
+			=> new Level
 			{
 				PlayersCount = 2,
 				Sizes = new Sizes(5, 5),
