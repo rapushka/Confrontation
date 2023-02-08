@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -57,9 +58,9 @@ namespace Confrontation
 		[Serializable]
 		public class Data
 		{
-			public int               OwnerPlayerId      { get; set; }
-			public Coordinates       VillageCoordinates { get; set; }
-			public List<Coordinates> CellsCoordinates   { get; set; } = new();
+			[field: SerializeField] public int               OwnerPlayerId      { get; set; }
+			[field: SerializeField] public Coordinates       VillageCoordinates { get; set; }
+			[field: SerializeField] public List<Coordinates> CellsCoordinates   { get; set; } = new();
 		}
 
 		public class Factory : PlaceholderFactory<Region>

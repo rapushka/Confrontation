@@ -81,5 +81,5 @@ MonoBehaviour:
   _windows:
   - {fileID: 4738565569929036377, guid: 344cbf5c20d0230b68b5a84891ce6a73, type: 3}
   - {fileID: 5169984881314214046, guid: ac61388cb5e75a172920a37b4b008b89, type: 3}
-  _buildingButton: {fileID: -4646616829452299902, guid: a50e8c8821030da4c92d92133d4a4105, type: 3}
   _inputService: {fileID: 368739459117762899, guid: ce31c2c4d72f7b1b384ffd94c228b960, type: 3}
+  _level: {fileID: 11400000, guid: c632137e80d092fcda1536fb52f05900, type: 2}
