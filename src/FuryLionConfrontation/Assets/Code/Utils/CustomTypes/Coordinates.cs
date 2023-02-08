@@ -6,14 +6,17 @@ namespace Confrontation
 	[Serializable]
 	public struct Coordinates
 	{
-		[field: SerializeField] public int Row { get; private set; }
+		[SerializeField] private int _row;
+		[SerializeField] private int _column;
 
-		[field: SerializeField] public int Column { get; private set; }
+		public int Row => _row;
+
+		public int Column => _column;
 
 		public Coordinates(int row, int column)
 		{
-			Row = row;
-			Column = column;
+			_row = row;
+			_column = column;
 		}
 
 		// https://www.redblobgames.com/grids/hexagons/
