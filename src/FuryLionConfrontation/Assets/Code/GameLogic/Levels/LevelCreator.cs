@@ -14,7 +14,7 @@ namespace Confrontation
 			{
 				PlayersCount = 2,
 				Sizes = new Sizes(5, 5),
-				Regions = new List<RegionData>
+				Regions = new List<Region.Data>
 				{
 					new()
 					{
@@ -47,7 +47,7 @@ namespace Confrontation
 						},
 					},
 				},
-				Buildings = new List<BuildingData>
+				Buildings = new List<Building.Data>
 				{
 					new()
 					{

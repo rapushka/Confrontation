@@ -16,7 +16,7 @@ namespace Confrontation
 
 		private void DivideIntoRegions() => _levelSelector.SelectedLevel.Regions.ForEach(ToRegion);
 
-		private void ToRegion(RegionData regionData)
+		private void ToRegion(Region.Data regionData)
 		{
 			var region = _regionsFactory.Create(regionData);
 			var village = CreateVillage(regionData);
@@ -30,7 +30,7 @@ namespace Confrontation
 			_field.Buildings.Add(village);
 		}
 
-		private Village CreateVillage(RegionData regionData)
+		private Village CreateVillage(Region.Data regionData)
 		{
 			var ownerCell = _field.Cells[regionData.VillageCoordinates];
 			var village = Create(ownerCell);

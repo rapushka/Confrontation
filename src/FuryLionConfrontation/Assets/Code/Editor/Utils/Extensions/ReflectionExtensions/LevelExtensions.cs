@@ -6,7 +6,7 @@ namespace Confrontation.Editor
 	{
 		public static void SetSizes(this Level @this, Sizes value) => @this.SetPrivateProperty(MemberName.Sizes, value);
 
-		public static void SetRegions(this Level @this, List<RegionData> value)
+		public static void SetRegions(this Level @this, List<Region.Data> value)
 			=> @this.SetPrivateProperty(MemberName.Regions, value);
 	}
 }

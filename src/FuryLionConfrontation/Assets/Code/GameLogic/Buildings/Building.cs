@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +23,13 @@ namespace Confrontation
 		}
 
 		protected IField Field => _field;
+
+		[Serializable]
+		public class Data
+		{
+			public Building    Prefab      { get; set; }
+			public Coordinates Coordinates { get; set; }
+		}
 
 		public class Factory : PlaceholderFactory<Building, Building>
 		{

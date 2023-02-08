@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Zenject;
@@ -42,7 +43,6 @@ namespace Confrontation
 			}
 		}
 
-		
 		private void UpdateOwnerOfUnitsInRegion()
 		{
 			foreach (var cellInRegion in _field.Cells.Where((c) => c.RelatedRegion == this))
@@ -54,9 +54,17 @@ namespace Confrontation
 			}
 		}
 
+		[Serializable]
+		public class Data
+		{
+			public int               OwnerPlayerId      { get; set; }
+			public Coordinates       VillageCoordinates { get; set; }
+			public List<Coordinates> CellsCoordinates   { get; set; } = new();
+		}
+
 		public class Factory : PlaceholderFactory<Region>
 		{
-			public Region Create(RegionData data)
+			public Region Create(Data data)
 			{
 				var region = base.Create();
 				region.OwnerPlayerId = data.OwnerPlayerId;

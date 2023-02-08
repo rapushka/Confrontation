@@ -19,7 +19,7 @@ namespace Confrontation
 			}
 		}
 
-		private Building Create(BuildingData data)
+		private Building Create(Building.Data data)
 			=> _buildingsFactory.Create(data.Prefab, _field.Cells[data.Coordinates]);
 	}
 }
