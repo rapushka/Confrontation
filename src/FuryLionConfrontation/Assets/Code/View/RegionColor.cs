@@ -8,6 +8,11 @@ namespace Confrontation
 		[SerializeField] private PlayersColorsSheet _playersColorsSheet;
 
 		public void ChangeColorTo(int playerId)
-			=> _renderer.material.color = _playersColorsSheet.GetColorFor(playerId);
+		{
+			if (Application.isPlaying)
+			{
+				_renderer.material.color = _playersColorsSheet.GetColorFor(playerId);
+			}
+		}
 	}
 }

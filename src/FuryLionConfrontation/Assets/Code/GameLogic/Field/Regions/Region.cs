@@ -59,7 +59,6 @@ namespace Confrontation
 		public class Data
 		{
 			[field: SerializeField] public int               OwnerPlayerId      { get; set; }
-			[field: SerializeField] public Coordinates       VillageCoordinates { get; set; }
 			[field: SerializeField] public List<Coordinates> CellsCoordinates   { get; set; } = new();
 		}
 
@@ -69,7 +68,6 @@ namespace Confrontation
 			{
 				var region = base.Create();
 				region.OwnerPlayerId = data.OwnerPlayerId;
-				region.Coordinates = data.VillageCoordinates;
 				return region;
 			}
 		}

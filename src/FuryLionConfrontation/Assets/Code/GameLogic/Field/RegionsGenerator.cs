@@ -5,12 +5,8 @@ namespace Confrontation
 	public class RegionsGenerator : IInitializable
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private readonly IResourcesService _resourcesService;
 		[Inject] private readonly ILevelSelector _levelSelector;
-		[Inject] private readonly Building.Factory _buildingsFactory;
 		[Inject] private readonly Region.Factory _regionsFactory;
-
-		private Village VillagePrefab => _resourcesService.VillagePrefab;
 
 		public void Initialize() => DivideIntoRegions();
 
@@ -19,7 +15,6 @@ namespace Confrontation
 		private void ToRegion(Region.Data regionData)
 		{
 			var region = _regionsFactory.Create(regionData);
-			var village = CreateVillage(regionData);
 
 			foreach (var coordinates in regionData.CellsCoordinates)
 			{
@@ -27,17 +22,6 @@ namespace Confrontation
 			}
 
 			region.UpdateCellsColor();
-			_field.Buildings.Add(village);
 		}
-
-		private Village CreateVillage(Region.Data regionData)
-		{
-			var ownerCell = _field.Cells[regionData.VillageCoordinates];
-			var village = Create(ownerCell);
-			return village;
-		}
-
-		private Village Create(Cell ownerCell)
-			=> _buildingsFactory.Create(VillagePrefab, ownerCell);
 	}
 }

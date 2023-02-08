@@ -19,7 +19,6 @@ namespace Confrontation
 					new()
 					{
 						OwnerPlayerId = 1,
-						VillageCoordinates = new Coordinates(1, 1),
 						CellsCoordinates = new List<Coordinates>
 						{
 							new(row: 2, column: 1),
@@ -34,7 +33,6 @@ namespace Confrontation
 					new()
 					{
 						OwnerPlayerId = 2,
-						VillageCoordinates = new Coordinates(3, 3),
 						CellsCoordinates = new List<Coordinates>
 						{
 							new(row: 4, column: 3),
@@ -64,6 +62,17 @@ namespace Confrontation
 						Prefab = Resources.Load<Building>("Prefabs/Buildings/Barracks"),
 						Coordinates = new Coordinates(4, 3),
 					},
+					new()
+					{
+						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
+						Coordinates = new Coordinates(1, 1),
+					},
+					new()
+					{
+						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
+						Coordinates = new Coordinates(3, 3),
+					},
+
 				},
 			};
 	}

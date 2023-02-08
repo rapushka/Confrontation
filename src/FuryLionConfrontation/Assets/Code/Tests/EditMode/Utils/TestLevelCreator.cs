@@ -19,9 +19,9 @@ namespace Confrontation.Editor.Tests
 					new()
 					{
 						OwnerPlayerId = 1,
-						VillageCoordinates = new Coordinates(1, 1),
 						CellsCoordinates = new List<Coordinates>
 						{
+							new(row: 1, column: 1),
 							new(row: 2, column: 1),
 						},
 					},
@@ -32,6 +32,11 @@ namespace Confrontation.Editor.Tests
 					{
 						Prefab = Resources.Load<Building>("Prefabs/Buildings/Golden Mine"),
 						Coordinates = new Coordinates(0, 1),
+					},
+					new()
+					{
+						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
+						Coordinates = new Coordinates(1, 1),
 					},
 				},
 			};
