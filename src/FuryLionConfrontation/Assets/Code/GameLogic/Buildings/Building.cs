@@ -30,6 +30,7 @@ namespace Confrontation
 			[SerializeField] private Building _prefab;
 			[SerializeField] private Coordinates _coordinates;
 
+			// ReSharper disable once NotAccessedField.Local - usage in BuildingDataPropertyDrawer
 			[SerializeField] private int _selectionIndex;
 
 			public Building Prefab

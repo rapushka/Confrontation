@@ -5,7 +5,9 @@ namespace Confrontation.Editor.Code.Editor
 {
 	public abstract class IntPairPropertyDrawerBase : PropertyDrawer
 	{
-		protected virtual int Spacing => 5;
+		private const int VerticalSpacing = 5;
+
+		protected virtual int Spacing         => 5;
 		protected virtual int CountOfElements => 4;
 
 		protected abstract string NameFirst { get; }
@@ -14,6 +16,7 @@ namespace Confrontation.Editor.Code.Editor
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
+			position.height = EditorGUIUtility.singleLineHeight;
 			position.width = EqualWithForEachElement(position);
 			var step = position.width + Spacing;
 
@@ -32,6 +35,9 @@ namespace Confrontation.Editor.Code.Editor
 
 			property.serializedObject.ApplyModifiedProperties();
 		}
+
+		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+			=> base.GetPropertyHeight(property, label) + VerticalSpacing;
 
 		private static void DrawProperty(ref Rect rect, string label, float spacing, SerializedProperty property)
 		{

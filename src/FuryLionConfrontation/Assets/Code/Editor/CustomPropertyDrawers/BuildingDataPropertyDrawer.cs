@@ -8,6 +8,8 @@ namespace Confrontation
 	[CustomPropertyDrawer(typeof(Building.Data))]
 	public class BuildingDataPropertyDrawer : PropertyDrawer
 	{
+		private const int VerticalSpacing = 5;
+
 		private readonly List<(string Name, string Path)> _buildings
 			= new()
 			{
@@ -43,6 +45,6 @@ namespace Confrontation
 		}
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-			=> base.GetPropertyHeight(property, label) * 2 + 10;
+			=> base.GetPropertyHeight(property, label) * 2 + VerticalSpacing;
 	}
 }
