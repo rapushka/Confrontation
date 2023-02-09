@@ -17,9 +17,12 @@ namespace Confrontation
 
 			Container.Bind<IField>().To<Field>().AsSingle();
 
+			Container.Bind<PlayersList>().AsSingle();
+			
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
