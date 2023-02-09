@@ -21,14 +21,28 @@ namespace Confrontation
 		public event Action<ClickReceiver> Clicked;
 
 		public event Action<ClickReceiver, ClickReceiver> Dragged;
+
 		public event Action<Vector3> DragStart;
+
 		public event Action DragEnd;
 
 		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
-		private Camera Camera => _camera ??= Camera.main;
+		private Camera Camera
+		{
+			get
+			{
+				if (_camera is null
+				    || _camera == false)
+				{
+					_camera = Camera.main;
+				}
+
+				return _camera;
+			}
+		}
 
 		private Vector2 CursorPosition => _cursorPosition.ReadValue<Vector2>();
 
