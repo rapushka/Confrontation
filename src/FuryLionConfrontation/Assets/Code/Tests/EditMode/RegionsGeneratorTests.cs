@@ -32,10 +32,10 @@ namespace Confrontation.Editor.Tests
 		public void _1_WhenGenerateField_AndLevelContain1Region_ThenShouldBe1Village()
 		{
 			// Arrange.
-			var regions = Container.Resolve<RegionsGenerator>();
+			var buildingsGenerator = Container.Resolve<BuildingsGenerator>();
 
 			// Act.
-			regions.Initialize();
+			buildingsGenerator.Initialize();
 
 			// Assert.
 			var countOfVillages = Object.FindObjectsOfType<Village>().Length;
@@ -48,9 +48,11 @@ namespace Confrontation.Editor.Tests
 		{
 			// Arrange.
 			var field = Container.Resolve<IField>();
+			var buildingsGenerator = Container.Resolve<BuildingsGenerator>();
 			var regions = Container.Resolve<RegionsGenerator>();
 
 			// Act.
+			buildingsGenerator.Initialize();
 			regions.Initialize();
 
 			// Assert.
@@ -59,19 +61,18 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void _3_WhenGenerateField_AndLevelContainRegion_ThenVillageShouldSelfCellInSelfRegion()
+		public void _2_1_WhenGenerateField_AndCellOnPosition1to1_ThenCellCoordinatesShouldBe1to1()
 		{
 			// Arrange.
 			var field = Container.Resolve<IField>();
-			var regions = Container.Resolve<RegionsGenerator>();
+			var fieldGenerator = Container.Resolve<FieldGenerator>();
 
 			// Act.
-			regions.Initialize();
+			fieldGenerator.Initialize();
 
 			// Assert.
-			var village = field.Buildings.OfType<Village>().Single();
-			var cellsInRegion = village.CellsInRegion.ToList();
-			cellsInRegion.Should().Contain(village.RelatedCell);
+			var cell = field.Cells[new Coordinates(1, 1)];
+			cell.Coordinates.Should().Be(new Coordinates(1, 1));
 		}
 	}
 }

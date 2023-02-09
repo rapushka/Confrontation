@@ -12,11 +12,12 @@ namespace Confrontation
 
 		private void DivideIntoRegions() => _levelSelector.SelectedLevel.Regions.ForEach(ToRegion);
 
-		private void ToRegion(Region.Data regionData)
+		private void ToRegion(Region.Data data)
 		{
-			var region = _regionsFactory.Create(regionData);
+			var region = _regionsFactory.Create();
+			region.OwnerPlayerId = data.OwnerPlayerId;
 
-			foreach (var coordinates in regionData.CellsCoordinates)
+			foreach (var coordinates in data.CellsCoordinates)
 			{
 				_field.Regions[coordinates] = region;
 			}

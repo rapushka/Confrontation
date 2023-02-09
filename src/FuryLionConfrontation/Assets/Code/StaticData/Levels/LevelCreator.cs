@@ -72,7 +72,6 @@ namespace Confrontation
 						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
 						Coordinates = new Coordinates(3, 3),
 					},
-
 				},
 			};
 	}

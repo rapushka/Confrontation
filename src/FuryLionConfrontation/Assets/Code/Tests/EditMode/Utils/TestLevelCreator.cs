@@ -35,7 +35,7 @@ namespace Confrontation.Editor.Tests
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
+						Prefab = Resources.Load<Village>("Prefabs/Buildings/Village"),
 						Coordinates = new Coordinates(1, 1),
 					},
 				},
