@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   <Sizes>k__BackingField:
-    _width: 6
-    _height: 6
+    _width: 5
+    _height: 5
   <Regions>k__BackingField:
   - <OwnerPlayerId>k__BackingField: 1
     <CellsCoordinates>k__BackingField:
