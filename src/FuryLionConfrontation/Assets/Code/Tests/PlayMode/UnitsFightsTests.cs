@@ -29,12 +29,17 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return LoadScene(Constants.SceneName.GameplayScene);
 			yield return _waitForZenjectInitialization;
 
-			var container = GetActualContainer(@for: Constants.SceneName.MainMenuScene);
-			container.Resolve<ToGameplay>().Transfer();
-			yield return _waitForZenjectInitialization;
+			yield return PassMainMenu();
 
 			_container = GetActualContainer(@for: Constants.SceneName.GameplayScene);
 			_buildings = _container.ResolveBuildings();
+		}
+
+		private object PassMainMenu()
+		{
+			var container = GetActualContainer(@for: Constants.SceneName.MainMenuScene);
+			container.Resolve<ToGameplay>().Transfer();
+			return _waitForZenjectInitialization;
 		}
 
 		private static DiContainer GetActualContainer(string @for)
