@@ -12,15 +12,10 @@ namespace Confrontation
 		[SerializeField] private RectTransform _canvasPrefab;
 		[SerializeField] private List<WindowBase> _windows;
 		[SerializeField] private InputService _inputService;
-		[SerializeField] private LevelScriptableObject _level;
 
-		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
 			BindPrefabs();
-
-			Container.Bind<ILevel>().FromInstance(_level).AsSingle();
-			Container.Bind<ILevelSelector>().To<InjectedLevelSelector>().AsSingle();
 
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
 			Container.BindInterfacesTo<TimeService>().AsSingle();
