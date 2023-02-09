@@ -1,19 +1,25 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Confrontation
 {
 	public class GameplayLoop
 	{
-		private readonly HashSet<Player> _players = new();
+		private readonly HashSet<Player> _activePlayers = new();
 
-		public void AddPlayer(Player player) => _players.Add(player);
+		public void AddPlayer(Player player) => _activePlayers.Add(player);
 
 		public void PlayerLoose(int id)
 		{
-			Debug.Assert(_players.GetWithId(id).IsLost == false);
+			_activePlayers.RemoveById(id);
 
-			_players.GetWithId(id).IsLost = true;
+			if (_activePlayers.Count == 1)
+			{
+				GameEnd(_activePlayers.Single());
+			}
 		}
+
+		private void GameEnd(Player winner) => Debug.Log(winner.Id == Constants.UserId ? "Victory" : "You Lose");
 	}
 }

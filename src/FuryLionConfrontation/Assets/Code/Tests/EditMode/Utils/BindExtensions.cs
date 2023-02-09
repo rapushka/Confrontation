@@ -21,6 +21,7 @@ namespace Confrontation.Editor.Tests
 
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
+			@this.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 
