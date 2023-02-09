@@ -7,7 +7,7 @@ namespace Confrontation
 	public class LevelButton : ButtonBase
 	{
 		[Inject] private readonly int _levelNumber;
-		[Inject] private readonly Level _level;
+		[Inject] private readonly ILevel _level;
 
 		[Inject] private readonly ToGameplay _toGameplay;
 		[Inject] private readonly User _user;
@@ -25,6 +25,6 @@ namespace Confrontation
 			_toGameplay.Transfer();
 		}
 
-		public class Factory : PlaceholderFactory<int, Level, LevelButton> { }
+		public class Factory : PlaceholderFactory<int, ILevel, LevelButton> { }
 	}
 }
