@@ -31,7 +31,7 @@ namespace Confrontation
 			StartGame();
 		}
 
-		private void StartGame() => Container.BindInterfacesTo<Bootstrapper>().AsSingle();
+		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
 
 		private void BindPrefabs()
 		{

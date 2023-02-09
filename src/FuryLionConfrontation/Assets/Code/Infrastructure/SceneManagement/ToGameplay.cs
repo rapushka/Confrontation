@@ -1,17 +1,14 @@
-using Zenject;
-
 namespace Confrontation
 {
-	public class ToGameplay : ToScene
+	public class ToGameplay : ToSceneBase
 	{
-		[Inject] private readonly GameUiMediator _mediator;
-
 		protected override string SceneName => Constants.SceneName.GameplayScene;
 
-		public override void Initialize()
+		public override void Transfer()
 		{
-			base.Initialize();
-			_mediator.HideLoadingCurtain();
+			Mediator.ShowLoadingCurtain();
+			base.Transfer();
+			Mediator.HideLoadingCurtain();
 		}
 	}
 }

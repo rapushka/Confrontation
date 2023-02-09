@@ -2,13 +2,13 @@ using Zenject;
 
 namespace Confrontation
 {
-	public abstract class ToScene : IInitializable
+	public abstract class ToSceneBase
 	{
 		[Inject] protected readonly ISceneTransferService SceneTransfer;
-
+		[Inject] protected readonly GameUiMediator Mediator;
 		protected abstract string SceneName { get; }
 
-		public virtual void Initialize()
+		public virtual void Transfer()
 		{
 			if (SceneTransfer.IsCurrentScene(SceneName) == false)
 			{

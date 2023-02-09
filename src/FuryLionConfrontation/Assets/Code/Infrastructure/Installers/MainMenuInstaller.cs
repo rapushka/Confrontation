@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class BootstrapInstaller : MonoInstaller
+	public class MainMenuInstaller : MonoInstaller
 	{
 		public override void InstallBindings()
 		{
