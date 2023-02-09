@@ -131,8 +131,8 @@ namespace Confrontation.Editor.PlayModeTests
 			const int enemyQuantity = 1;
 			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
-			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy);
-			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer, quantity: userQuantity);
+			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy);
+			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer, quantity: userQuantity);
 
 			// Act.
 			enemyUnits.MoveTo(cellWithEnemyVillage, enemyQuantity);
@@ -155,7 +155,7 @@ namespace Confrontation.Editor.PlayModeTests
 			const int quantityToSpawn = 2;
 			const int quantityToSend = 1;
 
-			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer, quantity: quantityToSpawn);
+			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer, quantity: quantityToSpawn);
 			var cellWithVillage = _buildings.OfType<Village>().First(BelongToPlayer).RelatedCell;
 			var otherCell = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 
@@ -183,8 +183,8 @@ namespace Confrontation.Editor.PlayModeTests
 			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
 			var cellWithFriendlyVillage = _buildings.OfType<Village>().First(BelongToPlayer).RelatedCell;
 
-			var friendlyUnits = Spawn.Units(_buildings, BelongToPlayer, quantity: userQuantity);
-			var enemyUnits = Spawn.Units(_buildings, BelongToEnemy, quantity: enemyQuantity);
+			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer, quantity: userQuantity);
+			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy, quantity: enemyQuantity);
 
 			// Act.
 			friendlyUnits.MoveTo(cellWithEnemyVillage, userQuantity);
