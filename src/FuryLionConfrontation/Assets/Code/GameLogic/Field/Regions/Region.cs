@@ -9,6 +9,7 @@ namespace Confrontation
 	public class Region : ICoordinated
 	{
 		[Inject] private readonly IField _field;
+		[Inject] private readonly PlayersList _playersList;
 
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
@@ -20,6 +21,7 @@ namespace Confrontation
 			get => _ownerPlayerId;
 			set
 			{
+				CheckIfIsLostCapital();
 				_ownerPlayerId = value;
 				UpdateCellsColor();
 				UpdateOwnerOfUnitsInRegion();
@@ -52,6 +54,19 @@ namespace Confrontation
 				{
 					cellInRegion.LocatedUnits!.OwnerPlayerId = OwnerPlayerId;
 				}
+			}
+		}
+
+		private void CheckIfIsLostCapital()
+		{
+			var buildingsByPlayer = _field.Buildings.OfType<Capital>()
+			                              .Where((c) => c.OwnerPlayerId == OwnerPlayerId)
+			                              .ToArray();
+
+			if (buildingsByPlayer.Length == 1)
+			{
+				var id = buildingsByPlayer.Single().OwnerPlayerId;
+				_playersList.Players.Single((p) => p.Id == id).Loose();
 			}
 		}
 
