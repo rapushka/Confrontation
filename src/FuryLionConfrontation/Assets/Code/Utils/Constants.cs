@@ -11,8 +11,8 @@ namespace Confrontation
 		public static class SceneName
 		{
 			public const string BootstrapScene = "BootstrapScene";
-			public const string GameplayScene = "GameplayScene";
-			public const string MainMenuScene = "MainMenuScene";
+			public const string GameplayScene = "Scenes/GameplayScene";
+			public const string MainMenuScene = "Scenes/MainMenuScene";
 			public const string LevelEditorScene = "LevelEditorScene";
 		}
 
