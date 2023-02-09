@@ -60,27 +60,26 @@ namespace Confrontation
 
 		private void CheckIfIsLostCapital(int oldOwnerId)
 		{
-			if (ItOwnFromNeutral(oldOwnerId))
-			{
-				return;
-			}
-			
-			var buildingsByPlayer = _field.Buildings.OfType<Capital>()
-			                              .Where((c) => c.OwnerPlayerId == oldOwnerId)
-			                              .ToArray();
-
-			if (buildingsByPlayer.Length == 0)
+			if (RegionWasNeutral(oldOwnerId) == false
+			    && PlayerLostAllCapitals(oldOwnerId))
 			{
 				_gameplayLoop.PlayerLoose(oldOwnerId);
 			}
 		}
 
-		private static bool ItOwnFromNeutral(int oldOwnerId) => oldOwnerId == 0;
+		private static bool RegionWasNeutral(int oldOwnerId) => oldOwnerId == 0;
+
+		private bool PlayerLostAllCapitals(int oldOwnerId) => CapitalsOfPlayer(oldOwnerId).Any() == false;
+
+		private IEnumerable<Capital> CapitalsOfPlayer(int oldOwnerId)
+			=> _field.Buildings.OfType<Capital>()
+			         .Where((c) => c.OwnerPlayerId == oldOwnerId);
 
 		[Serializable]
 		public class Data
 		{
-			[field: SerializeField] public int               OwnerPlayerId    { get; set; }
+			[field: SerializeField] public int OwnerPlayerId { get; set; }
+
 			[field: SerializeField] public List<Coordinates> CellsCoordinates { get; set; } = new();
 		}
 
