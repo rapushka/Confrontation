@@ -15,9 +15,8 @@ public static class UnitsSquadExtensions
 		@this.GetUnitMovement().TargetReached -= OnTargetReached;
 	}
 
-	public static UnitMovement GetUnitMovement(this UnitsSquad @this)
+	private static UnitMovement GetUnitMovement(this UnitsSquad @this)
 		=> @this.GetPrivateField<UnitMovement>("_unitMovement");
 
 	private static void OnTargetReached() => _isSquadReachTarget = true;
-
 }

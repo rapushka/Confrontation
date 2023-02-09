@@ -11,6 +11,7 @@ namespace Confrontation.Editor.PlayModeTests
 	public class UnitsFightsTests : SceneTestFixture
 	{
 		private const int UserPlayerId = 1;
+		private const int EnemyPlayerId = 2;
 		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 1f);
 
 		private DiContainer _container;
@@ -199,6 +200,6 @@ namespace Confrontation.Editor.PlayModeTests
 		
 		private static bool BelongToPlayer(Building building) => building.RelatedCell.OwnerPlayerId == UserPlayerId;
 
-		private static bool BelongToEnemy(Building building) => building.RelatedCell.OwnerPlayerId != UserPlayerId;
+		private static bool BelongToEnemy(Building building) => building.RelatedCell.OwnerPlayerId == EnemyPlayerId;
 	}
 }
