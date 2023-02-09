@@ -46,6 +46,6 @@ namespace Confrontation
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
-		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Constants.Epsilon;
+		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Mathf.Epsilon;
 	}
 }

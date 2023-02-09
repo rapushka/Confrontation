@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class GameplayLoop
 	{
+		[Inject] private readonly User _user;
+
 		private readonly HashSet<Player> _activePlayers = new();
 
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
@@ -20,6 +23,6 @@ namespace Confrontation
 			}
 		}
 
-		private void GameEnd(Player winner) => Debug.Log(winner.Id == Constants.UserId ? "Victory" : "You Lose");
+		private void GameEnd(Player winner) => Debug.Log(winner.Equals(_user.Player) ? "Victory" : "You Lose");
 	}
 }

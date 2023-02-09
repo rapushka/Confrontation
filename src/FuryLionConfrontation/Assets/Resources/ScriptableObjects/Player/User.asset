@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0b3e6a097a4b4db9d313d1021d74f9, type: 3}
   m_Name: User
   m_EditorClassIdentifier: 
-  <Player>k__BackingField:
-    <Id>k__BackingField: 1
-  <SelectedLevel>k__BackingField: {fileID: 11400000, guid: e8099c717c1610b72baa04c90496391f, type: 2}
+  _playerId: 1
