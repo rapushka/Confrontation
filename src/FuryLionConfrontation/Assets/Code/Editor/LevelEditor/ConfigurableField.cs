@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using Zenject;
 
@@ -12,6 +13,7 @@ namespace Confrontation.Editor
 		public CoordinatedMatrix<Building>   Buildings    { get; private set; }
 		public CoordinatedMatrix<UnitsSquad> LocatedUnits { get; private set; }
 		public CoordinatedMatrix<Region>     Regions      { get; private set; }
+		public List<Player>                  Players      { get; private set; }
 
 		public void GuiRender()
 		{
@@ -22,6 +24,7 @@ namespace Confrontation.Editor
 			Buildings = new CoordinatedMatrix<Building>(_state.Sizes);
 			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(_state.Sizes);
 			Regions = new CoordinatedMatrix<Region>(_state.Sizes);
+			Players = new List<Player>();
 		}
 
 		private void Height()

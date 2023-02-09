@@ -9,7 +9,7 @@ namespace Confrontation
 	public class Region : ICoordinated
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private readonly PlayersList _playersList;
+		[Inject] private readonly GameplayLoop _gameplayLoop;
 
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
@@ -71,7 +71,7 @@ namespace Confrontation
 
 			if (buildingsByPlayer.Length == 0)
 			{
-				_playersList.Players.Single((p) => p.Id == oldOwnerId).Loose();
+				_gameplayLoop.Players.Single((p) => p.Id == oldOwnerId).Loose();
 			}
 		}
 

@@ -6,7 +6,7 @@ namespace Confrontation
 	public class PlayersGenerator : IInitializable
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private readonly PlayersList _playersList;
+		[Inject] private readonly GameplayLoop _gameplayLoop;
 
 		public void Initialize() => Bind();
 
@@ -19,7 +19,7 @@ namespace Confrontation
 					Id = capital.RelatedCell.RelatedRegion!.OwnerPlayerId,
 					Capital = capital,
 				};
-				_playersList.Players.Add(player);
+				_gameplayLoop.Players.Add(player);
 			}
 		}
 	}

@@ -15,10 +15,9 @@ namespace Confrontation
 		{
 			Container.BindInstance(_orderLineRenderer).AsSingle();
 
+			Container.Bind<GameplayLoop>().AsSingle();
 			Container.Bind<IField>().To<Field>().AsSingle();
 
-			Container.Bind<PlayersList>().AsSingle();
-			
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();

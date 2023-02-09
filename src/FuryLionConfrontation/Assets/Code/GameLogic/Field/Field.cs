@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Zenject;
 
 namespace Confrontation
@@ -13,9 +14,14 @@ namespace Confrontation
 			Regions = new CoordinatedMatrix<Region>(levelSelector.SelectedLevel.Sizes);
 		}
 
-		public CoordinatedMatrix<Cell>     Cells     { get; }
+		public CoordinatedMatrix<Cell> Cells { get; }
+
 		public CoordinatedMatrix<Building> Buildings { get; }
+
 		public CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }
+
 		public CoordinatedMatrix<Region> Regions { get; }
+
+		public List<Player> Players { get; } = new();
 	}
 }

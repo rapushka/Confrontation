@@ -10,11 +10,14 @@ namespace Confrontation
 
 		public Capital Capital;
 
+		public event Action Lost;
+		
 		public Cell ClickedCell { get; set; }
 
 		public void Loose()
 		{
 			Debug.Log($"Player {Id} is lost");
+			Lost?.Invoke();
 		}
 	}
 }
