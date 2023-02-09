@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
@@ -10,7 +9,7 @@ namespace Confrontation.Editor.Tests
 			@this.Bind<IResourcesService>().FromInstance(Create.ResourcesService()).AsSingle();
 			@this.Bind<IAssetsService>().To<AssetsService>().AsSingle();
 			@this.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
-			@this.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefab(Resources.Load<Cell>("Prefabs/Cell"));
+			@this.BindFactory<Cell, Cell.Factory>().FromResource(Constants.ResourcePath.Cell);
 		}
 
 		public static void BindField(this DiContainer @this)

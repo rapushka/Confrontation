@@ -6,16 +6,30 @@ namespace Confrontation
 	{
 		public const float HexagonWidth = 1f;
 		public const float HorizontalOffsetForOddRows = HexagonWidth / 2;
+		public const float HexagonHeight = 0.2f;
 
 		public static class SceneName
 		{
 			public const string BootstrapScene = "BootstrapScene";
 			public const string GameplayScene = "GameplayScene";
+			public const string MainMenuScene = "MainMenuScene";
 			public const string LevelEditorScene = "LevelEditorScene";
 		}
 
 		public const int NeutralRegion = 0;
-		public const float Epsilon = 0.001f;
-		public static readonly Vector3 VerticalOffsetAboveCell = Vector3.up * 0.2f;
+
+		public static readonly Vector3 VerticalOffsetAboveCell = Vector3.up * HexagonHeight;
+
+		public static class ResourcePath
+		{
+			public const string Cell = "Prefabs/Cell";
+
+			public const string GoldenMine = "Prefabs/Buildings/Golden Mine";
+			public const string Barracks = "Prefabs/Buildings/Barracks";
+			public const string Village = "Prefabs/Buildings/Village";
+			public const string Capital = "Prefabs/Buildings/Capital";
+
+			public const string ResourcesService = "ScriptableObjects/Resources";
+		}
 	}
 }

@@ -49,27 +49,27 @@ namespace Confrontation
 				{
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Golden Mine"),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.GoldenMine),
 						Coordinates = new Coordinates(0, 1),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Barracks"),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Barracks),
 						Coordinates = new Coordinates(0, 2),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Barracks"),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Barracks),
 						Coordinates = new Coordinates(4, 3),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Village),
 						Coordinates = new Coordinates(1, 1),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Village"),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Village),
 						Coordinates = new Coordinates(3, 3),
 					},
 				},

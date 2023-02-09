@@ -30,12 +30,12 @@ namespace Confrontation.Editor.Tests
 				{
 					new()
 					{
-						Prefab = Resources.Load<Building>("Prefabs/Buildings/Golden Mine"),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.GoldenMine),
 						Coordinates = new Coordinates(0, 1),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Village>("Prefabs/Buildings/Village"),
+						Prefab = Resources.Load<Village>(Constants.ResourcePath.Village),
 						Coordinates = new Coordinates(1, 1),
 					},
 				},

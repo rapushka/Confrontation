@@ -13,10 +13,10 @@ namespace Confrontation
 		private readonly List<(string Name, string Path)> _buildings
 			= new()
 			{
-				(nameof(Village), "Prefabs/Buildings/Village"),
-				(nameof(GoldenMine), "Prefabs/Buildings/Golden Mine"),
-				(nameof(Barracks), "Prefabs/Buildings/Barracks"),
-				(nameof(Capital), "Prefabs/Buildings/Capital"),
+				(nameof(Village), Constants.ResourcePath.Village),
+				(nameof(GoldenMine), Constants.ResourcePath.GoldenMine),
+				(nameof(Barracks), Constants.ResourcePath.Barracks),
+				(nameof(Capital), Constants.ResourcePath.Capital),
 			};
 
 		private string[] BuildingsNames => _buildings.Select((t) => t.Name).ToArray();
@@ -32,8 +32,8 @@ namespace Confrontation
 				var selectionIndex = property.FindPropertyRelative("_selectionIndex");
 
 				selectionIndex.intValue = EditorGUI.Popup(position, selectionIndex.intValue, BuildingsNames);
-
 				prefabProperty.objectReferenceValue = Resources.Load(_buildings[selectionIndex.intValue].Path);
+
 
 				position.y += EditorGUIUtility.singleLineHeight;
 

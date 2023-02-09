@@ -34,7 +34,7 @@ namespace Confrontation.Editor
 
 		public override void InstallBindings()
 		{
-			var resourcesService = Resources.Load<ResourcesService>("ScriptableObjects/Resources");
+			var resourcesService = Resources.Load<ResourcesService>(Constants.ResourcePath.ResourcesService);
 
 			Container.Bind<IResourcesService>().FromInstance(resourcesService).AsSingle();
 			Container.Bind<FieldGenerator>().AsSingle();
