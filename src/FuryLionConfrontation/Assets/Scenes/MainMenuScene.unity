@@ -459,7 +459,8 @@ MonoBehaviour:
   _levelButtonPrefab: {fileID: 1539250484, guid: b138297eec1fc37c7adf952a1603be30, type: 3}
   _levels:
   - {fileID: 11400000, guid: c632137e80d092fcda1536fb52f05900, type: 2}
-  _levelsGridRoot: {fileID: 0}
+  - {fileID: 11400000, guid: 3e4d1105597c1d2ae8bd0300909f7954, type: 2}
+  _levelsGridRoot: {fileID: 2073308227}
 --- !u!1 &2056793536
 GameObject:
   m_ObjectHideFlags: 0
