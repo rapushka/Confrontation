@@ -9,6 +9,7 @@ namespace Confrontation
 		[SerializeField] private UnitsSquad _unitPrefab;
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
+		[SerializeField] private BackToMenuButton _backToMenuButton;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
@@ -17,6 +18,9 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 			Container.Bind<IField>().To<Field>().AsSingle();
+
+			Container.Bind<ToMainMenu>().AsSingle();
+			Container.BindInstance(_backToMenuButton).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
