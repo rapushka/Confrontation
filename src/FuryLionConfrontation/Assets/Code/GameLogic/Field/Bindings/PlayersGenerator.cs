@@ -14,12 +14,9 @@ namespace Confrontation
 		{
 			foreach (var capital in _field.Buildings.OfType<Capital>())
 			{
-				var player = new Player
-				{
-					Id = capital.RelatedCell.RelatedRegion!.OwnerPlayerId,
-					Capital = capital,
-				};
-				_gameplayLoop.Players.Add(player);
+				var id = capital.RelatedCell.RelatedRegion!.OwnerPlayerId;
+				var player = new Player(id, capital);
+				_gameplayLoop.AddPlayer(player);
 			}
 		}
 	}

@@ -1,23 +1,28 @@
 using System;
-using UnityEngine;
 
 namespace Confrontation
 {
 	[Serializable]
 	public class Player
 	{
-		[field: SerializeField] public int Id { get; set; }
+		public Player(int id) => Id = id;
 
-		public Capital Capital;
-
-		public event Action Lost;
-		
-		public Cell ClickedCell { get; set; }
-
-		public void Loose()
+		public Player(int id, Capital capital)
 		{
-			Debug.Log($"Player {Id} is lost");
-			Lost?.Invoke();
+			Capital = capital;
+			Id = id;
 		}
+
+		public int Id { get; }
+
+		public Capital Capital { get; }
+
+		public Cell ClickedCell { get; set; }
+		
+		public bool IsLost { get; set; }
+
+		public override bool Equals(object obj) => obj is Player player && GetHashCode() == player.GetHashCode();
+
+		public override int GetHashCode() => Id;
 	}
 }

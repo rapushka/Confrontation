@@ -71,7 +71,7 @@ namespace Confrontation
 
 			if (buildingsByPlayer.Length == 0)
 			{
-				_gameplayLoop.Players.Single((p) => p.Id == oldOwnerId).Loose();
+				_gameplayLoop.PlayerLoose(oldOwnerId);
 			}
 		}
 

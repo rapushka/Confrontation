@@ -33,15 +33,11 @@ namespace Confrontation.Editor
 
 			rect.x += 50;
 			rect.width = 50;
-
-			var newLength = EditorGUI.IntField(rect, _state.Players.Count);
-			_state.Players.Resize(newLength);
 		}
 
 		private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
 			var player = _state.Players[index];
-			player.Id = index + 1;
 			rect.height = EditorGUIUtility.singleLineHeight;
 
 			EditorGUI.LabelField(rect, "Player");
@@ -51,8 +47,6 @@ namespace Confrontation.Editor
 
 			rect.x += 50;
 			rect.width = 150;
-
-			player.Capital = player.Capital.AsObjectField(rect);
 		}
 
 		[Serializable]
