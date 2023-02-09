@@ -10,8 +10,10 @@ namespace Confrontation
 
 		public Player Player { get; private set; }
 
-		public void Initialize() => Player = new Player(id: _playerId);
-
 		public ILevel SelectedLevel { get; set; }
+
+		public GameResult GameResult { get; set; } = GameResult.None;
+
+		public void Initialize() => Player = new Player(id: _playerId);
 	}
 }

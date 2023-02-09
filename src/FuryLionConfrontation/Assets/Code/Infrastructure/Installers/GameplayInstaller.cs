@@ -43,6 +43,7 @@ namespace Confrontation
 		{
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingWindow, BuildingWindow.Factory>();
+			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);
 

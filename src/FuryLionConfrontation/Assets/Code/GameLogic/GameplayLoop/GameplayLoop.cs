@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,6 +7,7 @@ namespace Confrontation
 	public class GameplayLoop
 	{
 		[Inject] private readonly User _user;
+		[Inject] private readonly GameplayUiMediator _uiMediator;
 
 		private readonly HashSet<Player> _activePlayers = new();
 
@@ -23,6 +23,10 @@ namespace Confrontation
 			}
 		}
 
-		private void GameEnd(Player winner) => Debug.Log(winner.Equals(_user.Player) ? "Victory" : "You Lose");
+		private void GameEnd(Player winner)
+		{
+			_user.GameResult = winner.Equals(_user.Player) ? GameResult.Victory : GameResult.Loose;
+			_uiMediator.OpenWindow<GameResultsWindow>();
+		}
 	}
 }
