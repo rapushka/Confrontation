@@ -26,7 +26,7 @@ namespace Confrontation.Editor.PlayModeTests
 
 		private IEnumerator CommonSetUp()
 		{
-			yield return LoadScene(Constants.SceneName.GameplayScene);
+			yield return LoadScene(Constants.SceneName.MainMenuScene);
 			yield return _waitForZenjectInitialization;
 
 			yield return PassMainMenu();
@@ -38,7 +38,13 @@ namespace Confrontation.Editor.PlayModeTests
 		private object PassMainMenu()
 		{
 			var container = GetActualContainer(@for: Constants.SceneName.MainMenuScene);
-			container.Resolve<ToGameplay>().Transfer();
+
+			var user = container.Resolve<User>();
+			user.SelectedLevel = Resources.Load<LevelScriptableObject>(Constants.ResourcePath.Level2);
+
+			var toGameplay = container.Resolve<ToGameplay>();
+			toGameplay.Transfer();
+			
 			return _waitForZenjectInitialization;
 		}
 
