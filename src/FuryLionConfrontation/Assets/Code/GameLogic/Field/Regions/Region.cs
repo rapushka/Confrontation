@@ -21,10 +21,11 @@ namespace Confrontation
 			get => _ownerPlayerId;
 			set
 			{
-				CheckIfIsLostCapital();
+				var oldOwner = _ownerPlayerId;
 				_ownerPlayerId = value;
 				UpdateCellsColor();
 				UpdateOwnerOfUnitsInRegion();
+				CheckIfIsLostCapital(oldOwner);
 			}
 		}
 
@@ -57,18 +58,24 @@ namespace Confrontation
 			}
 		}
 
-		private void CheckIfIsLostCapital()
+		private void CheckIfIsLostCapital(int oldOwnerId)
 		{
+			if (ItOwnFromNeutral(oldOwnerId))
+			{
+				return;
+			}
+			
 			var buildingsByPlayer = _field.Buildings.OfType<Capital>()
-			                              .Where((c) => c.OwnerPlayerId == OwnerPlayerId)
+			                              .Where((c) => c.OwnerPlayerId == oldOwnerId)
 			                              .ToArray();
 
-			if (buildingsByPlayer.Length == 1)
+			if (buildingsByPlayer.Length == 0)
 			{
-				var id = buildingsByPlayer.Single().OwnerPlayerId;
-				_playersList.Players.Single((p) => p.Id == id).Loose();
+				_playersList.Players.Single((p) => p.Id == oldOwnerId).Loose();
 			}
 		}
+
+		private static bool ItOwnFromNeutral(int oldOwnerId) => oldOwnerId == 0;
 
 		[Serializable]
 		public class Data
