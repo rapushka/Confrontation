@@ -8,5 +8,7 @@ namespace Confrontation.Editor.Tests
 
 		public static ResourcesService ResourcesService()
 			=> Resources.Load<ResourcesService>(Constants.ResourcePath.ResourcesService);
+
+		public static User User() => ScriptableObject.CreateInstance<User>();
 	}
 }

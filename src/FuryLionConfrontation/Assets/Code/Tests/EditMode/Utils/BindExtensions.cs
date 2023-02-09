@@ -9,7 +9,7 @@ namespace Confrontation.Editor.Tests
 			@this.Bind<IResourcesService>().FromInstance(Create.ResourcesService()).AsSingle();
 			@this.Bind<IAssetsService>().To<AssetsService>().AsSingle();
 			@this.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
-			@this.BindFactory<Cell, Cell.Factory>().FromResource(Constants.ResourcePath.Cell);
+			@this.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefabResource(Constants.ResourcePath.Cell);
 		}
 
 		public static void BindField(this DiContainer @this)
@@ -20,6 +20,8 @@ namespace Confrontation.Editor.Tests
 
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
+			@this.Bind<User>().FromInstance(Setup.User()).AsSingle();
+			
 			@this.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
