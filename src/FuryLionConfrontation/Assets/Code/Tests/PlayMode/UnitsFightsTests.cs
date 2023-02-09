@@ -29,13 +29,17 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return LoadScene(Constants.SceneName.GameplayScene);
 			yield return _waitForZenjectInitialization;
 
-			_container = GetActualContainer();
-			_buildings = Resolve.Buildings(_container);
+			var container = GetActualContainer(@for: Constants.SceneName.MainMenuScene);
+			container.Resolve<ToGameplay>().Transfer();
+			yield return _waitForZenjectInitialization;
+
+			_container = GetActualContainer(@for: Constants.SceneName.GameplayScene);
+			_buildings = _container.ResolveBuildings();
 		}
 
-		private static DiContainer GetActualContainer()
+		private static DiContainer GetActualContainer(string @for)
 			=> ProjectContext.Instance.Container.Resolve<SceneContextRegistry>()
-			                 .TryGetSceneContextForScene(Constants.SceneName.GameplayScene)
+			                 .TryGetSceneContextForScene(@for)
 			                 .Container;
 
 		[UnityTest]
@@ -165,7 +169,7 @@ namespace Confrontation.Editor.PlayModeTests
 
 			friendlyUnits.MoveTo(otherCell, quantityToSend);
 			yield return friendlyUnits.WaitForTargetReach();
-			
+
 			// Assert.
 			cellWithVillage.LocatedUnits!.QuantityOfUnits.Should().Be(1);
 			otherCell.LocatedUnits!.QuantityOfUnits.Should().Be(1);
@@ -197,7 +201,7 @@ namespace Confrontation.Editor.PlayModeTests
 			var owner = cellWithFriendlyVillage.OwnerPlayerId;
 			owner.Should().Be(UserPlayerId);
 		}
-		
+
 		private static bool BelongToPlayer(Building building) => building.RelatedCell.OwnerPlayerId == UserPlayerId;
 
 		private static bool BelongToEnemy(Building building) => building.RelatedCell.OwnerPlayerId == EnemyPlayerId;
