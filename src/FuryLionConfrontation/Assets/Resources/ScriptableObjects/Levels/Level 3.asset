@@ -44,7 +44,7 @@ MonoBehaviour:
       _column: 3
     - _row: 3
       _column: 4
-  - <OwnerPlayerId>k__BackingField: 0
+  - <OwnerPlayerId>k__BackingField: 3
     <CellsCoordinates>k__BackingField:
     - _row: 3
       _column: 0
@@ -97,11 +97,11 @@ MonoBehaviour:
       _row: 4
       _column: 3
     _selectionIndex: 2
-  - _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+  - _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
     _coordinates:
       _row: 3
       _column: 0
-    _selectionIndex: 0
+    _selectionIndex: 3
   - _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
     _coordinates:
       _row: 1
