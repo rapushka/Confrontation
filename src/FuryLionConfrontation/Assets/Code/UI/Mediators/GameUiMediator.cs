@@ -12,7 +12,7 @@ namespace Confrontation
 
 		[CanBeNull] private RectTransform _canvas;
 
-		public RectTransform Canvas => _canvas ??= _assets.Instantiate(_canvasPrefab);
+		public RectTransform Canvas => _canvas == true ? _canvas : _canvas = _assets.Instantiate(_canvasPrefab);
 
 		public void ShowLoadingCurtain()                 => _loadingCurtain.Show();
 		public void ShowImmediatelyLoadingCurtain()      => _loadingCurtain.ShowImmediately();

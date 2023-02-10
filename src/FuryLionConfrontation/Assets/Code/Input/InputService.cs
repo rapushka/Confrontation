@@ -30,19 +30,7 @@ namespace Confrontation
 
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
-		private Camera Camera
-		{
-			get
-			{
-				if (_camera is null
-				    || _camera == false)
-				{
-					_camera = Camera.main;
-				}
-
-				return _camera;
-			}
-		}
+		private Camera Camera => _camera == true ? _camera : _camera = Camera.main;
 
 		private Vector2 CursorPosition => _cursorPosition.ReadValue<Vector2>();
 
