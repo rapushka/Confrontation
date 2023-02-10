@@ -20,6 +20,8 @@ namespace Confrontation.Editor.Tests
 
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
+			@this.Bind<GameplayUiMediator>().FromSubstitute().AsSingle();
+			
 			@this.Bind<User>().FromInstance(Setup.User()).AsSingle();
 			
 			@this.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
