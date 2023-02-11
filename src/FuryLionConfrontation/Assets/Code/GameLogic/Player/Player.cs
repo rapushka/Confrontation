@@ -17,8 +17,6 @@ namespace Confrontation
 
 		public Capital Capital { get; }
 
-		public Cell ClickedCell { get; set; }
-
 		public override bool Equals(object obj) => obj is Player player && Equals(player);
 
 		public bool Equals(Player player) => GetHashCode() == player.GetHashCode();

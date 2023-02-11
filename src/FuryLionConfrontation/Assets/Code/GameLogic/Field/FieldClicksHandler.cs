@@ -29,7 +29,7 @@ namespace Confrontation
 
 		private void OnCellClick(Cell cell)
 		{
-			_user.Player.ClickedCell = cell;
+			_inputService.ClickedCell = cell;
 			if (cell.IsBelongTo(_user.Player))
 			{
 				ShowRelevantMenu(cell);

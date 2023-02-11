@@ -28,6 +28,8 @@ namespace Confrontation
 
 		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
+		public Cell ClickedCell { get; set; }
+
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
 		private Camera Camera => _camera == true ? _camera : _camera = Camera.main;

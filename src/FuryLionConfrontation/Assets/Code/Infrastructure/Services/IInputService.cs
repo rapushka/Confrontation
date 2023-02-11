@@ -14,5 +14,7 @@ namespace Confrontation
 		event Action DragEnd;
 
 		Vector3 CursorWorldPosition { get; }
+
+		Cell ClickedCell { get; set; }
 	}
 }
