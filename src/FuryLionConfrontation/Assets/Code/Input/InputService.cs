@@ -9,8 +9,6 @@ namespace Confrontation
 {
 	public class InputService : MonoBehaviour, IInputService
 	{
-		private readonly DragAndDrop _dragAndDrop = new();
-
 		private Camera _camera;
 		private InputActions _actions;
 		private InputAction _cursorPosition;
@@ -20,11 +18,11 @@ namespace Confrontation
 
 		public event Action<ClickReceiver> Clicked;
 
-		public event Action<ClickReceiver, ClickReceiver> Dragged;
-
-		public event Action<Vector3> DragStart;
+		public event Action<ClickReceiver> DragStart;
 
 		public event Action DragEnd;
+
+		public event Action<ClickReceiver> DragDropped;
 
 		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
@@ -55,8 +53,6 @@ namespace Confrontation
 			_actionPress.performed += OnPress;
 			_actionRelease.performed += OnRelease;
 			_actionTap.performed += OnTap;
-
-			_dragAndDrop.Dragged += DraggedInvoke;
 		}
 
 		private void OnDestroy()
@@ -64,27 +60,23 @@ namespace Confrontation
 			_actionPress.performed -= OnPress;
 			_actionRelease.performed -= OnRelease;
 			_actionTap.performed -= OnTap;
-
-			_dragAndDrop.Dragged -= DraggedInvoke;
 		}
 
-		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(StartDragging);
-
-		private void StartDragging(ClickReceiver receiver)
-		{
-			DragStart?.Invoke(receiver.transform.position);
-			_dragAndDrop.StartDragging(receiver);
-		}
+		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(onHit: StartDragging);
 
 		private void OnRelease(InputAction.CallbackContext context)
 		{
 			DragEnd?.Invoke();
-			RaycastToCursor(_dragAndDrop.StopDragging);
+			RaycastToCursor(onHit: DropDragging);
 		}
 
-		private void OnTap(InputAction.CallbackContext context) => RaycastToCursor((r) => Clicked?.Invoke(r));
+		private void StartDragging(ClickReceiver receiver) => DragStart?.Invoke(receiver);
 
-		private void DraggedInvoke(ClickReceiver startAt, ClickReceiver endAt) => Dragged?.Invoke(startAt, endAt);
+		private void DropDragging(ClickReceiver receiver) => DragDropped?.Invoke(receiver);
+
+		private void OnTap(InputAction.CallbackContext context) => RaycastToCursor(onHit: ClickedInvoke);
+
+		private void ClickedInvoke(ClickReceiver receiver) => Clicked?.Invoke(receiver);
 
 		private void RaycastToCursor(Action<ClickReceiver> onHit)
 		{

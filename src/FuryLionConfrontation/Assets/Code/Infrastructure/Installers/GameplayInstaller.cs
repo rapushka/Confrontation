@@ -28,7 +28,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
-			Container.BindInterfacesAndSelfTo<FieldClicksHandler>().AsSingle();
+			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<OrderDirectionLineRenderer>().AsSingle();
 

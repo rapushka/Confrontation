@@ -8,8 +8,14 @@ namespace Confrontation
 	{
 		[Inject] private readonly LineRenderer _lineRenderer;
 		[Inject] private readonly IInputService _input;
+		[Inject] private readonly User _user;
 
-		private bool _dragging;
+		private const float MinDistanceForLine = 1f;
+
+		private bool _isDragging;
+		private Vector3 _startReceiver;
+
+		private Vector3 CursorPosition => _input.CursorWorldPosition;
 
 		public void Initialize()
 		{
@@ -25,23 +31,45 @@ namespace Confrontation
 
 		public void Tick()
 		{
-			if (_dragging)
+			if (Vector3.Distance(_startReceiver, CursorPosition) < MinDistanceForLine)
 			{
-				_lineRenderer.SetLastPosition(_input.CursorWorldPosition);
+				_lineRenderer.RemoveLastPosition();
+				return;
 			}
-		}
 
-		private void OnDragStart(Vector3 position)
-		{
-			_lineRenderer.AddPosition(position);
-			_lineRenderer.AddPosition(_input.CursorWorldPosition);
-			_dragging = true;
+			if (_isDragging == false)
+			{
+				return;
+			}
+
+			if (_lineRenderer.positionCount > 1)
+			{
+				_lineRenderer.SetLastPosition(CursorPosition);
+			}
+			else
+			{
+				_lineRenderer.AddPosition(CursorPosition);
+			}
 		}
 
 		private void OnDragEnd()
 		{
-			_dragging = false;
+			_isDragging = false;
 			_lineRenderer.ClearPositions();
+		}
+
+		private void OnDragStart(ClickReceiver clickReceiver)
+		{
+			if (clickReceiver.Cell.HasUnits == false
+			    && clickReceiver.Cell.RelatedRegion!.OwnerPlayerId == _user.Player.Id)
+			{
+				return;
+			}
+
+			_startReceiver = clickReceiver.transform.position;
+			_lineRenderer.AddPosition(_startReceiver);
+			_lineRenderer.AddPosition(CursorPosition);
+			_isDragging = true;
 		}
 	}
 }

@@ -7,14 +7,14 @@ namespace Confrontation
 	{
 		event Action<ClickReceiver> Clicked;
 
-		event Action<ClickReceiver, ClickReceiver> Dragged;
-
-		event Action<Vector3> DragStart;
+		event Action<ClickReceiver> DragStart;
 
 		event Action DragEnd;
 
 		Vector3 CursorWorldPosition { get; }
 
 		Cell ClickedCell { get; set; }
+
+		event Action<ClickReceiver> DragDropped;
 	}
 }
