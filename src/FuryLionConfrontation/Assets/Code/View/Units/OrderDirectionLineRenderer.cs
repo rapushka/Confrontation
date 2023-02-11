@@ -10,8 +10,6 @@ namespace Confrontation
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
 
-		private const float MinDistanceForLine = 1f;
-
 		private bool _isDragging;
 		private Vector3 _startReceiver;
 
@@ -31,25 +29,12 @@ namespace Confrontation
 
 		public void Tick()
 		{
-			if (Vector3.Distance(_startReceiver, CursorPosition) < MinDistanceForLine)
-			{
-				_lineRenderer.RemoveLastPosition();
-				return;
-			}
-
 			if (_isDragging == false)
 			{
 				return;
 			}
 
-			if (_lineRenderer.positionCount > 1)
-			{
-				_lineRenderer.SetLastPosition(CursorPosition);
-			}
-			else
-			{
-				_lineRenderer.AddPosition(CursorPosition);
-			}
+			_lineRenderer.SetLastPosition(CursorPosition);
 		}
 
 		private void OnDragEnd()
@@ -61,7 +46,7 @@ namespace Confrontation
 		private void OnDragStart(ClickReceiver clickReceiver)
 		{
 			if (clickReceiver.Cell.HasUnits == false
-			    || clickReceiver.Cell.RelatedRegion!.OwnerPlayerId != _user.Player.Id)
+			    || IsBelongToUser(clickReceiver.Cell) == false)
 			{
 				return;
 			}
@@ -71,5 +56,7 @@ namespace Confrontation
 			_lineRenderer.AddPosition(CursorPosition);
 			_isDragging = true;
 		}
+
+		private bool IsBelongToUser(Cell cell) => cell.RelatedRegion!.OwnerPlayerId == _user.Player.Id;
 	}
 }
