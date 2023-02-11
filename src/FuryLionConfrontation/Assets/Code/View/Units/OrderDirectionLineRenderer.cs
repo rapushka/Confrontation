@@ -61,7 +61,7 @@ namespace Confrontation
 		private void OnDragStart(ClickReceiver clickReceiver)
 		{
 			if (clickReceiver.Cell.HasUnits == false
-			    && clickReceiver.Cell.RelatedRegion!.OwnerPlayerId == _user.Player.Id)
+			    || clickReceiver.Cell.RelatedRegion!.OwnerPlayerId != _user.Player.Id)
 			{
 				return;
 			}
