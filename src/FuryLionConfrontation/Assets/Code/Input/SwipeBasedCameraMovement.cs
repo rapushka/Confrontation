@@ -41,6 +41,7 @@ namespace Confrontation
 			while (true)
 			{
 				var direction = _lastCursorPosition - _inputService.CursorPosition;
+				_lastCursorPosition = _inputService.CursorPosition;
 				var nextPosition = (Vector2)_cameraRoot.position + direction;
 				nextPosition *= _time.DeltaTime * _cameraSpeed;
 				_cameraRoot.Translate(nextPosition.AsTopDown());
