@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public class RoutinesRunnerService : MonoBehaviour, IRoutinesRunnerService
+	public class CoroutinesRunnerService : MonoBehaviour, IRoutinesRunnerService
 	{
 		private readonly Dictionary<string, Coroutine> _coroutines = new();
+
+		private void Awake() => DontDestroyOnLoad(gameObject);
 
 		public Coroutine StartRoutine(string methodName, IEnumerator coroutine)
 		{

@@ -29,6 +29,7 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();
+			Container.BindInterfacesAndSelfTo<SwipeBasedCameraMovement>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<OrderDirectionLineRenderer>().AsSingle();
 

@@ -36,6 +36,7 @@ namespace Confrontation
 			Container.BindInstance(_canvasPrefab).AsSingle();
 			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
 			Container.Bind<IInputService>().FromComponentInNewPrefab(_inputService).AsSingle();
+			Container.BindInterfacesTo<CoroutinesRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
 		}
 	}
 }
