@@ -9,7 +9,7 @@ namespace Confrontation
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
-		
+
 		[SerializeField] private Transform _cameraRoot;
 		[SerializeField] private float _cameraSpeed = 0.01f;
 
@@ -34,19 +34,19 @@ namespace Confrontation
 			_routinesRunner.StartRoutine(Swipe);
 		}
 
-		private void OnSwipeEnd() => _swiping = false;
+		private void OnSwipeEnd() => _routinesRunner.StopRoutine(Swipe);
 
 		private IEnumerator Swipe()
 		{
-			_swiping = true;
-			while (_swiping)
+			while (true)
 			{
-				var different = _lastCursorPosition - _inputService.CursorPosition;
-				var nextPosition = _cameraRoot.position - different.AsTopDown();
-				nextPosition *= _time.DeltaTime * _cameraSpeed;
-				_cameraRoot.position = nextPosition;
+				var direction = _lastCursorPosition - _inputService.CursorPosition;
+				var translation = (Vector2)_cameraRoot.position - direction;
+				translation *= _time.DeltaTime * _cameraSpeed;
+				_cameraRoot.Translate(translation.AsTopDown());
 				yield return null;
 			}
+			// ReSharper disable once IteratorNeverReturns - Coroutine will stop external
 		}
 	}
 }
