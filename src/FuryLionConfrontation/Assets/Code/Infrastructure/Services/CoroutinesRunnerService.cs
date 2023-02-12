@@ -6,36 +6,41 @@ namespace Confrontation
 {
 	public class CoroutinesRunnerService : MonoBehaviour, IRoutinesRunnerService
 	{
-		private readonly Dictionary<string, Coroutine> _coroutines = new();
+		private readonly Dictionary<string, IEnumerator> _coroutines = new();
 
 		private void Awake() => DontDestroyOnLoad(gameObject);
 
-		public Coroutine StartRoutine(string methodName, IEnumerator coroutine)
+		public Coroutine StartRoutine(string methodName, IEnumerator routine)
 		{
-			var startedCoroutine = StartRoutine(coroutine);
-			_coroutines.Add(methodName, startedCoroutine);
-			return startedCoroutine;
+			_coroutines.Add(methodName, routine);
+			return StartCoroutine(RunAndRemove(methodName, routine));
 		}
-
-		public Coroutine StartRoutine(IEnumerator coroutine) => StartCoroutine(coroutine);
 
 		public void StopRoutine(string methodName)
 		{
-			var coroutine = _coroutines[methodName];
-			_coroutines.Remove(methodName);
-			StopRoutine(coroutine);
-		}
+			var routine = _coroutines.GetValueOrDefault(methodName);
+			if (routine is not null)
+			{
+				StopCoroutine(routine);
+			}
 
-		public void StopRoutine(Coroutine coroutine) => StopCoroutine(coroutine);
+			_coroutines.Remove(methodName);
+		}
 
 		public void StopAllRoutines()
 		{
 			foreach (var pair in _coroutines)
 			{
-				StopRoutine(pair.Value);
+				StopCoroutine(pair.Value);
 			}
 
 			_coroutines.Clear();
+		}
+
+		private IEnumerator RunAndRemove(string methodName, IEnumerator routine)
+		{
+			yield return StartCoroutine(routine);
+			_coroutines.Remove(methodName);
 		}
 	}
 }

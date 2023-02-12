@@ -12,29 +12,32 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_inputService.SwipeStart += SwipeStart;
-			_inputService.SwipeEnd += OnDragDropped;
+			_inputService.SwipeStart += OnSwipeStart;
+			_inputService.SwipeEnd += OnSwipeEnd;
 		}
 
 		public void Dispose()
 		{
-			_inputService.SwipeStart -= SwipeStart;
-			_inputService.SwipeEnd -= OnDragDropped;
+			_inputService.SwipeStart -= OnSwipeStart;
+			_inputService.SwipeEnd -= OnSwipeEnd;
 		}
 
-		private void SwipeStart(Vector3 position)
+		private void OnSwipeStart(Vector3 position)
 		{
 			_routinesRunner.StartRoutine(nameof(Swipe), Swipe());
 		}
 
-		private void OnDragDropped() { }
+		private void OnSwipeEnd()
+		{
+			_routinesRunner.StopRoutine(nameof(Swipe));
+		}
 
 		private IEnumerator Swipe()
 		{
-			for (var i = 0; i < 10; i++)
+			for (var i = 0; i < 3; i++)
 			{
 				Debug.Log($"routine working {i}");
-				yield return null;
+				yield return new WaitForSeconds(1f);
 			}
 		}
 	}

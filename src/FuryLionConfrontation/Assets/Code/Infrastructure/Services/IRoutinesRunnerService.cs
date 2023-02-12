@@ -5,10 +5,10 @@ namespace Confrontation
 {
 	public interface IRoutinesRunnerService
 	{
-		Coroutine StartRoutine(string methodName, IEnumerator coroutine);
-		Coroutine StartRoutine(IEnumerator coroutine);
-		void      StopRoutine(string methodName);
-		void      StopRoutine(Coroutine coroutine);
-		void      StopAllRoutines();
+		Coroutine StartRoutine(string methodName, IEnumerator routine);
+
+		void StopRoutine(string methodName);
+
+		void StopAllRoutines();
 	}
 }
