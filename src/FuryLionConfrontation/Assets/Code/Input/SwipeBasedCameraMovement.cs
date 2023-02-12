@@ -41,9 +41,9 @@ namespace Confrontation
 			while (true)
 			{
 				var direction = _lastCursorPosition - _inputService.CursorPosition;
-				var translation = (Vector2)_cameraRoot.position - direction;
-				translation *= _time.DeltaTime * _cameraSpeed;
-				_cameraRoot.Translate(translation.AsTopDown());
+				var nextPosition = (Vector2)_cameraRoot.position + direction;
+				nextPosition *= _time.DeltaTime * _cameraSpeed;
+				_cameraRoot.Translate(nextPosition.AsTopDown());
 				yield return null;
 			}
 			// ReSharper disable once IteratorNeverReturns - Coroutine will stop external
