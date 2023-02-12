@@ -15,6 +15,8 @@ namespace Confrontation
 
 		event Action SwipeEnd;
 
+		Vector2 CursorPosition { get; }
+
 		Vector3 CursorWorldPosition { get; }
 
 		Cell ClickedCell { get; set; }

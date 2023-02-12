@@ -25,13 +25,13 @@ namespace Confrontation
 
 		public Cell ClickedCell { get; set; }
 
+		public Vector2 CursorPosition => _cursorPosition.ReadValue<Vector2>();
+
 		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
 		private Camera Camera => _camera == true ? _camera : _camera = Camera.main;
-
-		private Vector2 CursorPosition => _cursorPosition.ReadValue<Vector2>();
 
 		private void Awake()
 		{
