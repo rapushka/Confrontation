@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -7,18 +6,14 @@ namespace Confrontation
 	public class SwipeMovement : MonoBehaviour
 	{
 		[Inject] private readonly IInputService _inputService;
-		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
 		[Inject] private readonly OrderDirectionLineDrawer _orderDrawer;
-
 
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
 
-		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
-
 		private Vector2 _lastCursorPosition;
-		private bool _swiping;
+		private bool _isSwiping;
 
 		private Vector3 NextPosition => (SwipeDelta * ScaledSpeed).AsTopDown();
 
@@ -38,25 +33,25 @@ namespace Confrontation
 			_inputService.SwipeEnd -= OnSwipeEnd;
 		}
 
+		private void FixedUpdate()
+		{
+			if (_isSwiping == false
+			    || _orderDrawer.IsGivingOrder)
+			{
+				return;
+			}
+
+			_root.Translate(NextPosition);
+			UpdateCursorPosition();
+		}
+
 		private void OnSwipeStart(Vector2 position)
 		{
 			_lastCursorPosition = position;
-			_routinesRunner.StartRoutine(Swipe);
+			_isSwiping = true;
 		}
 
-		private void OnSwipeEnd() => _routinesRunner.StopRoutine(Swipe);
-
-		private IEnumerator Swipe()
-		{
-			while (_orderDrawer.IsGivingOrder == false)
-			{
-				_root.Translate(NextPosition);
-				UpdateCursorPosition();
-
-				yield return _waitForFixedUpdate;
-			}
-			// ReSharper disable once IteratorNeverReturns - Coroutine will be stopped on swipe end
-		}
+		private void OnSwipeEnd() => _isSwiping = false;
 
 		private void UpdateCursorPosition() => _lastCursorPosition = _inputService.CursorPosition;
 	}
