@@ -33,7 +33,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
-			Container.BindInterfacesAndSelfTo<OrderDirectionLineRenderer>().AsSingle();
+			Container.BindInterfacesAndSelfTo<OrderDirectionLineDrawer>().AsSingle();
 
 			Container.Bind<BuildingSpawner>().AsSingle();
 			Container.Bind<GameplayUiMediator>().AsSingle();

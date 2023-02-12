@@ -9,6 +9,8 @@ namespace Confrontation
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
+		[Inject] private readonly OrderDirectionLineDrawer _orderDrawer;
+
 
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
@@ -46,7 +48,7 @@ namespace Confrontation
 
 		private IEnumerator Swipe()
 		{
-			while (true)
+			while (_orderDrawer.IsGivingOrder == false)
 			{
 				_root.Translate(NextPosition);
 				UpdateCursorPosition();

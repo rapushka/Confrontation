@@ -5,13 +5,15 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class OrderDirectionLineRenderer : IInitializable, IDisposable
+	public class OrderDirectionLineDrawer : IInitializable, IDisposable
 	{
 		[Inject] private readonly LineRenderer _lineRenderer;
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 
+		public bool IsGivingOrder => _lineRenderer.IsDrawing();
+		
 		private Vector3 CursorPosition => _input.CursorWorldPosition;
 
 		public void Initialize()
