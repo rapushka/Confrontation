@@ -23,9 +23,9 @@ namespace Confrontation
 
 		public event Action SwipeEnd;
 
-		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
-
 		public Cell ClickedCell { get; set; }
+
+		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
 		private Ray RayFromCursorPosition => Camera.ScreenPointToRay(CursorPosition);
 
@@ -61,7 +61,11 @@ namespace Confrontation
 			_actionTap.performed -= OnTap;
 		}
 
-		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(onHit: StartDragging);
+		private void OnPress(InputAction.CallbackContext context)
+		{
+			SwipeStart?.Invoke(CursorPosition);
+			RaycastToCursor(onHit: StartDragging);
+		}
 
 		private void OnRelease(InputAction.CallbackContext context)
 		{
