@@ -11,12 +11,14 @@ namespace Confrontation
 		[SerializeField] private ResourcesService _resources;
 		[SerializeField] private RectTransform _canvasPrefab;
 		[SerializeField] private List<WindowBase> _windows;
-		[SerializeField] private InputService _inputService;
 
 		public override void InstallBindings()
 		{
 			BindPrefabs();
 
+			Container.BindInterfacesTo<InputService>().FromNewComponentOnNewGameObject().AsSingle();
+			Container.BindInterfacesTo<CoroutinesRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
+			
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
 			Container.BindInterfacesTo<TimeService>().AsSingle();
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
@@ -35,8 +37,6 @@ namespace Confrontation
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
 			Container.BindInstance(_canvasPrefab).AsSingle();
 			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
-			Container.Bind<IInputService>().FromComponentInNewPrefab(_inputService).AsSingle();
-			Container.BindInterfacesTo<CoroutinesRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
 		}
 	}
 }
