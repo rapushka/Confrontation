@@ -10,12 +10,13 @@ namespace Confrontation
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
-		[SerializeField] private Transform _cameraRoot;
+		[SerializeField] private SwipeBasedCameraMovement _cameraMovement;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
 			Container.BindInstance(_orderLineRenderer).AsSingle();
+			Container.BindInstance(_cameraMovement).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 			Container.Bind<IField>().To<Field>().AsSingle();
@@ -30,8 +31,6 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();
-			Container.BindInterfacesAndSelfTo<SwipeBasedCameraMovement>().AsSingle();
-			Container.BindInstance(_cameraRoot).WhenInjectedInto<SwipeBasedCameraMovement>();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 			Container.BindInterfacesAndSelfTo<OrderDirectionLineRenderer>().AsSingle();
 

@@ -1,27 +1,28 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
-	public class SwipeBasedCameraMovement : IInitializable, IDisposable
+	public class SwipeBasedCameraMovement : MonoBehaviour
 	{
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
-		[Inject] private Transform _cameraRoot;
+		
+		[SerializeField] private Transform _cameraRoot;
+		[SerializeField] private float _cameraSpeed = 0.01f;
 
-		private Vector2 _initialCursorPosition;
+		private Vector2 _lastCursorPosition;
 		private bool _swiping;
 
-		public void Initialize()
+		public void OnEnable()
 		{
 			_inputService.SwipeStart += OnSwipeStart;
 			_inputService.SwipeEnd += OnSwipeEnd;
 		}
 
-		public void Dispose()
+		public void OnDisable()
 		{
 			_inputService.SwipeStart -= OnSwipeStart;
 			_inputService.SwipeEnd -= OnSwipeEnd;
@@ -29,7 +30,7 @@ namespace Confrontation
 
 		private void OnSwipeStart(Vector2 position)
 		{
-			_initialCursorPosition = position;
+			_lastCursorPosition = position;
 			_routinesRunner.StartRoutine(Swipe);
 		}
 
@@ -40,10 +41,10 @@ namespace Confrontation
 			_swiping = true;
 			while (_swiping)
 			{
-				var different = _initialCursorPosition - _inputService.CursorPosition;
-				var translation = (Vector2)_cameraRoot.position - different;
-				translation *= _time.DeltaTime * 0.01f;
-				_cameraRoot.position = translation;
+				var different = _lastCursorPosition - _inputService.CursorPosition;
+				var nextPosition = _cameraRoot.position - different.AsTopDown();
+				nextPosition *= _time.DeltaTime * _cameraSpeed;
+				_cameraRoot.position = nextPosition;
 				yield return null;
 			}
 		}

@@ -205,6 +205,7 @@ MonoBehaviour:
   _orderLineRenderer: {fileID: 286574869}
   _cellPrefab: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
   _backToMenuButton: {fileID: 0}
+  _cameraMovement: {fileID: 0}
 --- !u!1 &286574868
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2050588171}
+  - component: {fileID: 2050588172}
   m_Layer: 0
   m_Name: Camera Root
   m_TagString: Untagged
@@ -906,3 +908,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050588172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050588170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5c4e4b9ce343c8bfafc5a4b3939b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraRoot: {fileID: 2050588171}
+  _cameraSpeed: 0.01
