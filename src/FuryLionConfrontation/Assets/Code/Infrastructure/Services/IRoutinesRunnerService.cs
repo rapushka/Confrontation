@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 
 namespace Confrontation
 {
 	public interface IRoutinesRunnerService
 	{
-		void StartRoutine(string methodName, IEnumerator routine);
+		void StartRoutine(Func<IEnumerator> func);
 
-		void StopRoutine(string methodName);
+		void StopRoutine(Func<IEnumerator> func);
 
 		void StopAllRoutines();
 	}

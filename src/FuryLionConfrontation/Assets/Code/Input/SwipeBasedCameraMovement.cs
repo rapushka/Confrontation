@@ -24,12 +24,12 @@ namespace Confrontation
 
 		private void OnSwipeStart(Vector3 position)
 		{
-			_routinesRunner.StartRoutine(nameof(Swipe), Swipe());
+			_routinesRunner.StartRoutine(Swipe);
 		}
 
 		private void OnSwipeEnd()
 		{
-			_routinesRunner.StopRoutine(nameof(Swipe));
+			_routinesRunner.StopRoutine(Swipe);
 		}
 
 		private IEnumerator Swipe()
@@ -37,7 +37,7 @@ namespace Confrontation
 			for (var i = 0; i < 3; i++)
 			{
 				Debug.Log($"routine working {i}");
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.2f);
 			}
 		}
 	}

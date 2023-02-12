@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,19 @@ namespace Confrontation
 
 		private void Awake() => DontDestroyOnLoad(gameObject);
 
-		public void StartRoutine(string methodName, IEnumerator routine)
+		public void StartRoutine(Func<IEnumerator> func)
 		{
+			var methodName = func.Method.Name;
+			var routine = func.Invoke();
+
 			_startedRoutines.Add(methodName, routine);
 			StartCoroutine(RunAndRemove(methodName, routine));
 		}
 
-		public void StopRoutine(string methodName)
+		public void StopRoutine(Func<IEnumerator> func)
 		{
+			var methodName = func.Method.Name;
+
 			if (_startedRoutines.TryGetValue(methodName, out var routine))
 			{
 				StopCoroutine(routine);
