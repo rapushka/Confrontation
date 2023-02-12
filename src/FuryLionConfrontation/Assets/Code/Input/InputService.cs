@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Confrontation
@@ -50,6 +47,9 @@ namespace Confrontation
 
 		private void Start()
 		{
+			_actionPress.started += OnPressStarted;
+			_actionPress.canceled += OnPressCanceled;
+
 			_actionPress.performed += OnPress;
 			_actionRelease.performed += OnRelease;
 			_actionTap.performed += OnTap;
@@ -57,10 +57,16 @@ namespace Confrontation
 
 		private void OnDestroy()
 		{
+			_actionPress.started -= OnPressStarted;
+
 			_actionPress.performed -= OnPress;
 			_actionRelease.performed -= OnRelease;
 			_actionTap.performed -= OnTap;
 		}
+
+		private void OnPressStarted(InputAction.CallbackContext context) { }
+
+		private void OnPressCanceled(InputAction.CallbackContext context) { }
 
 		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(onHit: StartDragging);
 
@@ -80,30 +86,11 @@ namespace Confrontation
 
 		private void RaycastToCursor(Action<ClickReceiver> onHit)
 		{
-			if (IsPointerOverUIObject() == false
-			    && IsHitCollider(out var receiver))
+			if (InputUtils.IsPointerOverUIObject() == false
+			    && RayFromCursorPosition.IsHitReceiver(out var receiver))
 			{
 				onHit.Invoke(receiver);
 			}
-		}
-
-		private bool IsHitCollider(out ClickReceiver receiver)
-		{
-			receiver = null;
-			return Physics.Raycast(RayFromCursorPosition, out var hit)
-			       && hit.collider.TryGetComponent(out receiver);
-		}
-
-		private static bool IsPointerOverUIObject()
-		{
-			var eventDataCurrentPosition = new PointerEventData(EventSystem.current)
-			{
-				position = new Vector2(Input.mousePosition.x, Input.mousePosition.y),
-			};
-			var results = new List<RaycastResult>();
-			EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-
-			return results.Any();
 		}
 	}
 }

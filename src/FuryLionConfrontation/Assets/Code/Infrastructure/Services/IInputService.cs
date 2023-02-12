@@ -11,10 +11,10 @@ namespace Confrontation
 
 		event Action DragEnd;
 
+		event Action<ClickReceiver> DragDropped;
+
 		Vector3 CursorWorldPosition { get; }
 
 		Cell ClickedCell { get; set; }
-
-		event Action<ClickReceiver> DragDropped;
 	}
 }
