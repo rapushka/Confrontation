@@ -11,7 +11,7 @@ namespace Confrontation
 
 		event Action<ClickReceiver> DragEnd;
 
-		event Action<Vector3> SwipeStart;
+		event Action<Vector2> SwipeStart;
 
 		event Action SwipeEnd;
 

@@ -10,11 +10,10 @@ namespace Confrontation
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
+		[Inject] private Transform _cameraRoot;
 
-		private Vector3 _initialCursorPosition;
+		private Vector2 _initialCursorPosition;
 		private bool _swiping;
-
-		private Camera Camera => Camera.main;
 
 		public void Initialize()
 		{
@@ -28,7 +27,7 @@ namespace Confrontation
 			_inputService.SwipeEnd -= OnSwipeEnd;
 		}
 
-		private void OnSwipeStart(Vector3 position)
+		private void OnSwipeStart(Vector2 position)
 		{
 			_initialCursorPosition = position;
 			_routinesRunner.StartRoutine(Swipe);
@@ -41,10 +40,10 @@ namespace Confrontation
 			_swiping = true;
 			while (_swiping)
 			{
-				var direction = _initialCursorPosition - (Vector3)_inputService.CursorPosition;
-				var translation = Camera.transform.position - direction;
+				var different = _initialCursorPosition - _inputService.CursorPosition;
+				var translation = (Vector2)_cameraRoot.position - different;
 				translation *= _time.DeltaTime * 0.01f;
-				Camera.transform.Translate(translation);
+				_cameraRoot.position = translation;
 				yield return null;
 			}
 		}
