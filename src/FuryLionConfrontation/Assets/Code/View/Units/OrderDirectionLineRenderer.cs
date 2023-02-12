@@ -1,14 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
-	public class OrderDirectionLineRenderer : IInitializable, ITickable, IDisposable
+	public class OrderDirectionLineRenderer : IInitializable, IDisposable
 	{
 		[Inject] private readonly LineRenderer _lineRenderer;
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
+		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 
 		private Vector3 CursorPosition => _input.CursorWorldPosition;
 
@@ -24,14 +26,6 @@ namespace Confrontation
 			_input.SwipeEnd -= OnSwipeEnd;
 		}
 
-		public void Tick()
-		{
-			if (_lineRenderer.IsDrawing())
-			{
-				_lineRenderer.SetLastPosition(CursorPosition);
-			}
-		}
-
 		private void OnDragStart(ClickReceiver clickReceiver)
 		{
 			if (clickReceiver.Cell.HasUnits
@@ -39,10 +33,21 @@ namespace Confrontation
 			{
 				_lineRenderer.AddPosition(clickReceiver.transform.position);
 				_lineRenderer.AddPosition(CursorPosition);
+
+				_routinesRunner.StartRoutine(DrawLine);
 			}
 		}
 
 		private void OnSwipeEnd() => _lineRenderer.ClearPositions();
+
+		private IEnumerator DrawLine()
+		{
+			while (_lineRenderer.IsDrawing())
+			{
+				_lineRenderer.SetLastPosition(CursorPosition);
+				yield return null;
+			}
+		}
 
 		private bool IsBelongToUser(Cell cell) => cell.RelatedRegion!.OwnerPlayerId == _user.Player.Id;
 	}
