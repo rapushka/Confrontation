@@ -4,21 +4,19 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class SwipeBasedCameraMovement : MonoBehaviour
+	public class SwipeBasedMovement : MonoBehaviour
 	{
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
 
-		[SerializeField] private Transform _cameraRoot;
-		[SerializeField] private float _cameraSpeed = 0.25f;
+		[SerializeField] private Transform _root;
+		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
 
 		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
 		private Vector2 _lastCursorPosition;
 		private bool _swiping;
-
-		private float ScaledSpeed => _time.FixedDeltaTime * _cameraSpeed;
 
 		public void OnEnable()
 		{
@@ -47,9 +45,9 @@ namespace Confrontation
 				var difference = _lastCursorPosition - _inputService.CursorPosition;
 				_lastCursorPosition = _inputService.CursorPosition;
 
-				var nextPosition = difference * ScaledSpeed;
+				var nextPosition = difference * _speed * _time.FixedDeltaTime;
 
-				_cameraRoot.Translate(nextPosition.AsTopDown());
+				_root.Translate(nextPosition.AsTopDown());
 
 				yield return _waitForFixedUpdate;
 			}
