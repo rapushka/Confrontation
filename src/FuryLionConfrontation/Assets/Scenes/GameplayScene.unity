@@ -921,4 +921,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraRoot: {fileID: 2050588171}
-  _cameraSpeed: 0.5
+  _cameraSpeed: 0.25

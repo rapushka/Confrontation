@@ -11,10 +11,14 @@ namespace Confrontation
 		[Inject] private readonly ITimeService _time;
 
 		[SerializeField] private Transform _cameraRoot;
-		[SerializeField] private float _cameraSpeed = 0.01f;
+		[SerializeField] private float _cameraSpeed = 0.25f;
+
+		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
 		private Vector2 _lastCursorPosition;
 		private bool _swiping;
+
+		private float ScaledSpeed => _time.FixedDeltaTime * _cameraSpeed;
 
 		public void OnEnable()
 		{
@@ -40,12 +44,14 @@ namespace Confrontation
 		{
 			while (true)
 			{
-				var direction = _lastCursorPosition - _inputService.CursorPosition;
+				var difference = _lastCursorPosition - _inputService.CursorPosition;
 				_lastCursorPosition = _inputService.CursorPosition;
-				var nextPosition = (Vector2)_cameraRoot.position + direction;
-				nextPosition *= _time.DeltaTime * _cameraSpeed;
+
+				var nextPosition = difference * ScaledSpeed;
+
 				_cameraRoot.Translate(nextPosition.AsTopDown());
-				yield return null;
+
+				yield return _waitForFixedUpdate;
 			}
 			// ReSharper disable once IteratorNeverReturns - Coroutine will stop external
 		}
