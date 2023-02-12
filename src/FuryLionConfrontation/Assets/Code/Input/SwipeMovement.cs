@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class SwipeBasedMovement : MonoBehaviour
+	public class SwipeMovement : MonoBehaviour
 	{
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
@@ -17,6 +17,12 @@ namespace Confrontation
 
 		private Vector2 _lastCursorPosition;
 		private bool _swiping;
+
+		private Vector3 NextPosition => (SwipeDelta * ScaledSpeed).AsTopDown();
+
+		private Vector2 SwipeDelta => _lastCursorPosition - _inputService.CursorPosition;
+
+		private Vector2 ScaledSpeed => _speed * _time.FixedDeltaTime;
 
 		public void OnEnable()
 		{
@@ -42,16 +48,14 @@ namespace Confrontation
 		{
 			while (true)
 			{
-				var difference = _lastCursorPosition - _inputService.CursorPosition;
-				_lastCursorPosition = _inputService.CursorPosition;
-
-				var nextPosition = difference * _speed * _time.FixedDeltaTime;
-
-				_root.Translate(nextPosition.AsTopDown());
+				_root.Translate(NextPosition);
+				UpdateCursorPosition();
 
 				yield return _waitForFixedUpdate;
 			}
-			// ReSharper disable once IteratorNeverReturns - Coroutine will stop external
+			// ReSharper disable once IteratorNeverReturns - Coroutine will be stopped on swipe end
 		}
+
+		private void UpdateCursorPosition() => _lastCursorPosition = _inputService.CursorPosition;
 	}
 }
