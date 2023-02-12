@@ -10,9 +10,6 @@ namespace Confrontation
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
 
-		private bool _isDragging;
-		private Vector3 _startReceiver;
-
 		private Vector3 CursorPosition => _input.CursorWorldPosition;
 
 		public void Initialize()
@@ -29,33 +26,23 @@ namespace Confrontation
 
 		public void Tick()
 		{
-			if (_isDragging == false)
+			if (_lineRenderer.IsDrawing())
 			{
-				return;
+				_lineRenderer.SetLastPosition(CursorPosition);
 			}
-
-			_lineRenderer.SetLastPosition(CursorPosition);
-		}
-
-		private void OnDragEnd()
-		{
-			_isDragging = false;
-			_lineRenderer.ClearPositions();
 		}
 
 		private void OnDragStart(ClickReceiver clickReceiver)
 		{
-			if (clickReceiver.Cell.HasUnits == false
-			    || IsBelongToUser(clickReceiver.Cell) == false)
+			if (clickReceiver.Cell.HasUnits
+			    && IsBelongToUser(clickReceiver.Cell))
 			{
-				return;
+				_lineRenderer.AddPosition(clickReceiver.transform.position);
+				_lineRenderer.AddPosition(CursorPosition);
 			}
-
-			_startReceiver = clickReceiver.transform.position;
-			_lineRenderer.AddPosition(_startReceiver);
-			_lineRenderer.AddPosition(CursorPosition);
-			_isDragging = true;
 		}
+
+		private void OnDragEnd() => _lineRenderer.ClearPositions();
 
 		private bool IsBelongToUser(Cell cell) => cell.RelatedRegion!.OwnerPlayerId == _user.Player.Id;
 	}

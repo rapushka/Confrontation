@@ -17,5 +17,7 @@ namespace Confrontation
 		}
 
 		public static void ClearPositions(this LineRenderer @this) => @this.positionCount = 0;
+
+		public static bool IsDrawing(this LineRenderer @this) => @this.positionCount > 1;
 	}
 }
