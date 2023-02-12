@@ -9,9 +9,11 @@ namespace Confrontation
 
 		event Action<ClickReceiver> DragStart;
 
-		event Action DragEnd;
+		event Action<ClickReceiver> DragEnd;
 
-		event Action<ClickReceiver> DragDropped;
+		event Action<Vector3> SwipeStart;
+
+		event Action SwipeEnd;
 
 		Vector3 CursorWorldPosition { get; }
 

@@ -5,9 +5,9 @@ namespace Confrontation
 {
 	public class FieldInputHandler : IInitializable, IDisposable
 	{
+		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
-		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly Orders _orders;
 
 		private ClickReceiver _startReceiver;
@@ -18,19 +18,19 @@ namespace Confrontation
 		{
 			_inputService.Clicked += OnClick;
 			_inputService.DragStart += OnDragStarted;
-			_inputService.DragDropped += OnDragDropped;
+			_inputService.DragEnd += OnDragEnd;
 		}
 
 		public void Dispose()
 		{
 			_inputService.Clicked -= OnClick;
 			_inputService.DragStart -= OnDragStarted;
-			_inputService.DragDropped -= OnDragDropped;
+			_inputService.DragEnd -= OnDragEnd;
 		}
 
 		private void OnDragStarted(ClickReceiver startReceiver) => _startReceiver = startReceiver;
 
-		private void OnDragDropped(ClickReceiver endReceiver)
+		private void OnDragEnd(ClickReceiver endReceiver)
 		{
 			if (IsDraggingStarted
 			    && endReceiver.Equals(_startReceiver) == false)

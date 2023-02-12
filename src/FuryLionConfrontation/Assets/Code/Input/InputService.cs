@@ -17,9 +17,11 @@ namespace Confrontation
 
 		public event Action<ClickReceiver> DragStart;
 
-		public event Action DragEnd;
+		public event Action<ClickReceiver> DragEnd;
 
-		public event Action<ClickReceiver> DragDropped;
+		public event Action<Vector3> SwipeStart;
+
+		public event Action SwipeEnd;
 
 		public Vector3 CursorWorldPosition => RayFromCursorPosition.GetPoint(5f);
 
@@ -47,9 +49,6 @@ namespace Confrontation
 
 		private void Start()
 		{
-			_actionPress.started += OnPressStarted;
-			_actionPress.canceled += OnPressCanceled;
-
 			_actionPress.performed += OnPress;
 			_actionRelease.performed += OnRelease;
 			_actionTap.performed += OnTap;
@@ -57,28 +56,22 @@ namespace Confrontation
 
 		private void OnDestroy()
 		{
-			_actionPress.started -= OnPressStarted;
-
 			_actionPress.performed -= OnPress;
 			_actionRelease.performed -= OnRelease;
 			_actionTap.performed -= OnTap;
 		}
 
-		private void OnPressStarted(InputAction.CallbackContext context) { }
-
-		private void OnPressCanceled(InputAction.CallbackContext context) { }
-
 		private void OnPress(InputAction.CallbackContext context) => RaycastToCursor(onHit: StartDragging);
 
 		private void OnRelease(InputAction.CallbackContext context)
 		{
-			DragEnd?.Invoke();
+			SwipeEnd?.Invoke();
 			RaycastToCursor(onHit: DropDragging);
 		}
 
 		private void StartDragging(ClickReceiver receiver) => DragStart?.Invoke(receiver);
 
-		private void DropDragging(ClickReceiver receiver) => DragDropped?.Invoke(receiver);
+		private void DropDragging(ClickReceiver receiver) => DragEnd?.Invoke(receiver);
 
 		private void OnTap(InputAction.CallbackContext context) => RaycastToCursor(onHit: ClickedInvoke);
 

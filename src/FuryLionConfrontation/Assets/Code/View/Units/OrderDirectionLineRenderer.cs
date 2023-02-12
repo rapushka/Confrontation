@@ -15,13 +15,13 @@ namespace Confrontation
 		public void Initialize()
 		{
 			_input.DragStart += OnDragStart;
-			_input.DragEnd += OnDragEnd;
+			_input.SwipeEnd += OnSwipeEnd;
 		}
 
 		public void Dispose()
 		{
 			_input.DragStart -= OnDragStart;
-			_input.DragEnd -= OnDragEnd;
+			_input.SwipeEnd -= OnSwipeEnd;
 		}
 
 		public void Tick()
@@ -42,7 +42,7 @@ namespace Confrontation
 			}
 		}
 
-		private void OnDragEnd() => _lineRenderer.ClearPositions();
+		private void OnSwipeEnd() => _lineRenderer.ClearPositions();
 
 		private bool IsBelongToUser(Cell cell) => cell.RelatedRegion!.OwnerPlayerId == _user.Player.Id;
 	}
