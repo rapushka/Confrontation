@@ -13,6 +13,8 @@ namespace Confrontation
 
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
 
+		public Player GetPlayerWithId(int id) => _activePlayers.GetPlayerById(id);
+
 		public void PlayerLoose(int id)
 		{
 			_activePlayers.RemoveById(id);
