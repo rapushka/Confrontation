@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +10,7 @@ namespace Confrontation
 
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitAnimator _animator;
-		[SerializeField] private TextView _quantityOfUnitsInSquadView;
+		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
 		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
 
 		private int _quantityOfUnits;
@@ -39,7 +40,7 @@ namespace Confrontation
 			set
 			{
 				_quantityOfUnits = value;
-				_quantityOfUnitsInSquadView.Text = value.ToString();
+				_quantityOfUnitsInSquadView.text = value.ToString();
 			}
 		}
 

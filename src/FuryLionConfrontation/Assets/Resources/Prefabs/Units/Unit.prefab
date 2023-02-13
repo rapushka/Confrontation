@@ -2922,7 +2922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitMovement: {fileID: 5079142124888409487}
   _animator: {fileID: 2547840534391355026}
-  _quantityOfUnitsInSquadView: {fileID: 4932106679340135184}
+  _quantityOfUnitsInSquadView: {fileID: 8081343193472317081}
   _unitOrderPerformer: {fileID: 1518563021216549159}
 --- !u!114 &5079142124888409487
 MonoBehaviour:
