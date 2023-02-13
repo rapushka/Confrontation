@@ -15,5 +15,10 @@ namespace Confrontation
 		public GameResult GameResult { get; set; } = GameResult.None;
 
 		public void Initialize() => Player = new Player(id: _playerId);
+
+		private void OnEnable() => SelectedLevel = LoadDummyLevel();
+
+		// Instead Level will be null => on game start from GameplayScene will throw exceptions
+		private static LevelScriptableObject LoadDummyLevel() => CreateInstance<LevelScriptableObject>();
 	}
 }
