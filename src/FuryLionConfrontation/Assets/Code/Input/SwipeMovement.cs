@@ -8,14 +8,18 @@ namespace Confrontation
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly ITimeService _time;
 		[Inject] private readonly OrderDirectionLineDrawer _orderDrawer;
+		[Inject] private readonly FieldBounds _fieldBounds;
 
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
+		[SerializeField] private float _maxOutBoundsDistance;
 
 		private Vector2 _lastCursorPosition;
 		private bool _isSwiping;
 
-		private Vector3 NextPosition => (SwipeDelta * ScaledSpeed).AsTopDown();
+		private Vector3 NextPosition => NextVector2.AsTopDown();
+
+		private Vector2 NextVector2 => SwipeDelta * ScaledSpeed;
 
 		private Vector2 SwipeDelta => _lastCursorPosition - _inputService.CursorPosition;
 
@@ -41,9 +45,22 @@ namespace Confrontation
 				return;
 			}
 
-			_root.Translate(NextPosition);
+			Move();
 			UpdateCursorPosition();
 		}
+
+		private void Move()
+		{
+			var nextTargetPosition = _root.position + NextPosition;
+			if (IsInBounds(nextTargetPosition))
+			{
+				_root.position = nextTargetPosition;
+			}
+
+			_root.position = Vector3.Lerp(transform.position, _root.position, _time.FixedDeltaTime);
+		}
+
+		private bool IsInBounds(Vector2 position) => _fieldBounds.Bounds.Distance(position) < _maxOutBoundsDistance;
 
 		private void OnSwipeStart(Vector2 position)
 		{

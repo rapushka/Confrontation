@@ -11,7 +11,7 @@ namespace Confrontation
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
-		[FormerlySerializedAs("_cameraMovement")] [SerializeField] private SwipeMovement _movement;
+		[SerializeField] private SwipeMovement _movement;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
@@ -29,6 +29,8 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
+
+			Container.BindInterfacesAndSelfTo<FieldBounds>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();
