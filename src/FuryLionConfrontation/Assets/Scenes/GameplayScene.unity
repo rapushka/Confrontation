@@ -922,4 +922,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _root: {fileID: 2050588171}
   _speed: {x: 0.26, y: 0.235}
-  _maxOutBoundsDistance: 1
+  _maxOutBoundsDistance: 5
+  _smoothRate: 15

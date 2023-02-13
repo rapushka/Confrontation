@@ -12,16 +12,14 @@ namespace Confrontation
 
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
-		[SerializeField] private float _maxOutBoundsDistance;
-		[SerializeField] private float _smoothRate = 5f;
+		[SerializeField] private float _maxOutBoundsDistance = 5;
+		[SerializeField] private float _smoothRate = 10f;
 
 		private Vector2 _lastCursorPosition;
 		private bool _isSwiping;
 		private Vector3 _targetPosition;
 
-		private Vector3 NextPosition => NextVector2.AsTopDown();
-
-		private Vector2 NextVector2 => SwipeDelta * ScaledSpeed;
+		private Vector3 NextPosition => (SwipeDelta * ScaledSpeed).AsTopDown();
 
 		private Vector2 SwipeDelta => _lastCursorPosition - _inputService.CursorPosition;
 
@@ -54,7 +52,7 @@ namespace Confrontation
 		private void Move()
 		{
 			var nextTargetPosition = _targetPosition + NextPosition;
-			if (IsInBounds(nextTargetPosition))
+			if (IsInBounds(nextTargetPosition.FromTopDown()))
 			{
 				_targetPosition = nextTargetPosition;
 			}
