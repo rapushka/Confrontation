@@ -4,32 +4,22 @@ namespace Confrontation
 {
 	public struct Bounds
 	{
-		public Vector2 MinBorder;
-		public Vector2 MaxBorder;
-
-		private Vector2 Center => new((MinBorder.x + MaxBorder.x) / 2, (MinBorder.y + MaxBorder.y) / 2);
+		private Vector2 _minBorder;
+		private Vector2 _maxBorder;
 
 		public void UpdateBounds(Vector2 position)
 		{
-			MaxBorder.x = MaxAbs(MaxBorder.x, position.x);
-			MaxBorder.y = MaxAbs(MaxBorder.y, position.y);
+			_maxBorder.x = Mathf.Max(_maxBorder.x, position.x);
+			_maxBorder.y = Mathf.Max(_maxBorder.y, position.y);
 
-			MinBorder.x = MinAbs(MinBorder.x, position.x);
-			MinBorder.y = MinAbs(MinBorder.y, position.y);
+			_minBorder.x = Mathf.Min(_minBorder.x, position.x);
+			_minBorder.y = Mathf.Min(_minBorder.y, position.y);
 		}
 
-		public float Distance(Vector2 position)
-		{
-			var clamped = position.Clamp(MaxBorder, MinBorder);
-			return Vector2.Distance(position, clamped);
-		}
+		public bool IsInBounds(Vector2 position, float maxDeviation) => Distance(position) < maxDeviation;
 
-		public bool IsInBounce(Vector2 position)
-			=> position.IsGreater(than: MinBorder)
-			   && position.IsLess(than: MaxBorder);
+		private float Distance(Vector2 position) => Vector2.Distance(position, Clamp(position));
 
-		private static float MinAbs(float a, float b) => Mathf.Abs(a) < Mathf.Abs(b) ? a : b;
-
-		private static float MaxAbs(float a, float b) => Mathf.Abs(a) > Mathf.Abs(b) ? a : b;
+		private Vector2 Clamp(Vector2 position) => position.Clamp(_minBorder, _maxBorder);
 	}
 }

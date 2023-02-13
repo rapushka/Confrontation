@@ -12,18 +12,20 @@ namespace Confrontation
 
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
-		[SerializeField] private float _maxOutBoundsDistance = 5;
+		[SerializeField] private float _maxOutOfBoundsDeviation = 1f;
 		[SerializeField] private float _smoothRate = 10f;
 
 		private Vector2 _lastCursorPosition;
 		private bool _isSwiping;
-		private Vector3 _targetPosition;
+		private Vector2 _targetPosition;
 
-		private Vector3 NextPosition => (SwipeDelta * ScaledSpeed).AsTopDown();
+		private Vector2 NextPosition => SwipeDelta * ScaledSpeed;
 
 		private Vector2 SwipeDelta => _lastCursorPosition - _inputService.CursorPosition;
 
 		private Vector2 ScaledSpeed => _speed * _time.FixedDeltaTime;
+
+		private float ScaledSmoothRate => _smoothRate * _time.FixedDeltaTime;
 
 		private void Awake() => _targetPosition = _root.position;
 
@@ -51,16 +53,12 @@ namespace Confrontation
 
 		private void Move()
 		{
-			var nextTargetPosition = _targetPosition + NextPosition;
-			if (IsInBounds(nextTargetPosition.FromTopDown()))
-			{
-				_targetPosition = nextTargetPosition;
-			}
+			_targetPosition += IsInBounds(_targetPosition + NextPosition) ? NextPosition : Vector2.zero;
 
-			_root.position = Vector3.Lerp(_root.position, _targetPosition, _time.FixedDeltaTime * _smoothRate);
+			_root.position = Vector3.Lerp(_root.position, _targetPosition.AsTopDown(), ScaledSmoothRate);
 		}
 
-		private bool IsInBounds(Vector2 position) => _fieldBounds.Bounds.Distance(position) < _maxOutBoundsDistance;
+		private bool IsInBounds(Vector2 position) => _fieldBounds.IsInBounds(position, _maxOutOfBoundsDeviation);
 
 		private void OnSwipeStart(Vector2 position)
 		{
