@@ -9,7 +9,7 @@ namespace Confrontation
 
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitAnimator _animator;
-		[SerializeField] private QuantityOfUnitsInSquadView _quantityOfUnitsInSquadView;
+		[SerializeField] private TextView _quantityOfUnitsInSquadView;
 		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
 
 		private int _quantityOfUnits;
@@ -39,7 +39,7 @@ namespace Confrontation
 			set
 			{
 				_quantityOfUnits = value;
-				_quantityOfUnitsInSquadView.UpdateValue(value);
+				_quantityOfUnitsInSquadView.Text = value.ToString();
 			}
 		}
 
