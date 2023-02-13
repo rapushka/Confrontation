@@ -13,9 +13,11 @@ namespace Confrontation
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
 		[SerializeField] private float _maxOutBoundsDistance;
+		[SerializeField] private float _smoothRate = 5f;
 
 		private Vector2 _lastCursorPosition;
 		private bool _isSwiping;
+		private Vector3 _targetPosition;
 
 		private Vector3 NextPosition => NextVector2.AsTopDown();
 
@@ -24,6 +26,8 @@ namespace Confrontation
 		private Vector2 SwipeDelta => _lastCursorPosition - _inputService.CursorPosition;
 
 		private Vector2 ScaledSpeed => _speed * _time.FixedDeltaTime;
+
+		private void Awake() => _targetPosition = _root.position;
 
 		public void OnEnable()
 		{
@@ -39,25 +43,23 @@ namespace Confrontation
 
 		private void FixedUpdate()
 		{
-			if (_isSwiping == false
-			    || _orderDrawer.IsGivingOrder)
+			if (_isSwiping
+			    && _orderDrawer.IsGivingOrder == false)
 			{
-				return;
+				Move();
+				UpdateCursorPosition();
 			}
-
-			Move();
-			UpdateCursorPosition();
 		}
 
 		private void Move()
 		{
-			var nextTargetPosition = _root.position + NextPosition;
+			var nextTargetPosition = _targetPosition + NextPosition;
 			if (IsInBounds(nextTargetPosition))
 			{
-				_root.position = nextTargetPosition;
+				_targetPosition = nextTargetPosition;
 			}
 
-			_root.position = Vector3.Lerp(transform.position, _root.position, _time.FixedDeltaTime);
+			_root.position = Vector3.Lerp(_root.position, _targetPosition, _time.FixedDeltaTime * _smoothRate);
 		}
 
 		private bool IsInBounds(Vector2 position) => _fieldBounds.Bounds.Distance(position) < _maxOutBoundsDistance;
