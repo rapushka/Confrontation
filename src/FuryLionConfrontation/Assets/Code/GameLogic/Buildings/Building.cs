@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public abstract class Building : MonoBehaviour, ICoordinated
+	public abstract class Building : MonoBehaviour, IInitializable, ICoordinated
 	{
 		[Inject] private readonly IField _field;
 
@@ -23,6 +23,8 @@ namespace Confrontation
 		}
 
 		protected IField Field => _field;
+
+		public virtual void Initialize() { }
 
 		[Serializable]
 		public class Data
@@ -54,6 +56,7 @@ namespace Confrontation
 				var building = base.Create(prefab);
 				building.transform.SetParent(cell.transform, worldPositionStays: false);
 				building.Coordinates = cell.Coordinates;
+				building.Initialize();
 				return (T)building;
 			}
 		}

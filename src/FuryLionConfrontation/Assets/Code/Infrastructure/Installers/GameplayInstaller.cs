@@ -1,3 +1,4 @@
+using UnityEditor.UI;
 using UnityEngine;
 using Zenject;
 
@@ -11,12 +12,14 @@ namespace Confrontation
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
 		[SerializeField] private SwipeMovement _movement;
+		[SerializeField] private Hud _hud;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
 			Container.BindInstance(_orderLineRenderer).AsSingle();
 			Container.BindInstance(_movement).AsSingle();
+			Container.BindInterfacesAndSelfTo<Hud>().FromInstance(_hud).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 			Container.Bind<IField>().To<Field>().AsSingle();

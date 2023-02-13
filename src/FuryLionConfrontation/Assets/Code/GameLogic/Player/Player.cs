@@ -16,8 +16,8 @@ namespace Confrontation
 		public int Id { get; }
 
 		public Capital Capital { get; }
-		
-		public PlayerStats Stats { get; set; }
+
+		public PlayerStats Stats { get; set; } = new();
 
 		public override bool Equals(object obj) => obj is Player player && Equals(player);
 
