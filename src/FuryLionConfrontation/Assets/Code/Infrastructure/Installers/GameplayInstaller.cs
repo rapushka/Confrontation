@@ -30,7 +30,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
 
-			Container.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
+			Container.BindInterfacesAndSelfTo<GameSession>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldBounds>().AsSingle();
 

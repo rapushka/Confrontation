@@ -24,7 +24,7 @@ namespace Confrontation.Editor.Tests
 			
 			@this.Bind<User>().FromInstance(Setup.User()).AsSingle();
 			
-			@this.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
+			@this.BindInterfacesAndSelfTo<GameSession>().AsSingle();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 

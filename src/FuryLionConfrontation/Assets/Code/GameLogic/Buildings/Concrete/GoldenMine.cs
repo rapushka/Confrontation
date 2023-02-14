@@ -5,7 +5,7 @@ namespace Confrontation
 {
 	public class GoldenMine : Building, IActorWithCoolDown
 	{
-		[Inject] private readonly GameplayLoop _gameplayLoop;
+		[Inject] private readonly GameSession _gameSession;
 		[Inject] private readonly GameplayUiMediator _ui;
 
 		[SerializeField] private int _goldProducingRate = 1;
@@ -21,7 +21,7 @@ namespace Confrontation
 		public override void Initialize()
 		{
 			var ownerPlayerId = Field.Regions[Coordinates].OwnerPlayerId;
-			_ownerPlayer = _gameplayLoop.GetPlayerById(ownerPlayerId);
+			_ownerPlayer = _gameSession.GetPlayerById(ownerPlayerId);
 		}
 
 		private void ProduceGold()

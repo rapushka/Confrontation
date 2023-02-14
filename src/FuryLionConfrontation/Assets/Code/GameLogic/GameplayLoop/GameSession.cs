@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameplayLoop : IInitializable
+	public class GameSession : IInitializable
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
