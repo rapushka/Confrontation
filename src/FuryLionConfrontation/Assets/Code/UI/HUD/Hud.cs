@@ -1,15 +1,18 @@
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class Hud : MonoBehaviour
 	{
+		[Inject] private readonly User _user;
+
 		[SerializeField] private TextMeshProUGUI _goldenAmountValueTextMesh;
 
-		public int GoldenAmount
+		public void UpdateValues()
 		{
-			set => _goldenAmountValueTextMesh.text = value.ToString();
+			_goldenAmountValueTextMesh.text = _user.Player.Stats.GoldCount.ToString();
 		}
 	}
 }

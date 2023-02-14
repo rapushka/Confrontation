@@ -1,4 +1,3 @@
-using UnityEditor.UI;
 using UnityEngine;
 using Zenject;
 
@@ -21,7 +20,6 @@ namespace Confrontation
 			Container.BindInstance(_movement).AsSingle();
 			Container.BindInterfacesAndSelfTo<Hud>().FromInstance(_hud).AsSingle();
 
-			Container.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 			Container.Bind<IField>().To<Field>().AsSingle();
 
 			Container.Bind<ToMainMenu>().AsSingle();
@@ -31,6 +29,8 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
+
+			Container.BindInterfacesAndSelfTo<GameplayLoop>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldBounds>().AsSingle();
 

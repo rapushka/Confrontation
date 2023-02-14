@@ -7,7 +7,6 @@ namespace Confrontation
 	{
 		[Inject] private readonly GameplayLoop _gameplayLoop;
 		[Inject] private readonly Hud _hud;
-		[Inject] private readonly User _user;
 
 		[SerializeField] private int _goldProducingRate = 1;
 
@@ -22,16 +21,13 @@ namespace Confrontation
 		public override void Initialize()
 		{
 			var ownerPlayerId = Field.Regions[Coordinates].OwnerPlayerId;
-			_ownerPlayer = _gameplayLoop.GetPlayerWithId(ownerPlayerId);
+			_ownerPlayer = _gameplayLoop.GetPlayerById(ownerPlayerId);
 		}
 
 		private void ProduceGold()
 		{
 			_ownerPlayer.Stats.GoldCount += _goldProducingRate;
-			if (_ownerPlayer.Id == _user.Player.Id)
-			{
-				_hud.GoldenAmount = _ownerPlayer.Stats.GoldCount;
-			}
+			_hud.UpdateValues();
 		}
 	}
 }

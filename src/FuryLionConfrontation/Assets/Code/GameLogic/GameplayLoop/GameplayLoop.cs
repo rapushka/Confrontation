@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameplayLoop
+	public class GameplayLoop : IInitializable
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
@@ -13,7 +13,9 @@ namespace Confrontation
 
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
 
-		public Player GetPlayerWithId(int id) => _activePlayers.GetPlayerById(id);
+		public Player GetPlayerById(int id) => _activePlayers.GetPlayerById(id);
+
+		public void Initialize() => _user.InitializePlayer(GetPlayerById);
 
 		public void PlayerLoose(int id)
 		{

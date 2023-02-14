@@ -18,7 +18,7 @@ namespace Confrontation
 		public Capital Capital { get; }
 
 		public PlayerStats Stats { get; set; } = new();
-
+		
 		public override bool Equals(object obj) => obj is Player player && Equals(player);
 
 		public bool Equals(Player player) => GetHashCode() == player.GetHashCode();
