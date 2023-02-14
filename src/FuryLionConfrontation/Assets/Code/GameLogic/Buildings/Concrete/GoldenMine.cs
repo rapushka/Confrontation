@@ -6,7 +6,7 @@ namespace Confrontation
 	public class GoldenMine : Building, IActorWithCoolDown
 	{
 		[Inject] private readonly GameplayLoop _gameplayLoop;
-		[Inject] private readonly Hud _hud;
+		[Inject] private readonly GameplayUiMediator _ui;
 
 		[SerializeField] private int _goldProducingRate = 1;
 
@@ -27,7 +27,7 @@ namespace Confrontation
 		private void ProduceGold()
 		{
 			_ownerPlayer.Stats.GoldCount += _goldProducingRate;
-			_hud.UpdateValues();
+			_ui.UpdateHud();		
 		}
 	}
 }
