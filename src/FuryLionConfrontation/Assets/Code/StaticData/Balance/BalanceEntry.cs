@@ -13,8 +13,9 @@ namespace Confrontation
 		[Serializable]
 		public class GoldenMine : IBalanceEntry.IGoldenMine
 		{
-			[field: SerializeField] public int ProduceCollDownDuration { get; private set; }
-			[field: SerializeField] public int ProduceAmount           { get; private set; }
+			[field: SerializeField] public float ProduceCollDownDuration { get; private set; }
+
+			[field: SerializeField] public int ProduceAmount { get; private set; }
 		}
 	}
 }
