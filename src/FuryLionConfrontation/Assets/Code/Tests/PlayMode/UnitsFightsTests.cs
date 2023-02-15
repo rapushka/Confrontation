@@ -40,7 +40,7 @@ namespace Confrontation.Editor.PlayModeTests
 			var container = GetActualContainer(@for: Constants.SceneName.MainMenuScene);
 
 			var user = container.Resolve<User>();
-			user.SelectedLevel = Resources.Load<LevelScriptableObject>(Constants.ResourcePath.Level2);
+			user.SelectedLevel = Resources.Load<LevelScriptableObject>(Constants.ResourcePath.TestLevel);
 
 			var toGameplay = container.Resolve<ToGameplay>();
 			toGameplay.Transfer();

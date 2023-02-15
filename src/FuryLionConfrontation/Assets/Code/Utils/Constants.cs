@@ -30,7 +30,7 @@ namespace Confrontation
 			public const string Capital = "Prefabs/Buildings/Capital";
 
 			public const string ResourcesService = "ScriptableObjects/Resources";
-			public const string Level2 = "ScriptableObjects/Levels/Level 2";
+			public const string TestLevel = "ScriptableObjects/For Tests/TestLevel";
 		}
 	}
 }
