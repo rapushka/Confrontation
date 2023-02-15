@@ -6,10 +6,11 @@ namespace Confrontation
 	public class Barracks : Building, IActorWithCoolDown
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
-
-		[field: SerializeField] public float CoolDownDuration { get; private set; } = 10f;
+		[Inject] private readonly BalanceTable _balanceTable;
 
 		public float PassedDuration { get; set; }
+
+		public float CoolDownDuration => _balanceTable.Barracks[Level].CoolDownDuration;
 
 		private bool HaveSquad => LocatedUnits is not null;
 
