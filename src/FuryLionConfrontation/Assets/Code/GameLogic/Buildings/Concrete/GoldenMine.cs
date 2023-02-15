@@ -15,7 +15,7 @@ namespace Confrontation
 
 		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);
 
-		private IBalanceEntry.IGoldenMine Balance => BalanceTable.GetEntryForLevel(Level).GoldenMineEntry;
+		private IBalanceEntry.IGoldenMine Balance => BalanceTable.GoldenMines[Level];
 
 		public void Action() => ProduceGold();
 

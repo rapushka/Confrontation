@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Confrontation
 {
 	[Serializable]
 	public class BalanceEntry : IBalanceEntry
 	{
-		[SerializeField] private GoldenMine _goldenMine;
+		[FormerlySerializedAs("_goldenMine")] [SerializeField] private GoldenMineData _goldenMineData;
 
-		public IBalanceEntry.IGoldenMine GoldenMineEntry => _goldenMine;
+		public IBalanceEntry.IGoldenMine GoldenMineEntry => _goldenMineData;
 
 		[Serializable]
-		public class GoldenMine : IBalanceEntry.IGoldenMine
+		public class GoldenMineData : IBalanceEntry.IGoldenMine
 		{
 			[field: SerializeField] public float ProduceCollDownDuration { get; private set; }
 

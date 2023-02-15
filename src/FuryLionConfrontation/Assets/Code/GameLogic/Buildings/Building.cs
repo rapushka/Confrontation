@@ -29,7 +29,13 @@ namespace Confrontation
 
 		protected IField Field => _field;
 
-		public void LevelUp() => Level++;
+		public void LevelUp()
+		{
+			if (Level < BalanceTable.GoldenMines.MaxLevel)
+			{
+				Level++;
+			}
+		}
 
 		[Serializable]
 		public class Data
