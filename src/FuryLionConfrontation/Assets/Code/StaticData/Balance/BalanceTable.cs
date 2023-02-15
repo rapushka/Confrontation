@@ -1,8 +1,11 @@
+using UnityEngine;
+
 namespace Confrontation
 {
-	public class BalanceTable
+	[CreateAssetMenu(fileName = nameof(BalanceTable), menuName = nameof(Confrontation) + nameof(BalanceTable))]
+	public class BalanceTable : ScriptableObject
 	{
-		private readonly IBalanceEntry[] _entries = new IBalanceEntry[5];
+		[SerializeField] private BalanceEntry[] _entries;
 
 		public IBalanceEntry GetEntryForLevel(int level) => _entries[level];
 	}
