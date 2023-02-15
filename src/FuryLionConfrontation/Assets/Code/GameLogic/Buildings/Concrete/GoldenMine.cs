@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,25 +7,21 @@ namespace Confrontation
 		[Inject] private readonly GameSession _gameSession;
 		[Inject] private readonly GameplayUiMediator _ui;
 
-		[SerializeField] private int _goldProducingRate = 1;
-
-		public float CoolDownDuration => BalanceTable.GetEntryForLevel(Level).GoldenMineEntry.ProduceCollDownDuration;
-
-		private Player _ownerPlayer;
-
 		public float PassedDuration { get; set; }
+
+		public float CoolDownDuration => Balance.ProduceCollDownDuration;
+
+		private int GoldProducingRate => Balance.ProduceAmount;
+
+		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);
+
+		private IBalanceEntry.IGoldenMine Balance => BalanceTable.GetEntryForLevel(Level).GoldenMineEntry;
 
 		public void Action() => ProduceGold();
 
-		public override void Initialize()
-		{
-			var ownerPlayerId = Field.Regions[Coordinates].OwnerPlayerId;
-			_ownerPlayer = _gameSession.GetPlayerById(ownerPlayerId);
-		}
-
 		private void ProduceGold()
 		{
-			_ownerPlayer.Stats.GoldCount += _goldProducingRate;
+			OwnerPlayer.Stats.GoldCount += GoldProducingRate;
 			_ui.UpdateHud();
 		}
 	}
