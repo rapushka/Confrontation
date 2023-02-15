@@ -7,10 +7,15 @@ namespace Confrontation
 	public abstract class Building : MonoBehaviour, IInitializable, ICoordinated
 	{
 		[Inject] private readonly IField _field;
+		[Inject] private readonly BalanceTable _balanceTable;
 
+		protected int Level = 1;
+			
 		private Coordinates _coordinates;
 
 		public Cell RelatedCell => _field.Cells[Coordinates];
+
+		protected BalanceTable BalanceTable => _balanceTable;
 
 		public Coordinates Coordinates
 		{
@@ -25,6 +30,8 @@ namespace Confrontation
 		protected IField Field => _field;
 
 		public virtual void Initialize() { }
+
+		public void LevelUp() => Level++;
 
 		[Serializable]
 		public class Data

@@ -10,7 +10,7 @@ namespace Confrontation
 
 		[SerializeField] private int _goldProducingRate = 1;
 
-		[field: SerializeField] public float CoolDownDuration { get; private set; } = 1f;
+		public float CoolDownDuration => BalanceTable.GetEntryForLevel(Level).GoldenMineEntry.ProduceCollDownDuration;
 
 		private Player _ownerPlayer;
 
@@ -27,7 +27,7 @@ namespace Confrontation
 		private void ProduceGold()
 		{
 			_ownerPlayer.Stats.GoldCount += _goldProducingRate;
-			_ui.UpdateHud();		
+			_ui.UpdateHud();
 		}
 	}
 }

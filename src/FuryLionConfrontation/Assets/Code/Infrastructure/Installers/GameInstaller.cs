@@ -11,6 +11,7 @@ namespace Confrontation
 		[SerializeField] private ResourcesService _resources;
 		[SerializeField] private RectTransform _canvasPrefab;
 		[SerializeField] private List<WindowBase> _windows;
+		[SerializeField] private BalanceTable _balanceTable;
 
 		public override void InstallBindings()
 		{
@@ -32,6 +33,7 @@ namespace Confrontation
 
 		private void BindPrefabs()
 		{
+			Container.BindInstance(_balanceTable).AsSingle();
 			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();

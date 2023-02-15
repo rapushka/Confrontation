@@ -6,7 +6,7 @@ namespace Confrontation
 
 		public interface IGoldenMine
 		{
-			int ProduceSpeed { get; }
+			int ProduceCollDownDuration { get; }
 
 			int ProduceAmount { get; }
 		}

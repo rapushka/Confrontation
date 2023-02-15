@@ -82,4 +82,4 @@ MonoBehaviour:
   - {fileID: 4738565569929036377, guid: 344cbf5c20d0230b68b5a84891ce6a73, type: 3}
   - {fileID: 5169984881314214046, guid: ac61388cb5e75a172920a37b4b008b89, type: 3}
   - {fileID: 2656922569792050141, guid: 5111e6d12ba5df3d9bce8f5a6c563a61, type: 3}
-  _inputService: {fileID: 368739459117762899, guid: ce31c2c4d72f7b1b384ffd94c228b960, type: 3}
+  _balanceTable: {fileID: 11400000, guid: e94b46947bfdc9cd5891af5cb92609cf, type: 2}
