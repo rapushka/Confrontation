@@ -8,16 +8,18 @@ namespace Confrontation
 	public class UnitMovement : MonoBehaviour
 	{
 		[Inject] private readonly ITimeService _timeService;
+		[Inject] private readonly BalanceTable _balance;
 
 		[SerializeField] private Transform _transform;
-		[SerializeField] private float _speed = 1f;
 
 		private Cell _targetCell;
 		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
+		private float Speed => _balance.BaseUnitsSpeed;
+
 		public event Action TargetReached;
 
-		private float ScaledSpeed => _speed * _timeService.FixedDeltaTime;
+		private float ScaledSpeed => Speed * _timeService.FixedDeltaTime;
 
 		private Vector3 TargetPosition => _targetCell.transform.position + Constants.VerticalOffsetAboveCell;
 
