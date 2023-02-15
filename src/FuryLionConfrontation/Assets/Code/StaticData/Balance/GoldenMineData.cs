@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public class GoldenMineData : IGoldenMine
+	public class GoldenMineData
 	{
 		[field: SerializeField] public float ProduceCollDownDuration { get; private set; }
 
