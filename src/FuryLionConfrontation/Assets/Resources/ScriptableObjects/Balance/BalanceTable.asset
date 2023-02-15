@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393428375ac344b88ccdb9a7e5b06033, type: 3}
   m_Name: BalanceTable
   m_EditorClassIdentifier: 
-  _levelsOfProgress:
-  - _goldenMine:
-      <ProduceCollDownDuration>k__BackingField: 5
-      <ProduceAmount>k__BackingField: 1
-  - _goldenMine:
-      <ProduceCollDownDuration>k__BackingField: 4
-      <ProduceAmount>k__BackingField: 2
+  _goldenMineData:
+  - <ProduceCollDownDuration>k__BackingField: 5
+    <ProduceAmount>k__BackingField: 1
+  - <ProduceCollDownDuration>k__BackingField: 4
+    <ProduceAmount>k__BackingField: 2
