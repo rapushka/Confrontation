@@ -23,7 +23,7 @@ namespace Confrontation
 		public Vector2 CalculatePosition()
 			=> new(Constants.HexagonWidth * Column + HorizontalOffset(Row), Row * VerticalDistance());
 
-		public Vector3 ToInitialUnitPosition() => CalculatePosition().AsTopDown() + Constants.VerticalOffsetAboveCell;
+		public Vector3 ToAboveCellPosition() => CalculatePosition().AsTopDown() + Constants.VerticalOffsetAboveCell;
 
 		public static bool operator ==(Coordinates left, Coordinates right)
 			=> left.Row == right.Row && left.Column == right.Column;

@@ -28,7 +28,7 @@ namespace Confrontation
 			public Garrison Create(Cell cell, int quantityOfUnits = 1)
 			{
 				var unitsSquad = base.Create();
-				unitsSquad.transform.position = cell.Coordinates.ToInitialUnitPosition();
+				unitsSquad.transform.position = cell.Coordinates.ToAboveCellPosition();
 				unitsSquad.Coordinates = cell.Coordinates;
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
