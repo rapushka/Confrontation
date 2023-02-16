@@ -10,7 +10,7 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
-		public Coordinates Coordinates { get; set; }
+		public virtual Coordinates Coordinates { get; set; }
 
 		public int QuantityOfUnits
 		{

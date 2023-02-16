@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: BalanceTable
   m_EditorClassIdentifier: 
   _goldenMine:
-  - <CoolDownDuration>k__BackingField: 5
-    <ProduceAmount>k__BackingField: 1
-  - <CoolDownDuration>k__BackingField: 4
-    <ProduceAmount>k__BackingField: 2
+  - <GenerationCoolDown>k__BackingField: 5
+    <GenerationAmount>k__BackingField: 1
+  - <GenerationCoolDown>k__BackingField: 4
+    <GenerationAmount>k__BackingField: 2
   _barrack:
-  - <CoolDownDuration>k__BackingField: 3
-    <SpawnAmount>k__BackingField: 1
+  - <GenerationCoolDown>k__BackingField: 4
+    <GenerationAmount>k__BackingField: 1
+  _village:
+  - <GenerationCoolDown>k__BackingField: 3
+    <GenerationAmount>k__BackingField: 1
   <Unit>k__BackingField:
     <BaseSpeed>k__BackingField: 1

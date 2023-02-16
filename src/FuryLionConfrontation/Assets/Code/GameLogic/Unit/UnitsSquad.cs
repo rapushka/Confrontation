@@ -18,6 +18,16 @@ namespace Confrontation
 
 		public Cell LocationCell => _field.Cells[Coordinates];
 
+		public override Coordinates Coordinates
+		{
+			get => base.Coordinates;
+			set
+			{
+				base.Coordinates = value;
+				_field.LocatedUnits.Add(this);
+			}
+		}
+
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
 			_unitOrderPerformer.MoveTo(targetCell, quantityToMove);
@@ -36,16 +46,15 @@ namespace Confrontation
 			public UnitsSquad Create(Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
 			{
 				var unitsSquad = base.Create();
-				unitsSquad.transform.position = InitialUnitPosition(cell.Coordinates);
+				unitsSquad.transform.position = ToInitialUnitPosition(cell.Coordinates);
 				unitsSquad.OwnerPlayerId = ownerPlayerId;
 				unitsSquad.Coordinates = cell.Coordinates;
-				unitsSquad._unitOrderPerformer.Locate(cell);
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
 				return unitsSquad;
 			}
 
-			private static Vector3 InitialUnitPosition(Coordinates coordinates)
+			private static Vector3 ToInitialUnitPosition(Coordinates coordinates)
 				=> coordinates.CalculatePosition().AsTopDown() + Constants.VerticalOffsetAboveCell;
 		}
 	}
