@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using Zenject;
 
 namespace Confrontation
 {
 	public class Village : Building, IActorWithCoolDown
 	{
+		[Inject] private readonly Garrison.Factory _garrisonsFactory;
+
 		public float PassedDuration { get; set; }
 
 		public override string Name => nameof(Village);
@@ -31,6 +34,10 @@ namespace Confrontation
 
 		private VillageBalanceData Balance => BalanceTable.Village[Level];
 
+		private bool HaveGarrison => LocatedGarrison is not null;
+
+		private Garrison LocatedGarrison => Field.Garrisons[Coordinates];
+
 		public void Action()
 		{
 			for (var i = 0; i < Balance.GenerationAmount; i++)
@@ -41,7 +48,14 @@ namespace Confrontation
 
 		private void SpawnGarrison()
 		{
-			
+			if (HaveGarrison)
+			{
+				LocatedGarrison.QuantityOfUnits++;
+			}
+			else
+			{
+				_garrisonsFactory.Create(RelatedCell, RelatedCell.OwnerPlayerId);
+			}
 		}
 	}
 }

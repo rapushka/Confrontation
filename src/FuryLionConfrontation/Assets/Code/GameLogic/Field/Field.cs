@@ -8,10 +8,13 @@ namespace Confrontation
 		[Inject]
 		public Field(ILevelSelector levelSelector)
 		{
-			Cells = new CoordinatedMatrix<Cell>(levelSelector.SelectedLevel.Sizes);
-			Buildings = new CoordinatedMatrix<Building>(levelSelector.SelectedLevel.Sizes);
-			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(levelSelector.SelectedLevel.Sizes);
-			Regions = new CoordinatedMatrix<Region>(levelSelector.SelectedLevel.Sizes);
+			var selectedLevelSizes = levelSelector.SelectedLevel.Sizes;
+
+			Cells = new CoordinatedMatrix<Cell>(selectedLevelSizes);
+			Buildings = new CoordinatedMatrix<Building>(selectedLevelSizes);
+			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(selectedLevelSizes);
+			Regions = new CoordinatedMatrix<Region>(selectedLevelSizes);
+			Garrisons = new CoordinatedMatrix<Garrison>(selectedLevelSizes);
 		}
 
 		public CoordinatedMatrix<Cell> Cells { get; }
@@ -19,6 +22,8 @@ namespace Confrontation
 		public CoordinatedMatrix<Building> Buildings { get; }
 
 		public CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }
+
+		public CoordinatedMatrix<Garrison> Garrisons { get; }
 
 		public CoordinatedMatrix<Region> Regions { get; }
 
