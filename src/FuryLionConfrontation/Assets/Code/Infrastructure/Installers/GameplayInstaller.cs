@@ -10,7 +10,7 @@ namespace Confrontation
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
-		[SerializeField] private SwipeMovement _movement;
+		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 
 		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization

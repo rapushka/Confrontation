@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class SwipeMovement : MonoBehaviour
+	public class CameraSwipeMovement : MonoBehaviour
 	{
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly ITimeService _time;
@@ -44,7 +44,8 @@ namespace Confrontation
 		private void FixedUpdate()
 		{
 			if (_isSwiping
-			    && _orderDrawer.IsGivingOrder == false)
+			    && _orderDrawer.IsGivingOrder == false
+			    && InputUtils.IsPointerOverUIObject() == false)
 			{
 				Move();
 				UpdateCursorPosition();

@@ -16,7 +16,7 @@ namespace Confrontation
 		{
 			var building = _input.ClickedCell.Building;
 			Debug.Assert(building == true);
-			_titleTextMesh.text = $"{building.Name} ─ Lvl. {building.Level.ToString()}";
+			_titleTextMesh.text = $"{building.Name} ─ Lvl {building.Level.ToString()}";
 
 			base.Open();
 		}
