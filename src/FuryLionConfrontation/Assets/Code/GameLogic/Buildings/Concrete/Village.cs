@@ -4,11 +4,13 @@ using System.Linq;
 
 namespace Confrontation
 {
-	public class Village : Building
+	public class Village : Building, IActorWithCoolDown
 	{
+		public float PassedDuration { get; set; }
+
 		public override string Name => nameof(Village);
 
-		protected override int MaxLevel => throw new NotImplementedException();
+		protected override int MaxLevel => BalanceTable.Village.MaxLevel;
 
 		public IEnumerable<Cell> CellsInRegion
 		{
@@ -24,6 +26,23 @@ namespace Confrontation
 					yield return Field.Cells[coordinates];
 				}
 			}
+		}
+
+		public float CoolDownDuration => Balance.GenerationCoolDown;
+
+		private VillageBalanceData Balance => BalanceTable.Village[Level];
+
+		public void Action()
+		{
+			for (var i = 0; i < Balance.GenerationAmount; i++)
+			{
+				SpawnGarrison();
+			}
+		}
+
+		private void SpawnGarrison()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

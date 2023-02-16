@@ -28,11 +28,11 @@ namespace Confrontation
 		{
 			for (var i = 0; i < Balance.GenerationAmount; i++)
 			{
-				CreateUnit();
+				SpawnUnit();
 			}
 		}
 
-		private void CreateUnit()
+		private void SpawnUnit()
 		{
 			if (HaveSquad)
 			{
