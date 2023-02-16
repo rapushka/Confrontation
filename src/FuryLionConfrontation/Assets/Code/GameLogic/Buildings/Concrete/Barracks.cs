@@ -10,7 +10,7 @@ namespace Confrontation
 
 		public float PassedDuration { get; set; }
 
-		public float CoolDownDuration => Balance.CoolDownDuration;
+		public float CoolDownDuration => Balance.GenerationCoolDown;
 
 		public override string Name => nameof(Barracks);
 
@@ -26,7 +26,7 @@ namespace Confrontation
 
 		public void Action()
 		{
-			for (var i = 0; i < Balance.SpawnAmount; i++)
+			for (var i = 0; i < Balance.GenerationAmount; i++)
 			{
 				CreateUnit();
 			}

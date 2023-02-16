@@ -8,6 +8,7 @@ namespace Confrontation
 	{
 		[SerializeField] private List<GoldenMineBalanceData> _goldenMine;
 		[SerializeField] private List<BarrackBalanceData> _barrack;
+		[SerializeField] private List<BarrackBalanceData> _village;
 
 		[field: SerializeField] public UnitBalanceData Unit { get; private set; }
 
