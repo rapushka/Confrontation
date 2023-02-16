@@ -17,8 +17,6 @@ namespace Confrontation
 
 		public abstract string Name { get; }
 
-		protected BalanceTable BalanceTable => _balanceTable;
-
 		public Coordinates Coordinates
 		{
 			get => _coordinates;
@@ -29,11 +27,15 @@ namespace Confrontation
 			}
 		}
 
+		protected BalanceTable BalanceTable => _balanceTable;
+
 		protected IField Field => _field;
+
+		protected abstract int MaxLevel { get; }
 
 		public void LevelUp()
 		{
-			if (Level < BalanceTable.GoldenMines.MaxLevel)
+			if (Level < MaxLevel)
 			{
 				Level++;
 			}

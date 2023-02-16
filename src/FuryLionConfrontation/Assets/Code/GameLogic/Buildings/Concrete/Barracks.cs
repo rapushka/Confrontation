@@ -14,6 +14,8 @@ namespace Confrontation
 
 		public override string Name => nameof(Barracks);
 
+		protected override int MaxLevel => BalanceTable.Barracks.MaxLevel;
+
 		private bool HaveSquad => LocatedUnits is not null;
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];

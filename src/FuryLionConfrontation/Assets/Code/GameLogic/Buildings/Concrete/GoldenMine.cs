@@ -13,6 +13,8 @@ namespace Confrontation
 
 		public override string Name => nameof(GoldenMine);
 
+		protected override int MaxLevel => BalanceTable.GoldenMines.MaxLevel;
+
 		private int GoldProducingRate => Balance.ProduceAmount;
 
 		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);

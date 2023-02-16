@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,8 @@ namespace Confrontation
 	public class Village : Building
 	{
 		public override string Name => nameof(Village);
+
+		protected override int MaxLevel => throw new NotImplementedException();
 
 		public IEnumerable<Cell> CellsInRegion
 		{
