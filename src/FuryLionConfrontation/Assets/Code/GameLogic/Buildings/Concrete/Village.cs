@@ -54,7 +54,7 @@ namespace Confrontation
 			}
 			else
 			{
-				_garrisonsFactory.Create(RelatedCell, RelatedCell.OwnerPlayerId);
+				_garrisonsFactory.Create(RelatedCell);
 			}
 		}
 	}
