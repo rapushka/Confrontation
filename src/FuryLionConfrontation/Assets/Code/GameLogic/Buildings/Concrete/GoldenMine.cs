@@ -11,6 +11,8 @@ namespace Confrontation
 
 		public float CoolDownDuration => Balance.ProduceCollDownDuration;
 
+		public override string Name => nameof(GoldenMine);
+
 		private int GoldProducingRate => Balance.ProduceAmount;
 
 		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);

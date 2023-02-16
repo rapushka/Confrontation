@@ -5,6 +5,8 @@ namespace Confrontation
 {
 	public class Village : Building
 	{
+		public override string Name => nameof(Village);
+
 		public IEnumerable<Cell> CellsInRegion
 		{
 			get

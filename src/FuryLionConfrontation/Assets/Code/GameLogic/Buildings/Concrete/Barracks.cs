@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Confrontation
@@ -11,6 +12,8 @@ namespace Confrontation
 		public float PassedDuration { get; set; }
 
 		public float CoolDownDuration => Balance.CoolDownDuration;
+
+		public override string Name => nameof(Barracks);
 
 		private bool HaveSquad => LocatedUnits is not null;
 

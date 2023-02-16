@@ -12,7 +12,7 @@ namespace Confrontation
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
-		private void Start() => _textMesh.text = _building.name;
+		private void Start() => _textMesh.text = _building.Name;
 
 		protected override void OnButtonClick()
 		{
