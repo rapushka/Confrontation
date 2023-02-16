@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Confrontation
 {
 	[CreateAssetMenu(fileName = nameof(BalanceTable), menuName = nameof(Confrontation) + "/" + nameof(BalanceTable))]
 	public class BalanceTable : ScriptableObject
 	{
-		[SerializeField] private List<GoldenMineBalanceData> _goldenMineData;
-		[SerializeField] private List<BarrackBalanceData> _barrackData;
+		[SerializeField] private List<GoldenMineBalanceData> _goldenMine;
+		[SerializeField] private List<BarrackBalanceData> _barrack;
 
-		[field: SerializeField] public float BaseUnitsSpeed { get; private set; }
+		[field: SerializeField] public UnitBalanceData Unit { get; private set; }
 
 		public LeveledList<GoldenMineBalanceData> GoldenMines { get; private set; }
 
@@ -18,8 +19,8 @@ namespace Confrontation
 
 		private void OnEnable()
 		{
-			GoldenMines = new LeveledList<GoldenMineBalanceData>(_goldenMineData);
-			Barracks = new LeveledList<BarrackBalanceData>(_barrackData);
+			GoldenMines = new LeveledList<GoldenMineBalanceData>(_goldenMine);
+			Barracks = new LeveledList<BarrackBalanceData>(_barrack);
 		}
 	}
 }

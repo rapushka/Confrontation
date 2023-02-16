@@ -15,7 +15,7 @@ namespace Confrontation
 		private Cell _targetCell;
 		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
-		private float Speed => _balance.BaseUnitsSpeed;
+		private float Speed => _balance.Unit.BaseSpeed;
 
 		public event Action TargetReached;
 
