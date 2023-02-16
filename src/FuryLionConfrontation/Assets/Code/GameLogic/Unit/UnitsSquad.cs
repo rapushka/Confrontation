@@ -41,21 +41,18 @@ namespace Confrontation
 			_animator.StopMoving();
 		}
 
-		public class Factory : PlaceholderFactory<UnitsSquad>
+		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			public UnitsSquad Create(Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
 			{
 				var unitsSquad = base.Create();
-				unitsSquad.transform.position = ToInitialUnitPosition(cell.Coordinates);
+				unitsSquad.transform.position = cell.Coordinates.ToInitialUnitPosition();
 				unitsSquad.OwnerPlayerId = ownerPlayerId;
 				unitsSquad.Coordinates = cell.Coordinates;
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
 				return unitsSquad;
 			}
-
-			private static Vector3 ToInitialUnitPosition(Coordinates coordinates)
-				=> coordinates.CalculatePosition().AsTopDown() + Constants.VerticalOffsetAboveCell;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
@@ -19,6 +20,19 @@ namespace Confrontation
 			{
 				_quantityOfUnits = value;
 				_quantityOfUnitsInSquadView.text = value.ToString();
+			}
+		}
+
+		public class Factory : PlaceholderFactory<Garrison>
+		{
+			public Garrison Create(Cell cell, int quantityOfUnits = 1)
+			{
+				var unitsSquad = base.Create();
+				unitsSquad.transform.position = cell.Coordinates.ToInitialUnitPosition();
+				unitsSquad.Coordinates = cell.Coordinates;
+				unitsSquad.QuantityOfUnits = quantityOfUnits;
+
+				return unitsSquad;
 			}
 		}
 	}

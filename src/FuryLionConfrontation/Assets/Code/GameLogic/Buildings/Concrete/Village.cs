@@ -41,7 +41,7 @@ namespace Confrontation
 
 		private void SpawnGarrison()
 		{
-			// throw new NotImplementedException();
+			
 		}
 	}
 }

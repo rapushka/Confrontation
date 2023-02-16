@@ -58,6 +58,7 @@ namespace Confrontation
 
 			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<GameplayWindowsFactory>();
 
+			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_unitPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
 			Container.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefab(_cellPrefab);
 			Container.BindFactory<Region, Region.Factory>();
