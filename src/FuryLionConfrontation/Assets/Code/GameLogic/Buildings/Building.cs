@@ -13,9 +13,11 @@ namespace Confrontation
 
 		public int Level { get; private set; } = 1;
 
+		public abstract string Name { get; }
+
 		public Cell RelatedCell => _field.Cells[Coordinates];
 
-		public abstract string Name { get; }
+		public bool IsOnMaxLevel => Level >= MaxLevel;
 
 		public Coordinates Coordinates
 		{
@@ -35,11 +37,13 @@ namespace Confrontation
 
 		public void LevelUp()
 		{
-			if (Level < MaxLevel)
+			if (IsOnMaxLevel == false)
 			{
 				Level++;
 			}
 		}
+
+		public override string ToString() => $"{Name} ─ Lvl {Level}";
 
 		[Serializable]
 		public class Data

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393428375ac344b88ccdb9a7e5b06033, type: 3}
   m_Name: BalanceTable
   m_EditorClassIdentifier: 
-  _goldenMineData:
-  - <ProduceCollDownDuration>k__BackingField: 5
+  _goldenMine:
+  - <CoolDownDuration>k__BackingField: 5
     <ProduceAmount>k__BackingField: 1
-  - <ProduceCollDownDuration>k__BackingField: 4
+  - <CoolDownDuration>k__BackingField: 4
     <ProduceAmount>k__BackingField: 2
-  _barrackData:
+  _barrack:
   - <CoolDownDuration>k__BackingField: 3
     <SpawnAmount>k__BackingField: 1
-  <BaseUnitsSpeed>k__BackingField: 1
+  <Unit>k__BackingField:
+    <BaseSpeed>k__BackingField: 1

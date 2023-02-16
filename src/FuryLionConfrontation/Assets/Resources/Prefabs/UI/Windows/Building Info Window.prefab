@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _window: {fileID: 4652038617217951611}
   _titleTextMesh: {fileID: 8684339629493213411}
-  _upgradeButton: {fileID: 118288171737352274}
+  _upgradeButton: {fileID: 8041526510165205406}
 --- !u!224 &6287881126078413768 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 584903679583712846, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}

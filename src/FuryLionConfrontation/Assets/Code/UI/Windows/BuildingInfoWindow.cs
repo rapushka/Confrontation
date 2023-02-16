@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -10,7 +11,7 @@ namespace Confrontation
 		[Inject] private readonly IInputService _input;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
-		[SerializeField] private EventButton _upgradeButton;
+		[SerializeField] private Button _upgradeButton;
 
 		private Building _building;
 
@@ -21,7 +22,7 @@ namespace Confrontation
 			_building = _input.ClickedCell.Building!;
 			UpdateView();
 
-			_upgradeButton.Click += OnButtonClick;
+			_upgradeButton.onClick.AddListener(OnButtonClick);
 
 			base.Open();
 		}
@@ -30,7 +31,7 @@ namespace Confrontation
 		{
 			base.Close();
 
-			_upgradeButton.Click -= OnButtonClick;
+			_upgradeButton.onClick.RemoveListener(OnButtonClick);
 		}
 
 		private void OnButtonClick()
@@ -39,7 +40,11 @@ namespace Confrontation
 			UpdateView();
 		}
 
-		private void UpdateView() => _titleTextMesh.text = $"{_building.Name} ─ Lvl {_building.Level.ToString()}";
+		private void UpdateView()
+		{
+			_titleTextMesh.text = _building.ToString();
+			_upgradeButton.interactable = _building.IsOnMaxLevel == false;
+		}
 
 		public new class Factory : PlaceholderFactory<Object, BuildingInfoWindow> { }
 	}
