@@ -1,20 +1,12 @@
-using TMPro;
 using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
-	public class UnitsSquad : MonoBehaviour, ICoordinated
+	public class UnitsSquad : Garrison
 	{
-		[Inject] private readonly IField _field;
-
 		[SerializeField] private UnitMovement _unitMovement;
-		[SerializeField] private UnitAnimator _animator;
-		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
 		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
-
-		private int _quantityOfUnits;
-		private Coordinates _coordinates;
 
 		private void OnEnable() => _unitMovement.TargetReached += OnTargetCellReached;
 
@@ -22,27 +14,7 @@ namespace Confrontation
 
 		public int OwnerPlayerId { get; set; }
 
-		public Cell LocationCell => _field.Cells[Coordinates];
-		
-		public Coordinates Coordinates
-		{
-			get => _coordinates;
-			set
-			{
-				_coordinates = value;
-				_field.LocatedUnits.Add(this);
-			}
-		}
-
-		public int QuantityOfUnits
-		{
-			get => _quantityOfUnits;
-			set
-			{
-				_quantityOfUnits = value;
-				_quantityOfUnitsInSquadView.text = value.ToString();
-			}
-		}
+		public Cell LocationCell => Field.Cells[Coordinates];
 
 		private void Locate(Cell cell) => _unitOrderPerformer.Locate(cell);
 
@@ -59,12 +31,12 @@ namespace Confrontation
 			_animator.StopMoving();
 		}
 
-		public class Factory : PlaceholderFactory<UnitsSquad>
+		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
-			public UnitsSquad Create(Vector3 position, Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
+			public UnitsSquad Create(Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
 			{
 				var unitsSquad = base.Create();
-				unitsSquad.transform.position = position;
+				unitsSquad.transform.position = InitialUnitPosition(cell.Coordinates);
 				unitsSquad.OwnerPlayerId = ownerPlayerId;
 				unitsSquad.Coordinates = cell.Coordinates;
 				unitsSquad.Locate(cell);
@@ -72,6 +44,9 @@ namespace Confrontation
 
 				return unitsSquad;
 			}
+
+			private static Vector3 InitialUnitPosition(Coordinates coordinates)
+				=> coordinates.CalculatePosition().AsTopDown() + Constants.VerticalOffsetAboveCell;
 		}
 	}
 }

@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -20,8 +19,6 @@ namespace Confrontation
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
-		private Vector3 InitialUnitPosition => transform.position + Constants.VerticalOffsetAboveCell;
-
 		private BarrackBalanceData Balance => _balanceTable.Barrack[Level];
 
 		public void Action()
@@ -40,7 +37,7 @@ namespace Confrontation
 			}
 			else
 			{
-				_unitsFactory.Create(InitialUnitPosition, RelatedCell, RelatedCell.OwnerPlayerId);
+				_unitsFactory.Create(RelatedCell, RelatedCell.OwnerPlayerId);
 			}
 		}
 	}
