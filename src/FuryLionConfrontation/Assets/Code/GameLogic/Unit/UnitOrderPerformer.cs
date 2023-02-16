@@ -14,7 +14,7 @@ namespace Confrontation
 
 		[CanBeNull] private Cell _targetCell;
 
-		public void PlaceInCell()
+		public void LocateInTargetCell()
 		{
 			Locate(_targetCell);
 			_targetCell = null;

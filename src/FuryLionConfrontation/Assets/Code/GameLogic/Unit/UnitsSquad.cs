@@ -5,6 +5,8 @@ namespace Confrontation
 {
 	public class UnitsSquad : Garrison
 	{
+		[Inject] private readonly IField _field;
+
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
 
@@ -14,9 +16,7 @@ namespace Confrontation
 
 		public int OwnerPlayerId { get; set; }
 
-		public Cell LocationCell => Field.Cells[Coordinates];
-
-		private void Locate(Cell cell) => _unitOrderPerformer.Locate(cell);
+		public Cell LocationCell => _field.Cells[Coordinates];
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
@@ -27,11 +27,11 @@ namespace Confrontation
 
 		private void OnTargetCellReached()
 		{
-			_unitOrderPerformer.PlaceInCell();
+			_unitOrderPerformer.LocateInTargetCell();
 			_animator.StopMoving();
 		}
 
-		public new class Factory : PlaceholderFactory<UnitsSquad>
+		public class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			public UnitsSquad Create(Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
 			{
@@ -39,7 +39,7 @@ namespace Confrontation
 				unitsSquad.transform.position = InitialUnitPosition(cell.Coordinates);
 				unitsSquad.OwnerPlayerId = ownerPlayerId;
 				unitsSquad.Coordinates = cell.Coordinates;
-				unitsSquad.Locate(cell);
+				unitsSquad._unitOrderPerformer.Locate(cell);
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 
 				return unitsSquad;
