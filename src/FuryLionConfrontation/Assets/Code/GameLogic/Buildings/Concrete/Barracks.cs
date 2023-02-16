@@ -14,7 +14,7 @@ namespace Confrontation
 
 		public override string Name => nameof(Barracks);
 
-		protected override int MaxLevel => BalanceTable.Barracks.MaxLevel;
+		protected override int MaxLevel => BalanceTable.Barrack.MaxLevel;
 
 		private bool HaveSquad => LocatedUnits is not null;
 
@@ -22,7 +22,7 @@ namespace Confrontation
 
 		private Vector3 InitialUnitPosition => transform.position + Constants.VerticalOffsetAboveCell;
 
-		private BarrackBalanceData Balance => _balanceTable.Barracks[Level];
+		private BarrackBalanceData Balance => _balanceTable.Barrack[Level];
 
 		public void Action()
 		{

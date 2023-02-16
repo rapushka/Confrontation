@@ -14,4 +14,6 @@ namespace Confrontation
 	[Serializable] public class GoldenMineBalanceData : GeneratorBaseBalanceData { }
 
 	[Serializable] public class BarrackBalanceData : GeneratorBaseBalanceData { }
+
+	[Serializable] public class VillageBalanceData : GeneratorBaseBalanceData { }
 }
