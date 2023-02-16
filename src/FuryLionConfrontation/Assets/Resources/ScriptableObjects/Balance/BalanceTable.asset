@@ -17,3 +17,7 @@ MonoBehaviour:
     <ProduceAmount>k__BackingField: 1
   - <ProduceCollDownDuration>k__BackingField: 4
     <ProduceAmount>k__BackingField: 2
+  _barrackData:
+  - <CoolDownDuration>k__BackingField: 3
+    <SpawnAmount>k__BackingField: 1
+  <BaseUnitsSpeed>k__BackingField: 1

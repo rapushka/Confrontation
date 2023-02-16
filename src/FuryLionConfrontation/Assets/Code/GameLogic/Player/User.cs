@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace Confrontation
@@ -7,7 +8,7 @@ namespace Confrontation
 	public class User : ScriptableObject, ILevelSelector
 	{
 		[SerializeField] private int _playerId = 1;
-		
+
 		public Player Player { get; private set; }
 
 		public ILevel SelectedLevel { get; set; }
@@ -19,6 +20,11 @@ namespace Confrontation
 		private void OnEnable() => SelectedLevel = LoadDummyLevel();
 
 		// Instead Level will be null => on game start from GameplayScene will throw exceptions
-		private static LevelScriptableObject LoadDummyLevel() => CreateInstance<LevelScriptableObject>();
+		private LevelScriptableObject LoadDummyLevel()
+		{
+			var level = CreateInstance<LevelScriptableObject>();
+			level.Regions.Add(new Region.Data { OwnerPlayerId = _playerId });
+			return level;
+		}
 	}
 }

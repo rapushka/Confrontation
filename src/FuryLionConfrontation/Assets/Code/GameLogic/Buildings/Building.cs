@@ -9,8 +9,8 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly BalanceTable _balanceTable;
 
-		protected int Level = 1;
-			
+		public int Level { get; private set; } = 1;
+
 		private Coordinates _coordinates;
 
 		public Cell RelatedCell => _field.Cells[Coordinates];

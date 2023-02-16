@@ -60,7 +60,7 @@ namespace Confrontation
 			}
 			else
 			{
-				_uiMediator.OpenWindow<BuildingWindow>();
+				_uiMediator.OpenWindow<BuildingInfoWindow>();
 			}
 		}
 	}

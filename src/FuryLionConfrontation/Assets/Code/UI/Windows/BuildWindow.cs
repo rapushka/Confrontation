@@ -13,9 +13,9 @@ namespace Confrontation
 
 		private void Start()
 		{
-			foreach (var buildButton in _resources.Buildings)
+			foreach (var building in _resources.Buildings)
 			{
-				_buildingButtonFactory.Create(buildButton, _buttonsRoot);
+				_buildingButtonFactory.Create(building, _buttonsRoot);
 			}
 		}
 
