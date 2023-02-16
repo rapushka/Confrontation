@@ -4,10 +4,8 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public class BarrackData
+	public class CooledDownBalanceData : IBalanceData
 	{
 		[field: SerializeField] public float CoolDownDuration { get; private set; }
-
-		[field: SerializeField] public int SpawnAmount { get; private set; }
 	}
 }

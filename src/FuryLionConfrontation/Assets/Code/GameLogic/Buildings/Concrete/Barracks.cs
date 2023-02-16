@@ -22,7 +22,7 @@ namespace Confrontation
 
 		private Vector3 InitialUnitPosition => transform.position + Constants.VerticalOffsetAboveCell;
 
-		private BarrackData Balance => _balanceTable.Barracks[Level];
+		private BarrackBalanceData Balance => _balanceTable.Barracks[Level];
 
 		public void Action()
 		{

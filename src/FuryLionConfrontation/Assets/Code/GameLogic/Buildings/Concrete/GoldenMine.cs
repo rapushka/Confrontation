@@ -9,7 +9,7 @@ namespace Confrontation
 
 		public float PassedDuration { get; set; }
 
-		public float CoolDownDuration => Balance.ProduceCollDownDuration;
+		public float CoolDownDuration => Balance.CoolDownDuration;
 
 		public override string Name => nameof(GoldenMine);
 
@@ -19,7 +19,7 @@ namespace Confrontation
 
 		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);
 
-		private GoldenMineData Balance => BalanceTable.GoldenMines[Level];
+		private GoldenMineBalanceData Balance => BalanceTable.GoldenMines[Level];
 
 		public void Action() => ProduceGold();
 
