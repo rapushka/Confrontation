@@ -10,7 +10,7 @@ namespace Confrontation
 		private readonly IField _field;
 
 		private int _garrisonQuantity;
-		private UnitsSquad _they;
+		private Garrison _they;
 		private Cell _cell;
 		[CanBeNull] private Garrison _garrison;
 
@@ -76,7 +76,10 @@ namespace Confrontation
 
 			if (IsThereGarrison)
 			{
-				DistributeDamage(ourUnitsQuantity);
+				if (IsDefendersRemain(ourUnitsQuantity) == false)
+				{
+					return false;
+				}
 			}
 			else
 			{
@@ -100,25 +103,55 @@ namespace Confrontation
 			_cell.MakeRegionNeutral();
 		}
 
-		private void DistributeDamage(int ourUnitsQuantity)
+		private bool IsDefendersRemain(int incomeDamage)
 		{
-			var distributedDamage = ourUnitsQuantity / 2;
-			_they.QuantityOfUnits -= distributedDamage;
+			var remainsDamage = incomeDamage;
 
-			if (_they.QuantityOfUnits <= 0)
+			while (remainsDamage > 0)
 			{
-				_garrison!.QuantityOfUnits -= Mathf.Abs(_they.QuantityOfUnits);
-				_assets.Destroy(_they.gameObject);
-				_cell.MakeRegionNeutral();
+				var half = remainsDamage / 2;
+				var initialTheyQuantity = _they.QuantityOfUnits;
+				var initialGarrisonQuantity = _garrison!.QuantityOfUnits;
+
+				_they.QuantityOfUnits -= half;
+				_garrison.QuantityOfUnits -= remainsDamage - half;
+
+				TakeDamageOverhead(ref _they, _garrison);
+				TakeDamageOverhead(ref _garrison, _they);
+
+				remainsDamage -= CalculateDelta(initialTheyQuantity, initialGarrisonQuantity);
 			}
 
-			_garrison!.QuantityOfUnits -= ourUnitsQuantity - distributedDamage;
+			return _they == true;
+		}
 
-			if (_garrison!.QuantityOfUnits <= 0)
+		private int CalculateDelta(int initialTheyQuantity, int initialGarrisonQuantity)
+		{
+			var actualTheyQuantity = _they == true ? _they.QuantityOfUnits : 0;
+			var actualGarrisonQuantity = _garrison == true ? _garrison!.QuantityOfUnits : 0;
+
+			return (initialTheyQuantity - actualTheyQuantity)
+			       + (initialGarrisonQuantity - actualGarrisonQuantity);
+		}
+
+		private void TakeDamageOverhead(ref Garrison left, Garrison right)
+		{
+			if (left == true)
 			{
-				_they.QuantityOfUnits -= Mathf.Abs(_garrison!.QuantityOfUnits);
-				_assets.Destroy(_garrison!.gameObject);
+				left.QuantityOfUnits -= DamageOverhead(right);
 			}
+		}
+
+		private int DamageOverhead(Garrison garrison)
+		{
+			var remainQuantity = garrison.QuantityOfUnits;
+			if (remainQuantity <= 0)
+			{
+				_assets.Destroy(garrison.gameObject);
+				return Mathf.Abs(remainQuantity);
+			}
+
+			return 0;
 		}
 	}
 }
