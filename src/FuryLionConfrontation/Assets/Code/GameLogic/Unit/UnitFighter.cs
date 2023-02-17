@@ -30,13 +30,13 @@ namespace Confrontation
 			_cell = cell;
 
 			_defenceStrategy = PickDefenceStrategy(_cell.LocatedUnits, _cell.Garrison);
-			var fightResult = _squad.QuantityOfUnits.CompareTo(_defenceStrategy.Quantity);
+			var ourAdvantageRate = _squad.QuantityOfUnits.CompareTo(_defenceStrategy.Quantity);
 
-			if (fightResult < 0)
+			if (ourAdvantageRate > 0)
 			{
 				OurVictory();
 			}
-			else if (fightResult > 0)
+			else if (ourAdvantageRate < 0)
 			{
 				TheirVictory();
 			}
