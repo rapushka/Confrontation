@@ -2,12 +2,7 @@ using JetBrains.Annotations;
 
 namespace Confrontation
 {
-	public interface IFlexDefenceStrategy
-	{
-		void ChangeDefenceStrategy(IDefenceStrategy newStrategy);
-	}
-
-	public class UnitFighter : IFlexDefenceStrategy
+	public class UnitFighter : ICanLoseDefenders
 	{
 		private readonly UnitsSquad _squad;
 		private readonly IAssetsService _assets;
@@ -51,10 +46,10 @@ namespace Confrontation
 			}
 		}
 
-		void IFlexDefenceStrategy.ChangeDefenceStrategy(IDefenceStrategy newStrategy) => _defenceStrategy = newStrategy;
+		void ICanLoseDefenders.LoseDefenders() => _cell.MakeRegionNeutral();
 
 		private IDefenceStrategy PickDefenceStrategy(Garrison they, Garrison garrison)
-			=> DefenceStrategyFactory.Create(this, they, garrison);
+			=> DefenceStrategyBase.Create(_assets, this, they, garrison);
 
 		private void OurVictory()
 		{
