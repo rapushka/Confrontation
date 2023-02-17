@@ -5,10 +5,10 @@ namespace Confrontation
 {
 	public class UnitsSquad : Garrison
 	{
-		[Inject] private readonly IField _field;
-
 		[SerializeField] private UnitMovement _unitMovement;
 		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
+
+		private Coordinates _coordinates;
 
 		private void OnEnable() => _unitMovement.TargetReached += OnTargetCellReached;
 
@@ -16,15 +16,15 @@ namespace Confrontation
 
 		public int OwnerPlayerId { get; set; }
 
-		public Cell LocationCell => _field.Cells[Coordinates];
+		public Cell LocationCell => Field.Cells[Coordinates];
 
 		public override Coordinates Coordinates
 		{
-			get => base.Coordinates;
+			get => _coordinates;
 			set
 			{
-				base.Coordinates = value;
-				_field.LocatedUnits.Add(this);
+				_coordinates = value;
+				Field.LocatedUnits.Add(this);
 			}
 		}
 

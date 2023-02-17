@@ -14,6 +14,8 @@ namespace Confrontation
 
 		[CanBeNull] public UnitsSquad LocatedUnits => _field.LocatedUnits[Coordinates];
 
+		[CanBeNull] public Garrison Garrison => _field.Garrisons[Coordinates];
+
 		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 
 		[CanBeNull] public Region RelatedRegion => _field.Regions[Coordinates];

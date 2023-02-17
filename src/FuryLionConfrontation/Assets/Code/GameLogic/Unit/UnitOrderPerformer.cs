@@ -15,7 +15,6 @@ namespace Confrontation
 		private UnitFighter _unitFighter;
 		[CanBeNull] private Cell _targetCell;
 
-
 		private void Start() => _unitFighter = new UnitFighter(_unitsSquad, _assets, _field);
 
 		public void LocateInTargetCell()
@@ -60,7 +59,11 @@ namespace Confrontation
 			_unitsSquad.QuantityOfUnits -= quantity;
 		}
 
-		private bool IsAlreadyPlaced(Cell cell) => cell.LocatedUnits == true && cell.LocatedUnits != _unitsSquad;
+		private bool IsAlreadyPlaced(Cell cell)
+			=> (cell.LocatedUnits == true
+			    && cell.LocatedUnits != _unitsSquad)
+			   || (cell.Garrison == true
+			       && cell.RelatedRegion!.OwnerPlayerId != _unitsSquad.OwnerPlayerId);
 
 		private bool IsHaveSameOwner(Cell cell) => cell.OwnerPlayerId == _unitsSquad.OwnerPlayerId;
 

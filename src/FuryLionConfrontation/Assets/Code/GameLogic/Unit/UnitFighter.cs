@@ -10,6 +10,7 @@ namespace Confrontation
 		private readonly IField _field;
 
 		private int _garrisonQuantity;
+		private int _theyQuantity;
 		private Garrison _they;
 		private Cell _cell;
 		[CanBeNull] private Garrison _garrison;
@@ -23,16 +24,19 @@ namespace Confrontation
 
 		private bool IsThereGarrison => _garrison == true;
 
-		private int ComposedDefenceForcesQuantity => _they.QuantityOfUnits + _garrisonQuantity;
+		private bool IsThereThey => _they == true;
+
+		private int ComposedDefenceForcesQuantity => _theyQuantity + _garrisonQuantity;
 
 		public void FightWithSquadOn(Cell cell)
 		{
 			_cell = cell;
 
+			_they = _cell.LocatedUnits;
+
 			_garrison = _field.Garrisons[_cell.Coordinates];
 			_garrisonQuantity = IsThereGarrison ? _garrison!.QuantityOfUnits : 0;
-
-			_they = _cell.LocatedUnits!;
+			_theyQuantity = IsThereThey ? _they!.QuantityOfUnits : 0;
 
 			if (IsOurVictory() == false
 			    && IsTheirVictory() == false)
@@ -54,14 +58,18 @@ namespace Confrontation
 				return false;
 			}
 
-			_squad.QuantityOfUnits -= _they.QuantityOfUnits;
+			_squad.QuantityOfUnits -= ComposedDefenceForcesQuantity;
 
 			if (IsThereGarrison)
 			{
 				_assets.Destroy(_garrison!.gameObject);
 			}
 
-			_assets.Destroy(_they.gameObject);
+			if (IsThereThey)
+			{
+				_assets.Destroy(_they.gameObject);
+			}
+
 			CaptureRegion(_cell);
 			return true;
 		}
@@ -99,7 +107,12 @@ namespace Confrontation
 
 			_field.LocatedUnits.Remove(_squad);
 			_assets.Destroy(_squad.gameObject);
-			_assets.Destroy(_they.gameObject);
+
+			if (IsThereThey)
+			{
+				_assets.Destroy(_they.gameObject);
+			}
+
 			_cell.MakeRegionNeutral();
 		}
 
@@ -110,11 +123,18 @@ namespace Confrontation
 			while (remainsDamage > 0)
 			{
 				var half = remainsDamage / 2;
-				var initialTheyQuantity = _they.QuantityOfUnits;
-				var initialGarrisonQuantity = _garrison!.QuantityOfUnits;
+				var initialTheyQuantity = _they == true ? _they.QuantityOfUnits : 0;
+				var initialGarrisonQuantity = _garrison == true ? _garrison!.QuantityOfUnits : 0;
 
-				_they.QuantityOfUnits -= half;
-				_garrison.QuantityOfUnits -= remainsDamage - half;
+				if (IsThereThey)
+				{
+					_they.QuantityOfUnits -= half;
+				}
+
+				if (IsThereGarrison)
+				{
+					_garrison!.QuantityOfUnits -= remainsDamage - half;
+				}
 
 				TakeDamageOverhead(ref _they, _garrison);
 				TakeDamageOverhead(ref _garrison, _they);
@@ -122,7 +142,25 @@ namespace Confrontation
 				remainsDamage -= CalculateDelta(initialTheyQuantity, initialGarrisonQuantity);
 			}
 
+			if (IsThereThey == false)
+			{
+				_assets.Destroy(_they.gameObject);
+			}
+
+			if (IsThereGarrison == false)
+			{
+				_assets.Destroy(_garrison!.gameObject);
+			}
+
 			return _they == true;
+		}
+
+		private void TakeDamageOverhead(ref Garrison left, Garrison right)
+		{
+			if (left == true && right == true)
+			{
+				left.QuantityOfUnits -= DamageOverhead(right);
+			}
 		}
 
 		private int CalculateDelta(int initialTheyQuantity, int initialGarrisonQuantity)
@@ -134,24 +172,10 @@ namespace Confrontation
 			       + (initialGarrisonQuantity - actualGarrisonQuantity);
 		}
 
-		private void TakeDamageOverhead(ref Garrison left, Garrison right)
-		{
-			if (left == true)
-			{
-				left.QuantityOfUnits -= DamageOverhead(right);
-			}
-		}
-
 		private int DamageOverhead(Garrison garrison)
 		{
 			var remainQuantity = garrison.QuantityOfUnits;
-			if (remainQuantity <= 0)
-			{
-				_assets.Destroy(garrison.gameObject);
-				return Mathf.Abs(remainQuantity);
-			}
-
-			return 0;
+			return remainQuantity <= 0 ? Mathf.Abs(remainQuantity) : 0;
 		}
 	}
 }
