@@ -1,20 +1,22 @@
 using System.Reflection;
+using static System.Reflection.BindingFlags;
 
 namespace Confrontation.Editor
 {
 	public static class ReflectionExtensions
 	{
 		public static void InvokePrivateMethod(this object @this, string methodName, params object[] parameters)
-			=> @this.InvokeMethod(methodName, BindingFlags.NonPublic | BindingFlags.Instance, parameters);
+			=> @this.InvokeMethod(methodName, NonPublic | Instance, parameters);
 
-		public static void InvokeMethod(this object @this, string methodName, BindingFlags bindingFlags, params object[] parameters)
+		public static void InvokeMethod
+			(this object @this, string methodName, BindingFlags bindingFlags, params object[] parameters)
 			=> @this.GetType().GetMethod(methodName, bindingFlags)!.Invoke(@this, parameters);
 
 		public static T GetPrivateField<T>(this object @this, string fieldName)
-			=> @this.GetFieldValue<T>(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
+			=> @this.GetFieldValue<T>(fieldName, Instance | NonPublic);
 
 		public static void SetPrivateField<T>(this object @this, string fieldName, T value)
-			=> @this.SetFieldValue(fieldName, BindingFlags.Instance | BindingFlags.NonPublic, value);
+			=> @this.SetFieldValue(fieldName, Instance | NonPublic, value);
 
 		public static void SetPrivateProperty<T>(this object @this, string propertyName, T value)
 			=> @this.SetPropertyValue(propertyName, value);

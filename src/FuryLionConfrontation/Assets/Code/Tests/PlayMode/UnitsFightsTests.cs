@@ -12,7 +12,7 @@ namespace Confrontation.Editor.PlayModeTests
 	{
 		private const int UserPlayerId = 1;
 		private const int EnemyPlayerId = 2;
-		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 1f);
+		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 0.1f);
 
 		private DiContainer _container;
 		private List<Building> _buildings;
@@ -20,7 +20,6 @@ namespace Confrontation.Editor.PlayModeTests
 		public override void SetUp()
 		{
 			base.SetUp();
-
 			Time.timeScale = 10f;
 		}
 
@@ -32,8 +31,12 @@ namespace Confrontation.Editor.PlayModeTests
 			yield return PassMainMenu();
 
 			_container = GetActualContainer(@for: Constants.SceneName.GameplayScene);
+			PreventGarrisonSpawn();
 			_buildings = _container.ResolveBuildings();
 		}
+
+		private void PreventGarrisonSpawn()
+			=> _container.Resolve<BalanceTable>().Village.First().SetGenerationAmount(0);
 
 		private object PassMainMenu()
 		{
@@ -44,7 +47,7 @@ namespace Confrontation.Editor.PlayModeTests
 
 			var toGameplay = container.Resolve<ToGameplay>();
 			toGameplay.Transfer();
-			
+
 			return _waitForZenjectInitialization;
 		}
 
