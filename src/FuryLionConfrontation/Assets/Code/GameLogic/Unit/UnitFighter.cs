@@ -2,18 +2,20 @@ using JetBrains.Annotations;
 
 namespace Confrontation
 {
-	public class UnitFighter
+	public interface IFlexDefenceStrategy
+	{
+		void ChangeDefenceStrategy(IDefenceStrategy newStrategy);
+	}
+
+	public class UnitFighter : IFlexDefenceStrategy
 	{
 		private readonly UnitsSquad _squad;
 		private readonly IAssetsService _assets;
 		private readonly IField _field;
 
-		private int _garrisonQuantity;
-		private int _theyQuantity;
-		private Garrison _they;
-		private Cell _cell;
 		[CanBeNull] private Garrison _garrison;
 		private IDefenceStrategy _defenceStrategy;
+		private Cell _cell;
 
 		public UnitFighter(UnitsSquad squad, IAssetsService assets, IField field)
 		{
@@ -21,8 +23,6 @@ namespace Confrontation
 			_assets = assets;
 			_field = field;
 		}
-
-		private int ComposedDefenceForcesQuantity => _theyQuantity + _garrisonQuantity;
 
 		public void CaptureRegion(Cell cell)
 		{
@@ -34,11 +34,7 @@ namespace Confrontation
 		{
 			_cell = cell;
 
-			_they = _cell.LocatedUnits;
-			_garrison = _field.Garrisons[_cell.Coordinates];
-
-			_defenceStrategy = PickDefenceStrategy(_they, _garrison);
-
+			_defenceStrategy = PickDefenceStrategy(_cell.LocatedUnits, _cell.Garrison);
 			var fightResult = _squad.QuantityOfUnits.CompareTo(_defenceStrategy.Quantity);
 
 			if (fightResult < 0)
@@ -55,14 +51,14 @@ namespace Confrontation
 			}
 		}
 
+		void IFlexDefenceStrategy.ChangeDefenceStrategy(IDefenceStrategy newStrategy) => _defenceStrategy = newStrategy;
+
 		private IDefenceStrategy PickDefenceStrategy(Garrison they, Garrison garrison)
-		{
-			throw new System.NotImplementedException();
-		}
+			=> DefenceStrategyFactory.Create(this, they, garrison);
 
 		private void OurVictory()
 		{
-			_squad.QuantityOfUnits -= ComposedDefenceForcesQuantity;
+			_squad.QuantityOfUnits -= _defenceStrategy.Quantity;
 
 			_defenceStrategy.Destroy();
 
