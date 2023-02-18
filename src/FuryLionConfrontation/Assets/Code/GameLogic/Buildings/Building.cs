@@ -7,7 +7,7 @@ namespace Confrontation
 	public abstract class Building : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private readonly BalanceTable _balanceTable;
+		[Inject] private readonly IBalanceTable _balanceTable;
 
 		private Coordinates _coordinates;
 
@@ -29,7 +29,7 @@ namespace Confrontation
 			}
 		}
 
-		protected BalanceTable BalanceTable => _balanceTable;
+		protected IBalanceTable BalanceTable => _balanceTable;
 
 		protected IField Field => _field;
 

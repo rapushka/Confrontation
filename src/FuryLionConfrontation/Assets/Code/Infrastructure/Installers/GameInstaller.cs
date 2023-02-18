@@ -33,7 +33,7 @@ namespace Confrontation
 
 		private void BindPrefabs()
 		{
-			Container.BindInstance(_balanceTable).AsSingle();
+			Container.BindInstance<IBalanceTable>(_balanceTable).AsSingle();
 			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();

@@ -46,12 +46,12 @@ namespace Confrontation.Editor.PlayModeTests
 
 		private void PreventGarrisonSpawn()
 		{
-			_initialVillageGarrisonAmount = _container.Resolve<BalanceTable>().Village.First().MaxInGarrisonNumber;
+			_initialVillageGarrisonAmount = _container.Resolve<IBalanceTable>().Village.First().MaxInGarrisonNumber;
 			SetVillageGarrisonAmount(to: 0);
 		}
 
 		private void SetVillageGarrisonAmount(int to)
-			=> _container.Resolve<BalanceTable>().Village.First().SetGenerationAmount(to);
+			=> _container.Resolve<IBalanceTable>().Village.First().SetGenerationAmount(to);
 
 		private object PassMainMenu()
 		{

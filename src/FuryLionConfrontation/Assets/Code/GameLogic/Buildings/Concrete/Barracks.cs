@@ -5,7 +5,7 @@ namespace Confrontation
 	public class Barracks : Building, IActorWithCoolDown
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
-		[Inject] private readonly BalanceTable _balanceTable;
+		[Inject] private readonly IBalanceTable _balanceTable;
 
 		public float PassedDuration { get; set; }
 

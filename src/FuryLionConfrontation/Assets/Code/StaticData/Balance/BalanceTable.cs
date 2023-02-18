@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[CreateAssetMenu(fileName = nameof(BalanceTable), menuName = nameof(Confrontation) + "/" + nameof(BalanceTable))]
-	public class BalanceTable : ScriptableObject
+	public class BalanceTable : ScriptableObject, IBalanceTable
 	{
 		[SerializeField] private List<GoldenMineBalanceData> _goldenMine;
 		[SerializeField] private List<BarrackBalanceData> _barrack;

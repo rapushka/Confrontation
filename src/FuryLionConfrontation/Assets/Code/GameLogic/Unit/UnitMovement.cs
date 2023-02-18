@@ -8,7 +8,7 @@ namespace Confrontation
 	public class UnitMovement : MonoBehaviour
 	{
 		[Inject] private readonly ITimeService _timeService;
-		[Inject] private readonly BalanceTable _balance;
+		[Inject] private readonly IBalanceTable _balance;
 
 		[SerializeField] private Transform _transform;
 
