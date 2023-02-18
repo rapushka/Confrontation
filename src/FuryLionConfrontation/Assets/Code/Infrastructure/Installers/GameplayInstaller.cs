@@ -14,7 +14,6 @@ namespace Confrontation
 		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 
-		// ReSharper disable Unity.PerformanceAnalysis - Method call only on initialization
 		public override void InstallBindings()
 		{
 			Container.BindInstance(_orderLineRenderer).AsSingle();

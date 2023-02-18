@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-// ReSharper disable Unity.PerformanceCriticalCodeInvocation
 namespace Confrontation.Editor
 {
 	public class LevelEditorWindow : ZenjectEditorWindow
