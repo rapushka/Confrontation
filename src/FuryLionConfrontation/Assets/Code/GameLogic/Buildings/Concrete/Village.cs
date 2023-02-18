@@ -34,7 +34,7 @@ namespace Confrontation
 
 		private VillageBalanceData Balance => BalanceTable.Village[Level];
 
-		private bool HaveGarrison => LocatedGarrison is not null;
+		private bool HaveGarrison => LocatedGarrison == true;
 
 		private Garrison LocatedGarrison => Field.Garrisons[Coordinates];
 
@@ -50,7 +50,10 @@ namespace Confrontation
 		{
 			if (HaveGarrison)
 			{
-				LocatedGarrison.QuantityOfUnits++;
+				if (LocatedGarrison.QuantityOfUnits < Balance.MaxInGarrisonNumber)
+				{
+					LocatedGarrison.QuantityOfUnits++;
+				}
 			}
 			else
 			{
