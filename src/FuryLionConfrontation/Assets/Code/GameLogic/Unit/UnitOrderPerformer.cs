@@ -8,14 +8,13 @@ namespace Confrontation
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 		[Inject] private readonly IAssetsService _assets;
-		[Inject] private readonly IField _field;
 
 		[SerializeField] public UnitsSquad _unitsSquad;
 
 		private UnitFighter _unitFighter;
 		[CanBeNull] private Cell _targetCell;
 
-		private void Start() => _unitFighter = new UnitFighter(_unitsSquad, _assets, _field);
+		private void Start() => _unitFighter = new UnitFighter(_unitsSquad, _assets);
 
 		public void LocateInTargetCell()
 		{
@@ -42,7 +41,7 @@ namespace Confrontation
 
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
-			_field.LocatedUnits.Remove(_unitsSquad);
+			_unitsSquad.LocationCell.DetachUnitsSquad();
 
 			if (quantityToMove < _unitsSquad.QuantityOfUnits
 			    && quantityToMove > 0)

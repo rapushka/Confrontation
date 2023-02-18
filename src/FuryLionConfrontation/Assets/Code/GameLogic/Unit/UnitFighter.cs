@@ -6,17 +6,15 @@ namespace Confrontation
 	{
 		private readonly UnitsSquad _squad;
 		private readonly IAssetsService _assets;
-		private readonly IField _field;
 
 		[CanBeNull] private Garrison _garrison;
 		private IDefenceStrategy _defenceStrategy;
 		private Cell _cell;
 
-		public UnitFighter(UnitsSquad squad, IAssetsService assets, IField field)
+		public UnitFighter(UnitsSquad squad, IAssetsService assets)
 		{
 			_squad = squad;
 			_assets = assets;
-			_field = field;
 		}
 
 		public void CaptureRegion(Cell cell)
@@ -51,7 +49,6 @@ namespace Confrontation
 		private void OurVictory()
 		{
 			_squad.QuantityOfUnits -= _defenceStrategy.Quantity;
-
 			_defenceStrategy.Destroy();
 
 			CaptureRegion(_cell);
@@ -60,15 +57,12 @@ namespace Confrontation
 		private void TheirVictory()
 		{
 			_defenceStrategy.TakeDamage(_squad.QuantityOfUnits);
-
 			_assets.Destroy(_squad.gameObject);
 		}
 
 		private void Draw()
 		{
 			_defenceStrategy.Destroy();
-
-			_field.LocatedUnits.Remove(_squad);
 			_assets.Destroy(_squad.gameObject);
 
 			_cell.MakeRegionNeutral();

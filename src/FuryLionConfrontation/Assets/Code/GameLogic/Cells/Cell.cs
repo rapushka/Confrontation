@@ -49,6 +49,8 @@ namespace Confrontation
 
 		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
 
+		public void DetachUnitsSquad() => _field.LocatedUnits.Remove(LocatedUnits);
+
 		public class Factory : PlaceholderFactory<Cell> { }
 	}
 }

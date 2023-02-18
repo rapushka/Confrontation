@@ -14,6 +14,8 @@ namespace Confrontation.Editor.PlayModeTests
 		private const int EnemyPlayerId = 2;
 		private readonly WaitForSeconds _waitForZenjectInitialization = new(seconds: 0.1f);
 
+		private int _initialVillageGarrisonAmount;
+
 		private DiContainer _container;
 		private List<Building> _buildings;
 
@@ -21,6 +23,13 @@ namespace Confrontation.Editor.PlayModeTests
 		{
 			base.SetUp();
 			Time.timeScale = 10f;
+		}
+
+		public override void Teardown()
+		{
+			base.Teardown();
+			
+			SetVillageGarrisonAmount(to: _initialVillageGarrisonAmount);
 		}
 
 		private IEnumerator CommonSetUp()
@@ -36,7 +45,13 @@ namespace Confrontation.Editor.PlayModeTests
 		}
 
 		private void PreventGarrisonSpawn()
-			=> _container.Resolve<BalanceTable>().Village.First().SetGenerationAmount(0);
+		{
+			_initialVillageGarrisonAmount = _container.Resolve<BalanceTable>().Village.First().MaxInGarrisonNumber;
+			SetVillageGarrisonAmount(to: 0);
+		}
+
+		private void SetVillageGarrisonAmount(int to)
+			=> _container.Resolve<BalanceTable>().Village.First().SetGenerationAmount(to);
 
 		private object PassMainMenu()
 		{
