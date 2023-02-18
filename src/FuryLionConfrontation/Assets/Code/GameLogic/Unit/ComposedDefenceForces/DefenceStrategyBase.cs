@@ -4,15 +4,20 @@ namespace Confrontation
 {
 	public abstract class DefenceStrategyBase : IDefenceStrategy
 	{
-		protected readonly IAssetsService Assets;
+		private const string ThereIsNoDefendersException
+			= "Defence strategy can't be picked for cell without defence forces";
 
-		protected DefenceStrategyBase(IAssetsService assets)
-		{
-			Assets = assets;
-		}
+		protected const string WrongStrategyException
+			= "Whole quantity is less than Damage => Defenders lost and wrong strategy was picked";
 
-		public abstract int  Quantity { get; }
+		protected DefenceStrategyBase(IAssetsService assets) => Assets = assets;
+
+		public abstract int Quantity { get; }
+
+		protected IAssetsService Assets { get; }
+
 		public abstract void Destroy();
+
 		public abstract void TakeDamage(int damage);
 
 		public static IDefenceStrategy Create(IAssetsService assets, Cell cell)
@@ -21,14 +26,12 @@ namespace Confrontation
 			var garrison = cell.Garrison;
 			var isThereUnits = units == true;
 			var isThereGarrison = garrison == true;
+			var isThereBoth = isThereUnits && isThereGarrison;
 
-			return isThereUnits && isThereGarrison ? new BothForcesStrategy(assets, cell, units, garrison)
-				: isThereUnits                     ? new OnlyOneForceDefenceStrategy(assets, units)
-				: isThereGarrison                  ? new OnlyOneForceDefenceStrategy(assets, garrison)
-				                                     : Exception();
+			return isThereBoth    ? new BothForcesDefenceStrategy(assets, cell, units, garrison)
+				: isThereUnits    ? new OnlyOneForceDefenceStrategy(assets, units)
+				: isThereGarrison ? new OnlyOneForceDefenceStrategy(assets, garrison)
+				                    : throw new InvalidOperationException(ThereIsNoDefendersException);
 		}
-
-		private static IDefenceStrategy Exception()
-			=> throw new InvalidOperationException("Defence strategy can't be for cell without defence forces");
 	}
 }

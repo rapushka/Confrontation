@@ -10,16 +10,16 @@ namespace Confrontation
 
 		[SerializeField] protected UnitAnimator _animator;
 		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
-		[SerializeField] private Coordinates _coordinates;
+		[SerializeField] private Coordinates _cellCoordinates;
 
 		private int _quantityOfUnits;
 
 		public virtual Coordinates Coordinates
 		{
-			get => _coordinates;
+			get => _cellCoordinates;
 			set
 			{
-				_coordinates = value;
+				_cellCoordinates = value;
 				_field.Garrisons.Add(this);
 			}
 		}
@@ -35,7 +35,7 @@ namespace Confrontation
 		}
 
 		protected IField Field => _field;
-		
+
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			public Garrison Create(Cell cell, int quantityOfUnits = 1)

@@ -1,4 +1,4 @@
-using System;
+using UnityEngine.Assertions;
 
 namespace Confrontation
 {
@@ -18,10 +18,7 @@ namespace Confrontation
 		{
 			_units.QuantityOfUnits -= damage;
 
-			if (_units.QuantityOfUnits <= 0)
-			{
-				throw new InvalidOperationException("If forces quantity is 0 ─ then they lost");
-			}
+			Assert.IsTrue(_units.QuantityOfUnits > 0, message: WrongStrategyException);
 		}
 	}
 }
