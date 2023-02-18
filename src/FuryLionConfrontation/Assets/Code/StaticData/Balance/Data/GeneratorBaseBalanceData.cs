@@ -14,10 +14,4 @@ namespace Confrontation
 	[Serializable] public class GoldenMineBalanceData : GeneratorBaseBalanceData { }
 
 	[Serializable] public class BarrackBalanceData : GeneratorBaseBalanceData { }
-
-	[Serializable]
-	public class VillageBalanceData : GeneratorBaseBalanceData
-	{
-		[field: SerializeField] public int MaxInGarrisonNumber { get; private set; }
-	}
 }

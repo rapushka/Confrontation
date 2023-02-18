@@ -1,5 +1,3 @@
-using System;
-
 namespace Confrontation
 {
 	public class BothForcesDefenceStrategy : DefenceStrategyBase
@@ -26,13 +24,13 @@ namespace Confrontation
 
 		public override void TakeDamage(int damage)
 		{
-			if (IsBothForcesEnough(damage) == false)
+			if (IsBothForcesEnoughToTakeAllDamage(damage) == false)
 			{
 				DistributeDamage(damage);
 			}
 		}
 
-		private bool IsBothForcesEnough(int damage)
+		private bool IsBothForcesEnoughToTakeAllDamage(int damage)
 		{
 			var damageForUnits = damage / 2;
 			var damageForGarrison = damage - damageForUnits;
@@ -52,17 +50,21 @@ namespace Confrontation
 		{
 			if (_locatedSquad.QuantityOfUnits > _garrison.QuantityOfUnits)
 			{
-				DistributeTo(damage, fullDamaged: _garrison, partiallyDamaged: _locatedSquad);
-			}
-			else if (_locatedSquad.QuantityOfUnits < _garrison.QuantityOfUnits)
-			{
-				DistributeTo(damage, fullDamaged: _locatedSquad, partiallyDamaged: _garrison);
-				_cell.MakeRegionNeutral();
+				KillGarrison(damage);
 			}
 			else
 			{
-				throw new InvalidOperationException(WrongStrategyException);
+				KillLocatedSquad(damage);
 			}
+		}
+
+		private void KillGarrison(int damage)
+			=> DistributeTo(damage, fullDamaged: _garrison, partiallyDamaged: _locatedSquad);
+
+		private void KillLocatedSquad(int damage)
+		{
+			DistributeTo(damage, fullDamaged: _locatedSquad, partiallyDamaged: _garrison);
+			_cell.MakeRegionNeutral();
 		}
 
 		private void DistributeTo(int incomeDamage, Garrison fullDamaged, Garrison partiallyDamaged)
