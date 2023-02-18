@@ -21,7 +21,11 @@ MonoBehaviour:
   - <GenerationCoolDown>k__BackingField: 4
     <GenerationAmount>k__BackingField: 1
   _village:
+  - <GenerationCoolDown>k__BackingField: 4
+    <GenerationAmount>k__BackingField: 1
+    <MaxInGarrisonNumber>k__BackingField: 1
   - <GenerationCoolDown>k__BackingField: 3
     <GenerationAmount>k__BackingField: 1
+    <MaxInGarrisonNumber>k__BackingField: 3
   <Unit>k__BackingField:
     <BaseSpeed>k__BackingField: 1

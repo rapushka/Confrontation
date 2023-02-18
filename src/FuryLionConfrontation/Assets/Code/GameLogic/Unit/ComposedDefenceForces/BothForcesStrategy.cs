@@ -6,18 +6,18 @@ namespace Confrontation
 	{
 		private readonly Garrison _units;
 		private readonly Garrison _garrison;
-		private readonly ICanLoseDefenders _canLoseDefenders;
+		private readonly Cell _cell;
 
 		public BothForcesStrategy
 		(
 			IAssetsService assets,
-			ICanLoseDefenders canLoseDefenders,
+			Cell cell,
 			Garrison units,
 			Garrison garrison
 		)
 		:base (assets)
 		{
-			_canLoseDefenders = canLoseDefenders;
+			_cell = cell;
 			_units = units;
 			_garrison = garrison;
 		}
@@ -63,7 +63,7 @@ namespace Confrontation
 			else if (_units.QuantityOfUnits < _garrison.QuantityOfUnits)
 			{
 				Change(incomeDamage, destroyed: _units, remained: _garrison);
-				_canLoseDefenders.LoseDefenders();
+				_cell.MakeRegionNeutral();
 			}
 			else
 			{

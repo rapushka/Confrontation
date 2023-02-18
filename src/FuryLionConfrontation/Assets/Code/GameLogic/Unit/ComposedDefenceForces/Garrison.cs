@@ -10,9 +10,9 @@ namespace Confrontation
 
 		[SerializeField] protected UnitAnimator _animator;
 		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
+		[SerializeField] private Coordinates _coordinates;
 
 		private int _quantityOfUnits;
-		[SerializeField] private Coordinates _coordinates;
 
 		public virtual Coordinates Coordinates
 		{

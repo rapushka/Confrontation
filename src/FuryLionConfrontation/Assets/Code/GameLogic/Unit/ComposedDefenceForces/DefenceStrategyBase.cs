@@ -15,18 +15,14 @@ namespace Confrontation
 		public abstract void Destroy();
 		public abstract void TakeDamage(int damage);
 
-		public static IDefenceStrategy Create
-		(
-			IAssetsService assets,
-			ICanLoseDefenders canLoseDefenders,
-			Garrison units,
-			Garrison garrison
-		)
+		public static IDefenceStrategy Create(IAssetsService assets, Cell cell)
 		{
+			var units = cell.LocatedUnits;
+			var garrison = cell.Garrison;
 			var isThereUnits = units == true;
 			var isThereGarrison = garrison == true;
 
-			return isThereUnits && isThereGarrison ? new BothForcesStrategy(assets, canLoseDefenders, units, garrison)
+			return isThereUnits && isThereGarrison ? new BothForcesStrategy(assets, cell, units, garrison)
 				: isThereUnits                     ? new OnlyOneForceDefenceStrategy(assets, units)
 				: isThereGarrison                  ? new OnlyOneForceDefenceStrategy(assets, garrison)
 				                                     : Exception();

@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 
 namespace Confrontation
 {
-	public class UnitFighter : ICanLoseDefenders
+	public class UnitFighter
 	{
 		private readonly UnitsSquad _squad;
 		private readonly IAssetsService _assets;
@@ -29,7 +29,7 @@ namespace Confrontation
 		{
 			_cell = cell;
 
-			_defenceStrategy = PickDefenceStrategy(_cell.LocatedUnits, _cell.Garrison);
+			_defenceStrategy = PickDefenceStrategy(_cell);
 			var ourAdvantageRate = _squad.QuantityOfUnits.CompareTo(_defenceStrategy.Quantity);
 
 			if (ourAdvantageRate > 0)
@@ -46,10 +46,7 @@ namespace Confrontation
 			}
 		}
 
-		void ICanLoseDefenders.LoseDefenders() => _cell.MakeRegionNeutral();
-
-		private IDefenceStrategy PickDefenceStrategy(Garrison they, Garrison garrison)
-			=> DefenceStrategyBase.Create(_assets, this, they, garrison);
+		private IDefenceStrategy PickDefenceStrategy(Cell cell) => DefenceStrategyBase.Create(_assets, cell);
 
 		private void OurVictory()
 		{
