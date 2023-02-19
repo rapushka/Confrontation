@@ -13,7 +13,5 @@ namespace Confrontation
 		public void OpenWindow<T>() where T : WindowBase => _gameplayWindows.Open<T>();
 
 		public void CloseCurrentWindow() => _gameplayWindows.Close();
-
-		public void UpdateHud() => _hud.UpdateValues();
 	}
 }

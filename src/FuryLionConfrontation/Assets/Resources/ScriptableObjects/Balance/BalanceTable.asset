@@ -15,7 +15,7 @@ MonoBehaviour:
   <UnitStats>k__BackingField:
     <BaseSpeed>k__BackingField: 1
   <GoldenMineStats>k__BackingField:
-    <Price>k__BackingField: 0
+    <Price>k__BackingField: 5
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 0
       <StatsByLevel>k__BackingField:

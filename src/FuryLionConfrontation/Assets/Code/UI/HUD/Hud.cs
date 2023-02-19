@@ -27,9 +27,6 @@ namespace Confrontation
 			}
 		}
 
-		public void UpdateValues()
-		{
-			_goldenAmountValueTextMesh.text = _user.Player.Stats.GoldCount.ToString();
-		}
+		private void UpdateValues() => _goldenAmountValueTextMesh.text = _user.Player.Stats.GoldCount.ToString();
 	}
 }
