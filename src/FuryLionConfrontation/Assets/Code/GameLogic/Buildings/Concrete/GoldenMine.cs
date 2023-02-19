@@ -13,7 +13,7 @@ namespace Confrontation
 
 		public override string Name => nameof(GoldenMine);
 
-		public override BuildingBalanceData BalanceData => Balance;
+		public override BuildingStats Stats => Balance;
 
 		protected override int MaxLevel => BalanceTable.GoldenMine.MaxLevel;
 
@@ -21,7 +21,7 @@ namespace Confrontation
 
 		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);
 
-		private GoldenMineBalanceData Balance => BalanceTable.GoldenMine[Level];
+		private GoldenMineStats Balance => BalanceTable.GoldenMine[Level];
 
 		public void Action() => ProduceGold();
 

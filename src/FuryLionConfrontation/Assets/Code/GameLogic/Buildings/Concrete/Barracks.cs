@@ -13,7 +13,7 @@ namespace Confrontation
 
 		public override string Name => nameof(Barracks);
 
-		public override BuildingBalanceData BalanceData => Balance; 
+		public override BuildingStats Stats => Balance; 
 
 		protected override int MaxLevel => BalanceTable.Barrack.MaxLevel;
 
@@ -21,7 +21,7 @@ namespace Confrontation
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
-		private BarrackBalanceData Balance => _balanceTable.Barrack[Level];
+		private BarrackStats Balance => _balanceTable.Barrack[Level];
 
 		public void Action()
 		{

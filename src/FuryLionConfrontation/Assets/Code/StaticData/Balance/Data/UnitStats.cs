@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public class UnitBalanceData : IBalanceData
+	public class UnitStats : IStats
 	{
 		[field: SerializeField] public float BaseSpeed { get; private set; }
 	}

@@ -15,7 +15,7 @@ namespace Confrontation
 
 		public abstract string Name { get; }
 
-		public abstract BuildingBalanceData BalanceData { get; }
+		public abstract BuildingStats Stats { get; }
 
 		public Cell RelatedCell => _field.Cells[Coordinates];
 

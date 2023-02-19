@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public class VillageBalanceData : GeneratorBaseBalanceData
+	public class VillageStats : GeneratorBaseStats
 	{
 		[field: SerializeField] public int MaxInGarrisonNumber { get; private set; }
 	}

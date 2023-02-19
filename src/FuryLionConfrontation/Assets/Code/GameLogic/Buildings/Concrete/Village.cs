@@ -12,7 +12,7 @@ namespace Confrontation
 
 		public override string Name => nameof(Village);
 
-		public override BuildingBalanceData BalanceData => Balance;
+		public override BuildingStats Stats => Balance;
 
 		protected override int MaxLevel => BalanceTable.Village.MaxLevel;
 
@@ -34,7 +34,7 @@ namespace Confrontation
 
 		public float CoolDownDuration => Balance.GenerationCoolDown;
 
-		private VillageBalanceData Balance => BalanceTable.Village[Level];
+		private VillageStats Balance => BalanceTable.Village[Level];
 
 		private bool HaveGarrison => LocatedGarrison == true;
 

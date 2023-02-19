@@ -10,7 +10,7 @@ namespace Confrontation
 
 		public void BuyBuilding(Building building)
 		{
-			if (_user.Player.Stats.IsEnoughGoldFor(building.BalanceData.Price))
+			if (_user.Player.Stats.IsEnoughGoldFor(building.Stats.Price))
 			{
 				_uiMediator.Build(building);
 				_uiMediator.CloseCurrentWindow();

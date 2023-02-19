@@ -2,12 +2,12 @@ namespace Confrontation
 {
 	public interface IBalanceTable
 	{
-		UnitBalanceData Unit { get; }
+		UnitStats Unit { get; }
 
-		LeveledList<GoldenMineBalanceData> GoldenMine { get; }
+		LeveledList<GoldenMineStats> GoldenMine { get; }
 
-		LeveledList<BarrackBalanceData> Barrack { get; }
+		LeveledList<BarrackStats> Barrack { get; }
 
-		LeveledList<VillageBalanceData> Village { get; }
+		LeveledList<VillageStats> Village { get; }
 	}
 }
