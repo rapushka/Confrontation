@@ -1,11 +1,14 @@
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Confrontation
 {
+	[Serializable]
 	public class LeveledStats<T> : IStats
 		where T : IStats
 	{
-		private readonly List<T> _statsByLevel = new();
+		[SerializeField] private List<T> _statsByLevel = new();
 
 		public int MaxLevel => _statsByLevel.Count;
 
