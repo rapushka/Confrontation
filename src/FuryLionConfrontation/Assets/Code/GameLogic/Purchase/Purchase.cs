@@ -8,11 +8,18 @@ namespace Confrontation
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
+		[Inject] private readonly IBalanceTable _balanceTable;
 
 		public void BuyBuilding(Building building)
 		{
-			throw new NotImplementedException();
-			if (_user.Player.Stats.IsEnoughGoldFor(0))
+			var buildingPrice = building switch
+			{
+				Barracks   => _balanceTable.Barrack.Price,
+				GoldenMine => _balanceTable.GoldenMine.Price,
+				var _      => throw new ArgumentException(),
+			};
+
+			if (_user.Player.Stats.IsEnoughGoldFor(buildingPrice))
 			{
 				_uiMediator.Build(building);
 				_uiMediator.CloseCurrentWindow();
