@@ -19,7 +19,7 @@ namespace Confrontation.Editor.PlayModeTests
 		private DiContainer _container;
 		private List<Building> _buildings;
 
-		private VillageLevelStats FirstLevelVillage => _container.Resolve<IBalanceTable>().Village.LeveledStats[1];
+		private VillageLevelStats FirstLevelVillage => _container.Resolve<IBalanceTable>().VillageStats.LeveledStats[1];
 
 		public override void SetUp()
 		{

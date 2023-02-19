@@ -1,13 +1,17 @@
+using System;
+
 namespace Confrontation
 {
 	public interface IBalanceTable
 	{
-		UnitStats Unit { get; }
+		UnitStats UnitStats { get; }
 
-		GoldenMineStats GoldenMine { get; }
+		GoldenMineStats GoldenMineStats { get; }
 
-		BarrackStats Barrack { get; }
+		BarrackStats BarrackStats { get; }
 
-		VillageStats Village { get; }
+		VillageStats VillageStats { get; }
+
+		int PriceFor(Building building);
 	}
 }

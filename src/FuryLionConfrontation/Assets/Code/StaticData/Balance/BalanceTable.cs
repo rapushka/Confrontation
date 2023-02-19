@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Confrontation
@@ -5,12 +6,20 @@ namespace Confrontation
 	[CreateAssetMenu(fileName = nameof(BalanceTable), menuName = nameof(Confrontation) + "/" + nameof(BalanceTable))]
 	public class BalanceTable : ScriptableObject, IBalanceTable
 	{
-		[field: SerializeField] public UnitStats Unit { get; private set; }
+		[field: SerializeField] public UnitStats UnitStats { get; private set; }
 
-		[field: SerializeField] public GoldenMineStats GoldenMine { get; private set; }
+		[field: SerializeField] public GoldenMineStats GoldenMineStats { get; private set; }
 
-		[field: SerializeField] public BarrackStats Barrack { get; private set; }
+		[field: SerializeField] public BarrackStats BarrackStats { get; private set; }
 
-		[field: SerializeField] public VillageStats Village { get; private set; }
+		[field: SerializeField] public VillageStats VillageStats { get; private set; }
+
+		public int PriceFor(Building building)
+			=> building switch
+			{
+				Barracks   => BarrackStats.Price,
+				GoldenMine => GoldenMineStats.Price,
+				var _      => throw new ArgumentException($"There is no price for {building.GetType().Name}"),
+			};
 	}
 }

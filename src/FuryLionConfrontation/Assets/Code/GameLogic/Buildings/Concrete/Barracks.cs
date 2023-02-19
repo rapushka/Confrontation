@@ -13,13 +13,13 @@ namespace Confrontation
 
 		public override string Name => nameof(Barracks);
 
-		protected override int MaxLevel => BalanceTable.Barrack.LeveledStats.MaxLevel;
+		protected override int MaxLevel => BalanceTable.BarrackStats.LeveledStats.MaxLevel;
 
 		private bool HaveSquad => LocatedUnits is not null;
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
-		private GeneratorStatsBase CurrentLevelStats => _balanceTable.Barrack.LeveledStats[Level];
+		private GeneratorStatsBase CurrentLevelStats => _balanceTable.BarrackStats.LeveledStats[Level];
 
 		public void Action()
 		{

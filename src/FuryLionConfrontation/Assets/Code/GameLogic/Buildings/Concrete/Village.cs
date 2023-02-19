@@ -10,11 +10,11 @@ namespace Confrontation
 
 		public override string Name => nameof(Village);
 
-		protected override int MaxLevel => BalanceTable.Village.LeveledStats.MaxLevel;
+		protected override int MaxLevel => BalanceTable.VillageStats.LeveledStats.MaxLevel;
 		
 		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
-		private VillageLevelStats CurrentLevelStats => BalanceTable.Village.LeveledStats[Level];
+		private VillageLevelStats CurrentLevelStats => BalanceTable.VillageStats.LeveledStats[Level];
 
 		private bool HaveGarrison => LocatedGarrison == true;
 
