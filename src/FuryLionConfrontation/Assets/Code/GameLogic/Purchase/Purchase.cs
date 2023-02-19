@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -10,7 +11,8 @@ namespace Confrontation
 
 		public void BuyBuilding(Building building)
 		{
-			if (_user.Player.Stats.IsEnoughGoldFor(building.Stats.Price))
+			throw new NotImplementedException();
+			if (_user.Player.Stats.IsEnoughGoldFor(0))
 			{
 				_uiMediator.Build(building);
 				_uiMediator.CloseCurrentWindow();

@@ -4,7 +4,7 @@ namespace Confrontation
 	{
 		UnitStats Unit { get; }
 
-		LeveledList<GoldenMineStats> GoldenMine { get; }
+		GoldenMineStats GoldenMine { get; }
 
 		LeveledList<BarrackStats> Barrack { get; }
 

@@ -4,14 +4,12 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public abstract class GeneratorBaseStats : BuildingStats
+	public abstract class GeneratorBaseStats : IStats
 	{
 		[field: SerializeField] public float GenerationCoolDown { get; private set; }
 
 		[field: SerializeField] public int GenerationAmount { get; private set; }
 	}
-
-	[Serializable] public class GoldenMineStats : GeneratorBaseStats { }
 
 	[Serializable] public class BarrackStats : GeneratorBaseStats { }
 }

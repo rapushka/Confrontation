@@ -9,19 +9,17 @@ namespace Confrontation
 
 		public float PassedDuration { get; set; }
 
-		public float CoolDownDuration => Balance.GenerationCoolDown;
+		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
 		public override string Name => nameof(GoldenMine);
 
-		public override BuildingStats Stats => Balance;
+		protected override int MaxLevel => BalanceTable.GoldenMine.LeveledStats.MaxLevel;
 
-		protected override int MaxLevel => BalanceTable.GoldenMine.MaxLevel;
-
-		private int GoldProducingRate => Balance.GenerationAmount;
+		private int GoldProducingRate => CurrentLevelStats.Amount;
 
 		private Player OwnerPlayer => _gameSession.GetPlayerById(Field.Regions[Coordinates].OwnerPlayerId);
 
-		private GoldenMineStats Balance => BalanceTable.GoldenMine[Level];
+		private GeneratorStatsBase CurrentLevelStats => BalanceTable.GoldenMine.LeveledStats[Level];
 
 		public void Action() => ProduceGold();
 

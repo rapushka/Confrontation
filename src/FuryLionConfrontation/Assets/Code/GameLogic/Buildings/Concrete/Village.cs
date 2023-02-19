@@ -12,8 +12,6 @@ namespace Confrontation
 
 		public override string Name => nameof(Village);
 
-		public override BuildingStats Stats => Balance;
-
 		protected override int MaxLevel => BalanceTable.Village.MaxLevel;
 
 		public IEnumerable<Cell> CellsInRegion

@@ -13,7 +13,6 @@ namespace Confrontation
 
 		public override string Name => nameof(Barracks);
 
-		public override BuildingStats Stats => Balance; 
 
 		protected override int MaxLevel => BalanceTable.Barrack.MaxLevel;
 
