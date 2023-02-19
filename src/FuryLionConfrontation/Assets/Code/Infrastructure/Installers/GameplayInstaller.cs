@@ -23,6 +23,7 @@ namespace Confrontation
 			Container.Bind<IField>().To<Field>().AsSingle();
 
 			Container.Bind<ToMainMenu>().AsSingle();
+			Container.Bind<Purchase>().AsSingle();
 			Container.BindInstance(_backToMenuButton).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();

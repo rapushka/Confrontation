@@ -13,6 +13,8 @@ namespace Confrontation
 
 		public override string Name => nameof(GoldenMine);
 
+		public override BuildingBalanceData BalanceData => Balance;
+
 		protected override int MaxLevel => BalanceTable.GoldenMine.MaxLevel;
 
 		private int GoldProducingRate => Balance.GenerationAmount;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[Serializable]
-	public abstract class GeneratorBaseBalanceData : IBalanceData
+	public abstract class GeneratorBaseBalanceData : BuildingBalanceData
 	{
 		[field: SerializeField] public float GenerationCoolDown { get; private set; }
 

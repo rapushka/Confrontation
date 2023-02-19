@@ -15,6 +15,8 @@ namespace Confrontation
 
 		public abstract string Name { get; }
 
+		public abstract BuildingBalanceData BalanceData { get; }
+
 		public Cell RelatedCell => _field.Cells[Coordinates];
 
 		public bool IsOnMaxLevel => Level >= MaxLevel;
