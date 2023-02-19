@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,22 @@ namespace Confrontation
 		[Inject] private readonly User _user;
 
 		[SerializeField] private TextMeshProUGUI _goldenAmountValueTextMesh;
+
+		public void Start()
+		{
+			if (_user.Player is not null)
+			{
+				_user.Player.Stats.ValueChanged += UpdateValues;
+			}
+		}
+
+		private void OnDestroy()
+		{
+			if (_user.Player is not null)
+			{
+				_user.Player.Stats.ValueChanged += UpdateValues;
+			}
+		}
 
 		public void UpdateValues()
 		{

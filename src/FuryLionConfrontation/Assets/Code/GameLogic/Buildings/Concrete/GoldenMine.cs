@@ -26,7 +26,6 @@ namespace Confrontation
 		private void ProduceGold()
 		{
 			OwnerPlayer.Stats.GoldCount += GoldProducingRate;
-			_ui.UpdateHud();
 		}
 	}
 }
