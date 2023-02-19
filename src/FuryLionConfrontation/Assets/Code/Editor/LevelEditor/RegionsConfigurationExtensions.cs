@@ -14,7 +14,7 @@ namespace Confrontation.Editor
 			rect.DrawVillagePosition(village);
 			rect.DrawPlayerOwner(village);
 			rect.DrawCellsHeader();
-			rect.DrawCellsElements(village);
+			DrawCellsElements();
 			rect.DrawSelectedIndicator(village);
 		}
 
@@ -47,20 +47,7 @@ namespace Confrontation.Editor
 			rect.x += HorizontalStep * 2;
 		}
 
-		private static void DrawCellsElements(this Rect rect, Village village)
-		{
-			rect.x += HorizontalStep;
-			rect.y += VerticalStep * 2;
-
-			var cellsInRegion = village.CellsInRegion.ToList();
-			for (var i = 0; i < cellsInRegion.Count; i++)
-			{
-				var cell = cellsInRegion[i];
-				rect.y += VerticalStep;
-				rect.width = HorizontalStep * 3;
-				cellsInRegion[i] = cell.AsObjectField(rect);
-			}
-		}
+		private static void DrawCellsElements() { }
 
 		private static void DrawSelectedIndicator(this Rect rect, Village village)
 		{

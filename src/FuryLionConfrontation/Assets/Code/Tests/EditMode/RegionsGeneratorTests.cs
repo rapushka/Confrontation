@@ -12,6 +12,8 @@ namespace Confrontation.Editor.Tests
 		[SetUp]
 		public void SetUp()
 		{
+			Container.Bind<IBalanceTable>().FromSubstitute();
+
 			Container.BindField();
 			Container.BindFieldGenerator();
 			Container.BindRegionsGenerator();
@@ -56,7 +58,7 @@ namespace Confrontation.Editor.Tests
 			regions.Initialize();
 
 			// Assert.
-			var countOfCellsInRegion = field.Buildings.OfType<Village>().Single().CellsInRegion.ToList().Count;
+			var countOfCellsInRegion = CountCellsInSingleRegion(field);
 			countOfCellsInRegion.Should().Be(2);
 		}
 
@@ -73,6 +75,16 @@ namespace Confrontation.Editor.Tests
 			// Assert.
 			var cell = field.Cells[new Coordinates(1, 1)];
 			cell.Coordinates.Should().Be(new Coordinates(1, 1));
+		}
+
+		private static int CountCellsInSingleRegion(IField field)
+		{
+			var village = field.Buildings.OfType<Village>().Single();
+			var region = field.Regions[village.Coordinates];
+
+			return field.Regions.Where((r) => r == region)
+			            .Select((r) => r.Coordinates)
+			            .Count();
 		}
 	}
 }

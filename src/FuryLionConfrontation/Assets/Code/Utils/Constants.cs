@@ -23,6 +23,7 @@ namespace Confrontation
 		public static class ResourcePath
 		{
 			public const string Cell = "Prefabs/Cell";
+			public const string Garrison = "Prefabs/Units/Garrison";
 
 			public const string GoldenMine = "Prefabs/Buildings/Golden Mine";
 			public const string Barracks = "Prefabs/Buildings/Barracks";

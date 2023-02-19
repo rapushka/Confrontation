@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
@@ -13,23 +11,7 @@ namespace Confrontation
 		public override string Name => nameof(Village);
 
 		protected override int MaxLevel => BalanceTable.Village.LeveledStats.MaxLevel;
-
-		public IEnumerable<Cell> CellsInRegion
-		{
-			get
-			{
-				var region = Field.Regions[Coordinates];
-
-				var regionsCoordinates = Field.Regions.Where((r) => r == region)
-				                              .Select((r) => r.Coordinates);
-
-				foreach (var coordinates in regionsCoordinates)
-				{
-					yield return Field.Cells[coordinates];
-				}
-			}
-		}
-
+		
 		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
 		private VillageLevelStats CurrentLevelStats => BalanceTable.Village.LeveledStats[Level];

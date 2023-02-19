@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
@@ -21,9 +22,9 @@ namespace Confrontation.Editor.Tests
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
 			@this.Bind<GameplayUiMediator>().FromSubstitute().AsSingle();
-			
+
 			@this.Bind<User>().FromInstance(Setup.User()).AsSingle();
-			
+
 			@this.BindInterfacesAndSelfTo<GameSession>().AsSingle();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
@@ -31,6 +32,8 @@ namespace Confrontation.Editor.Tests
 			@this.BindFactory<Building, Building, Building.Factory>()
 			     .FromFactory<PrefabFactory<Building>>();
 			@this.BindFactory<Region, Region.Factory>();
+			@this.BindFactory<Garrison, Garrison.Factory>()
+			     .FromComponentInNewPrefabResource(Constants.ResourcePath.Garrison);
 		}
 	}
 }
