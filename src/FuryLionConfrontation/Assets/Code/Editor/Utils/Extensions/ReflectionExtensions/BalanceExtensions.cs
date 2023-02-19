@@ -5,7 +5,7 @@ namespace Confrontation.Editor
 {
 	public static class BalanceExtensions
 	{
-		private const string GenerationAmount = "GenerationAmount";
+		private const string GenerationAmount = "Amount";
 
 		public static void SetGenerationAmount<T>(this object @this, T value)
 		{

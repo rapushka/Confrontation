@@ -12,7 +12,7 @@ namespace Confrontation
 
 		public override string Name => nameof(Village);
 
-		protected override int MaxLevel => BalanceTable.Village.MaxLevel;
+		protected override int MaxLevel => BalanceTable.Village.LeveledStats.MaxLevel;
 
 		public IEnumerable<Cell> CellsInRegion
 		{
@@ -30,9 +30,9 @@ namespace Confrontation
 			}
 		}
 
-		public float CoolDownDuration => Balance.GenerationCoolDown;
+		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
-		private VillageStats Balance => BalanceTable.Village[Level];
+		private VillageLevelStats CurrentLevelStats => BalanceTable.Village.LeveledStats[Level];
 
 		private bool HaveGarrison => LocatedGarrison == true;
 
@@ -40,7 +40,7 @@ namespace Confrontation
 
 		public void Action()
 		{
-			for (var i = 0; i < Balance.GenerationAmount; i++)
+			for (var i = 0; i < CurrentLevelStats.Amount; i++)
 			{
 				SpawnGarrison();
 			}
@@ -50,7 +50,7 @@ namespace Confrontation
 		{
 			if (HaveGarrison)
 			{
-				if (LocatedGarrison.QuantityOfUnits < Balance.MaxInGarrisonNumber)
+				if (LocatedGarrison.QuantityOfUnits < CurrentLevelStats.MaxInGarrisonNumber)
 				{
 					LocatedGarrison.QuantityOfUnits++;
 				}

@@ -8,6 +8,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
+		[Inject] private readonly BalanceTable _balanceTable;
 
 		public void BuyBuilding(Building building)
 		{

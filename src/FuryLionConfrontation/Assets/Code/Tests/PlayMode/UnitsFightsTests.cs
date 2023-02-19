@@ -19,6 +19,8 @@ namespace Confrontation.Editor.PlayModeTests
 		private DiContainer _container;
 		private List<Building> _buildings;
 
+		private VillageLevelStats FirstLevelVillage => _container.Resolve<IBalanceTable>().Village.LeveledStats[1];
+
 		public override void SetUp()
 		{
 			base.SetUp();
@@ -28,7 +30,7 @@ namespace Confrontation.Editor.PlayModeTests
 		public override void Teardown()
 		{
 			base.Teardown();
-			
+
 			SetVillageGarrisonAmount(to: _initialVillageGarrisonAmount);
 		}
 
@@ -46,12 +48,11 @@ namespace Confrontation.Editor.PlayModeTests
 
 		private void PreventGarrisonSpawn()
 		{
-			_initialVillageGarrisonAmount = _container.Resolve<IBalanceTable>().Village.First().MaxInGarrisonNumber;
+			_initialVillageGarrisonAmount = FirstLevelVillage.Amount;
 			SetVillageGarrisonAmount(to: 0);
 		}
 
-		private void SetVillageGarrisonAmount(int to)
-			=> _container.Resolve<IBalanceTable>().Village.First().SetGenerationAmount(to);
+		private void SetVillageGarrisonAmount(int to) => FirstLevelVillage.SetGenerationAmount(to);
 
 		private object PassMainMenu()
 		{

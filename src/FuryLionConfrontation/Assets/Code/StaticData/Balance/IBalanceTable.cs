@@ -6,8 +6,8 @@ namespace Confrontation
 
 		GoldenMineStats GoldenMine { get; }
 
-		LeveledList<BarrackStats> Barrack { get; }
+		BarrackStats Barrack { get; }
 
-		LeveledList<VillageStats> Village { get; }
+		VillageStats Village { get; }
 	}
 }
