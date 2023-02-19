@@ -17,18 +17,21 @@ MonoBehaviour:
   <GoldenMine>k__BackingField:
     <Price>k__BackingField: 0
     <LeveledStats>k__BackingField:
-      _statsByLevel:
+      <UpgradePrice>k__BackingField: 5
+      <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 1
         <Amount>k__BackingField: 1
   <Barrack>k__BackingField:
     <Price>k__BackingField: 10
     <LeveledStats>k__BackingField:
-      _statsByLevel:
+      <UpgradePrice>k__BackingField: 5
+      <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
   <Village>k__BackingField:
     <LeveledStats>k__BackingField:
-      _statsByLevel:
+      <UpgradePrice>k__BackingField: 5
+      <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 5
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1

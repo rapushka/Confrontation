@@ -8,14 +8,16 @@ namespace Confrontation
 	public class LeveledStats<T> : IStats
 		where T : IStats
 	{
-		[SerializeField] private List<T> _statsByLevel = new();
+		[field: SerializeField] public int UpgradePrice { get; private set; }
 
-		public int MaxLevel => _statsByLevel.Count;
+		[field: SerializeField] private List<T> StatsByLevel { get; set; } = new();
+
+		public int MaxLevel => StatsByLevel.Count;
 
 		public T this[int level]
 		{
-			get => _statsByLevel[level - 1];
-			set => _statsByLevel[level - 1] = value;
+			get => StatsByLevel[level - 1];
+			set => StatsByLevel[level - 1] = value;
 		}
 	}
 }
