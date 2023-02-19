@@ -12,29 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393428375ac344b88ccdb9a7e5b06033, type: 3}
   m_Name: BalanceTable
   m_EditorClassIdentifier: 
-  <Unit>k__BackingField:
+  <UnitStats>k__BackingField:
     <BaseSpeed>k__BackingField: 1
-  <GoldenMine>k__BackingField:
+  <GoldenMineStats>k__BackingField:
     <Price>k__BackingField: 0
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 5
+      <UpgradePrice>k__BackingField: 0
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 1
         <Amount>k__BackingField: 1
-  <Barrack>k__BackingField:
+  <BarrackStats>k__BackingField:
     <Price>k__BackingField: 10
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 5
+      <UpgradePrice>k__BackingField: 0
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
-  <Village>k__BackingField:
+  <VillageStats>k__BackingField:
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 5
+      <UpgradePrice>k__BackingField: 0
       <StatsByLevel>k__BackingField:
-      - <CoolDown>k__BackingField: 5
+      - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1
-      - <CoolDown>k__BackingField: 4
-        <Amount>k__BackingField: 1
-        <MaxInGarrisonNumber>k__BackingField: 3
