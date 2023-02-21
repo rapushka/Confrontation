@@ -14,7 +14,7 @@ namespace Confrontation
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
 
-		private IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
+		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
 
 		public int OwnerPlayerId
 		{
@@ -74,6 +74,8 @@ namespace Confrontation
 		private IEnumerable<Capital> CapitalsOfPlayer(int oldOwnerId)
 			=> _field.Buildings.OfType<Capital>()
 			         .Where((c) => c.OwnerPlayerId == oldOwnerId);
+
+		public override int GetHashCode() => Coordinates.GetHashCode();
 
 		[Serializable]
 		public class Data

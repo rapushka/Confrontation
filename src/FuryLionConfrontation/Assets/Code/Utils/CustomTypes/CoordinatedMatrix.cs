@@ -10,15 +10,28 @@ namespace Confrontation
 	{
 		private readonly T[,] _matrix;
 
-		public CoordinatedMatrix(Coordinates coordinates) => _matrix = new T[coordinates.Row, coordinates.Column];
+		public CoordinatedMatrix(Coordinates coordinates) : this(new Sizes(coordinates.Row, coordinates.Column)) { }
 
-		public CoordinatedMatrix(Sizes sizes) => _matrix = new T[sizes.Height, sizes.Width];
-		public CoordinatedMatrix(int height, int width) => _matrix = new T[height, width];
+		public CoordinatedMatrix(int height, int width) : this(new Sizes(height, width)) { }
+
+		public CoordinatedMatrix(Sizes sizes)
+		{
+			Sizes = sizes;
+			_matrix = new T[sizes.Height, sizes.Width];
+		}
+
+		public Sizes Sizes { get; }
 
 		public T this[Coordinates coordinates]
 		{
 			get => _matrix[coordinates.Row, coordinates.Column];
 			set => _matrix[coordinates.Row, coordinates.Column] = value;
+		}
+		
+		public T this[int row, int column]
+		{
+			get => _matrix[row, column];
+			set => _matrix[row, column] = value;
 		}
 
 		public T this[Sizes sizes]
