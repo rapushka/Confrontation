@@ -17,15 +17,17 @@ namespace Confrontation
 		private IEnumerable<Region> GroupByNeighbouring(Region region)
 		{
 			var neighbourRegions = new List<Region>();
-			var neighborsForCell = region.CellsInRegion.ToDictionary(c => c, CollectNeighboursFor);
+			var set = new HashSet<Region>();
+			var neighborsForCell = region.CellsInRegion.SelectMany(CollectNeighboursFor);
 
-			foreach (var (_, regions) in neighborsForCell)
+			neighbourRegions.AddRange(neighborsForCell.Where((r) => neighbourRegions.Contains(r) == false));
+
+			foreach (var r in neighborsForCell)
 			{
-				var newRegions = regions.Where((r) => neighbourRegions.Contains(r) == false);
-				neighbourRegions.AddRange(newRegions);
+				set.Add(r);
 			}
 
-			return neighbourRegions;
+			return set;
 		}
 
 		private IEnumerable<Region> CollectNeighboursFor(Cell cell)
@@ -41,7 +43,7 @@ namespace Confrontation
 				for (var column = centerColumn - 1; column < centerColumn + 1; column++)
 				{
 					var currentCoordinates = new Coordinates(row, column);
-					
+
 					if (_field.Cells.Sizes.IsInBounds(row, column)
 					    && isNeighbor(cell.Coordinates, currentCoordinates) == false)
 					{
