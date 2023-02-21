@@ -1,3 +1,5 @@
+using NSubstitute;
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
@@ -30,6 +32,14 @@ namespace Confrontation.Editor.Tests
 			@this.BindFactory<Region, Region.Factory>();
 			@this.BindFactory<Garrison, Garrison.Factory>()
 			     .FromComponentInNewPrefabResource(Constants.ResourcePath.Garrison);
+		}
+
+		public static void BindLevelAt(this DiContainer @this, string levelPath)
+		{
+			var level = Resources.Load<LevelScriptableObject>(levelPath);
+			var levelSelector = Substitute.For<ILevelSelector>();
+			levelSelector.SelectedLevel.Returns(level);
+			@this.Bind<ILevelSelector>().FromInstance(levelSelector).AsSingle();
 		}
 	}
 }

@@ -1,7 +1,6 @@
+using System.Linq;
 using FluentAssertions;
-using NSubstitute;
 using NUnit.Framework;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation.Editor.Tests
@@ -29,17 +28,15 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void _1_WhenCalculateNeighboring_AndThereIsCellWith1NeighborRegion_ThenNeighboringShouldContain2Elements()
+		public void
+			_1_WhenCalculateNeighboring_AndThereIsCellWith1NeighborRegion_ThenNeighboringShouldContain2Elements()
 		{
 			// Arrange.
-			var level = Resources.Load<LevelScriptableObject>(TestLevelName.LevelWithRegions);
-			var levelSelector = Substitute.For<ILevelSelector>();
-			levelSelector.SelectedLevel.Returns(level);
-			Container.Bind<ILevelSelector>().FromInstance(levelSelector).AsSingle();
-			
+			Container.BindLevelAt(TestLevelName.LevelWithRegions);
+
 			Container.Resolve<FieldGenerator>().Initialize();
 			Container.Resolve<RegionsGenerator>().Initialize();
-			
+
 			var field = Container.Resolve<IField>();
 			var calculator = Container.Resolve<RegionsNeighboringCalculator>();
 
@@ -49,6 +46,27 @@ namespace Confrontation.Editor.Tests
 			// Assert.
 			var countOfNeighborhoods = field.Neighboring.Neighbouring.Count;
 			countOfNeighborhoods.Should().Be(2);
+		}
+
+		[Test]
+		public void
+			_2_WhenCalculateNeighboring_AndThereIs2PairOfCellNearby_ThenNeighboringForFirstRegionMustContain2Elements()
+		{
+			// Arrange.
+			Container.BindLevelAt(TestLevelName.LevelWithRegions);
+
+			Container.Resolve<FieldGenerator>().Initialize();
+			Container.Resolve<RegionsGenerator>().Initialize();
+
+			var field = Container.Resolve<IField>();
+			var calculator = Container.Resolve<RegionsNeighboringCalculator>();
+
+			// Act.
+			calculator.Initialize();
+
+			// Assert.
+			var countOfNeighborsForFirstRegion = field.Neighboring.Neighbouring.First().Value.Count();
+			countOfNeighborsForFirstRegion.Should().Be(2);
 		}
 	}
 

@@ -30,9 +30,9 @@ namespace Confrontation
 		public bool IsInBounds(Coordinates coordinates) => IsInBounds(coordinates.Row, coordinates.Column);
 
 		public bool IsInBounds(int row, int column)
-			=> row > 0
+			=> row >= 0
 			   && row < Width
-			   && column > 0
+			   && column >= 0
 			   && column < Height;
 	}
 }
