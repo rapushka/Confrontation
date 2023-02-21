@@ -6,7 +6,6 @@ namespace Confrontation
 	{
 		[Inject] private readonly BuildingSpawner _buildingSpawner;
 		[Inject] private readonly GameplayWindows _gameplayWindows;
-		[Inject] private readonly Hud _hud;
 
 		public void Build(Building building) => _buildingSpawner.Build(building);
 

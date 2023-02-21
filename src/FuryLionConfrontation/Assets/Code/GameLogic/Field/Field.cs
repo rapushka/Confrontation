@@ -27,7 +27,7 @@ namespace Confrontation
 
 		public CoordinatedMatrix<Region> Regions { get; }
 
-		public RegionsNeighbouring Neighbouring { get; } = new();
+		public RegionsNeighboring Neighboring { get; } = new();
 
 		public List<Player> Players { get; } = new();
 	}

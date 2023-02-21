@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Confrontation
 {
-	public class RegionsNeighbouring
+	public class RegionsNeighboring
 	{
 		public Dictionary<Region, IEnumerable<Region>> Neighbouring;
 

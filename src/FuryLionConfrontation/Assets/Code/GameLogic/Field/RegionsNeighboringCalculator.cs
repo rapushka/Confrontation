@@ -11,7 +11,7 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_field.Neighbouring.Neighbouring = _field.Regions.ToDictionary((r) => r, GroupByNeighbouring);
+			_field.Neighboring.Neighbouring = _field.Regions.ToDictionary((r) => r, GroupByNeighbouring);
 		}
 
 		private IEnumerable<Region> GroupByNeighbouring(Region region)

@@ -5,7 +5,6 @@ namespace Confrontation
 	public class GoldenMine : Building, IActorWithCoolDown
 	{
 		[Inject] private readonly GameSession _gameSession;
-		[Inject] private readonly GameplayUiMediator _ui;
 
 		public float PassedDuration { get; set; }
 

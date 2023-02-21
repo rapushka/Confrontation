@@ -16,7 +16,7 @@ namespace Confrontation.Editor
 		public CoordinatedMatrix<Region>     Regions      { get; private set; }
 		public List<Player>                  Players      { get; private set; }
 
-		public RegionsNeighbouring Neighbouring { get; } = new();
+		public RegionsNeighboring Neighboring { get; } = new();
 
 		public void GuiRender()
 		{
