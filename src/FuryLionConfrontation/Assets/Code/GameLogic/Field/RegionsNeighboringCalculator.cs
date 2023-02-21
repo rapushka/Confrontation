@@ -11,17 +11,11 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_field.Neighboring.Neighbouring = _field.Regions.ToDictionary((r) => r, GroupByNeighbouring);
+			_field.Neighboring.Neighbouring = _field.Regions.ToHashSet().ToDictionary((r) => r, GroupByNeighbouring);
 		}
 
 		private IEnumerable<Region> GroupByNeighbouring(Region region)
-		{
-			var set = new HashSet<Region>();
-			var neighborsForCell = region.CellsInRegion.SelectMany(CollectNeighboursFor);
-
-			set.AddRange(neighborsForCell);
-			return set;
-		}
+			=> region.CellsInRegion.SelectMany(CollectNeighboursFor).ToHashSet();
 
 		private IEnumerable<Region> CollectNeighboursFor(Cell cell)
 			=> CollectNeighbors(cell, cell.Coordinates.Row.IsEven() ? IsDiagonallyNext : IsDiagonallyPrevious);
