@@ -28,7 +28,7 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
-			Container.BindInterfacesAndSelfTo<RegionsNeighboring>().AsSingle();
+			Container.BindInterfacesAndSelfTo<RegionsNeighboringCalculator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
 

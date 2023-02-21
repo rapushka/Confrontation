@@ -12,5 +12,13 @@ namespace Confrontation
 		public static T GetValueLikeOrDefault<T>(this HashSet<T> @this, T template)
 			where T : class
 			=> @this.TryGetValue(template, out var actualValue) ? actualValue : null;
+
+		public static void AddRange<T>(this HashSet<T> @this, IEnumerable<T> range)
+		{
+			foreach (var item in range)
+			{
+				@this.Add(item);
+			}
+		}
 	}
 }

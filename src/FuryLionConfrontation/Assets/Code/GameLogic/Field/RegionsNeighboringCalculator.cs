@@ -5,35 +5,28 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionsNeighboring : IInitializable
+	public class RegionsNeighboringCalculator : IInitializable
 	{
 		[Inject] private readonly IField _field;
 
 		public void Initialize()
 		{
-			var dictionary = _field.Regions.ToDictionary((r) => r, GroupByNeighbouring);
+			_field.Neighbouring.Neighbouring = _field.Regions.ToDictionary((r) => r, GroupByNeighbouring);
 		}
 
 		private IEnumerable<Region> GroupByNeighbouring(Region region)
 		{
-			var neighbourRegions = new List<Region>();
 			var set = new HashSet<Region>();
 			var neighborsForCell = region.CellsInRegion.SelectMany(CollectNeighboursFor);
 
-			neighbourRegions.AddRange(neighborsForCell.Where((r) => neighbourRegions.Contains(r) == false));
-
-			foreach (var r in neighborsForCell)
-			{
-				set.Add(r);
-			}
-
+			set.AddRange(neighborsForCell);
 			return set;
 		}
 
 		private IEnumerable<Region> CollectNeighboursFor(Cell cell)
 			=> CollectNeighbors(cell, cell.Coordinates.Row.IsEven() ? IsDiagonallyNext : IsDiagonallyPrevious);
 
-		private IEnumerable<Region> CollectNeighbors(Cell cell, Func<Coordinates, Coordinates, bool> isNeighbor)
+		private IEnumerable<Region> CollectNeighbors(Cell cell, Func<Coordinates, Coordinates, bool> isTooFar)
 		{
 			var centerRow = cell.Coordinates.Row;
 			var centerColumn = cell.Coordinates.Column;
@@ -44,8 +37,8 @@ namespace Confrontation
 				{
 					var currentCoordinates = new Coordinates(row, column);
 
-					if (_field.Cells.Sizes.IsInBounds(row, column)
-					    && isNeighbor(cell.Coordinates, currentCoordinates) == false)
+					if (_field.Cells.Sizes.IsInBounds(currentCoordinates)
+					    && isTooFar(cell.Coordinates, currentCoordinates) == false)
 					{
 						yield return cell.RelatedRegion;
 					}

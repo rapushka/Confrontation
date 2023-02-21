@@ -11,5 +11,7 @@ namespace Confrontation
 		CoordinatedMatrix<Garrison> Garrisons { get; }
 
 		CoordinatedMatrix<Region> Regions { get; }
+
+		RegionsNeighbouring Neighbouring { get; }
 	}
 }

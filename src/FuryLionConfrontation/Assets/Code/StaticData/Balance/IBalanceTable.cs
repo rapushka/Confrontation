@@ -1,5 +1,3 @@
-using System;
-
 namespace Confrontation
 {
 	public interface IBalanceTable
