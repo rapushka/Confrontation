@@ -14,7 +14,8 @@ namespace Confrontation.Editor.Tests
 		{
 			Container.Bind<IBalanceTable>().FromSubstitute();
 
-			Container.BindField();
+			Container.Bind<ILevelSelector>().To<TestLevelCreator>().AsSingle();
+			Container.Bind<IField>().To<Field>().AsSingle();
 			Container.BindFieldGenerator();
 			Container.BindRegionsGenerator();
 

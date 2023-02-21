@@ -25,6 +25,14 @@ namespace Confrontation.Editor.Tests
 							new(row: 2, column: 1),
 						},
 					},
+					new()
+					{
+						OwnerPlayerId = 2,
+						CellsCoordinates = new List<Coordinates>
+						{
+							new(row: 1, column: 2),
+						},
+					},
 				},
 				Buildings = new List<Building.Data>
 				{

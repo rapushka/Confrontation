@@ -12,12 +12,6 @@ namespace Confrontation.Editor.Tests
 			@this.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefabResource(Constants.ResourcePath.Cell);
 		}
 
-		public static void BindField(this DiContainer @this)
-		{
-			@this.Bind<ILevelSelector>().To<TestLevelCreator>().AsSingle();
-			@this.Bind<IField>().To<Field>().AsSingle();
-		}
-
 		public static void BindRegionsGenerator(this DiContainer @this)
 		{
 			@this.Bind<GameplayUiMediator>().FromSubstitute().AsSingle();
@@ -26,7 +20,10 @@ namespace Confrontation.Editor.Tests
 
 			@this.BindInterfacesAndSelfTo<GameSession>().AsSingle();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
+			@this.BindInterfacesAndSelfTo<RegionsNeighboringCalculator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
+
+			@this.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
 
 			@this.BindFactory<Building, Building, Building.Factory>()
 			     .FromFactory<PrefabFactory<Building>>();

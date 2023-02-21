@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -11,14 +12,28 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_field.Neighboring.Neighbouring = _field.Regions.ToHashSet().ToDictionary((r) => r, GroupByNeighbouring);
+			_field.Neighboring.Neighbouring = _field.Regions.Distinct().ToDictionary((r) => r, GroupByNeighbouring);
+
+			foreach (var fieldRegion in _field.Regions)
+			{
+				Debug.Log($"fieldRegion.Coordinates = {fieldRegion.OwnerPlayerId}"
+				          + $"\n\t{string.Join("\n\t", fieldRegion.CellsInRegion.Select((c) => c.Coordinates))}");
+			}
+
+			Debug.Log("==========================================================");
+			
+			foreach (var (region, neighbors) in _field.Neighboring.Neighbouring)
+			{
+				Debug.Log($"region.Coordinates = {region.OwnerPlayerId}"
+				          + $"\n\t{neighbors.FirstOrDefault()?.OwnerPlayerId}");
+			}
 		}
 
 		private IEnumerable<Region> GroupByNeighbouring(Region region)
-			=> region.CellsInRegion.SelectMany(CollectNeighboursFor).ToHashSet();
+			=> region.CellsInRegion.SelectMany(CollectNeighboursFor).Distinct();
 
 		private IEnumerable<Region> CollectNeighboursFor(Cell cell)
-			=> CollectNeighbors(cell, cell.Coordinates.Row.IsEven() ? IsDiagonallyNext : IsDiagonallyPrevious);
+			=> CollectNeighbors(cell, cell.Coordinates.Row.IsEven() ? IsDiagonallyPrevious : IsDiagonallyNext);
 
 		private IEnumerable<Region> CollectNeighbors(Cell cell, Func<Coordinates, Coordinates, bool> isTooFar)
 		{

@@ -22,6 +22,19 @@ namespace Confrontation
 			_targetCell = null;
 		}
 
+		public void MoveTo(Cell targetCell, int quantityToMove)
+		{
+			_unitsSquad.LocationCell.DetachUnitsSquad();
+
+			if (quantityToMove < _unitsSquad.QuantityOfUnits
+			    && quantityToMove > 0)
+			{
+				FormNewSquad(quantityToMove);
+			}
+
+			_targetCell = targetCell;
+		}
+
 		private void Locate(Cell cell)
 		{
 			if (IsAlreadyPlaced(cell) == false)
@@ -37,19 +50,6 @@ namespace Confrontation
 			}
 
 			_unitFighter.FightWithSquadOn(cell);
-		}
-
-		public void MoveTo(Cell targetCell, int quantityToMove)
-		{
-			_unitsSquad.LocationCell.DetachUnitsSquad();
-
-			if (quantityToMove < _unitsSquad.QuantityOfUnits
-			    && quantityToMove > 0)
-			{
-				FormNewSquad(quantityToMove);
-			}
-
-			_targetCell = targetCell;
 		}
 
 		private void FormNewSquad(int quantity)

@@ -10,7 +10,8 @@ namespace Confrontation.Editor.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			Container.BindField();
+			Container.Bind<ILevelSelector>().To<TestLevelCreator>().AsSingle();
+			Container.Bind<IField>().To<Field>().AsSingle();
 			Container.BindFieldGenerator();
 		}
 
