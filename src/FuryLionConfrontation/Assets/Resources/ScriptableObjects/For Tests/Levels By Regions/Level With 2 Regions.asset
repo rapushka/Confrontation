@@ -20,8 +20,12 @@ MonoBehaviour:
     <CellsCoordinates>k__BackingField:
     - _row: 0
       _column: 0
+    - _row: 1
+      _column: 0
   - <OwnerPlayerId>k__BackingField: 2
     <CellsCoordinates>k__BackingField:
     - _row: 0
+      _column: 1
+    - _row: 1
       _column: 1
   <Buildings>k__BackingField: []

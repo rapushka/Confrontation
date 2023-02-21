@@ -16,16 +16,22 @@ namespace Confrontation
 
 			foreach (var fieldRegion in _field.Regions)
 			{
-				Debug.Log($"fieldRegion.Coordinates = {fieldRegion.OwnerPlayerId}"
-				          + $"\n\t{string.Join("\n\t", fieldRegion.CellsInRegion.Select((c) => c.Coordinates))}");
+				Debug.Log
+				(
+					$"fieldRegion.Coordinates = {fieldRegion.OwnerPlayerId}"
+					+ $"\n\t{string.Join("\n\t", fieldRegion.CellsInRegion.Select((c) => c.Coordinates))}"
+				);
 			}
 
 			Debug.Log("==========================================================");
-			
+
 			foreach (var (region, neighbors) in _field.Neighboring.Neighbouring)
 			{
-				Debug.Log($"region.Coordinates = {region.OwnerPlayerId}"
-				          + $"\n\t{neighbors.FirstOrDefault()?.OwnerPlayerId}");
+				Debug.Log
+				(
+					$"region.Coordinates = {region.OwnerPlayerId}"
+					+ $"\n\t{neighbors.FirstOrDefault()?.OwnerPlayerId}"
+				);
 			}
 		}
 

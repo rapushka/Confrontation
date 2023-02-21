@@ -29,7 +29,7 @@ namespace Confrontation.Editor.Tests
 		}
 
 		[Test]
-		public void _1_WhenCalculateNeighboring_AndThereIsCellWith1NeighborRegion_ThenNeighboringShouldContain1Element()
+		public void _1_WhenCalculateNeighboring_AndThereIsCellWith1NeighborRegion_ThenNeighboringShouldContain2Elements()
 		{
 			// Arrange.
 			var level = Resources.Load<LevelScriptableObject>(TestLevelName.LevelWithRegions);
@@ -48,7 +48,7 @@ namespace Confrontation.Editor.Tests
 
 			// Assert.
 			var countOfNeighborhoods = field.Neighboring.Neighbouring.Count;
-			countOfNeighborhoods.Should().Be(1);
+			countOfNeighborhoods.Should().Be(2);
 		}
 	}
 
