@@ -16,7 +16,7 @@ namespace Confrontation.Editor
 		public CoordinatedMatrix<Region>     Regions      { get; private set; }
 		public List<Player>                  Players      { get; private set; }
 
-		public RegionsNeighboring Neighboring { get; } = new();
+		public RegionsNeighboring Neighboring { get; private set; }
 
 		public void GuiRender()
 		{
@@ -29,6 +29,7 @@ namespace Confrontation.Editor
 			Garrisons = new CoordinatedMatrix<Garrison>(_state.Sizes);
 			Regions = new CoordinatedMatrix<Region>(_state.Sizes);
 			Players = new List<Player>();
+			Neighboring = new RegionsNeighboring(_state.Sizes);
 		}
 
 		private void Height()

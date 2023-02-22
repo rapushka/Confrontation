@@ -1,4 +1,3 @@
-using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 using Zenject;
@@ -44,7 +43,7 @@ namespace Confrontation.Editor.Tests
 			calculator.Initialize();
 
 			// Assert.
-			var countOfNeighborhoods = field.Neighboring.Neighbouring.Count;
+			var countOfNeighborhoods = field.Neighboring.Neighborhoods.Length;
 			countOfNeighborhoods.Should().Be(2);
 		}
 
@@ -65,7 +64,38 @@ namespace Confrontation.Editor.Tests
 			calculator.Initialize();
 
 			// Assert.
-			var countOfNeighborsForFirstRegion = field.Neighboring.Neighbouring.First().Value.Count();
+			var countOfNeighborsForFirstRegion = 0;
+			for (var i = 0; i < field.Neighboring.Neighborhoods.GetLength(1); i++)
+			{
+				countOfNeighborsForFirstRegion += field.Neighboring.Neighborhoods[0, i] ? 1 : 0;
+			}
+
+			countOfNeighborsForFirstRegion.Should().Be(2);
+		}
+
+		[Test]
+		public void
+			_3_GenerateRegionNeighboringFor3rdLevel()
+		{
+			// Arrange.
+			Container.BindLevelAt("ScriptableObjects/For Tests/Levels By Regions/Level With 5 Regions");
+
+			Container.Resolve<FieldGenerator>().Initialize();
+			Container.Resolve<RegionsGenerator>().Initialize();
+
+			var field = Container.Resolve<IField>();
+			var calculator = Container.Resolve<RegionsNeighboringCalculator>();
+
+			// Act.
+			calculator.Initialize();
+
+			// Assert.
+			var countOfNeighborsForFirstRegion = 0;
+			for (var i = 0; i < field.Neighboring.Neighborhoods.GetLength(1); i++)
+			{
+				countOfNeighborsForFirstRegion += field.Neighboring.Neighborhoods[0, i] ? 1 : 0;
+			}
+
 			countOfNeighborsForFirstRegion.Should().Be(2);
 		}
 	}

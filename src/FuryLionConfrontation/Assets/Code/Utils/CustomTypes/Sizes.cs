@@ -34,5 +34,7 @@ namespace Confrontation
 			   && row < Width
 			   && column >= 0
 			   && column < Height;
+
+		public T[,] CreateMatrix<T>() => new T[Height, Width];
 	}
 }

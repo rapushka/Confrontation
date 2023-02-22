@@ -16,6 +16,8 @@ namespace Confrontation
 
 		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
 
+		public int Id { get; private set; }
+
 		public int OwnerPlayerId
 		{
 			get => _ownerPlayerId;
@@ -75,8 +77,6 @@ namespace Confrontation
 			=> _field.Buildings.OfType<Capital>()
 			         .Where((c) => c.OwnerPlayerId == oldOwnerId);
 
-		public override int GetHashCode() => Coordinates.GetHashCode();
-
 		[Serializable]
 		public class Data
 		{
@@ -85,6 +85,16 @@ namespace Confrontation
 			[field: SerializeField] public List<Coordinates> CellsCoordinates { get; set; } = new();
 		}
 
-		public class Factory : PlaceholderFactory<Region> { }
+		public class Factory : PlaceholderFactory<Region>
+		{
+			private static int _currentId;
+			
+			public override Region Create()
+			{
+				var region = base.Create();
+				region.Id = _currentId++;
+				return region;
+			}
+		}
 	}
 }

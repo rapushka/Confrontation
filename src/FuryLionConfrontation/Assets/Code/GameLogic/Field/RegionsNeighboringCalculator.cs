@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -12,42 +10,39 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_field.Neighboring.Neighbouring = _field.Regions.Distinct().ToDictionary((r) => r, GroupByNeighbouring);
-
-			Debug.Log("==========================================================");
-
-			foreach (var (region, neighbors) in _field.Neighboring.Neighbouring)
+			foreach (var region in _field.Regions.Distinct())
 			{
-				Debug.Log($"region = {region.OwnerPlayerId}");
-
-				foreach (var neighbor in neighbors)
+				foreach (var cell in region.CellsInRegion)
 				{
-					Debug.Log($"\tneighbor to {neighbor.OwnerPlayerId}");
+					CollectNeighboursFor(cell, region);
 				}
 			}
 		}
 
-		private IEnumerable<Region> GroupByNeighbouring(Region region)
-			=> region.CellsInRegion.SelectMany(CollectNeighboursFor).Distinct();
+		private void CollectNeighboursFor(ICoordinated cell, Region region)
+			=> ForEachCell(around: cell.Coordinates, @do: (c) => AddNeighbour(region, c));
 
-		private IEnumerable<Region> CollectNeighboursFor(Cell cell)
-			=> CollectNeighbors(cell, cell.Coordinates.Row.IsEven() ? IsDiagonallyNext : IsDiagonallyPrevious);
+		private void AddNeighbour(Region region, Cell currentCell)
+			=> _field.Neighboring.AddNeighboring(region, currentCell.RelatedRegion);
 
-		private IEnumerable<Region> CollectNeighbors(ICoordinated cell, Func<Coordinates, Coordinates, bool> isTooFar)
+		private void ForEachCell(Coordinates around, Action<Cell> @do)
 		{
-			var centerRow = cell.Coordinates.Row;
-			var centerColumn = cell.Coordinates.Column;
+			Func<Coordinates, Coordinates, bool> isFarEnough = around.Row.IsEven()
+				? IsDiagonallyNext
+				: IsDiagonallyPrevious;
 
-			for (var row = centerRow - 1; row <= centerRow + 1; row++)
+			for (var row = around.Row - 1; row <= around.Row + 1; row++)
 			{
-				for (var column = centerColumn - 1; column <= centerColumn + 1; column++)
+				for (var column = around.Column - 1; column <= around.Column + 1; column++)
 				{
 					var currentCoordinates = new Coordinates(row, column);
 
 					if (_field.Cells.Sizes.IsInBounds(currentCoordinates)
-					    && isTooFar(cell.Coordinates, currentCoordinates) == false)
+					    && isFarEnough(around, currentCoordinates) == false)
 					{
-						yield return _field.Cells[currentCoordinates].RelatedRegion;
+						var currentCell = _field.Cells[currentCoordinates];
+
+						@do(currentCell);
 					}
 				}
 			}

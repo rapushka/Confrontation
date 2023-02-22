@@ -1,12 +1,17 @@
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Confrontation
 {
 	public class RegionsNeighboring
 	{
-		public Dictionary<Region, IEnumerable<Region>> Neighbouring;
+		public RegionsNeighboring(Sizes fieldSizes) => Neighborhoods = fieldSizes.CreateMatrix<bool>();
 
-		public bool IsNeighbours(Region first, Region second) => Neighbouring[first].Contains(second);
+		public bool[,] Neighborhoods { get; }
+
+		public bool IsNeighbours(Region first, Region second) => Neighborhoods[first.Id, second.Id];
+
+		public void AddNeighboring(Region first, Region second)
+		{
+			Neighborhoods[first.Id, second.Id] = true;
+			Neighborhoods[second.Id, first.Id] = true;
+		}
 	}
 }
