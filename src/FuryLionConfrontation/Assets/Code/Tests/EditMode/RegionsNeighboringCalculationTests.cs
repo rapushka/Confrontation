@@ -1,3 +1,4 @@
+using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 using Zenject;
@@ -28,7 +29,7 @@ namespace Confrontation.Editor.Tests
 
 		[Test]
 		public void
-			_1_WhenCalculateNeighboring_AndThereIsCellWith1NeighborRegion_ThenNeighboringShouldContain2Elements()
+			_1_WhenCalculateNeighboring_AndThereIsCellWith1NeighborRegion_ThenNeighboringShouldContain3Elements()
 		{
 			// Arrange.
 			Container.BindLevelAt(TestLevelName.LevelWithRegions);
@@ -43,8 +44,10 @@ namespace Confrontation.Editor.Tests
 			calculator.Initialize();
 
 			// Assert.
-			var countOfNeighborhoods = field.Neighboring.Neighborhoods.Length;
-			countOfNeighborhoods.Should().Be(2);
+			var countOfNeighborhoods = field.Neighboring.Neighborhoods.Count;
+			const string explanation
+				= "First and second ─ neighborhood with itself, and third ─ neighborhood between regions";
+			countOfNeighborhoods.Should().Be(3, explanation);
 		}
 
 		[Test]
@@ -64,12 +67,8 @@ namespace Confrontation.Editor.Tests
 			calculator.Initialize();
 
 			// Assert.
-			var countOfNeighborsForFirstRegion = 0;
-			for (var i = 0; i < field.Neighboring.Neighborhoods.GetLength(1); i++)
-			{
-				countOfNeighborsForFirstRegion += field.Neighboring.Neighborhoods[0, i] ? 1 : 0;
-			}
-
+			var firstRegionId = field.Regions.First().Id;
+			var countOfNeighborsForFirstRegion = field.Neighboring.Neighborhoods.CountOfEntries(firstRegionId);
 			countOfNeighborsForFirstRegion.Should().Be(2);
 		}
 
@@ -90,13 +89,9 @@ namespace Confrontation.Editor.Tests
 			calculator.Initialize();
 
 			// Assert.
-			var countOfNeighborsForFirstRegion = 0;
-			for (var i = 0; i < field.Neighboring.Neighborhoods.GetLength(1); i++)
-			{
-				countOfNeighborsForFirstRegion += field.Neighboring.Neighborhoods[0, i] ? 1 : 0;
-			}
-
-			countOfNeighborsForFirstRegion.Should().Be(2);
+			var firstRegionId = field.Regions.First().Id;
+			var countOfNeighborsForFirstRegion = field.Neighboring.Neighborhoods.CountOfEntries(firstRegionId);
+			countOfNeighborsForFirstRegion.Should().Be(4);
 		}
 	}
 

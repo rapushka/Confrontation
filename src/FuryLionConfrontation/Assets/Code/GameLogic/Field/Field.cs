@@ -15,7 +15,7 @@ namespace Confrontation
 			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(selectedLevelSizes);
 			Regions = new CoordinatedMatrix<Region>(selectedLevelSizes);
 			Garrisons = new CoordinatedMatrix<Garrison>(selectedLevelSizes);
-			Neighboring = new RegionsNeighboring(selectedLevelSizes);
+			Neighboring = new RegionsNeighboring();
 		}
 
 		public CoordinatedMatrix<Cell> Cells { get; }

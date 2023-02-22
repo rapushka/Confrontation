@@ -29,7 +29,7 @@ namespace Confrontation.Editor
 			Garrisons = new CoordinatedMatrix<Garrison>(_state.Sizes);
 			Regions = new CoordinatedMatrix<Region>(_state.Sizes);
 			Players = new List<Player>();
-			Neighboring = new RegionsNeighboring(_state.Sizes);
+			Neighboring = new RegionsNeighboring();
 		}
 
 		private void Height()
