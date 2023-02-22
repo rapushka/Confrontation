@@ -12,13 +12,13 @@ namespace Confrontation
 			{
 				foreach (var cell in region.CellsInRegion)
 				{
-					CollectNeighboursFor(region, cell);
+					CollectNeighboursFor(cell, @in: region);
 				}
 			}
 		}
 
-		private void CollectNeighboursFor(Region region, ICoordinated cell)
-			=> cell.Coordinates.ForEachCellAround((c) => AddNeighbour(region, c), on: _field.Cells);
+		private void CollectNeighboursFor(ICoordinated cell, Region @in)
+			=> cell.ForEachCellAround((c) => AddNeighbour(@in, c), on: _field.Cells);
 
 		private void AddNeighbour(Region region, Cell currentCell)
 			=> _field.Neighboring.AddNeighboring(region, currentCell.RelatedRegion);
