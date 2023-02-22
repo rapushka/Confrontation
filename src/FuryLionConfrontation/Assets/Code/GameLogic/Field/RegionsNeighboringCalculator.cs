@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
@@ -10,7 +9,7 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			foreach (var region in _field.Regions.Distinct())
+			foreach (var region in _field.Regions.OnlyUnique())
 			{
 				foreach (var cell in region.CellsInRegion)
 				{

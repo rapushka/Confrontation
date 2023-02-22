@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Confrontation
 {
@@ -12,5 +13,7 @@ namespace Confrontation
 				@do.Invoke(item);
 			}
 		}
+
+		public static IEnumerable<T> OnlyUnique<T>(this IEnumerable<T> @this) => @this.Distinct();
 	}
 }
