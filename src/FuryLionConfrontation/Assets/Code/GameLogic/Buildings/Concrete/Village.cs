@@ -20,7 +20,7 @@ namespace Confrontation
 
 		private Garrison LocatedGarrison => Field.Garrisons[Coordinates];
 
-		public void Action()
+		public virtual void Action()
 		{
 			for (var i = 0; i < CurrentLevelStats.Amount; i++)
 			{

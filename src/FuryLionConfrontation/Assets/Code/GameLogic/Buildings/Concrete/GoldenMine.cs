@@ -22,6 +22,6 @@ namespace Confrontation
 
 		public void Action() => ProduceGold();
 
-		private void ProduceGold() => OwnerPlayer.Stats.Earn(GoldProducingRate);
+		private void ProduceGold() => OwnerPlayer?.Stats.Earn(GoldProducingRate);
 	}
 }
