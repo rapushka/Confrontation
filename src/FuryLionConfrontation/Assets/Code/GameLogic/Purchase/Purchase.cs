@@ -9,6 +9,7 @@ namespace Confrontation
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private readonly IBalanceTable _balanceTable;
 
+
 		public void BuyBuilding(Building building)
 		{
 			var buildingPrice = _balanceTable.PriceFor(building);
@@ -21,7 +22,7 @@ namespace Confrontation
 			}
 			else
 			{
-				Debug.Log("You don't have enough gold!");
+				_uiMediator.OpenWindow<NotEnoughGoldWindow>();
 			}
 		}
 	}

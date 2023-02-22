@@ -7,6 +7,7 @@ namespace Confrontation
 		[Inject] private readonly BuildWindow.Factory _buildWindowFactory;
 		[Inject] private readonly BuildingInfoWindow.Factory _buildingWindowFactory;
 		[Inject] private readonly GameResultsWindow.Factory _gameResultWindowFactory;
+		[Inject] private readonly NotEnoughGoldWindow.Factory _notEnoughGoldWindowFactory;
 
 		private WindowBase _window;
 
@@ -14,8 +15,10 @@ namespace Confrontation
 
 		public WindowBase Visit(BuildWindow window) => _buildWindowFactory.Create(window);
 
-		public WindowBase Visit(BuildingInfoWindow infoWindow) => _buildingWindowFactory.Create(infoWindow);
+		public WindowBase Visit(BuildingInfoWindow window) => _buildingWindowFactory.Create(window);
 
 		public WindowBase Visit(GameResultsWindow window) => _gameResultWindowFactory.Create(window);
+
+		public WindowBase Visit(NotEnoughGoldWindow window) => _notEnoughGoldWindowFactory.Create(window);
 	}
 }
