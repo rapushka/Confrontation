@@ -27,7 +27,9 @@ namespace Confrontation
 
 		private float ScaledSmoothRate => _smoothRate * _time.FixedDeltaTime;
 
-		private void Awake() => _targetPosition = _root.position;
+		private bool HasMomentum => Vector2.Distance(_targetPosition, _root.position.FromTopDown()) > Mathf.Epsilon;
+
+		private void Awake() => _targetPosition = _root.position.FromTopDown();
 
 		public void OnEnable()
 		{
@@ -43,7 +45,7 @@ namespace Confrontation
 
 		private void FixedUpdate()
 		{
-			if (_isSwiping
+			if ((_isSwiping || HasMomentum)
 			    && _orderDrawer.IsGivingOrder == false
 			    && InputUtils.IsPointerOverUIObject() == false)
 			{
@@ -67,7 +69,15 @@ namespace Confrontation
 			_isSwiping = true;
 		}
 
-		private void OnSwipeEnd() => _isSwiping = false;
+		private void OnSwipeEnd()
+		{
+			_isSwiping = false;
+
+			if (_orderDrawer.IsGivingOrder)
+			{
+				_targetPosition = _root.position.FromTopDown();
+			}
+		}
 
 		private void UpdateCursorPosition() => _lastCursorPosition = _inputService.CursorPosition;
 	}
