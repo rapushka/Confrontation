@@ -28,6 +28,15 @@ namespace Confrontation
 			}
 		}
 
+		public void Move(Cell startCell, Cell endCell)
+		{
+			var quantityToMove = startCell.Building is Barrack
+				? QuantityOfUnits
+				: QuantityOfUnits / 2;
+
+			MoveTo(endCell, quantityToMove);
+		}
+
 		public void MoveTo(Cell targetCell, int quantityToMove)
 		{
 			_unitOrderPerformer.MoveTo(targetCell, quantityToMove);
