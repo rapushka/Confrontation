@@ -28,13 +28,13 @@ namespace Confrontation
 			}
 		}
 
-		public void Move(Cell startCell, Cell endCell)
+		public void MoveTo(Cell targetCell)
 		{
-			var quantityToMove = startCell.Building is Barrack
+			var quantityToMove = LocationCell.Building is Barrack
 				? QuantityOfUnits
 				: QuantityOfUnits / 2;
 
-			MoveTo(endCell, quantityToMove);
+			MoveTo(targetCell, quantityToMove);
 		}
 
 		public void MoveTo(Cell targetCell, int quantityToMove)

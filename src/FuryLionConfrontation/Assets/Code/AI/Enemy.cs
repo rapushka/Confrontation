@@ -26,7 +26,7 @@ namespace Confrontation
 			if (OurUnits.TryPickRandom(out var randomSquad)
 			    && CollectNeighboursFor(randomSquad).TryPickRandom(out var randomVillage))
 			{
-				randomSquad.Move(randomSquad.LocationCell, randomVillage.RelatedCell);
+				randomSquad.MoveTo(randomVillage.RelatedCell);
 			}
 		}
 

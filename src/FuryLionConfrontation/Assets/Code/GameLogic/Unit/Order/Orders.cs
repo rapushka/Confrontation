@@ -15,7 +15,7 @@ namespace Confrontation
 			    && _field.Neighboring.IsNeighbours(startCell.RelatedRegion, endCell.RelatedRegion))
 			{
 				var squad = startCell.LocatedUnits!;
-				squad.Move(startCell, endCell);
+				squad.MoveTo(endCell);
 			}
 		}
 	}
