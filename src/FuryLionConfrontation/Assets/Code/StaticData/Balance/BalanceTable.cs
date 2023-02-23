@@ -14,10 +14,12 @@ namespace Confrontation
 
 		[field: SerializeField] public VillageStats VillageStats { get; private set; }
 
+		[field: SerializeField] public EnemiesStats EnemiesStats { get; private set; }
+
 		public int PriceFor(Building building)
 			=> building switch
 			{
-				Barrack   => BarrackStats.Price,
+				Barrack    => BarrackStats.Price,
 				GoldenMine => GoldenMineStats.Price,
 				var _      => throw new ArgumentException($"There is no price for {building.GetType().Name}"),
 			};

@@ -1,12 +1,22 @@
+using UnityEngine;
+using Zenject;
+
 namespace Confrontation
 {
-	public class Enemy
+	public class Enemy : IActorWithCoolDown
 	{
-		public void Construct(Player player)
+		[Inject] private readonly Player _player;
+		[Inject] private readonly IBalanceTable _balance;
+
+		public float PassedDuration { get; set; }
+
+		public float CoolDownDuration => _balance.EnemiesStats.SecondsBetweenActions;
+
+		public void Action()
 		{
-			Player = player;
+			Debug.Log($"Enemy {_player.Id} doing something!");
 		}
 
-		public Player Player { get; private set; }
+		public class Factory : PlaceholderFactory<Player, Enemy> { }
 	}
 }

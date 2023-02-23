@@ -33,6 +33,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<GameSession>().AsSingle();
+			Container.BindInterfacesAndSelfTo<ArtificialIntelligence>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldBounds>().AsSingle();
 
@@ -50,6 +51,8 @@ namespace Confrontation
 
 		private void BindFactories()
 		{
+			Container.BindFactory<Player, Enemy, Enemy.Factory>();
+
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();

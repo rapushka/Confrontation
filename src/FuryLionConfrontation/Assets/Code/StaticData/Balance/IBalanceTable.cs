@@ -10,6 +10,8 @@ namespace Confrontation
 
 		VillageStats VillageStats { get; }
 
+		EnemiesStats EnemiesStats { get; }
+
 		int PriceFor(Building building);
 	}
 }

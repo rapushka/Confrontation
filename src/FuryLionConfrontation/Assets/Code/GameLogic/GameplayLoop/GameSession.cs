@@ -11,6 +11,8 @@ namespace Confrontation
 
 		private readonly HashSet<Player> _activePlayers = new();
 
+		public IEnumerable<Player> Enemies => _activePlayers.Where((p) => p.Id != _user.PlayerId);
+
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
 
 		public Player GetPlayerFor(int id) => _activePlayers.GetPlayerByIdOrDefault(id);

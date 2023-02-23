@@ -8,9 +8,10 @@ namespace Confrontation
 	{
 		[Inject] private readonly ITimeService _timeService;
 		[Inject] private readonly IField _field;
+		[Inject] private readonly ArtificialIntelligence _ai;
 
 		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
-			=> _field.Buildings.OfType<IActorWithCoolDown>();
+			=> _field.Buildings.OfType<IActorWithCoolDown>().Union(_ai.Enemies);
 
 		public void Tick()
 		{
