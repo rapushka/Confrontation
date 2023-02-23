@@ -33,7 +33,13 @@ namespace Confrontation
 			StartCoroutine(MoveToTarget());
 		}
 
-		private void LookAtTarget() => transform.forward = (TargetPosition - CurrentPosition).normalized;
+		private void LookAtTarget()
+		{
+			if ((TargetPosition - CurrentPosition).normalized != Vector3.zero)
+			{
+				transform.forward = (TargetPosition - CurrentPosition).normalized;
+			}
+		}
 
 		private IEnumerator MoveToTarget()
 		{
