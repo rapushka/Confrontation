@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Zenject;
@@ -11,6 +12,8 @@ namespace Confrontation
 
 		private readonly HashSet<Player> _activePlayers = new();
 
+		public event Action<int> EnemyLoose;
+
 		public IEnumerable<Player> Enemies => _activePlayers.Where((p) => p.Id != _user.PlayerId);
 
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
@@ -22,6 +25,11 @@ namespace Confrontation
 		public void PlayerLoose(int id)
 		{
 			_activePlayers.RemoveById(id);
+
+			if (id != _user.PlayerId)
+			{
+				EnemyLoose?.Invoke(id);
+			}
 
 			if (_activePlayers.Count == 1)
 			{

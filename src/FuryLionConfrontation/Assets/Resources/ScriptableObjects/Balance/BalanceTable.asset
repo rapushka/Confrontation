@@ -35,3 +35,5 @@ MonoBehaviour:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1
+  <EnemiesStats>k__BackingField:
+    <SecondsBetweenActions>k__BackingField: 1
