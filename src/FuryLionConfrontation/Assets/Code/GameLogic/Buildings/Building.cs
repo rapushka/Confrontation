@@ -77,13 +77,6 @@ namespace Confrontation
 				building.Coordinates = cell.Coordinates;
 				return (T)building;
 			}
-			
-			public T Create<T>(T prefab)
-				where T : Building
-			{
-				var building = base.Create(prefab);
-				return (T)building;
-			}
 		}
 	}
 }
