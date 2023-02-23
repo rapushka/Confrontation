@@ -54,12 +54,12 @@ namespace Confrontation
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>(Constants.ResourcePath.Barracks),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Barrack),
 						Coordinates = new Coordinates(0, 2),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>(Constants.ResourcePath.Barracks),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Barrack),
 						Coordinates = new Coordinates(4, 3),
 					},
 					new()

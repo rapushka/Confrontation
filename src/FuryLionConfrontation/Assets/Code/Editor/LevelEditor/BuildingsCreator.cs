@@ -18,7 +18,7 @@ namespace Confrontation.Editor
 
 		private static IEnumerable<Cell> SelectedCells => Selection.gameObjects.WithComponent<Cell>();
 
-		private Barracks BarrackPrefab => _resources.Buildings.OfType<Barracks>().Single();
+		private Barrack BarrackPrefab => _resources.Buildings.OfType<Barrack>().Single();
 
 		private GoldenMine GoldenMinePrefab => _resources.Buildings.OfType<GoldenMine>().Single();
 

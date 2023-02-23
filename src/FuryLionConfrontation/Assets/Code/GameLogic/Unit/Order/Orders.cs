@@ -15,7 +15,7 @@ namespace Confrontation
 			    && _field.Neighboring.IsNeighbours(startCell.RelatedRegion, endCell.RelatedRegion))
 			{
 				var squad = startCell.LocatedUnits!;
-				var quantityToMove = startCell.Building is Barracks
+				var quantityToMove = startCell.Building is Barrack
 					? squad.QuantityOfUnits
 					: squad.QuantityOfUnits / 2;
 

@@ -27,7 +27,7 @@ namespace Confrontation
 
 			if (building is Capital capital)
 			{
-				var barracks = _buildingsFactory.Create(_resources.Barracks, cell);
+				var barracks = _buildingsFactory.Create(_resources.Barrack, cell);
 				var goldenMine = _buildingsFactory.Create(_resources.GoldenMine, cell);
 
 				capital.SetStashedBuildings(barracks, goldenMine);

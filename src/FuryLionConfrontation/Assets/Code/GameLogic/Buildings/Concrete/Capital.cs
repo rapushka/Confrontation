@@ -4,15 +4,15 @@ namespace Confrontation
 	{
 		public int OwnerPlayerId => Field.Regions[Coordinates].OwnerPlayerId;
 
-		private Barracks _barracks;
+		private Barrack _barrack;
 		private GoldenMine _goldenMine;
 
-		public void SetStashedBuildings(Barracks barracks, GoldenMine goldenMine)
+		public void SetStashedBuildings(Barrack barrack, GoldenMine goldenMine)
 		{
-			barracks.Invisibility.MakeInvisible();
+			barrack.Invisibility.MakeInvisible();
 			goldenMine.Invisibility.MakeInvisible();
 
-			_barracks = barracks;
+			_barrack = barrack;
 			_goldenMine = goldenMine;
 		}
 
@@ -20,7 +20,7 @@ namespace Confrontation
 		{
 			base.Action();
 
-			_barracks.Action();
+			_barrack.Action();
 			_goldenMine.Action();
 		}
 	}

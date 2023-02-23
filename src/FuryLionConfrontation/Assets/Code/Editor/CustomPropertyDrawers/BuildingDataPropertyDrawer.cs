@@ -15,7 +15,7 @@ namespace Confrontation
 			{
 				(nameof(Village), Constants.ResourcePath.Village),
 				(nameof(GoldenMine), Constants.ResourcePath.GoldenMine),
-				(nameof(Barracks), Constants.ResourcePath.Barracks),
+				(nameof(Barrack), Constants.ResourcePath.Barrack),
 				(nameof(Capital), Constants.ResourcePath.Capital),
 			};
 

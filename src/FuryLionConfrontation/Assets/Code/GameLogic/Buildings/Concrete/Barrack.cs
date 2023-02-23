@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Barracks : Building, IActorWithCoolDown
+	public class Barrack : Building, IActorWithCoolDown
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 		[Inject] private readonly IBalanceTable _balanceTable;
@@ -11,7 +11,7 @@ namespace Confrontation
 
 		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
-		public override string Name => nameof(Barracks);
+		public override string Name => nameof(Barrack);
 
 		protected override int MaxLevel => BalanceTable.BarrackStats.LeveledStats.MaxLevel;
 
