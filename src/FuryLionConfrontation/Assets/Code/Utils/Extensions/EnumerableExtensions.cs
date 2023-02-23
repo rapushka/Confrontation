@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Confrontation
 {
@@ -17,10 +16,19 @@ namespace Confrontation
 
 		public static IEnumerable<T> OnlyUnique<T>(this IEnumerable<T> @this) => @this.Distinct();
 
-		public static T PickRandom<T>(this IEnumerable<T> @this)
+		public static T[] AsArray<T>(this IEnumerable<T> @this) => @this as T[] ?? @this.ToArray();
+
+		public static bool TryPickRandom<T>(this IEnumerable<T> @this, out T result)
+			where T : class
+			=> @this.AsArray().TryPickRandom(out result);
+
+		public static T PickRandom<T>(this IEnumerable<T> @this) => @this.AsArray().PickRandom();
+
+		public static bool TryPickRandom<T>(this T[] @this, out T result)
+			where T : class
 		{
-			var array = @this as T[] ?? @this.ToArray();
-			return array.PickRandom();
+			result = @this.Any() ? @this.PickRandom() : null;
+			return result is not null;
 		}
 
 		public static T PickRandom<T>(this T[] @this)

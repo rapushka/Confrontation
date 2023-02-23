@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.Assertions;
 using Zenject;
 
 namespace Confrontation
@@ -14,6 +14,8 @@ namespace Confrontation
 
 		public float CoolDownDuration => _balance.EnemiesStats.SecondsBetweenActions;
 
+		private UnitsSquad[] OurUnits => _field.LocatedUnits.Where(IsOurUnit).AsArray();
+
 		public void Action()
 		{
 			DirectUnits();
@@ -21,36 +23,19 @@ namespace Confrontation
 
 		private void DirectUnits()
 		{
-			if (_field.LocatedUnits.Any(IsOurUnit) == false)
+			if (OurUnits.TryPickRandom(out var randomSquad)
+			    && CollectNeighboursFor(randomSquad).TryPickRandom(out var randomVillage))
 			{
-				return;
+				randomSquad.Move(randomSquad.LocationCell, randomVillage.RelatedCell);
 			}
-
-			Assert.IsNotNull(_field.LocatedUnits);
-			var ourUnits = _field.LocatedUnits.Where(IsOurUnit);
-
-			var randomSquad = ourUnits.PickRandom();
-			var currentRegion = randomSquad.LocationCell.RelatedRegion;
-
-			var neighbourVillages = _field.Buildings
-			                              .OfType<Village>()
-			                              .Where((v) => IsNeighbours(v, currentRegion));
-
-			var enumerable = neighbourVillages as Village[] ?? neighbourVillages.ToArray();
-			if (enumerable.Any() == false)
-			{
-				return;
-			}
-
-			var randomVillage = enumerable.PickRandom();
-
-			randomSquad.Move(randomSquad.LocationCell, randomVillage.RelatedCell);
 		}
 
-		private bool IsOurUnit(UnitsSquad u)
-		{
-			return u is not null && u.OwnerPlayerId == _player.Id;
-		}
+		private IEnumerable<Village> CollectNeighboursFor(UnitsSquad randomSquad)
+			=> _field.Buildings
+			         .OfType<Village>()
+			         .Where((v) => IsNeighbours(v, randomSquad.LocationCell.RelatedRegion));
+
+		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
 
 		private bool IsNeighbours(Village village, Region currentRegion)
 			=> _field.Neighboring.IsNeighbours(village.RelatedCell.RelatedRegion, currentRegion);
