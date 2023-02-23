@@ -27,8 +27,10 @@ namespace Confrontation
 
 			if (building is Capital capital)
 			{
-				capital.Barracks = _buildingsFactory.Create(_resources.Buildings.OfType<Barracks>().Single(), cell);
-				capital.GoldenMine = _buildingsFactory.Create(_resources.Buildings.OfType<GoldenMine>().Single(), cell);
+				var barracks = _buildingsFactory.Create(_resources.Barracks, cell);
+				var goldenMine = _buildingsFactory.Create(_resources.GoldenMine, cell);
+
+				capital.SetStashedBuildings(barracks, goldenMine);
 				return capital;
 			}
 

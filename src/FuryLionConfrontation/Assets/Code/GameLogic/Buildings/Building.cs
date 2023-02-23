@@ -9,6 +9,8 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly IBalanceTable _balanceTable;
 
+		[field: SerializeField] public Invisibility Invisibility { get; private set; }
+
 		private Coordinates _coordinates;
 
 		public int Level { get; private set; } = 1;
