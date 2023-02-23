@@ -9,6 +9,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly ITimeService _timeService;
 		[Inject] private readonly IBalanceTable _balance;
+		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 
 		[SerializeField] private Transform _transform;
 
@@ -30,7 +31,7 @@ namespace Confrontation
 			_targetCell = target;
 
 			LookAtTarget();
-			StartCoroutine(MoveToTarget());
+			_routinesRunner.StartUnstoppableRoutine(MoveToTarget());
 		}
 
 		private void LookAtTarget()
