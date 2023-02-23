@@ -13,9 +13,9 @@ namespace Confrontation
 
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
 
-		public Player GetPlayerById(int id) => _activePlayers.GetPlayerByIdOrDefault(id);
+		public Player GetPlayerFor(int id) => _activePlayers.GetPlayerByIdOrDefault(id);
 
-		public void Initialize() => _user.InitializePlayer(GetPlayerById);
+		public void Initialize() => _user.Construct(GetPlayerFor(_user.PlayerId));
 
 		public void PlayerLoose(int id)
 		{

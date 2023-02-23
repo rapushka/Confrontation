@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Confrontation
@@ -14,7 +13,9 @@ namespace Confrontation
 
 		public GameResult GameResult { get; set; } = GameResult.None;
 
-		public void InitializePlayer(Func<int, Player> initializer) => Player = initializer.Invoke(_playerId);
+		public int PlayerId => _playerId;
+
+		public void Construct(Player player) => Player = player;
 
 		private void OnEnable() => SelectedLevel = LoadDummyLevel();
 
