@@ -10,6 +10,7 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 
 		private UnitsDirector _unitsDirector;
+		private EnemyBuildingBuilder _buildingBuilder;
 
 		public float PassedDuration { get; set; }
 
@@ -17,7 +18,14 @@ namespace Confrontation
 
 		public void Action()
 		{
-			_unitsDirector.DirectUnits();
+			if (UnityEngine.Random.Range(minInclusive: 0, maxExclusive: 2) == 0)
+			{
+				_unitsDirector.DirectUnits();
+			}
+			else
+			{
+				_buildingBuilder.Build();
+			}
 		}
 
 		public void Loose() => MarkOurRegionsAsNeutral();
@@ -31,11 +39,13 @@ namespace Confrontation
 		public class Factory : PlaceholderFactory<Player, Enemy>
 		{
 			[Inject] private readonly UnitsDirector.Factory _unitsDirectorFactory;
+			[Inject] private readonly EnemyBuildingBuilder.Factory _enemyBuildingBuilderFactory;
 
 			public override Enemy Create(Player player)
 			{
 				var enemy = base.Create(player);
 				enemy._unitsDirector = _unitsDirectorFactory.Create(player);
+				enemy._buildingBuilder = _enemyBuildingBuilderFactory.Create(player);
 				return enemy;
 			}
 		}

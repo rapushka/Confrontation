@@ -4,25 +4,21 @@ namespace Confrontation
 {
 	public class Purchase
 	{
-		[Inject] private readonly User _user;
-		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly BuildingSpawner _buildingSpawner;
 
-
-		public void BuyBuilding(Building building)
+		public bool BuyBuilding(Player userPlayer, Building building)
 		{
 			var buildingPrice = _balanceTable.PriceFor(building);
 
-			if (_user.Player.Stats.IsEnoughGoldFor(buildingPrice))
+			if (userPlayer.Stats.IsEnoughGoldFor(buildingPrice))
 			{
-				_uiMediator.Build(building);
-				_uiMediator.CloseCurrentWindow();
-				_user.Player.Stats.Spend(buildingPrice);
+				_buildingSpawner.Build(building);
+				userPlayer.Stats.Spend(buildingPrice);
+				return true;
 			}
-			else
-			{
-				_uiMediator.OpenWindow<NotEnoughGoldWindow>();
-			}
+
+			return false;
 		}
 	}
 }

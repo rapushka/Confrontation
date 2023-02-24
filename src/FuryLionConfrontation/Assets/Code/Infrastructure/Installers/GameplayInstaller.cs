@@ -53,6 +53,7 @@ namespace Confrontation
 		{
 			Container.BindFactory<Player, Enemy, Enemy.Factory>();
 			Container.BindFactory<Player, UnitsDirector, UnitsDirector.Factory>();
+			Container.BindFactory<Player, EnemyBuildingBuilder, EnemyBuildingBuilder.Factory>();
 
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();
