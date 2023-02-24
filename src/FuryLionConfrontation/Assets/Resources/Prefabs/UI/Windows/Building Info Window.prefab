@@ -11,6 +11,26 @@ PrefabInstance:
       propertyPath: m_text
       value: Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 8996184221059186401, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+      propertyPath: m_fontSize
+      value: 59.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996184221059186402, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996184221059186402, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996184221059186402, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996184221059186402, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -45,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_LocalPosition.x
