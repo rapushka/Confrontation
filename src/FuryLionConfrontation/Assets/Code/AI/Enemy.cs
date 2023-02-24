@@ -20,12 +20,13 @@ namespace Confrontation
 			_unitsDirector.DirectUnits();
 		}
 
-		public void Loose()
+		public void Loose() => MarkOurRegionsAsNeutral();
+
+		private void MarkOurRegionsAsNeutral()
 			=> _field.Regions
 			         .Where((r) => r.OwnerPlayerId == _player.Id)
 			         .OnlyUnique()
 			         .ForEach((r) => r.MakeNeutral());
-
 
 		public class Factory : PlaceholderFactory<Player, Enemy>
 		{
