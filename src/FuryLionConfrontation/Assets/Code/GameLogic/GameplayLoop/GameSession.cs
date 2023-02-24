@@ -16,30 +16,39 @@ namespace Confrontation
 
 		public IEnumerable<Player> Enemies => _activePlayers.Where((p) => p.Id != _user.PlayerId);
 
+		private bool IsAllEnemiesDefeat => _activePlayers.Count == 1;
+
 		public void AddPlayer(Player player) => _activePlayers.Add(player);
 
 		public Player GetPlayerFor(int id) => _activePlayers.GetPlayerByIdOrDefault(id);
 
 		public void Initialize() => _user.Construct(GetPlayerFor(_user.PlayerId));
 
-		public void PlayerLoose(int id)
+		public void PlayerLoose(int looserId)
 		{
-			_activePlayers.RemoveById(id);
+			_activePlayers.RemoveById(looserId);
 
-			if (id != _user.PlayerId)
+			if (looserId == _user.PlayerId)
 			{
-				EnemyLoose?.Invoke(id);
+				GameLost();
+				return;
 			}
 
-			if (_activePlayers.Count == 1)
+			EnemyLoose?.Invoke(looserId);
+
+			if (IsAllEnemiesDefeat)
 			{
-				GameEnd(_activePlayers.Single());
+				GameWin();
 			}
 		}
 
-		private void GameEnd(Player winner)
+		private void GameWin() => GameEnd(GameResult.Victory);
+
+		private void GameLost() => GameEnd(GameResult.Loose);
+
+		private void GameEnd(GameResult gameResult)
 		{
-			_user.GameResult = winner.Equals(_user.Player) ? GameResult.Victory : GameResult.Loose;
+			_user.GameResult = gameResult;
 			_uiMediator.OpenWindow<GameResultsWindow>();
 		}
 	}
