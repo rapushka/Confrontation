@@ -14,7 +14,7 @@ namespace Confrontation
 		private UnitFighter _unitFighter;
 		[CanBeNull] private Cell _targetCell;
 
-		private void Start() => _unitFighter = new UnitFighter(_unitsSquad, _assets);
+		private void OnEnable() => _unitFighter = new UnitFighter(_unitsSquad, _assets);
 
 		public void LocateInTargetCell()
 		{

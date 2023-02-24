@@ -36,7 +36,7 @@ namespace Confrontation
 				_lineRenderer.AddPosition(clickReceiver.transform.position);
 				_lineRenderer.AddPosition(CursorPosition);
 
-				_routinesRunner.StartRoutine(DrawLine);
+				_routinesRunner.RestartRoutine(DrawLine);
 			}
 		}
 

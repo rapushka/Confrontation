@@ -12,5 +12,6 @@ namespace Confrontation
 		void StopRoutine(Func<IEnumerator> func);
 
 		void StopAllRoutines();
+		void RestartRoutine(Func<IEnumerator> func);
 	}
 }

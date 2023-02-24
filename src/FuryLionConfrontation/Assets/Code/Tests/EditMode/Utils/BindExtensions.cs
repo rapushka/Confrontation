@@ -29,7 +29,7 @@ namespace Confrontation.Editor.Tests
 
 			@this.BindFactory<Building, Building, Building.Factory>()
 			     .FromFactory<PrefabFactory<Building>>();
-			@this.BindFactory<Region, Region.Factory>();
+			@this.BindFactory<int, Region, Region.Factory>();
 			@this.BindFactory<Garrison, Garrison.Factory>()
 			     .FromComponentInNewPrefabResource(Constants.ResourcePath.Garrison);
 		}

@@ -30,15 +30,19 @@ namespace Confrontation
 			}
 		}
 
+		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
+
 		private IEnumerable<Village> CollectNeighboursFor(UnitsSquad randomSquad)
 			=> _field.Buildings
 			         .OfType<Village>()
-			         .Where((v) => IsNeighbours(v, randomSquad.LocationCell.RelatedRegion));
+			         .Where((v) => IsOnNeighbourRegions(randomSquad, v));
 
-		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
+		private bool IsOnNeighbourRegions(UnitsSquad squad, Building village) 
+			=> IsNeighbours(squad.LocationCell.RelatedRegion, village.RelatedCell.RelatedRegion);
 
-		private bool IsNeighbours(Village village, Region currentRegion)
-			=> _field.Neighboring.IsNeighbours(village.RelatedCell.RelatedRegion, currentRegion);
+		private bool IsNeighbours(Region currentRegion, Region targetRegion)
+			=> _field.Neighboring.IsNeighbours(targetRegion, currentRegion)
+			   && targetRegion != currentRegion;
 
 		public class Factory : PlaceholderFactory<Player, Enemy> { }
 	}

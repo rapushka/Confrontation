@@ -20,10 +20,13 @@ namespace Confrontation
 			StartCoroutine(RunAndRemove(methodName, routine));
 		}
 
-		public void StartUnstoppableRoutine(IEnumerator routine)
+		public void RestartRoutine(Func<IEnumerator> func)
 		{
-			StartCoroutine(routine);
+			StopRoutine(func);
+			StartRoutine(func);
 		}
+
+		public void StartUnstoppableRoutine(IEnumerator routine) => StartCoroutine(routine);
 
 		public void StopRoutine(Func<IEnumerator> func)
 		{

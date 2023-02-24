@@ -8,6 +8,7 @@ namespace Confrontation
 {
 	public class Region : ICoordinated
 	{
+		[Inject] private readonly int _id;
 		[Inject] private readonly IField _field;
 		[Inject] private readonly GameSession _gameSession;
 
@@ -16,7 +17,7 @@ namespace Confrontation
 
 		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
 
-		public int Id { get; private set; }
+		public int Id => _id;
 
 		public int OwnerPlayerId
 		{
@@ -48,6 +49,14 @@ namespace Confrontation
 				cell.SetColor(OwnerPlayerId);
 			}
 		}
+
+		public static bool operator ==(Region left, Region right) => left is not null && left.Equals(right);
+
+		public static bool operator !=(Region left, Region right) => !(left == right);
+
+		public override bool Equals(object other) => other is Region && GetHashCode() == other.GetHashCode();
+
+		public override int GetHashCode() => Id.GetHashCode();
 
 		private void UpdateOwnerOfUnitsInRegion()
 		{
@@ -85,14 +94,13 @@ namespace Confrontation
 			[field: SerializeField] public List<Coordinates> CellsCoordinates { get; set; } = new();
 		}
 
-		public class Factory : PlaceholderFactory<Region>
+		public class Factory : PlaceholderFactory<int, Region>
 		{
 			private static int _currentId;
-			
-			public override Region Create()
+
+			public Region Create()
 			{
-				var region = base.Create();
-				region.Id = _currentId++;
+				var region = base.Create(_currentId++);
 				return region;
 			}
 		}
