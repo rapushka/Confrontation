@@ -50,8 +50,6 @@ MonoBehaviour:
       _column: 0
     - _row: 3
       _column: 1
-    - _row: 3
-      _column: 2
     - _row: 2
       _column: 0
   - <OwnerPlayerId>k__BackingField: 0
@@ -64,7 +62,7 @@ MonoBehaviour:
       _column: 4
     - _row: 1
       _column: 3
-  - <OwnerPlayerId>k__BackingField: 3
+  - <OwnerPlayerId>k__BackingField: 4
     <CellsCoordinates>k__BackingField:
     - _row: 2
       _column: 2
@@ -76,6 +74,8 @@ MonoBehaviour:
       _column: 2
     - _row: 2
       _column: 3
+    - _row: 3
+      _column: 2
   <Buildings>k__BackingField:
   - _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
     _coordinates:
