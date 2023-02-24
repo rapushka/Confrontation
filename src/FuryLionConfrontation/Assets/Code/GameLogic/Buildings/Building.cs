@@ -13,7 +13,7 @@ namespace Confrontation
 
 		private Coordinates _coordinates;
 
-		public int Level { get; private set; } = 1;
+		protected int Level { get; private set; } = 1;
 
 		public abstract string Name { get; }
 

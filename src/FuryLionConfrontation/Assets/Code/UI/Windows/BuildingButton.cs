@@ -8,9 +8,10 @@ namespace Confrontation
 	{
 		[Inject] private readonly Building _building;
 		[Inject] private readonly Purchase _purchase;
-		[Inject] private readonly IBalanceTable _balanceTable;
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
+		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IInputService _input;
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
@@ -18,7 +19,7 @@ namespace Confrontation
 
 		protected override void OnButtonClick()
 		{
-			if (_purchase.BuyBuilding(_user.Player, _building))
+			if (_purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell))
 			{
 				_uiMediator.CloseCurrentWindow();
 			}
