@@ -9,9 +9,10 @@ namespace Confrontation
 
 		void StartUnstoppableRoutine(IEnumerator routine);
 
+		void RestartRoutine(Func<IEnumerator> func);
+
 		void StopRoutine(Func<IEnumerator> func);
 
 		void StopAllRoutines();
-		void RestartRoutine(Func<IEnumerator> func);
 	}
 }
