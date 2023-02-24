@@ -36,4 +36,4 @@ MonoBehaviour:
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1
   <EnemiesStats>k__BackingField:
-    <SecondsBetweenActions>k__BackingField: 1
+    <SecondsBetweenActions>k__BackingField: 3

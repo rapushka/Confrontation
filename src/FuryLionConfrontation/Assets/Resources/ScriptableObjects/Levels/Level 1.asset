@@ -51,8 +51,8 @@ MonoBehaviour:
       _row: 2
       _column: 2
     _selectionIndex: 3
-  - _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+  - _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
     _coordinates:
       _row: 1
-      _column: 1
-    _selectionIndex: 0
+      _column: 2
+    _selectionIndex: 2
