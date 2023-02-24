@@ -25,6 +25,11 @@ namespace Confrontation
 
 		public void Dispose() => _gameSession.EnemyLoose -= OnEnemyLoose;
 
-		private void OnEnemyLoose(int id) => _enemies.Remove(id);
+		private void OnEnemyLoose(int id)
+		{
+			var enemy = _enemies[id];
+			enemy.Loose();
+			_enemies.Remove(id);
+		}
 	}
 }

@@ -21,6 +21,12 @@ namespace Confrontation
 			DirectUnits();
 		}
 
+		public void Loose()
+			=> _field.Regions
+			         .Where((r) => r.OwnerPlayerId == _player.Id)
+			         .OnlyUnique()
+			         .ForEach((r) => r.MakeNeutral());
+
 		private void DirectUnits()
 		{
 			if (OurUnits.TryPickRandom(out var randomSquad)
@@ -37,7 +43,7 @@ namespace Confrontation
 			         .OfType<Village>()
 			         .Where((v) => IsOnNeighbourRegions(randomSquad, v));
 
-		private bool IsOnNeighbourRegions(UnitsSquad squad, Building village) 
+		private bool IsOnNeighbourRegions(UnitsSquad squad, Building village)
 			=> IsNeighbours(squad.LocationCell.RelatedRegion, village.RelatedCell.RelatedRegion);
 
 		private bool IsNeighbours(Region currentRegion, Region targetRegion)

@@ -58,6 +58,8 @@ namespace Confrontation
 
 		public override int GetHashCode() => Id.GetHashCode();
 
+		public void MakeNeutral() => OwnerPlayerId = Constants.NeutralRegion;
+
 		private void UpdateOwnerOfUnitsInRegion()
 		{
 			foreach (var cellInRegion in _field.Cells.Where((c) => c.RelatedRegion == this))
