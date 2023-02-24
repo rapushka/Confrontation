@@ -27,9 +27,11 @@ namespace Confrontation
 
 		private void OnEnemyLoose(int id)
 		{
-			var enemy = _enemies[id];
-			enemy.Loose();
-			_enemies.Remove(id);
+			if (_enemies.TryGetValue(id, out var enemy))
+			{
+				enemy.Loose();
+				_enemies.Remove(id);
+			}
 		}
 	}
 }

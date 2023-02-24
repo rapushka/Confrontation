@@ -52,6 +52,7 @@ namespace Confrontation
 		private void BindFactories()
 		{
 			Container.BindFactory<Player, Enemy, Enemy.Factory>();
+			Container.BindFactory<Player, UnitsDirector, UnitsDirector.Factory>();
 
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();
