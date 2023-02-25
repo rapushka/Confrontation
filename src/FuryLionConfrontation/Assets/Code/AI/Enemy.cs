@@ -14,10 +14,12 @@ namespace Confrontation
 
 		public float PassedDuration { get; set; }
 
-		public float CoolDownDuration => _balance.EnemiesStats.SecondsBetweenActions;
+		public float CoolDownDuration { get; private set; }
 
 		public void Action()
 		{
+			RandomizeCoolDownDuration();
+
 			if (UnityEngine.Random.Range(minInclusive: 0, maxExclusive: 2) == 0)
 			{
 				_unitsDirector.DirectUnits();
@@ -29,6 +31,9 @@ namespace Confrontation
 		}
 
 		public void Loose() => MarkOurRegionsAsNeutral();
+
+		private void RandomizeCoolDownDuration()
+			=> CoolDownDuration = _balance.EnemiesStats.SecondsBetweenActions.RandomNumberInRange;
 
 		private void MarkOurRegionsAsNeutral()
 			=> _field.Regions
