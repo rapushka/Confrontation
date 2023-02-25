@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Zenject;
 
@@ -11,6 +12,7 @@ namespace Confrontation
 
 		private UnitsDirector _unitsDirector;
 		private EnemyBuildingBuilder _buildingBuilder;
+		private DecisionMaker _decisionMaker;
 
 		public float PassedDuration { get; set; }
 
@@ -20,15 +22,16 @@ namespace Confrontation
 		{
 			RandomizeCoolDownDuration();
 
-			if (UnityEngine.Random.Range(minInclusive: 0, maxExclusive: 2) == 0)
-			{
-				_unitsDirector.DirectUnits();
-			}
-			else
-			{
-				_buildingBuilder.Build();
-			}
+			ChooseAction(_decisionMaker.MakeDecision()).Invoke();
 		}
+
+		private Action ChooseAction(Decision decision)
+			=> decision switch
+			{
+				Decision.DirectUnits   => _unitsDirector.DirectUnits,
+				Decision.BuildBuilding => _buildingBuilder.Build,
+				var _                  => throw new ArgumentOutOfRangeException(),
+			};
 
 		public void Loose() => MarkOurRegionsAsNeutral();
 
@@ -45,12 +48,14 @@ namespace Confrontation
 		{
 			[Inject] private readonly UnitsDirector.Factory _unitsDirectorFactory;
 			[Inject] private readonly EnemyBuildingBuilder.Factory _enemyBuildingBuilderFactory;
+			[Inject] private readonly DecisionMaker.Factory _decisionMakerFactory;
 
 			public override Enemy Create(Player player)
 			{
 				var enemy = base.Create(player);
 				enemy._unitsDirector = _unitsDirectorFactory.Create(player);
 				enemy._buildingBuilder = _enemyBuildingBuilderFactory.Create(player);
+				enemy._decisionMaker = _decisionMakerFactory.Create(player);
 				return enemy;
 			}
 		}
