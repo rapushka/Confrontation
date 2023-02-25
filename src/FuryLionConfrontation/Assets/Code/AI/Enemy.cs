@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Enemy : IActorWithCoolDown
+	public class Enemy : IActorWithCoolDown, IInitializable
 	{
 		[Inject] private readonly Player _player;
 		[Inject] private readonly IBalanceTable _balance;
@@ -13,6 +13,10 @@ namespace Confrontation
 		private UnitsDirector _unitsDirector;
 		private EnemyBuildingBuilder _buildingBuilder;
 		private DecisionMaker _decisionMaker;
+
+		private Our _our;
+
+		public void Initialize() => _our = new Our(_field, _player.Id);
 
 		public float PassedDuration { get; set; }
 
@@ -56,6 +60,7 @@ namespace Confrontation
 				enemy._unitsDirector = _unitsDirectorFactory.Create(player);
 				enemy._buildingBuilder = _enemyBuildingBuilderFactory.Create(player);
 				enemy._decisionMaker = _decisionMakerFactory.Create(player);
+				enemy.Initialize();
 				return enemy;
 			}
 		}
