@@ -6,17 +6,26 @@ namespace Confrontation
 	public class Our
 	{
 		private readonly IField _field;
-		private readonly int _id;
+		private readonly Player _player;
+		private readonly IResourcesService _resources;
+		private readonly IBalanceTable _balanceTable;
 
-		public Our(IField field, int id)
+		public Our(IField field, Player player)
 		{
+			_player = player;
 			_field = field;
-			_id = id;
 		}
 
 		public UnitsSquad[] Units => _field.LocatedUnits.Where(IsOurUnit).AsArray();
 
-		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _id;
+		public IEnumerable<Cell> EmptyCells => _field.Cells.Where((c) => c.OwnerPlayerId == _player.Id && c.IsEmpty);
+
+		public IEnumerable<Building> CanBeBoughtBuildings
+			=> _resources.Buildings.Where((b) => _player.Stats.IsEnoughGoldFor(_balanceTable.PriceFor(b)));
+
+		public IEnumerable<Region> Regions => _field.Regions.Where((r) => r.OwnerPlayerId == _player.Id).OnlyUnique();
+
+		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
 
 		public IEnumerable<Village> NeighboursFor(UnitsSquad randomSquad)
 			=> _field.Buildings

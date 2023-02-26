@@ -1,22 +1,13 @@
-using System;
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
 {
-	public class Enemy : IActorWithCoolDown, IInitializable
+	public class Enemy : IActorWithCoolDown
 	{
-		[Inject] private readonly Player _player;
+		[Inject] private readonly Our _our;
 		[Inject] private readonly IBalanceTable _balance;
-		[Inject] private readonly IField _field;
 
-		private UnitsDirector _unitsDirector;
-		private EnemyBuildingBuilder _buildingBuilder;
 		private DecisionMaker _decisionMaker;
-
-		private Our _our;
-
-		public void Initialize() => _our = new Our(_field, _player.Id);
 
 		public float PassedDuration { get; set; }
 
@@ -26,16 +17,8 @@ namespace Confrontation
 		{
 			RandomizeCoolDownDuration();
 
-			ChooseAction(_decisionMaker.MakeDecision()).Invoke();
+			_decisionMaker.MakeDecision().Execute();
 		}
-
-		private Action ChooseAction(Decision decision)
-			=> decision switch
-			{
-				Decision.DirectUnits   => _unitsDirector.DirectUnits,
-				Decision.BuildBuilding => _buildingBuilder.Build,
-				var _                  => throw new ArgumentOutOfRangeException(),
-			};
 
 		public void Loose() => MarkOurRegionsAsNeutral();
 
@@ -43,24 +26,19 @@ namespace Confrontation
 			=> CoolDownDuration = _balance.EnemiesStats.SecondsBetweenActions.RandomNumberInRange;
 
 		private void MarkOurRegionsAsNeutral()
-			=> _field.Regions
-			         .Where((r) => r.OwnerPlayerId == _player.Id)
-			         .OnlyUnique()
-			         .ForEach((r) => r.MakeNeutral());
+			=> _our.Regions
+			       .ForEach((r) => r.MakeNeutral());
 
-		public class Factory : PlaceholderFactory<Player, Enemy>
+		public class Factory : PlaceholderFactory<Our, Enemy>
 		{
-			[Inject] private readonly UnitsDirector.Factory _unitsDirectorFactory;
-			[Inject] private readonly EnemyBuildingBuilder.Factory _enemyBuildingBuilderFactory;
 			[Inject] private readonly DecisionMaker.Factory _decisionMakerFactory;
+			[Inject] private readonly IField _field;
 
-			public override Enemy Create(Player player)
+			public Enemy Create(Player player)
 			{
-				var enemy = base.Create(player);
-				enemy._unitsDirector = _unitsDirectorFactory.Create(player);
-				enemy._buildingBuilder = _enemyBuildingBuilderFactory.Create(player);
-				enemy._decisionMaker = _decisionMakerFactory.Create(player);
-				enemy.Initialize();
+				var our = new Our(_field, player);
+				var enemy = base.Create(our);
+				enemy._decisionMaker = _decisionMakerFactory.Create(our, player);
 				return enemy;
 			}
 		}

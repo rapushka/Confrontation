@@ -4,14 +4,15 @@ namespace Confrontation
 {
 	public class DecisionMaker
 	{
+		[Inject] private readonly Our _our;
 		[Inject] private readonly Player _player;
-		[Inject] private readonly IField _field;
+		[Inject] private readonly Purchase _purchase;
 
-		public Decision MakeDecision()
+		public ICommand MakeDecision()
 			=> UnityEngine.Random.Range(minInclusive: 0, maxExclusive: 2) == 0
-				? Decision.BuildBuilding
-				: Decision.DirectUnits;
+				? new DirectRandomUnitsToRandomVillageCommand(_our)
+				: new BuildRandomBuildingOnRandomCellCommand(_our, _player, _purchase);
 
-		public class Factory : PlaceholderFactory<Player, DecisionMaker> { }
+		public class Factory : PlaceholderFactory<Our, Player, DecisionMaker> { }
 	}
 }
