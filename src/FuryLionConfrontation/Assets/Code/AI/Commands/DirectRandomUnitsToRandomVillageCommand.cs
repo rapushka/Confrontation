@@ -5,13 +5,14 @@ namespace Confrontation
 	public class DirectRandomUnitsToRandomVillageCommand : ICommand
 	{
 		[Inject] private readonly Our _our;
+		[Inject] private readonly DirectUnitsCommand.Factory _directUnitsCommandFactory;
 
 		public void Execute()
 		{
 			if (_our.Units.TryPickRandom(out var randomSquad)
 			    && _our.NeighboursFor(randomSquad).TryPickRandom(out var randomVillage))
 			{
-				new DirectUnitsCommand(randomSquad, randomVillage).Execute();
+				_directUnitsCommandFactory.Create(randomSquad, randomVillage).Execute();
 			}
 		}
 	}
