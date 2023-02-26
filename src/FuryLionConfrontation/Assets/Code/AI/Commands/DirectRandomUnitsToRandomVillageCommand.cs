@@ -1,12 +1,10 @@
+using Zenject;
+
 namespace Confrontation
 {
 	public class DirectRandomUnitsToRandomVillageCommand : ICommand
 	{
-		private readonly Our _our;
-
-		private DirectUnitsCommand _directUnitsCommand;
-
-		public DirectRandomUnitsToRandomVillageCommand(Our our) => _our = our;
+		[Inject] private readonly Our _our;
 
 		public void Execute()
 		{

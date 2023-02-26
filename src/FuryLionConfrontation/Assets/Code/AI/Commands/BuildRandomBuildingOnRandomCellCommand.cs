@@ -1,17 +1,12 @@
+using Zenject;
+
 namespace Confrontation
 {
 	public class BuildRandomBuildingOnRandomCellCommand : ICommand
 	{
-		private readonly Player _player;
-		private readonly Purchase _purchase;
-		private readonly Our _our;
-
-		public BuildRandomBuildingOnRandomCellCommand(Our our,  Player player, Purchase purchase)
-		{
-			_our = our;
-			_player = player;
-			_purchase = purchase;
-		}
+		[Inject] private readonly Player _player;
+		[Inject] private readonly Purchase _purchase;
+		[Inject] private readonly Our _our;
 
 		public void Execute()
 		{

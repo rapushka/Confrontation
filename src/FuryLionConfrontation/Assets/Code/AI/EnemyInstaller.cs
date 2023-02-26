@@ -10,7 +10,12 @@ namespace Confrontation
 		{
 			Container.BindInstance(_player).AsSingle();
 			Container.Bind<Our>().AsSingle();
+
 			Container.Bind<DecisionMaker>().AsSingle();
+			
+			Container.Bind<DirectRandomUnitsToRandomVillageCommand>().AsSingle();
+			Container.Bind<BuildRandomBuildingOnRandomCellCommand>().AsSingle();
+			
 			Container.Bind<Enemy>().AsSingle();
 		}
 	}
