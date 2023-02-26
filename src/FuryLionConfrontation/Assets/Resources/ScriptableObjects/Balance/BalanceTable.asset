@@ -36,4 +36,16 @@ MonoBehaviour:
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1
   <EnemiesStats>k__BackingField:
-    <SecondsBetweenActions>k__BackingField: 3.5
+    <DurationRangeBetweenActions>k__BackingField:
+      <Min>k__BackingField: 0.5
+      <Max>k__BackingField: 3.5
+    <BuildingsPriority>k__BackingField:
+      _entries:
+      - <Weight>k__BackingField: 1
+        <Item>k__BackingField:
+          _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
+          _selectionIndex: 2
+      - <Weight>k__BackingField: 0.5
+        <Item>k__BackingField:
+          _prefab: {fileID: 1543655047530976274, guid: 767a888a19d2ba20abf6c76e90931c91, type: 3}
+          _selectionIndex: 1

@@ -21,14 +21,21 @@ namespace Confrontation
 		}
 
 		[Serializable]
-		public class CoordinatedData : Data
+		public class CoordinatedData
 		{
+			[SerializeField] private Data _data;
 			[SerializeField] private Coordinates _coordinates;
 
 			public Coordinates Coordinates
 			{
 				get => _coordinates;
 				set => _coordinates = value;
+			}
+			
+			public Building Prefab
+			{
+				get => _data.Prefab;
+				set => _data.Prefab = value;
 			}
 		}
 	}

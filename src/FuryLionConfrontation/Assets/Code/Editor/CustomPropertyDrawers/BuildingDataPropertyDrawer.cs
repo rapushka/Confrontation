@@ -5,11 +5,9 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	[CustomPropertyDrawer(typeof(Building.CoordinatedData))]
+	[CustomPropertyDrawer(typeof(Building.Data))]
 	public class BuildingDataPropertyDrawer : PropertyDrawer
 	{
-		private const int VerticalSpacing = 5;
-
 		private readonly List<(string Name, string Path)> _buildings
 			= new()
 			{
@@ -28,23 +26,14 @@ namespace Confrontation
 			EditorGUI.BeginProperty(position, label, property);
 			{
 				var prefabProperty = property.FindPropertyRelative("_prefab");
-				var coordinatesProperty = property.FindPropertyRelative("_coordinates");
 				var selectionIndex = property.FindPropertyRelative("_selectionIndex");
 
 				selectionIndex.intValue = EditorGUI.Popup(position, selectionIndex.intValue, BuildingsNames);
 				prefabProperty.objectReferenceValue = Resources.Load(_buildings[selectionIndex.intValue].Path);
-
-
-				position.y += EditorGUIUtility.singleLineHeight;
-
-				EditorGUI.PropertyField(position, coordinatesProperty, GUIContent.none);
 			}
 			EditorGUI.EndProperty();
 
 			property.serializedObject.ApplyModifiedProperties();
 		}
-
-		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-			=> base.GetPropertyHeight(property, label) * 2 + VerticalSpacing;
 	}
 }
