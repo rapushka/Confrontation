@@ -20,10 +20,10 @@ namespace Confrontation
 			}
 		}
 
-		private Building Create(Building.Data data)
+		private Building Create(Building.CoordinatedData coordinatedData)
 		{
-			var cell = _field.Cells[data.Coordinates];
-			var building = _buildingsFactory.Create(data.Prefab, cell);
+			var cell = _field.Cells[coordinatedData.Coordinates];
+			var building = _buildingsFactory.Create(coordinatedData.Prefab, cell);
 
 			if (building is Capital capital)
 			{

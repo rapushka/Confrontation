@@ -34,7 +34,7 @@ namespace Confrontation.Editor.Tests
 						},
 					},
 				},
-				Buildings = new List<Building.Data>
+				Buildings = new List<Building.CoordinatedData>
 				{
 					new()
 					{

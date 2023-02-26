@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	[CustomPropertyDrawer(typeof(Building.Data))]
+	[CustomPropertyDrawer(typeof(Building.CoordinatedData))]
 	public class BuildingDataPropertyDrawer : PropertyDrawer
 	{
 		private const int VerticalSpacing = 5;

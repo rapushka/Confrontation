@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
-	public abstract class Building : MonoBehaviour, ICoordinated
+	public abstract partial class Building : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
 		[Inject] private readonly IBalanceTable _balanceTable;
@@ -46,28 +45,6 @@ namespace Confrontation
 		}
 
 		public override string ToString() => $"{Name} ─ Lvl {Level}";
-
-		[Serializable]
-		public class Data
-		{
-			[SerializeField] private Building _prefab;
-			[SerializeField] private Coordinates _coordinates;
-
-			// ReSharper disable once NotAccessedField.Local - usage in BuildingDataPropertyDrawer
-			[SerializeField] private int _selectionIndex;
-
-			public Building Prefab
-			{
-				get => _prefab;
-				set => _prefab = value;
-			}
-
-			public Coordinates Coordinates
-			{
-				get => _coordinates;
-				set => _coordinates = value;
-			}
-		}
 
 		public class Factory : PlaceholderFactory<Building, Building>
 		{

@@ -6,6 +6,6 @@ namespace Confrontation
 	{
 		Sizes               Sizes        { get; }
 		List<Region.Data>   Regions      { get; }
-		List<Building.Data> Buildings    { get; }
+		List<Building.CoordinatedData> Buildings    { get; }
 	}
 }

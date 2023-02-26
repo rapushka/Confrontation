@@ -8,6 +8,6 @@ namespace Confrontation
 	{
 		[field: SerializeField] public Sizes               Sizes     { get; private set; }
 		[field: SerializeField] public List<Region.Data>   Regions   { get; private set; } = new();
-		[field: SerializeField] public List<Building.Data> Buildings { get; private set; } = new();
+		[field: SerializeField] public List<Building.CoordinatedData> Buildings { get; private set; } = new();
 	}
 }
