@@ -21,7 +21,7 @@ namespace Confrontation
 			{
 				Barrack    => BarrackStats.Price,
 				GoldenMine => GoldenMineStats.Price,
-				var _      => throw new ArgumentException($"There is no price for {building.GetType().Name}"),
+				var _      => throw new ArgumentException($"There is no price for {building.Name}"),
 			};
 	}
 }
