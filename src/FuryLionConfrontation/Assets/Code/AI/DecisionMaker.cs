@@ -4,14 +4,30 @@ namespace Confrontation
 {
 	public class DecisionMaker
 	{
-		[Inject] private readonly BuildRandomBuildingOnRandomCellCommand _buildRandomBuildingOnRandomCellCommand;
-		[Inject] private readonly DirectRandomUnitsToRandomVillageCommand _directRandomUnitsToRandomVillageCommand;
+		[Inject] private readonly Our _our;
+		[Inject] private readonly DirectUnitsCommand.Factory _directUnitsCommandFactory;
+		[Inject] private readonly BuildBuildingCommand.Factory _buildBuildingCommandFactory;
 
 		public ICommand MakeDecision()
 		{
-			return UnityEngine.Random.Range(minInclusive: 0, maxExclusive: 2) == 0
-				? _directRandomUnitsToRandomVillageCommand
-				: _buildRandomBuildingOnRandomCellCommand;
+			if (_our.CanBeBoughtBuildings.TryPickRandom(out var building)
+			    && _our.EmptyCells.TryPickRandom(out var emptyCell))
+			{
+				return _buildBuildingCommandFactory.Create(building, emptyCell);
+			}
+
+			if (_our.Units.TryPickRandom(out var randomSquad)
+			    && _our.NeighboursFor(randomSquad).TryPickRandom(out var randomVillage))
+			{
+				return _directUnitsCommandFactory.Create(randomSquad, randomVillage);
+			}
+
+			return new DoNothingCommand();
+		}
+
+		private class DoNothingCommand : ICommand
+		{
+			public void Execute() { }
 		}
 	}
 }
