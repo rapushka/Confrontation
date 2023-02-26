@@ -15,6 +15,8 @@ namespace Confrontation
 			
 			Container.Bind<DirectRandomUnitsToRandomVillageCommand>().AsSingle();
 			Container.Bind<BuildRandomBuildingOnRandomCellCommand>().AsSingle();
+
+			Container.BindFactory<Building, Cell, BuildBuildingCommand, BuildBuildingCommand.Factory>();
 			
 			Container.Bind<Enemy>().AsSingle();
 		}
