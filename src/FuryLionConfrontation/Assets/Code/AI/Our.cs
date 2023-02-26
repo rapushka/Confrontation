@@ -10,10 +10,12 @@ namespace Confrontation
 		private readonly IResourcesService _resources;
 		private readonly IBalanceTable _balanceTable;
 
-		public Our(IField field, Player player)
+		public Our(IField field, Player player, IResourcesService resources, IBalanceTable balanceTable)
 		{
 			_player = player;
 			_field = field;
+			_resources = resources;
+			_balanceTable = balanceTable;
 		}
 
 		public UnitsSquad[] Units => _field.LocatedUnits.Where(IsOurUnit).AsArray();
