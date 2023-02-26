@@ -6,25 +6,31 @@ namespace Confrontation
 {
 	public interface IResourcesService
 	{
-		Village        VillagePrefab { get; }
-		Capital        CapitalPrefab { get; }
-		List<Building> Buildings     { get; }
-		Barrack       Barrack      { get; }
-		GoldenMine     GoldenMine    { get; }
+		Village VillagePrefab { get; }
+
+		Capital CapitalPrefab { get; }
+
+		TypedDictionary<Building> Buildings { get; }
+
+		Barrack Barrack { get; }
+
+		GoldenMine GoldenMine { get; }
 	}
 
 	[CreateAssetMenu(fileName = "Resources", menuName = nameof(Confrontation) + "/Resources")]
 	public class ResourcesService : ScriptableObject, IResourcesService
 	{
-		private Barrack _barrack;
-		private GoldenMine _goldenMine;
+		private TypedDictionary<Building> _buildingsDictionary;
 
-		[field: SerializeField] public Village        VillagePrefab { get; private set; }
-		[field: SerializeField] public Capital        CapitalPrefab { get; private set; }
-		[field: SerializeField] public List<Building> Buildings     { get; private set; }
+		[field: SerializeField] private List<Building> _buildings;
 
-		public Barrack Barrack => _barrack ??= Buildings.OfType<Barrack>().Single();
+		[field: SerializeField] public Village VillagePrefab { get; private set; }
+		[field: SerializeField] public Capital CapitalPrefab { get; private set; }
 
-		public GoldenMine GoldenMine => _goldenMine ??= Buildings.OfType<GoldenMine>().Single();
+		public TypedDictionary<Building> Buildings => _buildingsDictionary ?? new TypedDictionary<Building>(_buildings);
+
+		public Barrack Barrack => _buildings.OfType<Barrack>().Single();
+
+		public GoldenMine GoldenMine => _buildings.OfType<GoldenMine>().Single();
 	}
 }

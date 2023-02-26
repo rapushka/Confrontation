@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Confrontation
 {
-	public class TypedDictionary<T>
+	public class TypedDictionary<T> : IEnumerable<T>
 	{
 		private readonly Dictionary<Type, T> _dictionary;
 
@@ -27,5 +28,20 @@ namespace Confrontation
 		private void Add<TChild>(TChild value)
 			where TChild : T
 			=> _dictionary.Add(typeof(TChild), value);
+
+		public IEnumerable<T> Where(Func<T, bool> predicate)
+		{
+			foreach (var (_, value) in _dictionary)
+			{
+				if (predicate(value))
+				{
+					yield return value;
+				}
+			}
+		}
+
+		public IEnumerator<T> GetEnumerator() => _dictionary.Values.GetEnumerator();
+
+		IEnumerator IEnumerable.GetEnumerator() => _dictionary.Values.GetEnumerator();
 	}
 }
