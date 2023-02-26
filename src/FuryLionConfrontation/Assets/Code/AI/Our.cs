@@ -20,15 +20,18 @@ namespace Confrontation
 
 		public IEnumerable<Region> Regions => _field.Regions.Where((r) => r.OwnerPlayerId == _player.Id).OnlyUnique();
 
+		public bool CanBuyPreferredBuilding(out Building building)
+		{
+			building = _balanceTable.EnemiesStats.BuildingsPriority.PickRandom().Prefab;
+			return _player.Stats.IsEnoughGoldFor(_balanceTable.PriceFor(building));
+		}
+
 		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
 
-		public IEnumerable<Village> NeighboursFor(UnitsSquad randomSquad)
+		public IEnumerable<Village> NeighboursFor(Cell cell)
 			=> _field.Buildings
 			         .OfType<Village>()
-			         .Where((v) => IsOnNeighbourRegions(randomSquad, v));
-
-		private bool IsOnNeighbourRegions(UnitsSquad squad, Building village)
-			=> IsNeighbours(squad.LocationCell.RelatedRegion, village.RelatedCell.RelatedRegion);
+			         .Where((v) => IsNeighbours(cell.RelatedRegion, v.RelatedCell.RelatedRegion));
 
 		private bool IsNeighbours(Region currentRegion, Region targetRegion)
 			=> _field.Neighboring.IsNeighbours(targetRegion, currentRegion)

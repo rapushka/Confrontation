@@ -7,22 +7,19 @@ namespace Confrontation
 		[Inject] private readonly Our _our;
 		[Inject] private readonly DirectUnitsCommand.Factory _directUnitsCommandFactory;
 		[Inject] private readonly BuildBuildingCommand.Factory _buildBuildingCommandFactory;
-		[Inject] private readonly IBalanceTable _balance;
-		[Inject] private readonly Player _player;
 
 		public ICommand MakeDecision()
 		{
-			var randomBuilding = _balance.EnemiesStats.BuildingsPriority.PickRandom().Prefab;
-			if (_player.Stats.IsEnoughGoldFor(_balance.PriceFor(randomBuilding))
+			if (_our.CanBuyPreferredBuilding(out var building)
 			    && _our.EmptyCells.TryPickRandom(out var emptyCell))
 			{
-				return _buildBuildingCommandFactory.Create(randomBuilding, emptyCell);
+				return _buildBuildingCommandFactory.Create(building, emptyCell);
 			}
 
-			if (_our.Units.TryPickRandom(out var randomSquad)
-			    && _our.NeighboursFor(randomSquad).TryPickRandom(out var randomVillage))
+			if (_our.Units.TryPickRandom(out var squad)
+			    && _our.NeighboursFor(squad.LocationCell).TryPickRandom(out var village))
 			{
-				return _directUnitsCommandFactory.Create(randomSquad, randomVillage);
+				return _directUnitsCommandFactory.Create(squad, village);
 			}
 
 			return new DoNothingCommand();

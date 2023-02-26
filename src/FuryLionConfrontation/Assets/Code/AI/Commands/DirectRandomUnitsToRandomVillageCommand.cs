@@ -10,7 +10,7 @@ namespace Confrontation
 		public void Execute()
 		{
 			if (_our.Units.TryPickRandom(out var randomSquad)
-			    && _our.NeighboursFor(randomSquad).TryPickRandom(out var randomVillage))
+			    && _our.NeighboursFor(randomSquad.LocationCell).TryPickRandom(out var randomVillage))
 			{
 				_directUnitsCommandFactory.Create(randomSquad, randomVillage).Execute();
 			}
