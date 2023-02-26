@@ -51,8 +51,9 @@ namespace Confrontation
 
 		private void BindFactories()
 		{
-			Container.BindFactory<Our, Enemy, Enemy.Factory>();
-			Container.BindFactory<Our, Player, DecisionMaker, DecisionMaker.Factory>();
+			Container.BindFactory<Player, Enemy, Enemy.Factory>()
+			         .FromSubContainerResolve()
+			         .ByInstaller<EnemyInstaller>();
 
 			Container.BindPrefabFactory<BuildWindow, BuildWindow.Factory>();
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();

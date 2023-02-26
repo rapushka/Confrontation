@@ -12,7 +12,5 @@ namespace Confrontation
 			=> UnityEngine.Random.Range(minInclusive: 0, maxExclusive: 2) == 0
 				? new DirectRandomUnitsToRandomVillageCommand(_our)
 				: new BuildRandomBuildingOnRandomCellCommand(_our, _player, _purchase);
-
-		public class Factory : PlaceholderFactory<Our, Player, DecisionMaker> { }
 	}
 }

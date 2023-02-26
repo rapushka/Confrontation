@@ -6,8 +6,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly Our _our;
 		[Inject] private readonly IBalanceTable _balance;
-
-		private DecisionMaker _decisionMaker;
+		[Inject] private readonly DecisionMaker _decisionMaker;
 
 		public float PassedDuration { get; set; }
 
@@ -29,20 +28,6 @@ namespace Confrontation
 			=> _our.Regions
 			       .ForEach((r) => r.MakeNeutral());
 
-		public class Factory : PlaceholderFactory<Our, Enemy>
-		{
-			[Inject] private readonly DecisionMaker.Factory _decisionMakerFactory;
-			[Inject] private readonly IField _field;
-			[Inject] private readonly IResourcesService _resources;
-			[Inject] private readonly IBalanceTable _balanceTable;
-
-			public Enemy Create(Player player)
-			{
-				var our = new Our(_field, player, _resources, _balanceTable);
-				var enemy = base.Create(our);
-				enemy._decisionMaker = _decisionMakerFactory.Create(our, player);
-				return enemy;
-			}
-		}
+		public class Factory : PlaceholderFactory<Player, Enemy> { }
 	}
 }

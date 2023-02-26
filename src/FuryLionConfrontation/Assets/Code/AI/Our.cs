@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using Zenject;
 
 namespace Confrontation
 {
 	public class Our
 	{
-		private readonly IField _field;
-		private readonly Player _player;
-		private readonly IResourcesService _resources;
-		private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IField _field;
+		[Inject] private readonly Player _player;
+		[Inject] private readonly IResourcesService _resources;
+		[Inject] private readonly IBalanceTable _balanceTable;
 
 		public Our(IField field, Player player, IResourcesService resources, IBalanceTable balanceTable)
 		{
