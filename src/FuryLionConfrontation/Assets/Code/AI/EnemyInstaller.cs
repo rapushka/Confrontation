@@ -22,9 +22,6 @@ namespace Confrontation
 		{
 			Container.BindFactory<Building, Cell, BuildBuildingCommand, BuildBuildingCommand.Factory>();
 			Container.BindFactory<UnitsSquad, Village, DirectUnitsCommand, DirectUnitsCommand.Factory>();
-
-			Container.Bind<DirectRandomUnitsToRandomVillageCommand>().AsSingle();
-			Container.Bind<BuildRandomBuildingOnRandomCellCommand>().AsSingle();
 		}
 	}
 }
