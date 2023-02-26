@@ -19,14 +19,12 @@ namespace Confrontation
 			_decisionMaker.MakeDecision().Execute();
 		}
 
-		public void Loose() => MarkOurRegionsAsNeutral();
+		public void Loose() => MakeOurRegionsNeutral();
 
 		private void RandomizeCoolDownDuration()
-			=> CoolDownDuration = _balance.EnemiesStats.SecondsBetweenActions.RandomNumberInRange;
+			=> CoolDownDuration = _balance.EnemiesStats.DurationRangeBetweenActions.RandomNumberInRange;
 
-		private void MarkOurRegionsAsNeutral()
-			=> _our.Regions
-			       .ForEach((r) => r.MakeNeutral());
+		private void MakeOurRegionsNeutral() => _our.Regions.ForEach((r) => r.MakeNeutral());
 
 		public class Factory : PlaceholderFactory<Player, Enemy> { }
 	}

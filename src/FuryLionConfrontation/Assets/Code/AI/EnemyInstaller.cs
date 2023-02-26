@@ -13,13 +13,18 @@ namespace Confrontation
 
 			Container.Bind<DecisionMaker>().AsSingle();
 
-			Container.Bind<DirectRandomUnitsToRandomVillageCommand>().AsSingle();
-			Container.Bind<BuildRandomBuildingOnRandomCellCommand>().AsSingle();
+			BindCommands();
 
+			Container.Bind<Enemy>().AsSingle();
+		}
+
+		private void BindCommands()
+		{
 			Container.BindFactory<Building, Cell, BuildBuildingCommand, BuildBuildingCommand.Factory>();
 			Container.BindFactory<UnitsSquad, Village, DirectUnitsCommand, DirectUnitsCommand.Factory>();
 
-			Container.Bind<Enemy>().AsSingle();
+			Container.Bind<DirectRandomUnitsToRandomVillageCommand>().AsSingle();
+			Container.Bind<BuildRandomBuildingOnRandomCellCommand>().AsSingle();
 		}
 	}
 }

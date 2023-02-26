@@ -11,14 +11,6 @@ namespace Confrontation
 		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly IBalanceTable _balanceTable;
 
-		public Our(IField field, Player player, IResourcesService resources, IBalanceTable balanceTable)
-		{
-			_player = player;
-			_field = field;
-			_resources = resources;
-			_balanceTable = balanceTable;
-		}
-
 		public UnitsSquad[] Units => _field.LocatedUnits.Where(IsOurUnit).AsArray();
 
 		public IEnumerable<Cell> EmptyCells => _field.Cells.Where((c) => c.OwnerPlayerId == _player.Id && c.IsEmpty);

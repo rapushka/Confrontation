@@ -6,6 +6,6 @@ namespace Confrontation
 	[Serializable]
 	public class EnemiesStats : IStats
 	{
-		[field: SerializeField] public Range SecondsBetweenActions { get; private set; }
+		[field: SerializeField] public Range DurationRangeBetweenActions { get; private set; }
 	}
 }
