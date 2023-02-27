@@ -36,6 +36,9 @@ namespace Confrontation.Editor
 			=> Object.Instantiate(original, _root);
 
 		public void Destroy(GameObject target) => Object.DestroyImmediate(target);
+		public void ToGroup(Transform transform, InstantiateGroup group = InstantiateGroup.Common) 
+			=> transform.SetParent(_root);
+
 
 		public void CleanRoot()
 		{

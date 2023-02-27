@@ -51,6 +51,16 @@ namespace Confrontation
 
 		public void DetachUnitsSquad() => _field.LocatedUnits.Remove(LocatedUnits);
 
-		public class Factory : PlaceholderFactory<Cell> { }
+		public class Factory : PlaceholderFactory<Cell>
+		{
+			[Inject] private readonly IAssetsService _assets;
+
+			public override Cell Create()
+			{
+				var cell = base.Create();
+				_assets.ToGroup(cell.transform, InstantiateGroup.Cells);
+				return cell;
+			}
+		}
 	}
 }

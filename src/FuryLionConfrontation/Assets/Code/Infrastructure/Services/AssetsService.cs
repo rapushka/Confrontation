@@ -16,10 +16,14 @@ namespace Confrontation
 			where T : Object
 			=> Object.Instantiate(original, position, Quaternion.identity, GetTransformFor(group));
 
-		public T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common) where T : Object
+		public T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common)
+			where T : Object
 			=> Object.Instantiate(original, GetTransformFor(group));
 
 		public void Destroy(GameObject target) => Object.Destroy(target);
+
+		public void ToGroup(Transform transform, InstantiateGroup group = InstantiateGroup.Common)
+			=> transform.SetParent(GetTransformFor(group));
 
 		private Transform GetTransformFor(InstantiateGroup group)
 		{

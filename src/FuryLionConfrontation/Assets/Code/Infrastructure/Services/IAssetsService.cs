@@ -14,5 +14,7 @@ namespace Confrontation
 		T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common) where T : Object;
 
 		void Destroy(GameObject target);
+
+		void ToGroup(Transform transform, InstantiateGroup group = InstantiateGroup.Common);
 	}
 }
