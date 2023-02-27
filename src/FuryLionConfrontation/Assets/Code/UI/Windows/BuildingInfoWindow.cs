@@ -54,7 +54,7 @@ namespace Confrontation
 		private void UpdateView()
 		{
 			_titleTextMesh.text = _building.ToString();
-			_upgradePriceTextMesh.text = $"Upgrade ─ {_building.UpgradePrice} G";
+			_upgradePriceTextMesh.text = _building.IsOnMaxLevel ? "MAX" : $"Upgrade\n{_building.UpgradePrice} G";
 			_upgradeButton.interactable = _building.IsOnMaxLevel == false;
 		}
 
