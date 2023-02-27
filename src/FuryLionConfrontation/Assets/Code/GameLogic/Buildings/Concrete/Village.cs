@@ -24,26 +24,15 @@ namespace Confrontation
 
 		private Garrison LocatedGarrison => Field.Garrisons[Coordinates];
 
-		public virtual void Action()
-		{
-			for (var i = 0; i < CurrentLevelStats.Amount; i++)
-			{
-				SpawnGarrison();
-			}
-		}
+		private Garrison ActualGarrison => HaveGarrison ? LocatedGarrison : _garrisonsFactory.Create(RelatedCell);
+
+		public virtual void Action() => SpawnGarrison();
 
 		private void SpawnGarrison()
 		{
-			if (HaveGarrison)
+			if (ActualGarrison.QuantityOfUnits < CurrentLevelStats.MaxInGarrisonNumber)
 			{
-				if (LocatedGarrison.QuantityOfUnits < CurrentLevelStats.MaxInGarrisonNumber)
-				{
-					LocatedGarrison.QuantityOfUnits++;
-				}
-			}
-			else
-			{
-				_garrisonsFactory.Create(RelatedCell);
+				ActualGarrison.QuantityOfUnits += CurrentLevelStats.Amount;
 			}
 		}
 	}

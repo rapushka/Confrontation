@@ -38,14 +38,17 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{
-			public Garrison Create(Cell cell, int quantityOfUnits = 1)
-			{
-				var unitsSquad = base.Create();
-				unitsSquad.transform.position = cell.Coordinates.ToAboveCellPosition();
-				unitsSquad.Coordinates = cell.Coordinates;
-				unitsSquad.QuantityOfUnits = quantityOfUnits;
+			[Inject] private readonly IAssetsService _assets;
 
-				return unitsSquad;
+			public Garrison Create(Cell cell, int quantityOfUnits = 0)
+			{
+				var garrison = base.Create();
+				_assets.ToGroup(garrison.transform);
+				garrison.transform.position = cell.Coordinates.ToAboveCellPosition();
+				garrison.Coordinates = cell.Coordinates;
+				garrison.QuantityOfUnits = quantityOfUnits;
+
+				return garrison;
 			}
 		}
 	}

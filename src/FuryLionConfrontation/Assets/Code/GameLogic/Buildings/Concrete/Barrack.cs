@@ -19,30 +19,17 @@ namespace Confrontation
 
 		private LeveledStats<GeneratorStatsBase> Stats => BalanceTable.BarrackStats.LeveledStats;
 
-		private bool HaveSquad => LocatedUnits is not null;
+		private bool HaveSquad => LocatedUnits == true;
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
 		private GeneratorStatsBase CurrentLevelStats => _balanceTable.BarrackStats.LeveledStats[Level];
 
-		public void Action()
-		{
-			for (var i = 0; i < CurrentLevelStats.Amount; i++)
-			{
-				SpawnUnit();
-			}
-		}
+		private UnitsSquad ActualUnitsSquad
+			=> HaveSquad ? LocatedUnits : _unitsFactory.Create(RelatedCell);
 
-		private void SpawnUnit()
-		{
-			if (HaveSquad)
-			{
-				LocatedUnits.QuantityOfUnits++;
-			}
-			else
-			{
-				_unitsFactory.Create(RelatedCell, RelatedCell.OwnerPlayerId);
-			}
-		}
+		public void Action() => SpawnUnits();
+
+		private void SpawnUnits() => ActualUnitsSquad.QuantityOfUnits += CurrentLevelStats.Amount;
 	}
 }

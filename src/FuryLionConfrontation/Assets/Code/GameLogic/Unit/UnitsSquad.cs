@@ -52,11 +52,14 @@ namespace Confrontation
 
 		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
-			public UnitsSquad Create(Cell cell, int ownerPlayerId, int quantityOfUnits = 1)
+			[Inject] private readonly IAssetsService _assets;
+
+			public UnitsSquad Create(Cell cell, int quantityOfUnits = 0)
 			{
 				var unitsSquad = base.Create();
+				_assets.ToGroup(unitsSquad.transform);
 				unitsSquad.transform.position = cell.Coordinates.ToAboveCellPosition();
-				unitsSquad.OwnerPlayerId = ownerPlayerId;
+				unitsSquad.OwnerPlayerId = cell.OwnerPlayerId;
 				unitsSquad.Coordinates = cell.Coordinates;
 				unitsSquad.QuantityOfUnits = quantityOfUnits;
 

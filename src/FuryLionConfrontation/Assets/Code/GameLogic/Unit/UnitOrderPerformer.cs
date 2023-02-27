@@ -54,7 +54,7 @@ namespace Confrontation
 
 		private void FormNewSquad(int quantity)
 		{
-			_unitsFactory.Create(_unitsSquad.LocationCell, _unitsSquad.OwnerPlayerId, quantity);
+			_unitsFactory.Create(_unitsSquad.LocationCell, quantity);
 			_unitsSquad.QuantityOfUnits -= quantity;
 		}
 
