@@ -13,7 +13,11 @@ namespace Confrontation
 
 		public override string Name => nameof(Barrack);
 
-		protected override int MaxLevel => BalanceTable.BarrackStats.LeveledStats.MaxLevel;
+		public override int UpgradePrice => Stats.UpgradePrice;
+
+		protected override int MaxLevel => Stats.MaxLevel;
+
+		private LeveledStats<GeneratorStatsBase> Stats => BalanceTable.BarrackStats.LeveledStats;
 
 		private bool HaveSquad => LocatedUnits is not null;
 

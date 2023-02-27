@@ -11,7 +11,7 @@ namespace Confrontation
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
 		[Inject] private readonly Purchase _purchase;
-		[Inject] private readonly BalanceTable _balanceTable;
+		[Inject] private readonly IBalanceTable _balanceTable;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
@@ -19,8 +19,6 @@ namespace Confrontation
 		[SerializeField] private TextMeshProUGUI _upgradePriceTextMesh;
 
 		private Building _building;
-
-		private int UpgradePrice => _balanceTable.PriceFor(_building);
 
 		public override WindowBase Accept(IWindowVisitor windowVisitor) => windowVisitor.Visit(this);
 
@@ -56,7 +54,7 @@ namespace Confrontation
 		private void UpdateView()
 		{
 			_titleTextMesh.text = _building.ToString();
-			_upgradePriceTextMesh.text = $"Upgrade ─ {UpgradePrice} G";
+			_upgradePriceTextMesh.text = $"Upgrade ─ {_building.UpgradePrice} G";
 			_upgradeButton.interactable = _building.IsOnMaxLevel == false;
 		}
 

@@ -15,7 +15,7 @@ namespace Confrontation
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
-		private void Start() => _textMesh.text = $"{_building.Name}\n{_balanceTable.PriceFor(_building)} G";
+		private void Start() => _textMesh.text = $"{_building.Name}\n{_balanceTable.BuildPriceFor(_building)} G";
 
 		protected override void OnButtonClick()
 		{

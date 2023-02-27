@@ -34,6 +34,8 @@ namespace Confrontation
 
 		protected IField Field => _field;
 
+		public abstract int UpgradePrice { get; }
+
 		protected abstract int MaxLevel { get; }
 
 		public void LevelUp()

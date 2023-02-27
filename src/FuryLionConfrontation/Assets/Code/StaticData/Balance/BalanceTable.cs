@@ -16,7 +16,7 @@ namespace Confrontation
 
 		[field: SerializeField] public EnemiesStats EnemiesStats { get; private set; }
 
-		public int PriceFor(Building building)
+		public int BuildPriceFor(Building building)
 			=> building switch
 			{
 				Barrack    => BarrackStats.Price,

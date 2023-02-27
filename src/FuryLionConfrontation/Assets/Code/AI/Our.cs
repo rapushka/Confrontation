@@ -16,14 +16,14 @@ namespace Confrontation
 		public IEnumerable<Cell> EmptyCells => _field.Cells.Where((c) => c.OwnerPlayerId == _player.Id && c.IsEmpty);
 
 		public IEnumerable<Building> CanBeBoughtBuildings
-			=> _resources.Buildings.Where((b) => _player.Stats.IsEnoughGoldFor(_balanceTable.PriceFor(b)));
+			=> _resources.Buildings.Where((b) => _player.Stats.IsEnoughGoldFor(_balanceTable.BuildPriceFor(b)));
 
 		public IEnumerable<Region> Regions => _field.Regions.Where((r) => r.OwnerPlayerId == _player.Id).OnlyUnique();
 
 		public bool CanBuyPreferredBuilding(out Building building)
 		{
 			building = _balanceTable.EnemiesStats.BuildingsPriority.PickRandom().Prefab;
-			return _player.Stats.IsEnoughGoldFor(_balanceTable.PriceFor(building));
+			return _player.Stats.IsEnoughGoldFor(_balanceTable.BuildPriceFor(building));
 		}
 
 		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;

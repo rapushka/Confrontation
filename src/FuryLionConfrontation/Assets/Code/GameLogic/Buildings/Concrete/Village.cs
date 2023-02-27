@@ -10,8 +10,12 @@ namespace Confrontation
 
 		public override string Name => nameof(Village);
 
-		protected override int MaxLevel => BalanceTable.VillageStats.LeveledStats.MaxLevel;
-		
+		public override int UpgradePrice => Stats.UpgradePrice;
+
+		protected override int MaxLevel => Stats.MaxLevel;
+
+		private LeveledStats<VillageLevelStats> Stats => BalanceTable.VillageStats.LeveledStats;
+
 		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
 		private VillageLevelStats CurrentLevelStats => BalanceTable.VillageStats.LeveledStats[Level];

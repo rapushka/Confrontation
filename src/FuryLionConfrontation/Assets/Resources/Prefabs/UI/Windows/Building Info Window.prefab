@@ -117,10 +117,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652087, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: Upgrade Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+--- !u!114 &8041526509375083146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8996184221059186401, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+  m_PrefabInstance: {fileID: 1387636604306500715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8041526510165205406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8996184222419652085, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
@@ -409,6 +420,7 @@ MonoBehaviour:
   _window: {fileID: 4652038617217951611}
   _titleTextMesh: {fileID: 8684339629493213411}
   _upgradeButton: {fileID: 8041526510165205406}
+  _upgradePriceTextMesh: {fileID: 8041526509375083146}
 --- !u!224 &6287881126078413768 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 584903679583712846, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}

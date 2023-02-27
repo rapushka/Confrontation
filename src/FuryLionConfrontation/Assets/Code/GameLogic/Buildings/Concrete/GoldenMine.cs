@@ -12,7 +12,11 @@ namespace Confrontation
 
 		public override string Name => nameof(GoldenMine);
 
-		protected override int MaxLevel => BalanceTable.GoldenMineStats.LeveledStats.MaxLevel;
+		public override int UpgradePrice => Stats.UpgradePrice;
+
+		protected override int MaxLevel => Stats.MaxLevel;
+
+		private LeveledStats<GeneratorStatsBase> Stats => BalanceTable.GoldenMineStats.LeveledStats;
 
 		private int GoldProducingRate => CurrentLevelStats.Amount;
 

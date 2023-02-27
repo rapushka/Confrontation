@@ -9,7 +9,7 @@ namespace Confrontation
 
 		public bool BuyBuilding(Player player, Building buildingPrefab, Cell locationCell)
 		{
-			var buildingPrice = _balanceTable.PriceFor(buildingPrefab);
+			var buildingPrice = _balanceTable.BuildPriceFor(buildingPrefab);
 
 			if (player.Stats.IsEnoughGoldFor(buildingPrice))
 			{
@@ -23,7 +23,7 @@ namespace Confrontation
 
 		public bool UpgradeBuilding(Player player, Building building)
 		{
-			var upgradePrice = _balanceTable.PriceFor(building);
+			var upgradePrice = building.UpgradePrice;
 
 			if (player.Stats.IsEnoughGoldFor(upgradePrice))
 			{

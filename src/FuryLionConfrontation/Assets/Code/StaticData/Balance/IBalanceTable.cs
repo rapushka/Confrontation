@@ -12,6 +12,6 @@ namespace Confrontation
 
 		EnemiesStats EnemiesStats { get; }
 
-		int PriceFor(Building building);
+		int BuildPriceFor(Building building);
 	}
 }
