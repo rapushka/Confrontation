@@ -64,12 +64,12 @@ namespace Confrontation
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>(Constants.ResourcePath.Village),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Settlement),
 						Coordinates = new Coordinates(1, 1),
 					},
 					new()
 					{
-						Prefab = Resources.Load<Building>(Constants.ResourcePath.Village),
+						Prefab = Resources.Load<Building>(Constants.ResourcePath.Settlement),
 						Coordinates = new Coordinates(3, 3),
 					},
 				},

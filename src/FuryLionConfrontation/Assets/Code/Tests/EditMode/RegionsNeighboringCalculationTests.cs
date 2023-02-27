@@ -24,7 +24,7 @@ namespace Confrontation.Editor.Tests
 			Container.UnbindAll();
 
 			Destroy.All<Cell>();
-			Destroy.All<Village>();
+			Destroy.All<Settlement>();
 		}
 
 		[Test]

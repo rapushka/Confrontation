@@ -1,6 +1,6 @@
 namespace Confrontation
 {
-	public class Capital : Village
+	public class Capital : Settlement
 	{
 		public int OwnerPlayerId => Field.Regions[Coordinates].OwnerPlayerId;
 

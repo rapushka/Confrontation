@@ -11,7 +11,7 @@ namespace Confrontation
 		private readonly List<(string Name, string Path)> _buildings
 			= new()
 			{
-				(nameof(Village), Constants.ResourcePath.Village),
+				(nameof(Settlement), Constants.ResourcePath.Settlement),
 				(nameof(GoldenMine), Constants.ResourcePath.GoldenMine),
 				(nameof(Barrack), Constants.ResourcePath.Barrack),
 				(nameof(Capital), Constants.ResourcePath.Capital),

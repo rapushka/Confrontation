@@ -28,7 +28,7 @@ namespace Confrontation.Editor.Tests
 			Container.UnbindAll();
 
 			Destroy.All<Cell>();
-			Destroy.All<Village>();
+			Destroy.All<Settlement>();
 		}
 
 		[Test]
@@ -41,7 +41,7 @@ namespace Confrontation.Editor.Tests
 			buildingsGenerator.Initialize();
 
 			// Assert.
-			var countOfVillages = Object.FindObjectsOfType<Village>().Length;
+			var countOfVillages = Object.FindObjectsOfType<Settlement>().Length;
 			countOfVillages.Should().Be(1);
 		}
 
@@ -80,7 +80,7 @@ namespace Confrontation.Editor.Tests
 
 		private static int CountCellsInSingleRegion(IField field)
 		{
-			var village = field.Buildings.OfType<Village>().Single();
+			var village = field.Buildings.OfType<Settlement>().Single();
 			var region = field.Regions[village.Coordinates];
 
 			return field.Regions.Where((r) => r == region)

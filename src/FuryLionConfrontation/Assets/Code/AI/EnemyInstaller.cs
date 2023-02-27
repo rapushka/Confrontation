@@ -21,7 +21,7 @@ namespace Confrontation
 		private void BindCommands()
 		{
 			Container.BindFactory<Building, Cell, BuildBuildingCommand, BuildBuildingCommand.Factory>();
-			Container.BindFactory<UnitsSquad, Village, DirectUnitsCommand, DirectUnitsCommand.Factory>();
+			Container.BindFactory<UnitsSquad, Settlement, DirectUnitsCommand, DirectUnitsCommand.Factory>();
 		}
 	}
 }

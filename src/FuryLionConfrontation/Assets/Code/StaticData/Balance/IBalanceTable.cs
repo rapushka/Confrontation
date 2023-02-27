@@ -8,7 +8,7 @@ namespace Confrontation
 
 		BarrackStats BarrackStats { get; }
 
-		VillageStats VillageStats { get; }
+		SettlementStats SettlementStats { get; }
 
 		EnemiesStats EnemiesStats { get; }
 

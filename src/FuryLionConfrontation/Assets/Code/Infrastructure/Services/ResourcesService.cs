@@ -6,7 +6,7 @@ namespace Confrontation
 {
 	public interface IResourcesService
 	{
-		Village VillagePrefab { get; }
+		Settlement SettlementPrefab { get; }
 
 		Capital CapitalPrefab { get; }
 
@@ -24,7 +24,7 @@ namespace Confrontation
 
 		[field: SerializeField] private List<Building> _buildings;
 
-		[field: SerializeField] public Village VillagePrefab { get; private set; }
+		[field: SerializeField] public Settlement SettlementPrefab { get; private set; }
 		[field: SerializeField] public Capital CapitalPrefab { get; private set; }
 
 		public TypedDictionary<Building> Buildings => _buildingsDictionary ?? new TypedDictionary<Building>(_buildings);

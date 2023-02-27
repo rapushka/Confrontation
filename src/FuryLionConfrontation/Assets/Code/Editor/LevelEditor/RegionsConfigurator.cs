@@ -18,8 +18,8 @@ namespace Confrontation.Editor
 
 		public void Initialize()
 		{
-			_state.Villages ??= new List<Village>();
-			_state.Villages = _state.Villages.Union(Object.FindObjectsOfType<Village>()).ToList();
+			_state.Villages ??= new List<Settlement>();
+			_state.Villages = _state.Villages.Union(Object.FindObjectsOfType<Settlement>()).ToList();
 
 			_list = new ReorderableList
 			(
@@ -52,7 +52,7 @@ namespace Confrontation.Editor
 
 		private void OnBuildingAdd(Building building)
 		{
-			if (building is Village village)
+			if (building is Settlement village)
 			{
 				_state.Villages.Add(village);
 			}
@@ -60,7 +60,7 @@ namespace Confrontation.Editor
 
 		private void OnBuildingRemove(Building building)
 		{
-			if (building is Village village)
+			if (building is Settlement village)
 			{
 				_state.Villages.Remove(village);
 			}
@@ -96,7 +96,7 @@ namespace Confrontation.Editor
 		[Serializable]
 		public class State
 		{
-			public List<Village> Villages;
+			public List<Settlement> Villages;
 		}
 	}
 }

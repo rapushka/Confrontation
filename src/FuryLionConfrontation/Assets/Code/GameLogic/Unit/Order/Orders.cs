@@ -11,7 +11,7 @@ namespace Confrontation
 		{
 			if (startCell.HasUnits
 			    && startCell.IsBelongTo(_user.Player)
-			    && endCell.Building is Village
+			    && endCell.Building is Settlement
 			    && _field.Neighboring.IsNeighbours(startCell.RelatedRegion, endCell.RelatedRegion))
 			{
 				var squad = startCell.LocatedUnits!;

@@ -26,7 +26,7 @@ namespace Confrontation.Editor
 		{
 			GUILayout.Label("Actions Perform to Selected Cells");
 			GUILayout.Button("Build Capital").OnClick(() => Build(_resources.CapitalPrefab));
-			GUILayout.Button("Build Village").OnClick(() => Build(_resources.VillagePrefab));
+			GUILayout.Button("Build Settlement").OnClick(() => Build(_resources.SettlementPrefab));
 			GUILayout.Button("Build Barrack").OnClick(() => Build(BarrackPrefab));
 			GUILayout.Button("Build Golden Mine").OnClick(() => Build(GoldenMinePrefab));
 			GUILayout.Button(nameof(DestroyBuilding).Pretty()).OnClick(DestroyBuilding);

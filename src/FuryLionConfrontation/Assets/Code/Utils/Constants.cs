@@ -27,7 +27,7 @@ namespace Confrontation
 
 			public const string GoldenMine = "Prefabs/Buildings/Golden Mine";
 			public const string Barrack = "Prefabs/Buildings/Barracks";
-			public const string Village = "Prefabs/Buildings/Village";
+			public const string Settlement = "Prefabs/Buildings/Settlement";
 			public const string Capital = "Prefabs/Buildings/Capital";
 
 			public const string ResourcesService = "ScriptableObjects/Resources";

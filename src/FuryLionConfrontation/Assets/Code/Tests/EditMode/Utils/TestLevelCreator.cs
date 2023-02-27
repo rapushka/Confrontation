@@ -43,7 +43,7 @@ namespace Confrontation.Editor.Tests
 					},
 					new()
 					{
-						Prefab = Resources.Load<Village>(Constants.ResourcePath.Village),
+						Prefab = Resources.Load<Settlement>(Constants.ResourcePath.Settlement),
 						Coordinates = new Coordinates(1, 1),
 					},
 				},

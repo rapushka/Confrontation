@@ -3,23 +3,23 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Village : Building, IActorWithCoolDown
+	public class Settlement : Building, IActorWithCoolDown
 	{
 		[Inject] private readonly Garrison.Factory _garrisonsFactory;
 
 		public float PassedDuration { get; set; }
 
-		public override string Name => nameof(Village);
+		public override string Name => nameof(Settlement);
 
 		public override int UpgradePrice => Stats.UpgradePrice;
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<VillageLevelStats> Stats => BalanceTable.VillageStats.LeveledStats;
+		private LeveledStats<SettlementLevelStats> Stats => BalanceTable.SettlementStats.LeveledStats;
 
 		public float CoolDownDuration => CurrentLevelStats.CoolDown;
 
-		private VillageLevelStats CurrentLevelStats => BalanceTable.VillageStats.LeveledStats[Level];
+		private SettlementLevelStats CurrentLevelStats => BalanceTable.SettlementStats.LeveledStats[Level];
 
 		private bool HaveGarrison => LocatedGarrison == true;
 

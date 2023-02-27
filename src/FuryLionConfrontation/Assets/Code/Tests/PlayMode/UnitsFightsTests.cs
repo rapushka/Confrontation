@@ -19,7 +19,7 @@ namespace Confrontation.Editor.PlayModeTests
 		private DiContainer _container;
 		private List<Building> _buildings;
 
-		private VillageLevelStats FirstLevelVillage => _container.Resolve<IBalanceTable>().VillageStats.LeveledStats[1];
+		private SettlementLevelStats FirstLevelSettlement => _container.Resolve<IBalanceTable>().SettlementStats.LeveledStats[1];
 
 		public override void SetUp()
 		{
@@ -48,11 +48,11 @@ namespace Confrontation.Editor.PlayModeTests
 
 		private void PreventGarrisonSpawn()
 		{
-			_initialVillageGarrisonAmount = FirstLevelVillage.Amount;
+			_initialVillageGarrisonAmount = FirstLevelSettlement.Amount;
 			SetVillageGarrisonAmount(to: 0);
 		}
 
-		private void SetVillageGarrisonAmount(int to) => FirstLevelVillage.SetGenerationAmount(to);
+		private void SetVillageGarrisonAmount(int to) => FirstLevelSettlement.SetGenerationAmount(to);
 
 		private object PassMainMenu()
 		{
@@ -90,7 +90,7 @@ namespace Confrontation.Editor.PlayModeTests
 			// Arrange.
 			const int quantityToMove = 1;
 			var units = Spawn.Units(_buildings, that: BelongToEnemy);
-			var cellWithVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			var cellWithVillage = _buildings.OfType<Settlement>().First(BelongToEnemy).RelatedCell;
 
 			// Act.
 			units.MoveTo(cellWithVillage, quantityToMove);
@@ -110,7 +110,7 @@ namespace Confrontation.Editor.PlayModeTests
 			// Arrange.
 			const int userQuantity = 1;
 			const int enemyQuantity = 1;
-			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			var cellWithEnemyVillage = _buildings.OfType<Settlement>().First(BelongToEnemy).RelatedCell;
 
 			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy);
 			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer);
@@ -136,7 +136,7 @@ namespace Confrontation.Editor.PlayModeTests
 			// Arrange.
 			const int userQuantity = 1;
 			const int enemyQuantity = 2;
-			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			var cellWithEnemyVillage = _buildings.OfType<Settlement>().First(BelongToEnemy).RelatedCell;
 
 			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy, quantity: enemyQuantity);
 			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer);
@@ -163,7 +163,7 @@ namespace Confrontation.Editor.PlayModeTests
 			// Arrange.
 			const int userQuantity = 2;
 			const int enemyQuantity = 1;
-			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			var cellWithEnemyVillage = _buildings.OfType<Settlement>().First(BelongToEnemy).RelatedCell;
 
 			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy);
 			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer, quantity: userQuantity);
@@ -190,8 +190,8 @@ namespace Confrontation.Editor.PlayModeTests
 			const int quantityToSend = 1;
 
 			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer, quantity: quantityToSpawn);
-			var cellWithVillage = _buildings.OfType<Village>().First(BelongToPlayer).RelatedCell;
-			var otherCell = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
+			var cellWithVillage = _buildings.OfType<Settlement>().First(BelongToPlayer).RelatedCell;
+			var otherCell = _buildings.OfType<Settlement>().First(BelongToEnemy).RelatedCell;
 
 			// Act.
 			friendlyUnits.MoveTo(cellWithVillage, quantityToSpawn);
@@ -214,8 +214,8 @@ namespace Confrontation.Editor.PlayModeTests
 			// Arrange.
 			const int userQuantity = 1;
 			const int enemyQuantity = 1;
-			var cellWithEnemyVillage = _buildings.OfType<Village>().First(BelongToEnemy).RelatedCell;
-			var cellWithFriendlyVillage = _buildings.OfType<Village>().First(BelongToPlayer).RelatedCell;
+			var cellWithEnemyVillage = _buildings.OfType<Settlement>().First(BelongToEnemy).RelatedCell;
+			var cellWithFriendlyVillage = _buildings.OfType<Settlement>().First(BelongToPlayer).RelatedCell;
 
 			var friendlyUnits = Spawn.Units(_buildings, that: BelongToPlayer, quantity: userQuantity);
 			var enemyUnits = Spawn.Units(_buildings, that: BelongToEnemy, quantity: enemyQuantity);

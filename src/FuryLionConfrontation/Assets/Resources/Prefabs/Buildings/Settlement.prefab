@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8409872167996123710}
   - component: {fileID: 2305448757740132536}
   m_Layer: 0
-  m_Name: Village
+  m_Name: Settlement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

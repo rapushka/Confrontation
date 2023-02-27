@@ -9,22 +9,22 @@ namespace Confrontation.Editor
 		private static float HorizontalStep => 50;
 		private static float VerticalStep   => EditorGUIUtility.singleLineHeight;
 
-		public static void Draw(this Rect rect, Village village)
+		public static void Draw(this Rect rect, Settlement settlement)
 		{
-			rect.DrawVillagePosition(village);
-			rect.DrawPlayerOwner(village);
+			rect.DrawVillagePosition(settlement);
+			rect.DrawPlayerOwner(settlement);
 			rect.DrawCellsHeader();
 			DrawCellsElements();
-			rect.DrawSelectedIndicator(village);
+			rect.DrawSelectedIndicator(settlement);
 		}
 
-		private static void DrawVillagePosition(this Rect rect, Village village)
+		private static void DrawVillagePosition(this Rect rect, Settlement settlement)
 		{
-			var position = village.RelatedCell.transform.position;
-			EditorGUI.LabelField(rect, $"{village.GetType().Name.Pretty()} ({position.x:F2}; {position.z:F2})");
+			var position = settlement.RelatedCell.transform.position;
+			EditorGUI.LabelField(rect, $"{settlement.GetType().Name.Pretty()} ({position.x:F2}; {position.z:F2})");
 		}
 
-		private static void DrawPlayerOwner(this Rect rect, Village village)
+		private static void DrawPlayerOwner(this Rect rect, Settlement settlement)
 		{
 			rect.y += VerticalStep;
 			rect.x += HorizontalStep;
@@ -33,7 +33,7 @@ namespace Confrontation.Editor
 			rect.x += HorizontalStep * 2;
 			rect.width = HorizontalStep;
 
-			village.RelatedCell.OwnerPlayerId = EditorGUI.IntField(rect, village.RelatedCell.OwnerPlayerId);
+			settlement.RelatedCell.OwnerPlayerId = EditorGUI.IntField(rect, settlement.RelatedCell.OwnerPlayerId);
 		}
 
 		private static void DrawCellsHeader(this Rect rect)
@@ -49,10 +49,10 @@ namespace Confrontation.Editor
 
 		private static void DrawCellsElements() { }
 
-		private static void DrawSelectedIndicator(this Rect rect, Village village)
+		private static void DrawSelectedIndicator(this Rect rect, Settlement settlement)
 		{
-			if (Selection.gameObjects.WithComponent<Cell>().Contains(village.RelatedCell)
-			    || Selection.gameObjects.WithComponent<Building>().Contains(village))
+			if (Selection.gameObjects.WithComponent<Cell>().Contains(settlement.RelatedCell)
+			    || Selection.gameObjects.WithComponent<Building>().Contains(settlement))
 			{
 				rect.x += HorizontalStep * 4;
 				EditorGUI.LabelField(rect, "<- Selected");

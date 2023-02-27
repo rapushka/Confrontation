@@ -12,7 +12,7 @@ namespace Confrontation
 
 		[field: SerializeField] public BarrackStats BarrackStats { get; private set; }
 
-		[field: SerializeField] public VillageStats VillageStats { get; private set; }
+		[field: SerializeField] public SettlementStats SettlementStats { get; private set; }
 
 		[field: SerializeField] public EnemiesStats EnemiesStats { get; private set; }
 
