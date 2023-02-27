@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Confrontation
 {
-	public class InputService : MonoBehaviour, IInputService
+	public class InputService : IInputService, IInitializable, IDisposable
 	{
 		private Camera _camera;
 		private InputActions _actions;
@@ -33,29 +34,25 @@ namespace Confrontation
 
 		private Camera Camera => _camera == true ? _camera : _camera = Camera.main;
 
-		private void Awake()
+		public void Initialize()
 		{
-			DontDestroyOnLoad(gameObject);
 			_actions = new InputActions();
 			_cursorPosition = _actions.Gameplay.CursorPosition;
 			_actionPress = _actions.Gameplay.Press;
 			_actionRelease = _actions.Gameplay.Release;
 			_actionTap = _actions.Gameplay.Tap;
-		}
 
-		private void OnEnable() => _actions.Enable();
+			_actions.Enable();
 
-		private void OnDisable() => _actions.Disable();
-
-		private void Start()
-		{
 			_actionPress.performed += OnPress;
 			_actionRelease.performed += OnRelease;
 			_actionTap.performed += OnTap;
 		}
 
-		private void OnDestroy()
+		public void Dispose()
 		{
+			_actions.Disable();
+
 			_actionPress.performed -= OnPress;
 			_actionRelease.performed -= OnRelease;
 			_actionTap.performed -= OnTap;

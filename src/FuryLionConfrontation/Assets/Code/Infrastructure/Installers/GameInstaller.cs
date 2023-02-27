@@ -17,7 +17,7 @@ namespace Confrontation
 		{
 			BindPrefabs();
 
-			Container.BindInterfacesTo<InputService>().FromNewComponentOnNewGameObject().AsSingle();
+			Container.BindInterfacesTo<InputService>().AsSingle();
 			Container.BindInterfacesTo<CoroutinesRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
 			
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
