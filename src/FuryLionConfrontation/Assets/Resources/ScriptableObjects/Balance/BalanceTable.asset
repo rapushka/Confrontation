@@ -32,14 +32,14 @@ MonoBehaviour:
         <Amount>k__BackingField: 1
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 2
-  <VillageStats>k__BackingField:
+  <SettlementStats>k__BackingField:
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 15
+      <UpgradePrice>k__BackingField: 20
       <StatsByLevel>k__BackingField:
-      - <CoolDown>k__BackingField: 3
+      - <CoolDown>k__BackingField: 3.5
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1
-      - <CoolDown>k__BackingField: 3
+      - <CoolDown>k__BackingField: 3.5
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 3
   <EnemiesStats>k__BackingField:
