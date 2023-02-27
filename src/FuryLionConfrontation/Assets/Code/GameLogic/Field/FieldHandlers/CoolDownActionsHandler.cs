@@ -18,6 +18,11 @@ namespace Confrontation
 			var deltaTime = _timeService.DeltaTime;
 			foreach (var actor in ActorsWithCoolDown)
 			{
+				if (actor.CoolDownDuration < 0f)
+				{
+					continue;
+				}
+				
 				actor.PassedDuration += deltaTime;
 
 				if (actor.PassedDuration >= actor.CoolDownDuration)
