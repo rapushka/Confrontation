@@ -8,13 +8,7 @@ namespace Confrontation
 	{
 		private readonly Dictionary<InstantiateGroup, Transform> _roots = new();
 
-		public GameObject Instantiate(string name) => new(name);
-
 		public T Instantiate<T>(T original, Transform parent) where T : Object => Object.Instantiate(original, parent);
-
-		public T Instantiate<T>(T original, Vector3 position, InstantiateGroup group = InstantiateGroup.Common)
-			where T : Object
-			=> Object.Instantiate(original, position, Quaternion.identity, GetTransformFor(group));
 
 		public T Instantiate<T>(T original, InstantiateGroup group = InstantiateGroup.Common)
 			where T : Object
@@ -31,7 +25,7 @@ namespace Confrontation
 			    || _roots[group] == false)
 			{
 				_roots.Remove(group);
-				_roots.Add(group, Instantiate(ToName(group)).transform);
+				_roots.Add(group, new GameObject(ToName(group)).transform);
 			}
 
 			return _roots[group];
