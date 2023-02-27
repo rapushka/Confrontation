@@ -25,8 +25,7 @@ namespace Confrontation
 
 		private GeneratorStatsBase CurrentLevelStats => _balanceTable.BarrackStats.LeveledStats[Level];
 
-		private UnitsSquad ActualUnitsSquad
-			=> HaveSquad ? LocatedUnits : _unitsFactory.Create(RelatedCell);
+		private UnitsSquad ActualUnitsSquad => HaveSquad ? LocatedUnits : _unitsFactory.Create(RelatedCell);
 
 		public void Action() => SpawnUnits();
 

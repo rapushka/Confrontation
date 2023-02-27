@@ -1,3 +1,4 @@
+using System;
 using Zenject;
 
 namespace Confrontation
@@ -26,14 +27,13 @@ namespace Confrontation
 
 		private Garrison ActualGarrison => HaveGarrison ? LocatedGarrison : _garrisonsFactory.Create(RelatedCell);
 
+		private int MaxInGarrisonNumber => CurrentLevelStats.MaxInGarrisonNumber;
+
+		private int NewInGarrisonNumber => ActualGarrison.QuantityOfUnits + CurrentLevelStats.Amount;
+
 		public virtual void Action() => SpawnGarrison();
 
 		private void SpawnGarrison()
-		{
-			if (ActualGarrison.QuantityOfUnits < CurrentLevelStats.MaxInGarrisonNumber)
-			{
-				ActualGarrison.QuantityOfUnits += CurrentLevelStats.Amount;
-			}
-		}
+			=> ActualGarrison.QuantityOfUnits = Math.Min(NewInGarrisonNumber, MaxInGarrisonNumber);
 	}
 }
