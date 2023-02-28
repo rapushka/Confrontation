@@ -259,6 +259,7 @@ MonoBehaviour:
   _orderLineRenderer: {fileID: 286574869}
   _cellPrefab: {fileID: 2658176221267997969, guid: de0c37cf6fe560b04bf9bd52aac6ba1d, type: 3}
   _backToMenuButton: {fileID: 1278856417}
+  _accelerateTimeButton: {fileID: 741689289}
   _movement: {fileID: 2050588172}
   _hud: {fileID: 93329112}
   _canvas: {fileID: 1020666473}
@@ -830,6 +831,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
   m_PrefabInstance: {fileID: 741689284}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &741689286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8996184222419652085, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+  m_PrefabInstance: {fileID: 741689284}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209422850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &741689289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785a891cd4cf47f39c58adcdbf8a9eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 0}
+  _button: {fileID: 741689286}
   _accelerationCoefficient: 3
 --- !u!1 &963194225
 GameObject:
