@@ -14,9 +14,11 @@ namespace Confrontation
 		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 		[SerializeField] private RectTransform _canvas;
+		[SerializeField] private WindowsContainer _windowsContainer;
 
 		public override void InstallBindings()
 		{
+			Container.BindInterfacesAndSelfTo<WindowsContainer>().FromInstance(_windowsContainer).AsSingle();
 			Container.BindInstance(_canvas).AsSingle();
 			Container.BindInstance(_orderLineRenderer).AsSingle();
 			Container.BindInstance(_movement).AsSingle();

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +8,6 @@ namespace Confrontation
 		[SerializeField] private LoadingCurtain _loadingCurtainPrefab;
 		[SerializeField] private User _user;
 		[SerializeField] private ResourcesService _resources;
-		[SerializeField] private List<WindowBase> _windows;
 		[SerializeField] private BalanceTable _balanceTable;
 
 		public override void InstallBindings()
@@ -36,7 +34,6 @@ namespace Confrontation
 			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
-			Container.BindInstance(new TypedDictionary<WindowBase>(_windows)).AsSingle();
 		}
 	}
 }

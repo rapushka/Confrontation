@@ -21,7 +21,7 @@ MonoBehaviour:
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
-      - <CoolDown>k__BackingField: 2.5
+      - <CoolDown>k__BackingField: 1.5
         <Amount>k__BackingField: 1
   <BarrackStats>k__BackingField:
     <Price>k__BackingField: 20
