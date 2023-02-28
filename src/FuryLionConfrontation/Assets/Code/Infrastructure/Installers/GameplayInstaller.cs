@@ -13,9 +13,11 @@ namespace Confrontation
 		[SerializeField] private BackToMenuButton _backToMenuButton;
 		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
+		[SerializeField] private RectTransform _canvas;
 
 		public override void InstallBindings()
 		{
+			Container.BindInstance(_canvas).AsSingle();
 			Container.BindInstance(_orderLineRenderer).AsSingle();
 			Container.BindInstance(_movement).AsSingle();
 			Container.BindInterfacesAndSelfTo<Hud>().FromInstance(_hud).AsSingle();
