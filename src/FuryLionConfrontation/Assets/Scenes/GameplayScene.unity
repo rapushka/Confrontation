@@ -263,6 +263,11 @@ MonoBehaviour:
   _hud: {fileID: 93329112}
   _canvas: {fileID: 1020666473}
   _windowsContainer: {fileID: 1957437632}
+--- !u!1 &209422850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8996184222419652087, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+  m_PrefabInstance: {fileID: 741689284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &286574868
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +830,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
   m_PrefabInstance: {fileID: 741689284}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &741689289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209422850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785a891cd4cf47f39c58adcdbf8a9eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 0}
+  _accelerationCoefficient: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

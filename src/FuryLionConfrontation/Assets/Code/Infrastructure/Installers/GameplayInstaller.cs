@@ -11,6 +11,7 @@ namespace Confrontation
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
+		[SerializeField] private AccelerateTimeButton _accelerateTimeButton;
 		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 		[SerializeField] private RectTransform _canvas;
@@ -29,6 +30,7 @@ namespace Confrontation
 			Container.Bind<ToMainMenu>().AsSingle();
 			Container.Bind<Purchase>().AsSingle();
 			Container.BindInstance(_backToMenuButton).AsSingle();
+			Container.BindInstance(_accelerateTimeButton).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
