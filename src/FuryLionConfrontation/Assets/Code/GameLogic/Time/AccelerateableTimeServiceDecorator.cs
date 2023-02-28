@@ -5,8 +5,8 @@ namespace Confrontation.GameLogic
 		private readonly ITimeService _decoratee;
 
 		public AccelerateableTimeServiceDecorator(ITimeService decoratee) => _decoratee = decoratee;
-		
-		public float AccelerationCoefficient { get; set; }
+
+		public float AccelerationCoefficient { get; set; } = 1f;
 
 		public float FixedDeltaTime => _decoratee.FixedDeltaTime * AccelerationCoefficient;
 
