@@ -8,6 +8,8 @@ namespace Confrontation.GameLogic
 
 		public float AccelerationCoefficient { get; set; } = 1f;
 
+		public float RealFixedDeltaTime => _decoratee.RealFixedDeltaTime;
+
 		public float FixedDeltaTime => _decoratee.FixedDeltaTime * AccelerationCoefficient;
 
 		public float DeltaTime => _decoratee.DeltaTime * AccelerationCoefficient;

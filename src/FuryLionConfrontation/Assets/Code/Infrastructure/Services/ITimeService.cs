@@ -2,7 +2,8 @@ namespace Confrontation
 {
 	public interface ITimeService
 	{
-		float FixedDeltaTime { get; }
-		float DeltaTime      { get; }
+		float RealFixedDeltaTime { get; }
+		float FixedDeltaTime     { get; }
+		float DeltaTime          { get; }
 	}
 }
