@@ -8,10 +8,8 @@ namespace Confrontation
 	{
 		[SerializeField] private List<WindowBase> _windows;
 
-		private TypedDictionary<WindowBase> _typedDictionary;
+		public void Initialize() => Windows = new TypedDictionary<WindowBase>(_windows);
 
-		public void Initialize() => _typedDictionary = new TypedDictionary<WindowBase>(_windows);
-
-		public TypedDictionary<WindowBase> Windows => _typedDictionary;
+		public TypedDictionary<WindowBase> Windows { get; private set; }
 	}
 }

@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public class GameplayWindows
 	{
-		[Inject] private readonly WindowsContainer _windows;
+		[Inject] private readonly WindowsContainer _container;
 
 		private WindowBase _currentWindow;
 
@@ -12,7 +12,7 @@ namespace Confrontation
 			where TWindow : WindowBase
 		{
 			CloseCurrent();
-			_currentWindow = _windows.Windows.Get<TWindow>();
+			_currentWindow = _container.Windows.Get<TWindow>();
 			_currentWindow.Open();
 		}
 
