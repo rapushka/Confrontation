@@ -1,3 +1,4 @@
+using Confrontation.GameLogic;
 using UnityEngine;
 using Zenject;
 
@@ -14,16 +15,26 @@ namespace Confrontation
 		{
 			BindPrefabs();
 
+			BindDecorators();
+
 			Container.BindInterfacesTo<InputService>().AsSingle();
 			Container.BindInterfacesTo<CoroutinesRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
-			
+
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
-			Container.BindInterfacesTo<TimeService>().AsSingle();
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
 
 			Container.Bind<GameUiMediator>().AsSingle();
 
 			StartGame();
+		}
+
+		private void BindDecorators()
+		{
+			var timeService = new AccelerateableTimeServiceDecorator(new TimeService());
+
+			Container.BindInterfacesAndSelfTo<AccelerateableTimeServiceDecorator>()
+			         .FromInstance(timeService)
+			         .AsSingle();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
