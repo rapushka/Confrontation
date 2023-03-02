@@ -34,7 +34,7 @@ namespace Confrontation
 			_targetCell = target;
 
 			LookAtTarget();
-			MoveToTarget(this.GetCancellationTokenOnDestroy());
+			_routinesRunner.StartRoutine(MoveToTarget);
 		}
 
 		private void LookAtTarget()
@@ -45,13 +45,13 @@ namespace Confrontation
 			}
 		}
 
-		private async void MoveToTarget(CancellationToken token = default)
+		private async void MoveToTarget(CancellationTokenSource source)
 		{
 			while (IsTargetReach() == false)
 			{
 				_transform.position = MoveTowardsTarget();
 
-				if (await SuppressCancellationThrow(token))
+				if (await SuppressCancellationThrow(source))
 				{
 					return;
 				}
@@ -60,20 +60,12 @@ namespace Confrontation
 			TargetReached?.Invoke();
 		}
 
-		private async Task<bool> SuppressCancellationThrow(CancellationToken token)
-			=> await UniTask.Delay(FixedDeltaTimeSpan, cancellationToken: token)
+		private async Task<bool> SuppressCancellationThrow(CancellationTokenSource source)
+			=> await UniTask.Delay(FixedDeltaTimeSpan, cancellationToken: source.Token)
 			                .SuppressCancellationThrow();
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
 		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Mathf.Epsilon;
-	}
-
-	public static class TimeSpanExtensions
-	{
-		public static TimeSpan FromSeconds(this float @this)
-		{
-			return TimeSpan.FromSeconds(@this);
-		}
 	}
 }
