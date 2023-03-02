@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Threading;
 using UnityEngine;
 using Zenject;
 
@@ -14,7 +14,6 @@ namespace Confrontation
 		[SerializeField] private Transform _transform;
 
 		private Cell _targetCell;
-		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
 		private float Speed => _balance.UnitStats.BaseSpeed;
 
@@ -31,7 +30,7 @@ namespace Confrontation
 			_targetCell = target;
 
 			LookAtTarget();
-			_routinesRunner.StartUnstoppableRoutine(MoveToTarget());
+			_routinesRunner.StartRoutine(MoveToTarget);
 		}
 
 		private void LookAtTarget()
@@ -42,12 +41,16 @@ namespace Confrontation
 			}
 		}
 
-		private IEnumerator MoveToTarget()
+		private async void MoveToTarget(CancellationTokenSource source)
 		{
 			while (IsTargetReach() == false)
 			{
 				_transform.position = MoveTowardsTarget();
-				yield return _waitForFixedUpdate;
+
+				if (await source.Token.WaitForFixedUpdate())
+				{
+					return;
+				}
 			}
 
 			TargetReached?.Invoke();

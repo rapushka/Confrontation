@@ -1,18 +1,12 @@
 using System;
-using System.Collections;
+using System.Threading;
 
 namespace Confrontation
 {
 	public interface IRoutinesRunnerService
 	{
-		void StartRoutine(Func<IEnumerator> func);
-
-		void StartUnstoppableRoutine(IEnumerator routine);
-
-		void RestartRoutine(Func<IEnumerator> func);
-
-		void StopRoutine(Func<IEnumerator> func);
-
 		void StopAllRoutines();
+
+		void StartRoutine(Action<CancellationTokenSource> cancelableTask);
 	}
 }

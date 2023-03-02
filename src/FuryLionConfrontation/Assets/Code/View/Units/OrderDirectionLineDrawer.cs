@@ -1,5 +1,6 @@
 using System;
-using System.Collections;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -36,18 +37,18 @@ namespace Confrontation
 				_lineRenderer.AddPosition(clickReceiver.transform.position);
 				_lineRenderer.AddPosition(CursorPosition);
 
-				_routinesRunner.RestartRoutine(DrawLine);
+				_routinesRunner.StartRoutine(DrawLine);
 			}
 		}
 
 		private void OnSwipeEnd() => _lineRenderer.ClearPositions();
 
-		private IEnumerator DrawLine()
+		private async void DrawLine(CancellationTokenSource cancellationTokenSource)
 		{
 			while (_lineRenderer.IsDrawing())
 			{
 				_lineRenderer.SetLastPosition(CursorPosition);
-				yield return null;
+				await UniTask.Yield();
 			}
 		}
 

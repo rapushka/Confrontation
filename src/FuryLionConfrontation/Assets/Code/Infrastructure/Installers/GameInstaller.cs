@@ -18,7 +18,7 @@ namespace Confrontation
 			BindDecorators();
 
 			Container.BindInterfacesTo<InputService>().AsSingle();
-			Container.BindInterfacesTo<CoroutinesRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
+			Container.BindInterfacesTo<UniTaskRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
 
 			Container.BindInterfacesTo<AssetsService>().AsSingle();
 			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
