@@ -31,7 +31,7 @@ namespace Confrontation
 			_targetCell = target;
 
 			LookAtTarget();
-			_routinesRunner.StartUnstoppableRoutine(MoveToTarget());
+			_routinesRunner.StartRoutine(MoveToTarget());
 		}
 
 		private void LookAtTarget()
