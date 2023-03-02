@@ -1,5 +1,7 @@
 using System;
-using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -14,7 +16,6 @@ namespace Confrontation
 		[SerializeField] private Transform _transform;
 
 		private Cell _targetCell;
-		private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
 		private float Speed => _balance.UnitStats.BaseSpeed;
 
@@ -26,12 +27,14 @@ namespace Confrontation
 
 		private Vector3 CurrentPosition => _transform.position;
 
+		private TimeSpan FixedDeltaTimeSpan => _timeService.FixedDeltaTime.FromSeconds();
+
 		public void MoveTo(Cell target)
 		{
 			_targetCell = target;
 
 			LookAtTarget();
-			_routinesRunner.StartRoutine(MoveToTarget());
+			MoveToTarget(this.GetCancellationTokenOnDestroy());
 		}
 
 		private void LookAtTarget()
@@ -42,19 +45,35 @@ namespace Confrontation
 			}
 		}
 
-		private IEnumerator MoveToTarget()
+		private async void MoveToTarget(CancellationToken token = default)
 		{
 			while (IsTargetReach() == false)
 			{
 				_transform.position = MoveTowardsTarget();
-				yield return _waitForFixedUpdate;
+
+				if (await SuppressCancellationThrow(token))
+				{
+					return;
+				}
 			}
 
 			TargetReached?.Invoke();
 		}
 
+		private async Task<bool> SuppressCancellationThrow(CancellationToken token)
+			=> await UniTask.Delay(FixedDeltaTimeSpan, cancellationToken: token)
+			                .SuppressCancellationThrow();
+
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
 		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Mathf.Epsilon;
+	}
+
+	public static class TimeSpanExtensions
+	{
+		public static TimeSpan FromSeconds(this float @this)
+		{
+			return TimeSpan.FromSeconds(@this);
+		}
 	}
 }
