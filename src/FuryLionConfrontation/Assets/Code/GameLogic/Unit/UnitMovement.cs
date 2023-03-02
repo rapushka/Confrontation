@@ -27,8 +27,6 @@ namespace Confrontation
 
 		private Vector3 CurrentPosition => _transform.position;
 
-		private TimeSpan FixedDeltaTimeSpan => _timeService.FixedDeltaTime.FromSeconds();
-
 		public void MoveTo(Cell target)
 		{
 			_targetCell = target;
@@ -60,9 +58,8 @@ namespace Confrontation
 			TargetReached?.Invoke();
 		}
 
-		private async Task<bool> SuppressCancellationThrow(CancellationTokenSource source)
-			=> await UniTask.Delay(FixedDeltaTimeSpan, cancellationToken: source.Token)
-			                .SuppressCancellationThrow();
+		private static async Task<bool> SuppressCancellationThrow(CancellationTokenSource source)
+			=> await UniTask.WaitForFixedUpdate(cancellationToken: source.Token).SuppressCancellationThrow();
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
