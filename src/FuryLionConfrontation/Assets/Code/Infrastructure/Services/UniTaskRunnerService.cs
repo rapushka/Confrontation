@@ -10,6 +10,8 @@ namespace Confrontation
 
 		private void Awake() => DontDestroyOnLoad(gameObject);
 
+		private void OnDestroy() => StopAllRoutines();
+
 		public void StopAllRoutines()
 		{
 			_cancellationToken.Cancel(throwOnFirstException: true);

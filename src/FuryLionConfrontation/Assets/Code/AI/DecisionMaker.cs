@@ -17,6 +17,7 @@ namespace Confrontation
 			}
 
 			if (_our.Units.TryPickRandom(out var squad)
+			    && squad == true
 			    && _our.NeighboursFor(squad.LocationCell).TryPickRandom(out var village))
 			{
 				return _directUnitsCommandFactory.Create(squad, village);
