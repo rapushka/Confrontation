@@ -3,28 +3,14 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class AccelerateTimeButton : ButtonBase
+	public class AccelerateTimeButton : ToggleButtonBase
 	{
 		[Inject] private readonly AccelerateableTimeServiceDecorator _timeService;
 
-		private bool _clicked;
-
-		protected override void OnButtonClick()
-		{
-			if (_clicked)
-			{
-				_clicked = false;
-
-				_timeService.Decelerate();
-			}
-			else
-			{
-				_clicked = true;
-
-				_timeService.Accelerate();
-			}
-		}
-
 		private void OnDestroy() => _timeService.Decelerate();
+
+		protected override void OnToggleClicked() => _timeService.Accelerate();
+
+		protected override void OnToggleUnClicked() => _timeService.Decelerate();
 	}
 }
