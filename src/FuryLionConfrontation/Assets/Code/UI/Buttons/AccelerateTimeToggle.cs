@@ -1,6 +1,5 @@
 using System;
 using Confrontation.GameLogic;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Confrontation

@@ -45,7 +45,13 @@ namespace Confrontation
 
 		public bool IsBelongTo(Player player) => OwnerPlayerId == player.Id;
 
-		public void MakeRegionNeutral() => RelatedRegion!.OwnerPlayerId = Constants.NeutralRegion;
+		public void MakeRegionNeutral()
+		{
+			if (Building is not Capital)
+			{
+				RelatedRegion!.OwnerPlayerId = Constants.NeutralRegion;
+			}
+		}
 
 		public void SetColor(int playerId) => _color.ChangeColorTo(playerId);
 
