@@ -1,13 +1,14 @@
+using System;
 using Confrontation.GameLogic;
 using Zenject;
 
 namespace Confrontation
 {
-	public class AccelerateTimeButton : ToggleButtonBase
+	public class AccelerateTimeButton : ToggleButtonBase, IDisposable
 	{
 		[Inject] private readonly AccelerateableTimeServiceDecorator _timeService;
 
-		private void OnDestroy() => _timeService.Decelerate();
+		public void Dispose() => _timeService.Decelerate();
 
 		protected override void OnToggleClicked() => _timeService.Accelerate();
 

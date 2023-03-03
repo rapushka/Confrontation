@@ -4,11 +4,8 @@ namespace Confrontation.GameLogic
 {
 	public class AccelerateableTimeServiceDecorator : ITimeService, IInitializable
 	{
+		[Inject] private readonly ITimeService _decoratee;
 		[Inject] private readonly IBalanceTable _balanceTable;
-
-		private readonly ITimeService _decoratee;
-
-		public AccelerateableTimeServiceDecorator(ITimeService decoratee) => _decoratee = decoratee;
 
 		public void Initialize() => Decelerate();
 

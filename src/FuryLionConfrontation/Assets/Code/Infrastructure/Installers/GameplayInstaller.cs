@@ -30,7 +30,7 @@ namespace Confrontation
 			Container.Bind<ToMainMenu>().AsSingle();
 			Container.Bind<Purchase>().AsSingle();
 			Container.BindInstance(_backToMenuButton).AsSingle();
-			Container.BindInstance(_accelerateTimeButton).AsSingle();
+			Container.BindInterfacesTo<AccelerateTimeButton>().FromInstance(_accelerateTimeButton).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();

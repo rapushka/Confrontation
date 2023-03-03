@@ -30,11 +30,8 @@ namespace Confrontation
 
 		private void BindDecorators()
 		{
-			var timeService = new AccelerateableTimeServiceDecorator(new TimeService());
-
-			Container.BindInterfacesAndSelfTo<AccelerateableTimeServiceDecorator>()
-			         .FromInstance(timeService)
-			         .AsSingle();
+			Container.BindInterfacesAndSelfTo<AccelerateableTimeServiceDecorator>().AsSingle();
+			Container.Bind<ITimeService>().To<TimeService>().WhenInjectedInto<AccelerateableTimeServiceDecorator>();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
