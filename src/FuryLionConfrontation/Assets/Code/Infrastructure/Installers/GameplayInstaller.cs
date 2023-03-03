@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
@@ -11,7 +12,7 @@ namespace Confrontation
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
-		[SerializeField] private AccelerateTimeButton _accelerateTimeButton;
+		[FormerlySerializedAs("_accelerateTimeButton")] [SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
 		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 		[SerializeField] private RectTransform _canvas;
@@ -30,7 +31,7 @@ namespace Confrontation
 			Container.Bind<ToMainMenu>().AsSingle();
 			Container.Bind<Purchase>().AsSingle();
 			Container.BindInstance(_backToMenuButton).AsSingle();
-			Container.BindInstance(_accelerateTimeButton).AsSingle();
+			Container.BindInterfacesTo<AccelerateTimeToggle>().FromInstance(_accelerateTimeToggle).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
