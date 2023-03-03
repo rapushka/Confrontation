@@ -1,5 +1,4 @@
 using Confrontation.GameLogic;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,11 +7,24 @@ namespace Confrontation
 	{
 		[Inject] private readonly AccelerateableTimeServiceDecorator _timeService;
 
-		[SerializeField] private float _accelerationCoefficient = 3f;
+		private bool _clicked;
 
 		protected override void OnButtonClick()
-			=> _timeService.AccelerationCoefficient = _timeService.AccelerationCoefficient < _accelerationCoefficient
-				? _accelerationCoefficient
-				: 1f;
+		{
+			if (_clicked)
+			{
+				_clicked = false;
+
+				_timeService.Decelerate();
+			}
+			else
+			{
+				_clicked = true;
+
+				_timeService.Accelerate();
+			}
+		}
+
+		private void OnDestroy() => _timeService.Decelerate();
 	}
 }
