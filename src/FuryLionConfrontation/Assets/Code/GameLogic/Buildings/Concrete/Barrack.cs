@@ -2,14 +2,14 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Barrack : Building, IActorWithCoolDown
+	public class Barrack : Generator
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 		[Inject] private readonly IBalanceTable _balanceTable;
 
-		public float PassedDuration { get; set; }
+		public override float PassedDuration { get; set; }
 
-		public float CoolDownDuration => CurrentLevelStats.CoolDown;
+		public override float CoolDownDuration => CurrentLevelStats.CoolDown;
 
 		public override string Name => nameof(Barrack);
 
@@ -27,7 +27,7 @@ namespace Confrontation
 
 		private UnitsSquad ActualUnitsSquad => HaveSquad ? LocatedUnits : _unitsFactory.Create(RelatedCell);
 
-		public void Action() => SpawnUnits();
+		public override void Action() => SpawnUnits();
 
 		private void SpawnUnits() => ActualUnitsSquad.QuantityOfUnits += CurrentLevelStats.Amount;
 	}
