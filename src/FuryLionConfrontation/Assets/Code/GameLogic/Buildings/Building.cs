@@ -38,7 +38,7 @@ namespace Confrontation
 
 		protected abstract int MaxLevel { get; }
 
-		public void LevelUp()
+		public virtual void LevelUp()
 		{
 			if (IsOnMaxLevel == false)
 			{
