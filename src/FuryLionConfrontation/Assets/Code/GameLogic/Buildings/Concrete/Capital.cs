@@ -19,9 +19,15 @@ namespace Confrontation
 		public override void Action()
 		{
 			base.Action();
-
 			_barrack.Action();
 			_goldenMine.Action();
+		}
+
+		public override void LevelUp()
+		{
+			base.LevelUp();
+			_barrack.LevelUp();
+			_goldenMine.LevelUp();
 		}
 	}
 }
