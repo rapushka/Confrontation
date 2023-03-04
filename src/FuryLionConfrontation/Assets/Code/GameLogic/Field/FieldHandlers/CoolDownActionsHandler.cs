@@ -11,7 +11,11 @@ namespace Confrontation
 		[Inject] private readonly ArtificialIntelligence _ai;
 
 		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
-			=> _field.Buildings.OfType<IActorWithCoolDown>().Union(_ai.Enemies);
+			=> _field.Buildings.OfType<IActorWithCoolDown>()
+			         .Union(_ai.Enemies)
+			         .Union(Capitals.SelectMany((c) => c.StashedBuildings));
+
+		private IEnumerable<Capital> Capitals => _field.Buildings.OfType<Capital>();
 
 		public void Tick()
 		{
