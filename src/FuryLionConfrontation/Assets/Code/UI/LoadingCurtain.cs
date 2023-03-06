@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
 
 namespace Confrontation
 {
 	public class LoadingCurtain : MonoBehaviour
 	{
+		[Inject] private readonly ISceneTransferService _sceneTransfer;
+
 		[SerializeField] private CanvasGroup _curtain;
 		[SerializeField] private float _step = 0.03f;
+		[SerializeField] private Slider _loadingBar;
 
 		private Coroutine _coroutine;
 
@@ -39,6 +44,8 @@ namespace Confrontation
 			EnsureStopCoroutine();
 			Disable();
 		}
+
+		private void Update() => _loadingBar.value = _sceneTransfer.LoadingProgress;
 
 		private IEnumerator FadeTo(Func<float, bool> @while, float step, Action atEnd)
 		{
