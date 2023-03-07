@@ -8,5 +8,8 @@ namespace Confrontation
 	{
 		public static async Task<bool> WaitForFixedUpdate(this CancellationToken @this)
 			=> await UniTask.WaitForFixedUpdate(cancellationToken: @this).SuppressCancellationThrow();
+		
+		public static async Task<bool> WaitForUpdate(this CancellationToken @this)
+			=> await UniTask.Yield(cancellationToken: @this).SuppressCancellationThrow();
 	}
 }

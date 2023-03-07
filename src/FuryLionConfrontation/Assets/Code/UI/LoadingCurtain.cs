@@ -1,5 +1,6 @@
 using System;
-using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -9,50 +10,47 @@ namespace Confrontation
 	public class LoadingCurtain : MonoBehaviour
 	{
 		[Inject] private readonly ISceneTransferService _sceneTransfer;
+		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 
 		[SerializeField] private CanvasGroup _curtain;
 		[SerializeField] private float _step = 0.03f;
 		[SerializeField] private Slider _loadingBar;
 
-		private Coroutine _coroutine;
-
 		private void Awake() => DontDestroyOnLoad(this);
 
 		public void Show()
 		{
-			EnsureStopCoroutine();
-
 			gameObject.SetActive(true);
-			_coroutine = StartCoroutine(FadeTo(@while: (a) => a < 1, step: _step, atEnd: Enable));
+			_routinesRunner.StartRoutine(Show);
 		}
 
 		public void Hide()
 		{
-			EnsureStopCoroutine();
-
-			_coroutine = StartCoroutine(FadeTo(@while: (a) => a > 0, step: _step * -1, atEnd: Disable));
+			gameObject.SetActive(true);
+			_routinesRunner.StartRoutine(Hide);
 		}
 
-		public void ShowImmediately()
-		{
-			EnsureStopCoroutine();
-			Enable();
-		}
+		private async void Show(CancellationTokenSource source)
+			=> await FadeTo(@while: (a) => a < 1, step: _step, atEnd: Enable, source);
 
-		public void HideImmediately()
-		{
-			EnsureStopCoroutine();
-			Disable();
-		}
+		private async void Hide(CancellationTokenSource source)
+			=> await FadeTo(@while: (a) => a > 0, step: _step * -1, atEnd: Disable, source);
+
+		public void ShowImmediately() => Enable();
+
+		public void HideImmediately() => Disable();
 
 		private void Update() => _loadingBar.value = _sceneTransfer.LoadingProgress;
 
-		private IEnumerator FadeTo(Func<float, bool> @while, float step, Action atEnd)
+		private async Task FadeTo(Func<float, bool> @while, float step, Action atEnd, CancellationTokenSource source)
 		{
 			while (@while.Invoke(_curtain.alpha))
 			{
 				_curtain.alpha += step;
-				yield return null;
+				if (await source.Token.WaitForUpdate())
+				{
+					return;
+				}
 			}
 
 			atEnd.Invoke();
@@ -68,15 +66,6 @@ namespace Confrontation
 		{
 			_curtain.alpha = 0;
 			gameObject.SetActive(false);
-		}
-
-		private void EnsureStopCoroutine()
-		{
-			if (_coroutine is not null)
-			{
-				StopCoroutine(_coroutine);
-				_coroutine = null;
-			}
 		}
 	}
 }

@@ -43,7 +43,8 @@ namespace Confrontation
 
 		private async void MoveToTarget(CancellationTokenSource source)
 		{
-			while (IsTargetReach() == false)
+			while (source.Token.IsCancellationRequested == false
+			       && IsTargetReach() == false)
 			{
 				_transform.position = MoveTowardsTarget();
 
