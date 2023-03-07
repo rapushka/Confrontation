@@ -35,10 +35,10 @@ namespace Confrontation
 		}
 
 		private async void Show(CancellationTokenSource source)
-			=> await FadeTo(@while: (a) => a < 1, Step, atEnd: Enable, source);
+			=> await FadeTo(@while: (a) => a < 1, @do: Step, atEnd: Enable, cancellationToken: source.Token);
 
 		private async void Hide(CancellationTokenSource source)
-			=> await FadeTo(@while: (a) => a > 0, ReversedStep, atEnd: Disable, source);
+			=> await FadeTo(@while: (a) => a > 0, @do: ReversedStep, atEnd: Disable, cancellationToken: source.Token);
 
 		public void ShowImmediately() => Enable();
 
@@ -46,12 +46,12 @@ namespace Confrontation
 
 		private void Update() => _loadingBar.value = _sceneTransfer.LoadingProgress;
 
-		private async Task FadeTo(Func<float, bool> @while, float step, Action atEnd, CancellationTokenSource source)
+		private async Task FadeTo(Func<float, bool> @while, float @do, Action atEnd, CancellationToken cancellationToken)
 		{
 			while (@while.Invoke(_curtain.alpha))
 			{
-				_curtain.alpha += step;
-				if (await source.Token.WaitForUpdate())
+				_curtain.alpha += @do;
+				if (await cancellationToken.WaitForUpdate())
 				{
 					break;
 				}

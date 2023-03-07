@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _curtain: {fileID: 3615310031561314296}
-  _step: 0.03
+  _fadeDuration: 0.5
   _loadingBar: {fileID: 1611558075703861626}
 --- !u!1 &8455735558409953947
 GameObject:
