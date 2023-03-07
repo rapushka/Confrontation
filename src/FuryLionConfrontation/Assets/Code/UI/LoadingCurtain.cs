@@ -13,8 +13,12 @@ namespace Confrontation
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 
 		[SerializeField] private CanvasGroup _curtain;
-		[SerializeField] private float _step = 0.03f;
+		[SerializeField] private float _fadeDuration = 1f;
 		[SerializeField] private Slider _loadingBar;
+
+		private float Step => _fadeDuration * 0.01f;
+
+		private float ReversedStep => Step * -1;
 
 		private void Awake() => DontDestroyOnLoad(this);
 
@@ -31,10 +35,10 @@ namespace Confrontation
 		}
 
 		private async void Show(CancellationTokenSource source)
-			=> await FadeTo(@while: (a) => a < 1, step: _step, atEnd: Enable, source);
+			=> await FadeTo(@while: (a) => a < 1, Step, atEnd: Enable, source);
 
 		private async void Hide(CancellationTokenSource source)
-			=> await FadeTo(@while: (a) => a > 0, step: _step * -1, atEnd: Disable, source);
+			=> await FadeTo(@while: (a) => a > 0, ReversedStep, atEnd: Disable, source);
 
 		public void ShowImmediately() => Enable();
 
