@@ -18,20 +18,18 @@ namespace Confrontation
 	{
 		public float LoadingProgress { get; private set; }
 
-		public async Task ToScene(string sceneName) => await ToSceneRoutine(sceneName);
-
-		private async Task ToSceneRoutine(string sceneName)
+		public async Task ToScene(string sceneName)
 		{
 			var loadSceneAsync = SceneManager.LoadSceneAsync(sceneName);
 
-			while (loadSceneAsync.isDone)
+			while (loadSceneAsync.isDone == false)
 			{
-				ProgressVisualisation(loadSceneAsync.progress);
+				VisualiseProgress(loadSceneAsync.progress);
 				await UniTask.Yield();
 			}
 		}
 
-		private void ProgressVisualisation(float progress) => LoadingProgress = Mathf.Clamp01(progress / 0.9f);
+		private void VisualiseProgress(float progress) => LoadingProgress = Mathf.Clamp01(progress);
 
 		public bool IsCurrentScene(string sceneName) => SceneManager.GetActiveScene().name == sceneName;
 	}
