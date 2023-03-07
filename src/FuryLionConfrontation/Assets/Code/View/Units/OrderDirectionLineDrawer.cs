@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -43,7 +44,7 @@ namespace Confrontation
 
 		private void OnSwipeEnd() => _lineRenderer.ClearPositions();
 
-		private async void DrawLine(CancellationTokenSource cancellationTokenSource)
+		private async Task DrawLine(CancellationTokenSource cancellationTokenSource)
 		{
 			while (_lineRenderer.IsDrawing())
 			{

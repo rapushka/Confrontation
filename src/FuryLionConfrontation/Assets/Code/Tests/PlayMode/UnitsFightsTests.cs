@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -54,7 +55,7 @@ namespace Confrontation.Editor.PlayModeTests
 
 		private void SetVillageGarrisonAmount(int to) => FirstLevelSettlement.SetGenerationAmount(to);
 
-		private object PassMainMenu()
+		private async Task<WaitForSeconds> PassMainMenu()
 		{
 			var container = GetActualContainer(@for: Constants.SceneName.MainMenuScene);
 
@@ -62,7 +63,7 @@ namespace Confrontation.Editor.PlayModeTests
 			user.SelectedLevel = Resources.Load<LevelScriptableObject>(Constants.ResourcePath.TestLevel);
 
 			var toGameplay = container.Resolve<ToGameplay>();
-			toGameplay.Transfer();
+			await toGameplay.Transfer();
 
 			return _waitForZenjectInitialization;
 		}

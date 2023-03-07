@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -41,7 +42,7 @@ namespace Confrontation
 			}
 		}
 
-		private async void MoveToTarget(CancellationTokenSource source)
+		private async Task MoveToTarget(CancellationTokenSource source)
 		{
 			while (source.Token.IsCancellationRequested == false
 			       && IsTargetReach() == false)

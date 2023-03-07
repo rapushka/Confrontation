@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Confrontation
 {
@@ -7,6 +8,8 @@ namespace Confrontation
 	{
 		void StopAllRoutines();
 
-		void StartRoutine(Action<CancellationTokenSource> cancelableTask);
+		Task StartRoutine(Func<CancellationTokenSource, Task> cancelableTask);
+
+		Task StartRoutine(Func<Task> task);
 	}
 }

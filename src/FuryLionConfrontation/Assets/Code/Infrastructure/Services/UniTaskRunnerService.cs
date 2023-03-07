@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Confrontation
@@ -19,7 +20,9 @@ namespace Confrontation
 			_cancellationToken = new CancellationTokenSource();
 		}
 
-		public void StartRoutine(Action<CancellationTokenSource> cancelableTask)
-			=> cancelableTask.Invoke(_cancellationToken);
+		public async Task StartRoutine(Func<CancellationTokenSource, Task> cancelableTask)
+			=> await cancelableTask.Invoke(_cancellationToken);
+
+		public async Task StartRoutine(Func<Task> task) => await task.Invoke();
 	}
 }

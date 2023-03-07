@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,7 +7,7 @@ namespace Confrontation
 {
 	public interface ISceneTransferService : IService
 	{
-		void ToScene(string sceneName);
+		Task ToScene(string sceneName);
 
 		bool IsCurrentScene(string sceneName);
 
@@ -17,9 +18,18 @@ namespace Confrontation
 	{
 		public float LoadingProgress { get; private set; }
 
-		public void ToScene(string sceneName)
-			=> SceneManager.LoadSceneAsync(sceneName)
-			               .ToUniTask(Progress.Create<float>(ProgressVisualisation));
+		public async Task ToScene(string sceneName) => await ToSceneRoutine(sceneName);
+
+		private async Task ToSceneRoutine(string sceneName)
+		{
+			var loadSceneAsync = SceneManager.LoadSceneAsync(sceneName);
+
+			while (loadSceneAsync.isDone)
+			{
+				ProgressVisualisation(loadSceneAsync.progress);
+				await UniTask.Yield();
+			}
+		}
 
 		private void ProgressVisualisation(float progress) => LoadingProgress = Mathf.Clamp01(progress / 0.9f);
 

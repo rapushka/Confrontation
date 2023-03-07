@@ -1,6 +1,6 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -21,9 +21,9 @@ namespace Confrontation
 
 		private void Awake() => DontDestroyOnLoad(this);
 
-		public void Show() => _routinesRunner.StartRoutine(ShowRoutine);
+		public async Task Show() => await _routinesRunner.StartRoutine(ShowRoutine);
 
-		public void Hide() => _routinesRunner.StartRoutine(HideRoutine);
+		public async Task Hide() => await _routinesRunner.StartRoutine(HideRoutine);
 
 		public void ShowImmediately() => EnableCurtain();
 
@@ -31,32 +31,29 @@ namespace Confrontation
 
 		private void Update() => _loadingBar.value = _sceneTransfer.LoadingProgress;
 
-		private async void ShowRoutine(CancellationTokenSource source)
+		private async Task ShowRoutine()
 		{
 			gameObject.SetActive(true);
 
-			await Fade(from: 0f, to: 1f, source.Token);
+			await Fade(from: 0f, to: 1f);
 			EnableCurtain();
 		}
 
-		private async void HideRoutine(CancellationTokenSource source)
+		private async Task HideRoutine()
 		{
-			await Fade(from: 1f, to: 0f, source.Token);
+			await Fade(from: 1f, to: 0f);
 			DisableCurtain();
 
 			gameObject.SetActive(false);
 		}
 
-		private async Task Fade(float from, float to, CancellationToken token)
+		private async Task Fade(float from, float to)
 		{
 			while (Math.Abs(_curtain.alpha - to) > Mathf.Epsilon)
 			{
 				_passedDuration += _time.DeltaTime;
 				_curtain.alpha = Mathf.Lerp(from, to, _passedDuration / _fadeDuration);
-				if (await token.WaitForUpdate())
-				{
-					break;
-				}
+				await UniTask.Yield();
 			}
 
 			ResetPassedDuration();

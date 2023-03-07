@@ -4,6 +4,6 @@ namespace Confrontation
 {
 	public abstract class ToSceneOnInitialize : ToSceneBase, IInitializable
 	{
-		public void Initialize() => Transfer();
+		public async void Initialize() => await Transfer();
 	}
 }
