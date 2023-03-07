@@ -11,65 +11,69 @@ namespace Confrontation
 	{
 		[Inject] private readonly ISceneTransferService _sceneTransfer;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
+		[Inject] private readonly ITimeService _time;
 
 		[SerializeField] private CanvasGroup _curtain;
 		[SerializeField] private float _fadeDuration = 1f;
 		[SerializeField] private Slider _loadingBar;
 
-		private float Step => _fadeDuration * 0.01f;
-
-		private float ReversedStep => Step * -1;
+		private float _passedDuration;
 
 		private void Awake() => DontDestroyOnLoad(this);
 
-		public void Show()
-		{
-			gameObject.SetActive(true);
-			_routinesRunner.StartRoutine(Show);
-		}
+		public void Show() => _routinesRunner.StartRoutine(ShowRoutine);
 
-		public void Hide()
-		{
-			gameObject.SetActive(true);
-			_routinesRunner.StartRoutine(Hide);
-		}
+		public void Hide() => _routinesRunner.StartRoutine(HideRoutine);
 
-		private async void Show(CancellationTokenSource source)
-			=> await FadeTo(@while: (a) => a < 1, @do: Step, atEnd: Enable, cancellationToken: source.Token);
+		public void ShowImmediately() => EnableCurtain();
 
-		private async void Hide(CancellationTokenSource source)
-			=> await FadeTo(@while: (a) => a > 0, @do: ReversedStep, atEnd: Disable, cancellationToken: source.Token);
-
-		public void ShowImmediately() => Enable();
-
-		public void HideImmediately() => Disable();
+		public void HideImmediately() => DisableCurtain();
 
 		private void Update() => _loadingBar.value = _sceneTransfer.LoadingProgress;
 
-		private async Task FadeTo(Func<float, bool> @while, float @do, Action atEnd, CancellationToken cancellationToken)
+		private async void ShowRoutine(CancellationTokenSource source)
 		{
-			while (@while.Invoke(_curtain.alpha))
+			gameObject.SetActive(true);
+
+			await Fade(from: 0f, to: 1f, source.Token);
+			EnableCurtain();
+		}
+
+		private async void HideRoutine(CancellationTokenSource source)
+		{
+			await Fade(from: 1f, to: 0f, source.Token);
+			DisableCurtain();
+
+			gameObject.SetActive(false);
+		}
+
+		private async Task Fade(float from, float to, CancellationToken token)
+		{
+			while (Math.Abs(_curtain.alpha - to) > Mathf.Epsilon)
 			{
-				_curtain.alpha += @do;
-				if (await cancellationToken.WaitForUpdate())
+				_passedDuration += _time.DeltaTime;
+				_curtain.alpha = Mathf.Lerp(from, to, _passedDuration / _fadeDuration);
+				if (await token.WaitForUpdate())
 				{
 					break;
 				}
 			}
 
-			atEnd.Invoke();
+			ResetPassedDuration();
 		}
 
-		private void Enable()
+		private void EnableCurtain()
 		{
 			gameObject.SetActive(true);
 			_curtain.alpha = 1;
 		}
 
-		private void Disable()
+		private void DisableCurtain()
 		{
 			_curtain.alpha = 0;
 			gameObject.SetActive(false);
 		}
+
+		private void ResetPassedDuration() => _passedDuration = 0f;
 	}
 }
