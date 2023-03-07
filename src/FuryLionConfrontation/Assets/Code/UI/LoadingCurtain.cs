@@ -49,7 +49,7 @@ namespace Confrontation
 				_curtain.alpha += step;
 				if (await source.Token.WaitForUpdate())
 				{
-					return;
+					break;
 				}
 			}
 
