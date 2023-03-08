@@ -13,9 +13,7 @@ namespace Confrontation
 		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
 			=> _field.Buildings.OfType<IActorWithCoolDown>()
 			         .Union(_ai.Enemies)
-			         .Union(Capitals.SelectMany((c) => c.StashedBuildings));
-
-		private IEnumerable<Capital> Capitals => _field.Buildings.OfType<Capital>();
+			         .Union(_field.StashedBuildings.OfType<IActorWithCoolDown>());
 
 		public void Tick()
 		{
@@ -26,7 +24,7 @@ namespace Confrontation
 				{
 					continue;
 				}
-				
+
 				actor.PassedDuration += deltaTime;
 
 				if (actor.PassedDuration >= actor.CoolDownDuration)

@@ -9,12 +9,13 @@ namespace Confrontation.Editor
 	{
 		[Inject] private State _state;
 
-		public CoordinatedMatrix<Cell>       Cells        { get; private set; }
-		public CoordinatedMatrix<Building>   Buildings    { get; private set; }
-		public CoordinatedMatrix<UnitsSquad> LocatedUnits { get; private set; }
-		public CoordinatedMatrix<Garrison>   Garrisons    { get; private set; }
-		public CoordinatedMatrix<Region>     Regions      { get; private set; }
-		public List<Player>                  Players      { get; private set; }
+		public CoordinatedMatrix<Cell>       Cells            { get; private set; }
+		public CoordinatedMatrix<Building>   Buildings        { get; private set; }
+		public List<Building>                StashedBuildings { get; private set; }
+		public CoordinatedMatrix<UnitsSquad> LocatedUnits     { get; private set; }
+		public CoordinatedMatrix<Garrison>   Garrisons        { get; private set; }
+		public CoordinatedMatrix<Region>     Regions          { get; private set; }
+		public List<Player>                  Players          { get; private set; }
 
 		public RegionsNeighboring Neighboring { get; private set; }
 
@@ -25,6 +26,7 @@ namespace Confrontation.Editor
 
 			Cells = new CoordinatedMatrix<Cell>(_state.Sizes);
 			Buildings = new CoordinatedMatrix<Building>(_state.Sizes);
+			StashedBuildings = new List<Building>();
 			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(_state.Sizes);
 			Garrisons = new CoordinatedMatrix<Garrison>(_state.Sizes);
 			Regions = new CoordinatedMatrix<Region>(_state.Sizes);

@@ -15,7 +15,8 @@ namespace Confrontation
 
 			public Building Prefab
 			{
-				get => _prefab;
+				get => _prefab == true ? _prefab : BuildingsCollection.Load(_selectionIndex);
+
 				set => _prefab = value;
 			}
 		}
@@ -31,7 +32,7 @@ namespace Confrontation
 				get => _coordinates;
 				set => _coordinates = value;
 			}
-			
+
 			public Building Prefab
 			{
 				get => _data.Prefab;

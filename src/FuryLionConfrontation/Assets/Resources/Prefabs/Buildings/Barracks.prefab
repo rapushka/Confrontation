@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686997808771183188}
-  - component: {fileID: -7953865157494795579}
+  - component: {fileID: 6529478872557192479}
   - component: {fileID: 2305448757740132536}
   m_Layer: 0
   m_Name: Barracks
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7953865157494795579
+--- !u!114 &6529478872557192479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5771020657915353660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eabb18e29a05430c8a6dfd557da3dc27, type: 3}
+  m_Script: {fileID: 11500000, guid: c1c99790fe3b444c800841782dc8e91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Invisibility>k__BackingField: {fileID: 5614708774350753679}

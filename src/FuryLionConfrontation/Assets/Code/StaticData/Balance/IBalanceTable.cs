@@ -13,6 +13,7 @@ namespace Confrontation
 		EnemiesStats EnemiesStats { get; }
 
 		TimeStats TimeStats { get; }
+		FarmStats FarmStats { get; }
 
 		int BuildPriceFor(Building building);
 	}

@@ -10,6 +10,12 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly IResourcesService _resources;
 
+		private Barrack Barrack => _resources.Buildings.OfType<Barrack>().Single();
+
+		private GoldenMine GoldenMine => _resources.Buildings.OfType<GoldenMine>().Single();
+
+		private Farm Farm => _resources.Buildings.OfType<Farm>().Single();
+
 		public void Initialize() => GenerateBuildings();
 
 		private void GenerateBuildings()
@@ -27,10 +33,11 @@ namespace Confrontation
 
 			if (building is Capital capital)
 			{
-				var barracks = _buildingsFactory.Create(_resources.Barrack, cell);
-				var goldenMine = _buildingsFactory.Create(_resources.GoldenMine, cell);
+				var barrack = _buildingsFactory.Create(Barrack, cell);
+				var goldenMine = _buildingsFactory.Create(GoldenMine, cell);
+				var farm = _buildingsFactory.Create(Farm, cell);
 
-				capital.SetStashedBuildings(barracks, goldenMine);
+				capital.SetStashedBuildings(barrack, goldenMine, farm);
 				return capital;
 			}
 

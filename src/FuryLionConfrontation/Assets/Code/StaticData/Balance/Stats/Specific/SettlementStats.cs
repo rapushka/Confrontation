@@ -8,4 +8,10 @@ namespace Confrontation
 	{
 		[field: SerializeField] public LeveledStats<SettlementLevelStats> LeveledStats { get; private set; }
 	}
+
+	[Serializable]
+	public class SettlementLevelStats : GeneratorStatsBase
+	{
+		[field: SerializeField] public int MaxInGarrisonNumber { get; private set; }
+	}
 }

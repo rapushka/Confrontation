@@ -78,7 +78,7 @@ MonoBehaviour:
       _column: 2
   <Buildings>k__BackingField:
   - _data:
-      _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
+      _prefab: {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
       _selectionIndex: 2
     _coordinates:
       _row: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
       _row: 4
       _column: 4
   - _data:
-      _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
+      _prefab: {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
       _selectionIndex: 2
     _coordinates:
       _row: 4
