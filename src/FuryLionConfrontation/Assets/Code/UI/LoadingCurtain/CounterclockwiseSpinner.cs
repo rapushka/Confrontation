@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public class ClockwiseSpinner : MonoBehaviour
+	public class CounterclockwiseSpinner : MonoBehaviour
 	{
 		[SerializeField] private float _rotationSpeed;
 
@@ -32,7 +32,7 @@ namespace Confrontation
 		{
 			while (await _tokenSource.Token.WaitForUpdate() == false)
 			{
-				Rotation -= _rotationSpeed;
+				Rotation += _rotationSpeed;
 
 				if (Rotation % 360 == 0)
 				{
