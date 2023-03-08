@@ -4,8 +4,10 @@ namespace Confrontation
 	{
 		public override string Name => nameof(Farm);
 
-		public override int UpgradePrice => throw new System.NotImplementedException();
+		public override int UpgradePrice => Stats.UpgradePrice;
 
-		protected override int MaxLevel => throw new System.NotImplementedException();
+		protected override int MaxLevel => Stats.MaxLevel;
+
+		private LeveledStats<FarmLevelStats> Stats => BalanceTable.FarmStats.LeveledStats;
 	}
 }
