@@ -63,6 +63,10 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 1543655047530976274, guid: 767a888a19d2ba20abf6c76e90931c91, type: 3}
           _selectionIndex: 1
+      - <Weight>k__BackingField: 0.75
+        <Item>k__BackingField:
+          _prefab: {fileID: 4195535930623487697, guid: a84db93d4cfb4f303b565e59c51cb900, type: 3}
+          _selectionIndex: 4
   <TimeStats>k__BackingField:
     <NormalTimeScale>k__BackingField: 1
     <AcceleratedTimeScale>k__BackingField: 2.5
