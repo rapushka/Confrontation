@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
 using Zenject;
@@ -10,9 +11,10 @@ namespace Confrontation
 
 		[CanBeNull] private RectTransform _canvas;
 
-		public void ShowLoadingCurtain()            => _loadingCurtain.Show();
+		public async Task ShowLoadingCurtain() => await _loadingCurtain.Show();
+		public async Task HideLoadingCurtain() => await _loadingCurtain.Hide();
+
 		public void ShowImmediatelyLoadingCurtain() => _loadingCurtain.ShowImmediately();
-		public void HideLoadingCurtain()            => _loadingCurtain.Hide();
 		public void HideImmediatelyLoadingCurtain() => _loadingCurtain.HideImmediately();
 	}
 }

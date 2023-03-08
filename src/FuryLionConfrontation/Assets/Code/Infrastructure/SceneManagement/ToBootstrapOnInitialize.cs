@@ -1,13 +1,15 @@
+using System.Threading.Tasks;
+
 namespace Confrontation
 {
 	public class ToBootstrapOnInitialize : ToSceneOnInitialize
 	{
 		protected override string SceneName => Constants.SceneName.BootstrapScene;
 
-		public override void Transfer()
+		public override async Task Transfer()
 		{
 			Mediator.ShowImmediatelyLoadingCurtain();
-			base.Transfer();
+			await base.Transfer();
 		}
 	}
 }
