@@ -2,20 +2,17 @@ using System;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Confrontation
 {
 	public class LoadingCurtain : MonoBehaviour
 	{
-		[Inject] private readonly ISceneTransferService _sceneTransfer;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
 		[Inject] private readonly ITimeService _time;
 
 		[SerializeField] private CanvasGroup _curtain;
 		[SerializeField] private float _fadeDuration = 1f;
-		[SerializeField] private Slider _loadingBar;
 
 		private float _passedDuration;
 
@@ -28,8 +25,6 @@ namespace Confrontation
 		public void ShowImmediately() => EnableCurtain();
 
 		public void HideImmediately() => DisableCurtain();
-
-		private void Update() => _loadingBar.value = _sceneTransfer.LoadingProgress;
 
 		private async Task ShowRoutine()
 		{

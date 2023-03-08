@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3958083965845815235}
   - component: {fileID: 3631271490940688582}
   - component: {fileID: 6751598343442814009}
+  - component: {fileID: 6379113011973615253}
   m_Layer: 5
   m_Name: Loading Circle
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6379113011973615253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853978145794088803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1390dbc8614c00a5c3fadbd8627f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 5
 --- !u!1 &6565411016490223477
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,4 +432,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _curtain: {fileID: 3615310031561314296}
   _fadeDuration: 0.15
-  _loadingBar: {fileID: 0}
