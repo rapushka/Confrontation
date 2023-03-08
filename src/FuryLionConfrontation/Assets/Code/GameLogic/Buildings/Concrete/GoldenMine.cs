@@ -20,7 +20,7 @@ namespace Confrontation
 
 		private int GoldProducingRate => CurrentLevelStats.Amount;
 
-		private Player OwnerPlayer => _gameSession.GetPlayerFor(Field.Regions[Coordinates].OwnerPlayerId);
+		private Player OwnerPlayer => _gameSession.GetPlayerFor(OwnerPlayerId);
 
 		private GeneratorStatsBase CurrentLevelStats => BalanceTable.GoldenMineStats.LeveledStats[Level];
 

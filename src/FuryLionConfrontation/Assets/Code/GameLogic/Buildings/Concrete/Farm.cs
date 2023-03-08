@@ -6,6 +6,8 @@ namespace Confrontation
 
 		public override int UpgradePrice => Stats.UpgradePrice;
 
+		public FarmLevelStats CurrentLevelStats => Stats[Level];
+		
 		protected override int MaxLevel => Stats.MaxLevel;
 
 		private LeveledStats<FarmLevelStats> Stats => BalanceTable.FarmStats.LeveledStats;

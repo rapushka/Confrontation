@@ -4,8 +4,6 @@ namespace Confrontation
 {
 	public class Capital : Settlement
 	{
-		public int OwnerPlayerId => Field.Regions[Coordinates].OwnerPlayerId;
-
 		private readonly List<Generator> _stashedGenerators = new();
 
 		public IEnumerable<IActorWithCoolDown> StashedBuildings => _stashedGenerators;

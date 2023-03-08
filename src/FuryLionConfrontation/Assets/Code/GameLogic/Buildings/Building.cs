@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 using Zenject;
 
 namespace Confrontation
@@ -20,6 +21,8 @@ namespace Confrontation
 
 		public bool IsOnMaxLevel => Level >= MaxLevel;
 
+		public int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
+		
 		public Coordinates Coordinates
 		{
 			get => _coordinates;
@@ -53,6 +56,7 @@ namespace Confrontation
 			public T Create<T>(T prefab, Cell cell)
 				where T : Building
 			{
+				Assert.IsNotNull(prefab);
 				var building = base.Create(prefab);
 				building.transform.SetParent(cell.transform, worldPositionStays: false);
 				building.Coordinates = cell.Coordinates;
