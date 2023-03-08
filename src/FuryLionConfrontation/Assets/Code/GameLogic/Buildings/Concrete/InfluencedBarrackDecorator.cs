@@ -23,6 +23,6 @@ namespace Confrontation
 		}
 
 		private float DecreaseOnCoefficient(float current, Farm farm)
-			=> current - farm.CurrentLevelStats.IncreaseCoefficient;
+			=> current - farm.CurrentLevelStats.SpawnAccelerationCoefficient;
 	}
 }

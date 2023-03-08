@@ -14,6 +14,6 @@ namespace Confrontation
 	[Serializable]
 	public class FarmLevelStats : IStats
 	{
-		[field: SerializeField] public float IncreaseCoefficient { get; private set; }
+		[field: SerializeField] public float SpawnAccelerationCoefficient { get; private set; }
 	}
 }
