@@ -14,6 +14,7 @@ namespace Confrontation
 
 				var baseDuration = base.CoolDownDuration;
 				var duration = Field.Buildings
+				                    .Union(Field.StashedBuildings)
 				                    .OfType<Farm>()
 				                    .Where((f) => f.OwnerPlayerId == ownerPlayerId)
 				                    .Aggregate(baseDuration, DecreaseOnCoefficient);

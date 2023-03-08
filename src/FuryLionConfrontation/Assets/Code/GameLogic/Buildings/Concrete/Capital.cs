@@ -1,26 +1,22 @@
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Confrontation
 {
 	public class Capital : Settlement
 	{
-		private readonly List<Generator> _stashedGenerators = new();
-
-		public IEnumerable<IActorWithCoolDown> StashedBuildings => _stashedGenerators;
-
-		public void SetStashedBuildings(params Generator[] generators)
+		public void SetStashedBuildings(params Building[] buildings)
 		{
-			generators.ForEach((g) => g.Invisibility.MakeInvisible());
+			buildings.ForEach((b) => b.Invisibility.MakeInvisible());
 
-			_stashedGenerators.Clear();
-			_stashedGenerators.AddRange(generators);
+			buildings.ForEach((b) => b.Coordinates = Coordinates);
+			Field.StashedBuildings.AddRange(buildings);
 		}
 
 		public override void LevelUp()
 		{
 			base.LevelUp();
 
-			_stashedGenerators.ForEach((a) => a.LevelUp());
+			Field.StashedBuildings.Where((b) => b.Coordinates == Coordinates).ForEach((a) => a.LevelUp());
 		}
 	}
 }

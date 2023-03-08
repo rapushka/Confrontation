@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Confrontation
 {
 	public interface IField
@@ -5,6 +7,8 @@ namespace Confrontation
 		CoordinatedMatrix<Cell> Cells { get; }
 
 		CoordinatedMatrix<Building> Buildings { get; }
+		
+		List<Building> StashedBuildings { get; }
 
 		CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }
 

@@ -12,6 +12,7 @@ namespace Confrontation
 
 			Cells = new CoordinatedMatrix<Cell>(selectedLevelSizes);
 			Buildings = new CoordinatedMatrix<Building>(selectedLevelSizes);
+			StashedBuildings = new List<Building>();
 			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(selectedLevelSizes);
 			Regions = new CoordinatedMatrix<Region>(selectedLevelSizes);
 			Garrisons = new CoordinatedMatrix<Garrison>(selectedLevelSizes);
@@ -21,6 +22,8 @@ namespace Confrontation
 		public CoordinatedMatrix<Cell> Cells { get; }
 
 		public CoordinatedMatrix<Building> Buildings { get; }
+
+		public List<Building> StashedBuildings { get; }
 
 		public CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }
 

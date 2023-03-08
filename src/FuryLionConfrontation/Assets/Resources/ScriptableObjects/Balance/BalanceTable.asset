@@ -47,8 +47,8 @@ MonoBehaviour:
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 10
       <StatsByLevel>k__BackingField:
-      - <IncreaseCoefficient>k__BackingField: 0.2
-      - <IncreaseCoefficient>k__BackingField: 0.35
+      - <SpawnAccelerationCoefficient>k__BackingField: 0.2
+      - <SpawnAccelerationCoefficient>k__BackingField: 0.35
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
       <Min>k__BackingField: 0.5
