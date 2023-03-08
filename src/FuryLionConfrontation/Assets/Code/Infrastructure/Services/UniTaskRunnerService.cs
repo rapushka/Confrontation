@@ -13,12 +13,7 @@ namespace Confrontation
 
 		private void OnDestroy() => StopAllRoutines();
 
-		public void StopAllRoutines()
-		{
-			_cancellationToken.Cancel(throwOnFirstException: true);
-			_cancellationToken.Dispose();
-			_cancellationToken = new CancellationTokenSource();
-		}
+		public void StopAllRoutines() => _cancellationToken = _cancellationToken.CancelAndReplace();
 
 		public async Task StartRoutine(Func<CancellationTokenSource, Task> cancelableTask)
 			=> await cancelableTask.Invoke(_cancellationToken);

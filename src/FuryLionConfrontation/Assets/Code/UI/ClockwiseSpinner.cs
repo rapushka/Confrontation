@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 namespace Confrontation
@@ -7,6 +8,7 @@ namespace Confrontation
 		[SerializeField] private float _rotationSpeed;
 
 		private float _rotation;
+		private CancellationTokenSource _tokenSource = new();
 
 		private float Rotation
 		{
@@ -18,15 +20,24 @@ namespace Confrontation
 			}
 		}
 
-		private void OnDisable() => ResetRotation();
+		private void OnEnable() => Rotate();
 
-		private void Update()
+		private void OnDisable()
 		{
-			Rotation -= _rotationSpeed;
+			_tokenSource = _tokenSource.CancelAndReplace();
+			ResetRotation();
+		}
 
-			if (Rotation % 360 == 0)
+		private async void Rotate()
+		{
+			while (await _tokenSource.Token.WaitForUpdate() == false)
 			{
-				ResetRotation();
+				Rotation -= _rotationSpeed;
+
+				if (Rotation % 360 == 0)
+				{
+					ResetRotation();
+				}
 			}
 		}
 
