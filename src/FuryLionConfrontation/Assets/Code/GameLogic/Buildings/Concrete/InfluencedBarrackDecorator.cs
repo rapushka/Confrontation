@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using UnityEngine;
 
 namespace Confrontation
 {
@@ -9,13 +11,18 @@ namespace Confrontation
 			get
 			{
 				var ownerPlayerId = OwnerPlayerId;
-				var influencers = Field.Buildings
-				                       .OfType<Farm>()
-				                       .Where((f) => f.OwnerPlayerId == ownerPlayerId);
 
 				var baseDuration = base.CoolDownDuration;
-				return influencers.Aggregate(baseDuration, (c, f) => c - f.CurrentLevelStats.IncreaseCoefficient);
+				var duration = Field.Buildings
+				                    .OfType<Farm>()
+				                    .Where((f) => f.OwnerPlayerId == ownerPlayerId)
+				                    .Aggregate(baseDuration, DecreaseOnCoefficient);
+
+				return Math.Max(duration, Mathf.Epsilon);
 			}
 		}
+
+		private float DecreaseOnCoefficient(float current, Farm farm)
+			=> current - farm.CurrentLevelStats.IncreaseCoefficient;
 	}
 }

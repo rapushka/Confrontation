@@ -8,15 +8,11 @@ namespace Confrontation
 	{
 		[Inject] private readonly IField _field;
 		[Inject] private readonly Player _player;
-		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly IBalanceTable _balanceTable;
 
 		public UnitsSquad[] Units => _field.LocatedUnits.Where(IsOurUnit).AsArray();
 
 		public IEnumerable<Cell> EmptyCells => _field.Cells.Where((c) => c.OwnerPlayerId == _player.Id && c.IsEmpty);
-
-		public IEnumerable<Building> CanBeBoughtBuildings
-			=> _resources.Buildings.Where((b) => _player.Stats.IsEnoughGoldFor(_balanceTable.BuildPriceFor(b)));
 
 		public IEnumerable<Region> Regions => _field.Regions.Where((r) => r.OwnerPlayerId == _player.Id).OnlyUnique();
 
@@ -28,13 +24,13 @@ namespace Confrontation
 
 		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
 
-		public IEnumerable<Settlement> NeighboursFor(Cell cell)
-			=> _field.Buildings
-			         .OfType<Settlement>()
-			         .Where((v) => IsNeighbours(cell.RelatedRegion, v.RelatedCell.RelatedRegion));
+		public IEnumerable<Settlement> NeighboursFor(Cell cell) =>
+			_field.Buildings
+			      .OfType<Settlement>()
+			      .Where((v) => IsNeighbours(cell.RelatedRegion, v.RelatedCell.RelatedRegion));
 
-		private bool IsNeighbours(Region currentRegion, Region targetRegion)
-			=> _field.Neighboring.IsNeighbours(targetRegion, currentRegion)
-			   && targetRegion != currentRegion;
+		private bool IsNeighbours(Region currentRegion, Region targetRegion) =>
+			_field.Neighboring.IsNeighbours(targetRegion, currentRegion)
+			&& targetRegion != currentRegion;
 	}
 }
