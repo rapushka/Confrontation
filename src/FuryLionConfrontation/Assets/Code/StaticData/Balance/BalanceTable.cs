@@ -14,6 +14,8 @@ namespace Confrontation
 
 		[field: SerializeField] public SettlementStats SettlementStats { get; private set; }
 
+		[field: SerializeField] public FarmStats FarmStats { get; private set; }
+
 		[field: SerializeField] public EnemiesStats EnemiesStats { get; private set; }
 
 		[field: SerializeField] public TimeStats TimeStats { get; private set; }
@@ -23,6 +25,7 @@ namespace Confrontation
 			{
 				Barrack    => BarrackStats.Price,
 				GoldenMine => GoldenMineStats.Price,
+				Farm       => FarmStats.Price,
 				var _      => throw new ArgumentException($"There is no price for {building.Name}"),
 			};
 	}

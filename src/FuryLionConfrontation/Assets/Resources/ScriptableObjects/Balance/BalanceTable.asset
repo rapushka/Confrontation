@@ -42,6 +42,13 @@ MonoBehaviour:
       - <CoolDown>k__BackingField: 3.5
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 3
+  <FarmStats>k__BackingField:
+    <Price>k__BackingField: 7
+    <LeveledStats>k__BackingField:
+      <UpgradePrice>k__BackingField: 10
+      <StatsByLevel>k__BackingField:
+      - <IncreaseCoefficient>k__BackingField: 0.1
+      - <IncreaseCoefficient>k__BackingField: 0.15
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
       <Min>k__BackingField: 0.5
