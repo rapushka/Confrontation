@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buildings:
   - {fileID: 1543655047530976274, guid: 767a888a19d2ba20abf6c76e90931c91, type: 3}
-  - {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
+  - {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
   - {fileID: 4195535930623487697, guid: a84db93d4cfb4f303b565e59c51cb900, type: 3}
   <SettlementPrefab>k__BackingField: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
   <CapitalPrefab>k__BackingField: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}

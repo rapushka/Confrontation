@@ -47,8 +47,8 @@ MonoBehaviour:
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 10
       <StatsByLevel>k__BackingField:
-      - <IncreaseCoefficient>k__BackingField: 0.1
-      - <IncreaseCoefficient>k__BackingField: 0.15
+      - <IncreaseCoefficient>k__BackingField: 0.2
+      - <IncreaseCoefficient>k__BackingField: 0.35
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
       <Min>k__BackingField: 0.5
@@ -57,7 +57,7 @@ MonoBehaviour:
       _entries:
       - <Weight>k__BackingField: 1
         <Item>k__BackingField:
-          _prefab: {fileID: -7953865157494795579, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
+          _prefab: {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
           _selectionIndex: 2
       - <Weight>k__BackingField: 0.5
         <Item>k__BackingField:
