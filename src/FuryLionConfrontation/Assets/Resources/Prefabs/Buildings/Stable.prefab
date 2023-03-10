@@ -177,7 +177,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8310459712274545284, guid: 855d4acc65d37684a91236a69f732a50, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 855d4acc65d37684a91236a69f732a50, type: 3}
 --- !u!23 &7711624591289487067 stripped
 MeshRenderer:

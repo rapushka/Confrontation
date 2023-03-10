@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 
 namespace Confrontation
@@ -18,11 +17,11 @@ namespace Confrontation
 				                 .Where((f) => f.OwnerPlayerId == ownerPlayerId)
 				                 .Aggregate(baseSpeed, DecreaseOnCoefficient);
 
-				return Math.Min(speed, DistanceToTarget);
+				return speed;
 			}
 		}
 
 		private float DecreaseOnCoefficient(float current, Stable stable)
-			=> current - stable.CurrentLevelStats.UnitsAccelerationCoefficient;
+			=> current + stable.CurrentLevelStats.UnitsAccelerationCoefficient;
 	}
 }
