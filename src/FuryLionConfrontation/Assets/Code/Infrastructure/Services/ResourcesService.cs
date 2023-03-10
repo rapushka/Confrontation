@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Confrontation
@@ -11,10 +10,6 @@ namespace Confrontation
 		Capital CapitalPrefab { get; }
 
 		TypedDictionary<Building> Buildings { get; }
-
-		Barrack Barrack { get; }
-
-		GoldenMine GoldenMine { get; }
 	}
 
 	[CreateAssetMenu(fileName = "Resources", menuName = nameof(Confrontation) + "/Resources")]
@@ -25,12 +20,8 @@ namespace Confrontation
 		[field: SerializeField] private List<Building> _buildings;
 
 		[field: SerializeField] public Settlement SettlementPrefab { get; private set; }
-		[field: SerializeField] public Capital CapitalPrefab { get; private set; }
+		[field: SerializeField] public Capital    CapitalPrefab    { get; private set; }
 
 		public TypedDictionary<Building> Buildings => _buildingsDictionary ?? new TypedDictionary<Building>(_buildings);
-
-		public Barrack Barrack => _buildings.OfType<Barrack>().Single();
-
-		public GoldenMine GoldenMine => _buildings.OfType<GoldenMine>().Single();
 	}
 }

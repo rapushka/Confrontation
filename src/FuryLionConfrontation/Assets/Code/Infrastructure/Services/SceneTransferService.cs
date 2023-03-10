@@ -1,20 +1,35 @@
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace Confrontation
 {
 	public interface ISceneTransferService : IService
 	{
-		void ToScene(string sceneName);
+		Task ToScene(string sceneName);
 
 		bool IsCurrentScene(string sceneName);
+
+		float LoadingProgress { get; }
 	}
 
 	public class SceneTransferService : ISceneTransferService
 	{
-		[Inject] public SceneTransferService() { }
+		public float LoadingProgress { get; private set; }
 
-		public void ToScene(string sceneName) => SceneManager.LoadScene(sceneName);
+		public async Task ToScene(string sceneName)
+		{
+			var loadSceneAsync = SceneManager.LoadSceneAsync(sceneName);
+
+			while (loadSceneAsync.isDone == false)
+			{
+				VisualiseProgress(loadSceneAsync.progress);
+				await UniTask.Yield();
+			}
+		}
+
+		private void VisualiseProgress(float progress) => LoadingProgress = Mathf.Clamp01(progress);
 
 		public bool IsCurrentScene(string sceneName) => SceneManager.GetActiveScene().name == sceneName;
 	}

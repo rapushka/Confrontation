@@ -11,7 +11,9 @@ namespace Confrontation
 		[Inject] private readonly ArtificialIntelligence _ai;
 
 		private IEnumerable<IActorWithCoolDown> ActorsWithCoolDown
-			=> _field.Buildings.OfType<IActorWithCoolDown>().Union(_ai.Enemies);
+			=> _field.Buildings.OfType<IActorWithCoolDown>()
+			         .Union(_ai.Enemies)
+			         .Union(_field.StashedBuildings.OfType<IActorWithCoolDown>());
 
 		public void Tick()
 		{
@@ -22,7 +24,7 @@ namespace Confrontation
 				{
 					continue;
 				}
-				
+
 				actor.PassedDuration += deltaTime;
 
 				if (actor.PassedDuration >= actor.CoolDownDuration)

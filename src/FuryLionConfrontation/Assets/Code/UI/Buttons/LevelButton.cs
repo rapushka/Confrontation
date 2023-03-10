@@ -19,10 +19,10 @@ namespace Confrontation
 			_textMesh.text = _levelNumber.ToString();
 		}
 
-		protected override void OnButtonClick()
+		protected override async void OnButtonClick()
 		{
 			_user.SelectedLevel = _level;
-			_toGameplay.Transfer();
+			await _toGameplay.Transfer();
 		}
 
 		public class Factory : PlaceholderFactory<int, ILevel, LevelButton> { }

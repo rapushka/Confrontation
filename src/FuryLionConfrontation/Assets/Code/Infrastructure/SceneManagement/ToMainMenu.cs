@@ -1,14 +1,16 @@
+using System.Threading.Tasks;
+
 namespace Confrontation
 {
 	public class ToMainMenu : ToSceneBase
 	{
 		protected override string SceneName => Constants.SceneName.MainMenuScene;
 
-		public override void Transfer()
+		public override async Task Transfer()
 		{
-			Mediator.ShowLoadingCurtain();
-			base.Transfer();
-			Mediator.HideLoadingCurtain();
+			await Mediator.ShowLoadingCurtain();
+			await base.Transfer();
+			await Mediator.HideLoadingCurtain();
 		}
 	}
 }

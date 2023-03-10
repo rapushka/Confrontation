@@ -2,13 +2,13 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GoldenMine : Building, IActorWithCoolDown
+	public class GoldenMine : Generator
 	{
 		[Inject] private readonly GameSession _gameSession;
 
-		public float PassedDuration { get; set; }
+		public override float PassedDuration { get; set; }
 
-		public float CoolDownDuration => CurrentLevelStats.CoolDown;
+		public override float CoolDownDuration => CurrentLevelStats.CoolDown;
 
 		public override string Name => nameof(GoldenMine);
 
@@ -20,11 +20,11 @@ namespace Confrontation
 
 		private int GoldProducingRate => CurrentLevelStats.Amount;
 
-		private Player OwnerPlayer => _gameSession.GetPlayerFor(Field.Regions[Coordinates].OwnerPlayerId);
+		private Player OwnerPlayer => _gameSession.GetPlayerFor(OwnerPlayerId);
 
 		private GeneratorStatsBase CurrentLevelStats => BalanceTable.GoldenMineStats.LeveledStats[Level];
 
-		public void Action() => ProduceGold();
+		public override void Action() => ProduceGold();
 
 		private void ProduceGold() => OwnerPlayer?.Stats.Earn(GoldProducingRate);
 	}

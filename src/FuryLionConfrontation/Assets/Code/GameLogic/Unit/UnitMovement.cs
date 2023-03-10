@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -15,11 +16,13 @@ namespace Confrontation
 
 		private Cell _targetCell;
 
-		private float Speed => _balance.UnitStats.BaseSpeed;
-
 		public event Action TargetReached;
 
+		protected virtual float Speed => _balance.UnitStats.BaseSpeed;
+
 		private float ScaledSpeed => Speed * _timeService.FixedDeltaTime;
+
+		private float DistanceToTarget => Vector3.Distance(CurrentPosition, TargetPosition);
 
 		private Vector3 TargetPosition => _targetCell.transform.position + Constants.VerticalOffsetAboveCell;
 
@@ -41,9 +44,10 @@ namespace Confrontation
 			}
 		}
 
-		private async void MoveToTarget(CancellationTokenSource source)
+		private async Task MoveToTarget(CancellationTokenSource source)
 		{
-			while (IsTargetReach() == false)
+			while (source.Token.IsCancellationRequested == false
+			       && IsTargetReach() == false)
 			{
 				_transform.position = MoveTowardsTarget();
 
@@ -58,6 +62,6 @@ namespace Confrontation
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
-		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Mathf.Epsilon;
+		private bool IsTargetReach() => DistanceToTarget < Mathf.Epsilon;
 	}
 }

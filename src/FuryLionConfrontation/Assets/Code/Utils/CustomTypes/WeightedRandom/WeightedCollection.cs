@@ -10,13 +10,10 @@ namespace Confrontation
 	{
 		[SerializeField] private List<Entry<T>> _entries = new();
 
-		private float _totalWeight;
-
-		public WeightedCollection() => _totalWeight = _entries.Sum((x) => x.Weight);
-
 		public T PickRandom()
 		{
-			var randomRate = UnityEngine.Random.value * _totalWeight;
+			var totalWeight = _entries.Sum((x) => x.Weight);
+			var randomRate = UnityEngine.Random.value * totalWeight;
 			var currentWeight = 0f;
 
 			foreach (var entry in _entries)

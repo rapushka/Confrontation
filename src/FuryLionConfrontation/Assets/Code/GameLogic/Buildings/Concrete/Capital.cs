@@ -1,27 +1,22 @@
+using System.Linq;
+
 namespace Confrontation
 {
 	public class Capital : Settlement
 	{
-		public int OwnerPlayerId => Field.Regions[Coordinates].OwnerPlayerId;
-
-		private Barrack _barrack;
-		private GoldenMine _goldenMine;
-
-		public void SetStashedBuildings(Barrack barrack, GoldenMine goldenMine)
+		public void SetStashedBuildings(params Building[] buildings)
 		{
-			barrack.Invisibility.MakeInvisible();
-			goldenMine.Invisibility.MakeInvisible();
+			buildings.ForEach((b) => b.Invisibility.MakeInvisible());
 
-			_barrack = barrack;
-			_goldenMine = goldenMine;
+			buildings.ForEach((b) => b.Coordinates = Coordinates);
+			Field.StashedBuildings.AddRange(buildings);
 		}
 
-		public override void Action()
+		public override void LevelUp()
 		{
-			base.Action();
+			base.LevelUp();
 
-			_barrack.Action();
-			_goldenMine.Action();
+			Field.StashedBuildings.Where((b) => b.Coordinates == Coordinates).ForEach((a) => a.LevelUp());
 		}
 	}
 }

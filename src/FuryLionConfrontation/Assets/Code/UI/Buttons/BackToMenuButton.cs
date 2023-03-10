@@ -6,6 +6,6 @@ namespace Confrontation
 	{
 		[Inject] private readonly ToMainMenu _toMainMenu;
 
-		protected override void OnButtonClick() => _toMainMenu.Transfer();
+		protected override async void OnButtonClick() => await _toMainMenu.Transfer();
 	}
 }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Zenject;
 
 namespace Confrontation
@@ -10,12 +11,12 @@ namespace Confrontation
 
 		protected abstract string SceneName { get; }
 
-		public virtual void Transfer()
+		public virtual async Task Transfer()
 		{
 			if (SceneTransfer.IsCurrentScene(SceneName) == false)
 			{
 				_routinesRunner.StopAllRoutines();
-				SceneTransfer.ToScene(SceneName);
+				await SceneTransfer.ToScene(SceneName);
 			}
 		}
 	}
