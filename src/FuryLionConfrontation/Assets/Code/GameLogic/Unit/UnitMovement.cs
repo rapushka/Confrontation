@@ -11,14 +11,22 @@ namespace Confrontation
 		[Inject] private readonly ITimeService _timeService;
 		[Inject] private readonly IBalanceTable _balance;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
+		[Inject] private readonly IField _field;
 
 		[SerializeField] private Transform _transform;
+		[SerializeField] private UnitsSquad _squad;
 
 		private Cell _targetCell;
 
-		private float Speed => _balance.UnitStats.BaseSpeed;
-
 		public event Action TargetReached;
+
+		protected virtual float Speed => _balance.UnitStats.BaseSpeed;
+
+		protected IField Field => _field;
+
+		protected int OwnerPlayerId => _squad.OwnerPlayerId;
+
+		protected float DistanceToTarget => Vector3.Distance(CurrentPosition, TargetPosition);
 
 		private float ScaledSpeed => Speed * _timeService.FixedDeltaTime;
 
@@ -60,6 +68,6 @@ namespace Confrontation
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
-		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Mathf.Epsilon;
+		private bool IsTargetReach() => DistanceToTarget < Mathf.Epsilon;
 	}
 }
