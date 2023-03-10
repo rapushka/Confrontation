@@ -49,6 +49,13 @@ MonoBehaviour:
       <StatsByLevel>k__BackingField:
       - <SpawnAccelerationCoefficient>k__BackingField: 0.2
       - <SpawnAccelerationCoefficient>k__BackingField: 0.35
+  <StableStats>k__BackingField:
+    <Price>k__BackingField: 10
+    <LeveledStats>k__BackingField:
+      <UpgradePrice>k__BackingField: 10
+      <StatsByLevel>k__BackingField:
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.1
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.15
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
       <Min>k__BackingField: 0.5
@@ -67,6 +74,10 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 4195535930623487697, guid: a84db93d4cfb4f303b565e59c51cb900, type: 3}
           _selectionIndex: 4
+      - <Weight>k__BackingField: 0.5
+        <Item>k__BackingField:
+          _prefab: {fileID: 4396281347570571264, guid: 3b423530431c56e72be520ee66468150, type: 3}
+          _selectionIndex: 5
   <TimeStats>k__BackingField:
     <NormalTimeScale>k__BackingField: 1
     <AcceleratedTimeScale>k__BackingField: 2.5
