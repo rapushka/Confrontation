@@ -14,6 +14,7 @@ namespace Confrontation
 				(nameof(Barrack), Constants.ResourcePath.Barrack),
 				(nameof(Capital), Constants.ResourcePath.Capital),
 				(nameof(Farm), Constants.ResourcePath.Farm),
+				(nameof(Stable), Constants.ResourcePath.Stable),
 			};
 
 		public static string[] BuildingsNames => _buildings.Select((t) => t.Name).ToArray();

@@ -16,11 +16,13 @@ namespace Confrontation
 
 		private Cell _targetCell;
 
-		private float Speed => _balance.UnitStats.BaseSpeed;
-
 		public event Action TargetReached;
 
+		protected virtual float Speed => _balance.UnitStats.BaseSpeed;
+
 		private float ScaledSpeed => Speed * _timeService.FixedDeltaTime;
+
+		private float DistanceToTarget => Vector3.Distance(CurrentPosition, TargetPosition);
 
 		private Vector3 TargetPosition => _targetCell.transform.position + Constants.VerticalOffsetAboveCell;
 
@@ -60,6 +62,6 @@ namespace Confrontation
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
-		private bool IsTargetReach() => Vector3.Distance(CurrentPosition, TargetPosition) < Mathf.Epsilon;
+		private bool IsTargetReach() => DistanceToTarget < Mathf.Epsilon;
 	}
 }
