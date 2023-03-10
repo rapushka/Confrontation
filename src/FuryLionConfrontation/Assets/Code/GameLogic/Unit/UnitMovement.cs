@@ -11,10 +11,8 @@ namespace Confrontation
 		[Inject] private readonly ITimeService _timeService;
 		[Inject] private readonly IBalanceTable _balance;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
-		[Inject] private readonly IField _field;
 
 		[SerializeField] private Transform _transform;
-		[SerializeField] private UnitsSquad _squad;
 
 		private Cell _targetCell;
 
@@ -22,13 +20,9 @@ namespace Confrontation
 
 		protected virtual float Speed => _balance.UnitStats.BaseSpeed;
 
-		protected IField Field => _field;
-
-		protected int OwnerPlayerId => _squad.OwnerPlayerId;
-
-		protected float DistanceToTarget => Vector3.Distance(CurrentPosition, TargetPosition);
-
 		private float ScaledSpeed => Speed * _timeService.FixedDeltaTime;
+
+		private float DistanceToTarget => Vector3.Distance(CurrentPosition, TargetPosition);
 
 		private Vector3 TargetPosition => _targetCell.transform.position + Constants.VerticalOffsetAboveCell;
 
