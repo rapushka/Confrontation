@@ -9,11 +9,13 @@ namespace Confrontation
 		[SerializeField] private LevelButton _levelButtonPrefab;
 		[SerializeField] private List<LevelScriptableObject> _levels;
 		[SerializeField] private Transform _levelsGridRoot;
+		[SerializeField] private LevelEditorUI _levelEditorUIPrefab;
+		[SerializeField] private RectTransform _uiRoot;
 
 		public override void InstallBindings()
 		{
 			Container.BindInstance(_levelButtonPrefab).AsSingle();
-			
+
 			InstallForLevelButtonsSpawner();
 
 			Container.Bind<ToGameplay>().AsSingle();
@@ -21,6 +23,20 @@ namespace Confrontation
 
 			Container.BindFactory<int, ILevel, LevelButton, LevelButton.Factory>()
 			         .FromComponentInNewPrefab(_levelButtonPrefab);
+
+			InstallLevelEditor();
+		}
+
+		private void InstallLevelEditor()
+		{
+#if UNITY_EDITOR
+			Container.BindInterfacesAndSelfTo<LevelEditorUI>()
+			         .FromComponentInNewPrefab(_levelEditorUIPrefab)
+			         .UnderTransform(_uiRoot)
+			         .AsSingle();
+
+			Container.BindInstance(_levels).WhenInjectedInto<LevelEditorUI>();
+#endif
 		}
 
 		private void InstallForLevelButtonsSpawner()
