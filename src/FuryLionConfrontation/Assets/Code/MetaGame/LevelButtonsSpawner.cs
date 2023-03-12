@@ -23,11 +23,4 @@ namespace Confrontation
 			_counter++;
 		}
 	}
-
-	public class EditLevelButtonsSpawner : LevelButtonsSpawner
-	{
-		[Inject] private readonly LevelEditorUI _levelEditorUI;
-
-		protected override Transform Parent => _levelEditorUI.LevelListRoot;
-	}
 }

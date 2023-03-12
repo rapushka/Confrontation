@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
@@ -12,7 +11,7 @@ namespace Confrontation
 		[SerializeField] private LineRenderer _orderLineRenderer;
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
-		[FormerlySerializedAs("_accelerateTimeButton")] [SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
+		[SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
 		[SerializeField] private CameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 		[SerializeField] private RectTransform _canvas;

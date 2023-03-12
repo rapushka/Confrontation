@@ -492,7 +492,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15167b870b6b3e722962ab06f4af73c0, type: 2}
   - {fileID: 11400000, guid: 76029cc7915db323dbd3cdd2ac50a1c6, type: 2}
   _levelsGridRoot: {fileID: 2073308227}
-  _levelEditorUIPrefab: {fileID: 4812187423862855204, guid: 369fd3a9b1b58a4d6ac67ec67d1f1348, type: 3}
+  _levelsForEditorPanelPrefab: {fileID: 4812187423862855204, guid: 369fd3a9b1b58a4d6ac67ec67d1f1348, type: 3}
   _uiRoot: {fileID: 580221521}
 --- !u!1 &2073308226
 GameObject:

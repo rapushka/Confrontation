@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4812187423862855205}
   - component: {fileID: 4812187423862855204}
   m_Layer: 0
-  m_Name: Level Editor UI
+  m_Name: Level for Editor Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b835be1a384849be53899a0971c360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelListRoot: {fileID: 4280742453246214132}
+  <LevelListRoot>k__BackingField: {fileID: 4280742453246214132}
 --- !u!1001 &4812187424037104960
 PrefabInstance:
   m_ObjectHideFlags: 0
