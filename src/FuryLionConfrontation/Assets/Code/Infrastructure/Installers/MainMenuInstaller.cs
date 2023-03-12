@@ -20,8 +20,6 @@ namespace Confrontation
 
 			InstallForLevelButtonsSpawner();
 
-			Container.Bind<ToGameplay>().AsSingle();
-			Container.Bind<ToLevelEditor>().AsSingle();
 			Container.BindInterfacesTo<LevelButtonsSpawner>().AsSingle();
 
 			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
