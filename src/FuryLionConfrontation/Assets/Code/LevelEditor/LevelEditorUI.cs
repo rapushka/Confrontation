@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Confrontation
@@ -9,9 +8,9 @@ namespace Confrontation
 	{
 		[Inject] private readonly List<LevelScriptableObject> _levels;
 
-		[SerializeField] private LevelListItem levelListItemPrefab;
-		[SerializeField] private Transform levelListContent;
-		[SerializeField] private InputField newLevelNameInput;
+		[SerializeField] private Transform _levelListRoot;
+
+		public Transform LevelListRoot => _levelListRoot;
 
 		public void Initialize() { }
 	}

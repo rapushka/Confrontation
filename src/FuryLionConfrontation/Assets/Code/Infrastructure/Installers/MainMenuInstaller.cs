@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
@@ -21,6 +20,7 @@ namespace Confrontation
 			InstallForLevelButtonsSpawner();
 
 			Container.Bind<ToGameplay>().AsSingle();
+			Container.Bind<ToLevelEditor>().AsSingle();
 			Container.BindInterfacesTo<LevelButtonsSpawner>().AsSingle();
 
 			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
@@ -41,7 +41,9 @@ namespace Confrontation
 
 			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
 			         .FromComponentInNewPrefab(_editLevelButtonPrefab)
-			         .WhenInjectedInto<EditLevelButton>();
+			         .WhenInjectedInto<EditLevelButtonsSpawner>();
+			
+			Container.BindInterfacesAndSelfTo<EditLevelButtonsSpawner>().AsSingle();
 
 			Container.BindInstance(_levels).WhenInjectedInto<LevelEditorUI>();
 #endif
