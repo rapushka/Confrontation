@@ -4,11 +4,11 @@ using Zenject;
 
 namespace Confrontation
 {
-	public abstract class LevelSelectionButtonBase : ButtonBase
+	public abstract class LevelButtonBase : ButtonBase
 	{
 		[Inject] protected readonly ILevel Level;
 		[Inject] protected readonly User User;
-		
+
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
 		protected abstract ToSceneBase ToScene { get; }
@@ -18,16 +18,16 @@ namespace Confrontation
 			User.SelectedLevel = Level;
 			await ToScene.Transfer();
 		}
-		
-		public class Factory : PlaceholderFactory<ILevel, PlayLevelButton>
+
+		public class Factory : PlaceholderFactory<ILevel, LevelButtonBase>
 		{
-			public PlayLevelButton Create(int levelNumber, ILevel level)
+			public T Create<T>(int levelNumber, ILevel level)
+				where T : LevelButtonBase
 			{
 				var levelButton = base.Create(level);
 				levelButton._textMesh.text = levelNumber.ToString();
-				return levelButton;
+				return (T)levelButton;
 			}
 		}
-
 	}
 }

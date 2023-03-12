@@ -484,7 +484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff618bc2375041a1a99cb5b4e0216a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelButtonPrefab: {fileID: 1539250484, guid: b138297eec1fc37c7adf952a1603be30, type: 3}
+  _playLevelButtonPrefab: {fileID: 1539250484, guid: b138297eec1fc37c7adf952a1603be30, type: 3}
+  _editLevelButtonPrefab: {fileID: 2235215483150036155, guid: 806fe1acaf40772a19309ead7a5303d2, type: 3}
   _levels:
   - {fileID: 11400000, guid: c632137e80d092fcda1536fb52f05900, type: 2}
   - {fileID: 11400000, guid: 3e4d1105597c1d2ae8bd0300909f7954, type: 2}

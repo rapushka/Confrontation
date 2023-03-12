@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class PlayLevelButton : LevelSelectionButtonBase
+	public class PlayLevelButton : LevelButtonBase
 	{
 		[Inject] private readonly ToGameplay _toGameplay;
 

@@ -8,6 +8,7 @@ namespace Confrontation
 	public class MainMenuInstaller : MonoInstaller
 	{
 		[SerializeField] private PlayLevelButton _playLevelButtonPrefab;
+		[SerializeField] private EditLevelButton _editLevelButtonPrefab;
 		[SerializeField] private List<LevelScriptableObject> _levels;
 		[SerializeField] private Transform _levelsGridRoot;
 		[SerializeField] private LevelEditorUI _levelEditorUIPrefab;
@@ -15,14 +16,16 @@ namespace Confrontation
 
 		public override void InstallBindings()
 		{
-			Container.BindInstance(_playLevelButtonPrefab).AsSingle();
+			Container.BindInstance<LevelButtonBase>(_playLevelButtonPrefab).AsSingle();
 
 			InstallForLevelButtonsSpawner();
 
 			Container.Bind<ToGameplay>().AsSingle();
 			Container.BindInterfacesTo<LevelButtonsSpawner>().AsSingle();
 
-			Container.BindFactory<ILevel, PlayLevelButton, LevelSelectionButtonBase.Factory>()
+			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
+
+			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
 			         .FromComponentInNewPrefab(_playLevelButtonPrefab);
 
 			InstallLevelEditor();
@@ -35,6 +38,10 @@ namespace Confrontation
 			         .FromComponentInNewPrefab(_levelEditorUIPrefab)
 			         .UnderTransform(_uiRoot)
 			         .AsSingle();
+
+			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
+			         .FromComponentInNewPrefab(_editLevelButtonPrefab)
+			         .WhenInjectedInto<EditLevelButton>();
 
 			Container.BindInstance(_levels).WhenInjectedInto<LevelEditorUI>();
 #endif

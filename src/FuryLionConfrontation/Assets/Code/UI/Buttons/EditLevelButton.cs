@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class EditLevelButton : LevelSelectionButtonBase
+	public class EditLevelButton : LevelButtonBase
 	{
 		[Inject] private readonly ToLevelEditor _toLevelEditor;
 
