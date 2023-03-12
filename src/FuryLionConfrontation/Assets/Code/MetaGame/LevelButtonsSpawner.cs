@@ -7,7 +7,7 @@ namespace Confrontation
 	public class LevelButtonsSpawner : IInitializable
 	{
 		[Inject] private readonly List<LevelScriptableObject> _levels;
-		[Inject] private readonly LevelButton.Factory _levelButtonsFactory;
+		[Inject] private readonly LevelSelectionButtonBase.Factory _levelButtonsFactory;
 		[Inject] private readonly Transform _levelsGridRoot;
 
 		private int _counter = 1;

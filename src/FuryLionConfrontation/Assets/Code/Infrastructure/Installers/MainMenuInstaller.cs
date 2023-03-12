@@ -1,12 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
 {
 	public class MainMenuInstaller : MonoInstaller
 	{
-		[SerializeField] private LevelButton _levelButtonPrefab;
+		[SerializeField] private PlayLevelButton _playLevelButtonPrefab;
 		[SerializeField] private List<LevelScriptableObject> _levels;
 		[SerializeField] private Transform _levelsGridRoot;
 		[SerializeField] private LevelEditorUI _levelEditorUIPrefab;
@@ -14,15 +15,15 @@ namespace Confrontation
 
 		public override void InstallBindings()
 		{
-			Container.BindInstance(_levelButtonPrefab).AsSingle();
+			Container.BindInstance(_playLevelButtonPrefab).AsSingle();
 
 			InstallForLevelButtonsSpawner();
 
 			Container.Bind<ToGameplay>().AsSingle();
 			Container.BindInterfacesTo<LevelButtonsSpawner>().AsSingle();
 
-			Container.BindFactory<int, ILevel, LevelButton, LevelButton.Factory>()
-			         .FromComponentInNewPrefab(_levelButtonPrefab);
+			Container.BindFactory<ILevel, PlayLevelButton, LevelSelectionButtonBase.Factory>()
+			         .FromComponentInNewPrefab(_playLevelButtonPrefab);
 
 			InstallLevelEditor();
 		}

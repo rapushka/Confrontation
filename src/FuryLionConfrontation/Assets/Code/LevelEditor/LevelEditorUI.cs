@@ -13,13 +13,6 @@ namespace Confrontation
 		[SerializeField] private Transform levelListContent;
 		[SerializeField] private InputField newLevelNameInput;
 
-		public void Initialize()
-		{
-			Debug.Log("heyo");
-			foreach (var level in _levels)
-			{
-				Debug.Log(level.name);
-			}
-		}
+		public void Initialize() { }
 	}
 }
