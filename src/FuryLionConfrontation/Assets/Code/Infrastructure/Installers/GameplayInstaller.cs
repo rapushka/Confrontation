@@ -40,7 +40,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<GameSession>().AsSingle();
 			Container.BindInterfacesAndSelfTo<ArtificialIntelligence>().AsSingle();
 
-			Container.BindInterfacesAndSelfTo<FieldBounds>().AsSingle();
+			Container.BindInterfacesTo<FieldBounds>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
 			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();

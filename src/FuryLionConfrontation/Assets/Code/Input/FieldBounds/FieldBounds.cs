@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class FieldBounds : IInitializable
+	public class FieldBounds : IInitializable, IFieldBounds
 	{
 		[Inject] private readonly IField _field;
 

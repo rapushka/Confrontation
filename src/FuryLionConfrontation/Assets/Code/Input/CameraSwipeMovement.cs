@@ -7,7 +7,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly IInputService _inputService;
 		[Inject] private readonly ITimeService _time;
-		[Inject] private readonly FieldBounds _fieldBounds;
+		[Inject] private readonly IFieldBounds _fieldBounds;
 
 		[SerializeField] private Transform _root;
 		[SerializeField] private Vector2 _speed = new(0.25f, 0.25f);
