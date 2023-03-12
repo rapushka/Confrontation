@@ -12,7 +12,7 @@ namespace Confrontation
 		[SerializeField] private Cell _cellPrefab;
 		[SerializeField] private BackToMenuButton _backToMenuButton;
 		[SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
-		[SerializeField] private CameraSwipeMovement _movement;
+		[SerializeField] private GameplayCameraSwipeMovement _movement;
 		[SerializeField] private Hud _hud;
 		[SerializeField] private RectTransform _canvas;
 		[SerializeField] private WindowsContainer _windowsContainer;
