@@ -1,3 +1,6 @@
+using System;
+using Zenject;
+
 namespace Confrontation
 {
 	public class LevelEditorInstaller : GameFieldInstaller
@@ -12,7 +15,13 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
+
+			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromMethod(DoNothing<UnitsSquad>);
+			Container.BindFactory<Garrison, Garrison.Factory>().FromMethod(DoNothing<Garrison>);
 		}
+
+		private T DoNothing<T>(DiContainer container) => throw new Exception("This method must not be called");
 
 		protected override void InstallSpecificFactories() { }
 	}
