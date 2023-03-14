@@ -4,14 +4,14 @@ namespace Confrontation
 {
 	public class ConfigurableField : IField
 	{
-		private Sizes _sizes;
+		private readonly Sizes _sizes;
 
-		public ConfigurableField()
+		public ConfigurableField(ILevelSelector levelSelector)
 		{
-			_sizes = new Sizes(10, 10);
+			_sizes = levelSelector.SelectedLevel.Sizes;
 			Recreate();
 		}
-		
+
 		public CoordinatedMatrix<Cell>       Cells            { get; private set; }
 		public CoordinatedMatrix<Building>   Buildings        { get; private set; }
 		public List<Building>                StashedBuildings { get; private set; }
