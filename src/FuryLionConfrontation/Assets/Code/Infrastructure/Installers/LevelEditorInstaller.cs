@@ -8,7 +8,10 @@ namespace Confrontation
 
 			Container.Bind<IField>().To<ConfigurableField>().AsSingle();
 
+			Container.Bind<ISession>().To<LevelEditSession>().AsSingle();
+
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 		}
 
 		protected override void InstallSpecificFactories() { }

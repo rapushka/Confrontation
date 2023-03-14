@@ -10,7 +10,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly int _id;
 		[Inject] private readonly IField _field;
-		[Inject] private readonly GameSession _gameSession;
+		[Inject] private readonly ISession _gameSession;
 
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
