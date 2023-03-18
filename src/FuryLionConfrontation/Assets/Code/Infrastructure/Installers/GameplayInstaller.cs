@@ -56,7 +56,8 @@ namespace Confrontation
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindPrefabFactory<NotEnoughGoldWindow, NotEnoughGoldWindow.Factory>();
 
-			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<GameplayWindowsFactory>();
+			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
+			         .FromFactory<GameplayGameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);

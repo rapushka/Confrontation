@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace Confrontation
 {
-	public class BuildingInfoWindow : WindowBase
+	public class BuildingInfoWindow : GameplayWindowBase
 	{
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
@@ -19,7 +19,7 @@ namespace Confrontation
 
 		private Building _building;
 
-		public override WindowBase Accept(IWindowVisitor windowVisitor) => windowVisitor.Visit(this);
+		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 
 		public override void Open()
 		{

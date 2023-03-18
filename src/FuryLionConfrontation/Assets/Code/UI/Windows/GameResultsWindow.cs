@@ -4,7 +4,7 @@ using Object = UnityEngine.Object;
 
 namespace Confrontation
 {
-	public class GameResultsWindow : WindowBase
+	public class GameResultsWindow : GameplayWindowBase
 	{
 		[Inject] private readonly User _user;
 
@@ -17,7 +17,7 @@ namespace Confrontation
 			_looseTitle.SetActive(_user.GameResult is GameResult.Loose);
 		}
 
-		public override WindowBase Accept(IWindowVisitor windowVisitor) => windowVisitor.Visit(this);
+		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 
 		public new class Factory : PlaceholderFactory<Object, GameResultsWindow> { }
 	}

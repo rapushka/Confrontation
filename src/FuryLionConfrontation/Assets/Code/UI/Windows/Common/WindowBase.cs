@@ -13,8 +13,6 @@ namespace Confrontation
 
 		public virtual void Close() => _window.SetActive(false);
 
-		public abstract WindowBase Accept(IWindowVisitor windowVisitor);
-
-		public class Factory : PlaceholderFactory<WindowBase, WindowBase> { }
+		public class Factory : PlaceholderFactory<GameplayWindowBase, GameplayWindowBase> { }
 	}
 }
