@@ -9,7 +9,7 @@ namespace Confrontation
 		{
 			Container.Bind<IFieldBounds>().To<EditorFieldBounds>().AsSingle();
 
-			Container.Bind<IField>().To<ConfigurableField>().AsSingle();
+			Container.BindInterfacesAndSelfTo<ConfigurableField>().AsSingle();
 
 			Container.Bind<ISession>().To<LevelEditSession>().AsSingle();
 

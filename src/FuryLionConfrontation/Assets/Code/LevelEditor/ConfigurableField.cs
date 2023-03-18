@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public class ConfigurableField : IField
 	{
-		private readonly Sizes _sizes;
+		private Sizes _sizes;
 
 		public ConfigurableField(ILevelSelector levelSelector)
 		{
@@ -19,6 +19,16 @@ namespace Confrontation
 		public CoordinatedMatrix<Garrison>   Garrisons        { get; private set; }
 		public CoordinatedMatrix<Region>     Regions          { get; private set; }
 		public List<Player>                  Players          { get; private set; }
+
+		public Sizes Sizes
+		{
+			get => _sizes;
+			set
+			{
+				_sizes = value; 
+				Recreate();
+			}
+		}
 
 		public RegionsNeighboring Neighboring { get; private set; }
 

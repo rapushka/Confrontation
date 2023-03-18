@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 4160742740182800423}
   - component: {fileID: 4160742740182800421}
   - component: {fileID: 4160742740182800422}
+  - component: {fileID: 7868742787113692609}
   m_Layer: 0
   m_Name: Field Sizes Panel
   m_TagString: Untagged
@@ -517,6 +518,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7868742787113692609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160742740182800408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267bf479c776414fa1c6445a483da128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _widthInputField: {fileID: 4160742739421200255}
+  _heightInputField: {fileID: 4160742740190244848}
+  _regenerateButton: {fileID: 4678289569554201391}
 --- !u!1 &4160742740190244850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,3 +1432,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
   m_PrefabInstance: {fileID: 4338165395287275226}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4678289569554201391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8996184222419652085, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+  m_PrefabInstance: {fileID: 4338165395287275226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
