@@ -8,6 +8,7 @@ namespace Confrontation
 	public class FieldSizesPanel : MonoBehaviour
 	{
 		[Inject] private readonly ConfigurableField _configurableField;
+		[Inject] private readonly FieldGenerator _fieldGenerator;
 
 		[SerializeField] private TMP_InputField _widthInputField;
 		[SerializeField] private TMP_InputField _heightInputField;
@@ -29,7 +30,9 @@ namespace Confrontation
 
 		private void RegenerateField()
 		{
-			_configurableField.Sizes = new Sizes(Width, Height);
+			FindObjectsOfType<Cell>().ForEach((c) => Destroy(c.gameObject));
+			_configurableField.Sizes = new Sizes(height: Height, width: Width);
+			_fieldGenerator.Initialize();
 		}
 	}
 }
