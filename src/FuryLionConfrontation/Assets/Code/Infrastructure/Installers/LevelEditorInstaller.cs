@@ -12,6 +12,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<ConfigurableField>().AsSingle();
 
 			Container.Bind<ISession>().To<LevelEditSession>().AsSingle();
+			Container.Bind<ILevelSaver>().To<LevelSaver>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
