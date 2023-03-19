@@ -21,7 +21,7 @@ namespace Confrontation
 		private List<Region.Data> RegionsToData()
 		{
 			var regionsDictionary = new Dictionary<int, Region.Data>();
-			foreach (var fieldRegion in _field.Regions.OfType<Region>())
+			foreach (var fieldRegion in _field.Regions.WithoutNulls())
 			{
 				regionsDictionary.EnsureAdded(fieldRegion.Id, ToRegionData(fieldRegion));
 				regionsDictionary[fieldRegion.Id].CellsCoordinates.Add(fieldRegion.Coordinates);
@@ -31,7 +31,7 @@ namespace Confrontation
 		}
 
 		private List<Building.CoordinatedData> BuildingsToData()
-			=> _field.Buildings.OfType<Building>().Select(ToBuildingData).ToList();
+			=> _field.Buildings.WithoutNulls().Select(ToBuildingData).ToList();
 
 		private static Building.CoordinatedData ToBuildingData(Building building)
 			=> new()
