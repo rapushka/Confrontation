@@ -17,7 +17,10 @@ namespace Confrontation
 				(nameof(Stable), Constants.ResourcePath.Stable),
 			};
 
-		public static string[] BuildingsNames => _buildings.Select((t) => t.Name).ToArray();
+		public static string[] BuildingsNames => _buildings.Select((b) => b.Name).ToArray();
+
+		public static Building Load(string name)
+			=> Resources.Load<Building>(_buildings.Single((b) => b.Name == name).Path);
 
 		public static Building Load(int index) => Resources.Load<Building>(_buildings[index].Path);
 	}

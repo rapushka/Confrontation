@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 5 (For Level Editor)
   m_EditorClassIdentifier: 
   <Sizes>k__BackingField:
-    _width: 3
+    _width: 4
     _height: 3
   <Regions>k__BackingField: []
   <Buildings>k__BackingField: []
