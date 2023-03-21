@@ -162,6 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5952124824876330676}
   - component: {fileID: 9184357772216668396}
+  - component: {fileID: 4530904285485056845}
   m_Layer: 0
   m_Name: Region Entry
   m_TagString: Untagged
@@ -201,6 +202,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8971467539430090002}
   m_CullTransparentMesh: 1
+--- !u!114 &4530904285485056845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971467539430090002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2eb75d14cc493fac238ffbc5b27244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regionIdTextMesh: {fileID: 5031545454392923560}
+  _regionIdPrefix: 'Id: '
+  _cellsCountTextMesh: {fileID: 5886229559724096315}
+  _cellsCountPrefix: 'Cells count: '
 --- !u!1001 &2711582069636340590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,11 +227,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'Cells: 0'
+      value: 'Cells count: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 44.9
+      value: 33.05
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSizeBase
@@ -319,6 +336,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
   m_PrefabInstance: {fileID: 2711582069636340590}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5886229559724096315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+  m_PrefabInstance: {fileID: 2711582069636340590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3585653589779838461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,11 +356,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'ID: 0'
+      value: 'Id: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 47.25
+      value: 51.15
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSizeBase
@@ -432,6 +460,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+--- !u!114 &5031545454392923560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+  m_PrefabInstance: {fileID: 3585653589779838461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5031545454392923563 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
