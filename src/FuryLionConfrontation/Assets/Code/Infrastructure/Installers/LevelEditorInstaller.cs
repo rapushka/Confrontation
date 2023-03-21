@@ -27,7 +27,7 @@ namespace Confrontation
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromMethod(DoNothing<UnitsSquad>);
 			Container.BindFactory<Garrison, Garrison.Factory>().FromMethod(DoNothing<Garrison>);
 
-			Container.BindFactory<int, int, RegionEntry, RegionEntry.Factory>()
+			Container.BindFactory<int, RegionEntry, RegionEntry.Factory>()
 			         .FromComponentInNewPrefab(_regionEntryPrefab);
 		}
 

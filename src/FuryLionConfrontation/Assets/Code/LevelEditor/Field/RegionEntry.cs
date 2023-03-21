@@ -1,35 +1,42 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Confrontation
 {
-	public class RegionEntry : MonoBehaviour, IInitializable
+	public class RegionEntry : ButtonBase, IInitializable
 	{
 		[Inject] private readonly int _id;
-		[Inject] private readonly int _cellsCount;
 
 		[SerializeField] private TextMeshProUGUI _regionIdTextMesh;
 		[SerializeField] private string _regionIdPrefix;
 		[Space]
 		[SerializeField] private TextMeshProUGUI _cellsCountTextMesh;
 		[SerializeField] private string _cellsCountPrefix;
+		[Space]
+		[SerializeField] private Image _selectionImage;
 
-		public int CellsCount
-		{
-			set => _cellsCountTextMesh.text = _cellsCountPrefix + value;
-		}
+		public event Action<RegionEntry> EntryClicked;
 
-		private int Id
+		public bool Selected { set => _selectionImage.enabled = value; }
+
+		public int CellsCount { set => _cellsCountTextMesh.text = _cellsCountPrefix + value; }
+
+		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
+
+		protected override void OnButtonClick()
 		{
-			set => _regionIdTextMesh.text = _regionIdPrefix + value;
+			EntryClicked?.Invoke(this);
+			Selected = true;
 		}
 
 		public void Initialize()
 		{
 			Id = _id;
-			CellsCount = _cellsCount;
+			CellsCount = 0;
+			Selected = false;
 		}
 
 		private void OnValidate()
@@ -38,11 +45,20 @@ namespace Confrontation
 			CellsCount = 0;
 		}
 
-		public class Factory : PlaceholderFactory<int, int, RegionEntry>
+		public class Factory : PlaceholderFactory<int, RegionEntry>
 		{
-			public override RegionEntry Create(int id, int cellsCount)
+			private int _currentRegionId;
+
+			public RegionEntry Create(Transform parent)
 			{
-				var regionEntry = base.Create(id, cellsCount);
+				var regionEntry = Create();
+				regionEntry.transform.SetParent(parent);
+				return regionEntry;
+			}
+
+			public RegionEntry Create()
+			{
+				var regionEntry = base.Create(_currentRegionId++);
 				regionEntry.Initialize();
 				return regionEntry;
 			}

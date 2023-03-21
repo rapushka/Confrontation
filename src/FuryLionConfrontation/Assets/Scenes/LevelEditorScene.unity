@@ -714,6 +714,7 @@ MonoBehaviour:
   _backToMenuButton: {fileID: 1322197773}
   _canvas: {fileID: 247674494}
   _windowsContainer: {fileID: 35894164}
+  _regionEntryPrefab: {fileID: 4530904285485056845, guid: 2fee68270297664b185c10e2bf38def4, type: 3}
 --- !u!1 &1866964045
 GameObject:
   m_ObjectHideFlags: 0
