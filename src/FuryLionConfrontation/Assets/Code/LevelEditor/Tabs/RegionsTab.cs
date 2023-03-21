@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,11 +26,11 @@ namespace Confrontation
 			{
 				if (_selectedEntry is not null)
 				{
-					_selectedEntry.Selected = false;
+					_selectedEntry!.Deselect();
 				}
 
 				_selectedEntry = value;
-				_selectedEntry.Selected = true;
+				_selectedEntry.Select();
 			}
 		}
 
@@ -62,9 +63,11 @@ namespace Confrontation
 
 		private void RemoveSelected()
 		{
-			if (_selectedEntry is not null)
+			if (_selectedEntry != false)
 			{
 				_regions.Remove(_selectedEntry);
+				Destroy(_selectedEntry!.gameObject);
+				_selectedEntry = null;
 			}
 		}
 

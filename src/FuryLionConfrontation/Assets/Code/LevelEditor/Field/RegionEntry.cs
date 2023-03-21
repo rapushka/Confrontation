@@ -20,11 +20,11 @@ namespace Confrontation
 
 		public event Action<RegionEntry> EntryClicked;
 
-		public bool Selected { set => _selectionImage.enabled = value; }
-
 		public int CellsCount { set => _cellsCountTextMesh.text = _cellsCountPrefix + value; }
 
 		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
+
+		private bool Selected { set => _selectionImage.enabled = value; }
 
 		protected override void OnButtonClick()
 		{
@@ -38,6 +38,10 @@ namespace Confrontation
 			CellsCount = 0;
 			Selected = false;
 		}
+
+		public void Select() => Selected = true;
+
+		public void Deselect() => Selected = false;
 
 		private void OnValidate()
 		{
