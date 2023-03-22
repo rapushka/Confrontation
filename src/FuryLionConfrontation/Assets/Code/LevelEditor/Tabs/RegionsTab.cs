@@ -22,10 +22,9 @@ namespace Confrontation
 		private RegionsStateClickHandler _handler;
 		[CanBeNull] private RegionEntry _selectedEntry;
 
-		[NotNull]
 		public RegionEntry SelectedEntry
 		{
-			get => _selectedEntry ? _selectedEntry : throw new InvalidOperationException();
+			get => _selectedEntry;
 			private set
 			{
 				if (_selectedEntry is not null)
@@ -34,7 +33,7 @@ namespace Confrontation
 				}
 
 				_selectedEntry = value;
-				_selectedEntry.Select();
+				_selectedEntry!.Select();
 			}
 		}
 
