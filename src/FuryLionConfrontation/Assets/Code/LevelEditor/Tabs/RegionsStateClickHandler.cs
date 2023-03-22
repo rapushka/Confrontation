@@ -1,3 +1,4 @@
+using cakeslice;
 using UnityEngine;
 
 namespace Confrontation
@@ -18,10 +19,12 @@ namespace Confrontation
 			if (clickedCell.RelatedRegion != _tab.SelectedEntry.Region)
 			{
 				_tab.Field.Regions[clickedCell.Coordinates] = _tab.SelectedEntry.Region;
+				clickedCell.GetComponentInChildren<MeshRenderer>().gameObject.AddComponent<Outline>();
 			}
 			else
 			{
 				_tab.Field.Regions[clickedCell.Coordinates] = null;
+				clickedCell.GetComponentInChildren<MeshRenderer>().gameObject.DestroyComponent<Outline>();
 			}
 		}
 	}
