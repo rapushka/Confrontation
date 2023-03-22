@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +6,11 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionsTab : MonoBehaviour
+	public class RegionsTab : MonoBehaviour, IFieldClickHandler
 	{
 		[Inject] private readonly RegionEntry.Factory _regionEntryFactory;
+		[Inject] private readonly IField _field;
+		[Inject] private readonly Region.Factory _regionsFactory;
 
 		[SerializeField] private Button _addRegionButton;
 		[SerializeField] private Button _removeSelectedButton;
@@ -54,10 +55,28 @@ namespace Confrontation
 			}
 		}
 
+		public void Handle(Cell clickedCell)
+		{
+			if (_selectedEntry == false)
+			{
+				return;
+			}
+
+			if (clickedCell.RelatedRegion == _selectedEntry!.Region)
+			{
+				_field.Regions.Remove(clickedCell.RelatedRegion);
+			}
+			else
+			{
+				_field.Regions.Add(clickedCell.RelatedRegion);
+			}
+		}
+
 		private void AddRegion()
 		{
 			var regionEntry = _regionEntryFactory.Create(_regionsListRoot);
 			regionEntry.EntryClicked += OnRegionEntryClicked;
+			regionEntry.Region = _regionsFactory.Create();
 			_regions.Add(regionEntry);
 		}
 

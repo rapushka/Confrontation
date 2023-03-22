@@ -100,11 +100,7 @@ namespace Confrontation
 		{
 			private static int _currentId;
 
-			public Region Create()
-			{
-				var region = base.Create(_currentId++);
-				return region;
-			}
+			public Region Create() => base.Create(_currentId++);
 		}
 	}
 }

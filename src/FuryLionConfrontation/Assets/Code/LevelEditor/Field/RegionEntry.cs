@@ -19,6 +19,8 @@ namespace Confrontation
 		[SerializeField] private Image _selectionImage;
 
 		public event Action<RegionEntry> EntryClicked;
+		
+		public Region Region { get; set; }
 
 		public int CellsCount { set => _cellsCountTextMesh.text = _cellsCountPrefix + value; }
 
