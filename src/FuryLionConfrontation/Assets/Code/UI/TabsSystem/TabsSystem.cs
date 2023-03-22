@@ -10,7 +10,9 @@ namespace Confrontation
 	{
 		[SerializeField] private List<Tab> _tabs;
 
-		[CanBeNull] private Tab _currentTab;
+		[CanBeNull] protected Tab CurrentTab;
+
+		protected IEnumerable<Tab> Tabs => _tabs;
 
 		private void OnEnable() => _tabs.ForEach((t) => t.Button.onClick.AddListener(() => Open(t)));
 
@@ -24,9 +26,9 @@ namespace Confrontation
 
 		private void Open(Tab tab)
 		{
-			_currentTab?.Close();
+			CurrentTab?.Close();
 			tab.Open();
-			_currentTab = tab;
+			CurrentTab = tab;
 		}
 	}
 }

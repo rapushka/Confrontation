@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionsTab : MonoBehaviour, IFieldClickHandler
+	public class RegionsTab : LevelEditorPage
 	{
 		[Inject] private readonly RegionEntry.Factory _regionEntryFactory;
 		[Inject] private readonly IField _field;
@@ -62,7 +62,7 @@ namespace Confrontation
 			}
 		}
 
-		public void Handle(Cell clickedCell) => _handler.Handle(clickedCell);
+		public override void Handle(Cell clickedCell) => _handler.Handle(clickedCell);
 
 		private void AddRegion()
 		{

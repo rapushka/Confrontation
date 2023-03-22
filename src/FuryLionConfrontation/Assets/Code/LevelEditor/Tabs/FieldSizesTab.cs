@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class FieldSizesTab : MonoBehaviour
+	public class FieldSizesTab : LevelEditorPage
 	{
 		[Inject] private readonly ConfigurableField _configurableField;
 		[Inject] private readonly FieldGenerator _fieldGenerator;
@@ -27,6 +27,8 @@ namespace Confrontation
 			_widthInputField.text = _configurableField.Sizes.Width.ToString();
 			_heightInputField.text = _configurableField.Sizes.Height.ToString();
 		}
+
+		public override void Handle(Cell clickedCell) { }
 
 		private void RegenerateField()
 		{

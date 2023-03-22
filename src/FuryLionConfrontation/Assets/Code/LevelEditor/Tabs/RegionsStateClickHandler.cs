@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public class RegionsStateClickHandler : IFieldClickHandler
+	public class RegionsStateClickHandler
 	{
 		private readonly RegionsTab _tab;
 

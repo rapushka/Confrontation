@@ -7,9 +7,12 @@ namespace Confrontation
 	public class LevelEditorInstaller : GameFieldInstaller
 	{
 		[SerializeField] private RegionEntry _regionEntryPrefab;
+		[SerializeField] private LevelEditorTabsSystem _tabs;
 
 		protected override void InstallSpecificBindings()
 		{
+			Container.BindInstance(_tabs).AsSingle();
+			
 			Container.Bind<IFieldBounds>().To<EditorFieldBounds>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<ConfigurableField>().AsSingle();
@@ -20,6 +23,8 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
+			
+			Container.BindInterfacesAndSelfTo<LevelEditorFieldInputDirector>().AsSingle();
 		}
 
 		protected override void InstallSpecificFactories()
