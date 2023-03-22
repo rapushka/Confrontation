@@ -2,17 +2,23 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameplayFieldInputHandler : FieldInputHandlerBase
+	public class GameplayFieldInputHandler : FieldInputWithDragHandlerBase
 	{
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private readonly Orders _orders;
 
 		protected override void OnCellsDrag(ClickReceiver startReceiver, ClickReceiver endReceiver)
+			=> _orders.GiveOrder(startReceiver.Cell, endReceiver.Cell);
+
+		protected override void OnCellClick(Cell cell)
 		{
-			_orders.GiveOrder(startReceiver.Cell, endReceiver.Cell);
+			if (cell.IsBelongTo(User.Player))
+			{
+				ShowRelevantMenu(cell);
+			}
 		}
 
-		protected override void ShowRelevantMenu(Cell cell)
+		private void ShowRelevantMenu(Cell cell)
 		{
 			if (cell.IsEmpty)
 			{
