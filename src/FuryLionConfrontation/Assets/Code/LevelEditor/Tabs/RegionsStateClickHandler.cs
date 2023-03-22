@@ -17,13 +17,11 @@ namespace Confrontation
 
 			if (clickedCell.RelatedRegion != _tab.SelectedEntry.Region)
 			{
-				_tab.Field.Regions[clickedCell.Coordinates] = clickedCell.RelatedRegion;
-				Debug.Log($"cell on {clickedCell.Coordinates} added to region");
+				_tab.Field.Regions[clickedCell.Coordinates] = _tab.SelectedEntry.Region;
 			}
 			else
 			{
-				_tab.Field.Regions.Remove(clickedCell.RelatedRegion);
-				Debug.Log($"cell on {clickedCell.Coordinates} removed from region");
+				_tab.Field.Regions[clickedCell.Coordinates] = null;
 			}
 		}
 	}
