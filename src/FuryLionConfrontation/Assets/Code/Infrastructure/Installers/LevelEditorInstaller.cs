@@ -25,6 +25,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			
 			Container.BindInterfacesAndSelfTo<LevelEditorFieldInputDirector>().AsSingle();
+			Container.BindInterfacesAndSelfTo<OutlineCellsInCurrentRegion>().AsSingle();
 		}
 
 		protected override void InstallSpecificFactories()
