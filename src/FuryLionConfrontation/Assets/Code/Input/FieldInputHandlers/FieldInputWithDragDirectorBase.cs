@@ -1,6 +1,6 @@
 namespace Confrontation
 {
-	public abstract class FieldInputWithDragHandlerBase : FieldInputHandlerBase
+	public abstract class FieldInputWithDragDirectorBase : FieldInputDirectorBase
 	{
 		private ClickReceiver _startReceiver;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -18,12 +19,14 @@ namespace Confrontation
 
 		private readonly List<RegionEntry> _regions = new();
 
+		private RegionsStateClickHandler _handler;
 		[CanBeNull] private RegionEntry _selectedEntry;
 
 		[NotNull]
-		private RegionEntry SelectedEntry
+		public RegionEntry SelectedEntry
 		{
-			set
+			get => _selectedEntry ? _selectedEntry : throw new InvalidOperationException();
+			private set
 			{
 				if (_selectedEntry is not null)
 				{
@@ -34,6 +37,10 @@ namespace Confrontation
 				_selectedEntry.Select();
 			}
 		}
+
+		public IField Field => _field;
+
+		private void Start() => _handler = new RegionsStateClickHandler(this);
 
 		private void OnEnable()
 		{
@@ -55,22 +62,7 @@ namespace Confrontation
 			}
 		}
 
-		public void Handle(Cell clickedCell)
-		{
-			if (_selectedEntry == false)
-			{
-				return;
-			}
-
-			if (clickedCell.RelatedRegion == _selectedEntry!.Region)
-			{
-				_field.Regions.Remove(clickedCell.RelatedRegion);
-			}
-			else
-			{
-				_field.Regions.Add(clickedCell.RelatedRegion);
-			}
-		}
+		public void Handle(Cell clickedCell) => _handler.Handle(clickedCell);
 
 		private void AddRegion()
 		{

@@ -37,7 +37,7 @@ namespace Confrontation
 			Container.BindInstance(_orderLineRenderer).AsSingle();
 			Container.BindInterfacesAndSelfTo<OrderDirectionLineDrawer>().AsSingle();
 
-			Container.BindInterfacesAndSelfTo<GameplayFieldInputHandler>().AsSingle();
+			Container.BindInterfacesAndSelfTo<GameplayFieldInputDirector>().AsSingle();
 			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 
 			Container.Bind<BuildingSpawner>().AsSingle();

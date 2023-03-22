@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameplayFieldInputHandler : FieldInputWithDragHandlerBase
+	public class GameplayFieldInputDirector : FieldInputWithDragDirectorBase
 	{
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private readonly Orders _orders;

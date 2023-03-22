@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public abstract class FieldInputHandlerBase : IInitializable, IDisposable
+	public abstract class FieldInputDirectorBase : IInitializable, IDisposable
 	{
 		[Inject] protected readonly IInputService InputService;
 		[Inject] protected readonly User User;
