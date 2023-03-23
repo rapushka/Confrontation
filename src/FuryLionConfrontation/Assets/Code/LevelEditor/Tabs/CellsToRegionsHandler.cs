@@ -14,9 +14,6 @@ namespace Confrontation
 			}
 		}
 
-		public void Add(Cell cell, Region to)
-			=> cell.RelatedRegion = cell.RelatedRegion != to
-				? to
-				: null;
+		private void Add(Cell cell, Region to) => cell.RelatedRegion = cell.RelatedRegion != to ? to : null;
 	}
 }

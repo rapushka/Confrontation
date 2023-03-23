@@ -18,11 +18,21 @@ namespace Confrontation
 		[Space]
 		[SerializeField] private Image _selectionImage;
 
+		private int _cellsCount;
+
 		public event Action<RegionEntry> EntryClicked;
-		
+
 		public Region Region { get; set; }
 
-		public int CellsCount { set => _cellsCountTextMesh.text = _cellsCountPrefix + value; }
+		public int CellsCount
+		{
+			get => _cellsCount;
+			set
+			{
+				_cellsCount = value;
+				_cellsCountTextMesh.text = _cellsCountPrefix + _cellsCount;
+			}
+		}
 
 		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
 
@@ -58,13 +68,6 @@ namespace Confrontation
 			public RegionEntry Create(Transform parent)
 			{
 				var regionEntry = Create(_currentRegionId++);
-				regionEntry.transform.SetParent(parent);
-				return regionEntry;
-			}
-			
-			public RegionEntry Create(Transform parent, int id)
-			{
-				var regionEntry = Create(id);
 				regionEntry.transform.SetParent(parent);
 				return regionEntry;
 			}

@@ -49,32 +49,46 @@ namespace Confrontation
 
 		private void OnEnable()
 		{
-			_addRegionButton.onClick.AddListener(AddRegion);
+			_addRegionButton.onClick.AddListener(CreateRegionEntry);
 			_removeSelectedButton.onClick.AddListener(RemoveSelected);
 		}
 
 		private void OnDisable()
 		{
-			_addRegionButton.onClick.RemoveListener(AddRegion);
+			_addRegionButton.onClick.RemoveListener(CreateRegionEntry);
 			_removeSelectedButton.onClick.RemoveListener(RemoveSelected);
 		}
 
 		private void OnDestroy() => _regionEntries.ForEach((r) => r.EntryClicked -= OnRegionEntryClicked);
 
-		public override void Handle(Cell clickedCell) => _handler.Add(clickedCell);
+		public override void Handle(Cell clickedCell)
+		{
+			_handler.Add(clickedCell);
+			_regionEntries.ForEach(CalculateCellCount);
+		}
 
-		private void LoadRegions() => RegionsData.Select(AsRegion).ForEach(ToRegionEntry);
+		private void LoadRegions() => RegionsData.Select(AsRegion).ForEach(CreateRegionEntry);
 
 		private Region AsRegion(Region.Data data) => _field.Regions[data.CellsCoordinates.First()];
 
-		private void AddRegion() => ToRegionEntry(_regionsFactory.Create());
+		private void CreateRegionEntry() => ToRegionEntry(_regionsFactory.Create());
 
-		private void ToRegionEntry(Region region)
+		private void CreateRegionEntry(Region region)
+		{
+			var regionEntry = ToRegionEntry(region);
+			CalculateCellCount(regionEntry);
+		}
+
+		private static void CalculateCellCount(RegionEntry regionEntry)
+			=> regionEntry.CellsCount = regionEntry.Region.CellsInRegion.Count();
+
+		private RegionEntry ToRegionEntry(Region region)
 		{
 			var regionEntry = _regionEntryFactory.Create(_regionsListRoot);
 			regionEntry.EntryClicked += OnRegionEntryClicked;
 			regionEntry.Region = region;
 			_regionEntries.Add(regionEntry);
+			return regionEntry;
 		}
 
 		private void RemoveSelected()
