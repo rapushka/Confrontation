@@ -10,18 +10,11 @@ namespace Confrontation
 
 		public void Handle(Cell clickedCell)
 		{
-			if (_tab.SelectedEntry == false)
+			if (_tab.SelectedEntry == true)
 			{
-				return;
-			}
-
-			if (clickedCell.RelatedRegion != _tab.SelectedEntry.Region)
-			{
-				_tab.Field.Regions[clickedCell.Coordinates] = _tab.SelectedEntry.Region;
-			}
-			else
-			{
-				_tab.Field.Regions[clickedCell.Coordinates] = null;
+				clickedCell.RelatedRegion = clickedCell.RelatedRegion != _tab.SelectedEntry.Region
+					? _tab.SelectedEntry.Region
+					: null;
 			}
 		}
 	}

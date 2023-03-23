@@ -18,7 +18,11 @@ namespace Confrontation
 
 		[CanBeNull] public Building Building => _field.Buildings[Coordinates];
 
-		[CanBeNull] public Region RelatedRegion => _field.Regions[Coordinates];
+		[CanBeNull] public Region RelatedRegion
+		{
+			get => _field.Regions[Coordinates];
+			set => _field.Regions[Coordinates] = value;
+		}
 
 		public int OwnerPlayerId
 		{

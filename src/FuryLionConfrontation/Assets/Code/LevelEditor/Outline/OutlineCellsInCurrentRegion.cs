@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using cakeslice;
 using UnityEngine;
 using Zenject;
@@ -7,11 +8,15 @@ namespace Confrontation
 {
 	public class OutlineCellsInCurrentRegion : ITickable
 	{
-		private const int MaxRegionsInQueue = 2;
 		[Inject] private readonly IField _field;
 		[Inject] private readonly LevelEditorTabsSystem _tabs;
 
+		private const int MaxRegionsInQueue = 2;
+
 		private readonly Queue<Region> _lastSelectedRegions = new(capacity: MaxRegionsInQueue);
+
+		private Region _currentSelectedRegion;
+		private Region _lastSelectedRegion;
 
 		public void Tick()
 		{
@@ -21,55 +26,51 @@ namespace Confrontation
 				return;
 			}
 
-			var selectedRegion = tab.SelectedEntry.Region;
-
-			KeepTwoRegionsInQueue(selectedRegion);
-
-			DrawOutlines(selectedRegion);
+			KeepTwoRegionsInQueue(tab.SelectedEntry.Region);
+			DrawOutlines();
 		}
 
 		private void KeepTwoRegionsInQueue(Region selectedRegion)
 		{
-			if (_lastSelectedRegions.Contains(selectedRegion))
+			if (_currentSelectedRegion != selectedRegion)
 			{
-				return;
-			}
-
-			_lastSelectedRegions.Enqueue(selectedRegion);
-
-			if (_lastSelectedRegions.Count <= MaxRegionsInQueue)
-			{
-				return;
-			}
-
-			var oldestRegion = _lastSelectedRegions.Dequeue();
-			foreach (var cell in _field.Cells)
-			{
-				if (cell.RelatedRegion == oldestRegion)
+				_lastSelectedRegion = _currentSelectedRegion;
+				_currentSelectedRegion = selectedRegion;
+				
+				foreach (var cell in _field.Cells)
 				{
 					RemoveOutline(cell);
 				}
 			}
 		}
 
-		private void DrawOutlines(Region selectedRegion)
+		private void DrawOutlines()
 		{
 			foreach (var cell in _field.Cells)
 			{
-				if (cell.RelatedRegion == selectedRegion)
+				if (cell.RelatedRegion == _currentSelectedRegion)
 				{
 					AddOutline(cell, 0);
+					continue;
 				}
-				else if (_lastSelectedRegions.Contains(cell.RelatedRegion))
+				
+				if (cell.RelatedRegion == _lastSelectedRegion)
 				{
 					AddOutline(cell, 1);
+					continue;
 				}
-				else
-				{
-					RemoveOutline(cell);
-				}
+
+				RemoveOutline(cell);
 			}
 		}
+
+		private void Print(Region region, string name)
+		{
+			if (region is not null)
+			{
+				Debug.Log($"[{name}] {region.Id} — {region.Id.GetHashCode()}");
+			}
+		} 
 
 		private static void AddOutline(Cell cell, int color)
 		{
