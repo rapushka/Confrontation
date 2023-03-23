@@ -1,5 +1,3 @@
-using Zenject;
-
 namespace Confrontation
 {
 	public class RegionsStateClickHandler

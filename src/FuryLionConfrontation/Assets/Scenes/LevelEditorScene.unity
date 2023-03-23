@@ -637,6 +637,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor1.a
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor1.g
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor2.a
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor2.g
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: sourceCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: outlineCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: renderTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: extraRenderTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: outlineShaderMaterial
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
 --- !u!4 &1691798713 stripped

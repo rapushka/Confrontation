@@ -11,12 +11,10 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly LevelEditorTabsSystem _tabs;
 
-		private const int MaxRegionsInQueue = 2;
+		private const int MaxLastRegionsToStore = 2;
 
-		private readonly Queue<Region> _lastSelectedRegions = new(capacity: MaxRegionsInQueue);
-
+		private readonly Queue<Region> _lastSelectedRegions = new(capacity: MaxLastRegionsToStore);
 		private Region _currentSelectedRegion;
-		private Region _lastSelectedRegion;
 
 		public void Tick()
 		{
@@ -32,20 +30,27 @@ namespace Confrontation
 
 		private void KeepTwoRegionsInQueue(Region selectedRegion)
 		{
-			if (_currentSelectedRegion != selectedRegion)
+			if (_currentSelectedRegion == selectedRegion)
 			{
-				_lastSelectedRegion = _currentSelectedRegion;
-				_currentSelectedRegion = selectedRegion;
-				
-				foreach (var cell in _field.Cells)
-				{
-					RemoveOutline(cell);
-				}
+				return;
 			}
+
+			_lastSelectedRegions.Enqueue(_currentSelectedRegion);
+
+			if (_lastSelectedRegions.Count > MaxLastRegionsToStore)
+			{
+				_lastSelectedRegions.Dequeue();
+			}
+
+			_currentSelectedRegion = selectedRegion;
+
+			_field.Cells.ForEach(RemoveOutline);
 		}
 
 		private void DrawOutlines()
 		{
+			var selectedRegions = _lastSelectedRegions.Reverse().ToArray();
+
 			foreach (var cell in _field.Cells)
 			{
 				if (cell.RelatedRegion == _currentSelectedRegion)
@@ -53,24 +58,29 @@ namespace Confrontation
 					AddOutline(cell, 0);
 					continue;
 				}
-				
-				if (cell.RelatedRegion == _lastSelectedRegion)
-				{
-					AddOutline(cell, 1);
-					continue;
-				}
 
-				RemoveOutline(cell);
+				if (DrawForPreviousRegions(selectedRegions, cell) == false)
+				{
+					RemoveOutline(cell);
+				}
 			}
 		}
 
-		private void Print(Region region, string name)
+		private static bool DrawForPreviousRegions(Region[] selectedRegions, Cell cell)
 		{
-			if (region is not null)
+			var painted = false;
+			for (var i = 0; i < selectedRegions.Length; i++)
 			{
-				Debug.Log($"[{name}] {region.Id} — {region.Id.GetHashCode()}");
+				if (cell.RelatedRegion == selectedRegions[i])
+				{
+					AddOutline(cell, i + 1);
+					painted = true;
+					break;
+				}
 			}
-		} 
+
+			return painted;
+		}
 
 		private static void AddOutline(Cell cell, int color)
 		{
