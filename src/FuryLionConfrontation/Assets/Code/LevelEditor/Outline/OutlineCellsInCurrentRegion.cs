@@ -85,11 +85,12 @@ namespace Confrontation
 		private static void AddOutline(Cell cell, int color)
 		{
 			var mesh = cell.GetComponentInChildren<MeshRenderer>().gameObject;
-			if (mesh.TryGetComponent(out Outline _) == false)
+			if (mesh.TryGetComponent(out Outline outline) == false)
 			{
-				var outline = mesh.AddComponent<Outline>();
-				outline.color = color;
+				outline = mesh.AddComponent<Outline>();
 			}
+
+			outline.color = color;
 		}
 
 		private static void RemoveOutline(Cell cell)
