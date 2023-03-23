@@ -12,6 +12,7 @@ namespace Confrontation
 		[Inject] private readonly RegionEntry.Factory _regionEntryFactory;
 		[Inject] private readonly IField _field;
 		[Inject] private readonly Region.Factory _regionsFactory;
+		[Inject] private readonly ILevelSelector _levelSelector;
 
 		[SerializeField] private Button _addRegionButton;
 		[SerializeField] private Button _removeSelectedButton;
@@ -21,6 +22,8 @@ namespace Confrontation
 
 		private CellsToRegionsHandler _handler;
 		[CanBeNull] private RegionEntry _selectedEntry;
+
+		private IEnumerable<Region.Data> RegionsData => _levelSelector.SelectedLevel.Regions;
 
 		public RegionEntry SelectedEntry
 		{
@@ -56,43 +59,21 @@ namespace Confrontation
 			_removeSelectedButton.onClick.RemoveListener(RemoveSelected);
 		}
 
-		private void OnDestroy()
-		{
-			foreach (var regionEntry in _regionEntries)
-			{
-				regionEntry.EntryClicked -= OnRegionEntryClicked;
-			}
-		}
+		private void OnDestroy() => _regionEntries.ForEach((r) => r.EntryClicked -= OnRegionEntryClicked);
 
 		public override void Handle(Cell clickedCell) => _handler.Add(clickedCell);
 
-		private void LoadRegions()
-		{
-			foreach (var fieldRegion in _field.Regions)
-			{
-				if (fieldRegion is null)
-				{
-					return;
-				}
+		private void LoadRegions() => RegionsData.Select(AsRegion).ForEach(ToRegionEntry);
 
-				var regionEntry = _regionEntries.SingleOrDefault((r) => r.Region.Id == fieldRegion.Id);
-				if (regionEntry == false)
-				{
-					regionEntry = _regionEntryFactory.Create(_regionsListRoot, fieldRegion.Id);
-					regionEntry.EntryClicked += OnRegionEntryClicked;
-					_regionEntries.Add(regionEntry);
-				}
+		private Region AsRegion(Region.Data data) => _field.Regions[data.CellsCoordinates.First()];
 
-				regionEntry!.Region = fieldRegion;
-				_handler.Add(_field.Cells[fieldRegion.Coordinates], fieldRegion);
-			}
-		}
+		private void AddRegion() => ToRegionEntry(_regionsFactory.Create());
 
-		private void AddRegion()
+		private void ToRegionEntry(Region region)
 		{
 			var regionEntry = _regionEntryFactory.Create(_regionsListRoot);
 			regionEntry.EntryClicked += OnRegionEntryClicked;
-			regionEntry.Region = _regionsFactory.Create();
+			regionEntry.Region = region;
 			_regionEntries.Add(regionEntry);
 		}
 
