@@ -15,7 +15,9 @@ namespace Confrontation
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
 
-		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
+		public IEnumerable<Cell> OurCells => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
+
+		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.RelatedRegion == this);
 
 		public int Id => _id;
 
@@ -44,7 +46,7 @@ namespace Confrontation
 
 		public void UpdateCellsColor()
 		{
-			foreach (var cell in CellsInRegion)
+			foreach (var cell in OurCells)
 			{
 				cell.SetColor(OwnerPlayerId);
 			}
@@ -91,6 +93,14 @@ namespace Confrontation
 		[Serializable]
 		public class Data
 		{
+			public Data(int ownerPlayerId, List<Coordinates> cellsCoordinates)
+			{
+				OwnerPlayerId = ownerPlayerId;
+				CellsCoordinates = cellsCoordinates;
+			}
+
+			public Data() { }
+
 			[field: SerializeField] public int OwnerPlayerId { get; set; }
 
 			[field: SerializeField] public List<Coordinates> CellsCoordinates { get; set; } = new();

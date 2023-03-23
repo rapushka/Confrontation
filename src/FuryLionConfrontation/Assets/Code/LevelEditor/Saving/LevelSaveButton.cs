@@ -11,24 +11,18 @@ namespace Confrontation
 
 		protected override void OnButtonClick()
 		{
-			var regionsData = RegionsToData();
-			var buildingsData = BuildingsToData();
-
-			var level = new ImmutableLevel(_field.Cells.Sizes, regionsData, buildingsData);
+			var level = new ImmutableLevel(_field.Cells.Sizes, RegionsToData(), BuildingsToData());
 			_levelSaver.Save(level);
 		}
 
 		private List<Region.Data> RegionsToData()
-		{
-			var regionsDictionary = new Dictionary<int, Region.Data>();
-			foreach (var fieldRegion in _field.Regions.WithoutNulls())
-			{
-				regionsDictionary.EnsureAdded(fieldRegion.Id, ToRegionData(fieldRegion));
-				regionsDictionary[fieldRegion.Id].CellsCoordinates.Add(fieldRegion.Coordinates);
-			}
+			=> _field.Regions.WithoutNulls().OnlyUnique().Select(AsData).ToList();
 
-			return regionsDictionary.Values.ToList();
-		}
+		private Region.Data AsData(Region region)
+			=> new(region.OwnerPlayerId, GetCellsInRegion(region));
+
+		private static List<Coordinates> GetCellsInRegion(Region region)
+			=> region.CellsInRegion.Select((c) => c.Coordinates).ToList();
 
 		private List<Building.CoordinatedData> BuildingsToData()
 			=> _field.Buildings.WithoutNulls().Select(ToBuildingData).ToList();
@@ -38,13 +32,6 @@ namespace Confrontation
 			{
 				Coordinates = building.Coordinates,
 				Prefab = BuildingsCollection.Load(building.GetType().Name),
-			};
-
-		private static Region.Data ToRegionData(Region region)
-			=> new()
-			{
-				OwnerPlayerId = region.OwnerPlayerId,
-				CellsCoordinates = new List<Coordinates>(),
 			};
 	}
 }

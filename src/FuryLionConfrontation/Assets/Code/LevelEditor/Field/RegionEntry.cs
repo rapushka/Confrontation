@@ -57,14 +57,21 @@ namespace Confrontation
 
 			public RegionEntry Create(Transform parent)
 			{
-				var regionEntry = Create();
+				var regionEntry = Create(_currentRegionId++);
+				regionEntry.transform.SetParent(parent);
+				return regionEntry;
+			}
+			
+			public RegionEntry Create(Transform parent, int id)
+			{
+				var regionEntry = Create(id);
 				regionEntry.transform.SetParent(parent);
 				return regionEntry;
 			}
 
-			public RegionEntry Create()
+			public override RegionEntry Create(int id)
 			{
-				var regionEntry = base.Create(_currentRegionId++);
+				var regionEntry = base.Create(id);
 				regionEntry.Initialize();
 				return regionEntry;
 			}

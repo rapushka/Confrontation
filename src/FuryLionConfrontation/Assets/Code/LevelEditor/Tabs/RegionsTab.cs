@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,9 +17,9 @@ namespace Confrontation
 		[SerializeField] private Button _removeSelectedButton;
 		[SerializeField] private Transform _regionsListRoot;
 
-		private readonly List<RegionEntry> _regions = new();
+		private readonly List<RegionEntry> _regionEntries = new();
 
-		private RegionsStateClickHandler _handler;
+		private CellsToRegionsHandler _handler;
 		[CanBeNull] private RegionEntry _selectedEntry;
 
 		public RegionEntry SelectedEntry
@@ -36,9 +37,12 @@ namespace Confrontation
 			}
 		}
 
-		public IField Field => _field;
+		private void Start()
+		{
+			_handler = new CellsToRegionsHandler(this);
 
-		private void Start() => _handler = new RegionsStateClickHandler(this);
+			LoadRegions();
+		}
 
 		private void OnEnable()
 		{
@@ -54,27 +58,49 @@ namespace Confrontation
 
 		private void OnDestroy()
 		{
-			foreach (var regionEntry in _regions)
+			foreach (var regionEntry in _regionEntries)
 			{
 				regionEntry.EntryClicked -= OnRegionEntryClicked;
 			}
 		}
 
-		public override void Handle(Cell clickedCell) => _handler.Handle(clickedCell);
+		public override void Handle(Cell clickedCell) => _handler.Add(clickedCell);
+
+		private void LoadRegions()
+		{
+			foreach (var fieldRegion in _field.Regions)
+			{
+				if (fieldRegion is null)
+				{
+					return;
+				}
+
+				var regionEntry = _regionEntries.SingleOrDefault((r) => r.Region.Id == fieldRegion.Id);
+				if (regionEntry == false)
+				{
+					regionEntry = _regionEntryFactory.Create(_regionsListRoot, fieldRegion.Id);
+					regionEntry.EntryClicked += OnRegionEntryClicked;
+					_regionEntries.Add(regionEntry);
+				}
+
+				regionEntry!.Region = fieldRegion;
+				_handler.Add(_field.Cells[fieldRegion.Coordinates], fieldRegion);
+			}
+		}
 
 		private void AddRegion()
 		{
 			var regionEntry = _regionEntryFactory.Create(_regionsListRoot);
 			regionEntry.EntryClicked += OnRegionEntryClicked;
 			regionEntry.Region = _regionsFactory.Create();
-			_regions.Add(regionEntry);
+			_regionEntries.Add(regionEntry);
 		}
 
 		private void RemoveSelected()
 		{
 			if (_selectedEntry != false)
 			{
-				_regions.Remove(_selectedEntry);
+				_regionEntries.Remove(_selectedEntry);
 				Destroy(_selectedEntry!.gameObject);
 				_selectedEntry = null;
 			}
