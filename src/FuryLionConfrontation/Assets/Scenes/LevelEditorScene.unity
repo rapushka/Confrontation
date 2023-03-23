@@ -638,16 +638,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: fillAmount
+      value: 0.516
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor1.a
-      value: 0.8235294
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor1.b
-      value: 0
+      value: 0.36320752
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor1.g
-      value: 0.50980395
+      value: 0.6852635
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor1.r
@@ -655,19 +659,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor2.a
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor2.b
-      value: 0
+      value: 0.6868548
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: lineColor2.g
-      value: 0.50980395
+      value: 0.8447846
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineColor2.r
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: sourceCamera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
+      propertyPath: lineThickness
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 2099172482432927031, guid: c5bdfb43d641922268a019fc9ee70948, type: 3}
       propertyPath: outlineCamera
