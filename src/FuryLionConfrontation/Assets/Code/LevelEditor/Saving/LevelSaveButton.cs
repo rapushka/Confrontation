@@ -31,7 +31,7 @@ namespace Confrontation
 			=> new()
 			{
 				Coordinates = building.Coordinates,
-				Prefab = BuildingsCollection.Load(building.GetType().Name),
+				Prefab = BuildingsCollection.Load(building.Name),
 			};
 	}
 }

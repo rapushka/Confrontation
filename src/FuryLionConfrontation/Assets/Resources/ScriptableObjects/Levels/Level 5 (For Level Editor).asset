@@ -50,4 +50,22 @@ MonoBehaviour:
       _column: 3
     - _row: 2
       _column: 3
-  <Buildings>k__BackingField: []
+  <Buildings>k__BackingField:
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 2
+      _column: 1
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 2
+      _column: 2
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 2
+      _column: 3

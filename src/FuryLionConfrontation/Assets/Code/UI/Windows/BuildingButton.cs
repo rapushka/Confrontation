@@ -9,17 +9,19 @@ namespace Confrontation
 		[Inject] private readonly Building _building;
 		[Inject] private readonly IPurchase _purchase;
 		[Inject] private readonly User _user;
+		[Inject] private readonly IInputService _input;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private readonly IBalanceTable _balanceTable;
-		[Inject] private readonly IInputService _input;
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
-		private void Start() => _textMesh.text = $"{_building.Name}\n{_balanceTable.BuildPriceFor(_building)} G";
+		protected virtual string TextView => $"{_building.Name}\n{_balanceTable.BuildPriceFor(_building)} G";
+
+		private void Start() => _textMesh.text = TextView;
 
 		protected override void OnButtonClick()
 		{
-			if (_purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell))
+			if (PurchaseBuilding())
 			{
 				_uiMediator.CloseCurrentWindow();
 			}
@@ -28,6 +30,8 @@ namespace Confrontation
 				_uiMediator.OpenWindow<NotEnoughGoldWindow>();
 			}
 		}
+
+		protected bool PurchaseBuilding() => _purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell);
 
 		public class Factory : PlaceholderFactory<Building, BuildingButton>
 		{

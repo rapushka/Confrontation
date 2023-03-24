@@ -9,10 +9,13 @@ namespace Confrontation
 		[SerializeField] private RegionEntry _regionEntryPrefab;
 		[SerializeField] private RegionOwnershipEntry _regionOwnershipEntryPrefab;
 		[SerializeField] private LevelEditorTabsSystem _tabs;
+		[SerializeField] private LevelEditorBuildingButton _buildingButtonPrefab;
 
 		protected override void InstallSpecificBindings()
 		{
 			Container.BindInstance(_tabs).AsSingle();
+
+			Container.Bind<BuildingSpawner>().AsSingle();
 
 			Container.Bind<IFieldBounds>().To<EditorFieldBounds>().AsSingle();
 			Container.Bind<IPurchase>().To<FreePurchase>().AsSingle();
@@ -40,6 +43,9 @@ namespace Confrontation
 
 			Container.BindFactory<int, RegionOwnershipEntry, RegionOwnershipEntry.Factory>()
 			         .FromComponentInNewPrefab(_regionOwnershipEntryPrefab);
+
+			Container.BindFactory<Building, LevelEditorBuildingButton, LevelEditorBuildingButton.Factory>()
+			         .FromComponentInNewPrefab(_buildingButtonPrefab);
 		}
 
 		private T DoNothing<T>(DiContainer container) => throw new Exception("This method must not be called");

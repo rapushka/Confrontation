@@ -24,7 +24,7 @@ namespace Confrontation
 		[Serializable]
 		public class CoordinatedData
 		{
-			[SerializeField] private Data _data;
+			[SerializeField] private Data _data = new();
 			[SerializeField] private Coordinates _coordinates;
 
 			public Coordinates Coordinates
