@@ -14,8 +14,8 @@ namespace Confrontation
 		[SerializeField] private string _regionIdPrefix;
 		[Space]
 		[SerializeField] private TextMeshProUGUI _cellsCountTextMesh;
-		[SerializeField] private string _cellsCountPrefix;
 		[Space]
+		[SerializeField] private string _cellsCountPrefix;
 		[SerializeField] private Image _selectionImage;
 
 		private int _cellsCount;
@@ -34,7 +34,7 @@ namespace Confrontation
 			}
 		}
 
-		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
+		public int Id { get => _id; private set => _regionIdTextMesh.text = _regionIdPrefix + value; }
 
 		private bool Selected { set => _selectionImage.enabled = value; }
 

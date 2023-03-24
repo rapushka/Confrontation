@@ -23,6 +23,8 @@ namespace Confrontation
 		private CellsToRegionsHandler _handler;
 		[CanBeNull] private RegionEntry _selectedEntry;
 
+		public IEnumerable<RegionEntry> RegionEntries => _regionEntries;
+
 		private IEnumerable<Region.Data> RegionsData => _levelSelector.SelectedLevel.Regions;
 
 		public RegionEntry SelectedEntry
