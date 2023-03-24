@@ -82,7 +82,7 @@ namespace Confrontation
 			}
 		}
 
-		private static bool RegionWasNeutral(int oldOwnerId) => oldOwnerId == 0;
+		private static bool RegionWasNeutral(int oldOwnerId) => oldOwnerId == Constants.NeutralRegion;
 
 		private bool PlayerLostAllCapitals(int oldOwnerId) => CapitalsOfPlayer(oldOwnerId).Any() == false;
 

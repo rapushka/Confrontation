@@ -14,8 +14,10 @@ namespace Confrontation
 		[SerializeField] private TMP_InputField _ownerIdInputField;
 
 		public int OwnerId => int.Parse(_ownerIdInputField.text);
-		
-		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
+
+		public TMP_InputField OwnerIdInputField => _ownerIdInputField;
+
+		public int Id { get => _id; private set => _regionIdTextMesh.text = _regionIdPrefix + value; }
 
 		private void Initialize()
 		{

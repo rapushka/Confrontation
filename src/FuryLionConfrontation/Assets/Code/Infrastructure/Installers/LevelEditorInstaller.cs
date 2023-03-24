@@ -7,12 +7,13 @@ namespace Confrontation
 	public class LevelEditorInstaller : GameFieldInstaller
 	{
 		[SerializeField] private RegionEntry _regionEntryPrefab;
+		[SerializeField] private RegionOwnershipEntry _regionOwnershipEntryPrefab;
 		[SerializeField] private LevelEditorTabsSystem _tabs;
 
 		protected override void InstallSpecificBindings()
 		{
 			Container.BindInstance(_tabs).AsSingle();
-			
+
 			Container.Bind<IFieldBounds>().To<EditorFieldBounds>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<ConfigurableField>().AsSingle();
@@ -23,7 +24,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
-			
+
 			Container.BindInterfacesAndSelfTo<LevelEditorFieldInputDirector>().AsSingle();
 			Container.BindInterfacesAndSelfTo<OutlineCellsInCurrentRegion>().AsSingle();
 		}
@@ -35,6 +36,9 @@ namespace Confrontation
 
 			Container.BindFactory<int, RegionEntry, RegionEntry.Factory>()
 			         .FromComponentInNewPrefab(_regionEntryPrefab);
+
+			Container.BindFactory<int, RegionOwnershipEntry, RegionOwnershipEntry.Factory>()
+			         .FromComponentInNewPrefab(_regionOwnershipEntryPrefab);
 		}
 
 		private T DoNothing<T>(DiContainer container) => throw new Exception("This method must not be called");

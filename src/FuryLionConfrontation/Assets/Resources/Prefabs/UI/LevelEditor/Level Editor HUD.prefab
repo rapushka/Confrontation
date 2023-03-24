@@ -97,7 +97,7 @@ MonoBehaviour:
   - <Button>k__BackingField: {fileID: 4231245798824216662}
     <Page>k__BackingField: {fileID: 743171109}
   - <Button>k__BackingField: {fileID: 6867038638535031397}
-    <Page>k__BackingField: {fileID: 0}
+    <Page>k__BackingField: {fileID: 4583833582857043269}
   - <Button>k__BackingField: {fileID: 483203189249240826}
     <Page>k__BackingField: {fileID: 3630718230181360902}
 --- !u!1 &1764112375889078592
@@ -1614,6 +1614,7 @@ GameObject:
   - component: {fileID: 1513198251763843112}
   - component: {fileID: 7313391104458981585}
   - component: {fileID: 5727857610178250977}
+  - component: {fileID: 4583833582857043269}
   m_Layer: 0
   m_Name: Owner Players Page
   m_TagString: Untagged
@@ -1681,6 +1682,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4583833582857043269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777061923449005598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afcbc532e394868a4a22a6d4e64828d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regionsListRoot: {fileID: 1532658683912983974}
 --- !u!1001 &501987110604749145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2930,6 +2944,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03b0a54e0be83b98a7f615d484b7be9, type: 3}
+--- !u!224 &1532658683912983974 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8764025095046766652, guid: d03b0a54e0be83b98a7f615d484b7be9, type: 3}
+  m_PrefabInstance: {fileID: 7846689539359913370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7891863768323572741 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 99223059497611679, guid: d03b0a54e0be83b98a7f615d484b7be9, type: 3}
