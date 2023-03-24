@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Confrontation
@@ -9,32 +9,37 @@ namespace Confrontation
 	public class PlayersOwnershipTab : LevelEditorPage
 	{
 		[Inject] private readonly RegionOwnershipEntry.Factory _regionOwnershipEntryFactory;
-		[Inject] private readonly RegionsTab _regionsTab;
+		[Inject] private readonly IField _field;
 
 		[SerializeField] private Transform _regionsListRoot;
+		[SerializeField] private Button _applyButton;
 
 		private readonly List<RegionOwnershipEntry> _entries = new();
 
 		private void OnEnable()
 		{
-			foreach (var regionEntry in _regionsTab.RegionEntries)
+			_applyButton.onClick.AddListener(UpdateAllOwners);
+
+			foreach (var region in _field.Regions.WithoutNulls().OnlyUnique())
 			{
-				var regionOwnershipEntry = _regionOwnershipEntryFactory.Create(regionEntry.Id, _regionsListRoot);
-				regionOwnershipEntry.OwnerIdInputField.onEndEdit.AddListener(OnOwnerChanged);
+				var regionOwnershipEntry = _regionOwnershipEntryFactory.Create(region.Id, _regionsListRoot);
+				regionOwnershipEntry.OwnerId = region.OwnerPlayerId;
 				_entries.Add(regionOwnershipEntry);
 			}
 		}
 
 		private void OnDisable()
-			=> _entries.ForEach((r) => r.OwnerIdInputField.onEndEdit.RemoveListener(OnOwnerChanged));
+		{
+			_applyButton.onClick.RemoveListener(UpdateAllOwners);
 
-		private void OnOwnerChanged(string text) => UpdateAllOwners();
+			_entries.Clear();
+		}
 
 		private void UpdateAllOwners()
 		{
 			foreach (var regionOwnershipEntry in _entries)
 			{
-				var region = _regionsTab.RegionEntries.Single((r) => r.Id == regionOwnershipEntry.Id).Region;
+				var region = _field.Regions.First((r) => r.Id == regionOwnershipEntry.Id);
 				region.OwnerPlayerId = regionOwnershipEntry.OwnerId;
 			}
 		}

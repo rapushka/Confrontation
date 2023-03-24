@@ -13,7 +13,11 @@ namespace Confrontation
 		[Space]
 		[SerializeField] private TMP_InputField _ownerIdInputField;
 
-		public int OwnerId => int.Parse(_ownerIdInputField.text);
+		public int OwnerId
+		{
+			get => int.Parse(_ownerIdInputField.text);
+			set => _ownerIdInputField.text = value.ToString();
+		}
 
 		public TMP_InputField OwnerIdInputField => _ownerIdInputField;
 
