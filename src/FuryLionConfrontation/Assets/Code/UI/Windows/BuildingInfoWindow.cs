@@ -10,7 +10,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
-		[Inject] private readonly Purchase _purchase;
+		[Inject] private readonly IPurchase _purchase;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;

@@ -17,7 +17,7 @@ namespace Confrontation
 			Container.BindInstance(_movement).AsSingle();
 
 			Container.Bind<IField>().To<Field>().AsSingle();
-			Container.Bind<Purchase>().AsSingle();
+			Container.Bind<IPurchase>().To<Purchase>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<Hud>().FromInstance(_hud).AsSingle();
 			Container.BindInterfacesTo<AccelerateTimeToggle>().FromInstance(_accelerateTimeToggle).AsSingle();

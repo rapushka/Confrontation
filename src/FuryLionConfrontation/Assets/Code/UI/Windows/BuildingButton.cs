@@ -7,7 +7,7 @@ namespace Confrontation
 	public class BuildingButton : ButtonBase
 	{
 		[Inject] private readonly Building _building;
-		[Inject] private readonly Purchase _purchase;
+		[Inject] private readonly IPurchase _purchase;
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private readonly IBalanceTable _balanceTable;
