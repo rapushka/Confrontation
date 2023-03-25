@@ -3,9 +3,9 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class BuildingsTab : LevelEditorPage
+	public class BuildingsPage : LevelEditorPage
 	{
-		[Inject] private readonly LevelEditorBuildingButton.Factory _buildingButtonFactory;
+		[Inject] private readonly BuildingEntry.Factory _buildingButtonFactory;
 		[Inject] private readonly IResourcesService _resources;
 
 		[SerializeField] private Transform _buildingButtonsRoot;

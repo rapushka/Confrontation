@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class FieldSizesTab : LevelEditorPage
+	public class FieldSizesPage : LevelEditorPage
 	{
 		[Inject] private readonly ConfigurableField _configurableField;
 		[Inject] private readonly FieldGenerator _fieldGenerator;
