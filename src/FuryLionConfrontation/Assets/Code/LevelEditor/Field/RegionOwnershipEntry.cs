@@ -8,38 +8,31 @@ namespace Confrontation
 	{
 		[Inject] private readonly int _id;
 
-		[SerializeField] private TextMeshProUGUI _regionIdTextMesh;
-		[SerializeField] private string _regionIdPrefix;
-		[Space]
+		[SerializeField] private IntPrefixView _idView;
 		[SerializeField] private TMP_InputField _ownerIdInputField;
 
 		public int OwnerId
 		{
 			get => int.Parse(_ownerIdInputField.text);
-			set => _ownerIdInputField.text = value.ToString();
+			private set => _ownerIdInputField.text = value.ToString();
 		}
 
-		public int Id { get => _id; private set => _regionIdTextMesh.text = _regionIdPrefix + value; }
+		public int Id => _idView.Value;
 
 		private void Initialize()
 		{
-			Id = _id;
-			_ownerIdInputField.text = 0.ToString();
+			_idView.Value = _id;
+			OwnerId = 0;
 		}
 
 		public class Factory : PlaceholderFactory<int, RegionOwnershipEntry>
 		{
-			public RegionOwnershipEntry Create(int id, Transform parent)
+			public RegionOwnershipEntry Create(Region region, Transform parent)
 			{
-				var entry = Create(id);
-				entry.transform.SetParent(parent);
-				return entry;
-			}
-
-			public override RegionOwnershipEntry Create(int id)
-			{
-				var entry = base.Create(id);
+				var entry = Create(region.Id);
 				entry.Initialize();
+				entry.transform.SetParent(parent);
+				entry.OwnerId = region.OwnerPlayerId;
 				return entry;
 			}
 		}

@@ -16,16 +16,21 @@ namespace Confrontation
 		private readonly Queue<Region> _lastSelectedRegions = new(capacity: MaxLastRegionsToStore);
 		private Region _currentSelectedRegion;
 
+		private bool _isDisabled;
+
 		public void Tick()
 		{
-			if (_tabs.CurrentPage is not RegionsPage tab
-			    || tab.SelectedEntry == false)
+			if (_tabs.CurrentPage is RegionsPage { HasSelectedEntry: true } tab)
 			{
-				return;
+				KeepTwoRegionsInQueue(tab.SelectedEntry.Region);
+				DrawOutlines();
+				_isDisabled = true;
 			}
-
-			KeepTwoRegionsInQueue(tab.SelectedEntry.Region);
-			DrawOutlines();
+			else if (_isDisabled == false)
+			{
+				_field.Cells.ForEach(RemoveOutline);
+				_isDisabled = true;
+			}
 		}
 
 		private void KeepTwoRegionsInQueue(Region selectedRegion)

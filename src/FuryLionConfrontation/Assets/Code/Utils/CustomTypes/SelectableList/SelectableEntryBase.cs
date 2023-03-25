@@ -8,20 +8,20 @@ namespace Confrontation
 	{
 		[SerializeField] private Image _selectionImage;
 
-		public event Action<SelectableEntryBase> Clicked;
+		public event Action<SelectableEntryBase> EntrySelected;
 
 		private bool Selected { set => _selectionImage.enabled = value; }
 
 		private void Start() => Deselect();
 
-		protected override void OnButtonClick()
-		{
-			Clicked?.Invoke(this);
-			Select();
-		}
-
 		public void Select() => Selected = true;
 
 		public void Deselect() => Selected = false;
+
+		protected override void OnButtonClick()
+		{
+			Select();
+			EntrySelected?.Invoke(this);
+		}
 	}
 }

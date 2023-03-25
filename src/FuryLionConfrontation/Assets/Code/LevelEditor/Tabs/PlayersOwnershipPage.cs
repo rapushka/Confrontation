@@ -22,8 +22,7 @@ namespace Confrontation
 
 			foreach (var region in _field.Regions.WithoutNulls().OnlyUnique())
 			{
-				var regionOwnershipEntry = _regionOwnershipEntryFactory.Create(region.Id, _regionsListRoot);
-				regionOwnershipEntry.OwnerId = region.OwnerPlayerId;
+				var regionOwnershipEntry = _regionOwnershipEntryFactory.Create(region, _regionsListRoot);
 				_entries.Add(regionOwnershipEntry);
 			}
 		}

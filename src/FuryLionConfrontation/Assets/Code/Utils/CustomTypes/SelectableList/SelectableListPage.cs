@@ -31,12 +31,12 @@ namespace Confrontation
 
 		public bool HasSelectedEntry => SelectedEntry == true;
 
-		private void OnDestroy() => _entries.ForEach((r) => r.Clicked -= OnEntryClicked);
+		private void OnDestroy() => _entries.ForEach((r) => r.EntrySelected -= OnEntrySelected);
 
 		protected T AddEntry(T entry)
 		{
 			entry.transform.SetParent(_regionsListRoot);
-			entry.Clicked += OnEntryClicked;
+			entry.EntrySelected += OnEntrySelected;
 			_entries.Add(entry);
 			return entry;
 		}
@@ -55,6 +55,6 @@ namespace Confrontation
 
 		private void Deselect() => _selectedEntry = null;
 
-		private void OnEntryClicked(SelectableEntryBase clicked) => SelectedEntry = (T)clicked;
+		private void OnEntrySelected(SelectableEntryBase clicked) => SelectedEntry = (T)clicked;
 	}
 }
