@@ -1,5 +1,4 @@
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -10,31 +9,18 @@ namespace Confrontation
 		[Inject] private readonly int _id;
 
 		[Space]
-		[SerializeField] private TextMeshProUGUI _regionIdTextMesh;
-		[SerializeField] private string _regionIdPrefix;
-		[Space]
-		[SerializeField] private TextMeshProUGUI _cellsCountTextMesh;
-		[SerializeField] private string _cellsCountPrefix;
+		[SerializeField] private IntPrefixView _idView;
+		[SerializeField] private IntPrefixView _cellsCountView;
 
 		public Region Region { get; set; }
 
-		private int CellsCount { set => _cellsCountTextMesh.text = _cellsCountPrefix + value; }
-
-		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
-
 		public void Initialize()
 		{
-			Id = _id;
-			CellsCount = 0;
+			_idView.Value = _id;
+			_cellsCountView.Value = 0;
 		}
 
-		private void OnValidate()
-		{
-			Id = 0;
-			CellsCount = 0;
-		}
-
-		public void CalculateCellsCount() => CellsCount = Region.CellsInRegion.Count();
+		public void CalculateCellsCount() => _cellsCountView.Value = Region.CellsInRegion.Count();
 
 		public class Factory : PlaceholderFactory<int, RegionEntry>
 		{
