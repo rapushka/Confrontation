@@ -1563,9 +1563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73423aac6244b0cbe7d7752ebfcb599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _listRoot: {fileID: 1480488028269987083}
   _addRegionButton: {fileID: 7559423483645750081}
   _removeSelectedButton: {fileID: 5000456393005705233}
-  _regionsListRoot: {fileID: 1480488028269987083}
 --- !u!1 &6669523340053139105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1003a7493ca14f86aa2c63be1a749e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _listRoot: {fileID: 7978038206675711247}
   _buildingButtonsRoot: {fileID: 7978038206675711247}
 --- !u!1 &7276329026978929178
 GameObject:

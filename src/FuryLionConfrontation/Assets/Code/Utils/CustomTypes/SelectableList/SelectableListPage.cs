@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Confrontation
 {
 	public abstract class SelectableListPage<T> : LevelEditorPage
 		where T : SelectableEntryBase
 	{
-		[SerializeField] private Transform _regionsListRoot;
+		[SerializeField] private Transform _listRoot;
 
 		private readonly List<T> _entries = new();
 		[CanBeNull] private T _selectedEntry;
@@ -35,7 +36,7 @@ namespace Confrontation
 
 		protected T AddEntry(T entry)
 		{
-			entry.transform.SetParent(_regionsListRoot);
+			entry.transform.SetParent(_listRoot);
 			entry.EntrySelected += OnEntrySelected;
 			_entries.Add(entry);
 			return entry;

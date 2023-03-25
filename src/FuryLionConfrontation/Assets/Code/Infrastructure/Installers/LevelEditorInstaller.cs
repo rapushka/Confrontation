@@ -19,7 +19,6 @@ namespace Confrontation
 			Container.Bind<BuildingSpawner>().AsSingle();
 
 			Container.Bind<IFieldBounds>().To<EditorFieldBounds>().AsSingle();
-			Container.Bind<IPurchase>().To<FreePurchase>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<ConfigurableField>().AsSingle();
 

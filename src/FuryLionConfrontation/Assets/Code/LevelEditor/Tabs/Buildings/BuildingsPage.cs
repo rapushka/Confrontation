@@ -1,23 +1,21 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
-	public class BuildingsPage : LevelEditorPage
+	public class BuildingsPage : SelectableListPage<BuildingEntry>
 	{
-		[Inject] private readonly BuildingEntry.Factory _buildingButtonFactory;
-		[Inject] private readonly IResourcesService _resources;
-
-		[SerializeField] private Transform _buildingButtonsRoot;
+		[Inject] private readonly BuildingEntry.Factory _buildingEntryFactory;
+		[Inject] private readonly BuildingSpawner _buildingSpawner;
 
 		private void Start()
 		{
-			foreach (var building in _resources.Buildings)
+			foreach (var buildingName in BuildingsCollection.BuildingsNames)
 			{
-				_buildingButtonFactory.Create(building, _buildingButtonsRoot);
+				var building = BuildingsCollection.Load(buildingName);
+				AddEntry(_buildingEntryFactory.Create(building));
 			}
 		}
 
-		public override void Handle(Cell clickedCell) { }
+		public override void Handle(Cell clickedCell) => _buildingSpawner.Build(SelectedEntry.Building, clickedCell);
 	}
 }
