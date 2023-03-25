@@ -1,59 +1,32 @@
-using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Confrontation
 {
-	public class RegionEntry : ButtonBase, IInitializable
+	public class RegionEntry : EntryBase, IInitializable
 	{
 		[Inject] private readonly int _id;
 
+		[Space]
 		[SerializeField] private TextMeshProUGUI _regionIdTextMesh;
 		[SerializeField] private string _regionIdPrefix;
 		[Space]
 		[SerializeField] private TextMeshProUGUI _cellsCountTextMesh;
-		[Space]
 		[SerializeField] private string _cellsCountPrefix;
-		[SerializeField] private Image _selectionImage;
-
-		private int _cellsCount;
-
-		public event Action<RegionEntry> EntryClicked;
 
 		public Region Region { get; set; }
 
-		public int CellsCount
-		{
-			get => _cellsCount;
-			set
-			{
-				_cellsCount = value;
-				_cellsCountTextMesh.text = _cellsCountPrefix + _cellsCount;
-			}
-		}
+		private int CellsCount { set => _cellsCountTextMesh.text = _cellsCountPrefix + value; }
 
-		public int Id { get => _id; private set => _regionIdTextMesh.text = _regionIdPrefix + value; }
-
-		private bool Selected { set => _selectionImage.enabled = value; }
-
-		protected override void OnButtonClick()
-		{
-			EntryClicked?.Invoke(this);
-			Selected = true;
-		}
+		private int Id { set => _regionIdTextMesh.text = _regionIdPrefix + value; }
 
 		public void Initialize()
 		{
 			Id = _id;
 			CellsCount = 0;
-			Selected = false;
 		}
-
-		public void Select() => Selected = true;
-
-		public void Deselect() => Selected = false;
 
 		private void OnValidate()
 		{
@@ -61,16 +34,13 @@ namespace Confrontation
 			CellsCount = 0;
 		}
 
+		public void CalculateCellsCount() => CellsCount = Region.CellsInRegion.Count();
+
 		public class Factory : PlaceholderFactory<int, RegionEntry>
 		{
 			private int _currentRegionId;
 
-			public RegionEntry Create(Transform parent)
-			{
-				var regionEntry = Create(_currentRegionId++);
-				regionEntry.transform.SetParent(parent);
-				return regionEntry;
-			}
+			public RegionEntry Create() => Create(_currentRegionId++);
 
 			public override RegionEntry Create(int id)
 			{
