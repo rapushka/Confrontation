@@ -25,7 +25,7 @@ namespace Confrontation
 			get => _sizes;
 			set
 			{
-				_sizes = value; 
+				_sizes = value;
 				Recreate();
 			}
 		}
