@@ -18,7 +18,7 @@ namespace Confrontation
 
 		public void Tick()
 		{
-			if (_tabs.CurrentPage is not RegionsTab tab
+			if (_tabs.CurrentPage is not RegionsPage tab
 			    || tab.SelectedEntry == false)
 			{
 				return;

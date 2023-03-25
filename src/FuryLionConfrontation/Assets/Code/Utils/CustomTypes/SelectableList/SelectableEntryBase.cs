@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 namespace Confrontation
 {
-	public abstract class EntryBase : ButtonBase
+	public abstract class SelectableEntryBase : ButtonBase
 	{
 		[SerializeField] private Image _selectionImage;
 
-		public event Action<EntryBase> Clicked;
+		public event Action<SelectableEntryBase> Clicked;
 
 		private bool Selected { set => _selectionImage.enabled = value; }
 
@@ -17,7 +17,7 @@ namespace Confrontation
 		protected override void OnButtonClick()
 		{
 			Clicked?.Invoke(this);
-			Selected = true;
+			Select();
 		}
 
 		public void Select() => Selected = true;

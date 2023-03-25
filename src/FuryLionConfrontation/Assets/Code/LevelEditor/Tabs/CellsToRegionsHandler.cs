@@ -2,18 +2,19 @@ namespace Confrontation
 {
 	public class CellsToRegionsHandler
 	{
-		private readonly RegionsTab _tab;
+		private readonly RegionsPage _page;
 
-		public CellsToRegionsHandler(RegionsTab tab) => _tab = tab;
+		public CellsToRegionsHandler(RegionsPage page) => _page = page;
 
-		public void Add(Cell cell)
+		public void ToggleCellMembershipInSelectedRegion(Cell cell)
 		{
-			if (_tab.SelectedEntry == true)
+			if (_page.HasSelectedEntry)
 			{
-				Add(cell, _tab.SelectedEntry.Region);
+				ToggleCellMembershipInRegion(cell, _page.SelectedEntry.Region);
 			}
 		}
 
-		private void Add(Cell cell, Region to) => cell.RelatedRegion = cell.RelatedRegion != to ? to : null;
+		private static void ToggleCellMembershipInRegion(Cell cell, Region to)
+			=> cell.RelatedRegion = cell.RelatedRegion != to ? to : null;
 	}
 }

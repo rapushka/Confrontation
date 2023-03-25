@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public abstract class SelectableList<T> : LevelEditorPage
-		where T : EntryBase
+	public abstract class SelectableListPage<T> : LevelEditorPage
+		where T : SelectableEntryBase
 	{
 		[SerializeField] private Transform _regionsListRoot;
 
@@ -19,7 +19,7 @@ namespace Confrontation
 			get => _selectedEntry;
 			private set
 			{
-				if (_selectedEntry == true)
+				if (HasSelectedEntry)
 				{
 					_selectedEntry!.Deselect();
 				}
@@ -28,6 +28,8 @@ namespace Confrontation
 				_selectedEntry!.Select();
 			}
 		}
+
+		public bool HasSelectedEntry => SelectedEntry == true;
 
 		private void OnDestroy() => _entries.ForEach((r) => r.Clicked -= OnEntryClicked);
 
@@ -53,6 +55,6 @@ namespace Confrontation
 
 		private void Deselect() => _selectedEntry = null;
 
-		private void OnEntryClicked(EntryBase clicked) => SelectedEntry = (T)clicked;
+		private void OnEntryClicked(SelectableEntryBase clicked) => SelectedEntry = (T)clicked;
 	}
 }

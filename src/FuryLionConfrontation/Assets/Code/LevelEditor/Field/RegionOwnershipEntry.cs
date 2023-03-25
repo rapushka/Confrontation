@@ -19,8 +19,6 @@ namespace Confrontation
 			set => _ownerIdInputField.text = value.ToString();
 		}
 
-		public TMP_InputField OwnerIdInputField => _ownerIdInputField;
-
 		public int Id { get => _id; private set => _regionIdTextMesh.text = _regionIdPrefix + value; }
 
 		private void Initialize()

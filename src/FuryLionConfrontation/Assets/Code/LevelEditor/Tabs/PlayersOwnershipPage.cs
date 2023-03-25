@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class PlayersOwnershipTab : LevelEditorPage
+	public class PlayersOwnershipPage : LevelEditorPage
 	{
 		[Inject] private readonly RegionOwnershipEntry.Factory _regionOwnershipEntryFactory;
 		[Inject] private readonly IField _field;

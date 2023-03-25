@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionsTab : SelectableList<RegionEntry>
+	public class RegionsPage : SelectableListPage<RegionEntry>
 	{
 		[Inject] private readonly RegionEntry.Factory _regionEntryFactory;
 		[Inject] private readonly IField _field;
@@ -23,7 +23,6 @@ namespace Confrontation
 		private void Start()
 		{
 			_handler = new CellsToRegionsHandler(this);
-
 			LoadRegions();
 		}
 
@@ -41,7 +40,7 @@ namespace Confrontation
 
 		public override void Handle(Cell clickedCell)
 		{
-			_handler.Add(clickedCell);
+			_handler.ToggleCellMembershipInSelectedRegion(clickedCell);
 			Entries.ForEach((r) => r.CalculateCellsCount());
 		}
 

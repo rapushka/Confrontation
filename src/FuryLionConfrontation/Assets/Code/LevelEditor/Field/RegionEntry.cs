@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionEntry : EntryBase, IInitializable
+	public class RegionEntry : SelectableEntryBase, IInitializable
 	{
 		[Inject] private readonly int _id;
 
