@@ -31,6 +31,7 @@ namespace Confrontation
 			=> new()
 			{
 				Coordinates = building.Coordinates,
+				SelectionIndex = BuildingsCollection.IndexOf(building),
 				Prefab = BuildingsCollection.Load(building.Name),
 			};
 	}
