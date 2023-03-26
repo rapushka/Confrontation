@@ -13,41 +13,327 @@ MonoBehaviour:
   m_Name: Level 5 (For Level Editor)
   m_EditorClassIdentifier: 
   <Sizes>k__BackingField:
-    _width: 4
-    _height: 3
+    _width: 10
+    _height: 10
   <Regions>k__BackingField:
   - <OwnerPlayerId>k__BackingField: 1
     <CellsCoordinates>k__BackingField:
     - _row: 0
       _column: 0
+    - _row: 0
+      _column: 1
+    - _row: 0
+      _column: 2
+    - _row: 1
+      _column: 0
+    - _row: 1
+      _column: 1
+    - _row: 2
+      _column: 0
+    - _row: 2
+      _column: 1
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 3
+    - _row: 0
+      _column: 4
+    - _row: 0
+      _column: 5
+    - _row: 0
+      _column: 6
+    - _row: 1
+      _column: 4
+    - _row: 1
+      _column: 5
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 7
+    - _row: 0
+      _column: 8
+    - _row: 1
+      _column: 6
+    - _row: 1
+      _column: 7
+    - _row: 1
+      _column: 8
+    - _row: 2
+      _column: 7
+    - _row: 2
+      _column: 8
+  - <OwnerPlayerId>k__BackingField: 4
+    <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 9
+    - _row: 1
+      _column: 9
+    - _row: 2
+      _column: 9
+    - _row: 3
+      _column: 8
+    - _row: 3
+      _column: 9
+    - _row: 4
+      _column: 9
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 1
+      _column: 2
+    - _row: 1
+      _column: 3
+    - _row: 2
+      _column: 2
+    - _row: 2
+      _column: 3
+    - _row: 2
+      _column: 4
+    - _row: 3
+      _column: 2
+    - _row: 3
+      _column: 3
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 2
+      _column: 5
+    - _row: 2
+      _column: 6
+    - _row: 3
+      _column: 4
+    - _row: 3
+      _column: 5
+    - _row: 3
+      _column: 6
+    - _row: 4
+      _column: 5
+    - _row: 4
+      _column: 6
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 3
+      _column: 0
+    - _row: 3
+      _column: 1
+    - _row: 4
+      _column: 0
+    - _row: 4
+      _column: 1
+    - _row: 4
+      _column: 2
+    - _row: 5
+      _column: 0
+    - _row: 5
+      _column: 1
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 3
+      _column: 7
+    - _row: 4
+      _column: 7
+    - _row: 4
+      _column: 8
+    - _row: 5
+      _column: 6
+    - _row: 5
+      _column: 7
+    - _row: 5
+      _column: 8
+    - _row: 5
+      _column: 9
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 4
+      _column: 3
+    - _row: 4
+      _column: 4
+    - _row: 5
+      _column: 2
+    - _row: 5
+      _column: 3
+    - _row: 5
+      _column: 4
+    - _row: 6
+      _column: 3
+    - _row: 6
+      _column: 4
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 5
+      _column: 5
+    - _row: 6
+      _column: 5
+    - _row: 7
+      _column: 5
+    - _row: 8
+      _column: 6
+    - _row: 9
+      _column: 6
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 6
+      _column: 0
+    - _row: 6
+      _column: 1
+    - _row: 6
+      _column: 2
+    - _row: 7
+      _column: 2
+    - _row: 7
+      _column: 3
+    - _row: 8
+      _column: 3
+    - _row: 9
+      _column: 2
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 6
+      _column: 6
+    - _row: 6
+      _column: 7
+    - _row: 6
+      _column: 8
+    - _row: 7
+      _column: 6
+    - _row: 7
+      _column: 7
+    - _row: 8
+      _column: 7
   - <OwnerPlayerId>k__BackingField: 2
     <CellsCoordinates>k__BackingField:
-    - _row: 0
-      _column: 1
-    - _row: 1
-      _column: 0
+    - _row: 6
+      _column: 9
+    - _row: 7
+      _column: 8
+    - _row: 7
+      _column: 9
+    - _row: 8
+      _column: 8
+    - _row: 8
+      _column: 9
+    - _row: 9
+      _column: 7
+    - _row: 9
+      _column: 8
+    - _row: 9
+      _column: 9
   - <OwnerPlayerId>k__BackingField: 3
     <CellsCoordinates>k__BackingField:
-    - _row: 0
-      _column: 2
-    - _row: 1
-      _column: 1
-    - _row: 2
+    - _row: 7
       _column: 0
-    - _row: 2
+    - _row: 7
+      _column: 1
+    - _row: 8
+      _column: 0
+    - _row: 8
+      _column: 1
+    - _row: 8
+      _column: 2
+    - _row: 9
+      _column: 0
+    - _row: 9
       _column: 1
   - <OwnerPlayerId>k__BackingField: 0
     <CellsCoordinates>k__BackingField:
-    - _row: 0
+    - _row: 7
+      _column: 4
+    - _row: 8
+      _column: 4
+    - _row: 8
+      _column: 5
+    - _row: 9
       _column: 3
-    - _row: 1
-      _column: 2
-    - _row: 2
-      _column: 2
-  - <OwnerPlayerId>k__BackingField: 0
-    <CellsCoordinates>k__BackingField:
-    - _row: 1
+    - _row: 9
+      _column: 4
+    - _row: 9
+      _column: 5
+  <Buildings>k__BackingField:
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 0
+      _column: 0
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 0
+      _column: 5
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 1
+      _column: 7
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 1
+      _column: 9
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 2
       _column: 3
-    - _row: 2
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 3
+      _column: 5
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 4
+      _column: 1
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 5
       _column: 3
-  <Buildings>k__BackingField: []
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 5
+      _column: 9
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 6
+      _column: 5
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 6
+      _column: 7
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 7
+      _column: 3
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 9
+      _column: 0
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 9
+      _column: 4
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 9
+      _column: 9

@@ -31,7 +31,7 @@ namespace Confrontation
 		{
 			_applyButton.onClick.RemoveListener(UpdateAllOwners);
 
-			_entries.ForEach(Destroy);
+			_entries.ForEach((e) => Destroy(e.gameObject));
 			_entries.Clear();
 		}
 
@@ -39,7 +39,7 @@ namespace Confrontation
 		{
 			foreach (var regionOwnershipEntry in _entries)
 			{
-				var region = _field.Regions.First((r) => r.Id == regionOwnershipEntry.Id);
+				var region = _field.Regions.WithoutNulls().First((r) => r.Id == regionOwnershipEntry.Id);
 				region.OwnerPlayerId = regionOwnershipEntry.OwnerId;
 			}
 		}
