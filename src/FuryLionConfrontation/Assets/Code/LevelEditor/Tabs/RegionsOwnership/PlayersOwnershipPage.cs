@@ -31,6 +31,7 @@ namespace Confrontation
 		{
 			_applyButton.onClick.RemoveListener(UpdateAllOwners);
 
+			_entries.ForEach(Destroy);
 			_entries.Clear();
 		}
 
