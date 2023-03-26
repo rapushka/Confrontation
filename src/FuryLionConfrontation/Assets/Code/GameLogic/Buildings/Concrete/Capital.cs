@@ -12,6 +12,8 @@ namespace Confrontation
 			Field.StashedBuildings.AddRange(buildings);
 		}
 
+		public override string Name => nameof(Capital);
+
 		public override void LevelUp()
 		{
 			base.LevelUp();
