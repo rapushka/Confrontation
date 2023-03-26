@@ -52,7 +52,7 @@ namespace Confrontation
 
 		private void CreateRegionEntry(Region region)
 		{
-			var regionEntry = AddEntry(_regionEntryFactory.Create());
+			var regionEntry = AddEntry(_regionEntryFactory.Create(region));
 			regionEntry.Region = region;
 			regionEntry.CalculateCellsCount();
 		}

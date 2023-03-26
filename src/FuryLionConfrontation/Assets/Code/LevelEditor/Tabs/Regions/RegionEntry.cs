@@ -24,9 +24,7 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<int, RegionEntry>
 		{
-			private int _currentRegionId;
-
-			public RegionEntry Create() => Create(_currentRegionId++);
+			public RegionEntry Create(Region region) => Create(region.Id);
 
 			public override RegionEntry Create(int id)
 			{
