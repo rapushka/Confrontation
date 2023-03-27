@@ -4,7 +4,7 @@ using Object = UnityEngine.Object;
 
 namespace Confrontation
 {
-	public class BuildWindow : WindowBase
+	public class BuildWindow : GameplayWindowBase
 	{
 		[Inject] private readonly IResourcesService _resources;
 		[Inject] private readonly BuildingButton.Factory _buildingButtonFactory;
@@ -19,7 +19,7 @@ namespace Confrontation
 			}
 		}
 
-		public override WindowBase Accept(IWindowVisitor windowVisitor) => windowVisitor.Visit(this);
+		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 
 		public new class Factory : PlaceholderFactory<Object, BuildWindow> { }
 	}

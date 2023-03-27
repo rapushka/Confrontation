@@ -25,6 +25,10 @@ namespace Confrontation
 
 			Container.Bind<GameUiMediator>().AsSingle();
 
+			Container.Bind<ToMainMenu>().AsSingle();
+			Container.Bind<ToGameplay>().AsSingle();
+			Container.Bind<ToLevelEditor>().AsSingle();
+
 			StartGame();
 		}
 

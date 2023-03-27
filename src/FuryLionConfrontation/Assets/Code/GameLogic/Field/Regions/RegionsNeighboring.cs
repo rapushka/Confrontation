@@ -13,9 +13,7 @@ namespace Confrontation
 			=> Neighborhoods.Contains(new Pair<int, int>(first.Id, second.Id));
 
 		public void AddNeighboring(Region first, Region second)
-		{
-			Neighborhoods.Add(new Pair<int, int>(first.Id, second.Id));
-		}
+			=> Neighborhoods.Add(new Pair<int, int>(first.Id, second.Id));
 	}
 
 	public static class PairedHashSetExtensions

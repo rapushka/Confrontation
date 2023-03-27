@@ -36,5 +36,8 @@ namespace Confrontation
 			var randomId = UnityEngine.Random.Range(0, @this.Length);
 			return @this[randomId];
 		}
+
+		// ReSharper disable once RedundantEnumerableCastCall — in fact, this prevent nulls
+		public static IEnumerable<T> WithoutNulls<T>(this IEnumerable<T> @this) => @this.OfType<T>();
 	}
 }

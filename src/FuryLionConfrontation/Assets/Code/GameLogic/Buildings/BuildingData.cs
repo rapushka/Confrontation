@@ -16,28 +16,23 @@ namespace Confrontation
 			public Building Prefab
 			{
 				get => _prefab == true ? _prefab : BuildingsCollection.Load(_selectionIndex);
-
 				set => _prefab = value;
 			}
+
+			public int SelectionIndex { set => _selectionIndex = value; }
 		}
 
 		[Serializable]
 		public class CoordinatedData
 		{
-			[SerializeField] private Data _data;
+			[SerializeField] private Data _data = new();
 			[SerializeField] private Coordinates _coordinates;
 
-			public Coordinates Coordinates
-			{
-				get => _coordinates;
-				set => _coordinates = value;
-			}
+			public Coordinates Coordinates { get => _coordinates; set => _coordinates = value; }
 
-			public Building Prefab
-			{
-				get => _data.Prefab;
-				set => _data.Prefab = value;
-			}
+			public Building Prefab { get => _data.Prefab; set => _data.Prefab = value; }
+			
+			public int SelectionIndex { set => _data.SelectionIndex = value; }
 		}
 	}
 }

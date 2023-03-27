@@ -10,7 +10,7 @@ namespace Confrontation
 		{
 			foreach (var region in _field.Regions.OnlyUnique())
 			{
-				foreach (var cell in region.CellsInRegion)
+				foreach (var cell in region.OurCells)
 				{
 					CollectNeighboursFor(cell, @in: region);
 				}

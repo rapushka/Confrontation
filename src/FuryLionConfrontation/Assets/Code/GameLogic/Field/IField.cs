@@ -7,7 +7,7 @@ namespace Confrontation
 		CoordinatedMatrix<Cell> Cells { get; }
 
 		CoordinatedMatrix<Building> Buildings { get; }
-		
+
 		List<Building> StashedBuildings { get; }
 
 		CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }

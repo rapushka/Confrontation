@@ -31,9 +31,9 @@ namespace Confrontation
 
 		public bool IsInBounds(int row, int column)
 			=> row >= 0
-			   && row < Width
+			   && row < Height
 			   && column >= 0
-			   && column < Height;
+			   && column < Width;
 
 		public T[,] CreateMatrix<T>() => new T[Height, Width];
 	}

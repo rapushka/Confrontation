@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Purchase
+	public class Purchase : IPurchase
 	{
 		[Inject] private readonly BuildingSpawner _buildingSpawner;
 		[Inject] private readonly IBalanceTable _balanceTable;

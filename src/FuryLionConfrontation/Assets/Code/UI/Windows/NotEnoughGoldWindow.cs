@@ -3,9 +3,9 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class NotEnoughGoldWindow : WindowBase
+	public class NotEnoughGoldWindow : GameplayWindowBase
 	{
-		public override WindowBase Accept(IWindowVisitor windowVisitor) => windowVisitor.Visit(this);
+		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 		
 		public new class Factory : PlaceholderFactory<Object, NotEnoughGoldWindow> { }
 	}

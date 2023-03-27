@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class GameSession : IInitializable
+	public class GameSession : IInitializable, ISession
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;

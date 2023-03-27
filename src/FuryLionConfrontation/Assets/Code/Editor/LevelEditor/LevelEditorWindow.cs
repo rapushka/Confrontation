@@ -7,7 +7,6 @@ namespace Confrontation.Editor
 	public class LevelEditorWindow : ZenjectEditorWindow
 	{
 		// ReSharper disable FieldCanBeMadeReadOnly.Local - https://github.com/modesttree/Zenject#creating-unity-editorwindows-with-zenject
-		private ConfigurableField.State _fieldState = new();
 		private PlayersConfigurator.State _playersState = new();
 		private RegionsConfigurator.State _regionsState = new();
 		private Vector2 _scroll;
@@ -50,7 +49,6 @@ namespace Confrontation.Editor
 
 			Container.BindFactory<Cell, Cell.Factory>();
 
-			Container.BindInstance(_fieldState);
 			Container.BindInstance(_playersState);
 			Container.BindInstance(_regionsState);
 		}

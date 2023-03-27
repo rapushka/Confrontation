@@ -6,11 +6,11 @@ using Object = UnityEngine.Object;
 
 namespace Confrontation
 {
-	public class BuildingInfoWindow : WindowBase
+	public class BuildingInfoWindow : GameplayWindowBase
 	{
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly User _user;
-		[Inject] private readonly Purchase _purchase;
+		[Inject] private readonly IPurchase _purchase;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
@@ -19,7 +19,7 @@ namespace Confrontation
 
 		private Building _building;
 
-		public override WindowBase Accept(IWindowVisitor windowVisitor) => windowVisitor.Visit(this);
+		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 
 		public override void Open()
 		{
