@@ -20,7 +20,14 @@ namespace Confrontation
 		{
 			if (clickedCell.Building == true)
 			{
-				Destroy(clickedCell.Building!.gameObject);
+				var clickedBuilding = clickedCell.Building!;
+				var selectedSameBuilding = clickedBuilding.GetType() == SelectedEntry.Building.GetType();
+				Destroy(clickedBuilding.gameObject);
+				
+				if (selectedSameBuilding)
+				{
+					return;
+				}
 			}
 
 			_buildingSpawner.Build(SelectedEntry.Building, clickedCell);
