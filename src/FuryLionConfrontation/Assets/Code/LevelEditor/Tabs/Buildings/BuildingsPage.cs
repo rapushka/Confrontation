@@ -16,6 +16,14 @@ namespace Confrontation
 			}
 		}
 
-		public override void Handle(Cell clickedCell) => _buildingSpawner.Build(SelectedEntry.Building, clickedCell);
+		public override void Handle(Cell clickedCell)
+		{
+			if (clickedCell.Building == true)
+			{
+				Destroy(clickedCell.Building!.gameObject);
+			}
+
+			_buildingSpawner.Build(SelectedEntry.Building, clickedCell);
+		}
 	}
 }
