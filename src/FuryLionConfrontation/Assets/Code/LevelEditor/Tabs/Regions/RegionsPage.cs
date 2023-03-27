@@ -54,7 +54,6 @@ namespace Confrontation
 		{
 			var entry = _regionEntryFactory.Create(region);
 			AddEntry(entry);
-			entry.Region = region;
 			entry.CalculateCellsCount();
 		}
 	}

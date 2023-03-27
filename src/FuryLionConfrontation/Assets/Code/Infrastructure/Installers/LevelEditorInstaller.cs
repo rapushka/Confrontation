@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Confrontation
@@ -10,7 +9,7 @@ namespace Confrontation
 		[SerializeField] private RegionEntry _regionEntryPrefab;
 		[SerializeField] private RegionOwnershipEntry _regionOwnershipEntryPrefab;
 		[SerializeField] private LevelEditorTabsSystem _tabs;
-		[FormerlySerializedAs("_buildingButtonPrefab")] [SerializeField] private BuildingEntry _buildingEntryPrefab;
+		[SerializeField] private BuildingEntry _buildingEntryPrefab;
 
 		protected override void InstallSpecificBindings()
 		{
@@ -38,10 +37,10 @@ namespace Confrontation
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromMethod(DoNothing<UnitsSquad>);
 			Container.BindFactory<Garrison, Garrison.Factory>().FromMethod(DoNothing<Garrison>);
 
-			Container.BindFactory<int, RegionEntry, RegionEntry.Factory>()
+			Container.BindFactory<Region, RegionEntry, RegionEntry.Factory>()
 			         .FromComponentInNewPrefab(_regionEntryPrefab);
 
-			Container.BindFactory<int, RegionOwnershipEntry, RegionOwnershipEntry.Factory>()
+			Container.BindFactory<Region, RegionOwnershipEntry, RegionOwnershipEntry.Factory>()
 			         .FromComponentInNewPrefab(_regionOwnershipEntryPrefab);
 
 			Container.BindFactory<Building, BuildingEntry, BuildingEntry.Factory>()

@@ -6,7 +6,7 @@ namespace Confrontation
 {
 	public class RegionOwnershipEntry : SelectableEntryBase
 	{
-		[Inject] private readonly int _id;
+		[Inject] private readonly Region _region;
 
 		[SerializeField] private IntPrefixView _idView;
 		[SerializeField] private TMP_InputField _ownerIdInputField;
@@ -17,21 +17,21 @@ namespace Confrontation
 			private set => _ownerIdInputField.text = value.ToString();
 		}
 
-		public int Id => _idView.Value;
+		public int    Id     => _idView.Value;
+		public Region Region => _region;
 
 		private void Initialize()
 		{
-			_idView.Value = _id;
-			OwnerId = 0;
+			_idView.Value = _region.Id;
+			OwnerId = _region.OwnerPlayerId;
 		}
 
-		public class Factory : PlaceholderFactory<int, RegionOwnershipEntry>
+		public class Factory : PlaceholderFactory<Region, RegionOwnershipEntry>
 		{
-			public RegionOwnershipEntry Create(Region region)
+			public override RegionOwnershipEntry Create(Region region)
 			{
-				var entry = Create(region.Id);
+				var entry = base.Create(region);
 				entry.Initialize();
-				entry.OwnerId = region.OwnerPlayerId;
 				return entry;
 			}
 		}

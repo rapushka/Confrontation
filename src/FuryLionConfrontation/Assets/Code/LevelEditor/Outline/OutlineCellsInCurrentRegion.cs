@@ -27,6 +27,13 @@ namespace Confrontation
 				_isDisabled = false;
 				return;
 			}
+			if (_tabs.CurrentPage is SelectableListPage<RegionOwnershipEntry> { HasSelectedEntry: true } regionsOwnershipPage)
+			{
+				KeepTwoRegionsInQueue(regionsOwnershipPage.SelectedEntry.Region);
+				DrawOutlines();
+				_isDisabled = false;
+				return;
+			}
 
 			if (_isDisabled == false)
 			{

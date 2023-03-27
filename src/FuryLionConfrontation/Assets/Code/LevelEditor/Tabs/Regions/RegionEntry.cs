@@ -6,29 +6,27 @@ namespace Confrontation
 {
 	public class RegionEntry : SelectableEntryBase, IInitializable
 	{
-		[Inject] private readonly int _id;
+		[Inject] private readonly Region _region;
 
 		[Space]
 		[SerializeField] private IntPrefixView _idView;
 		[SerializeField] private IntPrefixView _cellsCountView;
 
-		public Region Region { get; set; }
+		public Region Region => _region;
 
 		public void Initialize()
 		{
-			_idView.Value = _id;
+			_idView.Value = _region.Id;
 			_cellsCountView.Value = 0;
 		}
 
 		public void CalculateCellsCount() => _cellsCountView.Value = Region.CellsInRegion.Count();
 
-		public class Factory : PlaceholderFactory<int, RegionEntry>
+		public class Factory : PlaceholderFactory<Region, RegionEntry>
 		{
-			public RegionEntry Create(Region region) => Create(region.Id);
-
-			public override RegionEntry Create(int id)
+			public override RegionEntry Create(Region region)
 			{
-				var regionEntry = base.Create(id);
+				var regionEntry = base.Create(region);
 				regionEntry.Initialize();
 				return regionEntry;
 			}
