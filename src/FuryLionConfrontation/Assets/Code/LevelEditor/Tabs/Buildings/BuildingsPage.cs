@@ -6,6 +6,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly BuildingEntry.Factory _buildingEntryFactory;
 		[Inject] private readonly BuildingSpawner _buildingSpawner;
+		[Inject] private readonly IField _field;
 
 		private void Start()
 		{
@@ -22,6 +23,8 @@ namespace Confrontation
 			{
 				var clickedBuilding = clickedCell.Building!;
 				var selectedSameBuilding = clickedBuilding.GetType() == SelectedEntry.Building.GetType();
+				
+				_field.Buildings.Remove(clickedBuilding);
 				Destroy(clickedBuilding.gameObject);
 				
 				if (selectedSameBuilding)
