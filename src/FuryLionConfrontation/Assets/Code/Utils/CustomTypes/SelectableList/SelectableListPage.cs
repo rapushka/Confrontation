@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -11,8 +12,6 @@ namespace Confrontation
 
 		private readonly List<T> _entries = new();
 		[CanBeNull] private T _selectedEntry;
-
-		protected IEnumerable<T> Entries => _entries;
 
 		public T SelectedEntry
 		{
@@ -33,15 +32,24 @@ namespace Confrontation
 
 		private void OnDestroy() => _entries.ForEach((r) => r.EntrySelected -= OnEntrySelected);
 
-		protected T AddEntry(T entry)
+		protected void AddEntry(T entry)
 		{
 			entry.transform.SetParent(_listRoot);
 			entry.EntrySelected += OnEntrySelected;
 			_entries.Add(entry);
-			return entry;
 		}
 
 		protected void RemoveSelected() => Remove(SelectedEntry);
+
+		protected void ClearList() => _entries.Clear();
+
+		protected void ForEachEntry(Action<T> @do)
+		{
+			foreach (var entry in _entries)
+			{
+				@do.Invoke(entry);
+			}
+		}
 
 		private void Remove(T entry)
 		{

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionOwnershipEntry : MonoBehaviour
+	public class RegionOwnershipEntry : SelectableEntryBase
 	{
 		[Inject] private readonly int _id;
 
@@ -27,11 +27,10 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<int, RegionOwnershipEntry>
 		{
-			public RegionOwnershipEntry Create(Region region, Transform parent)
+			public RegionOwnershipEntry Create(Region region)
 			{
 				var entry = Create(region.Id);
 				entry.Initialize();
-				entry.transform.SetParent(parent);
 				entry.OwnerId = region.OwnerPlayerId;
 				return entry;
 			}

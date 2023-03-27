@@ -41,7 +41,7 @@ namespace Confrontation
 		public override void Handle(Cell clickedCell)
 		{
 			_handler.ToggleCellMembershipInSelectedRegion(clickedCell);
-			Entries.ForEach((r) => r.CalculateCellsCount());
+			ForEachEntry((re) => re.CalculateCellsCount());
 		}
 
 		private void LoadRegions() => RegionsData.Select(AsRegion).ForEach(CreateRegionEntry);
@@ -52,9 +52,10 @@ namespace Confrontation
 
 		private void CreateRegionEntry(Region region)
 		{
-			var regionEntry = AddEntry(_regionEntryFactory.Create(region));
-			regionEntry.Region = region;
-			regionEntry.CalculateCellsCount();
+			var entry = _regionEntryFactory.Create(region);
+			AddEntry(entry);
+			entry.Region = region;
+			entry.CalculateCellsCount();
 		}
 	}
 }

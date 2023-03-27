@@ -1658,7 +1658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listRoot: {fileID: 7978038206675711247}
-  _buildingButtonsRoot: {fileID: 7978038206675711247}
 --- !u!1 &7276329026978929178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afcbc532e394868a4a22a6d4e64828d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _listRoot: {fileID: 1532658683912983974}
   _regionsListRoot: {fileID: 1532658683912983974}
   _applyButton: {fileID: 3158600743354680660}
 --- !u!1001 &333721308173869836

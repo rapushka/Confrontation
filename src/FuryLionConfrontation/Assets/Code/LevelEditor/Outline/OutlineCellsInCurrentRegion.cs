@@ -20,13 +20,15 @@ namespace Confrontation
 
 		public void Tick()
 		{
-			if (_tabs.CurrentPage is RegionsPage { HasSelectedEntry: true } tab)
+			if (_tabs.CurrentPage is SelectableListPage<RegionEntry> { HasSelectedEntry: true } tab)
 			{
 				KeepTwoRegionsInQueue(tab.SelectedEntry.Region);
 				DrawOutlines();
-				_isDisabled = true;
+				_isDisabled = false;
+				return;
 			}
-			else if (_isDisabled == false)
+
+			if (_isDisabled == false)
 			{
 				_field.Cells.ForEach(RemoveOutline);
 				_isDisabled = true;
