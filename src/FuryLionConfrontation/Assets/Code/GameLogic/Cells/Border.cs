@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public class Border : MonoBehaviour
 	{
-		public bool Visible { set => gameObject.SetActive(value); }
+		private bool Visible { set => gameObject.SetActive(value); }
 
 		public void Show() => Visible = true;
 

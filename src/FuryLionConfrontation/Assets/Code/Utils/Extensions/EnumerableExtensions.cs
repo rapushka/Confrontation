@@ -14,6 +14,17 @@ namespace Confrontation
 			}
 		}
 
+		public static void ForEach<T>(this IEnumerable<T> @this, Action<T> @do, Func<T, bool> @if)
+		{
+			foreach (var item in @this)
+			{
+				if (@if.Invoke(item))
+				{
+					@do.Invoke(item);
+				}
+			}
+		}
+
 		public static IEnumerable<T> OnlyUnique<T>(this IEnumerable<T> @this) => @this.Distinct();
 
 		public static T[] AsArray<T>(this IEnumerable<T> @this) => @this as T[] ?? @this.ToArray();

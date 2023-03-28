@@ -50,12 +50,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8dd680fbdc45fa941bb4698d42a8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Left>k__BackingField: {fileID: 1739208960292982446}
-  <LeftTop>k__BackingField: {fileID: 2622640158153748786}
-  <RightTop>k__BackingField: {fileID: 6269285406467565335}
-  <Right>k__BackingField: {fileID: 4181899761574014889}
-  <RightBottom>k__BackingField: {fileID: 5824372227081810394}
-  <LeftBottom>k__BackingField: {fileID: 5502931762735049624}
+  _cell: {fileID: 2658176221267997969}
+  _left: {fileID: 1739208960292982446}
+  _leftTop: {fileID: 2622640158153748786}
+  _rightTop: {fileID: 6269285406467565335}
+  _right: {fileID: 4181899761574014889}
+  _rightBottom: {fileID: 5824372227081810394}
+  _leftBottom: {fileID: 5502931762735049624}
 --- !u!1 &7659737280244776947
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: {fileID: 6799698658610089963}
+  <Borders>k__BackingField: {fileID: 1284924355003820586}
 --- !u!114 &6799698658610089963
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Confrontation
@@ -16,7 +17,7 @@ namespace Confrontation
 
 		private BorderInfo[] _borderInfos;
 
-		private void Start()
+		private void OnEnable()
 		{
 			_borderInfos = new[]
 			{
@@ -27,6 +28,8 @@ namespace Confrontation
 				new BorderInfo(forEven: On(1, 0), forOdd: On(-1, 1), border: _rightBottom),
 				new BorderInfo(forEven: On(-1, 1), forOdd: On(-1, 0), border: _leftBottom),
 			};
+
+			_borderInfos.Select((bi) => bi.Border).ForEach((b) => b.Hide());
 		}
 
 		private static Coordinates On(int row, int column) => new(row, column);
@@ -42,14 +45,7 @@ namespace Confrontation
 
 			var delta = _cell.Coordinates - otherCell.Coordinates;
 
-			foreach (var borderInfo in _borderInfos)
-			{
-				if (delta == GetActualDelta(borderInfo))
-				{
-					borderInfo.Border.Show();
-					break;
-				}
-			}
+			_borderInfos.ForEach((bi) => bi.Border.Show(), @if: (bi) => delta == GetActualDelta(bi));
 		}
 
 		private Coordinates GetActualDelta(BorderInfo borderInfo)
