@@ -38,13 +38,13 @@ namespace Confrontation.Editor.Tests
 			Container.Resolve<RegionsGenerator>().Initialize();
 
 			var field = Container.Resolve<IField>();
-			var calculator = Container.Resolve<RegionsNeighboringCalculator>();
+			var calculator = Container.Resolve<RegionsNeighborhoodCalculator>();
 
 			// Act.
 			calculator.Initialize();
 
 			// Assert.
-			var countOfNeighborhoods = field.Neighboring.Neighborhoods.Count;
+			var countOfNeighborhoods = field.Neighborhoods.Neighborhoods.Count;
 			const string explanation
 				= "First and second ─ neighborhood with itself, and third ─ neighborhood between regions";
 			countOfNeighborhoods.Should().Be(3, explanation);
@@ -61,14 +61,14 @@ namespace Confrontation.Editor.Tests
 			Container.Resolve<RegionsGenerator>().Initialize();
 
 			var field = Container.Resolve<IField>();
-			var calculator = Container.Resolve<RegionsNeighboringCalculator>();
+			var calculator = Container.Resolve<RegionsNeighborhoodCalculator>();
 
 			// Act.
 			calculator.Initialize();
 
 			// Assert.
 			var firstRegionId = field.Regions.First().Id;
-			var countOfNeighborsForFirstRegion = field.Neighboring.Neighborhoods.CountOfEntries(firstRegionId);
+			var countOfNeighborsForFirstRegion = field.Neighborhoods.Neighborhoods.CountOfEntries(firstRegionId);
 			countOfNeighborsForFirstRegion.Should().Be(2);
 		}
 
@@ -83,14 +83,14 @@ namespace Confrontation.Editor.Tests
 			Container.Resolve<RegionsGenerator>().Initialize();
 
 			var field = Container.Resolve<IField>();
-			var calculator = Container.Resolve<RegionsNeighboringCalculator>();
+			var calculator = Container.Resolve<RegionsNeighborhoodCalculator>();
 
 			// Act.
 			calculator.Initialize();
 
 			// Assert.
 			var firstRegionId = field.Regions.First().Id;
-			var countOfNeighborsForFirstRegion = field.Neighboring.Neighborhoods.CountOfEntries(firstRegionId);
+			var countOfNeighborsForFirstRegion = field.Neighborhoods.Neighborhoods.CountOfEntries(firstRegionId);
 			countOfNeighborsForFirstRegion.Should().Be(4);
 		}
 	}

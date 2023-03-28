@@ -16,7 +16,7 @@ namespace Confrontation
 			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(selectedLevelSizes);
 			Regions = new CoordinatedMatrix<Region>(selectedLevelSizes);
 			Garrisons = new CoordinatedMatrix<Garrison>(selectedLevelSizes);
-			Neighboring = new RegionsNeighboring();
+			Neighborhoods = new RegionsNeighborhoodContainer();
 		}
 
 		public CoordinatedMatrix<Cell> Cells { get; }
@@ -31,7 +31,7 @@ namespace Confrontation
 
 		public CoordinatedMatrix<Region> Regions { get; }
 
-		public RegionsNeighboring Neighboring { get; }
+		public RegionsNeighborhoodContainer Neighborhoods { get; }
 
 		public List<Player> Players { get; } = new();
 	}

@@ -30,6 +30,9 @@ namespace Confrontation
 
 		public static bool operator !=(Coordinates left, Coordinates right) => !(left == right);
 
+		public static Coordinates operator -(Coordinates left, Coordinates right)
+			=> new(row: left.Row - right.Row, column: left.Column - right.Column);
+
 		public override bool Equals(object obj) => obj is Coordinates other && Equals(other);
 
 		public bool Equals(Coordinates other) => Row == other.Row && Column == other.Column;

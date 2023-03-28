@@ -22,7 +22,7 @@ namespace Confrontation.Editor.Tests
 
 			@this.BindInterfacesAndSelfTo<GameSession>().AsSingle();
 			@this.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
-			@this.BindInterfacesAndSelfTo<RegionsNeighboringCalculator>().AsSingle();
+			@this.BindInterfacesAndSelfTo<RegionsNeighborhoodCalculator>().AsSingle();
 			@this.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 
 			@this.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
