@@ -9,6 +9,11 @@ namespace Confrontation
 	{
 		public static bool IsPointerOverUIObject()
 		{
+			if (EventSystem.current is null)
+			{
+				return true;
+			}
+
 			var eventDataCurrentPosition = new PointerEventData(EventSystem.current)
 			{
 				position = new Vector2(Input.mousePosition.x, Input.mousePosition.y),
