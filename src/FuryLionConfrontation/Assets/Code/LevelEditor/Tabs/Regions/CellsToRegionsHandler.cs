@@ -15,6 +15,16 @@ namespace Confrontation
 		}
 
 		private static void ToggleCellMembershipInRegion(Cell cell, Region to)
-			=> cell.RelatedRegion = cell.RelatedRegion != to ? to : null;
+		{
+			cell.RelatedRegion = cell.RelatedRegion != to ? to : null;
+			if (cell.RelatedRegion is not null)
+			{
+				cell.OwnerPlayerId = cell.RelatedRegion.OwnerPlayerId;
+			}
+			else
+			{
+				cell.SetColor(Constants.NeutralRegion);
+			}
+		}
 	}
 }

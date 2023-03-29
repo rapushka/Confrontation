@@ -47,7 +47,6 @@ namespace Confrontation
 			_handler.ToggleCellMembershipInSelectedRegion(clickedCell);
 			ForEachEntry((re) => re.CalculateCellsCount());
 			_bordersCalculator.Reinitialize();
-			RegionsOwnershipPage.UpdateAllOwners();
 		}
 
 		private void LoadRegions() => RegionsData.Select(AsRegion).ForEach(CreateRegionEntry);
