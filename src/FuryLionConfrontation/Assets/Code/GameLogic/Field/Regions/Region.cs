@@ -108,7 +108,7 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<int, Region>
 		{
-			private static int _currentId;
+			private int _currentId;
 
 			public Region Create() => base.Create(_currentId++);
 		}
