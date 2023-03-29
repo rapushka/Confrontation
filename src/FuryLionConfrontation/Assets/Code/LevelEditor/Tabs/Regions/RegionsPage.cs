@@ -13,7 +13,6 @@ namespace Confrontation
 		[Inject] private readonly Region.Factory _regionsFactory;
 		[Inject] private readonly ILevelSelector _levelSelector;
 		[Inject] private readonly ReinitializableRegionsBordersCalculator _bordersCalculator;
-		[Inject] private readonly LevelEditorTabsSystem _tabs;
 
 		[SerializeField] private Button _addRegionButton;
 		[SerializeField] private Button _removeSelectedButton;
@@ -21,8 +20,6 @@ namespace Confrontation
 		private CellsToRegionsHandler _handler;
 
 		private IEnumerable<Region.Data> RegionsData => _levelSelector.SelectedLevel.Regions;
-
-		private RegionsOwnershipPage RegionsOwnershipPage => _tabs.GetPageOfType<RegionsOwnershipPage>();
 
 		private void Start()
 		{
