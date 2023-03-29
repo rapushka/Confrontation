@@ -32,10 +32,10 @@ namespace Confrontation
 				new BorderInfo(forEven: On(-1, -1), forOdd: On(-1, +0), border: _leftBottom),
 			};
 
-			_borderInfos.Select((bi) => bi.Border).ForEach((b) => b.Hide());
+			HideAll();
 		}
 
-		private static Coordinates On(int row, int column) => new(row: row, column: column);
+		public void HideAll() => _borderInfos.Select((bi) => bi.Border).ForEach((b) => b.Hide());
 
 		public void SetBorderFor(Cell otherCell)
 		{
@@ -44,6 +44,8 @@ namespace Confrontation
 				_borderInfos.ForEach(ShowBorder, @if: (bi) => IsNeighbour(otherCell, bi));
 			}
 		}
+
+		private static Coordinates On(int row, int column) => new(row: row, column: column);
 
 		private static void ShowBorder(BorderInfo borderInfo) => borderInfo.Border.Show();
 

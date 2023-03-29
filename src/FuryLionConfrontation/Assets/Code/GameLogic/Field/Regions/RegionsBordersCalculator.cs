@@ -4,17 +4,11 @@ namespace Confrontation
 {
 	public class RegionsBordersCalculator : IInitializable
 	{
-		[Inject] private readonly IField _field;
+		[Inject] protected readonly IField Field;
 
-		public void Initialize()
-		{
-			foreach (var cell in _field.Cells)
-			{
-				PlaceBordersFor(cell);
-			}
-		}
+		public void Initialize() => Field.Cells.ForEach(PlaceBorders);
 
-		private void PlaceBordersFor(Cell cell)
-			=> cell.ForEachCellAround((c) => cell.Borders.SetBorderFor(c), on: _field.Cells);
+		private void PlaceBorders(Cell cell)
+			=> cell.ForEachCellAround((c) => cell.Borders.SetBorderFor(c), on: Field.Cells);
 	}
 }

@@ -29,14 +29,14 @@ namespace Confrontation
 
 		public override void Handle(Cell clickedCell) { }
 
+		public void UpdateAllOwners() => ForEachEntry(UpdateOwner);
+
 		private void LoadRegions()
 			=> _field.Regions
 			         .WithoutNulls()
 			         .OnlyUnique()
 			         .Select(_regionOwnershipEntryFactory.Create)
 			         .ForEach(AddEntry);
-
-		private         void UpdateAllOwners()        => ForEachEntry(UpdateOwner);
 
 		private void UpdateOwner(RegionOwnershipEntry regionOwnershipEntry)
 		{

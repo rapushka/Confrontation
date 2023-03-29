@@ -10,6 +10,7 @@ namespace Confrontation
 		[SerializeField] private RegionOwnershipEntry _regionOwnershipEntryPrefab;
 		[SerializeField] private LevelEditorTabsSystem _tabs;
 		[SerializeField] private BuildingEntry _buildingEntryPrefab;
+		
 
 		protected override void InstallSpecificBindings()
 		{
@@ -26,7 +27,7 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
-			Container.BindInterfacesAndSelfTo<RegionsBordersCalculator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<ReinitializableRegionsBordersCalculator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<LevelEditorFieldInputDirector>().AsSingle();
