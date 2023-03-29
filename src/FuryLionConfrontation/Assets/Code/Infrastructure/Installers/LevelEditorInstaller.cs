@@ -26,6 +26,7 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<RegionsBordersCalculator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<LevelEditorFieldInputDirector>().AsSingle();
