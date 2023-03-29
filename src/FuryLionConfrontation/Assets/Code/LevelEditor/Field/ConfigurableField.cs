@@ -30,7 +30,7 @@ namespace Confrontation
 			}
 		}
 
-		public RegionsNeighboring Neighboring { get; private set; }
+		public RegionsNeighborhoodContainer Neighborhoods { get; private set; }
 
 		private void Recreate()
 		{
@@ -41,7 +41,7 @@ namespace Confrontation
 			Garrisons = new CoordinatedMatrix<Garrison>(_sizes);
 			Regions = new CoordinatedMatrix<Region>(_sizes);
 			Players = new List<Player>();
-			Neighboring = new RegionsNeighboring();
+			Neighborhoods = new RegionsNeighborhoodContainer();
 		}
 	}
 }

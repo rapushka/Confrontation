@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 4160742740182800422}
   - component: {fileID: 7868742787113692609}
   m_Layer: 0
-  m_Name: Field Sizes Panel
+  m_Name: Field Sizes Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1792,7 +1792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listRoot: {fileID: 1532658683912983974}
-  _regionsListRoot: {fileID: 1532658683912983974}
   _applyButton: {fileID: 3158600743354680660}
 --- !u!1001 &333721308173869836
 PrefabInstance:

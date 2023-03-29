@@ -17,7 +17,8 @@ namespace Confrontation
 			private set => _ownerIdInputField.text = value.ToString();
 		}
 
-		public int    Id     => _idView.Value;
+		public int Id => _idView.Value;
+
 		public Region Region => _region;
 
 		private void Initialize()

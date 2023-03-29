@@ -10,6 +10,7 @@ namespace Confrontation
 
 		[SerializeField] private RegionColor _color;
 
+		[field: SerializeField] public BordersContainer Borders { get; private set; }
 		private Coordinates _coordinates;
 
 		[CanBeNull] public UnitsSquad LocatedUnits => _field.LocatedUnits[Coordinates];

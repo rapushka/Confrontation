@@ -16,6 +16,6 @@ namespace Confrontation
 
 		CoordinatedMatrix<Region> Regions { get; }
 
-		RegionsNeighboring Neighboring { get; }
+		RegionsNeighborhoodContainer Neighborhoods { get; }
 	}
 }

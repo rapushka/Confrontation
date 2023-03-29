@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -492,6 +492,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15167b870b6b3e722962ab06f4af73c0, type: 2}
   - {fileID: 11400000, guid: 76029cc7915db323dbd3cdd2ac50a1c6, type: 2}
   - {fileID: 11400000, guid: a90e15a2d546d666a8701e76b3c6a135, type: 2}
+  - {fileID: 11400000, guid: 45ad6eef81f7fde17bbf8714aeba972f, type: 2}
   _levelsGridRoot: {fileID: 2073308227}
   _levelsForEditorPanelPrefab: {fileID: 4812187423862855204, guid: 369fd3a9b1b58a4d6ac67ec67d1f1348, type: 3}
   _uiRoot: {fileID: 580221521}

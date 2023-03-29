@@ -12,6 +12,7 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly Region.Factory _regionsFactory;
 		[Inject] private readonly ILevelSelector _levelSelector;
+		[Inject] private readonly ReinitializableRegionsBordersCalculator _bordersCalculator;
 
 		[SerializeField] private Button _addRegionButton;
 		[SerializeField] private Button _removeSelectedButton;
@@ -42,6 +43,7 @@ namespace Confrontation
 		{
 			_handler.ToggleCellMembershipInSelectedRegion(clickedCell);
 			ForEachEntry((re) => re.CalculateCellsCount());
+			_bordersCalculator.Reinitialize();
 		}
 
 		private void LoadRegions() => RegionsData.Select(AsRegion).ForEach(CreateRegionEntry);
