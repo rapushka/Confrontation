@@ -29,8 +29,8 @@ namespace Confrontation
 			var isThereBoth = isThereUnits && isThereGarrison;
 
 			return isThereBoth    ? new BothForcesDefenceStrategy(assets, cell, units, garrison)
-				: isThereUnits    ? new OnlyOneForceDefenceStrategy(assets, units)
-				: isThereGarrison ? new OnlyOneForceDefenceStrategy(assets, garrison)
+				: isThereUnits    ? new SingleForceDefenceStrategy(assets, units)
+				: isThereGarrison ? new SingleForceDefenceStrategy(assets, garrison)
 				                    : throw new InvalidOperationException(ThereIsNoDefendersException);
 		}
 	}

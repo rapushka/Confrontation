@@ -2,11 +2,11 @@ using UnityEngine.Assertions;
 
 namespace Confrontation
 {
-	public class OnlyOneForceDefenceStrategy : DefenceStrategyBase
+	public class SingleForceDefenceStrategy : DefenceStrategyBase
 	{
 		private readonly Garrison _units;
 
-		public OnlyOneForceDefenceStrategy(IAssetsService assets, Garrison units)
+		public SingleForceDefenceStrategy(IAssetsService assets, Garrison units)
 			: base(assets)
 			=> _units = units;
 
