@@ -17,6 +17,8 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
+		protected float MinAcceleratedCoolDown => CurrentLevelStats.MinAcceleratedCoolDown;
+
 		private LeveledStats<BarrackLevelStats> Stats => BalanceTable.BarrackStats.LeveledStats;
 
 		private bool HaveSquad => LocatedUnits == true;

@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using UnityEngine;
 
 namespace Confrontation
 {
@@ -19,7 +18,7 @@ namespace Confrontation
 				                    .Where((f) => f.OwnerPlayerId == ownerPlayerId)
 				                    .Aggregate(baseDuration, DecreaseOnCoefficient);
 
-				return Math.Max(duration, Mathf.Epsilon);
+				return Math.Max(duration, MinAcceleratedCoolDown);
 			}
 		}
 
