@@ -5,12 +5,14 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionsOwnershipPage : SelectableListPage<RegionOwnershipEntry>
+	public class RegionsOwnershipPage : SelectableListPage<RegionOwnershipEntry>, IRegionSelector
 	{
 		[Inject] private readonly RegionOwnershipEntry.Factory _regionOwnershipEntryFactory;
 		[Inject] private readonly IField _field;
 
 		[SerializeField] private Button _applyButton;
+
+		public Region SelectedRegion => SelectedEntry.Region;
 
 		private void OnEnable()
 		{
