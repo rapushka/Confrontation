@@ -28,7 +28,12 @@ namespace Confrontation
 			_cell = cell;
 
 			_defenceStrategy = PickDefenceStrategy(_cell);
-			var ourWholeStrength = _squad.AttackStrength;
+			var ourWholeStrength = CalculateAttackWithModifiers
+			(
+				baseDamage: _squad.BaseStrength,
+				attackModifier: _squad.AttackStrength,
+				defenceModifier: _defenceStrategy.DefenceStrength
+			);
 			var theirWholeStrength = _defenceStrategy.DefenceStrength;
 			var ourAdvantageRate = ourWholeStrength.CompareTo(theirWholeStrength);
 
@@ -69,5 +74,11 @@ namespace Confrontation
 
 			_cell.MakeRegionNeutral();
 		}
+
+		// Simplified form of the:
+		// baseDamage += baseDamage * attackModifier
+		// baseDamage -= baseDamage * defenceModifier
+		private static float CalculateAttackWithModifiers(float baseDamage, float attackModifier, float defenceModifier)
+			=> baseDamage * (1 + attackModifier) * (1 - defenceModifier);
 	}
 }

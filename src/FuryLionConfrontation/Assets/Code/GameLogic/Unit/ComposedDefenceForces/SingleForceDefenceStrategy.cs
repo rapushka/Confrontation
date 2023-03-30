@@ -1,4 +1,4 @@
-using UnityEngine.Assertions;
+using UnityEngine;
 
 namespace Confrontation
 {
@@ -10,7 +10,7 @@ namespace Confrontation
 			: base(assets)
 			=> _units = units;
 
-		public override int DefenceStrength => _units.DefenceStrength;
+		public override int DefenceStrength => _units.DefencedQuantity;
 
 		public override void Destroy() => Assets.Destroy(_units.gameObject);
 
@@ -18,7 +18,11 @@ namespace Confrontation
 		{
 			_units.QuantityOfUnits -= damage;
 
-			Assert.IsTrue(_units.QuantityOfUnits > 0, message: WrongStrategyException);
+			if (_units.QuantityOfUnits > 0)
+			{
+				Debug.LogError(WrongStrategyException);
+			}
+			// Assert.IsTrue(_units.QuantityOfUnits > 0, message: WrongStrategyException);
 		}
 	}
 }

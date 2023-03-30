@@ -19,13 +19,13 @@ namespace Confrontation
 
 		public int AttackStrength => Mathf.RoundToInt(QuantityOfUnits * AttackStrengthOfSingleUnit);
 
-		public int DefenceStrength => Mathf.RoundToInt(QuantityOfUnits * DefenceStrengthOfSingleUnit);
+		public int DefencedQuantity => Mathf.RoundToInt(QuantityOfUnits * DefenceStrengthOfSingleUnit);
 
-		private float AttackStrengthOfSingleUnit => BaseStrength * (Stats.AttackModifier + FullStrength);
+		public float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
 
-		private float DefenceStrengthOfSingleUnit => BaseStrength * (Stats.DefenseModifier + FullStrength);
+		public float AttackStrengthOfSingleUnit => BaseStrength * (Stats.AttackModifier + FullStrength);
 
-		private float BaseStrength => Stats.BaseStrength;
+		public float DefenceStrengthOfSingleUnit => Stats.DefenseModifier + FullStrength;
 
 		private UnitStats Stats => _balance.UnitStats;
 

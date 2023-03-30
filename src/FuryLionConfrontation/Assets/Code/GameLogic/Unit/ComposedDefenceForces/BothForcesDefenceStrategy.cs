@@ -14,7 +14,7 @@ namespace Confrontation
 			_garrison = garrison;
 		}
 
-		public override int DefenceStrength => (_locatedSquad.DefenceStrength + _garrison.DefenceStrength) / 2;
+		public override int DefenceStrength => (_locatedSquad.DefencedQuantity + _garrison.DefencedQuantity) / 2;
 
 		public override void Destroy()
 		{
