@@ -9,24 +9,37 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly LevelEditorTabsSystem _tabs;
 
+		private Region _selectedRegion;
+
 		public void Tick()
 		{
-			if (_tabs.CurrentPage is not RegionsPage page
-			    || page.SelectedEntry == false)
+			if (IsRegionSelected())
 			{
-				return;
+				_field.Cells.ForEach(DrawSelectedRegion);
+			}
+		}
+
+		private bool IsRegionSelected()
+		{
+			if (_tabs.CurrentPage is IRegionSelector { HasSelectedEntry: true } regionsOwnershipPage)
+			{
+				_selectedRegion = regionsOwnershipPage.SelectedRegion;
+				return true;
 			}
 
-			foreach (var cell in _field.Cells)
+			_selectedRegion = null;
+			return false;
+		}
+
+		private void DrawSelectedRegion(Cell cell)
+		{
+			if (cell.RelatedRegion == _selectedRegion)
 			{
-				if (cell.RelatedRegion == page.SelectedEntry.Region)
-				{
-					AddOutline(cell);
-				}
-				else
-				{
-					RemoveOutline(cell);
-				}
+				AddOutline(cell);
+			}
+			else
+			{
+				RemoveOutline(cell);
 			}
 		}
 
