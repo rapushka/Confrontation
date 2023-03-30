@@ -1,6 +1,8 @@
+using System;
 using cakeslice;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Confrontation
 {
@@ -11,13 +13,7 @@ namespace Confrontation
 
 		private Region _selectedRegion;
 
-		public void Tick()
-		{
-			if (IsRegionSelected())
-			{
-				_field.Cells.ForEach(DrawSelectedRegion);
-			}
-		}
+		public void Tick() => _field.Cells.ForEach(IsRegionSelected() ? DrawSelectedRegion : RemoveOutline);
 
 		private bool IsRegionSelected()
 		{
