@@ -488,11 +488,15 @@ MonoBehaviour:
   _editLevelButtonPrefab: {fileID: 2235215483150036155, guid: 806fe1acaf40772a19309ead7a5303d2, type: 3}
   _levels:
   - {fileID: 11400000, guid: c632137e80d092fcda1536fb52f05900, type: 2}
+  - {fileID: 11400000, guid: 45ad6eef81f7fde17bbf8714aeba972f, type: 2}
+  - {fileID: 11400000, guid: 76029cc7915db323dbd3cdd2ac50a1c6, type: 2}
+  - {fileID: 11400000, guid: d07d2bdccf43f5a79a05ba2d42afe1da, type: 2}
+  - {fileID: 11400000, guid: 00581d998a01f75da85c99243e01686e, type: 2}
+  - {fileID: 11400000, guid: b2e7653033eb86bcdbb1ea68151e7cff, type: 2}
+  - {fileID: 11400000, guid: fbf6c54694aa697e2a0bf8a0b269c930, type: 2}
   - {fileID: 11400000, guid: 3e4d1105597c1d2ae8bd0300909f7954, type: 2}
   - {fileID: 11400000, guid: 15167b870b6b3e722962ab06f4af73c0, type: 2}
-  - {fileID: 11400000, guid: 76029cc7915db323dbd3cdd2ac50a1c6, type: 2}
   - {fileID: 11400000, guid: a90e15a2d546d666a8701e76b3c6a135, type: 2}
-  - {fileID: 11400000, guid: 45ad6eef81f7fde17bbf8714aeba972f, type: 2}
   _levelsGridRoot: {fileID: 2073308227}
   _levelsForEditorPanelPrefab: {fileID: 4812187423862855204, guid: 369fd3a9b1b58a4d6ac67ec67d1f1348, type: 3}
   _uiRoot: {fileID: 580221521}
