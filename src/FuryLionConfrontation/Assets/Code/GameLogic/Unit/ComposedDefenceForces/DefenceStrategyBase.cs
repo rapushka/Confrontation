@@ -12,7 +12,7 @@ namespace Confrontation
 
 		protected DefenceStrategyBase(IAssetsService assets) => Assets = assets;
 
-		public abstract int Quantity { get; }
+		public abstract int DefenceStrength { get; }
 
 		protected IAssetsService Assets { get; }
 

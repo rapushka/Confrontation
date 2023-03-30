@@ -28,7 +28,9 @@ namespace Confrontation
 			_cell = cell;
 
 			_defenceStrategy = PickDefenceStrategy(_cell);
-			var ourAdvantageRate = _squad.QuantityOfUnits.CompareTo(_defenceStrategy.Quantity);
+			var ourWholeStrength = _squad.AttackStrength;
+			var theirWholeStrength = _defenceStrategy.DefenceStrength;
+			var ourAdvantageRate = ourWholeStrength.CompareTo(theirWholeStrength);
 
 			if (ourAdvantageRate > 0)
 			{
@@ -48,7 +50,7 @@ namespace Confrontation
 
 		private void OurVictory()
 		{
-			_squad.QuantityOfUnits -= _defenceStrategy.Quantity;
+			_squad.QuantityOfUnits -= _defenceStrategy.DefenceStrength;
 			_defenceStrategy.Destroy();
 
 			CaptureRegion(_cell);
@@ -56,7 +58,7 @@ namespace Confrontation
 
 		private void TheirVictory()
 		{
-			_defenceStrategy.TakeDamage(_squad.QuantityOfUnits);
+			_defenceStrategy.TakeDamage(_squad.AttackStrength);
 			_assets.Destroy(_squad.gameObject);
 		}
 

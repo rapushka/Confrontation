@@ -10,7 +10,7 @@ namespace Confrontation
 			: base(assets)
 			=> _units = units;
 
-		public override int Quantity => _units.QuantityOfUnits;
+		public override int DefenceStrength => _units.DefenceStrength;
 
 		public override void Destroy() => Assets.Destroy(_units.gameObject);
 
