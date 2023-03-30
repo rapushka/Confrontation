@@ -17,13 +17,15 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<GeneratorStatsBase> Stats => BalanceTable.BarrackStats.LeveledStats;
+		protected float MinAcceleratedCoolDown => CurrentLevelStats.MinAcceleratedCoolDown;
+
+		private LeveledStats<BarrackLevelStats> Stats => BalanceTable.BarrackStats.LeveledStats;
 
 		private bool HaveSquad => LocatedUnits == true;
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
-		private GeneratorStatsBase CurrentLevelStats => _balanceTable.BarrackStats.LeveledStats[Level];
+		private BarrackLevelStats CurrentLevelStats => _balanceTable.BarrackStats.LeveledStats[Level];
 
 		private UnitsSquad ActualUnitsSquad => HaveSquad ? LocatedUnits : _unitsFactory.Create(RelatedCell);
 
