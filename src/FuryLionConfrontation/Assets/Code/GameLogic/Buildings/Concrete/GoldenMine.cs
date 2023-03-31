@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public class GoldenMine : Generator
 	{
-		[Inject] private readonly GameSession _gameSession;
+		[Inject] private readonly ISession _gameSession;
 
 		public override float PassedDuration { get; set; }
 

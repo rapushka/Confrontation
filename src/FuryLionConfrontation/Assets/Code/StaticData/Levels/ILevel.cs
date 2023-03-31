@@ -4,8 +4,8 @@ namespace Confrontation
 {
 	public interface ILevel
 	{
-		Sizes               Sizes        { get; }
-		List<Region.Data>   Regions      { get; }
-		List<Building.CoordinatedData> Buildings    { get; }
+		Sizes                          Sizes     { get; }
+		List<Region.Data>              Regions   { get; }
+		List<Building.CoordinatedData> Buildings { get; }
 	}
 }

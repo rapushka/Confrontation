@@ -10,12 +10,14 @@ namespace Confrontation
 	{
 		[Inject] private readonly int _id;
 		[Inject] private readonly IField _field;
-		[Inject] private readonly GameSession _gameSession;
+		[Inject] private readonly ISession _gameSession;
 
 		private Coordinates _coordinates;
 		private int _ownerPlayerId;
 
-		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
+		public IEnumerable<Cell> OurCells => _field.Cells.Where((c) => c.OwnerPlayerId == OwnerPlayerId);
+
+		public IEnumerable<Cell> CellsInRegion => _field.Cells.Where((c) => c.RelatedRegion == this);
 
 		public int Id => _id;
 
@@ -44,7 +46,7 @@ namespace Confrontation
 
 		public void UpdateCellsColor()
 		{
-			foreach (var cell in CellsInRegion)
+			foreach (var cell in OurCells)
 			{
 				cell.SetColor(OwnerPlayerId);
 			}
@@ -80,7 +82,7 @@ namespace Confrontation
 			}
 		}
 
-		private static bool RegionWasNeutral(int oldOwnerId) => oldOwnerId == 0;
+		private static bool RegionWasNeutral(int oldOwnerId) => oldOwnerId == Constants.NeutralRegion;
 
 		private bool PlayerLostAllCapitals(int oldOwnerId) => CapitalsOfPlayer(oldOwnerId).Any() == false;
 
@@ -91,6 +93,14 @@ namespace Confrontation
 		[Serializable]
 		public class Data
 		{
+			public Data(int ownerPlayerId, List<Coordinates> cellsCoordinates)
+			{
+				OwnerPlayerId = ownerPlayerId;
+				CellsCoordinates = cellsCoordinates;
+			}
+
+			public Data() { }
+
 			[field: SerializeField] public int OwnerPlayerId { get; set; }
 
 			[field: SerializeField] public List<Coordinates> CellsCoordinates { get; set; } = new();
@@ -98,13 +108,9 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<int, Region>
 		{
-			private static int _currentId;
+			private int _currentId;
 
-			public Region Create()
-			{
-				var region = base.Create(_currentId++);
-				return region;
-			}
+			public Region Create() => base.Create(_currentId++);
 		}
 	}
 }

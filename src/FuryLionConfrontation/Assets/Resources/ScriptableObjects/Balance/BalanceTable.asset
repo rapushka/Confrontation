@@ -30,8 +30,10 @@ MonoBehaviour:
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
+        <MinAcceleratedCoolDown>k__BackingField: 0.5
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 2
+        <MinAcceleratedCoolDown>k__BackingField: 0.5
   <SettlementStats>k__BackingField:
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 20
@@ -58,8 +60,8 @@ MonoBehaviour:
       - <UnitsAccelerationCoefficient>k__BackingField: 0.15
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
-      <Min>k__BackingField: 0.5
-      <Max>k__BackingField: 3.5
+      <Min>k__BackingField: 1.5
+      <Max>k__BackingField: 4.5
     <BuildingsPriority>k__BackingField:
       _entries:
       - <Weight>k__BackingField: 1

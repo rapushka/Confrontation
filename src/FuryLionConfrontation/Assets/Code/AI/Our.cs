@@ -30,7 +30,7 @@ namespace Confrontation
 			      .Where((v) => IsNeighbours(cell.RelatedRegion, v.RelatedCell.RelatedRegion));
 
 		private bool IsNeighbours(Region currentRegion, Region targetRegion) =>
-			_field.Neighboring.IsNeighbours(targetRegion, currentRegion)
+			_field.Neighborhoods.IsNeighbours(targetRegion, currentRegion)
 			&& targetRegion != currentRegion;
 	}
 }

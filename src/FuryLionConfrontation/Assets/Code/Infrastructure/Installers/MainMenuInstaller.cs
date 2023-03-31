@@ -1,26 +1,51 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 using Zenject;
 
 namespace Confrontation
 {
 	public class MainMenuInstaller : MonoInstaller
 	{
-		[SerializeField] private LevelButton _levelButtonPrefab;
+		[SerializeField] private PlayLevelButton _playLevelButtonPrefab;
+		[SerializeField] private EditLevelButton _editLevelButtonPrefab;
 		[SerializeField] private List<LevelScriptableObject> _levels;
 		[SerializeField] private Transform _levelsGridRoot;
+		[SerializeField] private LevelsForEditorPanel _levelsForEditorPanelPrefab;
+
+		[SerializeField] private RectTransform _uiRoot;
 
 		public override void InstallBindings()
 		{
-			Container.BindInstance(_levelButtonPrefab).AsSingle();
-			
+			Container.BindInstance<LevelButtonBase>(_playLevelButtonPrefab).AsSingle();
+
 			InstallForLevelButtonsSpawner();
 
-			Container.Bind<ToGameplay>().AsSingle();
 			Container.BindInterfacesTo<LevelButtonsSpawner>().AsSingle();
 
-			Container.BindFactory<int, ILevel, LevelButton, LevelButton.Factory>()
-			         .FromComponentInNewPrefab(_levelButtonPrefab);
+			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
+
+			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
+			         .FromComponentInNewPrefab(_playLevelButtonPrefab);
+
+			InstallLevelEditor();
+		}
+
+		private void InstallLevelEditor()
+		{
+#if UNITY_EDITOR
+			Container.BindInstance(_levels).WhenInjectedInto<LevelsForEditorPanel>();
+
+			Container.BindInterfacesAndSelfTo<LevelsForEditorPanel>()
+			         .FromComponentInNewPrefab(_levelsForEditorPanelPrefab)
+			         .UnderTransform(_uiRoot)
+			         .AsSingle();
+
+			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
+			         .FromComponentInNewPrefab(_editLevelButtonPrefab)
+			         .WhenInjectedInto<EditLevelButtonsSpawner>();
+
+			Container.BindInterfacesAndSelfTo<EditLevelButtonsSpawner>().AsSingle();
+#endif
 		}
 
 		private void InstallForLevelButtonsSpawner()

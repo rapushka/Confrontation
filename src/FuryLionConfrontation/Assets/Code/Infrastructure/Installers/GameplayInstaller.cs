@@ -1,62 +1,52 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using Zenject;
 
 namespace Confrontation
 {
-	public class GameplayInstaller : MonoInstaller<GameplayInstaller>
+	public class GameplayInstaller : GameFieldInstaller
 	{
 		[SerializeField] private BuildingButton _buildingButtonPrefab;
 		[SerializeField] private UnitsSquad _unitPrefab;
 		[SerializeField] private Garrison _garrisonPrefab;
 		[SerializeField] private LineRenderer _orderLineRenderer;
-		[SerializeField] private Cell _cellPrefab;
-		[SerializeField] private BackToMenuButton _backToMenuButton;
-		[FormerlySerializedAs("_accelerateTimeButton")] [SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
-		[SerializeField] private CameraSwipeMovement _movement;
+		[SerializeField] private GameplayCameraSwipeMovement _movement;
+		[SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
 		[SerializeField] private Hud _hud;
-		[SerializeField] private RectTransform _canvas;
-		[SerializeField] private WindowsContainer _windowsContainer;
 
-		public override void InstallBindings()
+		protected override void InstallSpecificBindings()
 		{
-			Container.BindInterfacesAndSelfTo<WindowsContainer>().FromInstance(_windowsContainer).AsSingle();
-			Container.BindInstance(_canvas).AsSingle();
-			Container.BindInstance(_orderLineRenderer).AsSingle();
 			Container.BindInstance(_movement).AsSingle();
-			Container.BindInterfacesAndSelfTo<Hud>().FromInstance(_hud).AsSingle();
 
 			Container.Bind<IField>().To<Field>().AsSingle();
+			Container.Bind<IPurchase>().To<Purchase>().AsSingle();
 
-			Container.Bind<ToMainMenu>().AsSingle();
-			Container.Bind<Purchase>().AsSingle();
-			Container.BindInstance(_backToMenuButton).AsSingle();
+			Container.BindInterfacesAndSelfTo<Hud>().FromInstance(_hud).AsSingle();
 			Container.BindInterfacesTo<AccelerateTimeToggle>().FromInstance(_accelerateTimeToggle).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<FieldGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<RegionsGenerator>().AsSingle();
-			Container.BindInterfacesAndSelfTo<RegionsNeighboringCalculator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<RegionsNeighborhoodCalculator>().AsSingle();
+			Container.BindInterfacesAndSelfTo<RegionsBordersCalculator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<BuildingsGenerator>().AsSingle();
 			Container.BindInterfacesAndSelfTo<PlayersGenerator>().AsSingle();
-
 			Container.BindInterfacesAndSelfTo<GameSession>().AsSingle();
+
+			Container.BindInterfacesTo<FieldBounds>().AsSingle();
+
 			Container.BindInterfacesAndSelfTo<ArtificialIntelligence>().AsSingle();
 
-			Container.BindInterfacesAndSelfTo<FieldBounds>().AsSingle();
-
 			Container.BindInterfacesAndSelfTo<Orders>().AsSingle();
-			Container.BindInterfacesAndSelfTo<FieldInputHandler>().AsSingle();
-			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
+			Container.BindInstance(_orderLineRenderer).AsSingle();
 			Container.BindInterfacesAndSelfTo<OrderDirectionLineDrawer>().AsSingle();
+
+			Container.BindInterfacesAndSelfTo<GameplayFieldInputDirector>().AsSingle();
+			Container.BindInterfacesAndSelfTo<CoolDownActionsHandler>().AsSingle();
 
 			Container.Bind<BuildingSpawner>().AsSingle();
 			Container.Bind<GameplayUiMediator>().AsSingle();
 			Container.Bind<GameplayWindows>().AsSingle();
-
-			BindFactories();
 		}
 
-		private void BindFactories()
+		protected override void InstallSpecificFactories()
 		{
 			Container.BindFactory<Player, Enemy, Enemy.Factory>()
 			         .FromSubContainerResolve()
@@ -66,17 +56,15 @@ namespace Confrontation
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindPrefabFactory<NotEnoughGoldWindow, NotEnoughGoldWindow.Factory>();
+
+			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
+			         .FromFactory<GameplayGameplayWindowsFactory>();
+
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);
 
-			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
-
-			Container.BindFactory<WindowBase, WindowBase, WindowBase.Factory>().FromFactory<GameplayWindowsFactory>();
-
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
-			Container.BindFactory<Cell, Cell.Factory>().FromComponentInNewPrefab(_cellPrefab);
-			Container.BindFactory<int, Region, Region.Factory>();
 		}
 	}
 }
