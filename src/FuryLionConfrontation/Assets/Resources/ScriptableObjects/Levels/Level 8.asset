@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a8c6c2cba7047f1a264fd1741330b8b, type: 3}
-  m_Name: Level 4
+  m_Name: Level 8
   m_EditorClassIdentifier: 
   <Sizes>k__BackingField:
-    _width: 5
+    _width: 6
     _height: 6
   <Regions>k__BackingField:
   - <OwnerPlayerId>k__BackingField: 1
@@ -22,110 +22,142 @@ MonoBehaviour:
       _column: 0
     - _row: 0
       _column: 1
-    - _row: 0
-      _column: 2
     - _row: 1
       _column: 0
     - _row: 1
       _column: 1
-    - _row: 2
-      _column: 1
-  - <OwnerPlayerId>k__BackingField: 0
+  - <OwnerPlayerId>k__BackingField: 1
     <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 2
     - _row: 0
       _column: 3
     - _row: 1
       _column: 2
     - _row: 1
       _column: 3
-    - _row: 2
-      _column: 2
-    - _row: 2
-      _column: 3
-    - _row: 2
-      _column: 4
   - <OwnerPlayerId>k__BackingField: 0
     <CellsCoordinates>k__BackingField:
     - _row: 0
       _column: 4
+    - _row: 0
+      _column: 5
     - _row: 1
       _column: 4
+    - _row: 1
+      _column: 5
+  - <OwnerPlayerId>k__BackingField: 1
+    <CellsCoordinates>k__BackingField:
     - _row: 2
       _column: 0
+    - _row: 2
+      _column: 1
     - _row: 3
       _column: 0
-    - _row: 4
-      _column: 0
-    - _row: 5
-      _column: 4
-  - <OwnerPlayerId>k__BackingField: 0
-    <CellsCoordinates>k__BackingField:
     - _row: 3
       _column: 1
-    - _row: 4
-      _column: 1
-    - _row: 4
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 2
       _column: 2
-    - _row: 5
-      _column: 0
-    - _row: 5
-      _column: 1
-    - _row: 5
+    - _row: 2
+      _column: 3
+    - _row: 3
       _column: 2
+    - _row: 3
+      _column: 3
   - <OwnerPlayerId>k__BackingField: 2
     <CellsCoordinates>k__BackingField:
+    - _row: 2
+      _column: 4
+    - _row: 2
+      _column: 5
     - _row: 3
+      _column: 4
+    - _row: 3
+      _column: 5
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 4
+      _column: 0
+    - _row: 4
+      _column: 1
+    - _row: 5
+      _column: 0
+    - _row: 5
+      _column: 1
+  - <OwnerPlayerId>k__BackingField: 2
+    <CellsCoordinates>k__BackingField:
+    - _row: 4
       _column: 2
-    - _row: 3
-      _column: 3
-    - _row: 3
-      _column: 4
     - _row: 4
       _column: 3
-    - _row: 4
-      _column: 4
+    - _row: 5
+      _column: 2
     - _row: 5
       _column: 3
+  - <OwnerPlayerId>k__BackingField: 2
+    <CellsCoordinates>k__BackingField:
+    - _row: 4
+      _column: 4
+    - _row: 4
+      _column: 5
+    - _row: 5
+      _column: 4
+    - _row: 5
+      _column: 5
   <Buildings>k__BackingField:
   - _data:
       _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
       _selectionIndex: 3
     _coordinates:
       _row: 0
-      _column: 1
-  - _data:
-      _prefab: {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
-      _selectionIndex: 2
-    _coordinates:
-      _row: 0
-      _column: 3
+      _column: 0
   - _data:
       _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
       _selectionIndex: 0
     _coordinates:
-      _row: 2
-      _column: 3
+      _row: 0
+      _column: 2
   - _data:
-      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
-      _selectionIndex: 3
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
     _coordinates:
-      _row: 3
-      _column: 3
-  - _data:
-      _prefab: {fileID: 4396281347570571264, guid: 3b423530431c56e72be520ee66468150, type: 3}
-      _selectionIndex: 5
-    _coordinates:
-      _row: 3
+      _row: 1
       _column: 4
   - _data:
       _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
       _selectionIndex: 0
     _coordinates:
-      _row: 5
+      _row: 2
+      _column: 0
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 2
+      _column: 2
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 3
+      _column: 5
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 4
       _column: 1
   - _data:
-      _prefab: {fileID: 4195535930623487697, guid: a84db93d4cfb4f303b565e59c51cb900, type: 3}
-      _selectionIndex: 4
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
     _coordinates:
       _row: 5
-      _column: 2
+      _column: 3
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 5
+      _column: 5

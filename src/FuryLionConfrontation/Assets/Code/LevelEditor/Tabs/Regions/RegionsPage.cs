@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class RegionsPage : SelectableListPage<RegionEntry>
+	public class RegionsPage : SelectableListPage<RegionEntry>, IRegionSelector
 	{
 		[Inject] private readonly RegionEntry.Factory _regionEntryFactory;
 		[Inject] private readonly IField _field;
@@ -20,6 +20,8 @@ namespace Confrontation
 		private CellsToRegionsHandler _handler;
 
 		private IEnumerable<Region.Data> RegionsData => _levelSelector.SelectedLevel.Regions;
+
+		public Region SelectedRegion => SelectedEntry.Region;
 
 		private void Start()
 		{
