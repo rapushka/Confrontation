@@ -17,15 +17,11 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
-		public int AttackStrength => Mathf.RoundToInt(QuantityOfUnits * AttackStrengthOfSingleUnit);
+		public float AttackDamage => BaseDamage * (FullStrength + Stats.AttackModifier);
 
-		public int DefencedQuantity => Mathf.RoundToInt(QuantityOfUnits * DefenceStrengthOfSingleUnit);
+		public float BaseDamage => Stats.BaseStrength * QuantityOfUnits;
 
-		public float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
-
-		public float AttackStrengthOfSingleUnit => BaseStrength * (Stats.AttackModifier + FullStrength);
-
-		public float DefenceStrengthOfSingleUnit => Stats.DefenseModifier + FullStrength;
+		private float DefenseModifier => Stats.DefenseModifier;
 
 		private UnitStats Stats => _balance.UnitStats;
 
@@ -50,6 +46,11 @@ namespace Confrontation
 		}
 
 		protected IField Field => _field;
+
+		public void TakeDamageOnDefence(float incomeDamage) 
+			=> TakeDamage(incomeDamage * (FullStrength - DefenseModifier));
+
+		public void TakeDamage(float incomeDamage) => QuantityOfUnits -= Mathf.RoundToInt(incomeDamage);
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{

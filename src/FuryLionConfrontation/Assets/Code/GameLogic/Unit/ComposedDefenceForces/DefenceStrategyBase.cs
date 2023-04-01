@@ -12,13 +12,15 @@ namespace Confrontation
 
 		protected DefenceStrategyBase(IAssetsService assets) => Assets = assets;
 
-		public abstract int DefenceStrength { get; }
+		public abstract float BaseDamage { get; }
+
+		public abstract int QuantityOfUnits { get; }
 
 		protected IAssetsService Assets { get; }
 
 		public abstract void Destroy();
 
-		public abstract void TakeDamage(int damage);
+		public abstract void TakeDamageOnDefence(float damage);
 
 		public static IDefenceStrategy Create(IAssetsService assets, Cell cell)
 		{

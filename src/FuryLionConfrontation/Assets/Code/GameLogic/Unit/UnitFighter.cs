@@ -4,81 +4,85 @@ namespace Confrontation
 {
 	public class UnitFighter
 	{
-		private readonly UnitsSquad _squad;
 		private readonly IAssetsService _assets;
 
 		[CanBeNull] private Garrison _garrison;
-		private IDefenceStrategy _defenceStrategy;
 		private Cell _cell;
 
 		public UnitFighter(UnitsSquad squad, IAssetsService assets)
 		{
-			_squad = squad;
+			Attackers = squad;
 			_assets = assets;
 		}
 
+		private UnitsSquad Attackers { get; }
+
+		private IDefenceStrategy Defenders { get; set; }
+
+		private bool IsDefendersAlive => Defenders.QuantityOfUnits > 0;
+
+		private bool IsAttackersAlive => Attackers.QuantityOfUnits > 0;
+
 		public void CaptureRegion(Cell cell)
 		{
-			_squad.Coordinates = cell.Coordinates;
-			cell.RelatedRegion!.OwnerPlayerId = _squad.OwnerPlayerId;
+			Attackers.Coordinates = cell.Coordinates;
+			cell.RelatedRegion!.OwnerPlayerId = Attackers.OwnerPlayerId;
 		}
 
 		public void FightWithSquadOn(Cell cell)
 		{
 			_cell = cell;
+			Defenders = PickDefenceStrategy(_cell);
 
-			_defenceStrategy = PickDefenceStrategy(_cell);
-			var ourWholeStrength = CalculateAttackWithModifiers
-			(
-				baseDamage: _squad.BaseStrength,
-				attackModifier: _squad.AttackStrength,
-				defenceModifier: _defenceStrategy.DefenceStrength
-			);
-			var theirWholeStrength = _defenceStrategy.DefenceStrength;
-			var ourAdvantageRate = ourWholeStrength.CompareTo(theirWholeStrength);
+			FightToDeath();
+			DetermineWinner();
+		}
 
-			if (ourAdvantageRate > 0)
+		private void FightToDeath()
+		{
+			while (IsAttackersAlive && IsDefendersAlive)
 			{
-				OurVictory();
+				Attackers.TakeDamage(Defenders.BaseDamage);
+				Defenders.TakeDamageOnDefence(Attackers.AttackDamage);
 			}
-			else if (ourAdvantageRate < 0)
+		}
+
+		private void DetermineWinner()
+		{
+			if (IsAttackersAlive)
 			{
-				TheirVictory();
+				AttackersWin();
+				return;
 			}
-			else
+
+			if (IsDefendersAlive)
 			{
-				Draw();
+				DefendersWin();
+				return;
 			}
+
+			Draw();
 		}
 
 		private IDefenceStrategy PickDefenceStrategy(Cell cell) => DefenceStrategyBase.Create(_assets, cell);
 
-		private void OurVictory()
+		private void AttackersWin()
 		{
-			_squad.QuantityOfUnits -= _defenceStrategy.DefenceStrength;
-			_defenceStrategy.Destroy();
+			Defenders.Destroy();
 
 			CaptureRegion(_cell);
 		}
 
-		private void TheirVictory()
-		{
-			_defenceStrategy.TakeDamage(_squad.AttackStrength);
-			_assets.Destroy(_squad.gameObject);
-		}
+		private void DefendersWin() => DestroyAttackers();
 
 		private void Draw()
 		{
-			_defenceStrategy.Destroy();
-			_assets.Destroy(_squad.gameObject);
+			Defenders.Destroy();
+			DestroyAttackers();
 
 			_cell.MakeRegionNeutral();
 		}
 
-		// Simplified form of the:
-		// baseDamage += baseDamage * attackModifier
-		// baseDamage -= baseDamage * defenceModifier
-		private static float CalculateAttackWithModifiers(float baseDamage, float attackModifier, float defenceModifier)
-			=> baseDamage * (1 + attackModifier) * (1 - defenceModifier);
+		private void DestroyAttackers() => _assets.Destroy(Attackers.gameObject);
 	}
 }

@@ -2,10 +2,12 @@ namespace Confrontation
 {
 	public interface IDefenceStrategy
 	{
-		int DefenceStrength { get; }
+		float BaseDamage { get; }
+
+		int QuantityOfUnits { get; }
 
 		void Destroy();
 
-		void TakeDamage(int damage);
+		void TakeDamageOnDefence(float damage);
 	}
 }

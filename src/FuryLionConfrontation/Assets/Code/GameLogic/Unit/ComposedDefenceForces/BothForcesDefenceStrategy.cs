@@ -14,7 +14,9 @@ namespace Confrontation
 			_garrison = garrison;
 		}
 
-		public override int DefenceStrength => (_locatedSquad.DefencedQuantity + _garrison.DefencedQuantity) / 2;
+		public override float BaseDamage => _locatedSquad.BaseDamage + _garrison.BaseDamage;
+
+		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
 		public override void Destroy()
 		{
@@ -22,15 +24,15 @@ namespace Confrontation
 			Assets.Destroy(_garrison.gameObject);
 		}
 
-		public override void TakeDamage(int damage)
+		public override void TakeDamageOnDefence(float damage)
 		{
-			if (IsBothForcesEnoughToTakeAllDamage(damage) == false)
+			if (TryTakeAllDamageEqually(damage) == false)
 			{
 				DistributeDamage(damage);
 			}
 		}
 
-		private bool IsBothForcesEnoughToTakeAllDamage(int damage)
+		private bool TryTakeAllDamageEqually(float damage)
 		{
 			var damageForUnits = damage / 2;
 			var damageForGarrison = damage - damageForUnits;
@@ -41,12 +43,12 @@ namespace Confrontation
 				return false;
 			}
 
-			_locatedSquad.QuantityOfUnits -= damageForUnits;
-			_garrison.QuantityOfUnits -= damageForGarrison;
+			_locatedSquad.TakeDamageOnDefence(damageForUnits);
+			_garrison.TakeDamageOnDefence(damageForGarrison);
 			return true;
 		}
 
-		private void DistributeDamage(int damage)
+		private void DistributeDamage(float damage)
 		{
 			if (_locatedSquad.QuantityOfUnits > _garrison.QuantityOfUnits)
 			{
@@ -58,20 +60,20 @@ namespace Confrontation
 			}
 		}
 
-		private void KillGarrison(int damage)
+		private void KillGarrison(float damage)
 			=> DistributeTo(damage, fullDamaged: _garrison, partiallyDamaged: _locatedSquad);
 
-		private void KillLocatedSquad(int damage)
+		private void KillLocatedSquad(float damage)
 		{
 			DistributeTo(damage, fullDamaged: _locatedSquad, partiallyDamaged: _garrison);
 			_cell.MakeRegionNeutral();
 		}
 
-		private void DistributeTo(int incomeDamage, Garrison fullDamaged, Garrison partiallyDamaged)
+		private void DistributeTo(float incomeDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
 			var remainedDamage = incomeDamage - fullDamaged.QuantityOfUnits;
 			Assets.Destroy(fullDamaged.gameObject);
-			partiallyDamaged.QuantityOfUnits -= remainedDamage;
+			partiallyDamaged.TakeDamageOnDefence(remainedDamage);
 		}
 	}
 }

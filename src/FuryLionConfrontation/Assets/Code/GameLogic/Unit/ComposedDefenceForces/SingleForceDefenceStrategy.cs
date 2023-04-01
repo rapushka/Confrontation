@@ -10,19 +10,20 @@ namespace Confrontation
 			: base(assets)
 			=> _units = units;
 
-		public override int DefenceStrength => _units.DefencedQuantity;
+		public override float BaseDamage => _units.BaseDamage;
+
+		public override int QuantityOfUnits => _units.QuantityOfUnits;
 
 		public override void Destroy() => Assets.Destroy(_units.gameObject);
 
-		public override void TakeDamage(int damage)
+		public override void TakeDamageOnDefence(float damage)
 		{
-			_units.QuantityOfUnits -= damage;
+			_units.TakeDamageOnDefence(damage);
 
 			if (_units.QuantityOfUnits > 0)
 			{
 				Debug.LogError(WrongStrategyException);
 			}
-			// Assert.IsTrue(_units.QuantityOfUnits > 0, message: WrongStrategyException);
 		}
 	}
 }
