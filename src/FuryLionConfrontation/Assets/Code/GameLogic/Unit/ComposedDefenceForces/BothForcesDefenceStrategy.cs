@@ -6,8 +6,8 @@ namespace Confrontation
 		private readonly Garrison _garrison;
 		private readonly Cell _cell;
 
-		public BothForcesDefenceStrategy(IAssetsService assets, Cell cell, Garrison locatedSquad, Garrison garrison)
-			: base(assets)
+		public BothForcesDefenceStrategy(IDestroyer destroyer, Cell cell, Garrison locatedSquad, Garrison garrison)
+			: base(destroyer)
 		{
 			_cell = cell;
 			_locatedSquad = locatedSquad;
@@ -22,8 +22,8 @@ namespace Confrontation
 
 		public override void Destroy()
 		{
-			Assets.Destroy(_locatedSquad.gameObject);
-			Assets.Destroy(_garrison.gameObject);
+			Destroyer.Destroy(_locatedSquad.gameObject);
+			Destroyer.Destroy(_garrison.gameObject);
 		}
 
 		public override void TakeDamageOnDefence(float damage)
@@ -81,7 +81,7 @@ namespace Confrontation
 		private void DistributeTo(float incomingDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
 			var remainedDamage = fullDamaged.TakeDamageOnDefence(incomingDamage);
-			Assets.Destroy(fullDamaged.gameObject);
+			Destroyer.Destroy(fullDamaged.gameObject);
 			partiallyDamaged.TakeDamageOnDefence(remainedDamage);
 		}
 	}
