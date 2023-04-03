@@ -18,27 +18,35 @@ namespace Confrontation
 
 		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
-		private float DefenceModifier => (_locatedSquad.DefenceModifier + _garrison.DefenceModifier) / 2;
-
 		public override void Destroy()
 		{
 			Destroyer.Destroy(_locatedSquad.gameObject);
 			Destroyer.Destroy(_garrison.gameObject);
 		}
 
-		public override void TakeDamageOnDefence(float damage)
+		public override void TakeDamageOnDefence(float incomingDamage)
 		{
-			if (QuantityOfUnits <= damage * DefenceModifier)
+			if (TryKillBoth(incomingDamage) == false
+			    && TryTakeAllDamageEqually(incomingDamage) == false)
 			{
-				_locatedSquad.TakeDamageOnDefence(damage);
-				_garrison.TakeDamageOnDefence(damage);
-				return;
+				DistributeDamage(incomingDamage);
+			}
+		}
+
+		private bool TryKillBoth(float incomingDamage)
+		{
+			var isLethalForGarrison = _garrison.IsDamageLethalOnDefence(incomingDamage, out var garrisonOverkillDamage);
+			var isLethalForLocatedSquad = _locatedSquad.IsDamageLethalOnDefence(garrisonOverkillDamage);
+
+			if (isLethalForGarrison && isLethalForLocatedSquad)
+			{
+				// Damage to both is lethal anyway, so there's no difference
+				_locatedSquad.TakeDamageOnDefence(incomingDamage);
+				_garrison.TakeDamageOnDefence(incomingDamage);
+				return true;
 			}
 
-			if (TryTakeAllDamageEqually(damage) == false)
-			{
-				DistributeDamage(damage);
-			}
+			return false;
 		}
 
 		private bool TryTakeAllDamageEqually(float damage)
@@ -46,20 +54,21 @@ namespace Confrontation
 			var damageForUnits = damage / 2;
 			var damageForGarrison = damage - damageForUnits;
 
-			if (_locatedSquad.QuantityOfUnits <= damageForUnits
-			    || _garrison.QuantityOfUnits <= damageForGarrison)
+			if (_locatedSquad.IsDamageLethalOnDefence(damageForUnits) == false
+			    && _garrison.IsDamageLethalOnDefence(damageForGarrison) == false)
 			{
-				return false;
+				_locatedSquad.TakeDamageOnDefence(damageForUnits);
+				_garrison.TakeDamageOnDefence(damageForGarrison);
+				return true;
 			}
 
-			_locatedSquad.TakeDamageOnDefence(damageForUnits);
-			_garrison.TakeDamageOnDefence(damageForGarrison);
-			return true;
+			return false;
 		}
 
 		private void DistributeDamage(float damage)
 		{
-			if (_locatedSquad.QuantityOfUnits > _garrison.QuantityOfUnits)
+			if (_locatedSquad.QuantityOfUnits.IncreaseBy(_locatedSquad.DefenceModifier)
+			    > _garrison.QuantityOfUnits.IncreaseBy(_garrison.DefenceModifier))
 			{
 				KillGarrison(damage);
 			}

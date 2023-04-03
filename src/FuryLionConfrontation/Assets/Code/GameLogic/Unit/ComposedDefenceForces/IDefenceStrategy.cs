@@ -8,6 +8,6 @@ namespace Confrontation
 
 		void Destroy();
 
-		void TakeDamageOnDefence(float damage);
+		void TakeDamageOnDefence(float incomingDamage);
 	}
 }

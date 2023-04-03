@@ -50,14 +50,28 @@ namespace Confrontation
 
 		public float TakeDamage(float incomingDamage)
 		{
-			var remainedUnits = QuantityOfUnits - Mathf.FloorToInt(incomingDamage);
-			var isSquadSurvived = remainedUnits > 0;
-			var initialQuantity = QuantityOfUnits;
+			var isDamageLethal = IsDamageLethal(incomingDamage, out var overkillDamage);
+			var remainedUnits = CalculateRemainedUnits(incomingDamage);
 
-			QuantityOfUnits = isSquadSurvived ? remainedUnits : 0;
-			var overkillDamage = isSquadSurvived ? 0 : incomingDamage - initialQuantity;
+			QuantityOfUnits = isDamageLethal ? remainedUnits : 0;
 			return overkillDamage;
 		}
+
+		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage)
+			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out overkillDamage);
+		
+		public bool IsDamageLethalOnDefence(float incomingDamage)
+			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out var _);
+
+		private bool IsDamageLethal(float incomingDamage, out float overkillDamage)
+		{
+			var isDamageLethal = CalculateRemainedUnits(incomingDamage) > 0;
+			overkillDamage = isDamageLethal ? 0 : incomingDamage - QuantityOfUnits;
+			return isDamageLethal;
+		}
+
+		private int CalculateRemainedUnits(float incomingDamage)
+			=> QuantityOfUnits - Mathf.FloorToInt(incomingDamage);
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{

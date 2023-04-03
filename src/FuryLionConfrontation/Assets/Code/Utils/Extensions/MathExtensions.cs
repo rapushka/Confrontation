@@ -10,6 +10,10 @@ namespace Confrontation
 		public static float ReduceBy(this float @this, float percent)
 			=> @this * (1 - percent);
 
+		
+		public static float IncreaseBy(this int @this, float percent)
+			=> @this * (1 + percent);
+
 		public static float ReduceBy(this int @this, float percent)
 			=> @this * (1 - percent);
 	}
