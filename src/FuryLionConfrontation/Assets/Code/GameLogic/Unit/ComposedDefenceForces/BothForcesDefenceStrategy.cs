@@ -78,9 +78,9 @@ namespace Confrontation
 			_cell.MakeRegionNeutral();
 		}
 
-		private void DistributeTo(float incomeDamage, Garrison fullDamaged, Garrison partiallyDamaged)
+		private void DistributeTo(float incomingDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
-			var remainedDamage = incomeDamage - fullDamaged.QuantityOfUnits.ReduceBy(fullDamaged.DefenceModifier);
+			var remainedDamage = fullDamaged.TakeDamageOnDefence(incomingDamage);
 			Assets.Destroy(fullDamaged.gameObject);
 			partiallyDamaged.TakeDamageOnDefence(remainedDamage);
 		}

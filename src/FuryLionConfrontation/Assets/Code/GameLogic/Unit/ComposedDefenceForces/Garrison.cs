@@ -38,18 +38,26 @@ namespace Confrontation
 			get => _quantityOfUnits;
 			set
 			{
-				_quantityOfUnits = Mathf.Max(value, 0);
+				_quantityOfUnits = value;
 				_quantityOfUnitsInSquadView.text = value.ToString();
 			}
 		}
 
 		protected IField Field => _field;
 
-		public void TakeDamageOnDefence(float incomeDamage)
+		public float TakeDamageOnDefence(float incomeDamage)
 			=> TakeDamage(incomeDamage.ReduceBy(DefenceModifier));
 
-		public void TakeDamage(float incomeDamage) 
-			=> QuantityOfUnits -= Mathf.RoundToInt(incomeDamage);
+		public float TakeDamage(float incomingDamage)
+		{
+			var remainedUnits = QuantityOfUnits - Mathf.FloorToInt(incomingDamage);
+			var isSquadSurvived = remainedUnits > 0;
+			var initialQuantity = QuantityOfUnits;
+
+			QuantityOfUnits = isSquadSurvived ? remainedUnits : 0;
+			var overkillDamage = isSquadSurvived ? 0 : incomingDamage - initialQuantity;
+			return overkillDamage;
+		}
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{
