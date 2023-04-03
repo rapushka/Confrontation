@@ -42,8 +42,11 @@ namespace Confrontation
 		{
 			while (IsAttackersAlive && IsDefendersAlive)
 			{
-				Attackers.TakeDamage(Defenders.BaseDamage);
-				Defenders.TakeDamageOnDefence(Attackers.AttackDamage);
+				var defendersDamage = Defenders.BaseDamage;
+				var attackersDamage = Attackers.AttackDamage;
+
+				Attackers.TakeDamage(defendersDamage);
+				Defenders.TakeDamageOnDefence(attackersDamage);
 			}
 		}
 
