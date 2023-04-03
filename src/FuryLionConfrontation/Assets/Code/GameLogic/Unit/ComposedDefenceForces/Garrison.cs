@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -7,12 +8,21 @@ namespace Confrontation
 	public class Garrison : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
+		[Inject] private readonly IBalanceTable _balance;
 
 		[SerializeField] protected UnitAnimator _animator;
 		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
 		[SerializeField] private Coordinates _cellCoordinates;
 
 		private int _quantityOfUnits;
+
+		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
+
+		public float BaseDamage => Stats.BaseStrength * QuantityOfUnits;
+
+		public float DefenceModifier => Stats.DefenseModifier;
+
+		private UnitStats Stats => _balance.UnitStats;
 
 		public virtual Coordinates Coordinates
 		{
@@ -35,6 +45,44 @@ namespace Confrontation
 		}
 
 		protected IField Field => _field;
+
+		public float TakeDamageOnDefence(float incomeDamage)
+			=> TakeDamage(incomeDamage.ReduceBy(DefenceModifier));
+
+		public float TakeDamage(float incomingDamage)
+		{
+			var isDamageLethal = IsDamageLethal(incomingDamage, out var overkillDamage);
+			var remainedUnits = CalculateRemainedUnits(incomingDamage);
+
+			QuantityOfUnits = isDamageLethal ? 0 : remainedUnits;
+			return overkillDamage;
+		}
+
+		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage)
+			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out overkillDamage);
+
+		public bool IsDamageLethalOnDefence(float incomingDamage)
+			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out var _);
+
+		private bool IsDamageLethal(float incomingDamage, out float overkillDamage)
+		{
+			var remainedUnits = CalculateRemainedUnits(incomingDamage);
+			var isDamageLethal = remainedUnits <= 0;
+			overkillDamage = isDamageLethal ? Mathf.Abs(remainedUnits) : 0;
+			return isDamageLethal;
+		}
+
+		private int CalculateRemainedUnits(float incomingDamage)
+			=> QuantityOfUnits - ConvertByStrategy(incomingDamage);
+
+		private int ConvertByStrategy(float incomingDamage)
+			=> Stats.RoundDamageToUnitsQuantity switch
+			{
+				FloatToIntStrategy.Round => Mathf.RoundToInt(incomingDamage),
+				FloatToIntStrategy.Floor => Mathf.FloorToInt(incomingDamage),
+				FloatToIntStrategy.Ceil  => Mathf.CeilToInt(incomingDamage),
+				var _                    => throw new ArgumentOutOfRangeException(),
+			};
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{

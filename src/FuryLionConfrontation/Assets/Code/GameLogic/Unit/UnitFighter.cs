@@ -4,68 +4,88 @@ namespace Confrontation
 {
 	public class UnitFighter
 	{
-		private readonly UnitsSquad _squad;
 		private readonly IAssetsService _assets;
 
 		[CanBeNull] private Garrison _garrison;
-		private IDefenceStrategy _defenceStrategy;
 		private Cell _cell;
 
 		public UnitFighter(UnitsSquad squad, IAssetsService assets)
 		{
-			_squad = squad;
+			Attackers = squad;
 			_assets = assets;
 		}
 
+		private UnitsSquad Attackers { get; }
+
+		private IDefenceStrategy Defenders { get; set; }
+
+		private bool IsDefendersAlive => Defenders.QuantityOfUnits > 0;
+
+		private bool IsAttackersAlive => Attackers.QuantityOfUnits > 0;
+
 		public void CaptureRegion(Cell cell)
 		{
-			_squad.Coordinates = cell.Coordinates;
-			cell.RelatedRegion!.OwnerPlayerId = _squad.OwnerPlayerId;
+			Attackers.Coordinates = cell.Coordinates;
+			cell.RelatedRegion!.OwnerPlayerId = Attackers.OwnerPlayerId;
 		}
 
 		public void FightWithSquadOn(Cell cell)
 		{
 			_cell = cell;
+			Defenders = PickDefenceStrategy(_cell);
 
-			_defenceStrategy = PickDefenceStrategy(_cell);
-			var ourAdvantageRate = _squad.QuantityOfUnits.CompareTo(_defenceStrategy.Quantity);
+			FightToDeath();
+			DetermineWinner();
+		}
 
-			if (ourAdvantageRate > 0)
+		private void FightToDeath()
+		{
+			while (IsAttackersAlive && IsDefendersAlive)
 			{
-				OurVictory();
+				var defendersDamage = Defenders.BaseDamage;
+				var attackersDamage = Attackers.AttackDamage;
+
+				Attackers.TakeDamage(defendersDamage);
+				Defenders.TakeDamageOnDefence(attackersDamage);
 			}
-			else if (ourAdvantageRate < 0)
+		}
+
+		private void DetermineWinner()
+		{
+			if (IsAttackersAlive)
 			{
-				TheirVictory();
+				AttackersWin();
+				return;
 			}
-			else
+
+			if (IsDefendersAlive)
 			{
-				Draw();
+				DefendersWin();
+				return;
 			}
+
+			Draw();
 		}
 
 		private IDefenceStrategy PickDefenceStrategy(Cell cell) => DefenceStrategyBase.Create(_assets, cell);
 
-		private void OurVictory()
+		private void AttackersWin()
 		{
-			_squad.QuantityOfUnits -= _defenceStrategy.Quantity;
-			_defenceStrategy.Destroy();
+			Defenders.Destroy();
 
 			CaptureRegion(_cell);
 		}
 
-		private void TheirVictory()
-		{
-			_defenceStrategy.TakeDamage(_squad.QuantityOfUnits);
-			_assets.Destroy(_squad.gameObject);
-		}
+		private void DefendersWin() => DestroyAttackers();
 
 		private void Draw()
 		{
-			_defenceStrategy.Destroy();
-			_assets.Destroy(_squad.gameObject);
+			Defenders.Destroy();
+			DestroyAttackers();
 
 			_cell.MakeRegionNeutral();
 		}
+
+		private void DestroyAttackers() => _assets.Destroy(Attackers.gameObject);
 	}
 }

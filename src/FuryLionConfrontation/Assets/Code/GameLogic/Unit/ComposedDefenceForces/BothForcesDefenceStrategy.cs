@@ -6,49 +6,69 @@ namespace Confrontation
 		private readonly Garrison _garrison;
 		private readonly Cell _cell;
 
-		public BothForcesDefenceStrategy(IAssetsService assets, Cell cell, Garrison locatedSquad, Garrison garrison)
-			: base(assets)
+		public BothForcesDefenceStrategy(IDestroyer destroyer, Cell cell, Garrison locatedSquad, Garrison garrison)
+			: base(destroyer)
 		{
 			_cell = cell;
 			_locatedSquad = locatedSquad;
 			_garrison = garrison;
 		}
 
-		public override int Quantity => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
+		public override float BaseDamage => _locatedSquad.BaseDamage + _garrison.BaseDamage;
+
+		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
 		public override void Destroy()
 		{
-			Assets.Destroy(_locatedSquad.gameObject);
-			Assets.Destroy(_garrison.gameObject);
+			Destroyer.Destroy(_locatedSquad.gameObject);
+			Destroyer.Destroy(_garrison.gameObject);
 		}
 
-		public override void TakeDamage(int damage)
+		public override void TakeDamageOnDefence(float incomingDamage)
 		{
-			if (IsBothForcesEnoughToTakeAllDamage(damage) == false)
+			if (TryKillBoth(incomingDamage) == false
+			    && TryTakeAllDamageEqually(incomingDamage) == false)
 			{
-				DistributeDamage(damage);
+				DistributeDamage(incomingDamage);
 			}
 		}
 
-		private bool IsBothForcesEnoughToTakeAllDamage(int damage)
+		private bool TryKillBoth(float incomingDamage)
+		{
+			var isLethalForGarrison = _garrison.IsDamageLethalOnDefence(incomingDamage, out var overkillDamage);
+			var isLethalForLocatedSquad = _locatedSquad.IsDamageLethalOnDefence(overkillDamage);
+
+			if (isLethalForGarrison && isLethalForLocatedSquad)
+			{
+				// Damage to both is lethal anyway, so there's no difference
+				_locatedSquad.TakeDamageOnDefence(incomingDamage);
+				_garrison.TakeDamageOnDefence(incomingDamage);
+				return true;
+			}
+
+			return false;
+		}
+
+		private bool TryTakeAllDamageEqually(float damage)
 		{
 			var damageForUnits = damage / 2;
 			var damageForGarrison = damage - damageForUnits;
 
-			if (_locatedSquad.QuantityOfUnits <= damageForUnits
-			    || _garrison.QuantityOfUnits <= damageForGarrison)
+			if (_locatedSquad.IsDamageLethalOnDefence(damageForUnits) == false
+			    && _garrison.IsDamageLethalOnDefence(damageForGarrison) == false)
 			{
-				return false;
+				_locatedSquad.TakeDamageOnDefence(damageForUnits);
+				_garrison.TakeDamageOnDefence(damageForGarrison);
+				return true;
 			}
 
-			_locatedSquad.QuantityOfUnits -= damageForUnits;
-			_garrison.QuantityOfUnits -= damageForGarrison;
-			return true;
+			return false;
 		}
 
-		private void DistributeDamage(int damage)
+		private void DistributeDamage(float damage)
 		{
-			if (_locatedSquad.QuantityOfUnits > _garrison.QuantityOfUnits)
+			if (_locatedSquad.QuantityOfUnits.IncreaseBy(_locatedSquad.DefenceModifier)
+			    > _garrison.QuantityOfUnits.IncreaseBy(_garrison.DefenceModifier))
 			{
 				KillGarrison(damage);
 			}
@@ -58,20 +78,20 @@ namespace Confrontation
 			}
 		}
 
-		private void KillGarrison(int damage)
+		private void KillGarrison(float damage)
 			=> DistributeTo(damage, fullDamaged: _garrison, partiallyDamaged: _locatedSquad);
 
-		private void KillLocatedSquad(int damage)
+		private void KillLocatedSquad(float damage)
 		{
 			DistributeTo(damage, fullDamaged: _locatedSquad, partiallyDamaged: _garrison);
 			_cell.MakeRegionNeutral();
 		}
 
-		private void DistributeTo(int incomeDamage, Garrison fullDamaged, Garrison partiallyDamaged)
+		private void DistributeTo(float incomingDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
-			var remainedDamage = incomeDamage - fullDamaged.QuantityOfUnits;
-			Assets.Destroy(fullDamaged.gameObject);
-			partiallyDamaged.QuantityOfUnits -= remainedDamage;
+			var remainedDamage = fullDamaged.TakeDamageOnDefence(incomingDamage);
+			Destroyer.Destroy(fullDamaged.gameObject);
+			partiallyDamaged.TakeDamageOnDefence(remainedDamage);
 		}
 	}
 }
