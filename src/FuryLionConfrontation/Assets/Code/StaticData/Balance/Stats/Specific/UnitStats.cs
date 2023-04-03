@@ -13,5 +13,7 @@ namespace Confrontation
 		[field: Range(0f, 1f)] [field: SerializeField] public float DefenseModifier { get; private set; }
 
 		[field: Range(0f, 1f)] [field: SerializeField] public float AttackModifier { get; private set; }
+
+		[field: SerializeField] public FloatToIntStrategy RoundDamageToUnitsQuantity { get; private set; }
 	}
 }

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -59,7 +60,7 @@ namespace Confrontation
 
 		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage)
 			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out overkillDamage);
-		
+
 		public bool IsDamageLethalOnDefence(float incomingDamage)
 			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out var _);
 
@@ -72,7 +73,16 @@ namespace Confrontation
 		}
 
 		private int CalculateRemainedUnits(float incomingDamage)
-			=> QuantityOfUnits - Mathf.RoundToInt(incomingDamage);
+			=> QuantityOfUnits - ConvertByStrategy(incomingDamage);
+
+		private int ConvertByStrategy(float incomingDamage)
+			=> Stats.RoundDamageToUnitsQuantity switch
+			{
+				FloatToIntStrategy.Round => Mathf.RoundToInt(incomingDamage),
+				FloatToIntStrategy.Floor => Mathf.FloorToInt(incomingDamage),
+				FloatToIntStrategy.Ceil  => Mathf.CeilToInt(incomingDamage),
+				var _                    => throw new ArgumentOutOfRangeException(),
+			};
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{
