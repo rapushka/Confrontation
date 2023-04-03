@@ -9,19 +9,17 @@ namespace Confrontation
 		[Inject] private readonly IField _field;
 		[Inject] private readonly IBalanceTable _balance;
 
-		private const int FullStrength = 1;
-
 		[SerializeField] protected UnitAnimator _animator;
 		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
 		[SerializeField] private Coordinates _cellCoordinates;
 
 		private int _quantityOfUnits;
 
-		public float AttackDamage => BaseDamage * (FullStrength + Stats.AttackModifier);
+		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
 
 		public float BaseDamage => Stats.BaseStrength * QuantityOfUnits;
 
-		private float DefenseModifier => Stats.DefenseModifier;
+		public float DefenceModifier => Stats.DefenseModifier;
 
 		private UnitStats Stats => _balance.UnitStats;
 
@@ -40,17 +38,18 @@ namespace Confrontation
 			get => _quantityOfUnits;
 			set
 			{
-				_quantityOfUnits = value;
+				_quantityOfUnits = Mathf.Max(value, 0);
 				_quantityOfUnitsInSquadView.text = value.ToString();
 			}
 		}
 
 		protected IField Field => _field;
 
-		public void TakeDamageOnDefence(float incomeDamage) 
-			=> TakeDamage(incomeDamage * (FullStrength - DefenseModifier));
+		public void TakeDamageOnDefence(float incomeDamage)
+			=> TakeDamage(incomeDamage.ReduceBy(DefenceModifier));
 
-		public void TakeDamage(float incomeDamage) => QuantityOfUnits -= Mathf.RoundToInt(incomeDamage);
+		public void TakeDamage(float incomeDamage) 
+			=> QuantityOfUnits -= Mathf.RoundToInt(incomeDamage);
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{

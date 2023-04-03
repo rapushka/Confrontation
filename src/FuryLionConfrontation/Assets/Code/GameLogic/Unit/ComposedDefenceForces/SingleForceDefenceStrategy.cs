@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Confrontation
 {
 	public class SingleForceDefenceStrategy : DefenceStrategyBase
@@ -16,14 +14,6 @@ namespace Confrontation
 
 		public override void Destroy() => Assets.Destroy(_units.gameObject);
 
-		public override void TakeDamageOnDefence(float damage)
-		{
-			_units.TakeDamageOnDefence(damage);
-
-			if (_units.QuantityOfUnits > 0)
-			{
-				Debug.LogError(WrongStrategyException);
-			}
-		}
+		public override void TakeDamageOnDefence(float damage) => _units.TakeDamageOnDefence(damage);
 	}
 }

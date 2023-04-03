@@ -18,6 +18,8 @@ namespace Confrontation
 
 		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
+		private float DefenceModifier => (_locatedSquad.DefenceModifier + _garrison.DefenceModifier) / 2;
+
 		public override void Destroy()
 		{
 			Assets.Destroy(_locatedSquad.gameObject);
@@ -26,6 +28,13 @@ namespace Confrontation
 
 		public override void TakeDamageOnDefence(float damage)
 		{
+			if (QuantityOfUnits <= damage * DefenceModifier)
+			{
+				_locatedSquad.TakeDamageOnDefence(damage);
+				_garrison.TakeDamageOnDefence(damage);
+				return;
+			}
+
 			if (TryTakeAllDamageEqually(damage) == false)
 			{
 				DistributeDamage(damage);
@@ -71,7 +80,7 @@ namespace Confrontation
 
 		private void DistributeTo(float incomeDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
-			var remainedDamage = incomeDamage - fullDamaged.QuantityOfUnits;
+			var remainedDamage = incomeDamage - fullDamaged.QuantityOfUnits.ReduceBy(fullDamaged.DefenceModifier);
 			Assets.Destroy(fullDamaged.gameObject);
 			partiallyDamaged.TakeDamageOnDefence(remainedDamage);
 		}
