@@ -35,8 +35,8 @@ namespace Confrontation
 
 		private bool TryKillBoth(float incomingDamage)
 		{
-			var isLethalForGarrison = _garrison.IsDamageLethalOnDefence(incomingDamage, out var garrisonOverkillDamage);
-			var isLethalForLocatedSquad = _locatedSquad.IsDamageLethalOnDefence(garrisonOverkillDamage);
+			var isLethalForGarrison = _garrison.IsDamageLethalOnDefence(incomingDamage, out var overkillDamage);
+			var isLethalForLocatedSquad = _locatedSquad.IsDamageLethalOnDefence(overkillDamage);
 
 			if (isLethalForGarrison && isLethalForLocatedSquad)
 			{

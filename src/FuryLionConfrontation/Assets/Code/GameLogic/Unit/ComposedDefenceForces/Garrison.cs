@@ -53,7 +53,7 @@ namespace Confrontation
 			var isDamageLethal = IsDamageLethal(incomingDamage, out var overkillDamage);
 			var remainedUnits = CalculateRemainedUnits(incomingDamage);
 
-			QuantityOfUnits = isDamageLethal ? remainedUnits : 0;
+			QuantityOfUnits = isDamageLethal ? 0 : remainedUnits;
 			return overkillDamage;
 		}
 
@@ -65,8 +65,9 @@ namespace Confrontation
 
 		private bool IsDamageLethal(float incomingDamage, out float overkillDamage)
 		{
-			var isDamageLethal = CalculateRemainedUnits(incomingDamage) > 0;
-			overkillDamage = isDamageLethal ? 0 : incomingDamage - QuantityOfUnits;
+			var remainedUnits = CalculateRemainedUnits(incomingDamage);
+			var isDamageLethal = remainedUnits <= 0;
+			overkillDamage = isDamageLethal ? Mathf.Abs(remainedUnits) : 0;
 			return isDamageLethal;
 		}
 
