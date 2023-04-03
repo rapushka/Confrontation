@@ -72,7 +72,7 @@ namespace Confrontation
 		}
 
 		private int CalculateRemainedUnits(float incomingDamage)
-			=> QuantityOfUnits - Mathf.FloorToInt(incomingDamage);
+			=> QuantityOfUnits - Mathf.RoundToInt(incomingDamage);
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{

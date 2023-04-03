@@ -15,8 +15,8 @@ MonoBehaviour:
   <UnitStats>k__BackingField:
     <BaseSpeed>k__BackingField: 1
     <BaseStrength>k__BackingField: 1
-    <DefenseModifier>k__BackingField: 0.5
-    <AttackModifier>k__BackingField: 0.01
+    <DefenseModifier>k__BackingField: 0.3
+    <AttackModifier>k__BackingField: 0.1
   <GoldenMineStats>k__BackingField:
     <Price>k__BackingField: 5
     <LeveledStats>k__BackingField:
