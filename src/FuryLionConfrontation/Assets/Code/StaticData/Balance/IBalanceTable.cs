@@ -10,10 +10,14 @@ namespace Confrontation
 
 		SettlementStats SettlementStats { get; }
 
+		ForgeStats ForgeStats { get; }
+
 		EnemiesStats EnemiesStats { get; }
 
-		TimeStats   TimeStats   { get; }
-		FarmStats   FarmStats   { get; }
+		TimeStats TimeStats { get; }
+
+		FarmStats FarmStats { get; }
+
 		StableStats StableStats { get; }
 
 		int BuildPriceFor(Building building);
