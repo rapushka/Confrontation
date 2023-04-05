@@ -16,6 +16,8 @@ namespace Confrontation
 		}
 
 		public float BaseSpeed => _decoratee.BaseSpeed;
+		
+		public float UnitMaxHp => _decoratee.UnitMaxHp;
 
 		public float BaseStrength
 		{
