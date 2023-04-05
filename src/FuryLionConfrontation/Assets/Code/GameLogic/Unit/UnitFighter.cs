@@ -45,7 +45,7 @@ namespace Confrontation
 				var defendersDamage = Defenders.BaseDamage;
 				var attackersDamage = Attackers.AttackDamage;
 
-				Attackers.TakeDamage(defendersDamage);
+				Attackers.Health.TakeDamage(defendersDamage);
 				Defenders.TakeDamageOnDefence(attackersDamage);
 			}
 		}

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -15,13 +14,15 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
+		public UnitHealth Health { get; private set; }
+
+		public IUnitStats Stats { get; private set; }
+
 		public float AttackDamage => BaseStrength.IncreaseBy(Stats.AttackModifier);
 
 		public float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
 
 		public float DefenceModifier => Stats.DefenseModifier;
-
-		private IUnitStats Stats { get; set; }
 
 		public virtual Coordinates Coordinates
 		{
@@ -47,44 +48,6 @@ namespace Confrontation
 
 		private int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
 
-		public float TakeDamageOnDefence(float incomeDamage)
-			=> TakeDamage(incomeDamage.ReduceBy(DefenceModifier));
-
-		public float TakeDamage(float incomingDamage)
-		{
-			var isDamageLethal = IsDamageLethal(incomingDamage, out var overkillDamage);
-			var remainedUnits = CalculateRemainedUnits(incomingDamage);
-
-			QuantityOfUnits = isDamageLethal ? 0 : remainedUnits;
-			return overkillDamage;
-		}
-
-		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage)
-			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out overkillDamage);
-
-		public bool IsDamageLethalOnDefence(float incomingDamage)
-			=> IsDamageLethal(incomingDamage.ReduceBy(DefenceModifier), out var _);
-
-		private bool IsDamageLethal(float incomingDamage, out float overkillDamage)
-		{
-			var remainedUnits = CalculateRemainedUnits(incomingDamage);
-			var isDamageLethal = remainedUnits <= 0;
-			overkillDamage = isDamageLethal ? Mathf.Abs(remainedUnits) : 0;
-			return isDamageLethal;
-		}
-
-		private int CalculateRemainedUnits(float incomingDamage)
-			=> QuantityOfUnits - ToQuantity(incomingDamage);
-
-		private int ToQuantity(float incomingDamage)
-			=> Stats.ConvertDamageToUnitsQuantity switch
-			{
-				FloatToIntStrategy.Round => Mathf.RoundToInt(incomingDamage),
-				FloatToIntStrategy.Floor => Mathf.FloorToInt(incomingDamage),
-				FloatToIntStrategy.Ceil  => Mathf.CeilToInt(incomingDamage),
-				var _                    => throw new ArgumentOutOfRangeException(),
-			};
-
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			[Inject] private readonly IAssetsService _assets;
@@ -94,10 +57,12 @@ namespace Confrontation
 			{
 				var garrison = base.Create();
 				_assets.ToGroup(garrison.transform);
+
 				garrison.transform.position = cell.Coordinates.ToAboveCellPosition();
 				garrison.Coordinates = cell.Coordinates;
 				garrison.QuantityOfUnits = quantityOfUnits;
 				garrison.Stats = new UnitStatsDecorator(_balance.UnitStats, garrison.OwnerPlayerId, garrison.Field);
+				garrison.Health = new UnitHealth(garrison);
 
 				return garrison;
 			}
