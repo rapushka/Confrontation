@@ -14,9 +14,9 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
-		public UnitHealth Health { get; private set; }
+		public UnitHealth Health { get; protected set; }
 
-		public IUnitStats Stats { get; private set; }
+		public IUnitStats Stats { get; protected set; }
 
 		public float AttackDamage => BaseStrength.IncreaseBy(Stats.AttackModifier);
 

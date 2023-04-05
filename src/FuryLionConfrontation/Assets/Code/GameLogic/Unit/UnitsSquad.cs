@@ -53,17 +53,21 @@ namespace Confrontation
 		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			[Inject] private readonly IAssetsService _assets;
+			[Inject] private readonly IBalanceTable _balance;
 
 			public UnitsSquad Create(Cell cell, int quantityOfUnits = 0)
 			{
-				var unitsSquad = base.Create();
-				_assets.ToGroup(unitsSquad.transform);
-				unitsSquad.transform.position = cell.Coordinates.ToAboveCellPosition();
-				unitsSquad.OwnerPlayerId = cell.OwnerPlayerId;
-				unitsSquad.Coordinates = cell.Coordinates;
-				unitsSquad.QuantityOfUnits = quantityOfUnits;
+				var squad = base.Create();
+				_assets.ToGroup(squad.transform);
 
-				return unitsSquad;
+				squad.transform.position = cell.Coordinates.ToAboveCellPosition();
+				squad.OwnerPlayerId = cell.OwnerPlayerId;
+				squad.Coordinates = cell.Coordinates;
+				squad.QuantityOfUnits = quantityOfUnits;
+				squad.Stats = new UnitStatsDecorator(_balance.UnitStats, squad.OwnerPlayerId, squad.Field);
+				squad.Health = new UnitHealth(squad);
+
+				return squad;
 			}
 		}
 	}
