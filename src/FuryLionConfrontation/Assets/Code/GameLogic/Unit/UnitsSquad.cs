@@ -65,7 +65,7 @@ namespace Confrontation
 				squad.Coordinates = cell.Coordinates;
 				squad.QuantityOfUnits = quantityOfUnits;
 				squad.Stats = new UnitStatsDecorator(_balance.UnitStats, squad.OwnerPlayerId, squad.Field);
-				squad.Health = new UnitHealth(squad);
+				squad.Health = new SquadHealth(squad);
 
 				return squad;
 			}

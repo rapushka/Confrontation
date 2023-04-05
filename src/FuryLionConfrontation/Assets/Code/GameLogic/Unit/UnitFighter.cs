@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Confrontation
 {
@@ -40,8 +41,17 @@ namespace Confrontation
 
 		private void FightToDeath()
 		{
+			var counter = 0;
 			while (IsAttackersAlive && IsDefendersAlive)
 			{
+				if (counter == 100)
+				{
+					Debug.LogWarning("endless cycle prevented");
+					break;
+				}
+
+				counter++;
+
 				var defendersDamage = Defenders.BaseDamage;
 				var attackersDamage = Attackers.AttackDamage;
 

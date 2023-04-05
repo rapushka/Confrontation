@@ -14,7 +14,7 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
-		public UnitHealth Health { get; protected set; }
+		public SquadHealth Health { get; protected set; }
 
 		public IUnitStats Stats { get; protected set; }
 
@@ -62,7 +62,7 @@ namespace Confrontation
 				garrison.Coordinates = cell.Coordinates;
 				garrison.QuantityOfUnits = quantityOfUnits;
 				garrison.Stats = new UnitStatsDecorator(_balance.UnitStats, garrison.OwnerPlayerId, garrison.Field);
-				garrison.Health = new UnitHealth(garrison);
+				garrison.Health = new SquadHealth(garrison);
 
 				return garrison;
 			}

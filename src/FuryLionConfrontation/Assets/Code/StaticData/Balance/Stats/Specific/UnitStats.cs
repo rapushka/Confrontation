@@ -5,10 +5,14 @@ namespace Confrontation
 {
 	public interface IUnitStats : IStats
 	{
-		float              BaseSpeed                  { get; }
-		float              BaseStrength               { get; }
-		float              DefenseModifier            { get; }
-		float              AttackModifier             { get; }
+		float BaseSpeed { get; }
+
+		float BaseStrength { get; }
+
+		float DefenseModifier { get; }
+
+		float AttackModifier { get; }
+
 		FloatToIntStrategy ConvertDamageToUnitsQuantity { get; }
 	}
 

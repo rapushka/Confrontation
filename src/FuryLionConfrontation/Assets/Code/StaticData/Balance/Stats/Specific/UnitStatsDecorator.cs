@@ -23,10 +23,12 @@ namespace Confrontation
 			{
 				var baseStrength = _decoratee.BaseStrength;
 
-				return _field.Buildings
-				             .OfType<Forge>()
-				             .Where((f) => f.OwnerPlayerId == _ownerPlayer)
-				             .Aggregate(baseStrength, GetCombatStrengthFromForges);
+				var modifiedStrength = _field.Buildings
+				                             .OfType<Forge>()
+				                             .Where((f) => f.OwnerPlayerId == _ownerPlayer)
+				                             .Aggregate(baseStrength, GetCombatStrengthFromForges);
+
+				return modifiedStrength;
 			}
 		}
 
