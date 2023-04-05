@@ -8,7 +8,7 @@ namespace Confrontation
 			: base(destroyer)
 			=> _units = units;
 
-		public override float BaseDamage => _units.BaseDamage;
+		public override float BaseDamage => _units.BaseStrength;
 
 		public override int QuantityOfUnits => _units.QuantityOfUnits;
 

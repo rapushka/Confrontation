@@ -8,7 +8,6 @@ namespace Confrontation
 	public class Garrison : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private readonly IBalanceTable _balance;
 
 		[SerializeField] protected UnitAnimator _animator;
 		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
@@ -16,13 +15,13 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
-		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
+		public float AttackDamage => BaseStrength.IncreaseBy(Stats.AttackModifier);
 
-		public float BaseDamage => Stats.BaseStrength * QuantityOfUnits;
+		public float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
 
 		public float DefenceModifier => Stats.DefenseModifier;
 
-		private UnitStats Stats => _balance.UnitStats;
+		private IUnitStats Stats { get; set; }
 
 		public virtual Coordinates Coordinates
 		{
@@ -45,6 +44,8 @@ namespace Confrontation
 		}
 
 		protected IField Field => _field;
+
+		private int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
 
 		public float TakeDamageOnDefence(float incomeDamage)
 			=> TakeDamage(incomeDamage.ReduceBy(DefenceModifier));
@@ -73,10 +74,10 @@ namespace Confrontation
 		}
 
 		private int CalculateRemainedUnits(float incomingDamage)
-			=> QuantityOfUnits - ConvertByStrategy(incomingDamage);
+			=> QuantityOfUnits - ToQuantity(incomingDamage);
 
-		private int ConvertByStrategy(float incomingDamage)
-			=> Stats.RoundDamageToUnitsQuantity switch
+		private int ToQuantity(float incomingDamage)
+			=> Stats.ConvertDamageToUnitsQuantity switch
 			{
 				FloatToIntStrategy.Round => Mathf.RoundToInt(incomingDamage),
 				FloatToIntStrategy.Floor => Mathf.FloorToInt(incomingDamage),
@@ -87,6 +88,7 @@ namespace Confrontation
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			[Inject] private readonly IAssetsService _assets;
+			[Inject] private readonly IBalanceTable _balance;
 
 			public Garrison Create(Cell cell, int quantityOfUnits = 0)
 			{
@@ -95,6 +97,7 @@ namespace Confrontation
 				garrison.transform.position = cell.Coordinates.ToAboveCellPosition();
 				garrison.Coordinates = cell.Coordinates;
 				garrison.QuantityOfUnits = quantityOfUnits;
+				garrison.Stats = new UnitStatsDecorator(_balance.UnitStats, garrison.OwnerPlayerId, garrison.Field);
 
 				return garrison;
 			}

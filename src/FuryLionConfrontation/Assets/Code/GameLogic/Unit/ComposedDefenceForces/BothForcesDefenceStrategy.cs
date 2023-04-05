@@ -14,7 +14,7 @@ namespace Confrontation
 			_garrison = garrison;
 		}
 
-		public override float BaseDamage => _locatedSquad.BaseDamage + _garrison.BaseDamage;
+		public override float BaseDamage => _locatedSquad.BaseStrength + _garrison.BaseStrength;
 
 		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
