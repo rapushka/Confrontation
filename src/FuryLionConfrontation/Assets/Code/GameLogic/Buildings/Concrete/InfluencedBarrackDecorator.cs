@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 
 namespace Confrontation
@@ -14,15 +13,13 @@ namespace Confrontation
 				var baseDuration = base.CoolDownDuration;
 				var duration = Field.Buildings
 				                    .Union(Field.StashedBuildings)
-				                    .OfType<Farm>()
-				                    .Where((f) => f.OwnerPlayerId == ownerPlayerId)
-				                    .Aggregate(baseDuration, DecreaseOnCoefficient);
+				                    .InfluenceFloat<Farm>(baseDuration, ownerPlayerId, DecreaseOnCoefficient);
 
-				return Math.Max(duration, MinAcceleratedCoolDown);
+				return duration.Clamp(min: MinAcceleratedCoolDown);
 			}
 		}
 
-		private float DecreaseOnCoefficient(float current, Farm farm)
+		private static float DecreaseOnCoefficient(float current, Farm farm)
 			=> current - farm.CurrentLevelStats.SpawnAccelerationCoefficient;
 	}
 }

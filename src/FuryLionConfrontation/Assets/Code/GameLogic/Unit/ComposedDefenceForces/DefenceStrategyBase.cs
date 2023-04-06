@@ -10,17 +10,21 @@ namespace Confrontation
 		protected const string WrongStrategyException
 			= "Whole quantity is less than Damage => Defenders lost and wrong strategy was picked";
 
-		protected DefenceStrategyBase(IAssetsService assets) => Assets = assets;
+		protected DefenceStrategyBase(IDestroyer destroyer) => Destroyer = destroyer;
 
-		public abstract int Quantity { get; }
+		public abstract float BaseDamage { get; }
 
-		protected IAssetsService Assets { get; }
+		public abstract int QuantityOfUnits { get; }
+
+		protected IDestroyer Destroyer { get; }
 
 		public abstract void Destroy();
 
-		public abstract void TakeDamage(int damage);
+		public abstract void Kill();
 
-		public static IDefenceStrategy Create(IAssetsService assets, Cell cell)
+		public abstract void TakeDamageOnDefence(float incomingDamage, float pierceRate);
+
+		public static IDefenceStrategy Create(IDestroyer destroyer, Cell cell)
 		{
 			var units = cell.LocatedUnits;
 			var garrison = cell.Garrison;
@@ -28,9 +32,9 @@ namespace Confrontation
 			var isThereGarrison = garrison == true;
 			var isThereBoth = isThereUnits && isThereGarrison;
 
-			return isThereBoth    ? new BothForcesDefenceStrategy(assets, cell, units, garrison)
-				: isThereUnits    ? new OnlyOneForceDefenceStrategy(assets, units)
-				: isThereGarrison ? new OnlyOneForceDefenceStrategy(assets, garrison)
+			return isThereBoth    ? new BothForcesDefenceStrategy(destroyer, cell, units, garrison)
+				: isThereUnits    ? new SingleForceDefenceStrategy(destroyer, units)
+				: isThereGarrison ? new SingleForceDefenceStrategy(destroyer, garrison)
 				                    : throw new InvalidOperationException(ThereIsNoDefendersException);
 		}
 	}

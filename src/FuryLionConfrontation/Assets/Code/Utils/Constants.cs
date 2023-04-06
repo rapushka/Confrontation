@@ -26,14 +26,20 @@ namespace Confrontation
 			public const string Garrison = "Prefabs/Units/Garrison";
 
 			public const string GoldenMine = "Prefabs/Buildings/Golden Mine";
+			public const string TowerOfMages = "Prefabs/Buildings/Tower Of Mages";
 			public const string Barrack = "Prefabs/Buildings/Barracks";
 			public const string Settlement = "Prefabs/Buildings/Settlement";
 			public const string Capital = "Prefabs/Buildings/Capital";
 			public const string Farm = "Prefabs/Buildings/Farm";
 			public const string Stable = "Prefabs/Buildings/Stable";
+			public const string Forge = "Prefabs/Buildings/Forge";
+			public const string Quarry = "Prefabs/Buildings/Quarry";
+			public const string Workshop = "Prefabs/Buildings/Workshop";
 
 			public const string ResourcesService = "ScriptableObjects/Resources";
 			public const string TestLevel = "ScriptableObjects/For Tests/TestLevel";
 		}
+
+		public const int MaxFightRounds = 100;
 	}
 }

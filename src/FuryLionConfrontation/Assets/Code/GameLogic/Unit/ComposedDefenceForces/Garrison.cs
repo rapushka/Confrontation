@@ -14,6 +14,20 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
+		public SquadHealth Health { get; protected set; }
+
+		public IUnitStats Stats { get; protected set; }
+
+		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
+
+		public float BaseArmor => BaseStrength;
+
+		public float BaseDamage => BaseStrength;
+
+		public float DefenceModifier => Stats.DefenseModifier;
+
+		public float DefencePierceRate => Stats.DefencePierceRate;
+
 		public virtual Coordinates Coordinates
 		{
 			get => _cellCoordinates;
@@ -36,17 +50,27 @@ namespace Confrontation
 
 		protected IField Field => _field;
 
+		private float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
+
+		private int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
+
+		public void Kill() => QuantityOfUnits = 0;
+
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			[Inject] private readonly IAssetsService _assets;
+			[Inject] private readonly IBalanceTable _balance;
 
 			public Garrison Create(Cell cell, int quantityOfUnits = 0)
 			{
 				var garrison = base.Create();
 				_assets.ToGroup(garrison.transform);
+
 				garrison.transform.position = cell.Coordinates.ToAboveCellPosition();
 				garrison.Coordinates = cell.Coordinates;
 				garrison.QuantityOfUnits = quantityOfUnits;
+				garrison.Stats = new UnitStatsDecorator(_balance.UnitStats, garrison.OwnerPlayerId, garrison.Field);
+				garrison.Health = new SquadHealth(garrison);
 
 				return garrison;
 			}
