@@ -17,14 +17,18 @@ namespace Confrontation
 
 		public float UnitMaxHp => _decoratee.UnitMaxHp;
 
-		public float BaseStrength 
+		public float BaseStrength
 			=> _field.Buildings.InfluenceFloat<Forge>(_decoratee.BaseStrength, _ownerPlayer, AddStrength);
 
-		public float DefenseModifier => _decoratee.DefenseModifier;
+		public float DefenseModifier
+			=> _field.Buildings.InfluenceFloat<Quarry>(_decoratee.DefenseModifier, _ownerPlayer, AddDefenseModifier);
 
 		public float AttackModifier => _decoratee.AttackModifier;
 
 		private static float AddStrength(float currentStrength, Forge forge)
 			=> currentStrength + forge.CurrentLevelStats.CombatStrengthIncreasesRate;
+
+		private static float AddDefenseModifier(float currentModifier, Quarry quarry)
+			=> currentModifier + quarry.CurrentLevelStats.IncreasesDamageAbsorptionRate;
 	}
 }

@@ -51,10 +51,17 @@ MonoBehaviour:
   <ForgeStats>k__BackingField:
     <Price>k__BackingField: 20
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 25
+      <UpgradePrice>k__BackingField: 15
       <StatsByLevel>k__BackingField:
-      - <CombatStrengthIncreasesRate>k__BackingField: 0.1
       - <CombatStrengthIncreasesRate>k__BackingField: 0.2
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.35
+  <QuarryStats>k__BackingField:
+    <Price>k__BackingField: 10
+    <LeveledStats>k__BackingField:
+      <UpgradePrice>k__BackingField: 7
+      <StatsByLevel>k__BackingField:
+      - <IncreasesDamageAbsorptionRate>k__BackingField: 0.2
+      - <IncreasesDamageAbsorptionRate>k__BackingField: 0.3
   <FarmStats>k__BackingField:
     <Price>k__BackingField: 25
     <LeveledStats>k__BackingField:
@@ -79,7 +86,7 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
           _selectionIndex: 2
-      - <Weight>k__BackingField: 0.25
+      - <Weight>k__BackingField: 0.5
         <Item>k__BackingField:
           _prefab: {fileID: 1543655047530976274, guid: 767a888a19d2ba20abf6c76e90931c91, type: 3}
           _selectionIndex: 1
@@ -87,14 +94,18 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 4195535930623487697, guid: a84db93d4cfb4f303b565e59c51cb900, type: 3}
           _selectionIndex: 4
-      - <Weight>k__BackingField: 0.5
+      - <Weight>k__BackingField: 0.3
         <Item>k__BackingField:
           _prefab: {fileID: 4396281347570571264, guid: 3b423530431c56e72be520ee66468150, type: 3}
           _selectionIndex: 5
-      - <Weight>k__BackingField: 0.5
+      - <Weight>k__BackingField: 0.75
         <Item>k__BackingField:
-          _prefab: {fileID: 3181293606828939070, guid: 721fbcf1d672d53c3ba4ec0506f9cc24, type: 3}
-          _selectionIndex: 6
+          _prefab: {fileID: 4396281347570571264, guid: 3b423530431c56e72be520ee66468150, type: 3}
+          _selectionIndex: 5
+      - <Weight>k__BackingField: 0.25
+        <Item>k__BackingField:
+          _prefab: {fileID: 7023715047983868041, guid: d1baba0de027b3c5184c221fd68405cc, type: 3}
+          _selectionIndex: 7
   <TimeStats>k__BackingField:
     <NormalTimeScale>k__BackingField: 1
     <AcceleratedTimeScale>k__BackingField: 2.5

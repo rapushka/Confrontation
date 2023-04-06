@@ -14,6 +14,8 @@ namespace Confrontation
 			Func<float, TBuilding, float> influence
 		)
 			where TBuilding : Building
-			=> @this.OfType<TBuilding>().Where((f) => f.OwnerPlayerId == ownerId).Aggregate(baseValue, influence);
+			=> ownerId != Constants.NeutralRegion
+				? @this.OfType<TBuilding>().Where((f) => f.OwnerPlayerId == ownerId).Aggregate(baseValue, influence)
+				: baseValue;
 	}
 }
