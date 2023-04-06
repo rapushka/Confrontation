@@ -9,12 +9,17 @@ namespace Confrontation
 		[Inject] private readonly User _user;
 
 		[SerializeField] private TextMeshProUGUI _goldenAmountValueTextMesh;
+		[SerializeField] private TextMeshProUGUI _manaPointsValueTextMesh;
 
 		public void Start()
 		{
 			if (_user.Player is not null)
 			{
-				_user.Player.Resources.Gold.ValueChanged += UpdateValues;
+				_user.Player.Resources.Gold.ValueChanged += UpdateGoldView;
+				_user.Player.Resources.Mana.ValueChanged += UpdateManaView;
+
+				UpdateGoldView();
+				UpdateManaView();
 			}
 		}
 
@@ -22,10 +27,13 @@ namespace Confrontation
 		{
 			if (_user.Player is not null)
 			{
-				_user.Player.Resources.Gold.ValueChanged += UpdateValues;
+				_user.Player.Resources.Gold.ValueChanged -= UpdateGoldView;
+				_user.Player.Resources.Mana.ValueChanged -= UpdateManaView;
 			}
 		}
 
-		private void UpdateValues() => _goldenAmountValueTextMesh.text = _user.Player.Resources.Gold.ToString();
+		private void UpdateGoldView() => _goldenAmountValueTextMesh.text = _user.Player.Resources.Gold.Count.ToString();
+
+		private void UpdateManaView() => _manaPointsValueTextMesh.text = _user.Player.Resources.Mana.Count.ToString();
 	}
 }

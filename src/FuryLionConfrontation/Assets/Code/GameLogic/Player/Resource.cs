@@ -5,26 +5,26 @@ namespace Confrontation
 {
 	public class Resource
 	{
-		private int _count;
-
 		public event Action ValueChanged;
 
-		public bool IsEnoughGoldFor(int desiredCount) => _count >= desiredCount;
+		public int Count { get; private set; }
+
+		public bool IsEnoughGoldFor(int desiredCount) => Count >= desiredCount;
 
 		public void Earn(int value)
 		{
 			Assert.IsTrue(value > 0);
 
-			_count += value;
+			Count += value;
 			ValueChanged?.Invoke();
 		}
 
 		public void Spend(int value)
 		{
 			Assert.IsTrue(value > 0);
-			Assert.IsTrue(_count >= value);
+			Assert.IsTrue(Count >= value);
 
-			_count -= value;
+			Count -= value;
 			ValueChanged?.Invoke();
 		}
 	}
