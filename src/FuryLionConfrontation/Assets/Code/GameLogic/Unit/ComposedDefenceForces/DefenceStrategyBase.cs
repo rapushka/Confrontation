@@ -20,6 +20,8 @@ namespace Confrontation
 
 		public abstract void Destroy();
 
+		public abstract void Kill();
+
 		public abstract void TakeDamageOnDefence(float incomingDamage);
 
 		public static IDefenceStrategy Create(IDestroyer destroyer, Cell cell)

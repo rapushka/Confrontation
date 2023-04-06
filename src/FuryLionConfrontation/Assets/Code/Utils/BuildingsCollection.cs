@@ -15,6 +15,7 @@ namespace Confrontation
 				(nameof(Capital), Constants.ResourcePath.Capital),
 				(nameof(Farm), Constants.ResourcePath.Farm),
 				(nameof(Stable), Constants.ResourcePath.Stable),
+				(nameof(Forge), Constants.ResourcePath.Forge),
 			};
 
 		private static readonly List<(string Name, Building Prefab)> _buildingsPrefabs;

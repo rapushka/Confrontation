@@ -9,5 +9,7 @@ namespace Confrontation
 		void Destroy();
 
 		void TakeDamageOnDefence(float incomingDamage);
+
+		void Kill();
 	}
 }

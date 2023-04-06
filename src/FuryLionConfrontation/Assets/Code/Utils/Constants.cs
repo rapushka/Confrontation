@@ -31,9 +31,12 @@ namespace Confrontation
 			public const string Capital = "Prefabs/Buildings/Capital";
 			public const string Farm = "Prefabs/Buildings/Farm";
 			public const string Stable = "Prefabs/Buildings/Stable";
+			public const string Forge = "Prefabs/Buildings/Forge";
 
 			public const string ResourcesService = "ScriptableObjects/Resources";
 			public const string TestLevel = "ScriptableObjects/For Tests/TestLevel";
 		}
+
+		public const int MaxFightRounds = 100;
 	}
 }

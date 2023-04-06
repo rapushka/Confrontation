@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Confrontation
 {
 	public static class MathExtensions
@@ -10,11 +12,25 @@ namespace Confrontation
 		public static float ReduceBy(this float @this, float percent)
 			=> @this * (1 - percent);
 
-		
 		public static float IncreaseBy(this int @this, float percent)
 			=> @this * (1 + percent);
 
 		public static float ReduceBy(this int @this, float percent)
 			=> @this * (1 - percent);
+
+		public static float Clamp(this float @this, float min = float.NaN, float max = float.NaN)
+		{
+			if (float.IsNaN(min) == false)
+			{
+				@this = Mathf.Max(min, @this);
+			}
+
+			if (float.IsNaN(max) == false)
+			{
+				@this = Mathf.Min(max, @this);
+			}
+
+			return @this;
+		} 
 	}
 }

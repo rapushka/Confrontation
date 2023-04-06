@@ -24,6 +24,12 @@ namespace Confrontation
 			Destroyer.Destroy(_garrison.gameObject);
 		}
 
+		public override void Kill()
+		{
+			_locatedSquad.Kill();
+			_garrison.Kill();
+		}
+
 		public override void TakeDamageOnDefence(float incomingDamage)
 		{
 			if (TryKillBoth(incomingDamage) == false
@@ -35,14 +41,14 @@ namespace Confrontation
 
 		private bool TryKillBoth(float incomingDamage)
 		{
-			var isLethalForGarrison = _garrison.IsDamageLethalOnDefence(incomingDamage, out var overkillDamage);
-			var isLethalForLocatedSquad = _locatedSquad.IsDamageLethalOnDefence(overkillDamage);
+			var isLethalForGarrison = _garrison.Health.IsDamageLethalOnDefence(incomingDamage, out var overkillDamage);
+			var isLethalForLocatedSquad = _locatedSquad.Health.IsDamageLethalOnDefence(overkillDamage);
 
 			if (isLethalForGarrison && isLethalForLocatedSquad)
 			{
 				// Damage to both is lethal anyway, so there's no difference
-				_locatedSquad.TakeDamageOnDefence(incomingDamage);
-				_garrison.TakeDamageOnDefence(incomingDamage);
+				_locatedSquad.Health.TakeDamageOnDefence(incomingDamage);
+				_garrison.Health.TakeDamageOnDefence(incomingDamage);
 				return true;
 			}
 
@@ -54,11 +60,11 @@ namespace Confrontation
 			var damageForUnits = damage / 2;
 			var damageForGarrison = damage - damageForUnits;
 
-			if (_locatedSquad.IsDamageLethalOnDefence(damageForUnits) == false
-			    && _garrison.IsDamageLethalOnDefence(damageForGarrison) == false)
+			if (_locatedSquad.Health.IsDamageLethalOnDefence(damageForUnits) == false
+			    && _garrison.Health.IsDamageLethalOnDefence(damageForGarrison) == false)
 			{
-				_locatedSquad.TakeDamageOnDefence(damageForUnits);
-				_garrison.TakeDamageOnDefence(damageForGarrison);
+				_locatedSquad.Health.TakeDamageOnDefence(damageForUnits);
+				_garrison.Health.TakeDamageOnDefence(damageForGarrison);
 				return true;
 			}
 
@@ -89,9 +95,9 @@ namespace Confrontation
 
 		private void DistributeTo(float incomingDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
-			var remainedDamage = fullDamaged.TakeDamageOnDefence(incomingDamage);
+			var remainedDamage = fullDamaged.Health.TakeDamageOnDefence(incomingDamage);
 			Destroyer.Destroy(fullDamaged.gameObject);
-			partiallyDamaged.TakeDamageOnDefence(remainedDamage);
+			partiallyDamaged.Health.TakeDamageOnDefence(remainedDamage);
 		}
 	}
 }
