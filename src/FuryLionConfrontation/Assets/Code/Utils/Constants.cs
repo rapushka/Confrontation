@@ -26,6 +26,7 @@ namespace Confrontation
 			public const string Garrison = "Prefabs/Units/Garrison";
 
 			public const string GoldenMine = "Prefabs/Buildings/Golden Mine";
+			public const string TowerOfMages = "Prefabs/Buildings/Tower Of Mages";
 			public const string Barrack = "Prefabs/Buildings/Barracks";
 			public const string Settlement = "Prefabs/Buildings/Settlement";
 			public const string Capital = "Prefabs/Buildings/Capital";

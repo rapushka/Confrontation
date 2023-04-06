@@ -10,6 +10,8 @@ namespace Confrontation
 
 		[field: SerializeField] public GoldenMineStats GoldenMineStats { get; private set; }
 
+		[field: SerializeField] public TowerOfMagesStats TowerOfMagesStats { get; private set; }
+
 		[field: SerializeField] public BarrackStats BarrackStats { get; private set; }
 
 		[field: SerializeField] public SettlementStats SettlementStats { get; private set; }
@@ -31,14 +33,15 @@ namespace Confrontation
 		public int BuildPriceFor(Building building)
 			=> building switch
 			{
-				Barrack    => BarrackStats.Price,
-				GoldenMine => GoldenMineStats.Price,
-				Farm       => FarmStats.Price,
-				Stable     => StableStats.Price,
-				Forge      => ForgeStats.Price,
-				Quarry     => QuarryStats.Price,
-				Workshop   => WorkshopStats.Price,
-				var _      => throw new ArgumentException($"There is no price for {building.Name}"),
+				Barrack      => BarrackStats.Price,
+				GoldenMine   => GoldenMineStats.Price,
+				Farm         => FarmStats.Price,
+				Stable       => StableStats.Price,
+				Forge        => ForgeStats.Price,
+				Quarry       => QuarryStats.Price,
+				Workshop     => WorkshopStats.Price,
+				TowerOfMages => TowerOfMagesStats.Price,
+				var _        => throw new ArgumentException($"There is no price for {building.Name}"),
 			};
 	}
 }
