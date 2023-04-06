@@ -1,3 +1,5 @@
+using System;
+
 namespace Confrontation
 {
 	public class UnitStatsDecorator : IUnitStats
@@ -13,18 +15,15 @@ namespace Confrontation
 			_field = field;
 		}
 
-		public float BaseSpeed => _decoratee.BaseSpeed;
-
 		public float UnitMaxHp => _decoratee.UnitMaxHp;
 
-		public float BaseStrength
-			=> _field.Buildings.InfluenceFloat<Forge>(_decoratee.BaseStrength, _ownerPlayer, AddStrength);
+		public float BaseStrength => Influence<Forge>(_decoratee.BaseStrength, AddStrength);
 
-		public float DefenseModifier
-			=> _field.Buildings.InfluenceFloat<Quarry>(_decoratee.DefenseModifier, _ownerPlayer, AddDefenseModifier);
+		public float DefenseModifier => Influence<Quarry>(_decoratee.DefenseModifier, AddDefenseModifier);
 
-		public float DefencePierceRate
-			=> _field.Buildings.InfluenceFloat<Workshop>(_decoratee.DefencePierceRate, _ownerPlayer, AddPierceRate);
+		public float DefencePierceRate => Influence<Workshop>(_decoratee.DefencePierceRate, AddPierceRate);
+
+		public float BaseSpeed => Influence<Stable>(_decoratee.BaseSpeed, Accelerate);
 
 		public float AttackModifier => _decoratee.AttackModifier;
 
@@ -36,5 +35,12 @@ namespace Confrontation
 
 		private static float AddPierceRate(float currentPierceRate, Workshop workshop)
 			=> currentPierceRate + workshop.CurrentLevelStats.DecreaseEnemyDamageAbsorptionRate;
+
+		private static float Accelerate(float currentSpeed, Stable stable)
+			=> currentSpeed + stable.CurrentLevelStats.UnitsAccelerationCoefficient;
+
+		private float Influence<TBuilding>(float baseValue, Func<float, TBuilding, float> influence)
+			where TBuilding : Building
+			=> _field.Buildings.InfluenceFloat(baseValue, _ownerPlayer, influence);
 	}
 }

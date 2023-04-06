@@ -2860,7 +2860,7 @@ GameObject:
   - component: {fileID: 1095865730288279693}
   - component: {fileID: 1038364744713609069}
   - component: {fileID: -6484238923440550980}
-  - component: {fileID: 289737717081886530}
+  - component: {fileID: 5121076135913835788}
   - component: {fileID: 2547840534391355026}
   - component: {fileID: 2645443025243697774}
   - component: {fileID: 1518563021216549159}
@@ -2908,6 +2908,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &-6484238923440550980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2925,9 +2926,9 @@ MonoBehaviour:
   _cellCoordinates:
     _row: 0
     _column: 0
-  _unitMovement: {fileID: 289737717081886530}
+  _unitMovement: {fileID: 5121076135913835788}
   _unitOrderPerformer: {fileID: 1518563021216549159}
---- !u!114 &289737717081886530
+--- !u!114 &5121076135913835788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2936,7 +2937,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1098297294174609041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae3ca29197e410c8d896915bfd5b148, type: 3}
+  m_Script: {fileID: 11500000, guid: 78f4f993a0654cb8a368a9371dd124c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1095865730288279693}
