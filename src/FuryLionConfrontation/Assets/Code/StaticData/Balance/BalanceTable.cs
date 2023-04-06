@@ -18,6 +18,8 @@ namespace Confrontation
 
 		[field: SerializeField] public QuarryStats QuarryStats { get; private set; }
 
+		[field: SerializeField] public WorkshopStats WorkshopStats { get; private set; }
+
 		[field: SerializeField] public FarmStats FarmStats { get; private set; }
 
 		[field: SerializeField] public StableStats StableStats { get; private set; }
@@ -35,6 +37,7 @@ namespace Confrontation
 				Stable     => StableStats.Price,
 				Forge      => ForgeStats.Price,
 				Quarry     => QuarryStats.Price,
+				Workshop   => WorkshopStats.Price,
 				var _      => throw new ArgumentException($"There is no price for {building.Name}"),
 			};
 	}
