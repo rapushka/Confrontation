@@ -11,6 +11,8 @@ namespace Confrontation
 		SettlementStats SettlementStats { get; }
 
 		ForgeStats ForgeStats { get; }
+		
+		QuarryStats QuarryStats { get; }
 
 		EnemiesStats EnemiesStats { get; }
 
@@ -21,5 +23,5 @@ namespace Confrontation
 		StableStats StableStats { get; }
 
 		int BuildPriceFor(Building building);
-	}
 }
+	}

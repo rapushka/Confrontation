@@ -15,6 +15,8 @@ namespace Confrontation
 		[field: SerializeField] public SettlementStats SettlementStats { get; private set; }
 
 		[field: SerializeField] public ForgeStats ForgeStats { get; private set; }
+		
+		[field: SerializeField] public QuarryStats QuarryStats { get; private set; }
 
 		[field: SerializeField] public FarmStats FarmStats { get; private set; }
 
