@@ -49,25 +49,18 @@ namespace Confrontation
 		{
 			CacheToCandidates();
 
-			var remainingDamage = ApplyBaseArmor(incomingDamage);
-
+			var remainingDamage = ApplyBaseArmorFor(incomingDamage);
 			InflictDamageToFrontUnit(ref remainingDamage);
-
-			if (remainingDamage <= 0)
-			{
-				return;
-			}
-
-			_quantityOfUnitsCandidate--;
-			_frontUnitCurrentHpCandidate = UnitMaxHp;
-
-			KillUnits(ref remainingDamage);
 
 			if (remainingDamage > 0)
 			{
-				_frontUnitCurrentHpCandidate = UnitMaxHp - remainingDamage;
+				FrontUnitDead();
+				KillUnits(ref remainingDamage);
+				InflictDamageToFrontUnit(ref remainingDamage);
 			}
 		}
+
+		private float ApplyBaseArmorFor(float incomingDamage) => (incomingDamage - _unit.BaseArmor).Clamp(min: 0);
 
 		private void InflictDamageToFrontUnit(ref float remainingDamage)
 		{
@@ -83,7 +76,11 @@ namespace Confrontation
 			remainingDamage -= killedUnits;
 		}
 
-		private float ApplyBaseArmor(float incomingDamage) => (incomingDamage - _unit.BaseStrength).Clamp(min: 0);
+		private void FrontUnitDead()
+		{
+			_quantityOfUnitsCandidate--;
+			_frontUnitCurrentHpCandidate = UnitMaxHp;
+		}
 
 		private void ApplyCandidates()
 		{

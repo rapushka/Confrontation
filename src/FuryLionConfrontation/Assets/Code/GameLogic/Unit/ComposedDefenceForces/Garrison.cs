@@ -18,9 +18,11 @@ namespace Confrontation
 
 		public IUnitStats Stats { get; protected set; }
 
-		public float AttackDamage => BaseStrength.IncreaseBy(Stats.AttackModifier);
+		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
 
-		public float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
+		public float BaseArmor => BaseStrength;
+
+		public float BaseDamage => BaseStrength;
 
 		public float DefenceModifier => Stats.DefenseModifier;
 
@@ -46,7 +48,11 @@ namespace Confrontation
 
 		protected IField Field => _field;
 
+		private float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
+
 		private int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
+
+		public void Kill() => QuantityOfUnits = 0;
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{

@@ -4,10 +4,12 @@ namespace Confrontation
 	{
 		float BaseDamage { get; }
 
-		int QuantityOfUnits { get; set; }
+		int QuantityOfUnits { get; }
 
 		void Destroy();
 
 		void TakeDamageOnDefence(float incomingDamage);
+
+		void Kill();
 	}
 }

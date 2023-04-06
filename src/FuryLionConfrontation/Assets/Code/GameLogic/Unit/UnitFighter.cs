@@ -61,8 +61,8 @@ namespace Confrontation
 
 		private void KillBoth()
 		{
-			Defenders.QuantityOfUnits = 0;
-			Attackers.QuantityOfUnits = 0;
+			Defenders.Kill();
+			Attackers.Kill();
 		}
 
 		private void DetermineWinner()

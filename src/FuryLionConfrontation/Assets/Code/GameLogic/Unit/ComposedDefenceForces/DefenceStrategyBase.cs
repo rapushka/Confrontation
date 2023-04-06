@@ -14,11 +14,13 @@ namespace Confrontation
 
 		public abstract float BaseDamage { get; }
 
-		public abstract int QuantityOfUnits { get; set; }
+		public abstract int QuantityOfUnits { get; }
 
 		protected IDestroyer Destroyer { get; }
 
 		public abstract void Destroy();
+
+		public abstract void Kill();
 
 		public abstract void TakeDamageOnDefence(float incomingDamage);
 

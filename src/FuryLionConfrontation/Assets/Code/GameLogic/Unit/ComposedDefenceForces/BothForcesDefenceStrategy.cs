@@ -14,23 +14,20 @@ namespace Confrontation
 			_garrison = garrison;
 		}
 
-		public override float BaseDamage => _locatedSquad.BaseStrength + _garrison.BaseStrength;
+		public override float BaseDamage => _locatedSquad.BaseDamage + _garrison.BaseDamage;
 
-		public override int QuantityOfUnits
-		{
-			get => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
-			set
-			{
-				var half = value / 2;
-				_locatedSquad.QuantityOfUnits = half;
-				_garrison.QuantityOfUnits = value - half;
-			}
-		}
+		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
 		public override void Destroy()
 		{
 			Destroyer.Destroy(_locatedSquad.gameObject);
 			Destroyer.Destroy(_garrison.gameObject);
+		}
+
+		public override void Kill()
+		{
+			_locatedSquad.Kill();
+			_garrison.Kill();
 		}
 
 		public override void TakeDamageOnDefence(float incomingDamage)
