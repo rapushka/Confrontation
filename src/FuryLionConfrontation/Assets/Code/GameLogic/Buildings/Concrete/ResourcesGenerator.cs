@@ -10,6 +10,18 @@ namespace Confrontation
 
 		protected Player OwnerPlayer => _gameSession.GetPlayerFor(OwnerPlayerId);
 
+		public override int UpgradePrice => Stats.UpgradePrice;
+
+		public override float CoolDownDuration => CurrentLevelStats.CoolDown;
+
+		protected override int MaxLevel => Stats.MaxLevel;
+
+		protected int ProducingRate => CurrentLevelStats.Amount;
+
+		protected abstract LeveledStats<GeneratorStatsBase> Stats { get; }
+
+		private GeneratorStatsBase CurrentLevelStats => Stats[Level];
+
 		public override void Action() => Produce();
 
 		protected abstract void Produce();
