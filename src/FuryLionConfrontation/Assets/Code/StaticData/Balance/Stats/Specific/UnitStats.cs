@@ -9,6 +9,8 @@ namespace Confrontation
 
 		float BaseStrength { get; }
 
+		float DefencePierceRate { get; }
+
 		float UnitMaxHp { get; }
 
 		float DefenseModifier { get; }
@@ -22,6 +24,8 @@ namespace Confrontation
 		[field: SerializeField] public float BaseSpeed { get; private set; }
 
 		[field: SerializeField] public float BaseStrength { get; private set; }
+
+		[field: SerializeField] public float DefencePierceRate { get; private set; }
 
 		[field: SerializeField] public float UnitMaxHp { get; private set; }
 
