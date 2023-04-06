@@ -62,6 +62,12 @@ MonoBehaviour:
       <StatsByLevel>k__BackingField:
       - <IncreasesDamageAbsorptionRate>k__BackingField: 0.2
       - <IncreasesDamageAbsorptionRate>k__BackingField: 0.3
+  <WorkshopStats>k__BackingField:
+    <Price>k__BackingField: 5
+    <LeveledStats>k__BackingField:
+      <UpgradePrice>k__BackingField: 5
+      <StatsByLevel>k__BackingField:
+      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.1
   <FarmStats>k__BackingField:
     <Price>k__BackingField: 25
     <LeveledStats>k__BackingField:
@@ -106,6 +112,10 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 7023715047983868041, guid: d1baba0de027b3c5184c221fd68405cc, type: 3}
           _selectionIndex: 7
+      - <Weight>k__BackingField: 0
+        <Item>k__BackingField:
+          _prefab: {fileID: -4268335258964878579, guid: b01b3cabd2c07c1cc8afac167d6a54f7, type: 3}
+          _selectionIndex: 8
   <TimeStats>k__BackingField:
     <NormalTimeScale>k__BackingField: 1
     <AcceleratedTimeScale>k__BackingField: 2.5
