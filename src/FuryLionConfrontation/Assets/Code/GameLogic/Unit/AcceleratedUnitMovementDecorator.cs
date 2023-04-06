@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -11,20 +10,7 @@ namespace Confrontation
 		[SerializeField] private UnitsSquad _squad;
 
 		protected override float Speed
-		{
-			get
-			{
-				var ownerPlayerId = _squad.OwnerPlayerId;
-				var baseSpeed = base.Speed;
-
-				var speed = _field.Buildings
-				                  .OfType<Stable>()
-				                  .Where((f) => f.OwnerPlayerId == ownerPlayerId)
-				                  .Aggregate(baseSpeed, Accelerate);
-
-				return speed;
-			}
-		}
+			=> _field.Buildings.InfluenceFloat<Stable>(base.Speed, _squad.OwnerPlayerId, Accelerate);
 
 		private static float Accelerate(float currentSpeed, Stable stable)
 			=> currentSpeed + stable.CurrentLevelStats.UnitsAccelerationCoefficient;
