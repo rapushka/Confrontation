@@ -16,8 +16,6 @@ namespace Confrontation
 			_frontUnitCurrentHp = UnitMaxHp;
 		}
 
-		private bool IsFrontUnitAlive => _frontUnitCurrentHp > 0;
-
 		private float UnitMaxHp => _unit.Stats.UnitMaxHp;
 
 		private bool IsCandidateDead => _quantityOfUnitsCandidate <= 0;
@@ -53,26 +51,36 @@ namespace Confrontation
 
 			var remainingDamage = ApplyBaseArmor(incomingDamage);
 
-			var inflictedDamage = remainingDamage.Clamp(max: _frontUnitCurrentHpCandidate);
-			_frontUnitCurrentHpCandidate -= inflictedDamage;
-			remainingDamage -= inflictedDamage;
+			InflictDamageToFrontUnit(ref remainingDamage);
 
-			if (IsFrontUnitAlive)
+			if (remainingDamage <= 0)
 			{
 				return;
 			}
 
+			_quantityOfUnitsCandidate--;
 			_frontUnitCurrentHpCandidate = UnitMaxHp;
 
-			var killedUnits = Mathf.FloorToInt(remainingDamage / UnitMaxHp);
-			_quantityOfUnitsCandidate -= killedUnits;
-			remainingDamage -= killedUnits;
+			KillUnits(ref remainingDamage);
 
-			if (_quantityOfUnitsCandidate > 0
-			    && remainingDamage > 0)
+			if (remainingDamage > 0)
 			{
 				_frontUnitCurrentHpCandidate = UnitMaxHp - remainingDamage;
 			}
+		}
+
+		private void InflictDamageToFrontUnit(ref float remainingDamage)
+		{
+			var inflictedDamage = remainingDamage.Clamp(max: _frontUnitCurrentHpCandidate);
+			_frontUnitCurrentHpCandidate -= inflictedDamage;
+			remainingDamage -= inflictedDamage;
+		}
+
+		private void KillUnits(ref float remainingDamage)
+		{
+			var killedUnits = Mathf.FloorToInt(remainingDamage / UnitMaxHp);
+			_quantityOfUnitsCandidate -= killedUnits;
+			remainingDamage -= killedUnits;
 		}
 
 		private float ApplyBaseArmor(float incomingDamage) => (incomingDamage - _unit.BaseStrength).Clamp(min: 0);
