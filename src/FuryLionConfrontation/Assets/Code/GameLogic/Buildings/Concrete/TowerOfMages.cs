@@ -2,7 +2,7 @@ namespace Confrontation
 {
 	public class TowerOfMages : ResourcesGenerator
 	{
-		public override string Name => nameof(TowerOfMages);
+		public override string Name => "Tower Of Mages";
 
 		public override int UpgradePrice => Stats.UpgradePrice;
 

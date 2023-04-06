@@ -20,5 +20,6 @@ MonoBehaviour:
   - {fileID: 3181293606828939070, guid: 721fbcf1d672d53c3ba4ec0506f9cc24, type: 3}
   - {fileID: 7023715047983868041, guid: d1baba0de027b3c5184c221fd68405cc, type: 3}
   - {fileID: -4268335258964878579, guid: b01b3cabd2c07c1cc8afac167d6a54f7, type: 3}
+  - {fileID: 809301657887772580, guid: 57b1bea01f01fd0a5bbf25aaed5c4d9e, type: 3}
   <SettlementPrefab>k__BackingField: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
   <CapitalPrefab>k__BackingField: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
