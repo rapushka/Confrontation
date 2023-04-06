@@ -6,6 +6,8 @@ namespace Confrontation
 		private readonly Garrison _garrison;
 		private readonly Cell _cell;
 
+		private float _pierceRate;
+
 		public BothForcesDefenceStrategy(IDestroyer destroyer, Cell cell, Garrison locatedSquad, Garrison garrison)
 			: base(destroyer)
 		{
@@ -30,8 +32,9 @@ namespace Confrontation
 			_garrison.Kill();
 		}
 
-		public override void TakeDamageOnDefence(float incomingDamage)
+		public override void TakeDamageOnDefence(float incomingDamage, float pierceRate)
 		{
+			_pierceRate = pierceRate;
 			if (TryKillBoth(incomingDamage) == false
 			    && TryTakeAllDamageEqually(incomingDamage) == false)
 			{
@@ -41,14 +44,15 @@ namespace Confrontation
 
 		private bool TryKillBoth(float incomingDamage)
 		{
-			var isLethalForGarrison = _garrison.Health.IsDamageLethalOnDefence(incomingDamage, out var overkillDamage);
-			var isLethalForLocatedSquad = _locatedSquad.Health.IsDamageLethalOnDefence(overkillDamage);
+			var isLethalForGarrison
+				= _garrison.Health.IsDamageLethalOnDefence(incomingDamage, out var overkillDamage, _pierceRate);
+			var isLethalForLocatedSquad = _locatedSquad.Health.IsDamageLethalOnDefence(overkillDamage, _pierceRate);
 
 			if (isLethalForGarrison && isLethalForLocatedSquad)
 			{
 				// Damage to both is lethal anyway, so there's no difference
-				_locatedSquad.Health.TakeDamageOnDefence(incomingDamage);
-				_garrison.Health.TakeDamageOnDefence(incomingDamage);
+				_locatedSquad.Health.TakeDamageOnDefence(incomingDamage, _pierceRate);
+				_garrison.Health.TakeDamageOnDefence(incomingDamage, _pierceRate);
 				return true;
 			}
 
@@ -60,11 +64,11 @@ namespace Confrontation
 			var damageForUnits = damage / 2;
 			var damageForGarrison = damage - damageForUnits;
 
-			if (_locatedSquad.Health.IsDamageLethalOnDefence(damageForUnits) == false
-			    && _garrison.Health.IsDamageLethalOnDefence(damageForGarrison) == false)
+			if (_locatedSquad.Health.IsDamageLethalOnDefence(damageForUnits, _pierceRate) == false
+			    && _garrison.Health.IsDamageLethalOnDefence(damageForGarrison, _pierceRate) == false)
 			{
-				_locatedSquad.Health.TakeDamageOnDefence(damageForUnits);
-				_garrison.Health.TakeDamageOnDefence(damageForGarrison);
+				_locatedSquad.Health.TakeDamageOnDefence(damageForUnits, _pierceRate);
+				_garrison.Health.TakeDamageOnDefence(damageForGarrison, _pierceRate);
 				return true;
 			}
 
@@ -95,9 +99,9 @@ namespace Confrontation
 
 		private void DistributeTo(float incomingDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
-			var remainedDamage = fullDamaged.Health.TakeDamageOnDefence(incomingDamage);
+			var remainedDamage = fullDamaged.Health.TakeDamageOnDefence(incomingDamage, _pierceRate);
 			Destroyer.Destroy(fullDamaged.gameObject);
-			partiallyDamaged.Health.TakeDamageOnDefence(remainedDamage);
+			partiallyDamaged.Health.TakeDamageOnDefence(remainedDamage, _pierceRate);
 		}
 	}
 }

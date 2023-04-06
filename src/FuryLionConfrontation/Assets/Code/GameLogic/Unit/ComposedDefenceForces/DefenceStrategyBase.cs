@@ -22,7 +22,7 @@ namespace Confrontation
 
 		public abstract void Kill();
 
-		public abstract void TakeDamageOnDefence(float incomingDamage);
+		public abstract void TakeDamageOnDefence(float incomingDamage, float pierceRate);
 
 		public static IDefenceStrategy Create(IDestroyer destroyer, Cell cell)
 		{

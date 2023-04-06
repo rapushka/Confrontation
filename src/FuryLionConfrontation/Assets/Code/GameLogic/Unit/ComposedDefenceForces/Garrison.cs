@@ -26,6 +26,8 @@ namespace Confrontation
 
 		public float DefenceModifier => Stats.DefenseModifier;
 
+		public float DefencePierceRate => Stats.DefencePierceRate;
+
 		public virtual Coordinates Coordinates
 		{
 			get => _cellCoordinates;

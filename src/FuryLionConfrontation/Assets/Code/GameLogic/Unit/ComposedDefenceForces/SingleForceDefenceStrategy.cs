@@ -15,6 +15,7 @@ namespace Confrontation
 		public override void Destroy() => Destroyer.Destroy(_units.gameObject);
 		public override void Kill()    => _units.QuantityOfUnits = 0;
 
-		public override void TakeDamageOnDefence(float incomingDamage) => _units.Health.TakeDamageOnDefence(incomingDamage);
+		public override void TakeDamageOnDefence(float incomingDamage, float pierceRate)
+			=> _units.Health.TakeDamageOnDefence(incomingDamage, pierceRate);
 	}
 }

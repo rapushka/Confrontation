@@ -22,8 +22,8 @@ namespace Confrontation
 
 		private int OverkillDamage => IsCandidateDead ? Mathf.Abs(_quantityOfUnitsCandidate) : 0;
 
-		public float TakeDamageOnDefence(float incomeDamage)
-			=> TakeDamage(incomeDamage.ReduceBy(_unit.DefenceModifier));
+		public float TakeDamageOnDefence(float incomeDamage, float pierceRate = 0f)
+			=> TakeDamage(incomeDamage.ReduceBy(Pierce(pierceRate)));
 
 		public float TakeDamage(float incomingDamage)
 		{
@@ -32,11 +32,13 @@ namespace Confrontation
 			return OverkillDamage;
 		}
 
-		public bool IsDamageLethalOnDefence(float incomingDamage)
-			=> IsDamageLethalOnDefence(incomingDamage, out var _);
+		public bool IsDamageLethalOnDefence(float incomingDamage, float pierceRate = 0f)
+			=> IsDamageLethalOnDefence(incomingDamage, out var _, pierceRate);
 
-		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage)
-			=> IsDamageLethal(incomingDamage.ReduceBy(_unit.DefenceModifier), out overkillDamage);
+		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage, float pierceRate = 0f)
+			=> IsDamageLethal(incomingDamage.ReduceBy(Pierce(pierceRate)), out overkillDamage);
+
+		private float Pierce(float pierceRate) => _unit.DefenceModifier - pierceRate;
 
 		private bool IsDamageLethal(float incomingDamage, out float overkillDamage)
 		{
