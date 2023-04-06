@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Confrontation
@@ -7,44 +6,87 @@ namespace Confrontation
 	{
 		private readonly Garrison _unit;
 
-		public SquadHealth(Garrison garrison1) => _unit = garrison1;
+		private float _frontUnitCurrentHp;
+		private float _frontUnitCurrentHpCandidate;
+		private int _quantityOfUnitsCandidate;
+
+		public SquadHealth(Garrison unit)
+		{
+			_unit = unit;
+			_frontUnitCurrentHp = UnitMaxHp;
+		}
+
+		private bool IsFrontUnitAlive => _frontUnitCurrentHp > 0;
+
+		private float UnitMaxHp => _unit.Stats.UnitMaxHp;
+
+		private bool IsCandidateDead => _quantityOfUnitsCandidate <= 0;
+
+		private int OverkillDamage => IsCandidateDead ? Mathf.Abs(_quantityOfUnitsCandidate) : 0;
 
 		public float TakeDamageOnDefence(float incomeDamage)
 			=> TakeDamage(incomeDamage.ReduceBy(_unit.DefenceModifier));
 
 		public float TakeDamage(float incomingDamage)
 		{
-			var isDamageLethal = IsDamageLethal(incomingDamage, out var overkillDamage);
-			var remainedUnits = CalculateRemainedUnits(incomingDamage);
-
-			_unit.QuantityOfUnits = isDamageLethal ? 0 : remainedUnits;
-			return overkillDamage;
+			CalculateCandidates(incomingDamage);
+			ApplyCandidates();
+			return OverkillDamage;
 		}
+
+		public bool IsDamageLethalOnDefence(float incomingDamage)
+			=> IsDamageLethalOnDefence(incomingDamage, out var _);
 
 		public bool IsDamageLethalOnDefence(float incomingDamage, out float overkillDamage)
 			=> IsDamageLethal(incomingDamage.ReduceBy(_unit.DefenceModifier), out overkillDamage);
 
-		public bool IsDamageLethalOnDefence(float incomingDamage)
-			=> IsDamageLethal(incomingDamage.ReduceBy(_unit.DefenceModifier), out var _);
-
 		private bool IsDamageLethal(float incomingDamage, out float overkillDamage)
 		{
-			var remainedUnits = CalculateRemainedUnits(incomingDamage);
-			var isDamageLethal = remainedUnits <= 0;
-			overkillDamage = isDamageLethal ? Mathf.Abs(remainedUnits) : 0;
-			return isDamageLethal;
+			CalculateCandidates(incomingDamage);
+			overkillDamage = OverkillDamage;
+			return IsCandidateDead;
 		}
 
-		private int CalculateRemainedUnits(float incomingDamage) 
-			=> _unit.QuantityOfUnits - ToQuantity((incomingDamage - _unit.BaseStrength).Clamp(min: 0));
+		private void CalculateCandidates(float incomingDamage)
+		{
+			CacheToCandidates();
 
-		private int ToQuantity(float incomingDamage)
-			=> _unit.Stats.ConvertDamageToUnitsQuantity switch
+			var remainingDamage = ApplyBaseArmor(incomingDamage);
+
+			var inflictedDamage = remainingDamage.Clamp(max: _frontUnitCurrentHpCandidate);
+			_frontUnitCurrentHpCandidate -= inflictedDamage;
+			remainingDamage -= inflictedDamage;
+
+			if (IsFrontUnitAlive)
 			{
-				FloatToIntStrategy.Round => Mathf.RoundToInt(incomingDamage),
-				FloatToIntStrategy.Floor => Mathf.FloorToInt(incomingDamage),
-				FloatToIntStrategy.Ceil  => Mathf.CeilToInt(incomingDamage),
-				var _                    => throw new ArgumentOutOfRangeException(),
-			};
+				return;
+			}
+
+			_frontUnitCurrentHpCandidate = UnitMaxHp;
+
+			var killedUnits = Mathf.FloorToInt(remainingDamage / UnitMaxHp);
+			_quantityOfUnitsCandidate -= killedUnits;
+			remainingDamage -= killedUnits;
+
+			if (_quantityOfUnitsCandidate > 0
+			    && remainingDamage > 0)
+			{
+				_frontUnitCurrentHpCandidate = UnitMaxHp - remainingDamage;
+			}
+		}
+
+		private float ApplyBaseArmor(float incomingDamage) => (incomingDamage - _unit.BaseStrength).Clamp(min: 0);
+
+		private void ApplyCandidates()
+		{
+			_unit.QuantityOfUnits = _quantityOfUnitsCandidate;
+			_frontUnitCurrentHp = _frontUnitCurrentHpCandidate;
+		}
+
+		private void CacheToCandidates()
+		{
+			_quantityOfUnitsCandidate = _unit.QuantityOfUnits;
+			_frontUnitCurrentHpCandidate = _frontUnitCurrentHp;
+		}
 	}
 }
