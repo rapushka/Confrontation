@@ -18,6 +18,7 @@ namespace Confrontation
 				(nameof(Forge), Constants.ResourcePath.Forge),
 				(nameof(Quarry), Constants.ResourcePath.Quarry),
 				(nameof(Workshop), Constants.ResourcePath.Workshop),
+				(nameof(TowerOfMagesStats), Constants.ResourcePath.TowerOfMages),
 			};
 
 		private static readonly List<(string Name, Building Prefab)> _buildingsPrefabs;

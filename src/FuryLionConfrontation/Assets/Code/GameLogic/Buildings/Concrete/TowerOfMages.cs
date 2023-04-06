@@ -1,8 +1,8 @@
 namespace Confrontation
 {
-	public class GoldenMine : ResourcesGenerator
+	public class TowerOfMages : ResourcesGenerator
 	{
-		public override string Name => nameof(GoldenMine);
+		public override string Name => nameof(TowerOfMages);
 
 		public override int UpgradePrice => Stats.UpgradePrice;
 
@@ -12,10 +12,10 @@ namespace Confrontation
 
 		private int ProducingRate => CurrentLevelStats.Amount;
 
-		private LeveledStats<GeneratorStatsBase> Stats => BalanceTable.GoldenMineStats.LeveledStats;
+		private LeveledStats<GeneratorStatsBase> Stats => BalanceTable.TowerOfMagesStats.LeveledStats;
 
 		private GeneratorStatsBase CurrentLevelStats => Stats[Level];
 
-		protected override void Produce() => OwnerPlayer?.Resources.Gold.Earn(ProducingRate);
+		protected override void Produce() => OwnerPlayer?.Resources.Mana.Earn(ProducingRate);
 	}
 }

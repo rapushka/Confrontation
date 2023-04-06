@@ -5,6 +5,8 @@ namespace Confrontation
 		UnitStats UnitStats { get; }
 
 		GoldenMineStats GoldenMineStats { get; }
+		
+		TowerOfMagesStats TowerOfMagesStats { get; }
 
 		BarrackStats BarrackStats { get; }
 
@@ -22,7 +24,7 @@ namespace Confrontation
 
 		FarmStats FarmStats { get; }
 
-		StableStats StableStats { get; }
+		StableStats StableStats       { get; }
 
 		int BuildPriceFor(Building building);
 	}
