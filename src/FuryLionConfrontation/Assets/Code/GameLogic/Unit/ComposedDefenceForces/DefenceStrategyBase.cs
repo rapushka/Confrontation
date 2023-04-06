@@ -14,7 +14,7 @@ namespace Confrontation
 
 		public abstract float BaseDamage { get; }
 
-		public abstract int QuantityOfUnits { get; }
+		public abstract int QuantityOfUnits { get; set; }
 
 		protected IDestroyer Destroyer { get; }
 

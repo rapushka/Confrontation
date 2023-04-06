@@ -16,8 +16,8 @@ MonoBehaviour:
     <BaseSpeed>k__BackingField: 1
     <BaseStrength>k__BackingField: 1
     <UnitMaxHp>k__BackingField: 1
-    <DefenseModifier>k__BackingField: 0.1
-    <AttackModifier>k__BackingField: 0.3
+    <DefenseModifier>k__BackingField: 0.3
+    <AttackModifier>k__BackingField: 0.1
     <ConvertDamageToUnitsQuantity>k__BackingField: 0
   <GoldenMineStats>k__BackingField:
     <Price>k__BackingField: 5
@@ -50,11 +50,11 @@ MonoBehaviour:
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 3
   <ForgeStats>k__BackingField:
-    <Price>k__BackingField: 1
+    <Price>k__BackingField: 25
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 25
       <StatsByLevel>k__BackingField:
-      - <CombatStrengthIncreasesRate>k__BackingField: 1
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.1
   <FarmStats>k__BackingField:
     <Price>k__BackingField: 7
     <LeveledStats>k__BackingField:

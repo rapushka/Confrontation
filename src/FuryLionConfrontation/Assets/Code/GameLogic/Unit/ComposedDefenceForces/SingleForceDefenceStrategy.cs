@@ -10,7 +10,7 @@ namespace Confrontation
 
 		public override float BaseDamage => _units.BaseStrength;
 
-		public override int QuantityOfUnits => _units.QuantityOfUnits;
+		public override int QuantityOfUnits { get => _units.QuantityOfUnits; set => _units.QuantityOfUnits = value; }
 
 		public override void Destroy() => Destroyer.Destroy(_units.gameObject);
 

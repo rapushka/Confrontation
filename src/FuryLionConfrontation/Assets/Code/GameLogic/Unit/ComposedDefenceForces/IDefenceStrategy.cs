@@ -4,7 +4,7 @@ namespace Confrontation
 	{
 		float BaseDamage { get; }
 
-		int QuantityOfUnits { get; }
+		int QuantityOfUnits { get; set; }
 
 		void Destroy();
 

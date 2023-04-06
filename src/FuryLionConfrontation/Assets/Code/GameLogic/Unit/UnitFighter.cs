@@ -40,14 +40,29 @@ namespace Confrontation
 
 		private void FightToDeath()
 		{
+			var counter = 0;
 			while (IsAttackersAlive && IsDefendersAlive)
 			{
+				if (counter == Constants.MaxFightRounds)
+				{
+					KillBoth();
+					break;
+				}
+
+				counter++;
+
 				var defendersDamage = Defenders.BaseDamage;
 				var attackersDamage = Attackers.AttackDamage;
 
 				Attackers.Health.TakeDamage(defendersDamage);
 				Defenders.TakeDamageOnDefence(attackersDamage);
 			}
+		}
+
+		private void KillBoth()
+		{
+			Defenders.QuantityOfUnits = 0;
+			Attackers.QuantityOfUnits = 0;
 		}
 
 		private void DetermineWinner()

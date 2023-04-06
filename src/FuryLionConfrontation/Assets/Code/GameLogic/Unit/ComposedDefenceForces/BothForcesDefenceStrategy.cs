@@ -16,7 +16,16 @@ namespace Confrontation
 
 		public override float BaseDamage => _locatedSquad.BaseStrength + _garrison.BaseStrength;
 
-		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
+		public override int QuantityOfUnits
+		{
+			get => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
+			set
+			{
+				var half = value / 2;
+				_locatedSquad.QuantityOfUnits = half;
+				_garrison.QuantityOfUnits = value - half;
+			}
+		}
 
 		public override void Destroy()
 		{
