@@ -23,6 +23,9 @@ namespace Confrontation
 		public float DefenseModifier
 			=> _field.Buildings.InfluenceFloat<Quarry>(_decoratee.DefenseModifier, _ownerPlayer, AddDefenseModifier);
 
+		public float DefencePierceRate
+			=> _field.Buildings.InfluenceFloat<Workshop>(_decoratee.DefencePierceRate, _ownerPlayer, AddPierceRate);
+
 		public float AttackModifier => _decoratee.AttackModifier;
 
 		private static float AddStrength(float currentStrength, Forge forge)
@@ -30,5 +33,8 @@ namespace Confrontation
 
 		private static float AddDefenseModifier(float currentModifier, Quarry quarry)
 			=> currentModifier + quarry.CurrentLevelStats.IncreasesDamageAbsorptionRate;
+
+		private static float AddPierceRate(float currentPierceRate, Workshop workshop)
+			=> currentPierceRate + workshop.CurrentLevelStats.DecreaseEnemyDamageAbsorptionRate;
 	}
 }
