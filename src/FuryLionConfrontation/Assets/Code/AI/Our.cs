@@ -19,7 +19,7 @@ namespace Confrontation
 		public bool CanBuyPreferredBuilding(out Building building)
 		{
 			building = _balanceTable.EnemiesStats.BuildingsPriority.PickRandom().Prefab;
-			return _player.Stats.IsEnoughGoldFor(_balanceTable.BuildPriceFor(building));
+			return _player.Resources.IsEnoughGoldFor(_balanceTable.BuildPriceFor(building));
 		}
 
 		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;

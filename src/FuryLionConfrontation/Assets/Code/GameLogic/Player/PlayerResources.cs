@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 namespace Confrontation
 {
-	public class PlayerStats
+	public class PlayerResources
 	{
 		public event Action ValueChanged;
 

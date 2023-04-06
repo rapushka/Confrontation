@@ -14,7 +14,7 @@ namespace Confrontation
 		{
 			if (_user.Player is not null)
 			{
-				_user.Player.Stats.ValueChanged += UpdateValues;
+				_user.Player.Resources.ValueChanged += UpdateValues;
 			}
 		}
 
@@ -22,10 +22,10 @@ namespace Confrontation
 		{
 			if (_user.Player is not null)
 			{
-				_user.Player.Stats.ValueChanged += UpdateValues;
+				_user.Player.Resources.ValueChanged += UpdateValues;
 			}
 		}
 
-		private void UpdateValues() => _goldenAmountValueTextMesh.text = _user.Player.Stats.GoldCount.ToString();
+		private void UpdateValues() => _goldenAmountValueTextMesh.text = _user.Player.Resources.GoldCount.ToString();
 	}
 }
