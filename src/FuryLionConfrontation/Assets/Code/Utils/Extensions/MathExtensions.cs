@@ -32,6 +32,6 @@ namespace Confrontation
 		}
 
 		public static bool IsEqualFloats(this float @this, float other)
-			=> Math.Abs(@this - other) < Mathf.Epsilon;
+			=> Math.Abs(@this - other) < Constants.Deviation;
 	}
 }
