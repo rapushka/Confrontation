@@ -20,7 +20,7 @@ namespace Confrontation
 
 		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
 
-		public float BaseArmor => BaseStrength;
+		public float BaseArmor => BaseStrength * Stats.BaseArmourMultiplier;
 
 		public float BaseDamage => BaseStrength;
 

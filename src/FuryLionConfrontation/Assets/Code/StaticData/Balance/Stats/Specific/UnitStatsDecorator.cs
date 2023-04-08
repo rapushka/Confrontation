@@ -15,7 +15,11 @@ namespace Confrontation
 			_field = field;
 		}
 
+		public float AttackModifier => _decoratee.AttackModifier;
+
 		public float UnitMaxHp => _decoratee.UnitMaxHp;
+
+		public float BaseArmourMultiplier => _decoratee.BaseArmourMultiplier;
 
 		public float BaseStrength => Influence<Forge>(_decoratee.BaseStrength, AddStrength);
 
@@ -24,8 +28,6 @@ namespace Confrontation
 		public float DefencePierceRate => Influence<Workshop>(_decoratee.DefencePierceRate, AddPierceRate);
 
 		public float BaseSpeed => Influence<Stable>(_decoratee.BaseSpeed, Accelerate);
-
-		public float AttackModifier => _decoratee.AttackModifier;
 
 		private static float AddStrength(float currentStrength, Forge forge)
 			=> currentStrength + forge.CurrentLevelStats.CombatStrengthIncreasesRate;
