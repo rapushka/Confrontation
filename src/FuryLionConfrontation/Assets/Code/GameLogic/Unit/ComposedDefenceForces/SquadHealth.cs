@@ -16,6 +16,8 @@ namespace Confrontation
 			_frontUnitCurrentHp = UnitMaxHp;
 		}
 
+		public float HealthPoints => _unit.QuantityOfUnits * _unit.Stats.UnitMaxHp + _frontUnitCurrentHp;
+		
 		private float UnitMaxHp => _unit.Stats.UnitMaxHp;
 
 		private bool IsCandidateDead => _quantityOfUnitsCandidate <= 0;

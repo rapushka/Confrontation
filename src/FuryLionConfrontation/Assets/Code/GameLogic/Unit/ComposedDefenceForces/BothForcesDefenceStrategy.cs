@@ -20,6 +20,8 @@ namespace Confrontation
 
 		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
 
+		public override float HealthPoints => _locatedSquad.HealthPoints + _garrison.HealthPoints;
+
 		public override void Destroy()
 		{
 			Destroyer.Destroy(_locatedSquad.gameObject);

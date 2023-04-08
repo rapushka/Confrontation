@@ -44,7 +44,7 @@ namespace Confrontation
 
 		private async Task Fade(float from, float to)
 		{
-			while (Math.Abs(_curtain.alpha - to) > Mathf.Epsilon)
+			while (Math.Abs(_curtain.alpha - to) > Constants.Deviation)
 			{
 				_passedDuration += _time.DeltaTime;
 				_curtain.alpha = Mathf.Lerp(from, to, _passedDuration / _fadeDuration);
