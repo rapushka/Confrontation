@@ -62,7 +62,7 @@ namespace Confrontation
 			}
 		}
 
-		private float ApplyBaseArmorFor(float incomingDamage) => (incomingDamage - _unit.BaseArmor).Clamp(min: 0);
+		private float ApplyBaseArmorFor(float damage) => damage.ReduceBy(_unit.BaseArmor).Clamp(min: 0);
 
 		private void InflictDamageToFrontUnit(ref float remainingDamage)
 		{
