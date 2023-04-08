@@ -8,6 +8,7 @@ namespace Confrontation
 
 		[CanBeNull] private Garrison _garrison;
 		private Cell _cell;
+		private (float Attackers, float Defenders) _cachedSidesHealth;
 
 		public UnitFighter(UnitsSquad squad, IAssetsService assets)
 		{
@@ -40,16 +41,16 @@ namespace Confrontation
 
 		private void FightToDeath()
 		{
-			var counter = 0;
 			while (IsAttackersAlive && IsDefendersAlive)
 			{
-				if (counter == Constants.MaxFightRounds)
+				if (Attackers.HealthPoints.IsEqualFloats(_cachedSidesHealth.Attackers)
+				    && Defenders.HealthPoints.IsEqualFloats(_cachedSidesHealth.Defenders))
 				{
 					KillBoth();
 					break;
 				}
 
-				counter++;
+				_cachedSidesHealth = (Attackers.HealthPoints, Defenders.HealthPoints);
 
 				var defendersDamage = Defenders.BaseDamage;
 				var attackersDamage = Attackers.AttackDamage;

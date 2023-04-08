@@ -6,6 +6,8 @@ namespace Confrontation
 
 		int QuantityOfUnits { get; }
 
+		float HealthPoints { get; }
+
 		void Destroy();
 
 		void TakeDamageOnDefence(float incomingDamage, float pierceRate);

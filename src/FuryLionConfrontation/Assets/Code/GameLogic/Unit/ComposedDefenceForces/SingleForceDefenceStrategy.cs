@@ -12,6 +12,8 @@ namespace Confrontation
 
 		public override int QuantityOfUnits => _units.QuantityOfUnits;
 
+		public override float HealthPoints => _units.HealthPoints;
+
 		public override void Destroy() => Destroyer.Destroy(_units.gameObject);
 		public override void Kill()    => _units.QuantityOfUnits = 0;
 

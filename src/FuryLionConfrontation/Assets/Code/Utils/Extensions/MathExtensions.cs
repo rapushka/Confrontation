@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Confrontation
@@ -15,9 +16,6 @@ namespace Confrontation
 		public static float IncreaseBy(this int @this, float percent)
 			=> @this * (1 + percent);
 
-		public static float ReduceBy(this int @this, float percent)
-			=> @this * (1 - percent);
-
 		public static float Clamp(this float @this, float min = float.NaN, float max = float.NaN)
 		{
 			if (float.IsNaN(min) == false)
@@ -31,6 +29,9 @@ namespace Confrontation
 			}
 
 			return @this;
-		} 
+		}
+
+		public static bool IsEqualFloats(this float @this, float other)
+			=> Math.Abs(@this - other) < Mathf.Epsilon;
 	}
 }
