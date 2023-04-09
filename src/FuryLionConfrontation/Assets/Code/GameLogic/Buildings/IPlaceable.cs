@@ -1,4 +1,7 @@
 namespace Confrontation
 {
-	public interface IPlaceable { }
+	public interface IPlaceable
+	{
+		Cell RelatedCell { get; }
+	}
 }
