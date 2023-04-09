@@ -37,6 +37,7 @@ namespace Confrontation
 			public const string Forge = "Prefabs/Buildings/Forge";
 			public const string Quarry = "Prefabs/Buildings/Quarry";
 			public const string Workshop = "Prefabs/Buildings/Workshop";
+			public const string Fort = "Prefabs/Buildings/Fort";
 
 			public const string ResourcesService = "ScriptableObjects/Resources";
 			public const string TestLevel = "ScriptableObjects/For Tests/TestLevel";
