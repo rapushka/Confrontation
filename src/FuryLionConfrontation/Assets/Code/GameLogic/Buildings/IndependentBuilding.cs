@@ -15,7 +15,7 @@ namespace Confrontation
 		{
 			var oldRegionOwnerId = RelatedRegion.OwnerPlayerId;
 			_ownRegion = _regionsFactory.Create();
-			_neighborhoodCalculator.CollectNeighboursFor(RelatedCell, RelatedRegion);
+			_neighborhoodCalculator.CollectNeighboursFor(RelatedCell, _ownRegion);
 			_ownRegion.Coordinates = Coordinates;
 			_ownRegion.OwnerPlayerId = oldRegionOwnerId;
 			Field.Regions.Add(_ownRegion);
