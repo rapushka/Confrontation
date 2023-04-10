@@ -22,12 +22,12 @@ namespace Confrontation
 			return _player.Resources.Gold.IsEnoughGoldFor(_balanceTable.BuildPriceFor(building));
 		}
 
-		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
-
-		public IEnumerable<Settlement> NeighboursFor(Cell cell) =>
+		public IEnumerable<IPlaceable> NeighboursFor(Cell cell) =>
 			_field.Buildings
-			      .OfType<Settlement>()
+			      .OfType<IPlaceable>()
 			      .Where((v) => IsNeighbours(cell.RelatedRegion, v.RelatedCell.RelatedRegion));
+
+		private bool IsOurUnit(UnitsSquad unit) => unit is not null && unit.OwnerPlayerId == _player.Id;
 
 		private bool IsNeighbours(Region currentRegion, Region targetRegion) =>
 			_field.Neighborhoods.IsNeighbours(targetRegion, currentRegion)

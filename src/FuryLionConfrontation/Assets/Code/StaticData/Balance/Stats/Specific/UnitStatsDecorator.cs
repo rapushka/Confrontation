@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 
 namespace Confrontation
 {
@@ -7,6 +8,12 @@ namespace Confrontation
 		private readonly IUnitStats _decoratee;
 		private readonly int _ownerPlayer;
 		private readonly IField _field;
+
+		[CanBeNull] private readonly UnitsSquad _unit;
+
+		public UnitStatsDecorator(IUnitStats decoratee, int ownerPlayer, IField field, UnitsSquad unit)
+			: this(decoratee, ownerPlayer, field)
+			=> _unit = unit;
 
 		public UnitStatsDecorator(IUnitStats decoratee, int ownerPlayer, IField field)
 		{
@@ -23,14 +30,28 @@ namespace Confrontation
 
 		public float BaseStrength => Influence<Forge>(_decoratee.BaseStrength, AddStrength);
 
-		public float DefenseModifier => Influence<Quarry>(_decoratee.DefenseModifier, AddDefenseModifier);
-
 		public float DefencePierceRate => Influence<Workshop>(_decoratee.DefencePierceRate, AddPierceRate);
 
 		public float BaseSpeed => Influence<Stable>(_decoratee.BaseSpeed, Accelerate);
 
 		private static float AddStrength(float currentStrength, Forge forge)
 			=> currentStrength + forge.CurrentLevelStats.CombatStrengthIncreasesRate;
+
+		public float DefenseModifier
+		{
+			get
+			{
+				var modified = Influence<Quarry>(_decoratee.DefenseModifier, AddDefenseModifier);
+
+				if (_unit == true
+				    && _unit!.LocationCell.Building is Fort fort)
+				{
+					modified += fort.CurrentLevelStats.AdditionalDefenceModifier;
+				}
+
+				return modified;
+			}
+		}
 
 		private static float AddDefenseModifier(float currentModifier, Quarry quarry)
 			=> currentModifier + quarry.CurrentLevelStats.IncreasesDamageAbsorptionRate;

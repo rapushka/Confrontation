@@ -5,10 +5,10 @@ namespace Confrontation
 	public class DirectUnitsCommand : ICommand
 	{
 		[Inject] private readonly UnitsSquad _squad;
-		[Inject] private readonly Settlement _settlement;
+		[Inject] private readonly IPlaceable _placeable;
 
-		public void Execute() => _squad.MoveTo(_settlement.RelatedCell);
+		public void Execute() => _squad.MoveTo(_placeable.RelatedCell);
 
-		public class Factory : PlaceholderFactory<UnitsSquad, Settlement, DirectUnitsCommand> { }
+		public class Factory : PlaceholderFactory<UnitsSquad, IPlaceable, DirectUnitsCommand> { }
 	}
 }

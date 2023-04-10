@@ -21,8 +21,12 @@ namespace Confrontation
 
 		public bool IsOnMaxLevel => Level >= MaxLevel;
 
-		public int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
-		
+		public virtual int OwnerPlayerId
+		{
+			get => _field.Regions[Coordinates].OwnerPlayerId;
+			set => _field.Regions[Coordinates].OwnerPlayerId = value;
+		}
+
 		public Coordinates Coordinates
 		{
 			get => _coordinates;
