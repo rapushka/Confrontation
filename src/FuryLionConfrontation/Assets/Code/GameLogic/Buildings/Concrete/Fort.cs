@@ -1,6 +1,6 @@
 namespace Confrontation
 {
-	public class Fort : Building, IPlaceable
+	public class Fort : IndependentBuilding, IPlaceable
 	{
 		public override string Name => nameof(Fort);
 
