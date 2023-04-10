@@ -5,16 +5,19 @@ namespace Confrontation
 	public abstract class IndependentBuilding : Building
 	{
 		[Inject] private readonly Region.Factory _regionsFactory;
+		[Inject] private readonly RegionsNeighborhoodCalculator _neighborhoodCalculator;
 
 		private Region _ownRegion;
 
-		public override int OwnerPlayerId { get; set; }
+		private Region RelatedRegion => Field.Regions[Coordinates];
 
 		private void Start()
 		{
-			_ownRegion = _regionsFactory.Create(Field.Regions[Coordinates].Id);
+			var oldRegionOwnerId = RelatedRegion.OwnerPlayerId;
+			_ownRegion = _regionsFactory.Create();
+			_neighborhoodCalculator.CollectNeighboursFor(RelatedCell, RelatedRegion);
 			_ownRegion.Coordinates = Coordinates;
-			_ownRegion.OwnerPlayerId = OwnerPlayerId;
+			_ownRegion.OwnerPlayerId = oldRegionOwnerId;
 			Field.Regions.Add(_ownRegion);
 		}
 	}

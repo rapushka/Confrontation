@@ -17,7 +17,7 @@ namespace Confrontation
 			}
 		}
 
-		private void CollectNeighboursFor(ICoordinated cell, Region @in)
+		public void CollectNeighboursFor(ICoordinated cell, Region @in)
 			=> cell.ForEachCellAround((c) => AddNeighbour(@in, c), on: _field.Cells);
 
 		private void AddNeighbour(Region region, Cell currentCell)
