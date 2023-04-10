@@ -30,7 +30,7 @@ namespace Confrontation
 
 		public void MoveTo(Cell targetCell)
 		{
-			var quantityToMove = LocationCell.Building is Barrack
+			var quantityToMove = LocationCell.Building is Barrack or Fort
 				? QuantityOfUnits
 				: QuantityOfUnits / 2;
 
