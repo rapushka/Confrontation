@@ -8,8 +8,8 @@ namespace Confrontation
 	public class SpellButton : HoldButtonBase, IInitializable
 	{
 		[Inject] private readonly ISpell _spell;
-		[Inject] private readonly GameplayUiMediator _uiMediator;
 		[Inject] private ToolTip _toolTip;
+		[Inject] private readonly GameplayUiMediator _uiMediator;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private Image _iconImage;
@@ -26,7 +26,7 @@ namespace Confrontation
 			_uiMediator.CloseCurrentWindow();
 		}
 
-		protected override void HandleHold() => _toolTip.Show(withText: _spell.Description);
+		protected override void HandleHold() => _toolTip.Show(withText: _spell.Description, on: transform.position);
 
 		protected override void OnRelease() => _toolTip.Hide();
 

@@ -612,11 +612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843705769406067997, guid: 96b17c1389dc4135286e7dc3142bed02, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 850
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 6843705769406067997, guid: 96b17c1389dc4135286e7dc3142bed02, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 359
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 6843705769406067997, guid: 96b17c1389dc4135286e7dc3142bed02, type: 3}
       propertyPath: m_LocalPosition.x
@@ -711,3 +711,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMesh: {fileID: 7688733660768054040}
+  _offset: {x: 0, y: 200}

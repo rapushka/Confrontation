@@ -15,9 +15,21 @@ namespace Confrontation
 		[SerializeField] private ToolTip _toolTip;
 
 		private void Start()
-			=> _spells
-			   .Select((s) => _spellButtonFactory.Create(s, _toolTip))
-			   .ForEach((sb) => sb.transform.SetParent(_buttonsRoot));
+		{
+			_toolTip.Hide();
+			
+			_spells
+				.Select((s) => _spellButtonFactory.Create(s, _toolTip))
+				.ForEach((sb) => sb.transform.SetParent(_buttonsRoot));
+			
+			// for debug
+			_spells
+				.Select((s) => _spellButtonFactory.Create(s, _toolTip))
+				.ForEach((sb) => sb.transform.SetParent(_buttonsRoot));
+			_spells
+				.Select((s) => _spellButtonFactory.Create(s, _toolTip))
+				.ForEach((sb) => sb.transform.SetParent(_buttonsRoot));
+		}
 
 		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 
