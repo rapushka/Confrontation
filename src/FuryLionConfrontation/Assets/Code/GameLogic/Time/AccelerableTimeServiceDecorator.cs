@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation.GameLogic
 {
-	public class AccelerateableTimeServiceDecorator : ITimeService, IInitializable
+	public class AccelerableTimeServiceDecorator : ITimeService, IInitializable
 	{
 		[Inject] private readonly ITimeService _decoratee;
 		[Inject] private readonly IBalanceTable _balanceTable;
@@ -12,6 +12,8 @@ namespace Confrontation.GameLogic
 		private float AccelerationCoefficient { get; set; }
 
 		public float RealFixedDeltaTime => _decoratee.RealFixedDeltaTime;
+
+		public float RealDeltaTime => _decoratee.RealDeltaTime;
 
 		public float FixedDeltaTime => _decoratee.FixedDeltaTime * AccelerationCoefficient;
 

@@ -6,7 +6,7 @@ namespace Confrontation
 {
 	public class AccelerateTimeToggle : ToggleBase, IDisposable
 	{
-		[Inject] private readonly AccelerateableTimeServiceDecorator _timeService;
+		[Inject] private readonly AccelerableTimeServiceDecorator _timeService;
 
 		public void Dispose() => _timeService.Decelerate();
 

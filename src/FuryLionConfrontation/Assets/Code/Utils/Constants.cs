@@ -10,6 +10,8 @@ namespace Confrontation
 		public const float HorizontalOffsetForOddRows = HexagonWidth / 2;
 		public const float HexagonHeight = 0.2f;
 
+		public const float HoldButtonTimeBase = 0.25f;
+
 		public static class SceneName
 		{
 			public const string BootstrapScene = "BootstrapScene";
