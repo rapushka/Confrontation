@@ -12,10 +12,11 @@ namespace Confrontation
 
 		[SerializeField] private List<SpellScriptableObject> _spells;
 		[SerializeField] private Transform _buttonsRoot;
+		[SerializeField] private ToolTip _toolTip;
 
 		private void Start()
 			=> _spells
-			   .Select(_spellButtonFactory.Create)
+			   .Select((s) => _spellButtonFactory.Create(s, _toolTip))
 			   .ForEach((sb) => sb.transform.SetParent(_buttonsRoot));
 
 		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);

@@ -9,6 +9,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly ISpell _spell;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
+		[Inject] private ToolTip _toolTip;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private Image _iconImage;
@@ -25,16 +26,15 @@ namespace Confrontation
 			_uiMediator.CloseCurrentWindow();
 		}
 
-		protected override void HandleHold()
-		{
-			Debug.Log($"Spell Description:{_spell.Description}");
-		}
+		protected override void HandleHold() => _toolTip.Show(withText: _spell.Description);
 
-		public class Factory : PlaceholderFactory<ISpell, SpellButton>
+		protected override void OnRelease() => _toolTip.Hide();
+
+		public class Factory : PlaceholderFactory<ISpell, ToolTip, SpellButton>
 		{
-			public override SpellButton Create(ISpell spell)
+			public override SpellButton Create(ISpell spell, ToolTip toolTip)
 			{
-				var spellButton = base.Create(spell);
+				var spellButton = base.Create(spell, toolTip);
 				spellButton.Initialize();
 				return spellButton;
 			}

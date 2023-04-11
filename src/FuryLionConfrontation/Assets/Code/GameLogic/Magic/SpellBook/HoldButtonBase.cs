@@ -42,11 +42,14 @@ namespace Confrontation
 			}
 
 			ResetButtonState();
+			OnRelease();
 		}
 
 		protected abstract void HandleClick();
 
 		protected abstract void HandleHold();
+
+		protected virtual void OnRelease() { }
 
 		private void ResetButtonState()
 		{
