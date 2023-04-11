@@ -65,7 +65,7 @@ namespace Confrontation
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);
-			Container.BindFactory<SpellScriptableObject, SpellButton, SpellButton.Factory>()
+			Container.BindFactory<ISpell, SpellButton, SpellButton.Factory>()
 			         .FromComponentInNewPrefab(_spellButtonPrefab);
 
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);

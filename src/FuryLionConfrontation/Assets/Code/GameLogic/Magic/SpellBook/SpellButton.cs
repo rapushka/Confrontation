@@ -7,7 +7,7 @@ namespace Confrontation
 {
 	public class SpellButton : HoldButtonBase, IInitializable
 	{
-		[Inject] private readonly SpellScriptableObject _spell;
+		[Inject] private readonly ISpell _spell;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
@@ -30,9 +30,9 @@ namespace Confrontation
 			Debug.Log($"Spell Description:{_spell.Description}");
 		}
 
-		public class Factory : PlaceholderFactory<SpellScriptableObject, SpellButton>
+		public class Factory : PlaceholderFactory<ISpell, SpellButton>
 		{
-			public override SpellButton Create(SpellScriptableObject spell)
+			public override SpellButton Create(ISpell spell)
 			{
 				var spellButton = base.Create(spell);
 				spellButton.Initialize();

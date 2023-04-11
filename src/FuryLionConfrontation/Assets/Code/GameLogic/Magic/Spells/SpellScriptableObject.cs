@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Confrontation
 {
 	[CreateAssetMenu(fileName = "Spell", menuName = nameof(Confrontation) + "/Spell", order = 0)]
-	public class SpellScriptableObject : ScriptableObject
+	public class SpellScriptableObject : ScriptableObject, ISpell
 	{
 		[field: Header("View")]
 		[field: SerializeField] public string Title { get; private set; }
