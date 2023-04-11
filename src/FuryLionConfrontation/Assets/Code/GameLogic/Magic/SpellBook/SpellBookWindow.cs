@@ -14,12 +14,9 @@ namespace Confrontation
 		[SerializeField] private Transform _buttonsRoot;
 
 		private void Start()
-		{
-			foreach (var spellButton in _spells.Select((s) => _spellButtonFactory.Create(s)))
-			{
-				spellButton.transform.SetParent(_buttonsRoot);
-			}
-		}
+			=> _spells
+			   .Select(_spellButtonFactory.Create)
+			   .ForEach((sb) => sb.transform.SetParent(_buttonsRoot));
 
 		public override GameplayWindowBase Accept(IGameplayWindowVisitor visitor) => visitor.Visit(this);
 
