@@ -1,12 +1,11 @@
-using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class SpellBookButton : ButtonBase
 	{
-		protected override void OnButtonClick()
-		{
-			Debug.Log("open Spell Book!");
-		}
+		[Inject] private readonly GameplayWindows _gameplayWindows;
+
+		protected override void OnButtonClick() => _gameplayWindows.Open<SpellBookWindow>();
 	}
 }

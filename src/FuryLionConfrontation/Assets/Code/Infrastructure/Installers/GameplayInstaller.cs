@@ -56,6 +56,7 @@ namespace Confrontation
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindPrefabFactory<NotEnoughGoldWindow, NotEnoughGoldWindow.Factory>();
+			Container.BindPrefabFactory<SpellBookWindow, SpellBookWindow.Factory>();
 
 			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
 			         .FromFactory<GameplayGameplayWindowsFactory>();
