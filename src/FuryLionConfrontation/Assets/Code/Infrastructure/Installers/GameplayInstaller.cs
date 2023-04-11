@@ -5,6 +5,7 @@ namespace Confrontation
 	public class GameplayInstaller : GameFieldInstaller
 	{
 		[SerializeField] private BuildingButton _buildingButtonPrefab;
+		[SerializeField] private SpellButton _spellButtonPrefab;
 		[SerializeField] private UnitsSquad _unitPrefab;
 		[SerializeField] private Garrison _garrisonPrefab;
 		[SerializeField] private LineRenderer _orderLineRenderer;
@@ -62,7 +63,10 @@ namespace Confrontation
 			         .FromFactory<GameplayGameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
+
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);
+			Container.BindFactory<SpellScriptableObject, SpellButton, SpellButton.Factory>()
+			         .FromComponentInNewPrefab(_spellButtonPrefab);
 
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);

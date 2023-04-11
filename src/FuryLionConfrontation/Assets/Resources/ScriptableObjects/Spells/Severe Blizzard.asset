@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
-  m_Name: Spell
+  m_Name: Severe Blizzard
   m_EditorClassIdentifier: 
   <Title>k__BackingField: Severe Blizzard
   <Description>k__BackingField: Reduces the speed of all currently moving

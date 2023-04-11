@@ -15,7 +15,7 @@ namespace Confrontation
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
-		protected virtual string TextView => $"{_building.Name}\n{_balanceTable.BuildPriceFor(_building)} G";
+		private string TextView => $"{_building.Name}\n{_balanceTable.BuildPriceFor(_building)} G";
 
 		private void Start() => _textMesh.text = TextView;
 
@@ -31,7 +31,7 @@ namespace Confrontation
 			}
 		}
 
-		protected bool PurchaseBuilding() => _purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell);
+		private bool PurchaseBuilding() => _purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell);
 
 		public class Factory : PlaceholderFactory<Building, BuildingButton>
 		{
