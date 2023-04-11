@@ -15,7 +15,7 @@ namespace Confrontation
 		{
 			BindPrefabs();
 
-			BindDecorators();
+			BindTimeServices();
 
 			Container.BindInterfacesTo<InputService>().AsSingle();
 			Container.BindInterfacesTo<UniTaskRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
@@ -32,10 +32,18 @@ namespace Confrontation
 			StartGame();
 		}
 
-		private void BindDecorators()
+		private void BindTimeServices()
 		{
-			Container.BindInterfacesAndSelfTo<AccelerableTimeServiceDecorator>().AsSingle();
-			Container.Bind<ITimeService>().To<TimeService>().WhenInjectedInto<AccelerableTimeServiceDecorator>();
+			Container.Bind<ITimeService>().To<TimeService>().AsCached().WhenInjectedInto<TimeStopService>();
+			Container.Bind<ITimeService>().To<TimeStopService>().AsCached().WhenInjectedInto<TimeServiceAccelerator>();
+
+			Container.Bind(typeof(TimeStopService))
+			         .To<TimeStopService>()
+			         .AsCached();
+
+			Container.Bind(typeof(ITimeService), typeof(TimeServiceAccelerator), typeof(IInitializable))
+			         .To<TimeServiceAccelerator>()
+			         .AsSingle();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
