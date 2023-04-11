@@ -8,7 +8,7 @@ namespace Confrontation
 		[Inject] private readonly DirectUnitsCommand.Factory _directUnitsCommandFactory;
 		[Inject] private readonly BuildBuildingCommand.Factory _buildBuildingCommandFactory;
 
-		public ICommand MakeDecision()
+		public IEnemyCommand MakeDecision()
 		{
 			if (_our.CanBuyPreferredBuilding(out var building)
 			    && _our.EmptyCells.TryPickRandom(out var emptyCell))
@@ -26,7 +26,7 @@ namespace Confrontation
 			return new DoNothingCommand();
 		}
 
-		private class DoNothingCommand : ICommand
+		private class DoNothingCommand : IEnemyCommand
 		{
 			public void Execute() { }
 		}

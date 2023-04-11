@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class BuildBuildingCommand : ICommand
+	public class BuildBuildingCommand : IEnemyCommand
 	{
 		[Inject] private readonly Building _building;
 		[Inject] private readonly Cell _cell;
