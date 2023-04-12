@@ -32,22 +32,6 @@ namespace Confrontation
 			StartGame();
 		}
 
-		private void BindTimeServices()
-		{
-			Container.Bind<ITimeService>().To<TimeService>().AsCached().WhenInjectedInto<TimeStopService>();
-			Container.Bind<ITimeService>().To<TimeStopService>().AsCached().WhenInjectedInto<TimeServiceAccelerator>();
-
-			Container.Bind(typeof(TimeStopService))
-			         .To<TimeStopService>()
-			         .AsCached();
-
-			Container.Bind(typeof(ITimeService), typeof(TimeServiceAccelerator), typeof(IInitializable))
-			         .To<TimeServiceAccelerator>()
-			         .AsSingle();
-		}
-
-		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
-
 		private void BindPrefabs()
 		{
 			Container.BindInstance<IBalanceTable>(_balanceTable).AsSingle();
@@ -55,5 +39,21 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
 		}
+
+		private void BindTimeServices()
+		{
+			Container.Bind<ITimeService>().To<TimeService>().AsSingle().WhenInjectedInto<TimeStopService>();
+			Container.Bind<ITimeService>().To<TimeStopService>().FromResolve().WhenInjectedInto<TimeServiceAccelerator>();
+
+			Container.Bind(typeof(TimeStopService))
+			         .To<TimeStopService>()
+			         .AsSingle();
+
+			Container.Bind(typeof(ITimeService), typeof(TimeServiceAccelerator), typeof(IInitializable))
+			         .To<TimeServiceAccelerator>()
+			         .AsSingle();
+		}
+
+		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
 	}
 }
