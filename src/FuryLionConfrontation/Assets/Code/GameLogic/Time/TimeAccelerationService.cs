@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation.GameLogic
 {
-	public class TimeServiceAccelerator : ITimeService, IInitializable
+	public class TimeAccelerationService : ITimeService, IInitializable
 	{
 		[Inject] private readonly ITimeService _decoratee;
 		[Inject] private readonly IBalanceTable _balanceTable;

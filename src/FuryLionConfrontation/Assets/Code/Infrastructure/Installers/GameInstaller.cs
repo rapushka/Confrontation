@@ -42,18 +42,15 @@ namespace Confrontation
 
 		private void BindTimeServices()
 		{
-			Container.Bind<TimeStopService>().To<TimeStopService>().AsSingle();
-			Container.Bind<TimeServiceAccelerator>().To<TimeServiceAccelerator>().AsSingle();
-			Container.Bind<TimeService>().To<TimeService>().AsSingle();
+			Container.BindSelf<TimeService>().AsSingle();
+			Container.BindSelf<TimeAccelerationService>().AsSingle();
+			Container.BindSelf<TimeStopService>().AsSingle();
 
+			Container.Decorate<ITimeService, TimeService, TimeAccelerationService>();
+			Container.Decorate<ITimeService, TimeAccelerationService, TimeStopService>();
 			Container.Bind<ITimeService>().To<TimeStopService>().FromResolve();
-			Container.Bind<ITimeService>().To<TimeService>().FromResolve().WhenInjectedInto<TimeServiceAccelerator>();
-			Container.Bind<ITimeService>()
-			         .To<TimeServiceAccelerator>()
-			         .FromResolve()
-			         .WhenInjectedInto<TimeStopService>();
 
-			Container.Bind<IInitializable>().To<TimeServiceAccelerator>().FromResolve();
+			Container.Bind<IInitializable>().To<TimeAccelerationService>().FromResolve();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
