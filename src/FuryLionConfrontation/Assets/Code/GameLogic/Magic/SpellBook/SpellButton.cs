@@ -22,7 +22,7 @@ namespace Confrontation
 
 		protected override void HandleClick()
 		{
-			Debug.Log("Cast spell");
+			_spell.Cast();
 			_uiMediator.CloseCurrentWindow();
 		}
 
