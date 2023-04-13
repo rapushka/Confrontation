@@ -10,6 +10,7 @@ namespace Confrontation
 		[Inject] private readonly ISpell _spell;
 		[Inject] private ToolTip _toolTip;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
+		[Inject] private readonly SpellCaster _spellCaster;
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private Image _iconImage;
@@ -22,7 +23,7 @@ namespace Confrontation
 
 		protected override void HandleClick()
 		{
-			_spell.Cast();
+			_spellCaster.Cast(_spell);
 			_uiMediator.CloseCurrentWindow();
 		}
 

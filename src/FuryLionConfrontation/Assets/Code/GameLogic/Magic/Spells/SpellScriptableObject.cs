@@ -18,10 +18,5 @@ namespace Confrontation
 		[field: SerializeField] public bool IsPermanent { get; private set; }
 
 		[field: SerializeField] public float Duration { get; private set; }
-
-		public void Cast()
-		{
-			Debug.Log($"the {Title} Spell was casted");
-		}
 	}
 }

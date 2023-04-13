@@ -45,6 +45,7 @@ namespace Confrontation
 			Container.Bind<BuildingSpawner>().AsSingle();
 			Container.Bind<GameplayUiMediator>().AsSingle();
 			Container.Bind<GameplayWindows>().AsSingle();
+			Container.Bind<SpellCaster>().AsSingle();
 		}
 
 		protected override void InstallSpecificFactories()
@@ -63,9 +64,9 @@ namespace Confrontation
 			         .FromFactory<GameplayGameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
-
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);
-			Container.BindFactory<ISpell, ToolTip , SpellButton, SpellButton.Factory>()
+
+			Container.BindFactory<ISpell, ToolTip, SpellButton, SpellButton.Factory>()
 			         .FromComponentInNewPrefab(_spellButtonPrefab);
 
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);

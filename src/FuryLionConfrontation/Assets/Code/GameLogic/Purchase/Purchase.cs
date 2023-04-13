@@ -11,7 +11,7 @@ namespace Confrontation
 		{
 			var buildingPrice = _balanceTable.BuildPriceFor(buildingPrefab);
 
-			if (player.Resources.Gold.IsEnoughGoldFor(buildingPrice))
+			if (player.Resources.Gold.IsEnoughFor(buildingPrice))
 			{
 				_buildingSpawner.Build(buildingPrefab, locationCell);
 				player.Resources.Gold.Spend(buildingPrice);
@@ -25,7 +25,7 @@ namespace Confrontation
 		{
 			var upgradePrice = building.UpgradePrice;
 
-			if (player.Resources.Gold.IsEnoughGoldFor(upgradePrice))
+			if (player.Resources.Gold.IsEnoughFor(upgradePrice))
 			{
 				building.LevelUp();
 				player.Resources.Gold.Spend(upgradePrice);

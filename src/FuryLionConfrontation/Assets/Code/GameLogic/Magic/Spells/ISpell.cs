@@ -10,7 +10,5 @@ namespace Confrontation
 		int    ManaCoast   { get; }
 		bool   IsPermanent { get; }
 		float  Duration    { get; }
-
-		void Cast();
 	}
 }
