@@ -44,5 +44,10 @@ namespace Confrontation
 			public const string ResourcesService = "ScriptableObjects/Resources";
 			public const string TestLevel = "ScriptableObjects/For Tests/TestLevel";
 		}
+
+		public static class Editor
+		{
+			public const int MaxIconPreviewHeight = 50;
+		}
 	}
 }

@@ -6,8 +6,6 @@ namespace Confrontation.Editor
 	[CustomEditor(typeof(SpellScriptableObject))]
 	public class SpellEditor : UnityEditor.Editor
 	{
-		private const int MaxIconPreviewHeight = 50;
-
 		private SerializedProperty _isPermanent;
 		private SerializedProperty _duration;
 
@@ -45,14 +43,10 @@ namespace Confrontation.Editor
 
 			if (imageProperty.objectReferenceValue is Sprite sprite)
 			{
-				EditorGUILayoutUtils.AsHorizontalGroup
-				(
-					() => GUILayout.Label("Preview: ", GUILayout.MaxHeight(MaxIconPreviewHeight)),
-					() => GUILayout.Label(sprite.texture, GUILayout.MaxHeight(MaxIconPreviewHeight))
-				);
-
+				sprite.DrawPreview();
 				Target.Icon = sprite;
 			}
 		}
+
 	}
 }
