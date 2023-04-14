@@ -18,9 +18,9 @@ namespace Confrontation
 
 			if (_our.Units.TryPickRandom(out var squad)
 			    && squad == true
-			    && _our.NeighboursFor(squad.LocationCell).TryPickRandom(out var village))
+			    && _our.NeighboursFor(squad.LocationCell).TryPickRandom(out var placeable))
 			{
-				return _directUnitsCommandFactory.Create(squad, village);
+				return _directUnitsCommandFactory.Create(squad, placeable);
 			}
 
 			return new DoNothingCommand();

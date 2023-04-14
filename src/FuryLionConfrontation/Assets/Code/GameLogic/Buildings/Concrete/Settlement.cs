@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class Settlement : Generator
+	public class Settlement : Generator, IPlaceable
 	{
 		[Inject] private readonly Garrison.Factory _garrisonsFactory;
 

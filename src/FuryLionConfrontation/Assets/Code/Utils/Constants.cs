@@ -4,6 +4,8 @@ namespace Confrontation
 {
 	public static class Constants
 	{
+		public const float Deviation = 0.01f;
+
 		public const float HexagonWidth = 1f;
 		public const float HorizontalOffsetForOddRows = HexagonWidth / 2;
 		public const float HexagonHeight = 0.2f;
@@ -35,11 +37,10 @@ namespace Confrontation
 			public const string Forge = "Prefabs/Buildings/Forge";
 			public const string Quarry = "Prefabs/Buildings/Quarry";
 			public const string Workshop = "Prefabs/Buildings/Workshop";
+			public const string Fort = "Prefabs/Buildings/Fort";
 
 			public const string ResourcesService = "ScriptableObjects/Resources";
 			public const string TestLevel = "ScriptableObjects/For Tests/TestLevel";
 		}
-
-		public const int MaxFightRounds = 100;
 	}
 }

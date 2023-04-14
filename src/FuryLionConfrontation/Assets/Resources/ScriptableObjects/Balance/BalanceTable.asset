@@ -15,6 +15,7 @@ MonoBehaviour:
   <UnitStats>k__BackingField:
     <BaseSpeed>k__BackingField: 1
     <BaseStrength>k__BackingField: 1
+    <BaseArmourMultiplier>k__BackingField: 0.01
     <DefencePierceRate>k__BackingField: 0
     <UnitMaxHp>k__BackingField: 1
     <DefenseModifier>k__BackingField: 0.3
@@ -65,6 +66,12 @@ MonoBehaviour:
       <StatsByLevel>k__BackingField:
       - <CombatStrengthIncreasesRate>k__BackingField: 0.2
       - <CombatStrengthIncreasesRate>k__BackingField: 0.35
+  <FortStats>k__BackingField:
+    <Price>k__BackingField: 5
+    <LeveledStats>k__BackingField:
+      <UpgradePrice>k__BackingField: 5
+      <StatsByLevel>k__BackingField:
+      - <AdditionalDefenceModifier>k__BackingField: 0.1
   <QuarryStats>k__BackingField:
     <Price>k__BackingField: 10
     <LeveledStats>k__BackingField:
@@ -131,6 +138,10 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 809301657887772580, guid: 57b1bea01f01fd0a5bbf25aaed5c4d9e, type: 3}
           _selectionIndex: 9
+      - <Weight>k__BackingField: 0.15
+        <Item>k__BackingField:
+          _prefab: {fileID: 363797083312448974, guid: 85bfb1affbae22fdb9bd28c72234aa60, type: 3}
+          _selectionIndex: 10
   <TimeStats>k__BackingField:
     <NormalTimeScale>k__BackingField: 1
     <AcceleratedTimeScale>k__BackingField: 2.5

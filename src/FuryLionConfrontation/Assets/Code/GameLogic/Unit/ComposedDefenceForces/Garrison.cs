@@ -18,9 +18,11 @@ namespace Confrontation
 
 		public IUnitStats Stats { get; protected set; }
 
+		public float HealthPoints => Health.HealthPoints;
+		
 		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
 
-		public float BaseArmor => BaseStrength;
+		public float BaseArmor => BaseStrength * Stats.BaseArmourMultiplier;
 
 		public float BaseDamage => BaseStrength;
 

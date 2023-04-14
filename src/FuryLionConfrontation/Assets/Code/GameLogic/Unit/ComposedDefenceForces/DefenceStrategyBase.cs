@@ -16,6 +16,8 @@ namespace Confrontation
 
 		public abstract int QuantityOfUnits { get; }
 
+		public abstract float HealthPoints { get; }
+
 		protected IDestroyer Destroyer { get; }
 
 		public abstract void Destroy();

@@ -19,14 +19,14 @@ namespace Confrontation
 		private Vector2 _lastCursorPosition;
 		private Vector2 NextPosition => SwipeDelta * ScaledSpeed;
 
-
 		private Vector2 SwipeDelta => _lastCursorPosition - _inputService.CursorPosition;
 
 		private Vector2 ScaledSpeed => _speed * _time.RealFixedDeltaTime;
 
 		private float ScaledSmoothRate => _smoothRate * _time.RealFixedDeltaTime;
 
-		private bool HasMomentum => Vector2.Distance(_targetPosition, _root.position.FromTopDown()) > Mathf.Epsilon;
+		private bool HasMomentum
+			=> Vector2.Distance(_targetPosition, _root.position.FromTopDown()) > Constants.Deviation;
 
 		protected virtual bool IsSupposeToSwipe => _isSwiping || HasMomentum;
 
