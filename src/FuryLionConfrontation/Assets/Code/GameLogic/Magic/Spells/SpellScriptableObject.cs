@@ -5,18 +5,23 @@ namespace Confrontation
 	[CreateAssetMenu(fileName = "Spell", menuName = nameof(Confrontation) + "/Spell", order = 0)]
 	public class SpellScriptableObject : ScriptableObject, ISpell
 	{
-		[field: Header("View")]
-		[field: SerializeField] public string Title { get; private set; }
+		[SerializeField] private string _title;
+		[SerializeField] private string _description;
+		[SerializeField] private Sprite _icon;
+		[SerializeField] private bool _isPermanent;
+		[SerializeField] private float _duration;
+		[SerializeField] private int _manaCoast;
 
-		[field: SerializeField] public string Description { get; private set; }
+		public string Title => _title;
 
-		[field: SerializeField] public Sprite Icon { get; private set; }
+		public string Description => _description;
 
-		[field: Header("Balance")]
-		[field: SerializeField] public int ManaCoast { get; private set; }
+		public Sprite Icon { get => _icon; set => _icon = value; }
 
-		[field: SerializeField] public bool IsPermanent { get; private set; }
+		public int ManaCoast => _manaCoast;
 
-		[field: SerializeField] public float Duration { get; private set; }
+		public bool IsPermanent => _isPermanent;
+
+		public float Duration => _duration;
 	}
 }

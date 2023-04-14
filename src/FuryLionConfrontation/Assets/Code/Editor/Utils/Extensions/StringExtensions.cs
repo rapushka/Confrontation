@@ -45,5 +45,11 @@ namespace Confrontation.Editor
 		}
 
 		private static string AsString(this List<char> chars) => new(chars.ToArray());
+		
+		public static string AsField(this string @this) => "_" + @this.FirstToLower();
+
+		public static string FirstToLower(this string @this)
+			=> char.ToLower(@this[0]) + @this[1..];
+
 	}
 }
