@@ -59,6 +59,8 @@ namespace Confrontation
 
 			Container.DecorateFromResolve<IStatsTable, StatsTable, InfluencedStatsTable>();
 			Container.Bind<IStatsTable>().To<InfluencedStatsTable>().FromResolve();
+
+			Container.Bind<IInitializable>().To<InfluencedStatsTable>().FromResolve();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
