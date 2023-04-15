@@ -16,7 +16,7 @@ namespace Confrontation
 
 		public static FromBinderGeneric<T> BindSelf<T>(this DiContainer @this) => @this.Bind<T>().To<T>();
 		
-		public static void Decorate<TContract, TDecoratee, TDecorator>(this DiContainer @this)
+		public static void DecorateFromResolve<TContract, TDecoratee, TDecorator>(this DiContainer @this)
 			where TDecorator : TContract
 			where TDecoratee : TContract
 			=> @this.Bind<TContract>().To<TDecoratee>().FromResolve().WhenInjectedInto<TDecorator>();

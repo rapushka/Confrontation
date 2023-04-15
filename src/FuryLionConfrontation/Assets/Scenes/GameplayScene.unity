@@ -379,6 +379,7 @@ MonoBehaviour:
   _movement: {fileID: 2050588172}
   _accelerateTimeToggle: {fileID: 1465434744}
   _hud: {fileID: 93329112}
+  _statsTable: {fileID: 11400000, guid: e94b46947bfdc9cd5891af5cb92609cf, type: 2}
 --- !u!1 &286574868
 GameObject:
   m_ObjectHideFlags: 0
