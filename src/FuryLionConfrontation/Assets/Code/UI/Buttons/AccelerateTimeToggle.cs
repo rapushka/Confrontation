@@ -1,5 +1,4 @@
 using System;
-using Confrontation.GameLogic;
 using Zenject;
 
 namespace Confrontation

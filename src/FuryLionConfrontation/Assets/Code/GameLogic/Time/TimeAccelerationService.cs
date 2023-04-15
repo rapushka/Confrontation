@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Confrontation.GameLogic
+namespace Confrontation
 {
 	public class TimeAccelerationService : ITimeService, IInitializable
 	{
