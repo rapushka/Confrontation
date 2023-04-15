@@ -1,4 +1,4 @@
-using System;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,21 +7,19 @@ namespace Confrontation.Editor
 	[CustomEditor(typeof(SpellScriptableObject))]
 	public class SpellEditor : UnityEditor.Editor
 	{
-		private SerializedProperty _isPermanent;
-		private SerializedProperty _duration;
+		private SerializedProperty _durationProperty;
 		private SerializedProperty _imageProperty;
+		private SerializedProperty _spellTypeProperty;
 
-		private SpellType _spellType;
+		private SpellType SpellType => (SpellType)_spellTypeProperty.enumValueIndex;
 
-		private SpellScriptableObject Target => (SpellScriptableObject)target;
-
-		private static GUIContent GuiImage => new("Image:");
+		[CanBeNull] private Sprite Image => _imageProperty.objectReferenceValue as Sprite;
 
 		private void OnEnable()
 		{
-			_isPermanent = serializedObject.FindProperty(nameof(ISpell.SpellType).AsField());
-			_duration = serializedObject.FindProperty(nameof(ISpell.Duration).AsField());
+			_durationProperty = serializedObject.FindProperty(nameof(ISpell.Duration).AsField());
 			_imageProperty = serializedObject.FindProperty(nameof(ISpell.Icon).AsField());
+			_spellTypeProperty = serializedObject.FindProperty(nameof(ISpell.SpellType).AsField());
 		}
 
 		public override void OnInspectorGUI()
@@ -34,31 +32,27 @@ namespace Confrontation.Editor
 		private void DrawFields()
 		{
 			DrawIconWithPreview();
-			DrawIsPermanentFlag();
+			DrawSpellTypeChoice();
 			DrawDuration();
-
-			var options = Enum.GetNames(typeof(SpellType));
-			_spellType = (SpellType)GUILayout.SelectionGrid((int)_spellType, options, xCount: 1);
 		}
 
 		private void DrawIconWithPreview()
 		{
-			EditorGUILayout.PropertyField(_imageProperty, GuiImage);
+			EditorGUILayout.PropertyField(_imageProperty, new GUIContent(text: "Image:"));
 
-			if (_imageProperty.objectReferenceValue is Sprite sprite)
+			if (Image is not null)
 			{
-				sprite.DrawPreview();
-				Target.Icon = sprite;
+				Image.DrawPreview();
 			}
 		}
 
-		private void DrawIsPermanentFlag() => EditorGUILayout.PropertyField(_isPermanent);
+		private void DrawSpellTypeChoice() => EditorGUILayoutTools.SelectionGrid(_spellTypeProperty);
 
 		private void DrawDuration()
 		{
-			if (_isPermanent.boolValue == false)
+			if (SpellType is SpellType.Temporary)
 			{
-				EditorGUILayout.PropertyField(_duration);
+				EditorGUILayout.PropertyField(_durationProperty);
 			}
 		}
 	}
