@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Confrontation.Influence;
 using UnityEngine;
 
 namespace Confrontation
@@ -18,6 +17,6 @@ namespace Confrontation
 
 		int ManaCoast { get; }
 
-		IEnumerable<InfluenceData> Influences { get; }
+		IEnumerable<Influence> Influences { get; }
 	}
 }

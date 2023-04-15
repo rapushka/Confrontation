@@ -1,4 +1,4 @@
-namespace Confrontation.Influence
+namespace Confrontation
 {
 	public class FieldInfluenceHandler
 	{

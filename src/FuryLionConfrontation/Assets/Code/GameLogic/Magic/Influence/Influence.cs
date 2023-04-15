@@ -1,16 +1,16 @@
 using System;
 using UnityEngine;
 
-namespace Confrontation.Influence
+namespace Confrontation
 {
 	[Serializable]
-	public class InfluenceData
+	public class Influence
 	{
 		[SerializeField] private Type _type;
 
 		[field: SerializeField] public float Coefficient { get; private set; }
 
-		public float Influence(float baseValue)
+		public float Apply(float baseValue)
 			=> _type switch
 			{
 				Type.Modifier   => baseValue.IncreaseBy(Coefficient),
