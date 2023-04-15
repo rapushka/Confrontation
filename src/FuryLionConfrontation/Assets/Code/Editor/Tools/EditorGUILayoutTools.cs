@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace Confrontation.Editor
 {
-	public static class EditorGUILayoutUtils
+	public static class EditorGUILayoutTools
 	{
 		public static void AsHorizontalGroup(Action elements)
 		{

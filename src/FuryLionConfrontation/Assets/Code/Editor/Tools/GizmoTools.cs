@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Confrontation.Editor
 {
-	public static class GizmoUtils
+	public static class GizmoTools
 	{
 		public static void SetColorBy(int id)
 			=> Gizmos.color = id switch

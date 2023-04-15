@@ -46,7 +46,7 @@ namespace Confrontation
 
 		private void FixedUpdate()
 		{
-			if (IsSupposeToSwipe && InputUtils.IsPointerOverUIObject() == false)
+			if (IsSupposeToSwipe && InputTools.IsPointerOverUIObject() == false)
 			{
 				Move();
 				UpdateCursorPosition();

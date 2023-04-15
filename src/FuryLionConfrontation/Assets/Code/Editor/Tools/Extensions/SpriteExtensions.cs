@@ -6,7 +6,7 @@ namespace Confrontation.Editor
 	{
 		public static void DrawPreview(this Sprite @this)
 		{
-			EditorGUILayoutUtils.AsHorizontalGroup
+			EditorGUILayoutTools.AsHorizontalGroup
 			(
 				() => GUILayout.Label("Preview: ", GUILayout.MaxHeight(Constants.Editor.MaxIconPreviewHeight)),
 				() => GUILayout.Label(@this.texture, GUILayout.MaxHeight(Constants.Editor.MaxIconPreviewHeight))

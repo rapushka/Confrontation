@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Confrontation
 {
-	public static class InputUtils
+	public static class InputTools
 	{
 		public static bool IsPointerOverUIObject()
 		{

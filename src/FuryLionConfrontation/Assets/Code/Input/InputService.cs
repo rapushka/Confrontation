@@ -80,7 +80,7 @@ namespace Confrontation
 
 		private void RaycastToCursor(Action<ClickReceiver> onHit)
 		{
-			if (InputUtils.IsPointerOverUIObject() == false
+			if (InputTools.IsPointerOverUIObject() == false
 			    && RayFromCursorPosition.IsHitReceiver(out var receiver))
 			{
 				onHit.Invoke(receiver);
