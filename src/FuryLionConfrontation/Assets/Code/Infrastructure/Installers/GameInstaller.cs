@@ -8,7 +8,6 @@ namespace Confrontation
 		[SerializeField] private LoadingCurtain _loadingCurtainPrefab;
 		[SerializeField] private User _user;
 		[SerializeField] private ResourcesService _resources;
-		[SerializeField] private BalanceTable _balanceTable;
 
 		public override void InstallBindings()
 		{
@@ -33,7 +32,6 @@ namespace Confrontation
 
 		private void BindPrefabs()
 		{
-			Container.BindInstance<IBalanceTable>(_balanceTable).AsSingle();
 			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();

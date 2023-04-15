@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	[CreateAssetMenu(fileName = nameof(BalanceTable), menuName = nameof(Confrontation) + "/" + nameof(BalanceTable))]
-	public class BalanceTable : ScriptableObject, IBalanceTable
+	[CreateAssetMenu(fileName = nameof(StatsTable), menuName = nameof(Confrontation) + "/" + nameof(StatsTable))]
+	public class StatsTable : ScriptableObject, IStatsTable
 	{
 		[field: SerializeField] public UnitStats UnitStats { get; private set; }
 

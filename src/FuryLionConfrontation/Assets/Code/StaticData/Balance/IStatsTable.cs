@@ -1,6 +1,6 @@
 namespace Confrontation
 {
-	public interface IBalanceTable
+	public interface IStatsTable
 	{
 		UnitStats UnitStats { get; }
 

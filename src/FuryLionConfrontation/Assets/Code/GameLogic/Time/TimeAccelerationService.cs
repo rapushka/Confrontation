@@ -5,7 +5,7 @@ namespace Confrontation
 	public class TimeAccelerationService : ITimeService, IInitializable
 	{
 		[Inject] private readonly ITimeService _decoratee;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		public void Initialize() => Decelerate();
 
@@ -19,8 +19,8 @@ namespace Confrontation
 
 		public float DeltaTime => _decoratee.DeltaTime * AccelerationCoefficient;
 
-		public void Accelerate() => AccelerationCoefficient = _balanceTable.TimeStats.AcceleratedTimeScale;
+		public void Accelerate() => AccelerationCoefficient = _statsTable.TimeStats.AcceleratedTimeScale;
 
-		public void Decelerate() => AccelerationCoefficient = _balanceTable.TimeStats.NormalTimeScale;
+		public void Decelerate() => AccelerationCoefficient = _statsTable.TimeStats.NormalTimeScale;
 	}
 }

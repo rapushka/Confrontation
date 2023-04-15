@@ -20,7 +20,7 @@ namespace Confrontation.Editor.PlayModeTests
 		private DiContainer _container;
 		private List<Building> _buildings;
 
-		private SettlementLevelStats FirstLevelSettlement => _container.Resolve<IBalanceTable>().SettlementStats.LeveledStats[1];
+		private SettlementLevelStats FirstLevelSettlement => _container.Resolve<IStatsTable>().SettlementStats.LeveledStats[1];
 
 		public override void SetUp()
 		{

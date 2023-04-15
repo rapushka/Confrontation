@@ -5,11 +5,11 @@ namespace Confrontation
 	public class Purchase : IPurchase
 	{
 		[Inject] private readonly BuildingSpawner _buildingSpawner;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		public bool BuyBuilding(Player player, Building buildingPrefab, Cell locationCell)
 		{
-			var buildingPrice = _balanceTable.BuildPriceFor(buildingPrefab);
+			var buildingPrice = _statsTable.BuildPriceFor(buildingPrefab);
 
 			if (player.Resources.Gold.IsEnoughFor(buildingPrice))
 			{

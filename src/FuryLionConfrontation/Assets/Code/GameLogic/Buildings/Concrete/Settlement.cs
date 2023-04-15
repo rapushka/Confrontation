@@ -17,7 +17,7 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<SettlementLevelStats> Stats => BalanceTable.SettlementStats.LeveledStats;
+		private LeveledStats<SettlementLevelStats> Stats => StatsTable.SettlementStats.LeveledStats;
 
 		private Garrison LocatedGarrison => Field.Garrisons[Coordinates];
 
@@ -25,7 +25,7 @@ namespace Confrontation
 
 		private int NewInGarrisonNumber => ActualGarrison.QuantityOfUnits + CurrentLevelStats.Amount;
 
-		private SettlementLevelStats CurrentLevelStats => BalanceTable.SettlementStats.LeveledStats[Level];
+		private SettlementLevelStats CurrentLevelStats => StatsTable.SettlementStats.LeveledStats[Level];
 
 		private Garrison ActualGarrison => HaveGarrison ? LocatedGarrison : _garrisonsFactory.Create(RelatedCell);
 

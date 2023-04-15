@@ -10,6 +10,6 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<StableLevelStats> Stats => BalanceTable.StableStats.LeveledStats;
+		private LeveledStats<StableLevelStats> Stats => StatsTable.StableStats.LeveledStats;
 	}
 }

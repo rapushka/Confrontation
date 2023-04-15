@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Confrontation
 {
@@ -12,6 +13,7 @@ namespace Confrontation
 		[SerializeField] private GameplayCameraSwipeMovement _movement;
 		[SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
 		[SerializeField] private Hud _hud;
+		[FormerlySerializedAs("_balanceTable")] [SerializeField] private StatsTable _statsTable;
 
 		protected override void InstallSpecificBindings()
 		{
@@ -48,6 +50,11 @@ namespace Confrontation
 			Container.Bind<SpellCaster>().AsSingle();
 		}
 
+		private void InstallDecoratedStats()
+		{
+			Container.BindInstance<IStatsTable>(_statsTable).AsSingle();
+		}
+		
 		protected override void InstallSpecificFactories()
 		{
 			Container.BindFactory<Player, Enemy, Enemy.Factory>()
