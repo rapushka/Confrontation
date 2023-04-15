@@ -12,7 +12,7 @@ namespace Confrontation
 		[SerializeField] private SpellType _spellType;
 		[SerializeField] private float _duration;
 		[SerializeField] private int _manaCoast;
-		[SerializeField] private List<Influence> _influences;
+		[SerializeField] private List<TargetedInfluence> _influences;
 
 		public string Title => _title;
 
@@ -26,6 +26,6 @@ namespace Confrontation
 
 		public int ManaCoast => _manaCoast;
 
-		public IEnumerable<Influence> Influences => _influences;
+		public IEnumerable<TargetedInfluence> Influences => _influences;
 	}
 }
