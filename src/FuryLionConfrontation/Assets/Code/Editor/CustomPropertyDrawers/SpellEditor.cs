@@ -9,9 +9,10 @@ namespace Confrontation.Editor
 	{
 		private SerializedProperty _titleProperty;
 		private SerializedProperty _descriptionProperty;
-		private SerializedProperty _durationProperty;
 		private SerializedProperty _iconProperty;
 		private SerializedProperty _spellTypeProperty;
+		private SerializedProperty _durationProperty;
+		private SerializedProperty _manaCoastProperty;
 
 		private SerializedObject SerializedObject => serializedObject;
 
@@ -26,6 +27,7 @@ namespace Confrontation.Editor
 			_durationProperty = SerializedObject.FindProperty(nameof(ISpell.Duration).AsField());
 			_iconProperty = SerializedObject.FindProperty(nameof(ISpell.Icon).AsField());
 			_spellTypeProperty = SerializedObject.FindProperty(nameof(ISpell.SpellType).AsField());
+			_manaCoastProperty = SerializedObject.FindProperty(nameof(ISpell.ManaCoast).AsField());
 		}
 
 		public override void OnInspectorGUI()
@@ -45,6 +47,7 @@ namespace Confrontation.Editor
 			EditorGUILayoutTools.Header("Balance");
 			DrawSpellTypeChoice();
 			DrawDuration();
+			DrawManaCoast();
 		}
 
 		private void DrawTitle() => EditorGUILayout.PropertyField(_titleProperty);
@@ -72,5 +75,6 @@ namespace Confrontation.Editor
 				EditorGUILayout.PropertyField(_durationProperty);
 			}
 		}
+		private void DrawManaCoast() => EditorGUILayout.PropertyField(_manaCoastProperty);
 	}
 }
