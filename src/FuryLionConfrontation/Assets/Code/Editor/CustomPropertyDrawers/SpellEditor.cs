@@ -66,7 +66,7 @@ namespace Confrontation.Editor
 			}
 		}
 
-		private void DrawSpellTypeChoice() => EditorGUILayoutTools.SelectionGrid(_spellTypeProperty);
+		private void DrawSpellTypeChoice() => EditorGUILayoutTools.SelectionGrid(_spellTypeProperty, columnsCount: 3);
 
 		private void DrawDuration()
 		{
