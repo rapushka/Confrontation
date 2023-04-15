@@ -19,3 +19,6 @@ MonoBehaviour:
   _spellType: 0
   _duration: 3
   _manaCoast: 5
+  _influences:
+  - _type: 0
+    <Coefficient>k__BackingField: 1.25

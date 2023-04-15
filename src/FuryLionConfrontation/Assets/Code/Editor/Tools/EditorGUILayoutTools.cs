@@ -45,6 +45,7 @@ namespace Confrontation.Editor
 			{
 				fontSize = 16,
 			};
+			GUILayout.Space(pixels: EditorGUIUtility.singleLineHeight);
 			GUILayout.Label(text, style, GUILayout.ExpandWidth(true));
 		}
 

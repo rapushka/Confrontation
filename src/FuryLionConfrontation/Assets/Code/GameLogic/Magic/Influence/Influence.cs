@@ -13,16 +13,14 @@ namespace Confrontation
 		public float Apply(float baseValue)
 			=> _type switch
 			{
-				Type.Modifier   => baseValue.IncreaseBy(Coefficient),
-				Type.Multiplier => baseValue * Coefficient,
-				Type.Additive   => baseValue + Coefficient,
-				var _           => throw new ArgumentOutOfRangeException(),
+				Type.Modifier => baseValue * Coefficient,
+				Type.Additive => baseValue + Coefficient,
+				var _         => throw new ArgumentOutOfRangeException(),
 			};
 
 		private enum Type
 		{
 			Modifier,
-			Multiplier,
 			Additive,
 		}
 	}

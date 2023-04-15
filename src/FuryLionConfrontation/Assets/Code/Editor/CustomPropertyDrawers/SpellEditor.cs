@@ -13,6 +13,7 @@ namespace Confrontation.Editor
 		private SerializedProperty _spellTypeProperty;
 		private SerializedProperty _durationProperty;
 		private SerializedProperty _manaCoastProperty;
+		private SerializedProperty _influencesProperty;
 
 		private SerializedObject SerializedObject => serializedObject;
 
@@ -28,6 +29,7 @@ namespace Confrontation.Editor
 			_iconProperty = SerializedObject.FindProperty(nameof(ISpell.Icon).AsField());
 			_spellTypeProperty = SerializedObject.FindProperty(nameof(ISpell.SpellType).AsField());
 			_manaCoastProperty = SerializedObject.FindProperty(nameof(ISpell.ManaCoast).AsField());
+			_influencesProperty = SerializedObject.FindProperty(nameof(ISpell.Influences).AsField());
 		}
 
 		public override void OnInspectorGUI()
@@ -48,6 +50,9 @@ namespace Confrontation.Editor
 			DrawSpellTypeChoice();
 			DrawDuration();
 			DrawManaCoast();
+
+			EditorGUILayoutTools.Header("Influences");
+			DrawInfluencesList();
 		}
 
 		private void DrawTitle() => EditorGUILayout.PropertyField(_titleProperty);
@@ -75,6 +80,9 @@ namespace Confrontation.Editor
 				EditorGUILayout.PropertyField(_durationProperty);
 			}
 		}
+
 		private void DrawManaCoast() => EditorGUILayout.PropertyField(_manaCoastProperty);
+
+		private void DrawInfluencesList() => EditorGUILayout.PropertyField(_influencesProperty);
 	}
 }
