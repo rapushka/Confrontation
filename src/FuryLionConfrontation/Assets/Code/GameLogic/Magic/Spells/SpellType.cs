@@ -4,6 +4,6 @@ namespace Confrontation
 	{
 		Temporary,
 		Permanent,
-		Singular,
+		Active,
 	}
 }
