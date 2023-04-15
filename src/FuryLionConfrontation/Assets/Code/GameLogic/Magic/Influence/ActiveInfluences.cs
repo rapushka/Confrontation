@@ -1,17 +1,30 @@
 using System.Collections.Generic;
 using System.Linq;
+using Zenject;
 
 namespace Confrontation
 {
-	public class ActiveInfluences
+	public class ActiveInfluences : ITickable
 	{
-		private readonly List<TargetedInfluence> _influences = new();
+		[Inject] private readonly ITimeService _time;
+
+		private readonly List<TimedInfluence> _influences = new();
+
+		public void Tick()
+		{
+			foreach (var timedInfluence in _influences)
+			{
+				timedInfluence.TimeToLife -= _time.DeltaTime;
+			}
+
+			_influences.RemoveIf((ti) => ti.TimeToLife <= 0);
+		}
 
 		public float Influence(float on, InfluenceTarget withTarget)
 			=> _influences
-			   .Where((i) => i.TargetForInfluence == withTarget)
-			   .Aggregate(on, (v, i) => i.Influence.Apply(v));
+			   .Where((ti) => ti.Target == withTarget)
+			   .Aggregate(on, (v, ti) => ti.Influence.Apply(v));
 
-		public void CastSpell(ISpell spell) => _influences.AddRange(spell.Influences);
+		public void CastSpell(ISpell spell) => _influences.AddRange(spell.AsTimedInfluences());
 	}
 }
