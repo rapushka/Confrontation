@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Confrontation.Influence;
 using UnityEngine;
 
 namespace Confrontation
@@ -11,6 +13,7 @@ namespace Confrontation
 		[SerializeField] private SpellType _spellType;
 		[SerializeField] private float _duration;
 		[SerializeField] private int _manaCoast;
+		[SerializeField] private List<InfluenceData> _influences;
 
 		public string Title => _title;
 
@@ -23,5 +26,7 @@ namespace Confrontation
 		public float Duration => _duration;
 
 		public int ManaCoast => _manaCoast;
+
+		public IEnumerable<InfluenceData> Influences => _influences;
 	}
 }
