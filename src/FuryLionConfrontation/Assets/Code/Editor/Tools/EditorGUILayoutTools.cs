@@ -31,5 +31,29 @@ namespace Confrontation.Editor
 			var selectedIndex = GUILayout.SelectionGrid(selectedValue, property.enumNames, columnsCount);
 			property.enumValueIndex = selectedIndex;
 		}
+
+		public static void TextArea(SerializedProperty property, string label, int minRowsCount = 1)
+		{
+			EditorGUILayout.LabelField(label);
+			var minHeight = CalculateRowsWithSpacingsFor(minRowsCount);
+			property.stringValue = EditorGUILayout.TextArea(property.stringValue, GUILayout.MinHeight(minHeight));
+		}
+
+		public static void Header(string text)
+		{
+			var style = new GUIStyle(EditorStyles.boldLabel)
+			{
+				fontSize = 16,
+			};
+			GUILayout.Label(text, style, GUILayout.ExpandWidth(true));
+		}
+
+		private static float CalculateRowsWithSpacingsFor(int rowsCount)
+			=> CalculateHeightFor(rowsCount) + CalculateSpacingsFor(rowsCount);
+
+		private static float CalculateHeightFor(int rowsCount) => EditorGUIUtility.singleLineHeight * rowsCount;
+
+		private static float CalculateSpacingsFor(int rowsCount)
+			=> EditorGUIUtility.standardVerticalSpacing * (rowsCount - 1);
 	}
 }

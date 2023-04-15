@@ -7,39 +7,56 @@ namespace Confrontation.Editor
 	[CustomEditor(typeof(SpellScriptableObject))]
 	public class SpellEditor : UnityEditor.Editor
 	{
+		private SerializedProperty _titleProperty;
+		private SerializedProperty _descriptionProperty;
 		private SerializedProperty _durationProperty;
-		private SerializedProperty _imageProperty;
+		private SerializedProperty _iconProperty;
 		private SerializedProperty _spellTypeProperty;
+
+		private SerializedObject SerializedObject => serializedObject;
 
 		private SpellType SpellType => (SpellType)_spellTypeProperty.enumValueIndex;
 
-		[CanBeNull] private Sprite Image => _imageProperty.objectReferenceValue as Sprite;
+		[CanBeNull] private Sprite Image => _iconProperty.objectReferenceValue as Sprite;
 
 		private void OnEnable()
 		{
-			_durationProperty = serializedObject.FindProperty(nameof(ISpell.Duration).AsField());
-			_imageProperty = serializedObject.FindProperty(nameof(ISpell.Icon).AsField());
-			_spellTypeProperty = serializedObject.FindProperty(nameof(ISpell.SpellType).AsField());
+			_titleProperty = SerializedObject.FindProperty(nameof(ISpell.Title).AsField());
+			_descriptionProperty = SerializedObject.FindProperty(nameof(ISpell.Description).AsField());
+			_durationProperty = SerializedObject.FindProperty(nameof(ISpell.Duration).AsField());
+			_iconProperty = SerializedObject.FindProperty(nameof(ISpell.Icon).AsField());
+			_spellTypeProperty = SerializedObject.FindProperty(nameof(ISpell.SpellType).AsField());
 		}
 
 		public override void OnInspectorGUI()
 		{
-			serializedObject.Update();
+			SerializedObject.Update();
 			DrawFields();
-			serializedObject.ApplyModifiedProperties();
+			SerializedObject.ApplyModifiedProperties();
 		}
 
 		private void DrawFields()
 		{
+			EditorGUILayoutTools.Header("Info");
+			DrawTitle();
+			DrawDescription();
 			DrawIconWithPreview();
+
+			EditorGUILayoutTools.Header("Balance");
 			DrawSpellTypeChoice();
 			DrawDuration();
 		}
 
+		private void DrawTitle() => EditorGUILayout.PropertyField(_titleProperty);
+
+		private void DrawDescription()
+			=> EditorGUILayoutTools.TextArea(_descriptionProperty, nameof(ISpell.Description), minRowsCount: 3);
+
 		private void DrawIconWithPreview()
 		{
-			EditorGUILayout.PropertyField(_imageProperty, new GUIContent(text: "Image:"));
+			EditorGUILayout.PropertyField(_iconProperty, new GUIContent(text: nameof(ISpell.Icon)));
 
+			// ReSharper disable once UseNullPropagation — is derived from Unity.Object
 			if (Image is not null)
 			{
 				Image.DrawPreview();

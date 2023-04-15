@@ -8,7 +8,7 @@ namespace Confrontation.Editor
 		{
 			EditorGUILayoutTools.AsHorizontalGroup
 			(
-				() => GUILayout.Label("Preview: ", GUILayout.MaxHeight(Constants.Editor.MaxIconPreviewHeight)),
+				() => GUILayout.Label("Preview", GUILayout.MaxHeight(Constants.Editor.MaxIconPreviewHeight)),
 				() => GUILayout.Label(@this.texture, GUILayout.MaxHeight(Constants.Editor.MaxIconPreviewHeight))
 			);
 		}
