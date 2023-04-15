@@ -7,8 +7,8 @@ namespace Confrontation
 		string    Title       { get; }
 		string    Description { get; }
 		Sprite    Icon        { get; }
-		int       ManaCoast   { get; }
 		SpellType SpellType   { get; }
 		float     Duration    { get; }
+		int       ManaCoast   { get; }
 	}
 }

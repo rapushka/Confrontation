@@ -8,22 +8,20 @@ namespace Confrontation
 		[SerializeField] private string _title;
 		[SerializeField] private string _description;
 		[SerializeField] private Sprite _icon;
-		[SerializeField] private bool _isPermanent;
+		[SerializeField] private SpellType _spellType;
 		[SerializeField] private float _duration;
 		[SerializeField] private int _manaCoast;
-		[SerializeField] private SpellType _spellType;
 
 		public string Title => _title;
 
 		public string Description => _description;
 
-		public Sprite Icon { get => _icon; set => _icon = value; }
+		public Sprite Icon => _icon;
 
-		public int       ManaCoast => _manaCoast;
 		public SpellType SpellType => _spellType;
 
-		public bool IsPermanent => _isPermanent;
-
 		public float Duration => _duration;
+
+		public int ManaCoast => _manaCoast;
 	}
 }
