@@ -11,6 +11,7 @@ namespace Confrontation
 		[SerializeField] private bool _isPermanent;
 		[SerializeField] private float _duration;
 		[SerializeField] private int _manaCoast;
+		[SerializeField] private SpellType _spellType;
 
 		public string Title => _title;
 
@@ -18,7 +19,8 @@ namespace Confrontation
 
 		public Sprite Icon { get => _icon; set => _icon = value; }
 
-		public int ManaCoast => _manaCoast;
+		public int       ManaCoast => _manaCoast;
+		public SpellType SpellType => _spellType;
 
 		public bool IsPermanent => _isPermanent;
 
