@@ -6,21 +6,22 @@ namespace Confrontation
 	public class SpellCaster
 	{
 		[Inject] private readonly User _user;
+		[Inject] private readonly ActiveInfluences _influences;
 
 		private Resource UserMana => _user.Player.Resources.Mana;
 
 		public void Cast(ISpell spell)
 		{
-			var isEnoughFor = UserMana.IsEnoughFor(spell.ManaCoast);
+			var isEnoughMana = UserMana.IsEnoughFor(spell.ManaCoast);
 
-			if (isEnoughFor == false)
+			if (isEnoughMana == false)
 			{
-				Debug.Log("Not enough mana!");
+				Debug.Log("TODO: Not enough mana window");
 				return;
 			}
-			
+
 			UserMana.Spend(spell.ManaCoast);
-			Debug.Log($"the {spell.Title} Spell was casted");
+			_influences.CastSpell(spell);
 		}
 	}
 }

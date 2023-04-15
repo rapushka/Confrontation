@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Zenject;
 using static Confrontation.InfluenceTarget;
 
@@ -6,7 +5,7 @@ namespace Confrontation
 {
 	public class InfluencedStatsTable : StatsTableDecoratorBase, IInitializable
 	{
-		[Inject] private readonly IEnumerable<TargetedInfluence> _influences;
+		[Inject] private readonly ActiveInfluences _influences;
 
 		private UnitStats _unitStats;
 
@@ -19,6 +18,6 @@ namespace Confrontation
 			.With((us) => us.BaseSpeed = InfluenceUnitSpeed(us));
 
 		private float InfluenceUnitSpeed(IUnitStats stats) 
-			=> _influences.WithTarget(UnitsSpeed).Influence(stats.BaseSpeed);
+			=> _influences.Influence(on: stats.BaseSpeed, withTarget: UnitsSpeed);
 	}
 }
