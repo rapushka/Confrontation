@@ -5,7 +5,7 @@ namespace Confrontation
 	public class Enemy : IActorWithCoolDown
 	{
 		[Inject] private readonly Our _our;
-		[Inject] private readonly IBalanceTable _balance;
+		[Inject] private readonly IStatsTable _stats;
 		[Inject] private readonly DecisionMaker _decisionMaker;
 
 		public float PassedDuration { get; set; }
@@ -22,7 +22,7 @@ namespace Confrontation
 		public void Loose() => MakeOurRegionsNeutral();
 
 		private void RandomizeCoolDownDuration()
-			=> CoolDownDuration = _balance.EnemiesStats.DurationRangeBetweenActions.RandomNumberInRange;
+			=> CoolDownDuration = _stats.EnemiesStats.DurationRangeBetweenActions.RandomNumberInRange;
 
 		private void MakeOurRegionsNeutral() => _our.Regions.ForEach((r) => r.MakeNeutral());
 

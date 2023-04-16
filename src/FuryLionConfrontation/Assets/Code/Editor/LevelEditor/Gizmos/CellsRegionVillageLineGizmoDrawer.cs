@@ -30,7 +30,7 @@ namespace Confrontation.Editor
 				return;
 			}
 
-			GizmoUtils.SetColorBy(cell.OwnerPlayerId);
+			GizmoTools.SetColorBy(cell.OwnerPlayerId);
 
 			var village = cell.CellWithVillage;
 			Gizmos.DrawLine(cell.transform.position + VerticalOffset, village.transform.position + VerticalOffset);

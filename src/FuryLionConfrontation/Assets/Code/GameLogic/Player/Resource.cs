@@ -9,7 +9,7 @@ namespace Confrontation
 
 		public int Count { get; private set; }
 
-		public bool IsEnoughGoldFor(int desiredCount) => Count >= desiredCount;
+		public bool IsEnoughFor(int desiredCount) => Count >= desiredCount;
 
 		public void Earn(int value)
 		{

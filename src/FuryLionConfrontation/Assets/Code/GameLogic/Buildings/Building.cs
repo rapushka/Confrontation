@@ -7,7 +7,7 @@ namespace Confrontation
 	public abstract partial class Building : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		[field: SerializeField] public Invisibility Invisibility { get; private set; }
 
@@ -37,7 +37,7 @@ namespace Confrontation
 			}
 		}
 
-		protected IBalanceTable BalanceTable => _balanceTable;
+		protected IStatsTable StatsTable => _statsTable;
 
 		protected IField Field => _field;
 

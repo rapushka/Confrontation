@@ -77,10 +77,4 @@ MonoBehaviour:
   _loadingCurtainPrefab: {fileID: -4147878831010672411, guid: 3a3d6ac60cde7b7c9b3a13587e5eeaac, type: 3}
   _user: {fileID: 11400000, guid: 18abc074787e98d10b73cc0c1ecbac46, type: 2}
   _resources: {fileID: 11400000, guid: 3ff89a2d7a641949b92024b89ae72519, type: 2}
-  _canvasPrefab: {fileID: 2594996161190989429, guid: 1d203464e11898394b83551d6701c32a, type: 3}
-  _windows:
-  - {fileID: 4738565569929036377, guid: 344cbf5c20d0230b68b5a84891ce6a73, type: 3}
-  - {fileID: 5169984881314214046, guid: ac61388cb5e75a172920a37b4b008b89, type: 3}
-  - {fileID: 2656922569792050141, guid: 5111e6d12ba5df3d9bce8f5a6c563a61, type: 3}
-  - {fileID: 8371498935402843053, guid: 6fdc21bead53d7f589de98ca485ea8fa, type: 3}
-  _balanceTable: {fileID: 11400000, guid: e94b46947bfdc9cd5891af5cb92609cf, type: 2}
+  _statsTable: {fileID: 11400000, guid: e94b46947bfdc9cd5891af5cb92609cf, type: 2}
