@@ -61,7 +61,7 @@ namespace Confrontation
 			Container.BindPrefabFactory<SpellBookWindow, SpellBookWindow.Factory>();
 
 			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
-			         .FromFactory<GameplayGameplayWindowsFactory>();
+			         .FromFactory<GameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);

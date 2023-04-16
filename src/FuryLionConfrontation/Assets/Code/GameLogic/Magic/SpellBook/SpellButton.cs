@@ -23,8 +23,14 @@ namespace Confrontation
 
 		protected override void HandleClick()
 		{
-			_spellCaster.Cast(_spell);
-			_uiMediator.CloseCurrentWindow();
+			if (_spellCaster.TryCast(_spell))
+			{
+				_uiMediator.CloseCurrentWindow();
+			}
+			else
+			{
+				_uiMediator.OpenWindow<NotEnoughManaWindow>();
+			}
 		}
 
 		protected override void HandleHold() => _toolTip.Show(withText: _spell.Description, on: transform.position);

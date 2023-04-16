@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -10,18 +9,18 @@ namespace Confrontation
 
 		private Resource UserMana => _user.Player.Resources.Mana;
 
-		public void Cast(ISpell spell)
+		public bool TryCast(ISpell spell)
 		{
-			var isEnoughMana = UserMana.IsEnoughFor(spell.ManaCoast);
-
-			if (isEnoughMana == false)
+			if (IsEnoughManaFor(spell) == false)
 			{
-				Debug.Log("TODO: Not enough mana window");
-				return;
+				return false;
 			}
 
 			UserMana.Spend(spell.ManaCoast);
 			_influences.CastSpell(spell);
+			return true;
 		}
+
+		private bool IsEnoughManaFor(ISpell spell) => UserMana.IsEnoughFor(spell.ManaCoast);
 	}
 }
