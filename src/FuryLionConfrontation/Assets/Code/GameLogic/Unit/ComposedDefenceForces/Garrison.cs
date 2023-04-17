@@ -63,7 +63,7 @@ namespace Confrontation
 			transform.position = cell.Coordinates.ToAboveCellPosition();
 			Coordinates = cell.Coordinates;
 			QuantityOfUnits = quantityOfUnits;
-			Stats = new UnitStatsDecorator(baseStats, OwnerPlayerId, Field, this);
+			Stats = new BuildingInfluenceDecorator(baseStats, OwnerPlayerId, Field, this);
 			Health = new SquadHealth(this);
 		}
 

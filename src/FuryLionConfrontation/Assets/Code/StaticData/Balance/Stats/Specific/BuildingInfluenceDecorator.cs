@@ -2,14 +2,14 @@ using System;
 
 namespace Confrontation
 {
-	public class UnitStatsDecorator : IUnitStats
+	public class BuildingInfluenceDecorator : IUnitStats
 	{
 		private readonly IUnitStats _decoratee;
 		private readonly int _ownerPlayer;
 		private readonly IField _field;
 		private readonly Garrison _garrison;
 
-		public UnitStatsDecorator(IUnitStats decoratee, int ownerPlayer, IField field, Garrison garrison)
+		public BuildingInfluenceDecorator(IUnitStats decoratee, int ownerPlayer, IField field, Garrison garrison)
 		{
 			_decoratee = decoratee;
 			_ownerPlayer = ownerPlayer;
