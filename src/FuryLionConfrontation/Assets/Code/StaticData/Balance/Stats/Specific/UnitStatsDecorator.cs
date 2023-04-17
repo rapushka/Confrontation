@@ -1,5 +1,4 @@
 using System;
-using JetBrains.Annotations;
 
 namespace Confrontation
 {
@@ -8,18 +7,14 @@ namespace Confrontation
 		private readonly IUnitStats _decoratee;
 		private readonly int _ownerPlayer;
 		private readonly IField _field;
+		private readonly Garrison _garrison;
 
-		[CanBeNull] private readonly UnitsSquad _unit;
-
-		public UnitStatsDecorator(IUnitStats decoratee, int ownerPlayer, IField field, UnitsSquad unit)
-			: this(decoratee, ownerPlayer, field)
-			=> _unit = unit;
-
-		public UnitStatsDecorator(IUnitStats decoratee, int ownerPlayer, IField field)
+		public UnitStatsDecorator(IUnitStats decoratee, int ownerPlayer, IField field, Garrison garrison)
 		{
 			_decoratee = decoratee;
 			_ownerPlayer = ownerPlayer;
 			_field = field;
+			_garrison = garrison;
 		}
 
 		public float AttackModifier => _decoratee.AttackModifier;
@@ -42,13 +37,7 @@ namespace Confrontation
 			get
 			{
 				var modified = Influence<Quarry>(_decoratee.DefenseModifier, AddDefenseModifier);
-
-				if (_unit == true
-				    && _unit!.LocationCell.Building is Fort fort)
-				{
-					modified += fort.CurrentLevelStats.AdditionalDefenceModifier;
-				}
-
+				modified = InfluenceFort(modified);
 				return modified;
 			}
 		}
@@ -65,5 +54,10 @@ namespace Confrontation
 		private float Influence<TBuilding>(float baseValue, Func<float, TBuilding, float> influence)
 			where TBuilding : Building
 			=> _field.Buildings.InfluenceFloat(baseValue, _ownerPlayer, influence);
+
+		private float InfluenceFort(float modified)
+			=> _garrison is UnitsSquad squad && squad.LocationCell.Building is Fort fort
+				? modified * fort.CurrentLevelStats.AdditionalDefenceModifier
+				: modified;
 	}
 }
