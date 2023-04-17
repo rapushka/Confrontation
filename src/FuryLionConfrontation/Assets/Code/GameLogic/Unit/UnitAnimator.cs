@@ -1,10 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class UnitAnimator : MonoBehaviour
 	{
-		[SerializeField] private Animator _animator;
+		[Inject] private Animator _animator;
 
 		private static readonly int _isMoving = Animator.StringToHash("IsMoving");
 

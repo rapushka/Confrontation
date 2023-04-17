@@ -7,11 +7,9 @@ namespace Confrontation
 	public class Garrison : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
+		[Inject] private TextMeshPro _quantityOfUnitsInSquadView;
 
-		[SerializeField] protected UnitAnimator _animator;
-		[SerializeField] private TextMeshPro _quantityOfUnitsInSquadView;
-		[SerializeField] private Coordinates _cellCoordinates;
-
+		private Coordinates _cellCoordinates;
 		private int _quantityOfUnits;
 
 		public SquadHealth Health { get; private set; }
@@ -19,7 +17,7 @@ namespace Confrontation
 		public IUnitStats Stats { get; private set; }
 
 		public float HealthPoints => Health.HealthPoints;
-		
+
 		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
 
 		public float BaseArmor => BaseStrength * Stats.BaseArmourMultiplier;
@@ -58,10 +56,10 @@ namespace Confrontation
 
 		public void Kill() => QuantityOfUnits = 0;
 
-		protected void Initialize(ICoordinated cell, int quantityOfUnits, IUnitStats baseStats)
+		protected void Initialize(Coordinates coordinates, int quantityOfUnits, IUnitStats baseStats)
 		{
-			transform.position = cell.Coordinates.ToAboveCellPosition();
-			Coordinates = cell.Coordinates;
+			transform.position = coordinates.ToAboveCellPosition();
+			Coordinates = coordinates;
 			QuantityOfUnits = quantityOfUnits;
 			Stats = new BuildingInfluenceDecorator(baseStats, OwnerPlayerId, Field, this);
 			Health = new SquadHealth(this);
@@ -76,7 +74,7 @@ namespace Confrontation
 			{
 				var garrison = base.Create();
 				_assets.ToGroup(garrison.transform);
-				garrison.Initialize(cell, quantityOfUnits, _stats.UnitStats);
+				garrison.Initialize(cell.Coordinates, quantityOfUnits, _stats.UnitStats);
 
 				return garrison;
 			}

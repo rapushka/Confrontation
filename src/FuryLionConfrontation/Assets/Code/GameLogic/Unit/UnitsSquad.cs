@@ -1,12 +1,12 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
 	public class UnitsSquad : Garrison
 	{
-		[SerializeField] private UnitMovement _unitMovement;
-		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
+		[Inject] private UnitAnimator _animator;
+		[Inject] private UnitMovement _unitMovement;
+		[Inject] private UnitOrderPerformer _unitOrderPerformer;
 
 		private Coordinates _coordinates;
 
@@ -60,7 +60,7 @@ namespace Confrontation
 				var squad = base.Create();
 				_assets.ToGroup(squad.transform);
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
-				squad.Initialize(cell, quantityOfUnits, _stats.UnitStats);
+				squad.Initialize(cell.Coordinates, quantityOfUnits, _stats.UnitStats);
 
 				return squad;
 			}
