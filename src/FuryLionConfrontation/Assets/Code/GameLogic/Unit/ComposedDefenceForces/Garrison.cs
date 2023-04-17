@@ -14,9 +14,9 @@ namespace Confrontation
 
 		private int _quantityOfUnits;
 
-		public SquadHealth Health { get; protected set; }
+		public SquadHealth Health { get; private set; }
 
-		public IUnitStats Stats { get; protected set; }
+		public IUnitStats Stats { get; private set; }
 
 		public float HealthPoints => Health.HealthPoints;
 		
@@ -58,6 +58,15 @@ namespace Confrontation
 
 		public void Kill() => QuantityOfUnits = 0;
 
+		protected void Initialize(ICoordinated cell, int quantityOfUnits, IUnitStats baseStats)
+		{
+			transform.position = cell.Coordinates.ToAboveCellPosition();
+			Coordinates = cell.Coordinates;
+			QuantityOfUnits = quantityOfUnits;
+			Stats = new UnitStatsDecorator(baseStats, OwnerPlayerId, Field);
+			Health = new SquadHealth(this);
+		}
+
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			[Inject] private readonly IAssetsService _assets;
@@ -67,12 +76,7 @@ namespace Confrontation
 			{
 				var garrison = base.Create();
 				_assets.ToGroup(garrison.transform);
-
-				garrison.transform.position = cell.Coordinates.ToAboveCellPosition();
-				garrison.Coordinates = cell.Coordinates;
-				garrison.QuantityOfUnits = quantityOfUnits;
-				garrison.Stats = new UnitStatsDecorator(_stats.UnitStats, garrison.OwnerPlayerId, garrison.Field);
-				garrison.Health = new SquadHealth(garrison);
+				garrison.Initialize(cell, quantityOfUnits, _stats.UnitStats);
 
 				return garrison;
 			}

@@ -59,13 +59,8 @@ namespace Confrontation
 			{
 				var squad = base.Create();
 				_assets.ToGroup(squad.transform);
-
-				squad.transform.position = cell.Coordinates.ToAboveCellPosition();
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
-				squad.Coordinates = cell.Coordinates;
-				squad.QuantityOfUnits = quantityOfUnits;
-				squad.Stats = new UnitStatsDecorator(_stats.UnitStats, squad.OwnerPlayerId, squad.Field);
-				squad.Health = new SquadHealth(squad);
+				squad.Initialize(cell, quantityOfUnits, _stats.UnitStats);
 
 				return squad;
 			}
