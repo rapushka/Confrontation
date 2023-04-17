@@ -10,9 +10,8 @@ namespace Confrontation
 	{
 		[Inject] private readonly ITimeService _timeService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
-
-		[SerializeField] private Transform _transform;
-		[SerializeField] private UnitsSquad _squad;
+		[Inject] private Transform _transform;
+		[Inject] private UnitsSquad _squad;
 
 		private Cell _targetCell;
 

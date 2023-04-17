@@ -8,8 +8,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 		[Inject] private readonly IAssetsService _assets;
-
-		[SerializeField] public UnitsSquad _unitsSquad;
+		[Inject] private readonly UnitsSquad _unitsSquad;
 
 		private UnitFighter _unitFighter;
 		[CanBeNull] private Cell _targetCell;

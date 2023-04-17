@@ -2945,8 +2945,11 @@ MonoBehaviour:
   _quantityOfUnitsInSquadView: {fileID: 8081343193472317081}
   _unitAnimator: {fileID: 2547840534391355026}
   _animator: {fileID: 1038364744713609069}
+  _unitsSquad: {fileID: -6484238923440550980}
   _unitMovement: {fileID: 5121076135913835788}
   _unitOrderPerformer: {fileID: 1518563021216549159}
+  _transform: {fileID: 1095865730288279693}
+  _squad: {fileID: -6484238923440550980}
 --- !u!114 &-6484238923440550980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2983,8 +2986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f4f993a0654cb8a368a9371dd124c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 1095865730288279693}
-  _squad: {fileID: -6484238923440550980}
 --- !u!114 &1518563021216549159
 MonoBehaviour:
   m_ObjectHideFlags: 0
