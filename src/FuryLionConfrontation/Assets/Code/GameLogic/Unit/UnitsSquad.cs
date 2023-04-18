@@ -60,7 +60,7 @@ namespace Confrontation
 				var squad = base.Create();
 				_assets.ToGroup(squad.transform);
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
-				squad.Initialize(cell.Coordinates, quantityOfUnits, _stats.UnitStats);
+				squad.Initialize(cell.Coordinates, quantityOfUnits);
 
 				return squad;
 			}

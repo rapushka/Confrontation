@@ -7,16 +7,18 @@ namespace Confrontation
 	public class Garrison : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
-		[Inject] private TextMeshPro _quantityOfUnitsInSquadView;
+		[Inject] private readonly TextMeshPro _quantityOfUnitsInSquadView;
+		[Inject] private readonly SquadHealth _health;
+		[Inject] private readonly IUnitStats _stats;
 
 		private Coordinates _cellCoordinates;
 		private int _quantityOfUnits;
 
-		public SquadHealth Health { get; private set; }
+		public IUnitStats Stats => _stats;
 
-		public IUnitStats Stats { get; private set; }
+		public SquadHealth Health => _health;
 
-		public float HealthPoints => Health.HealthPoints;
+		public float HealthPoints => _health.HealthPoints;
 
 		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);
 
@@ -52,29 +54,24 @@ namespace Confrontation
 
 		private float BaseStrength => Stats.BaseStrength * QuantityOfUnits;
 
-		private int OwnerPlayerId => _field.Regions[Coordinates].OwnerPlayerId;
-
 		public void Kill() => QuantityOfUnits = 0;
 
-		protected void Initialize(Coordinates coordinates, int quantityOfUnits, IUnitStats baseStats)
+		protected void Initialize(Coordinates coordinates, int quantityOfUnits)
 		{
 			transform.position = coordinates.ToAboveCellPosition();
 			Coordinates = coordinates;
 			QuantityOfUnits = quantityOfUnits;
-			Stats = new BuildingInfluenceDecorator(baseStats, OwnerPlayerId, Field, this);
-			Health = new SquadHealth(this);
 		}
 
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			[Inject] private readonly IAssetsService _assets;
-			[Inject] private readonly IStatsTable _stats;
 
 			public Garrison Create(Cell cell, int quantityOfUnits = 0)
 			{
 				var garrison = base.Create();
 				_assets.ToGroup(garrison.transform);
-				garrison.Initialize(cell.Coordinates, quantityOfUnits, _stats.UnitStats);
+				garrison.Initialize(cell.Coordinates, quantityOfUnits);
 
 				return garrison;
 			}
