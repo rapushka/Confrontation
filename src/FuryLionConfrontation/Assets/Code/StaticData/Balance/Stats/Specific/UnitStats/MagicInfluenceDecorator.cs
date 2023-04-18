@@ -3,12 +3,10 @@ namespace Confrontation
 	public class MagicInfluenceDecorator : IUnitStats
 	{
 		private readonly IUnitStats _decoratee;
-		private Garrison _garrison;
 
-		public MagicInfluenceDecorator(IUnitStats decoratee, Garrison garrison)
+		public MagicInfluenceDecorator(IUnitStats decoratee)
 		{
 			_decoratee = decoratee;
-			_garrison = garrison;
 		}
 
 		public float BaseSpeed => _decoratee.BaseSpeed;
