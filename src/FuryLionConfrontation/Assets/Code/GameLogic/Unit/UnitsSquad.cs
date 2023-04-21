@@ -14,7 +14,7 @@ namespace Confrontation
 
 		private void OnDisable() => _unitMovement.TargetReached -= OnTargetCellReached;
 
-		public int OwnerPlayerId { get; set; }
+		public override int OwnerPlayerId { get; set; }
 
 		public Cell LocationCell => Field.Cells[Coordinates];
 
@@ -53,14 +53,13 @@ namespace Confrontation
 		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			[Inject] private readonly IAssetsService _assets;
-			[Inject] private readonly IStatsTable _stats;
 
 			public UnitsSquad Create(Cell cell, int quantityOfUnits = 0)
 			{
 				var squad = base.Create();
 				_assets.ToGroup(squad.transform);
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
-				squad.Initialize(cell.Coordinates, quantityOfUnits);
+				squad.SetUp(cell.Coordinates, quantityOfUnits);
 
 				return squad;
 			}

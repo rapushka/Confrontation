@@ -18,7 +18,11 @@ namespace Confrontation
 
 		public SquadHealth Health => _health;
 
-		public int OwnerPlayerId => _field.Cells[Coordinates].OwnerPlayerId;
+		public virtual int OwnerPlayerId
+		{
+			get => _field.Cells[Coordinates].OwnerPlayerId;
+			set => _field.Cells[Coordinates].OwnerPlayerId = value;
+		}
 
 		public float HealthPoints => _health.HealthPoints;
 
@@ -58,7 +62,7 @@ namespace Confrontation
 
 		public void Kill() => QuantityOfUnits = 0;
 
-		protected void Initialize(Coordinates coordinates, int quantityOfUnits)
+		protected void SetUp(Coordinates coordinates, int quantityOfUnits)
 		{
 			transform.position = coordinates.ToAboveCellPosition();
 			Coordinates = coordinates;
@@ -73,7 +77,7 @@ namespace Confrontation
 			{
 				var garrison = base.Create();
 				_assets.ToGroup(garrison.transform);
-				garrison.Initialize(cell.Coordinates, quantityOfUnits);
+				garrison.SetUp(cell.Coordinates, quantityOfUnits);
 
 				return garrison;
 			}
