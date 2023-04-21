@@ -7,6 +7,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly UnitsSquad _attackers;
+		[Inject] private readonly DefenceStrategyFactory _defenceStrategyFactory;
 
 		[CanBeNull] private Garrison _garrison;
 		private Cell _cell;
@@ -76,7 +77,7 @@ namespace Confrontation
 			Draw();
 		}
 
-		private IDefenceStrategy PickDefenceStrategy(Cell cell) => DefenceStrategyBase.Create(_assets, cell);
+		private IDefenceStrategy PickDefenceStrategy(Cell cell) => _defenceStrategyFactory.Create(cell);
 
 		private void AttackersWin()
 		{

@@ -25,15 +25,27 @@ namespace Confrontation
 			Container.Bind<UnitFighter>().AsSingle();
 
 			BindStatsDecorators();
+
+			BindFactories();
 		}
 
 		private void BindStatsDecorators()
 		{
 			Container.BindSelf<UnitStats>().FromInstance(_stats.UnitStats).AsSingle();
 			Container.BindSelf<BuildingInfluenceDecorator>().AsSingle();
-			
+
 			Container.DecorateFromResolve<IUnitStats, UnitStats, BuildingInfluenceDecorator>();
 			Container.Bind<IUnitStats>().To<BuildingInfluenceDecorator>().FromResolve();
+		}
+
+		private void BindFactories()
+		{
+			Container.BindFactory<Cell, IDefenceStrategy, DefenceStrategyFactory>()
+			         .FromFactory<DefenceStrategyForCellFactory>();
+
+			Container.BindFactory<Garrison, SingleForceDefenceStrategy, SingleForceDefenceStrategy.Factory>();
+			Container.BindFactory<UnitsSquad, Garrison, Cell, BothForcesDefenceStrategy,
+				BothForcesDefenceStrategy.Factory>();
 		}
 	}
 }

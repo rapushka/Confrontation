@@ -49,5 +49,10 @@ namespace Confrontation
 		{
 			public const int MaxIconPreviewHeight = 50;
 		}
+
+		public static class Exception
+		{
+			public const string ThereIsNoDefenders = "Defence strategy can't be picked for cell without defence forces";
+		}
 	}
 }
