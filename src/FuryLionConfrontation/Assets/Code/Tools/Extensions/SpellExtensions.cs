@@ -12,7 +12,7 @@ namespace Confrontation
 				{
 					Influence = influence.Influence,
 					Target = influence.Target,
-					TimeToLife = @this.SpellType is SpellType.Active ? 0f : @this.Duration,
+					TimeToLife = @this.SpellType is SpellType.Active ? 0 : @this.Duration,
 					IsPermanent = @this.SpellType is SpellType.Permanent,
 				}
 			);

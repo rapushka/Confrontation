@@ -1,3 +1,5 @@
+using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -16,9 +18,9 @@ namespace Confrontation
 		{
 			get
 			{
-				var speed = _decoratee.BaseSpeed;
+				var baseSpeed = _decoratee.BaseSpeed;
+				var speed = baseSpeed;
 
-				CheckForCastedSpell();
 				speed = Influence(speed);
 
 				return speed;
@@ -37,14 +39,15 @@ namespace Confrontation
 		{
 			if (_isSlowed == false
 			    && _squad.IsMoving
-			    && _influences.WithTarget(InfluenceTarget.MovingUnitsSpeed).AnyNegativeInfluence())
+			    && _influences.WithTarget(InfluenceTarget.MovingUnitsSpeed).Any())
 			{
+				Debug.Log("slowed");
 				_isSlowed = true;
 			}
 		}
 
 		private float Influence(float speed)
-			=> _isSlowed ? _influences.Influence(speed, InfluenceTarget.MovingUnitsSpeed) : speed;
+			=> _influences.Influence(speed, InfluenceTarget.MovingUnitsSpeed);
 
 		private void Reset() => _isSlowed = false;
 	}

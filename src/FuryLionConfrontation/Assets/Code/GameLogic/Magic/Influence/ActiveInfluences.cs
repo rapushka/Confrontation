@@ -4,13 +4,13 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class ActiveInfluences : ITickable
+	public class ActiveInfluences : ILateTickable
 	{
 		[Inject] private readonly ITimeService _time;
 
 		private readonly List<TimedInfluence> _influences = new();
 
-		public void Tick()
+		public void LateTick()
 		{
 			foreach (var timedInfluence in _influences)
 			{

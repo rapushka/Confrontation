@@ -16,6 +16,8 @@ namespace Confrontation
 		public static float IncreaseBy(this int @this, float percent)
 			=> @this * (1 + percent);
 
+		public static bool IsBetweenExclude(this float @this, float min, float max) => min < @this && @this > max;
+
 		public static float Clamp(this float @this, float min = float.NaN, float max = float.NaN)
 		{
 			if (float.IsNaN(min) == false)

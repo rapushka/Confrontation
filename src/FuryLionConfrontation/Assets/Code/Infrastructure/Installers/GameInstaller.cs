@@ -28,7 +28,7 @@ namespace Confrontation
 			Container.Bind<ToMainMenu>().AsSingle();
 			Container.Bind<ToGameplay>().AsSingle();
 			Container.Bind<ToLevelEditor>().AsSingle();
-			Container.Bind<ActiveInfluences>().AsSingle();
+			Container.BindInterfacesAndSelfTo<ActiveInfluences>().AsSingle();
 
 			StartGame();
 		}
