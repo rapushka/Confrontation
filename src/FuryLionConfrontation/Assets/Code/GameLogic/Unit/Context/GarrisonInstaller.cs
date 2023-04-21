@@ -29,13 +29,13 @@ namespace Confrontation
 		{
 			Container.BindSelf<UnitStats>().FromInstance(_stats.UnitStats).AsSingle();
 			Container.BindSelf<BuildingsInfluenceDecorator>().AsSingle();
-			Container.BindSelf<BlizzardInfluenceDecorator>().AsSingle();
 
 			Container.DecorateFromResolve<IUnitStats, UnitStats, BuildingsInfluenceDecorator>();
-			Container.DecorateFromResolve<IUnitStats, BuildingsInfluenceDecorator, BlizzardInfluenceDecorator>();
-			Container.Bind<IUnitStats>().To<BlizzardInfluenceDecorator>().FromResolve();
 
-			Container.Bind<ILateTickable>().To<BlizzardInfluenceDecorator>().FromResolve();
+			if (_garrison is not UnitsSquad)
+			{
+				Container.Bind<IUnitStats>().To<BuildingsInfluenceDecorator>().FromResolve();
+			}
 		}
 	}
 }

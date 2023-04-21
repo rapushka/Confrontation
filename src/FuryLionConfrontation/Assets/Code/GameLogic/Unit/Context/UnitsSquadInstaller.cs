@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
@@ -21,6 +22,8 @@ namespace Confrontation
 			Container.Bind<UnitFighter>().AsSingle();
 
 			BindFactories();
+			
+			BindStatsDecorators();
 		}
 
 		private void BindFactories()
@@ -31,7 +34,16 @@ namespace Confrontation
 			Container.BindFactory<Garrison, SingleForceDefenceStrategy, SingleForceDefenceStrategy.Factory>();
 			Container.BindFactory<UnitsSquad, Garrison, Cell, BothForcesDefenceStrategy, 
 				BothForcesDefenceStrategy.Factory>();
-			
+		}
+
+		private void BindStatsDecorators()
+		{
+			Container.BindSelf<BlizzardInfluenceDecorator>().AsSingle();
+
+			Container.DecorateFromResolve<IUnitStats, BuildingsInfluenceDecorator, BlizzardInfluenceDecorator>();
+			Container.Bind<IUnitStats>().To<BlizzardInfluenceDecorator>().FromResolve();
+
+			Container.Bind<ILateTickable>().To<BlizzardInfluenceDecorator>().FromResolve();
 		}
 	}
 }
