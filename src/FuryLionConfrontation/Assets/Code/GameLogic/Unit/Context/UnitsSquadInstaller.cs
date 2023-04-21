@@ -12,11 +12,26 @@ namespace Confrontation
 		public override void InstallBindings()
 		{
 			base.InstallBindings();
-			
+
 			Container.BindInstance(_unitsSquad).AsSingle();
 			Container.BindInstance(_unitMovement).AsSingle();
 			Container.BindInstance(_unitOrderPerformer).AsSingle();
 			Container.BindInstance(_transform).AsSingle();
+
+			Container.Bind<UnitFighter>().AsSingle();
+
+			BindFactories();
+		}
+
+		private void BindFactories()
+		{
+			Container.BindFactory<Cell, IDefenceStrategy, DefenceStrategyFactory>()
+			         .FromFactory<DefenceStrategyForCellFactory>();
+
+			Container.BindFactory<Garrison, SingleForceDefenceStrategy, SingleForceDefenceStrategy.Factory>();
+			Container.BindFactory<UnitsSquad, Garrison, Cell, BothForcesDefenceStrategy, 
+				BothForcesDefenceStrategy.Factory>();
+			
 		}
 	}
 }
