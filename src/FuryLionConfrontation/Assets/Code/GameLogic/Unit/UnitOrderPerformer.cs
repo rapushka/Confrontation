@@ -9,11 +9,9 @@ namespace Confrontation
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly UnitsSquad _unitsSquad;
+		[Inject] private readonly UnitFighter _unitFighter;
 
-		private UnitFighter _unitFighter;
 		[CanBeNull] private Cell _targetCell;
-
-		private void OnEnable() => _unitFighter = new UnitFighter(_unitsSquad, _assets);
 
 		public void LocateInTargetCell()
 		{

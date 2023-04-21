@@ -1,39 +1,32 @@
 using JetBrains.Annotations;
+using Zenject;
 
 namespace Confrontation
 {
 	public class UnitFighter
 	{
-		private readonly IAssetsService _assets;
+		[Inject] private readonly IAssetsService _assets;
+		[Inject] private readonly UnitsSquad _attackers;
 
 		[CanBeNull] private Garrison _garrison;
 		private Cell _cell;
 		private (float Attackers, float Defenders) _cachedSidesHealth;
+		private IDefenceStrategy _defenders;
 
-		public UnitFighter(UnitsSquad squad, IAssetsService assets)
-		{
-			Attackers = squad;
-			_assets = assets;
-		}
+		private bool IsDefendersAlive => _defenders.QuantityOfUnits > 0;
 
-		private UnitsSquad Attackers { get; }
-
-		private IDefenceStrategy Defenders { get; set; }
-
-		private bool IsDefendersAlive => Defenders.QuantityOfUnits > 0;
-
-		private bool IsAttackersAlive => Attackers.QuantityOfUnits > 0;
+		private bool IsAttackersAlive => _attackers.QuantityOfUnits > 0;
 
 		public void CaptureRegion(Cell cell)
 		{
-			Attackers.Coordinates = cell.Coordinates;
-			cell.RelatedRegion!.OwnerPlayerId = Attackers.OwnerPlayerId;
+			_attackers.Coordinates = cell.Coordinates;
+			cell.RelatedRegion!.OwnerPlayerId = _attackers.OwnerPlayerId;
 		}
 
 		public void FightWithSquadOn(Cell cell)
 		{
 			_cell = cell;
-			Defenders = PickDefenceStrategy(_cell);
+			_defenders = PickDefenceStrategy(_cell);
 
 			FightToDeath();
 			DetermineWinner();
@@ -43,27 +36,27 @@ namespace Confrontation
 		{
 			while (IsAttackersAlive && IsDefendersAlive)
 			{
-				if (Attackers.HealthPoints.IsEqualFloats(_cachedSidesHealth.Attackers)
-				    && Defenders.HealthPoints.IsEqualFloats(_cachedSidesHealth.Defenders))
+				if (_attackers.HealthPoints.IsEqualFloats(_cachedSidesHealth.Attackers)
+				    && _defenders.HealthPoints.IsEqualFloats(_cachedSidesHealth.Defenders))
 				{
 					KillBoth();
 					break;
 				}
 
-				_cachedSidesHealth = (Attackers.HealthPoints, Defenders.HealthPoints);
+				_cachedSidesHealth = (_attackers.HealthPoints, _defenders.HealthPoints);
 
-				var defendersDamage = Defenders.BaseDamage;
-				var attackersDamage = Attackers.AttackDamage;
+				var defendersDamage = _defenders.BaseDamage;
+				var attackersDamage = _attackers.AttackDamage;
 
-				Attackers.Health.TakeDamage(defendersDamage);
-				Defenders.TakeDamageOnDefence(attackersDamage, Attackers.DefencePierceRate);
+				_attackers.Health.TakeDamage(defendersDamage);
+				_defenders.TakeDamageOnDefence(attackersDamage, _attackers.DefencePierceRate);
 			}
 		}
 
 		private void KillBoth()
 		{
-			Defenders.Kill();
-			Attackers.Kill();
+			_defenders.Kill();
+			_attackers.Kill();
 		}
 
 		private void DetermineWinner()
@@ -87,7 +80,7 @@ namespace Confrontation
 
 		private void AttackersWin()
 		{
-			Defenders.Destroy();
+			_defenders.Destroy();
 
 			CaptureRegion(_cell);
 		}
@@ -96,12 +89,12 @@ namespace Confrontation
 
 		private void Draw()
 		{
-			Defenders.Destroy();
+			_defenders.Destroy();
 			DestroyAttackers();
 
 			_cell.MakeRegionNeutral();
 		}
 
-		private void DestroyAttackers() => _assets.Destroy(Attackers.gameObject);
+		private void DestroyAttackers() => _assets.Destroy(_attackers.gameObject);
 	}
 }

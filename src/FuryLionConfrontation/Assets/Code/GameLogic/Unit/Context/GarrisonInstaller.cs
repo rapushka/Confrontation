@@ -22,6 +22,8 @@ namespace Confrontation
 
 			Container.BindInterfacesAndSelfTo<SquadHealth>().AsSingle();
 
+			Container.Bind<UnitFighter>().AsSingle();
+
 			BindStatsDecorators();
 		}
 
