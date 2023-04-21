@@ -26,5 +26,8 @@ namespace Confrontation
 			   .Aggregate(on, (v, ti) => ti.Influence.Apply(v));
 
 		public void CastSpell(ISpell spell) => _influences.AddRange(spell.AsTimedInfluences());
+
+		public IEnumerable<TimedInfluence> WithTarget(InfluenceTarget target)
+			=> _influences.Where((ti) => ti.Target == target);
 	}
 }

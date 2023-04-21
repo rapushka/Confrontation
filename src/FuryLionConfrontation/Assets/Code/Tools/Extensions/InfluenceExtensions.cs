@@ -17,5 +17,8 @@ namespace Confrontation
 			=> ownerId != Constants.NeutralRegion
 				? @this.OfType<TBuilding>().Where((f) => f.OwnerPlayerId == ownerId).Aggregate(baseValue, influence)
 				: baseValue;
+
+		public static bool AnyNegativeInfluence(this IEnumerable<TimedInfluence> @this) 
+			=> @this.Any((ti) => ti.Influence.Coefficient < 0);
 	}
 }

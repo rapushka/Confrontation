@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class BuildingInfluenceDecorator : IUnitStats
+	public class BuildingsInfluenceDecorator : IUnitStats
 	{
 		[Inject] private readonly IUnitStats _decoratee;
 		[Inject] private readonly IField _field;

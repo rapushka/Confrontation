@@ -18,6 +18,8 @@ namespace Confrontation
 
 		public Cell LocationCell => Field.Cells[Coordinates];
 
+		public bool IsMoving => _animator.IsMoving;
+
 		public override Coordinates Coordinates
 		{
 			get => _coordinates;

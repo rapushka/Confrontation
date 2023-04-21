@@ -28,10 +28,14 @@ namespace Confrontation
 		private void BindStatsDecorators()
 		{
 			Container.BindSelf<UnitStats>().FromInstance(_stats.UnitStats).AsSingle();
-			Container.BindSelf<BuildingInfluenceDecorator>().AsSingle();
+			Container.BindSelf<BuildingsInfluenceDecorator>().AsSingle();
+			Container.BindSelf<BlizzardInfluenceDecorator>().AsSingle();
 
-			Container.DecorateFromResolve<IUnitStats, UnitStats, BuildingInfluenceDecorator>();
-			Container.Bind<IUnitStats>().To<BuildingInfluenceDecorator>().FromResolve();
+			Container.DecorateFromResolve<IUnitStats, UnitStats, BuildingsInfluenceDecorator>();
+			Container.DecorateFromResolve<IUnitStats, BuildingsInfluenceDecorator, BlizzardInfluenceDecorator>();
+			Container.Bind<IUnitStats>().To<BlizzardInfluenceDecorator>().FromResolve();
+
+			Container.Bind<ILateTickable>().To<BlizzardInfluenceDecorator>().FromResolve();
 		}
 	}
 }
