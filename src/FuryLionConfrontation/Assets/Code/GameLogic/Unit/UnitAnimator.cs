@@ -7,12 +7,10 @@ namespace Confrontation
 	{
 		[Inject] private Animator _animator;
 
-		private static readonly int _isMoving = Animator.StringToHash("IsMoving");
+		private bool IsMoving { set => _animator.SetBool(Constants.AnimationHash.IsMoving, value); }
 
-		public void StartMoving() => ToggleMoving(true);
+		public void StartMoving() => IsMoving = true;
 
-		public void StopMoving() => ToggleMoving(false);
-
-		private void ToggleMoving(bool isMoving) => _animator.SetBool(_isMoving, isMoving);
+		public void StopMoving() => IsMoving = false;
 	}
 }

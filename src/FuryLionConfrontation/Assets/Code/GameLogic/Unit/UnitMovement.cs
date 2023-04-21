@@ -10,8 +10,8 @@ namespace Confrontation
 	{
 		[Inject] private readonly ITimeService _timeService;
 		[Inject] private readonly IRoutinesRunnerService _routinesRunner;
-		[Inject] private Transform _transform;
-		[Inject] private UnitsSquad _squad;
+		[Inject] private readonly Transform _transform;
+		[Inject] private readonly UnitsSquad _squad;
 
 		private Cell _targetCell;
 
@@ -63,6 +63,6 @@ namespace Confrontation
 
 		private Vector3 MoveTowardsTarget() => Vector3.MoveTowards(CurrentPosition, TargetPosition, ScaledSpeed);
 
-		private bool IsTargetReach() => DistanceToTarget < Constants.Deviation;
+		private bool IsTargetReach() => DistanceToTarget < Constants.MathDeviation;
 	}
 }
