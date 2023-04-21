@@ -18,6 +18,8 @@ namespace Confrontation
 
 		public SquadHealth Health => _health;
 
+		public int OwnerPlayerId => _field.Cells[Coordinates].OwnerPlayerId;
+
 		public float HealthPoints => _health.HealthPoints;
 
 		public float AttackDamage => BaseDamage.IncreaseBy(Stats.AttackModifier);

@@ -21,8 +21,17 @@ namespace Confrontation
 			Container.BindInstance(_quantityOfUnitsInSquadView).AsSingle();
 
 			Container.BindInterfacesAndSelfTo<SquadHealth>().AsSingle();
-			Container.Bind<IUnitStats>().FromInstance(_stats.UnitStats).AsSingle();
-			// Stats = new BuildingInfluenceDecorator(baseStats, OwnerPlayerId, Field, this);
+
+			BindStatsDecorators();
+		}
+
+		private void BindStatsDecorators()
+		{
+			Container.BindSelf<UnitStats>().FromInstance(_stats.UnitStats).AsSingle();
+			Container.BindSelf<BuildingInfluenceDecorator>().AsSingle();
+			
+			Container.DecorateFromResolve<IUnitStats, UnitStats, BuildingInfluenceDecorator>();
+			Container.Bind<IUnitStats>().To<BuildingInfluenceDecorator>().FromResolve();
 		}
 	}
 }

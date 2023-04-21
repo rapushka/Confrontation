@@ -1,21 +1,13 @@
 using System;
+using Zenject;
 
 namespace Confrontation
 {
 	public class BuildingInfluenceDecorator : IUnitStats
 	{
-		private readonly IUnitStats _decoratee;
-		private readonly int _ownerPlayer;
-		private readonly IField _field;
-		private readonly Garrison _garrison;
-
-		public BuildingInfluenceDecorator(IUnitStats decoratee, int ownerPlayer, IField field, Garrison garrison)
-		{
-			_decoratee = decoratee;
-			_ownerPlayer = ownerPlayer;
-			_field = field;
-			_garrison = garrison;
-		}
+		[Inject] private readonly IUnitStats _decoratee;
+		[Inject] private readonly IField _field;
+		[Inject] private readonly Garrison _garrison;
 
 		public float AttackModifier => _decoratee.AttackModifier;
 
@@ -53,7 +45,7 @@ namespace Confrontation
 
 		private float Influence<TBuilding>(float baseValue, Func<float, TBuilding, float> influence)
 			where TBuilding : Building
-			=> _field.Buildings.InfluenceFloat(baseValue, _ownerPlayer, influence);
+			=> _field.Buildings.InfluenceFloat(baseValue, _garrison.OwnerPlayerId, influence);
 
 		private float InfluenceFort(float modified)
 			=> _garrison is UnitsSquad squad && squad.LocationCell.Building is Fort fort
