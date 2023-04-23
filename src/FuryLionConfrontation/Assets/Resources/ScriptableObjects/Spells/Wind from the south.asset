@@ -17,7 +17,7 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
   _spellType: 0
   _duration: 5
-  _manaCoast: 10
+  _manaCoast: 5
   _influences:
   - <Influence>k__BackingField:
       _type: 0
