@@ -1,12 +1,8 @@
 namespace Confrontation
 {
-	public class TimedInfluence
+	public class TimedInfluence : TargetedInfluence
 	{
 		private float _timeToLife;
-
-		public Influence Influence { get; set; }
-
-		public InfluenceTarget Target { get; set; }
 
 		public bool IsPermanent { get; set; }
 

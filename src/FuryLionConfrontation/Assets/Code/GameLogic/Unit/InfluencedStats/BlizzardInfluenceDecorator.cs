@@ -1,5 +1,4 @@
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,7 +7,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly IUnitStats _decoratee;
 		[Inject] private readonly UnitsSquad _squad;
-		[Inject] private readonly ActiveInfluences _influences;
+		[Inject] private readonly InfluencesWithDuration _influencesWithDuration;
 
 		private bool _isSlowed;
 
@@ -39,15 +38,14 @@ namespace Confrontation
 		{
 			if (_isSlowed == false
 			    && _squad.IsMoving
-			    && _influences.WithTarget(InfluenceTarget.MovingUnitsSpeed).Any())
+			    && _influencesWithDuration.WithTarget(InfluenceTarget.MovingUnitsSpeed).Any())
 			{
-				Debug.Log("slowed");
 				_isSlowed = true;
 			}
 		}
 
 		private float Influence(float speed)
-			=> _influences.Influence(speed, InfluenceTarget.MovingUnitsSpeed);
+			=> _influencesWithDuration.Influence(speed, InfluenceTarget.MovingUnitsSpeed);
 
 		private void Reset() => _isSlowed = false;
 	}

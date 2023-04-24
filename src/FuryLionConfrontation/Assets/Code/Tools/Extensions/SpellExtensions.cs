@@ -16,5 +16,15 @@ namespace Confrontation
 					IsPermanent = @this.SpellType is SpellType.Permanent,
 				}
 			);
+
+		public static IEnumerable<TargetedInfluence> AsTargetedInfluences(this IEnumerable<TimedInfluence> @this)
+			=> @this.Select
+			(
+				(influence) => new TargetedInfluence
+				{
+					Influence = influence.Influence, 
+					Target = influence.Target,
+				}
+			);
 	}
 }

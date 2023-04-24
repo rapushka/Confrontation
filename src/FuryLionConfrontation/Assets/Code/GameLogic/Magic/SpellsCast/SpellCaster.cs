@@ -5,7 +5,7 @@ namespace Confrontation
 	public class SpellCaster
 	{
 		[Inject] private readonly User _user;
-		[Inject] private readonly ActiveInfluences _influences;
+		[Inject] private readonly InfluencesWithDuration _influencesWithDuration;
 
 		private Resource UserMana => _user.Player.Resources.Mana;
 
@@ -17,7 +17,7 @@ namespace Confrontation
 			}
 
 			UserMana.Spend(spell.ManaCoast);
-			_influences.CastSpell(spell);
+			_influencesWithDuration.CastSpell(spell);
 			return true;
 		}
 
