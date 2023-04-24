@@ -3,32 +3,25 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class BuildingsInfluenceDecorator : IUnitStats
+	public class BuildingsInfluenceDecorator : UnitStatsDecoratorBase
 	{
-		[Inject] private readonly IUnitStats _decoratee;
 		[Inject] private readonly IField _field;
 		[Inject] private readonly Garrison _garrison;
 
-		public float AttackModifier => _decoratee.AttackModifier;
+		public override float BaseStrength => Influence<Forge>(base.BaseStrength, AddStrength);
 
-		public float UnitMaxHp => _decoratee.UnitMaxHp;
+		public override float DefencePierceRate => Influence<Workshop>(base.DefencePierceRate, AddPierceRate);
 
-		public float BaseArmourMultiplier => _decoratee.BaseArmourMultiplier;
-
-		public float BaseStrength => Influence<Forge>(_decoratee.BaseStrength, AddStrength);
-
-		public float DefencePierceRate => Influence<Workshop>(_decoratee.DefencePierceRate, AddPierceRate);
-
-		public float BaseSpeed => Influence<Stable>(_decoratee.BaseSpeed, Accelerate);
+		public override float BaseSpeed => Influence<Stable>(base.BaseSpeed, Accelerate);
 
 		private static float AddStrength(float currentStrength, Forge forge)
 			=> currentStrength + forge.CurrentLevelStats.CombatStrengthIncreasesRate;
 
-		public float DefenseModifier
+		public override float DefenseModifier
 		{
 			get
 			{
-				var modified = Influence<Quarry>(_decoratee.DefenseModifier, AddDefenseModifier);
+				var modified = Influence<Quarry>(base.DefenseModifier, AddDefenseModifier);
 				modified = InfluenceFort(modified);
 				return modified;
 			}

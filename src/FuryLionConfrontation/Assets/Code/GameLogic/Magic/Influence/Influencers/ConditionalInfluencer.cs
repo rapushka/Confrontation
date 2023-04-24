@@ -7,8 +7,5 @@ namespace Confrontation
 
 	public class OnMovingUnitsInfluencer : ConditionalInfluencer
 	{
-		[Inject] private readonly IField _field;
-
-		public List<UnitsSquad> _influencedUnits = new();
 	}
 }

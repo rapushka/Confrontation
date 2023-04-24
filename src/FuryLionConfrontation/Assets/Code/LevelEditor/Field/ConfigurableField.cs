@@ -39,6 +39,7 @@ namespace Confrontation
 			Buildings = new CoordinatedMatrix<Building>(_sizes);
 			StashedBuildings = new List<Building>();
 			LocatedUnits = new CoordinatedMatrix<UnitsSquad>(_sizes);
+			AllUnits = new List<UnitsSquad>();
 			Garrisons = new CoordinatedMatrix<Garrison>(_sizes);
 			Regions = new CoordinatedMatrix<Region>(_sizes);
 			Players = new List<Player>();
