@@ -55,10 +55,12 @@ namespace Confrontation
 		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			[Inject] private readonly IAssetsService _assets;
+			[Inject] private readonly IField _field;
 
 			public UnitsSquad Create(Cell cell, int quantityOfUnits = 0)
 			{
 				var squad = base.Create();
+				_field.AllUnits.Add(squad);
 				_assets.ToGroup(squad.transform);
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
 				squad.SetUp(cell.Coordinates, quantityOfUnits);

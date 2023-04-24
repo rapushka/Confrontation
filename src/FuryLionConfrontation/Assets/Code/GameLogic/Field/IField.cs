@@ -12,6 +12,8 @@ namespace Confrontation
 
 		CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }
 
+		List<UnitsSquad> AllUnits { get; }
+
 		CoordinatedMatrix<Garrison> Garrisons { get; }
 
 		CoordinatedMatrix<Region> Regions { get; }

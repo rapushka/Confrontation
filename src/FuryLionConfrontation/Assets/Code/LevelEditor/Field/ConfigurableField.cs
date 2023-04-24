@@ -16,6 +16,7 @@ namespace Confrontation
 		public CoordinatedMatrix<Building>   Buildings        { get; private set; }
 		public List<Building>                StashedBuildings { get; private set; }
 		public CoordinatedMatrix<UnitsSquad> LocatedUnits     { get; private set; }
+		public List<UnitsSquad>              AllUnits         { get; private set; }
 		public CoordinatedMatrix<Garrison>   Garrisons        { get; private set; }
 		public CoordinatedMatrix<Region>     Regions          { get; private set; }
 		public List<Player>                  Players          { get; private set; }
