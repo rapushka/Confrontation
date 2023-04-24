@@ -9,21 +9,22 @@ namespace Confrontation
 
 		private readonly List<TimedInfluence> _timedInfluences = new();
 
-		protected override IEnumerable<TargetedInfluence> Influences => _timedInfluences.AsTargetedInfluences();
+		protected override IEnumerable<TargetedInfluence> Influences => _timedInfluences;
 
 		public void LateTick()
 		{
-			foreach (var timedInfluence in _timedInfluences)
+			for (var i = 0; i < _timedInfluences.Count; i++)
 			{
-				timedInfluence.TimeToLife -= _time.DeltaTime;
+				var timedInfluence = _timedInfluences[i];
+				timedInfluence.SubtractTimeToLife(_time.DeltaTime);
 
-				if (timedInfluence.TimeToLife <= 0)
+				if (timedInfluence.IsOver)
 				{
 					Remove(timedInfluence);
+					_timedInfluences.Remove(timedInfluence);
+					i--;
 				}
 			}
-
-			_timedInfluences.RemoveIf((ti) => ti.TimeToLife <= 0);
 		}
 
 		protected override void AddInfluences(ISpell spell)

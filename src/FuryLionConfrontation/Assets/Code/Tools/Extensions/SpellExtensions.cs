@@ -6,25 +6,6 @@ namespace Confrontation
 	public static class SpellExtensions
 	{
 		public static IEnumerable<TimedInfluence> AsTimedInfluences(this ISpell @this)
-			=> @this.Influences.Select
-			(
-				(influence) => new TimedInfluence
-				{
-					Influence = influence.Influence,
-					Target = influence.Target,
-					TimeToLife = @this.SpellType is SpellType.Active ? 0 : @this.Duration,
-					IsPermanent = @this.SpellType is SpellType.Permanent,
-				}
-			);
-
-		public static IEnumerable<TargetedInfluence> AsTargetedInfluences(this IEnumerable<TimedInfluence> @this)
-			=> @this.Select
-			(
-				(influence) => new TargetedInfluence
-				{
-					Influence = influence.Influence, 
-					Target = influence.Target,
-				}
-			);
+			=> @this.Influences.Select((i) => new TimedInfluence(@this, i));
 	}
 }
