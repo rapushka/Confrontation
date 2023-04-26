@@ -8,11 +8,23 @@ namespace Confrontation
 
 	public class OnMovingUnitsInfluencer : ConditionalInfluencer
 	{
-		private IEnumerable<UnitsSquad> _influencedUnits;
+		private HashSet<UnitsSquad> _influencedUnits;
 
-		public override float Influence(float on, InfluenceTarget withTarget)
+		public bool HasInfluenced => _influencedUnits.Any();
+		
+		public float Influence(float on, InfluenceTarget withTarget, UnitsSquad @for)
 		{
-			return base.Influence(on, withTarget);
+			if (_influencedUnits.Contains(@for) == false)
+			{
+				return on;
+			}
+
+			if (@for.IsMoving == false)
+			{
+				_influencedUnits.Remove(@for);
+			}
+
+			return Influence(on, withTarget);
 		}
 
 		public class Factory : PlaceholderFactory<OnMovingUnitsInfluencer>
@@ -22,7 +34,7 @@ namespace Confrontation
 			public override OnMovingUnitsInfluencer Create()
 			{
 				var influencer = base.Create();
-				influencer._influencedUnits = _field.AllUnits.Except(_field.LocatedUnits);
+				influencer._influencedUnits = _field.AllUnits.Except(_field.LocatedUnits).ToHashSet();
 				return influencer;
 			}
 		}

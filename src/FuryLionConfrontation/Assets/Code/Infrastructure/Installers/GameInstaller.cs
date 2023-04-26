@@ -29,8 +29,6 @@ namespace Confrontation
 			Container.Bind<ToGameplay>().AsSingle();
 			Container.Bind<ToLevelEditor>().AsSingle();
 
-			BindInfluences();
-
 			StartGame();
 		}
 
@@ -58,12 +56,6 @@ namespace Confrontation
 		{
 			Container.BindSelf<StatsTable>().FromInstance(_statsTable).AsSingle();
 			Container.Bind<IStatsTable>().To<StatsTable>().FromResolve();
-		}
-
-		private void BindInfluences()
-		{
-			Container.BindInterfacesAndSelfTo<InfluencesWithDuration>().AsSingle();
-			Container.BindInterfacesAndSelfTo<InfluenceMediator>().AsSingle();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();

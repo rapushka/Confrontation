@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 namespace Confrontation
 {
@@ -42,8 +41,6 @@ namespace Confrontation
 
 			Container.DecorateFromResolve<IUnitStats, BuildingsInfluenceDecorator, BlizzardInfluenceDecorator>();
 			Container.Bind<IUnitStats>().To<BlizzardInfluenceDecorator>().FromResolve();
-
-			Container.Bind<ILateTickable>().To<BlizzardInfluenceDecorator>().FromResolve();
 		}
 	}
 }

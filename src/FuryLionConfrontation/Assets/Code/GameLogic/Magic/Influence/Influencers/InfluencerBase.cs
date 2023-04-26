@@ -14,11 +14,11 @@ namespace Confrontation
 
 		public virtual void CastSpell(ISpell spell) => AddInfluences(spell);
 
-		public IEnumerable<TargetedInfluence> WithTarget(InfluenceTarget target)
-			=> Influences.Where((ti) => ti.Target == target);
-
 		protected virtual void AddInfluences(ISpell spell) => _influences.AddRange(spell.Influences);
 
 		protected void Remove(TargetedInfluence influence) => _influences.Remove(influence);
+
+		private IEnumerable<TargetedInfluence> WithTarget(InfluenceTarget target)
+			=> Influences.Where((ti) => ti.Target == target);
 	}
 }
