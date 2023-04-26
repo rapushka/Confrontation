@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace Confrontation
 {
-	public abstract class InfluencerBase 
+	public abstract class InfluencerBase : IInfluencer
 	{
 		private readonly List<TargetedInfluence> _influences = new();
 
 		protected virtual IEnumerable<TargetedInfluence> Influences => _influences; 
 
-		public float Influence(float on, InfluenceTarget withTarget)
+		public virtual float Influence(float on, InfluenceTarget withTarget)
 			=> WithTarget(withTarget).Aggregate(on, (v, ti) => ti.Influence.Apply(v));
 
 		public virtual void CastSpell(ISpell spell) => AddInfluences(spell);
