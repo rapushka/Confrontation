@@ -39,7 +39,7 @@ namespace Confrontation
 		public void LateTick() => ClearUnusedInfluencers();
 
 		public float Influence(float on, InfluenceTarget withTarget, UnitsSquad @for)
-			=> _onMovingUnitsInfluencers.Aggregate(on, (x, i) => i.Influence(on: x, withTarget, @for));
+			=> _onMovingUnitsInfluencers.Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
 
 		private void ClearUnusedInfluencers()
 			=> _onMovingUnitsInfluencers.RemoveWhere((i) => i.HasInfluenced == false);

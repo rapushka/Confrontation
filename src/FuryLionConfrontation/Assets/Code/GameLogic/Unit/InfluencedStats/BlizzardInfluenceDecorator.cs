@@ -14,7 +14,7 @@ namespace Confrontation
 			{
 				var speed = base.BaseSpeed;
 
-				speed = _influenceMediator.Influence(speed, AllMovingUnitsSpeed, _squad);
+				speed = _influenceMediator.Influence(on: speed, withTarget: AllMovingUnitsSpeed, @for: _squad);
 
 				return speed;
 			}
