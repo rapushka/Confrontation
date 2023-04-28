@@ -15,8 +15,8 @@ namespace Confrontation
 			return InfluencedElements.Contains(@for) ? base.Influence(baseValue, withTarget) : baseValue;
 		}
 
-		protected abstract bool IsMeetCondition(T element);
+		protected abstract bool IsMeetsCondition(T element);
 
-		private bool IsDoesntMeetCondition(T element) => IsMeetCondition(element) == false;
+		private bool IsDoesntMeetCondition(T element) => IsMeetsCondition(element) == false;
 	}
 }
