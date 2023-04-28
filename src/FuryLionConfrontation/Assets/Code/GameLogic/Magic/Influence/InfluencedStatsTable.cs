@@ -18,6 +18,6 @@ namespace Confrontation
 			.With((us) => us.BaseSpeed = InfluenceUnitSpeed(us));
 
 		private float InfluenceUnitSpeed(IUnitStats stats) 
-			=> _influencesWithDuration.Influence(on: stats.BaseSpeed, withTarget: MovingUnitsSpeed);
+			=> _influencesWithDuration.Influence(on: stats.BaseSpeed, withTarget: AllMovingUnitsSpeed);
 	}
 }
