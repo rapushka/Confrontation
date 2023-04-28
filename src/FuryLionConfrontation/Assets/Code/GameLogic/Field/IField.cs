@@ -21,6 +21,6 @@ namespace Confrontation
 
 		RegionsNeighborhoodContainer Neighborhoods { get; }
 
-		IEnumerable<UnitsSquad> MovingUnits => AllUnits.Except(LocatedUnits);
+		IEnumerable<UnitsSquad> MovingUnits => AllUnits.Where((us) => us == true).Except(LocatedUnits);
 	}
 }

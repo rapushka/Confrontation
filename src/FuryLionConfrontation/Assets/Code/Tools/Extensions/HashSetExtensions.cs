@@ -24,7 +24,7 @@ namespace Confrontation
 
 		public static void Remove<T>(this HashSet<T> @this, T item, Func<T, bool> @if)
 		{
-			if (@if.Invoke(item) == false)
+			if (@if.Invoke(item))
 			{
 				@this.Remove(item);
 			}

@@ -18,9 +18,9 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
   _spellType: 2
   _duration: 3
-  _manaCoast: 1
+  _manaCoast: 10
   _influences:
   - <Influence>k__BackingField:
       _type: 0
-      <Coefficient>k__BackingField: 0.75
+      <Coefficient>k__BackingField: 0.55
     <Target>k__BackingField: 0
