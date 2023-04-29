@@ -77,10 +77,12 @@ namespace Confrontation
 
 		private void BindInfluences()
 		{
-			Container.BindInterfacesAndSelfTo<DuratedInfluencer>().AsSingle();
 			Container.BindInterfacesAndSelfTo<InfluenceMediator>().AsSingle();
 
-			Container.BindFactory<IInfluencer, OnAllMovingUnitsInfluencer, OnAllMovingUnitsInfluencer.Factory>();
+			Container
+				.BindFactory<IInfluencer, OnAllMovingUnitsInfluencer, OnAllMovingUnitsInfluencer.Factory>();
+			Container.BindFactory<float, IInfluencer, DuratedInfluencer, DuratedInfluencer.Factory>();
+			Container.BindFactory<Influence, InfluencerBase, InfluencerBase.Factory>();
 		}
 	}
 }

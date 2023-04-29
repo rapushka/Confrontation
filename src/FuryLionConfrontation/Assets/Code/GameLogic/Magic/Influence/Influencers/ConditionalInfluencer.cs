@@ -5,7 +5,7 @@ namespace Confrontation
 {
 	public abstract class ConditionalInfluencer<T> : InfluencerDecorator
 	{
-		public override bool HasInfluenced => InfluencedElements.Any();
+		public override bool IsAlive => InfluencedElements.Any() && base.IsAlive;
 
 		protected HashSet<T> InfluencedElements { get; set; }
 

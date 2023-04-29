@@ -12,7 +12,8 @@ namespace Confrontation
 			[Inject] private readonly IField _field;
 			[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
 
-			public OnAllMovingUnitsInfluencer Create() => Create(_influencerBaseFactory.Create());
+			public OnAllMovingUnitsInfluencer Create(Influence influence)
+				=> Create(_influencerBaseFactory.Create(influence));
 
 			public override OnAllMovingUnitsInfluencer Create(IInfluencer decoratee)
 			{

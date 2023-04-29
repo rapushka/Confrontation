@@ -6,22 +6,15 @@ namespace Confrontation
 	[Serializable]
 	public class Influence
 	{
-		[SerializeField] private Type _type;
+		[field: SerializeField] public float           Modifier { get; private set; }
+		[field: SerializeField] public InfluenceTarget Target   { get; private set; }
 
-		[field: SerializeField] public float Coefficient { get; private set; }
-
-		public float Apply(float baseValue)
-			=> _type switch
-			{
-				Type.Modifier => baseValue * Coefficient,
-				Type.Additive => baseValue + Coefficient,
-				var _         => throw new ArgumentOutOfRangeException(),
-			};
-
-		private enum Type
+		public Influence(Influence influence)
 		{
-			Modifier,
-			Additive,
+			Modifier = influence.Modifier;
+			Target = influence.Target;
 		}
+
+		public float Apply(float baseValue) => baseValue * Modifier;
 	}
 }

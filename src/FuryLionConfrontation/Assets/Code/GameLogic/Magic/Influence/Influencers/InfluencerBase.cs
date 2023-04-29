@@ -1,29 +1,16 @@
-using System.Collections.Generic;
-using System.Linq;
 using Zenject;
 
 namespace Confrontation
 {
 	public class InfluencerBase : IInfluencer
 	{
-		private readonly List<TargetedInfluence> _influences = new();
+		[Inject] private Influence _influence;
 
-		public virtual bool HasInfluenced => _influences.Any();
-
-		public IEnumerable<TargetedInfluence> Influences => _influences;
+		public bool IsAlive => true;
 
 		public virtual float Influence(float on, InfluenceTarget withTarget)
-			=> WithTarget(withTarget).Aggregate(on, (v, ti) => ti.Influence.Apply(v));
+			=> _influence.Target == withTarget ? _influence.Apply(on) : on;
 
-		public virtual void CastSpell(ISpell spell) => AddInfluences(spell);
-
-		protected virtual void AddInfluences(ISpell spell) => _influences.AddRange(spell.Influences);
-
-		protected void Remove(TargetedInfluence influence) => _influences.Remove(influence);
-
-		private IEnumerable<TargetedInfluence> WithTarget(InfluenceTarget target)
-			=> Influences.Where((ti) => ti.Target == target);
-
-		public class Factory : PlaceholderFactory<InfluencerBase> { }
+		public class Factory : PlaceholderFactory<Influence, InfluencerBase> { }
 	}
 }
