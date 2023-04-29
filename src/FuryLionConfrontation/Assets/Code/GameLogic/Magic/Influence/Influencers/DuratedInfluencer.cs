@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class InfluencesWithDuration : InfluencerBase, ILateTickable
+	public class DuratedInfluencer : InfluencerBase, ILateTickable
 	{
 		[Inject] private readonly ITimeService _time;
 

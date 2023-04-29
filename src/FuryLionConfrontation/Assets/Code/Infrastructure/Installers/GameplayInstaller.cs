@@ -77,7 +77,7 @@ namespace Confrontation
 
 		private void BindInfluences()
 		{
-			Container.BindInterfacesAndSelfTo<InfluencesWithDuration>().AsSingle();
+			Container.BindInterfacesAndSelfTo<DuratedInfluencer>().AsSingle();
 			Container.BindInterfacesAndSelfTo<InfluenceMediator>().AsSingle();
 
 			Container.BindFactory<OnAllMovingUnitsInfluencer, OnAllMovingUnitsInfluencer.Factory>();

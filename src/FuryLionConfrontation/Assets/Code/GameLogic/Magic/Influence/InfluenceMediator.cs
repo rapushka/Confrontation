@@ -9,7 +9,7 @@ namespace Confrontation
 {
 	public class InfluenceMediator : IInfluencer, ILateTickable
 	{
-		[Inject] private readonly InfluencesWithDuration _influencesWithDuration;
+		[Inject] private readonly DuratedInfluencer _duratedInfluencer;
 		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
 
 		private readonly HashSet<IInfluencer> _conditionalInfluencers = new();
@@ -19,13 +19,11 @@ namespace Confrontation
 			switch (spell.SpellType)
 			{
 				case SpellType.Temporary:
-					_influencesWithDuration.CastSpell(spell);
+					_duratedInfluencer.CastSpell(spell);
 					break;
 				case SpellType.Active:
-				{
 					CastActiveSpell(spell);
 					break;
-				}
 				case SpellType.Permanent:
 					Debug.LogError("TODO: Permanent spells");
 					break;
@@ -34,11 +32,11 @@ namespace Confrontation
 			}
 		}
 
-		public bool HasInfluenced => _influencesWithDuration.HasInfluenced
+		public bool HasInfluenced => _duratedInfluencer.HasInfluenced
 		                             || _conditionalInfluencers.Any((i) => i.HasInfluenced);
 
 		public float Influence(float on, InfluenceTarget withTarget)
-			=> _influencesWithDuration.Influence(on, withTarget);
+			=> _duratedInfluencer.Influence(on, withTarget);
 
 		public void LateTick() => ClearUnusedInfluencers();
 
