@@ -6,9 +6,9 @@ namespace Confrontation
 	{
 		[Inject] private Influence _influence;
 
-		public bool IsAlive => true;
+		public bool IsAlive => false;
 
-		public virtual float Influence(float on, InfluenceTarget withTarget)
+		public float Influence(float on, InfluenceTarget withTarget)
 			=> _influence.Target == withTarget ? _influence.Apply(on) : on;
 
 		public class Factory : PlaceholderFactory<Influence, InfluencerBase> { }

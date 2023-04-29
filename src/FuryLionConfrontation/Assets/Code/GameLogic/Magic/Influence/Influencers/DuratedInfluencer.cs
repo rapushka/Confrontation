@@ -7,7 +7,7 @@ namespace Confrontation
 		[Inject] private float _duration;
 		[Inject] private readonly ITimeService _time;
 
-		public override bool IsAlive => _duration > 0 && base.IsAlive;
+		public override bool IsAlive => _duration > 0 || base.IsAlive;
 
 		public void Tick() => _duration -= _time.DeltaTime;
 

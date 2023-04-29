@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class OnAllMovingUnitsInfluencer : ConditionalInfluencer<UnitsSquad>
+	public class OnAllMovingUnitsInfluencer : SelectiveRemovalInfluencer<UnitsSquad>
 	{
 		protected override bool IsMeetsCondition(UnitsSquad element) => element.IsMoving;
 
