@@ -3,19 +3,19 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class OnAllMovingUnitsInfluencer : SelectiveRemovalInfluencer<UnitsSquad>
+	public class OnAllUntilMovingUnitsInfluencer : OnUntilInCollectionInfluencer<UnitsSquad>
 	{
 		protected override bool IsMeetsCondition(UnitsSquad element) => element.IsMoving;
 
-		public class Factory : PlaceholderFactory<IInfluencer, OnAllMovingUnitsInfluencer>
+		public class Factory : PlaceholderFactory<IInfluencer, OnAllUntilMovingUnitsInfluencer>
 		{
 			[Inject] private readonly IField _field;
 			[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
 
-			public OnAllMovingUnitsInfluencer Create(Influence influence)
+			public OnAllUntilMovingUnitsInfluencer Create(Influence influence)
 				=> Create(_influencerBaseFactory.Create(influence));
 
-			public override OnAllMovingUnitsInfluencer Create(IInfluencer decoratee)
+			public override OnAllUntilMovingUnitsInfluencer Create(IInfluencer decoratee)
 			{
 				var influencer = base.Create(decoratee);
 				influencer.InfluencedElements = _field.MovingUnits.ToHashSet();

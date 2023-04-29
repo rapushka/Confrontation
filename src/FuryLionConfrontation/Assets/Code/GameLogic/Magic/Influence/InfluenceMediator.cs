@@ -8,7 +8,7 @@ namespace Confrontation
 {
 	public class InfluenceMediator : IInfluencer, ILateTickable
 	{
-		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
+		[Inject] private readonly OnAllUntilMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
 		[Inject] private readonly DuratedInfluencer.Factory _duratedInfluenceFactory;
 		[Inject] private readonly PermanentInfluencer.Factory _permanentInfluencerFactory;
 
@@ -18,8 +18,7 @@ namespace Confrontation
 
 		public InfluenceStatus Status => InfluenceStatus.Neutral;
 
-		private IEnumerable<IInfluencer> CommonInfluencers => _duratedInfluencers
-			.Concat(_permanentInfluencers);
+		private IEnumerable<IInfluencer> CommonInfluencers => _duratedInfluencers.Concat(_permanentInfluencers);
 
 		public void CastSpell(ISpell spell)
 		{
@@ -47,7 +46,7 @@ namespace Confrontation
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
 		{
 			var fromConditional = _conditionalInfluencers
-			                      .OfType<SelectiveRemovalInfluencer<T>>()
+			                      .OfType<OnUntilInCollectionInfluencer<T>>()
 			                      .Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
 
 			return Influence(fromConditional, withTarget);
