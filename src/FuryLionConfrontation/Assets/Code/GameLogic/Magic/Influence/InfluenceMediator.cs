@@ -12,7 +12,7 @@ namespace Confrontation
 		[Inject] private readonly DuratedInfluencer.Factory _duratedInfluenceFactory;
 		[Inject] private readonly PermanentInfluencer.Factory _permanentInfluencerFactory;
 
-		private readonly HashSet<DuratedInfluencer> _duratedInfluencers = new();
+		private readonly HashSet<IInfluencer> _duratedInfluencers = new();
 		private readonly HashSet<IInfluencer> _conditionalInfluencers = new();
 		private readonly HashSet<IInfluencer> _permanentInfluencers = new();
 
@@ -45,9 +45,9 @@ namespace Confrontation
 
 		public void LateTick() => ClearUnusedInfluencers();
 
-		public float Influence(float on, InfluenceTarget withTarget, UnitsSquad @for)
+		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
 			=> _conditionalInfluencers
-			   .OfType<OnAllMovingUnitsInfluencer>()
+			   .OfType<SelectiveRemovalInfluencer<T>>()
 			   .Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
 
 		private void ClearUnusedInfluencers()
