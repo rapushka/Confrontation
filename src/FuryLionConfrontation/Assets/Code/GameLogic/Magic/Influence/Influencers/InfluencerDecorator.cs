@@ -6,7 +6,12 @@ namespace Confrontation
 	{
 		[Inject] private readonly IInfluencer _decoratee;
 
-		public virtual bool IsAlive => _decoratee.IsAlive;
+		public virtual InfluenceStatus Status
+			=> _decoratee.Status is InfluenceStatus.Neutral
+				? CheckCondition()
+				: _decoratee.Status;
+
+		protected abstract InfluenceStatus CheckCondition();
 
 		public virtual float Influence(float on, InfluenceTarget withTarget) => _decoratee.Influence(on, withTarget);
 	}

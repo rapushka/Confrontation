@@ -6,7 +6,7 @@ namespace Confrontation
 	{
 		[Inject] private Influence _influence;
 
-		public bool IsAlive => false;
+		public InfluenceStatus Status => InfluenceStatus.Neutral;
 
 		public float Influence(float on, InfluenceTarget withTarget)
 			=> _influence.Target == withTarget ? _influence.Apply(on) : on;

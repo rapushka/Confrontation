@@ -7,14 +7,15 @@ namespace Confrontation
 		[Inject] private float _duration;
 		[Inject] private readonly ITimeService _time;
 
-		public override bool IsAlive => _duration > 0 || base.IsAlive;
+		protected override InfluenceStatus CheckCondition()
+			=> _duration > 0 ? InfluenceStatus.Neutral : InfluenceStatus.ForceDeath;
 
 		public void Tick() => _duration -= _time.DeltaTime;
 
 		public class Factory : PlaceholderFactory<float, IInfluencer, DuratedInfluencer>
 		{
 			[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
-			
+
 			public DuratedInfluencer Create(Influence influence, float duration)
 				=> Create(duration, _influencerBaseFactory.Create(influence));
 

@@ -5,7 +5,8 @@ namespace Confrontation
 {
 	public abstract class SelectiveRemovalInfluencer<T> : OnCollectionInfluencer<T>
 	{
-		public override bool IsAlive => Collection.WithoutNulls().Any() && base.IsAlive;
+		protected override InfluenceStatus CheckCondition()
+			=> Collection.WithoutNulls().Any() ? InfluenceStatus.Neutral : InfluenceStatus.ForceDeath;
 
 		protected override IEnumerable<T> Collection => InfluencedElements;
 

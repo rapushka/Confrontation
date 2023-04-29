@@ -2,7 +2,7 @@ namespace Confrontation
 {
 	public interface IInfluencer
 	{
-		bool IsAlive { get; }
+		InfluenceStatus Status { get; }
 
 		float Influence(float on, InfluenceTarget withTarget);
 	}

@@ -15,7 +15,7 @@ namespace Confrontation
 		private readonly HashSet<DuratedInfluencer> _duratedInfluencers = new();
 		private readonly HashSet<IInfluencer> _conditionalInfluencers = new();
 
-		public bool IsAlive => true;
+		public InfluenceStatus Status => InfluenceStatus.Neutral;
 
 		private IEnumerable<IInfluencer> AllInfluencers => _duratedInfluencers.Concat(_conditionalInfluencers);
 
@@ -49,8 +49,8 @@ namespace Confrontation
 
 		private void ClearUnusedInfluencers()
 		{
-			_conditionalInfluencers.RemoveWhere((i) => i.IsAlive == false);
-			_duratedInfluencers.RemoveWhere((i) => i.IsAlive == false);
+			_conditionalInfluencers.RemoveWhere((i) => i.Status == InfluenceStatus.ForceDeath);
+			_duratedInfluencers.RemoveWhere((i) => i.Status == InfluenceStatus.ForceDeath);
 		}
 
 		private IInfluencer AsInfluencerForTarget(Influence influence)
