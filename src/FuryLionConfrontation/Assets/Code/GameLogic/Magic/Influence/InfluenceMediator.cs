@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
 using Zenject;
 using static Confrontation.InfluenceTarget;
@@ -11,26 +10,30 @@ namespace Confrontation
 	{
 		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
 		[Inject] private readonly DuratedInfluencer.Factory _duratedInfluenceFactory;
+		[Inject] private readonly PermanentInfluencer.Factory _permanentInfluencerFactory;
 
 		private readonly HashSet<DuratedInfluencer> _duratedInfluencers = new();
 		private readonly HashSet<IInfluencer> _conditionalInfluencers = new();
+		private readonly HashSet<IInfluencer> _permanentInfluencers = new();
 
 		public InfluenceStatus Status => InfluenceStatus.Neutral;
 
-		private IEnumerable<IInfluencer> AllInfluencers => _duratedInfluencers.Concat(_conditionalInfluencers);
+		private IEnumerable<IInfluencer> AllInfluencers => _duratedInfluencers
+		                                                   .Concat(_conditionalInfluencers)
+		                                                   .Concat(_permanentInfluencers);
 
 		public void CastSpell(ISpell spell)
 		{
 			switch (spell.SpellType)
 			{
 				case SpellType.Temporary:
-					_duratedInfluencers.AddRange(spell.Influences.Select((i) => AsDurated(i, spell)));
+					_duratedInfluencers.AddRange(spell.Influences.Select((i) => AsDurated(i, spell.Duration)));
 					break;
 				case SpellType.Active:
 					_conditionalInfluencers.AddRange(spell.Influences.Select(AsInfluencerForTarget));
 					break;
 				case SpellType.Permanent:
-					Debug.LogError("TODO: Permanent spells");
+					_permanentInfluencers.AddRange(spell.Influences.Select(_permanentInfluencerFactory.Create));
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
@@ -67,7 +70,7 @@ namespace Confrontation
 				var _                    => throw new ArgumentOutOfRangeException(),
 			};
 
-		private DuratedInfluencer AsDurated(Influence influence, ISpell spell)
-			=> _duratedInfluenceFactory.Create(influence, spell.Duration);
+		private DuratedInfluencer AsDurated(Influence influence, float duration)
+			=> _duratedInfluenceFactory.Create(influence, duration);
 	}
 }

@@ -19,7 +19,5 @@ MonoBehaviour:
   _duration: 5
   _manaCoast: 5
   _influences:
-  - <Influence>k__BackingField:
-      _type: 0
-      <Coefficient>k__BackingField: 0
+  - <Modifier>k__BackingField: 0
     <Target>k__BackingField: 2
