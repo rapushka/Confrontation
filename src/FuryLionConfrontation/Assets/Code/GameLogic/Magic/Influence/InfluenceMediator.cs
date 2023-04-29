@@ -12,7 +12,7 @@ namespace Confrontation
 		[Inject] private readonly InfluencesWithDuration _influencesWithDuration;
 		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
 
-		private readonly HashSet<OnAllMovingUnitsInfluencer> _onAllMovingUnitsInfluencers = new();
+		private readonly HashSet<IInfluencer> _conditionalInfluencers = new();
 
 		public void CastSpell(ISpell spell)
 		{
@@ -34,16 +34,21 @@ namespace Confrontation
 			}
 		}
 
+		public bool HasInfluenced => _influencesWithDuration.HasInfluenced
+		                             || _conditionalInfluencers.Any((i) => i.HasInfluenced);
+
 		public float Influence(float on, InfluenceTarget withTarget)
 			=> _influencesWithDuration.Influence(on, withTarget);
 
 		public void LateTick() => ClearUnusedInfluencers();
 
 		public float Influence(float on, InfluenceTarget withTarget, UnitsSquad @for)
-			=> _onAllMovingUnitsInfluencers.Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
+			=> _conditionalInfluencers
+			   .OfType<OnAllMovingUnitsInfluencer>()
+			   .Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
 
 		private void ClearUnusedInfluencers()
-			=> _onAllMovingUnitsInfluencers.RemoveWhere((i) => i.HasInfluenced == false);
+			=> _conditionalInfluencers.RemoveWhere((i) => i.HasInfluenced == false);
 
 		private void CastActiveSpell(ISpell spell)
 		{
@@ -51,21 +56,22 @@ namespace Confrontation
 			{
 				var newInfluencer = CreateInfluencerForTarget(influence.Target);
 				newInfluencer.CastSpell(spell);
-				_onAllMovingUnitsInfluencers.Add(newInfluencer);
+				_conditionalInfluencers.Add(newInfluencer);
 			}
 		}
 
-		private OnAllMovingUnitsInfluencer CreateInfluencerForTarget(InfluenceTarget target)
+		private IInfluencer CreateInfluencerForTarget(InfluenceTarget target)
 			=> target switch
 			{
-				AllMovingUnitsSpeed or AllMovingUnitsStrength => _onAllMovingUnitsInfluencerFactory.Create(),
-				AllFarmsBonus                                 => throw new NotImplementedException(),
-				AllForgesBonus                                => throw new NotImplementedException(),
-				OurFarmsBonus                                 => throw new NotImplementedException(),
-				OurForgesBonus                                => throw new NotImplementedException(),
-				OurGoldenMineProduceRate                      => throw new NotImplementedException(),
-				OurUnitsSpeed                                 => throw new NotImplementedException(),
-				var _                                         => throw new ArgumentOutOfRangeException(),
+				AllMovingUnitsSpeed
+					or AllMovingUnitsStrength => _onAllMovingUnitsInfluencerFactory.Create(),
+				OurUnitsSpeed            => throw new NotImplementedException(),
+				AllFarmsBonus            => throw new NotImplementedException(),
+				OurFarmsBonus            => throw new NotImplementedException(),
+				AllForgesBonus           => throw new NotImplementedException(),
+				OurForgesBonus           => throw new NotImplementedException(),
+				OurGoldenMineProduceRate => throw new NotImplementedException(),
+				var _                    => throw new ArgumentOutOfRangeException(),
 			};
 	}
 }

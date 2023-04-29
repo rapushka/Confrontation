@@ -7,7 +7,9 @@ namespace Confrontation
 	{
 		private readonly List<TargetedInfluence> _influences = new();
 
-		protected virtual IEnumerable<TargetedInfluence> Influences => _influences; 
+		public virtual bool HasInfluenced => _influences.Any();
+
+		protected virtual IEnumerable<TargetedInfluence> Influences => _influences;
 
 		public virtual float Influence(float on, InfluenceTarget withTarget)
 			=> WithTarget(withTarget).Aggregate(on, (v, ti) => ti.Influence.Apply(v));
