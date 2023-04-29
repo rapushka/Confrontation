@@ -1,37 +1,37 @@
 using System.Collections.Generic;
+using System.Linq;
 using Zenject;
 
 namespace Confrontation
 {
-	public class DuratedInfluencer : InfluencerBase, ILateTickable
+	public class DuratedInfluencer : ConditionalInfluencer<float>, ILateTickable
 	{
+		[Inject] private readonly IInfluencer _decoratee;
 		[Inject] private readonly ITimeService _time;
 
-		private readonly List<TimedInfluence> _timedInfluences = new();
+		private readonly List<(TargetedInfluence, float)> _timedInfluences = new();
 
-		protected override IEnumerable<TargetedInfluence> Influences => _timedInfluences;
+		public void LateTick() { }
 
-		public void LateTick()
+		protected override bool IsMeetsCondition(float duration) => duration >= 0f;
+
+		public override float Influence(float on, InfluenceTarget withTarget)
 		{
-			for (var i = 0; i < _timedInfluences.Count; i++)
-			{
-				var timedInfluence = _timedInfluences[i];
-				timedInfluence.SubtractTimeToLife(_time.DeltaTime);
-
-				if (timedInfluence.IsOver)
-				{
-					Remove(timedInfluence);
-					_timedInfluences.Remove(timedInfluence);
-					i--;
-				}
-			}
+			return base.Influence(on, withTarget, 0f);
 		}
 
-		protected override void AddInfluences(ISpell spell)
+		public class Factory : PlaceholderFactory<IInfluencer, DuratedInfluencer>
 		{
-			base.AddInfluences(spell);
+			[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
 
-			_timedInfluences.AddRange(spell.AsTimedInfluences());
+			public DuratedInfluencer Create()
+			{
+				var influencerBase = _influencerBaseFactory.Create();
+				var duratedInfluencer = Create(influencerBase);
+				duratedInfluencer._timedInfluences.AddRange(influencerBase.Influences.Select((i) => (i, 0f)));
+				
+				return duratedInfluencer;
+			}
 		}
 	}
 }

@@ -8,20 +8,11 @@ namespace Confrontation
 		{
 			Influence = influence.Influence;
 			Target = influence.Target;
-			TimeToLife = spell.SpellType is SpellType.Active ? 0 : spell.Duration;
-			IsPermanent = spell.SpellType is SpellType.Permanent;
+			_timeToLife = spell.Duration;
 		}
 
-		private bool IsPermanent { get; }
+		public bool IsOver => _timeToLife <= 0;
 
-		private float TimeToLife
-		{
-			get => IsPermanent ? float.PositiveInfinity : _timeToLife;
-			set => _timeToLife = value;
-		}
-		
-		public bool IsOver => TimeToLife <= 0;
-
-		public void SubtractTimeToLife(float value) => TimeToLife -= IsPermanent ? 0 : value;
+		public void SubtractTimeToLife(float value) => _timeToLife -= value;
 	}
 }

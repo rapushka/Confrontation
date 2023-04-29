@@ -1,26 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
-using Zenject;
 
 namespace Confrontation
 {
-	public abstract class ConditionalInfluencer<T> : IInfluencer
+	public abstract class ConditionalInfluencer<T> : InfluencerDecorator
 	{
-		[Inject] private readonly IInfluencer _decoratee;
-
-		public bool HasInfluenced => InfluencedElements.Any();
+		public override bool HasInfluenced => InfluencedElements.Any();
 
 		protected HashSet<T> InfluencedElements { get; set; }
 
 		public float Influence(float baseValue, InfluenceTarget withTarget, T @for)
 		{
 			InfluencedElements.Remove(@for, @if: IsDoesntMeetCondition);
-			return InfluencedElements.Contains(@for) ? _decoratee.Influence(baseValue, withTarget) : baseValue;
+			return InfluencedElements.Contains(@for) ? base.Influence(baseValue, withTarget) : baseValue;
 		}
-
-		public float Influence(float on, InfluenceTarget withTarget) => _decoratee.Influence(on, withTarget);
-
-		public void CastSpell(ISpell spell) => _decoratee.CastSpell(spell);
 
 		protected abstract bool IsMeetsCondition(T element);
 
