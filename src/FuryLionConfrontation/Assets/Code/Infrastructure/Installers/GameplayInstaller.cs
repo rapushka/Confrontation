@@ -80,7 +80,7 @@ namespace Confrontation
 			Container.BindInterfacesAndSelfTo<DuratedInfluencer>().AsSingle();
 			Container.BindInterfacesAndSelfTo<InfluenceMediator>().AsSingle();
 
-			Container.BindFactory<OnAllMovingUnitsInfluencer, OnAllMovingUnitsInfluencer.Factory>();
+			Container.BindFactory<IInfluencer, OnAllMovingUnitsInfluencer, OnAllMovingUnitsInfluencer.Factory>();
 		}
 	}
 }

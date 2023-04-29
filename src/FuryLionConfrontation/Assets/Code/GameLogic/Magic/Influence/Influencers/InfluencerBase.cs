@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Zenject;
 
 namespace Confrontation
 {
-	public abstract class InfluencerBase : IInfluencer
+	public class InfluencerBase : IInfluencer
 	{
 		private readonly List<TargetedInfluence> _influences = new();
 
@@ -22,5 +23,7 @@ namespace Confrontation
 
 		private IEnumerable<TargetedInfluence> WithTarget(InfluenceTarget target)
 			=> Influences.Where((ti) => ti.Target == target);
+
+		public class Factory : PlaceholderFactory<InfluencerBase> { }
 	}
 }
