@@ -18,9 +18,8 @@ namespace Confrontation
 
 		public InfluenceStatus Status => InfluenceStatus.Neutral;
 
-		private IEnumerable<IInfluencer> AllInfluencers => _duratedInfluencers
-		                                                   .Concat(_conditionalInfluencers)
-		                                                   .Concat(_permanentInfluencers);
+		private IEnumerable<IInfluencer> CommonInfluencers => _duratedInfluencers
+			.Concat(_permanentInfluencers);
 
 		public void CastSpell(ISpell spell)
 		{
@@ -41,14 +40,18 @@ namespace Confrontation
 		}
 
 		public float Influence(float on, InfluenceTarget withTarget)
-			=> AllInfluencers.Aggregate(on, (current, i) => i.Influence(current, withTarget));
+			=> CommonInfluencers.Aggregate(on, (current, i) => i.Influence(current, withTarget));
 
 		public void LateTick() => ClearUnusedInfluencers();
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
-			=> _conditionalInfluencers
-			   .OfType<SelectiveRemovalInfluencer<T>>()
-			   .Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
+		{
+			var fromConditional = _conditionalInfluencers
+			                      .OfType<SelectiveRemovalInfluencer<T>>()
+			                      .Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
+
+			return Influence(fromConditional, withTarget);
+		}
 
 		private void ClearUnusedInfluencers()
 		{

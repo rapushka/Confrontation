@@ -333,7 +333,6 @@ MonoBehaviour:
   _spells:
   - {fileID: 11400000, guid: 079ed0ca0a2f0d46384b6c00b9503a4b, type: 2}
   - {fileID: 11400000, guid: 728b9111782c033d2b0255bfb6175cfc, type: 2}
-  - {fileID: 11400000, guid: be4c9b750d5f152eda335df4c1a4605e, type: 2}
   _buttonsRoot: {fileID: 1335839381095870768}
   _toolTip: {fileID: 5559827050958195369}
 --- !u!224 &3722204167529533899 stripped
