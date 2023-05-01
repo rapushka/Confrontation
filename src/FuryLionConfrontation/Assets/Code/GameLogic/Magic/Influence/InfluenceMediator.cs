@@ -65,11 +65,11 @@ namespace Confrontation
 				AllNowMovingUnitsStrength => throw new NotImplementedException(),
 				OurUnitsSpeed             => throw new NotImplementedException(),
 				AllFarmsBonus             => throw new NotImplementedException(),
-				OurFarmsBonus             => throw new NotImplementedException(),
 				AllForgesBonus            => throw new NotImplementedException(),
 				OurForgesBonus            => throw new NotImplementedException(),
+				OurFarmsBonus             => throw new NotImplementedException(),
 				OurGoldenMineProduceRate  => throw new NotImplementedException(),
-				var _                     => throw new ArgumentOutOfRangeException(),
+				_                         => throw new ArgumentOutOfRangeException(),
 			};
 
 		private DuratedInfluencer AsDurated(Influence influence, float duration)
