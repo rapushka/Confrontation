@@ -13,13 +13,11 @@ namespace Confrontation
 		[Inject] private readonly PermanentInfluencer.Factory _permanentInfluencerFactory;
 		[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
 
-		private readonly HashSet<IInfluencer> _duratedInfluencers = new();
-		private readonly HashSet<IInfluencer> _conditionalInfluencers = new();
-		private readonly HashSet<IInfluencer> _permanentInfluencers = new();
+		private readonly HashSet<IInfluencer> _influencers = new();
 
 		public InfluenceStatus Status => InfluenceStatus.ForceLive;
 
-		private IEnumerable<IInfluencer> CommonInfluencers => _duratedInfluencers.Concat(_permanentInfluencers);
+		private IEnumerable<IInfluencer> CommonInfluencers => _influencers;
 
 		public void CastSpell(ISpell spell)
 		{
@@ -27,23 +25,15 @@ namespace Confrontation
 			{
 				IInfluencer influencerBase = _influencerBaseFactory.Create(influence);
 
-				if (spell.SpellType is SpellType.Temporary)
+				influencerBase = spell.SpellType switch
 				{
-					influencerBase = _duratedInfluenceFactory.Create(spell.Duration, influencerBase);
-					_duratedInfluencers.Add(influencerBase);
-				}
+					SpellType.Temporary => _duratedInfluenceFactory.Create(spell.Duration, influencerBase),
+					SpellType.Active    => AsInfluencerForTarget(influence, influencerBase),
+					SpellType.Permanent => _permanentInfluencerFactory.Create(influencerBase),
+					_                   => influencerBase,
+				};
 
-				if (spell.SpellType is SpellType.Active)
-				{
-					influencerBase = AsInfluencerForTarget(influence, influencerBase);
-					_conditionalInfluencers.Add(influencerBase);
-				}
-
-				if (spell.SpellType is SpellType.Permanent)
-				{
-					influencerBase = _permanentInfluencerFactory.Create(influencerBase);
-					_permanentInfluencers.Add(influencerBase);
-				}
+				_influencers.Add(influencerBase);
 			}
 		}
 
@@ -53,13 +43,9 @@ namespace Confrontation
 			=> CommonInfluencers.Aggregate(on, (current, i) => i.Influence(current, withTarget));
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
-		{
-			var fromConditional = _conditionalInfluencers
-			                      .OfType<OnUntilInCollectionInfluencer<T>>()
-			                      .Aggregate(on, (x, i) => i.Influence(baseValue: x, withTarget, @for));
-
-			return Influence(fromConditional, withTarget);
-		}
+			=> _influencers
+			   .OfType<OnUntilInCollectionInfluencer<T>>()
+			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
 		private IInfluencer AsInfluencerForTarget(Influence influence, IInfluencer influencer)
 			=> influence.Target switch
@@ -76,9 +62,6 @@ namespace Confrontation
 			};
 
 		private void ClearUnusedInfluencers()
-		{
-			_conditionalInfluencers.RemoveWhere((i) => i.Status == InfluenceStatus.ForceDeath);
-			_duratedInfluencers.RemoveWhere((i) => i.Status == InfluenceStatus.ForceDeath);
-		}
+			=> _influencers.RemoveWhere((i) => i.Status is InfluenceStatus.ForceDeath);
 	}
 }
