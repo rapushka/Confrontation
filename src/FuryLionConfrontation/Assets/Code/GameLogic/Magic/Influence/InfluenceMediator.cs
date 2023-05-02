@@ -24,14 +24,17 @@ namespace Confrontation
 			{
 				IInfluencer influencerBase = _influencerBaseFactory.Create(influence);
 
+				if (spell.SpellType is SpellType.Temporary)
+				{
+					influencerBase = _duratedInfluenceFactory.Create(spell.Duration, influencerBase);
+				}
+
 				influencerBase = ByCastingType(influence.CastingType, influencerBase);
 
-				influencerBase = spell.SpellType switch
+				if (spell.SpellType is SpellType.Permanent)
 				{
-					SpellType.Temporary => _duratedInfluenceFactory.Create(spell.Duration, influencerBase),
-					SpellType.Permanent => _permanentInfluencerFactory.Create(influencerBase),
-					_                   => influencerBase,
-				};
+					influencerBase = _permanentInfluencerFactory.Create(influencerBase);
+				}
 
 				_influencers.Add(influencerBase);
 			}
