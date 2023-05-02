@@ -15,6 +15,7 @@ namespace Confrontation
 		[Inject] private readonly OnOurUnitsInfluencer.Factory _ouOurUnitsFactory;
 		[Inject] private readonly OnOurForgesInfluencer.Factory _onOurForgesFactory;
 		[Inject] private readonly OnOurFarmsInfluencer.Factory _onOurFarmsFactory;
+		[Inject] private readonly OnOurGoldenMinesInfluencer.Factory _onOurGoldenMinesFactory;
 
 		private readonly HashSet<IInfluencer> _influencers = new();
 
@@ -56,8 +57,9 @@ namespace Confrontation
 				InfluenceConstraint.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.AllNowMovingUnits   => _onNowAllMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurUnits            => _ouOurUnitsFactory.Create(influencer),
-				InfluenceConstraint.OurFarmsBonus       => _onOurFarmsFactory.Create(influencer),
-				InfluenceConstraint.OurForgesBonus      => _onOurForgesFactory.Create(influencer),
+				InfluenceConstraint.OurFarms            => _onOurFarmsFactory.Create(influencer),
+				InfluenceConstraint.OurForges           => _onOurForgesFactory.Create(influencer),
+				InfluenceConstraint.OurGoldenMine       => _onOurGoldenMinesFactory.Create(influencer),
 				_                                       => throw new ArgumentOutOfRangeException(),
 			};
 

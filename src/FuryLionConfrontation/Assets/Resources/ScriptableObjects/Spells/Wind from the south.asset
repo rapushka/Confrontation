@@ -20,4 +20,5 @@ MonoBehaviour:
   _manaCoast: 5
   _influences:
   - <Modifier>k__BackingField: 0
-    <Target>k__BackingField: 2
+    <Target>k__BackingField: 3
+    <InfluenceConstraint>k__BackingField: 0

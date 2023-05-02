@@ -6,7 +6,8 @@ namespace Confrontation
 		AllUntilMovingUnits,
 		AllNowMovingUnits,
 		OurUnits,
-		OurFarmsBonus,
-		OurForgesBonus,
+		OurFarms,
+		OurForges,
+		OurGoldenMine,
 	}
 }

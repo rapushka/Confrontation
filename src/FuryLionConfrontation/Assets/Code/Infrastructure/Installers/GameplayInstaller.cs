@@ -87,6 +87,7 @@ namespace Confrontation
 			Container.BindFactory<IInfluencer, PermanentInfluencer, PermanentInfluencer.Factory>();
 			Container.BindFactory<IInfluencer, OnOurForgesInfluencer, OnOurForgesInfluencer.Factory>();
 			Container.BindFactory<IInfluencer, OnOurFarmsInfluencer, OnOurFarmsInfluencer.Factory>();
+			Container.BindFactory<IInfluencer, OnOurGoldenMinesInfluencer, OnOurGoldenMinesInfluencer.Factory>();
 		}
 	}
 }
