@@ -85,11 +85,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8996184221059186401, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_text
-      value: Spell name
+      value: "Spell name \u2014 00M"
       objectReference: {fileID: 0}
     - target: {fileID: 8996184221059186401, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_fontSize
-      value: 44.75
+      value: 33.95
       objectReference: {fileID: 0}
     - target: {fileID: 8996184221059186402, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_Pivot.y
@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_SizeDelta.y
