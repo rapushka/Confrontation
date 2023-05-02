@@ -8,7 +8,8 @@ namespace Confrontation
 {
 	public class InfluenceMediator : IInfluencer, ILateTickable
 	{
-		[Inject] private readonly OnAllUntilMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
+		[Inject] private readonly OnAllUntilMovingUnitsInfluencer.Factory _onAllUntilMovingUnitsInfluencerFactory;
+		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onAllMovingUnitsInfluencerFactory;
 		[Inject] private readonly DuratedInfluencer.Factory _duratedInfluenceFactory;
 		[Inject] private readonly PermanentInfluencer.Factory _permanentInfluencerFactory;
 		[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
@@ -28,10 +29,11 @@ namespace Confrontation
 				influencerBase = spell.SpellType switch
 				{
 					SpellType.Temporary => _duratedInfluenceFactory.Create(spell.Duration, influencerBase),
-					SpellType.Active    => AsInfluencerForTarget(influence, influencerBase),
 					SpellType.Permanent => _permanentInfluencerFactory.Create(influencerBase),
 					_                   => influencerBase,
 				};
+
+				influencerBase = AsInfluencerForTarget(influence, influencerBase);
 
 				_influencers.Add(influencerBase);
 			}
@@ -44,14 +46,14 @@ namespace Confrontation
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
 			=> _influencers
-			   .OfType<OnUntilInCollectionInfluencer<T>>()
+			   .OfType<OnCollectionInfluencer<T>>()
 			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
 		private IInfluencer AsInfluencerForTarget(Influence influence, IInfluencer influencer)
 			=> influence.Target switch
 			{
-				AllUntillMovingUnitsSpeed => _onAllMovingUnitsInfluencerFactory.Create(influencer),
-				AllNowMovingUnitsStrength => throw new NotImplementedException(),
+				AllUntillMovingUnitsSpeed => _onAllUntilMovingUnitsInfluencerFactory.Create(influencer),
+				AllNowMovingUnitsStrength => _onAllMovingUnitsInfluencerFactory.Create(influencer),
 				OurUnitsSpeed             => throw new NotImplementedException(),
 				AllFarmsBonus             => throw new NotImplementedException(),
 				AllForgesBonus            => throw new NotImplementedException(),
