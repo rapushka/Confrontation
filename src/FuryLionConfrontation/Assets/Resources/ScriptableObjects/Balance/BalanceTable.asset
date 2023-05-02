@@ -15,7 +15,7 @@ MonoBehaviour:
   <UnitStats>k__BackingField:
     <BaseSpeed>k__BackingField: 1
     <BaseStrength>k__BackingField: 1
-    <BaseArmourMultiplier>k__BackingField: 1.01
+    <BaseArmourMultiplier>k__BackingField: 0.01
     <DefencePierceRate>k__BackingField: 0
     <UnitMaxHp>k__BackingField: 1
     <DefenseModifier>k__BackingField: 0.3

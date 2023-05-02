@@ -33,7 +33,7 @@ namespace Confrontation
 					_                   => influencerBase,
 				};
 
-				influencerBase = AsInfluencerForTarget(influence, influencerBase);
+				influencerBase = ByCastingType(influence, influencerBase);
 
 				_influencers.Add(influencerBase);
 			}
@@ -49,18 +49,14 @@ namespace Confrontation
 			   .OfType<OnCollectionInfluencer<T>>()
 			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
-		private IInfluencer AsInfluencerForTarget(Influence influence, IInfluencer influencer)
-			=> influence.Target switch
+		private IInfluencer ByCastingType(Influence influence, IInfluencer influencer)
+			=> influence.CastingType switch
 			{
-				AllUntillMovingUnitsSpeed => _onAllUntilMovingUnitsInfluencerFactory.Create(influencer),
-				AllNowMovingUnitsStrength => _onAllMovingUnitsInfluencerFactory.Create(influencer),
-				OurUnitsSpeed             => throw new NotImplementedException(),
-				AllFarmsBonus             => throw new NotImplementedException(),
-				AllForgesBonus            => throw new NotImplementedException(),
-				OurForgesBonus            => throw new NotImplementedException(),
-				OurFarmsBonus             => throw new NotImplementedException(),
-				OurGoldenMineProduceRate  => throw new NotImplementedException(),
-				_                         => throw new ArgumentOutOfRangeException(),
+				CastingType.Default             => influencer,
+				CastingType.AllUntilMovingUnits => _onAllUntilMovingUnitsInfluencerFactory.Create(influencer),
+				CastingType.AllNowMovingUnits   => _onAllMovingUnitsInfluencerFactory.Create(influencer),
+				CastingType.OurUnits            => throw new NotImplementedException(),
+				_                               => throw new ArgumentOutOfRangeException(),
 			};
 
 		private void ClearUnusedInfluencers()

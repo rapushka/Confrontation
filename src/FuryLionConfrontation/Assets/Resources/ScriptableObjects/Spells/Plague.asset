@@ -21,3 +21,4 @@ MonoBehaviour:
   _influences:
   - <Modifier>k__BackingField: 0.85
     <Target>k__BackingField: 1
+    <CastingType>k__BackingField: 2

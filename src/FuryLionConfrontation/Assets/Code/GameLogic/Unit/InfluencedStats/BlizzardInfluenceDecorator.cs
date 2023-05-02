@@ -9,9 +9,9 @@ namespace Confrontation
 		[Inject] private readonly InfluenceMediator _influenceMediator;
 
 		public override float BaseSpeed
-			=> _influenceMediator.Influence(on: base.BaseSpeed, withTarget: AllUntillMovingUnitsSpeed, @for: _squad);
+			=> _influenceMediator.Influence(on: base.BaseSpeed, withTarget: UnitsSpeed, @for: _squad);
 
 		public override float BaseStrength
-			=> _influenceMediator.Influence(on: base.BaseStrength, withTarget: AllNowMovingUnitsStrength, @for: _squad);
+			=> _influenceMediator.Influence(on: base.BaseStrength, withTarget: UnitsStrength, @for: _squad);
 	}
 }

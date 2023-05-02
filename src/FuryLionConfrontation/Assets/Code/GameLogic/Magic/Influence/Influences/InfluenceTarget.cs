@@ -2,8 +2,8 @@ namespace Confrontation
 {
 	public enum InfluenceTarget
 	{
-		AllUntillMovingUnitsSpeed,
-		AllNowMovingUnitsStrength,
+		UnitsSpeed,
+		UnitsStrength,
 		AllFarmsBonus,
 		AllForgesBonus,
 		OurFarmsBonus,
