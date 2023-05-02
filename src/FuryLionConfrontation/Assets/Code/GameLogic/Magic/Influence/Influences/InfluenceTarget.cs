@@ -4,11 +4,8 @@ namespace Confrontation
 	{
 		UnitsSpeed,
 		UnitsStrength,
-		AllFarmsBonus,
-		AllForgesBonus,
-		OurFarmsBonus,
-		OurForgesBonus,
-		OurGoldenMineProduceRate,
-		OurUnitsSpeed,
+		ForgesBonus,
+		FarmsBonus,
+		GoldenMineProduceRate,
 	}
 }

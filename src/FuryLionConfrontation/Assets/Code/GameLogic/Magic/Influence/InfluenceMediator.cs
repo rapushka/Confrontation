@@ -54,6 +54,8 @@ namespace Confrontation
 				InfluenceConstraint.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.AllNowMovingUnits   => _onAllMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurUnits            => _ouOurUnitsFactory.Create(influencer),
+				InfluenceConstraint.OurFarmsBonus       => throw new NotImplementedException(),
+				InfluenceConstraint.OurForgesBonus      => throw new NotImplementedException(),
 				_                                       => throw new ArgumentOutOfRangeException(),
 			};
 
