@@ -26,7 +26,7 @@ namespace Confrontation
 		private float ScaledSmoothRate => _smoothRate * _time.RealFixedDeltaTime;
 
 		private bool HasMomentum
-			=> Vector2.Distance(_targetPosition, _root.position.FromTopDown()) > Constants.Deviation;
+			=> Vector2.Distance(_targetPosition, _root.position.FromTopDown()) > Constants.MathDeviation;
 
 		protected virtual bool IsSupposeToSwipe => _isSwiping || HasMomentum;
 

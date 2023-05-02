@@ -2859,6 +2859,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1095865730288279693}
   - component: {fileID: 1038364744713609069}
+  - component: {fileID: 7500207454656040162}
+  - component: {fileID: -6909023756976622460}
   - component: {fileID: 1702530362702311959}
   - component: {fileID: 2547840534391355026}
   - component: {fileID: 2645443025243697774}
@@ -2906,6 +2908,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7500207454656040162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098297294174609041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: -6909023756976622460}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &-6909023756976622460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098297294174609041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302e5a0ced3f4ae6bd4bcf468ebef6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _garrison: {fileID: 1702530362702311959}
+  _quantityOfUnitsInSquadView: {fileID: 8081343193472317081}
+  _unitAnimator: {fileID: 2547840534391355026}
+  _animator: {fileID: 1038364744713609069}
 --- !u!114 &1702530362702311959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2918,8 +2955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc757988b89b424ab404c5fe3293c892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 2547840534391355026}
-  _quantityOfUnitsInSquadView: {fileID: 8081343193472317081}
 --- !u!114 &2547840534391355026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2932,7 +2967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823a4ace32634cc99e5f8f49db22cad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1038364744713609069}
 --- !u!114 &2645443025243697774
 MonoBehaviour:
   m_ObjectHideFlags: 0

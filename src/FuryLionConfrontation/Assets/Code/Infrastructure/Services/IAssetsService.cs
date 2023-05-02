@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public interface IAssetsService : IDestroyer
+	public interface IAssetsService : IDestroyService
 	{
 		T Instantiate<T>(T original, Transform parent) where T : Object;
 

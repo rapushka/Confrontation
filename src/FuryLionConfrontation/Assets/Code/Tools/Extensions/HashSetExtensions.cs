@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Confrontation
@@ -18,6 +19,14 @@ namespace Confrontation
 			foreach (var item in range)
 			{
 				@this.Add(item);
+			}
+		}
+
+		public static void Remove<T>(this HashSet<T> @this, T item, Func<T, bool> @if)
+		{
+			if (@if.Invoke(item))
+			{
+				@this.Remove(item);
 			}
 		}
 	}

@@ -46,6 +46,8 @@ namespace Confrontation
 			Container.Bind<GameplayUiMediator>().AsSingle();
 			Container.Bind<GameplayWindows>().AsSingle();
 			Container.Bind<SpellCaster>().AsSingle();
+
+			BindInfluences();
 		}
 
 		protected override void InstallSpecificFactories()
@@ -71,6 +73,17 @@ namespace Confrontation
 
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
+		}
+
+		private void BindInfluences()
+		{
+			Container.BindInterfacesAndSelfTo<InfluenceMediator>().AsSingle();
+
+			Container.BindFactory<IInfluencer, OnAllUntilMovingUnitsInfluencer, OnAllUntilMovingUnitsInfluencer.Factory>();
+			Container.BindFactory<IInfluencer, OnAllMovingUnitsInfluencer, OnAllMovingUnitsInfluencer.Factory>();
+			Container.BindFactory<float, IInfluencer, DuratedInfluencer, DuratedInfluencer.Factory>();
+			Container.BindFactory<Influence, InfluencerBase, InfluencerBase.Factory>();
+			Container.BindFactory<IInfluencer, PermanentInfluencer, PermanentInfluencer.Factory>();
 		}
 	}
 }

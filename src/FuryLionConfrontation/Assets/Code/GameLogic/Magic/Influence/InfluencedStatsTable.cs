@@ -5,7 +5,7 @@ namespace Confrontation
 {
 	public class InfluencedStatsTable : StatsTableDecoratorBase, IInitializable
 	{
-		[Inject] private readonly ActiveInfluences _influences;
+		[Inject] private readonly DuratedInfluencer _duratedInfluencer;
 
 		private UnitStats _unitStats;
 
@@ -18,6 +18,6 @@ namespace Confrontation
 			.With((us) => us.BaseSpeed = InfluenceUnitSpeed(us));
 
 		private float InfluenceUnitSpeed(IUnitStats stats) 
-			=> _influences.Influence(on: stats.BaseSpeed, withTarget: UnitsSpeed);
+			=> _duratedInfluencer.Influence(on: stats.BaseSpeed, withTarget: AllUntillMovingUnitsSpeed);
 	}
 }

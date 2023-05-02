@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public static class Constants
 	{
-		public const float Deviation = 0.01f;
+		public const float MathDeviation = 0.01f;
 
 		public const float HexagonWidth = 1f;
 		public const float HorizontalOffsetForOddRows = HexagonWidth / 2;
@@ -48,6 +48,21 @@ namespace Confrontation
 		public static class Editor
 		{
 			public const int MaxIconPreviewHeight = 50;
+		}
+
+		public static class Exception
+		{
+			public const string ThereIsNoDefenders = "Defence strategy can't be picked for cell without defence forces";
+		}
+
+		public static class AnimationHash
+		{
+			public static readonly int IsMoving = Animator.StringToHash(Animation.IsMoving);
+		}
+
+		public static class Animation
+		{
+			public const string IsMoving = "IsMoving";
 		}
 	}
 }

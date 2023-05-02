@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public interface IDestroyer
+	public interface IDestroyService
 	{
 		void Destroy(GameObject target);
 	}

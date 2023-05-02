@@ -17,6 +17,6 @@ namespace Confrontation
 
 		int ManaCoast { get; }
 
-		IEnumerable<TargetedInfluence> Influences { get; }
+		IEnumerable<Influence> Influences { get; }
 	}
 }

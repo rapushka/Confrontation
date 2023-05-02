@@ -1,3 +1,5 @@
+using Zenject;
+
 namespace Confrontation
 {
 	public interface IDefenceStrategy
@@ -14,4 +16,6 @@ namespace Confrontation
 
 		void Kill();
 	}
+	
+	public class DefenceStrategyFactory : PlaceholderFactory<Cell, IDefenceStrategy> { }
 }
