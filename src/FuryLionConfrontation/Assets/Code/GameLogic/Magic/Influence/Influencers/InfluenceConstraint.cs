@@ -1,8 +1,8 @@
 namespace Confrontation
 {
-	public enum CastingType
+	public enum InfluenceConstraint
 	{
-		Default,
+		None,
 		AllUntilMovingUnits,
 		AllNowMovingUnits,
 		OurUnits,

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class OnOurUnitsInfluencer : OnCollectionInfluencer<UnitsSquad>
+	public class OnOurUnitsInfluencer : ConstrainedInfluencer<UnitsSquad>
 	{
 		[Inject] private readonly IField _field;
 		[Inject] private readonly User _user;

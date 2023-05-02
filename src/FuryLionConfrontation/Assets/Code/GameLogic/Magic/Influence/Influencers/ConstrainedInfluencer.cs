@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Confrontation
 {
-	public abstract class OnCollectionInfluencer<T> : InfluencerDecorator
+	public abstract class ConstrainedInfluencer<T> : InfluencerDecorator
 	{
 		protected abstract IEnumerable<T> Collection { get; }
 

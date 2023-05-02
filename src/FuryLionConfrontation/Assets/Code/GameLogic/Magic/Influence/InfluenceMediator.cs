@@ -24,17 +24,14 @@ namespace Confrontation
 			{
 				IInfluencer influencerBase = _influencerBaseFactory.Create(influence);
 
-				if (spell.SpellType is SpellType.Temporary)
+				influencerBase = spell.SpellType switch
 				{
-					influencerBase = _duratedInfluenceFactory.Create(spell.Duration, influencerBase);
-				}
+					SpellType.Temporary => _duratedInfluenceFactory.Create(spell.Duration, influencerBase),
+					SpellType.Permanent => _permanentInfluencerFactory.Create(influencerBase),
+					_                   => influencerBase,
+				};
 
-				if (spell.SpellType is SpellType.Permanent)
-				{
-					influencerBase = _permanentInfluencerFactory.Create(influencerBase);
-				}
-
-				influencerBase = ByCastingType(influence.CastingType, influencerBase);
+				influencerBase = AddConstraint(influence.InfluenceConstraint, influencerBase);
 
 				_influencers.Add(influencerBase);
 			}
@@ -47,17 +44,17 @@ namespace Confrontation
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
 			=> _influencers
-			   .OfType<OnCollectionInfluencer<T>>()
+			   .OfType<ConstrainedInfluencer<T>>()
 			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
-		private IInfluencer ByCastingType(CastingType influenceCastingType, IInfluencer influencer)
-			=> influenceCastingType switch
+		private IInfluencer AddConstraint(InfluenceConstraint constraint, IInfluencer influencer)
+			=> constraint switch
 			{
-				CastingType.Default             => influencer,
-				CastingType.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
-				CastingType.AllNowMovingUnits   => _onAllMovingUnitsFactory.Create(influencer),
-				CastingType.OurUnits            => _ouOurUnitsFactory.Create(influencer),
-				_                               => throw new ArgumentOutOfRangeException(),
+				InfluenceConstraint.None                => influencer,
+				InfluenceConstraint.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
+				InfluenceConstraint.AllNowMovingUnits   => _onAllMovingUnitsFactory.Create(influencer),
+				InfluenceConstraint.OurUnits            => _ouOurUnitsFactory.Create(influencer),
+				_                                       => throw new ArgumentOutOfRangeException(),
 			};
 
 		private void ClearUnusedInfluencers()
