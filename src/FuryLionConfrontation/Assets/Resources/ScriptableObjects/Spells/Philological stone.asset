@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
-  m_Name: Plague
+  m_Name: Philological stone
   m_EditorClassIdentifier: 
-  _title: Plague
-  _description: one-time reduces the combat strength of all moving Units
-  _icon: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
-  _spellType: 1
+  _title: Wind from the south
+  _description: '(turns iron into gelatin)
+
+    temporarily disables the bonus of
+    all forges in the game'
+  _icon: {fileID: 21300000, guid: 144aa74618b85974a9a50f612c2fa8fd, type: 3}
+  _spellType: 0
   _duration: 5
-  _manaCoast: 1
+  _manaCoast: 5
   _influences:
-  - <Modifier>k__BackingField: 0.85
-    <Target>k__BackingField: 1
-    <InfluenceConstraint>k__BackingField: 2
+  - <Modifier>k__BackingField: 0
+    <Target>k__BackingField: 2
+    <InfluenceConstraint>k__BackingField: 0

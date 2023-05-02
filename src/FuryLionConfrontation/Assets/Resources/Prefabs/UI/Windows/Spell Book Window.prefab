@@ -331,10 +331,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _window: {fileID: 3722204167529533898}
   _spells:
+  - {fileID: 11400000, guid: 3f577f0b60a810b34ac962a410cd556c, type: 2}
+  - {fileID: 11400000, guid: 36013697b7bfc6b5ea5f09b745358cae, type: 2}
+  - {fileID: 11400000, guid: 234f50189d633635fab63532ed827110, type: 2}
+  - {fileID: 11400000, guid: ff4c71c71d5361d0786af8eee21e909d, type: 2}
+  - {fileID: 11400000, guid: 651f65a4fe5f7bacaa785c2464dc9245, type: 2}
+  - {fileID: 11400000, guid: 4804a89dc31d193bfabada61b7b7932a, type: 2}
   - {fileID: 11400000, guid: 079ed0ca0a2f0d46384b6c00b9503a4b, type: 2}
   - {fileID: 11400000, guid: 728b9111782c033d2b0255bfb6175cfc, type: 2}
-  - {fileID: 11400000, guid: 4804a89dc31d193bfabada61b7b7932a, type: 2}
-  - {fileID: 11400000, guid: ff4c71c71d5361d0786af8eee21e909d, type: 2}
   _buttonsRoot: {fileID: 1335839381095870768}
   _toolTip: {fileID: 5559827050958195369}
 --- !u!224 &3722204167529533899 stripped

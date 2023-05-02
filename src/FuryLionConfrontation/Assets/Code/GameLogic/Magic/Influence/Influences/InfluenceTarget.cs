@@ -7,5 +7,6 @@ namespace Confrontation
 		ForgesBonus,
 		FarmsBonus,
 		GoldenMineProduceRate,
+		GoldenMineCooldown,
 	}
 }
