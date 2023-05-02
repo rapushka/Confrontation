@@ -85,6 +85,7 @@ namespace Confrontation
 			Container.BindFactory<float, IInfluencer, DuratedInfluencer, DuratedInfluencer.Factory>();
 			Container.BindFactory<Influence, InfluencerBase, InfluencerBase.Factory>();
 			Container.BindFactory<IInfluencer, PermanentInfluencer, PermanentInfluencer.Factory>();
+			Container.BindFactory<IInfluencer, PermanentInfluencer, PermanentInfluencer.Factory>();
 		}
 	}
 }

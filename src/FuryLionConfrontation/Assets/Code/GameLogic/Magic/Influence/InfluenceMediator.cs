@@ -44,7 +44,7 @@ namespace Confrontation
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
 			=> _influencers
-			   .OfType<ConstrainedInfluencer<T>>()
+			   .OfType<ConditionalInfluencer<T>>()
 			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
 		private IInfluencer AddConstraint(InfluenceConstraint constraint, IInfluencer influencer)

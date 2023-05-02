@@ -3,12 +3,11 @@ using System.Linq;
 
 namespace Confrontation
 {
-	public abstract class ConstrainedInfluencer<T> : InfluencerDecorator
+	public abstract class ConstrainedInfluencer<T> : ConditionalInfluencer<T>
 	{
 		protected abstract IEnumerable<T> Collection { get; }
-
-		public virtual float Influence(float baseValue, InfluenceTarget withTarget, T @for)
-			=> Collection.Contains(@for) ? base.Influence(baseValue, withTarget) : baseValue;
+		
+		protected override bool IsMatchCondition(T item) => Collection.Contains(item);
 
 		public override float Influence(float baseValue, InfluenceTarget withTarget) => baseValue;
 	}
