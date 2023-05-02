@@ -24,7 +24,7 @@ namespace Confrontation
 			{
 				IInfluencer influencerBase = _influencerBaseFactory.Create(influence);
 
-				influencerBase = ByCastingType(influence, influencerBase);
+				influencerBase = ByCastingType(influence.CastingType, influencerBase);
 
 				influencerBase = spell.SpellType switch
 				{
@@ -47,8 +47,8 @@ namespace Confrontation
 			   .OfType<OnCollectionInfluencer<T>>()
 			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
-		private IInfluencer ByCastingType(Influence influence, IInfluencer influencer)
-			=> influence.CastingType switch
+		private IInfluencer ByCastingType(CastingType influenceCastingType, IInfluencer influencer)
+			=> influenceCastingType switch
 			{
 				CastingType.Default             => influencer,
 				CastingType.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
