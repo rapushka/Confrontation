@@ -9,5 +9,7 @@ namespace Confrontation
 
 		public virtual float Influence(float baseValue, InfluenceTarget withTarget, T @for)
 			=> Collection.Contains(@for) ? base.Influence(baseValue, withTarget) : baseValue;
+
+		public override float Influence(float baseValue, InfluenceTarget withTarget) => baseValue;
 	}
 }

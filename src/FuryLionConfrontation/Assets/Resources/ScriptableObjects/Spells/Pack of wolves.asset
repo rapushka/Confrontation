@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
-  m_Name: Severe Blizzard
+  m_Name: Pack of wolves
   m_EditorClassIdentifier: 
-  _title: Severe Blizzard
-  _description: Reduces the speed of all currently moving Units (those that haven't
-    left yet will put on their skis)
-  _icon: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  _spellType: 2
-  _duration: 3
+  _title: Plague
+  _description: one-time reduces the combat strength of all moving Units
+  _icon: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  _spellType: 1
+  _duration: 5
   _manaCoast: 1
   _influences:
-  - <Modifier>k__BackingField: 0.5
-    <Target>k__BackingField: 0
-    <CastingType>k__BackingField: 1
+  - <Modifier>k__BackingField: 0.85
+    <Target>k__BackingField: 1
+    <CastingType>k__BackingField: 2
