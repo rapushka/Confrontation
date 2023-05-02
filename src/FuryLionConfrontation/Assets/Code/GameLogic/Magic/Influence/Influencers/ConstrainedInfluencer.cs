@@ -1,14 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Confrontation
 {
-	public abstract class ConstrainedInfluencer<T> : ConditionalInfluencer<T>
+	public abstract class ConstrainedInfluencer<T> : InfluencerDecorator
 	{
-		protected abstract IEnumerable<T> Collection { get; }
-		
-		protected override bool IsMatchCondition(T item) => Collection.Contains(item);
+		protected override InfluenceStatus CheckCondition() => InfluenceStatus.Neutral;
 
-		public override float Influence(float baseValue, InfluenceTarget withTarget) => baseValue;
+		public virtual float Influence(float baseValue, InfluenceTarget withTarget, T @for)
+			=> IsMatchCondition(@for) ? base.Influence(baseValue, withTarget) : baseValue;
+
+		protected abstract bool IsMatchCondition(T item);
 	}
 }

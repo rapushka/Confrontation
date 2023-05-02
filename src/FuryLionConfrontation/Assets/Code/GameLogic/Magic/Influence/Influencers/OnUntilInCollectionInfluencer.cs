@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Confrontation
 {
-	public abstract class OnUntilInCollectionInfluencer<T> : ConstrainedInfluencer<T>
+	public abstract class OnUntilInCollectionInfluencer<T> : OnInCollectionItemsInfluencer<T>
 	{
 		protected override InfluenceStatus CheckCondition()
 			=> Collection.WithoutNulls().Any() ? InfluenceStatus.Neutral : InfluenceStatus.ForceDeath;

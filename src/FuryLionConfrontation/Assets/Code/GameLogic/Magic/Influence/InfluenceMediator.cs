@@ -7,12 +7,14 @@ namespace Confrontation
 {
 	public class InfluenceMediator : IInfluencer, ILateTickable
 	{
-		[Inject] private readonly OnAllUntilMovingUnitsInfluencer.Factory _onAllUntilMovingUnitsFactory;
-		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onAllMovingUnitsFactory;
-		[Inject] private readonly OnOurUnitsInfluencer.Factory _ouOurUnitsFactory;
+		[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
 		[Inject] private readonly DuratedInfluencer.Factory _duratedInfluenceFactory;
 		[Inject] private readonly PermanentInfluencer.Factory _permanentInfluencerFactory;
-		[Inject] private readonly InfluencerBase.Factory _influencerBaseFactory;
+		[Inject] private readonly OnAllUntilMovingUnitsInfluencer.Factory _onAllUntilMovingUnitsFactory;
+		[Inject] private readonly OnAllMovingUnitsInfluencer.Factory _onNowAllMovingUnitsFactory;
+		[Inject] private readonly OnOurUnitsInfluencer.Factory _ouOurUnitsFactory;
+		[Inject] private readonly OnOurForgesInfluencer.Factory _onOurForgesFactory;
+		[Inject] private readonly OnOurFarmsInfluencer.Factory _onOurFarmsFactory;
 
 		private readonly HashSet<IInfluencer> _influencers = new();
 
@@ -44,7 +46,7 @@ namespace Confrontation
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
 			=> _influencers
-			   .OfType<ConditionalInfluencer<T>>()
+			   .OfType<ConstrainedInfluencer<T>>()
 			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
 
 		private IInfluencer AddConstraint(InfluenceConstraint constraint, IInfluencer influencer)
@@ -52,10 +54,10 @@ namespace Confrontation
 			{
 				InfluenceConstraint.None                => influencer,
 				InfluenceConstraint.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
-				InfluenceConstraint.AllNowMovingUnits   => _onAllMovingUnitsFactory.Create(influencer),
+				InfluenceConstraint.AllNowMovingUnits   => _onNowAllMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurUnits            => _ouOurUnitsFactory.Create(influencer),
-				InfluenceConstraint.OurFarmsBonus       => throw new NotImplementedException(),
-				InfluenceConstraint.OurForgesBonus      => throw new NotImplementedException(),
+				InfluenceConstraint.OurFarmsBonus       => _onOurFarmsFactory.Create(influencer),
+				InfluenceConstraint.OurForgesBonus      => _onOurForgesFactory.Create(influencer),
 				_                                       => throw new ArgumentOutOfRangeException(),
 			};
 

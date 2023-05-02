@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public abstract class OnOurBuildingsInfluencer<TBuilding> : ConditionalInfluencer<TBuilding>
+	public abstract class OnOurBuildingsInfluencer<TBuilding> : ConstrainedInfluencer<TBuilding>
 		where TBuilding : Building
 	{
 		[Inject] private readonly User _user;
