@@ -29,12 +29,12 @@ namespace Confrontation
 					influencerBase = _duratedInfluenceFactory.Create(spell.Duration, influencerBase);
 				}
 
-				influencerBase = ByCastingType(influence.CastingType, influencerBase);
-
 				if (spell.SpellType is SpellType.Permanent)
 				{
 					influencerBase = _permanentInfluencerFactory.Create(influencerBase);
 				}
+
+				influencerBase = ByCastingType(influence.CastingType, influencerBase);
 
 				_influencers.Add(influencerBase);
 			}
