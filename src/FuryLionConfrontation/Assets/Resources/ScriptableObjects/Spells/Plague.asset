@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
-  m_Name: test
+  m_Name: Plague
   m_EditorClassIdentifier: 
   _title: Plague
   _description: one-time reduces the combat strength of all moving Units
@@ -19,5 +19,5 @@ MonoBehaviour:
   _duration: 5
   _manaCoast: 1
   _influences:
-  - <Modifier>k__BackingField: 10
+  - <Modifier>k__BackingField: 0.85
     <Target>k__BackingField: 1
