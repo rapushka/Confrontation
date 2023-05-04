@@ -6,8 +6,9 @@ namespace Confrontation
 	[Serializable]
 	public class Influence
 	{
-		[field: SerializeField] public float           Modifier { get; private set; }
-		[field: SerializeField] public InfluenceTarget Target   { get; private set; }
+		[field: SerializeField] public float           Modifier    { get; private set; }
+		[field: SerializeField] public InfluenceTarget Target      { get; private set; }
+		[field: SerializeField] public InfluenceConstraint     InfluenceConstraint { get; private set; }
 
 		public Influence(Influence influence)
 		{

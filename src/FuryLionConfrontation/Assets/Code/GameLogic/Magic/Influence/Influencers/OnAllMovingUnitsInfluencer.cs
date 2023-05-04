@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class OnAllMovingUnitsInfluencer : OnCollectionInfluencer<UnitsSquad>
+	public class OnAllMovingUnitsInfluencer : OnInCollectionItemsInfluencer<UnitsSquad>
 	{
 		private HashSet<UnitsSquad> InfluencedElements { get; set; }
 

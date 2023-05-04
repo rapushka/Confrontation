@@ -15,7 +15,7 @@ MonoBehaviour:
   <UnitStats>k__BackingField:
     <BaseSpeed>k__BackingField: 1
     <BaseStrength>k__BackingField: 1
-    <BaseArmourMultiplier>k__BackingField: 1.01
+    <BaseArmourMultiplier>k__BackingField: 0.01
     <DefencePierceRate>k__BackingField: 0
     <UnitMaxHp>k__BackingField: 1
     <DefenseModifier>k__BackingField: 0.3
@@ -30,7 +30,7 @@ MonoBehaviour:
       - <CoolDown>k__BackingField: 1.5
         <Amount>k__BackingField: 1
   <TowerOfMagesStats>k__BackingField:
-    <Price>k__BackingField: 6
+    <Price>k__BackingField: 1
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 12
       <StatsByLevel>k__BackingField:

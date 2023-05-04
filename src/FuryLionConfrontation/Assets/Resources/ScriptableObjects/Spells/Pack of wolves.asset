@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
-  m_Name: Wind from the south
+  m_Name: Pack of wolves
   m_EditorClassIdentifier: 
-  _title: Wind from the south
-  _description: Temporarily disables the bonus of all farms in the game
-  _icon: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
+  _title: Pack of wolves
+  _description: temporarily increases the speed of allied units
+  _icon: {fileID: 21300000, guid: 91976e8b9ce0f0341838727acd55621c, type: 3}
   _spellType: 0
   _duration: 5
-  _manaCoast: 5
+  _manaCoast: 15
   _influences:
-  - <Modifier>k__BackingField: 0
-    <Target>k__BackingField: 3
-    <InfluenceConstraint>k__BackingField: 0
+  - <Modifier>k__BackingField: 2
+    <Target>k__BackingField: 0
+    <InfluenceConstraint>k__BackingField: 3
