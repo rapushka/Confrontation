@@ -5,7 +5,7 @@ namespace Confrontation
 	public class SpellCaster
 	{
 		[Inject] private readonly User _user;
-		[Inject] private readonly ActiveInfluences _influences;
+		[Inject] private readonly InfluenceMediator _influences;
 
 		private Resource UserMana => _user.Player.Resources.Mana;
 

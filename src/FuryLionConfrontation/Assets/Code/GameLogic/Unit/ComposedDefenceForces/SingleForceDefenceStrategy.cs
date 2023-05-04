@@ -1,23 +1,25 @@
+using Zenject;
+
 namespace Confrontation
 {
-	public class SingleForceDefenceStrategy : DefenceStrategyBase
+	public class SingleForceDefenceStrategy : IDefenceStrategy
 	{
-		private readonly Garrison _units;
+		[Inject] private readonly Garrison _units;
+		[Inject] private readonly IDestroyService _destroyService;
 
-		public SingleForceDefenceStrategy(IDestroyer destroyer, Garrison units)
-			: base(destroyer)
-			=> _units = units;
+		public float BaseDamage => _units.BaseDamage;
 
-		public override float BaseDamage => _units.BaseDamage;
+		public int QuantityOfUnits => _units.QuantityOfUnits;
 
-		public override int QuantityOfUnits => _units.QuantityOfUnits;
+		public float HealthPoints => _units.HealthPoints;
 
-		public override float HealthPoints => _units.HealthPoints;
+		public void Destroy() => _destroyService.Destroy(_units.gameObject);
 
-		public override void Destroy() => Destroyer.Destroy(_units.gameObject);
-		public override void Kill()    => _units.QuantityOfUnits = 0;
+		public void Kill() => _units.QuantityOfUnits = 0;
 
-		public override void TakeDamageOnDefence(float incomingDamage, float pierceRate)
+		public void TakeDamageOnDefence(float incomingDamage, float pierceRate)
 			=> _units.Health.TakeDamageOnDefence(incomingDamage, pierceRate);
+
+		public class Factory : PlaceholderFactory<Garrison, SingleForceDefenceStrategy> { }
 	}
 }

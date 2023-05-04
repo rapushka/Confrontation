@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Confrontation
 {
@@ -12,10 +13,14 @@ namespace Confrontation
 
 		CoordinatedMatrix<UnitsSquad> LocatedUnits { get; }
 
+		List<UnitsSquad> AllUnits { get; }
+
 		CoordinatedMatrix<Garrison> Garrisons { get; }
 
 		CoordinatedMatrix<Region> Regions { get; }
 
 		RegionsNeighborhoodContainer Neighborhoods { get; }
+
+		IEnumerable<UnitsSquad> MovingUnits => AllUnits.Where((us) => us == true).Except(LocatedUnits);
 	}
 }

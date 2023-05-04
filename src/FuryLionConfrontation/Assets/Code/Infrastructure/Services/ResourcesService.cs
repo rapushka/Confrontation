@@ -22,6 +22,7 @@ namespace Confrontation
 		[field: SerializeField] public Settlement SettlementPrefab { get; private set; }
 		[field: SerializeField] public Capital    CapitalPrefab    { get; private set; }
 
-		public TypedDictionary<Building> Buildings => _buildingsDictionary ?? new TypedDictionary<Building>(_buildings);
+		public TypedDictionary<Building> Buildings
+			=> _buildingsDictionary ??= new TypedDictionary<Building>(_buildings);
 	}
 }

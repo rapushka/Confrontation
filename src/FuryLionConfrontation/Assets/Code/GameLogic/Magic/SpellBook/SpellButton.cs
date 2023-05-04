@@ -17,7 +17,7 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_titleTextMesh.text = _spell.Title;
+			_titleTextMesh.text = $"{_spell.Title} — {_spell.ManaCoast}M";
 			_iconImage.sprite = _spell.Icon;
 		}
 

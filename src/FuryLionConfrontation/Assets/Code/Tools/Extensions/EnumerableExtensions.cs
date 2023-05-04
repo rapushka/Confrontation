@@ -48,7 +48,6 @@ namespace Confrontation
 			return @this[randomId];
 		}
 
-		// ReSharper disable once RedundantEnumerableCastCall — in fact, this prevent nulls
-		public static IEnumerable<T> WithoutNulls<T>(this IEnumerable<T> @this) => @this.OfType<T>();
+		public static IEnumerable<T> WithoutNulls<T>(this IEnumerable<T> @this) => @this.Where((t) => t != null);
 	}
 }

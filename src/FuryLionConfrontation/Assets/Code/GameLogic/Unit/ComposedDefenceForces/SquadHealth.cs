@@ -1,23 +1,20 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
-	public class SquadHealth
+	public class SquadHealth : IInitializable
 	{
-		private readonly Garrison _unit;
+		[Inject] private readonly Garrison _unit;
 
 		private float _frontUnitCurrentHp;
 		private float _frontUnitCurrentHpCandidate;
 		private int _quantityOfUnitsCandidate;
 
-		public SquadHealth(Garrison unit)
-		{
-			_unit = unit;
-			_frontUnitCurrentHp = UnitMaxHp;
-		}
+		public void Initialize() => _frontUnitCurrentHp = UnitMaxHp;
 
 		public float HealthPoints => _unit.QuantityOfUnits * _unit.Stats.UnitMaxHp + _frontUnitCurrentHp;
-		
+
 		private float UnitMaxHp => _unit.Stats.UnitMaxHp;
 
 		private bool IsCandidateDead => _quantityOfUnitsCandidate <= 0;
