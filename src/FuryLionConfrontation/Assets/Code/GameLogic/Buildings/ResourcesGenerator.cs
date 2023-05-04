@@ -20,7 +20,7 @@ namespace Confrontation
 
 		protected abstract LeveledStats<GeneratorStatsBase> Stats { get; }
 
-		private GeneratorStatsBase CurrentLevelStats => Stats[Level];
+		protected virtual GeneratorStatsBase CurrentLevelStats => Stats[Level];
 
 		public override void Action() => Produce();
 
