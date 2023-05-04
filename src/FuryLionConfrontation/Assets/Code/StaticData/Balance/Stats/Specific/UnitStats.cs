@@ -23,18 +23,30 @@ namespace Confrontation
 	[Serializable]
 	public class UnitStats : IUnitStats
 	{
-		[field: SerializeField] public float BaseSpeed { get; private set; }
+		[field: SerializeField] public float BaseSpeed { get; set; }
 
-		[field: SerializeField] public float BaseStrength { get; private set; }
+		[field: SerializeField] public float BaseStrength { get; set; }
 
-		[field: SerializeField] public float BaseArmourMultiplier { get; private set; }
+		[field: SerializeField] public float BaseArmourMultiplier { get; set; }
 
-		[field: SerializeField] public float DefencePierceRate { get; private set; }
+		[field: SerializeField] public float DefencePierceRate { get; set; }
 
-		[field: SerializeField] public float UnitMaxHp { get; private set; }
+		[field: SerializeField] public float UnitMaxHp { get; set; }
 
-		[field: Range(0f, 1f)] [field: SerializeField] public float DefenseModifier { get; private set; }
+		[field: Range(0f, 1f)] [field: SerializeField] public float DefenseModifier { get; set; }
 
-		[field: Range(0f, 1f)] [field: SerializeField] public float AttackModifier { get; private set; }
+		[field: Range(0f, 1f)] [field: SerializeField] public float AttackModifier { get; set; }
+
+		public UnitStats Clone()
+			=> new()
+			{
+				BaseSpeed = BaseSpeed,
+				BaseStrength = BaseStrength,
+				BaseArmourMultiplier = BaseArmourMultiplier,
+				DefencePierceRate = DefencePierceRate,
+				UnitMaxHp = UnitMaxHp,
+				DefenseModifier = DefenseModifier,
+				AttackModifier = AttackModifier
+			};
 	}
 }

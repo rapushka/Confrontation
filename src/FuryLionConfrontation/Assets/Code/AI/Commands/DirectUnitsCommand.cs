@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class DirectUnitsCommand : ICommand
+	public class DirectUnitsCommand : IEnemyCommand
 	{
 		[Inject] private readonly UnitsSquad _squad;
 		[Inject] private readonly IPlaceable _placeable;

@@ -8,7 +8,7 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<QuarryLevelStats> Stats => BalanceTable.QuarryStats.LeveledStats;
+		private LeveledStats<QuarryLevelStats> Stats => StatsTable.QuarryStats.LeveledStats;
 
 		public QuarryLevelStats CurrentLevelStats => Stats[Level];
 	}

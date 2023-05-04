@@ -5,13 +5,13 @@ namespace Confrontation
 	public class Purchase : IPurchase
 	{
 		[Inject] private readonly BuildingSpawner _buildingSpawner;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		public bool BuyBuilding(Player player, Building buildingPrefab, Cell locationCell)
 		{
-			var buildingPrice = _balanceTable.BuildPriceFor(buildingPrefab);
+			var buildingPrice = _statsTable.BuildPriceFor(buildingPrefab);
 
-			if (player.Resources.Gold.IsEnoughGoldFor(buildingPrice))
+			if (player.Resources.Gold.IsEnoughFor(buildingPrice))
 			{
 				_buildingSpawner.Build(buildingPrefab, locationCell);
 				player.Resources.Gold.Spend(buildingPrice);
@@ -25,7 +25,7 @@ namespace Confrontation
 		{
 			var upgradePrice = building.UpgradePrice;
 
-			if (player.Resources.Gold.IsEnoughGoldFor(upgradePrice))
+			if (player.Resources.Gold.IsEnoughFor(upgradePrice))
 			{
 				building.LevelUp();
 				player.Resources.Gold.Spend(upgradePrice);

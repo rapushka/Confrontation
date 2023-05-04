@@ -1,4 +1,3 @@
-using Confrontation.GameLogic;
 using UnityEngine;
 using Zenject;
 
@@ -9,13 +8,14 @@ namespace Confrontation
 		[SerializeField] private LoadingCurtain _loadingCurtainPrefab;
 		[SerializeField] private User _user;
 		[SerializeField] private ResourcesService _resources;
-		[SerializeField] private BalanceTable _balanceTable;
+		[SerializeField] private StatsTable _statsTable;
 
 		public override void InstallBindings()
 		{
 			BindPrefabs();
 
-			BindDecorators();
+			DecorateStatsTable();
+			DecorateTimeService();
 
 			Container.BindInterfacesTo<InputService>().AsSingle();
 			Container.BindInterfacesTo<UniTaskRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
@@ -28,24 +28,42 @@ namespace Confrontation
 			Container.Bind<ToMainMenu>().AsSingle();
 			Container.Bind<ToGameplay>().AsSingle();
 			Container.Bind<ToLevelEditor>().AsSingle();
+			Container.Bind<ActiveInfluences>().AsSingle();
 
 			StartGame();
 		}
 
-		private void BindDecorators()
-		{
-			Container.BindInterfacesAndSelfTo<AccelerateableTimeServiceDecorator>().AsSingle();
-			Container.Bind<ITimeService>().To<TimeService>().WhenInjectedInto<AccelerateableTimeServiceDecorator>();
-		}
-
-		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
-
 		private void BindPrefabs()
 		{
-			Container.BindInstance<IBalanceTable>(_balanceTable).AsSingle();
 			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
 		}
+
+		private void DecorateTimeService()
+		{
+			Container.BindSelf<TimeService>().AsSingle();
+			Container.BindSelf<TimeAccelerationService>().AsSingle();
+			Container.BindSelf<TimeStopService>().AsSingle();
+
+			Container.DecorateFromResolve<ITimeService, TimeService, TimeAccelerationService>();
+			Container.DecorateFromResolve<ITimeService, TimeAccelerationService, TimeStopService>();
+			Container.Bind<ITimeService>().To<TimeStopService>().FromResolve();
+
+			Container.Bind<IInitializable>().To<TimeAccelerationService>().FromResolve();
+		}
+
+		private void DecorateStatsTable()
+		{
+			Container.BindSelf<StatsTable>().FromInstance(_statsTable).AsSingle();
+			Container.BindSelf<InfluencedStatsTable>().AsSingle();
+
+			Container.DecorateFromResolve<IStatsTable, StatsTable, InfluencedStatsTable>();
+			Container.Bind<IStatsTable>().To<InfluencedStatsTable>().FromResolve();
+
+			Container.Bind<IInitializable>().To<InfluencedStatsTable>().FromResolve();
+		}
+
+		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
 	}
 }

@@ -61,7 +61,7 @@ namespace Confrontation
 		public class Factory : PlaceholderFactory<Garrison>
 		{
 			[Inject] private readonly IAssetsService _assets;
-			[Inject] private readonly IBalanceTable _balance;
+			[Inject] private readonly IStatsTable _stats;
 
 			public Garrison Create(Cell cell, int quantityOfUnits = 0)
 			{
@@ -71,7 +71,7 @@ namespace Confrontation
 				garrison.transform.position = cell.Coordinates.ToAboveCellPosition();
 				garrison.Coordinates = cell.Coordinates;
 				garrison.QuantityOfUnits = quantityOfUnits;
-				garrison.Stats = new UnitStatsDecorator(_balance.UnitStats, garrison.OwnerPlayerId, garrison.Field);
+				garrison.Stats = new UnitStatsDecorator(_stats.UnitStats, garrison.OwnerPlayerId, garrison.Field);
 				garrison.Health = new SquadHealth(garrison);
 
 				return garrison;

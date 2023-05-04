@@ -53,7 +53,7 @@ namespace Confrontation
 		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			[Inject] private readonly IAssetsService _assets;
-			[Inject] private readonly IBalanceTable _balance;
+			[Inject] private readonly IStatsTable _stats;
 
 			public UnitsSquad Create(Cell cell, int quantityOfUnits = 0)
 			{
@@ -64,7 +64,7 @@ namespace Confrontation
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
 				squad.Coordinates = cell.Coordinates;
 				squad.QuantityOfUnits = quantityOfUnits;
-				squad.Stats = new UnitStatsDecorator(_balance.UnitStats, squad.OwnerPlayerId, squad.Field);
+				squad.Stats = new UnitStatsDecorator(_stats.UnitStats, squad.OwnerPlayerId, squad.Field);
 				squad.Health = new SquadHealth(squad);
 
 				return squad;

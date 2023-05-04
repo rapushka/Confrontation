@@ -1,0 +1,26 @@
+using Zenject;
+
+namespace Confrontation
+{
+	public class TimeAccelerationService : ITimeService, IInitializable
+	{
+		[Inject] private readonly ITimeService _decoratee;
+		[Inject] private readonly IStatsTable _statsTable;
+
+		public void Initialize() => Decelerate();
+
+		private float AccelerationCoefficient { get; set; }
+
+		public float RealFixedDeltaTime => _decoratee.RealFixedDeltaTime;
+
+		public float RealDeltaTime => _decoratee.RealDeltaTime;
+
+		public float FixedDeltaTime => _decoratee.FixedDeltaTime * AccelerationCoefficient;
+
+		public float DeltaTime => _decoratee.DeltaTime * AccelerationCoefficient;
+
+		public void Accelerate() => AccelerationCoefficient = _statsTable.TimeStats.AcceleratedTimeScale;
+
+		public void Decelerate() => AccelerationCoefficient = _statsTable.TimeStats.NormalTimeScale;
+	}
+}

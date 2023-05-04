@@ -11,7 +11,7 @@ namespace Confrontation.Editor.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			Container.Bind<IBalanceTable>().FromSubstitute();
+			Container.Bind<IStatsTable>().FromSubstitute();
 
 			Container.Bind<IField>().To<Field>().AsSingle();
 			Container.BindFieldGenerator();
