@@ -14,6 +14,6 @@ namespace Confrontation
 	[Serializable]
 	public class ForgeLevelStats : IStats
 	{
-		[field: SerializeField] public float CombatStrengthIncreasesRate { get; private set; }
+		[field: SerializeField] public virtual float CombatStrengthIncreasesRate { get; private set; }
 	}
 }

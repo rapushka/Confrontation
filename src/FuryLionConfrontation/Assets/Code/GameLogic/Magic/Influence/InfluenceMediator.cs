@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Zenject;
@@ -43,24 +42,26 @@ namespace Confrontation
 		public void LateTick() => ClearUnusedInfluencers();
 
 		public float Influence(float on, InfluenceTarget withTarget)
-			=> _influencers.Aggregate(on, (current, i) => i.Influence(current, withTarget));
+			=> _influencers.Aggregate(on, (x, i) => i.Influence(x, withTarget));
 
 		public float Influence<T>(float on, InfluenceTarget withTarget, T @for)
-			=> _influencers
-			   .OfType<ConstrainedInfluencer<T>>()
-			   .Aggregate(on, (current, i) => i.Influence(current, withTarget, @for));
+			=> _influencers.Aggregate(on, (x, i) => Influence(x, withTarget, @for, i));
+
+		private static float Influence<T>(float current, InfluenceTarget withTarget, T @for, IInfluencer influencer)
+			=> influencer is ConstrainedInfluencer<T> constrainedInfluencer
+				? constrainedInfluencer.Influence(current, withTarget, @for)
+				: influencer.Influence(current, withTarget);
 
 		private IInfluencer AddConstraint(InfluenceConstraint constraint, IInfluencer influencer)
 			=> constraint switch
 			{
-				InfluenceConstraint.None                => influencer,
 				InfluenceConstraint.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.AllNowMovingUnits   => _onNowAllMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurUnits            => _ouOurUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurFarms            => _onOurFarmsFactory.Create(influencer),
 				InfluenceConstraint.OurForges           => _onOurForgesFactory.Create(influencer),
 				InfluenceConstraint.OurGoldenMine       => _onOurGoldenMinesFactory.Create(influencer),
-				_                                       => throw new ArgumentOutOfRangeException(),
+				_                                       => influencer,
 			};
 
 		private void ClearUnusedInfluencers()
