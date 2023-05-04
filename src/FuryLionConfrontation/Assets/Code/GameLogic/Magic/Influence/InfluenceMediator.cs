@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -57,14 +55,13 @@ namespace Confrontation
 		private IInfluencer AddConstraint(InfluenceConstraint constraint, IInfluencer influencer)
 			=> constraint switch
 			{
-				InfluenceConstraint.None                => influencer,
 				InfluenceConstraint.AllUntilMovingUnits => _onAllUntilMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.AllNowMovingUnits   => _onNowAllMovingUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurUnits            => _ouOurUnitsFactory.Create(influencer),
 				InfluenceConstraint.OurFarms            => _onOurFarmsFactory.Create(influencer),
 				InfluenceConstraint.OurForges           => _onOurForgesFactory.Create(influencer),
 				InfluenceConstraint.OurGoldenMine       => _onOurGoldenMinesFactory.Create(influencer),
-				_                                       => throw new ArgumentOutOfRangeException(),
+				_                                       => influencer,
 			};
 
 		private void ClearUnusedInfluencers()
