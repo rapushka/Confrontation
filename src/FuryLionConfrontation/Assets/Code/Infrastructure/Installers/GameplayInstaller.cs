@@ -5,6 +5,7 @@ namespace Confrontation
 	public class GameplayInstaller : GameFieldInstaller
 	{
 		[SerializeField] private BuildingButton _buildingButtonPrefab;
+		[SerializeField] private SpellButton _spellButtonPrefab;
 		[SerializeField] private UnitsSquad _unitPrefab;
 		[SerializeField] private Garrison _garrisonPrefab;
 		[SerializeField] private LineRenderer _orderLineRenderer;
@@ -44,6 +45,8 @@ namespace Confrontation
 			Container.Bind<BuildingSpawner>().AsSingle();
 			Container.Bind<GameplayUiMediator>().AsSingle();
 			Container.Bind<GameplayWindows>().AsSingle();
+			Container.Bind<SpellCaster>().AsSingle();
+
 		}
 
 		protected override void InstallSpecificFactories()
@@ -56,15 +59,20 @@ namespace Confrontation
 			Container.BindPrefabFactory<BuildingInfoWindow, BuildingInfoWindow.Factory>();
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindPrefabFactory<NotEnoughGoldWindow, NotEnoughGoldWindow.Factory>();
+			Container.BindPrefabFactory<SpellBookWindow, SpellBookWindow.Factory>();
 
 			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
-			         .FromFactory<GameplayGameplayWindowsFactory>();
+			         .FromFactory<GameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
 			         .FromComponentInNewPrefab(_buildingButtonPrefab);
 
+			Container.BindFactory<ISpell, ToolTip, SpellButton, SpellButton.Factory>()
+			         .FromComponentInNewPrefab(_spellButtonPrefab);
+
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
 		}
+
 	}
 }

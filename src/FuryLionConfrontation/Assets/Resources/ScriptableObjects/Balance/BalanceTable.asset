@@ -30,7 +30,7 @@ MonoBehaviour:
       - <CoolDown>k__BackingField: 1.5
         <Amount>k__BackingField: 1
   <TowerOfMagesStats>k__BackingField:
-    <Price>k__BackingField: 6
+    <Price>k__BackingField: 1
     <LeveledStats>k__BackingField:
       <UpgradePrice>k__BackingField: 12
       <StatsByLevel>k__BackingField:
@@ -124,8 +124,8 @@ MonoBehaviour:
           _selectionIndex: 5
       - <Weight>k__BackingField: 0.75
         <Item>k__BackingField:
-          _prefab: {fileID: 4396281347570571264, guid: 3b423530431c56e72be520ee66468150, type: 3}
-          _selectionIndex: 5
+          _prefab: {fileID: 3181293606828939070, guid: 721fbcf1d672d53c3ba4ec0506f9cc24, type: 3}
+          _selectionIndex: 6
       - <Weight>k__BackingField: 0.25
         <Item>k__BackingField:
           _prefab: {fileID: 7023715047983868041, guid: d1baba0de027b3c5184c221fd68405cc, type: 3}

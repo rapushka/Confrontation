@@ -11,11 +11,11 @@ namespace Confrontation
 		[Inject] private readonly User _user;
 		[Inject] private readonly IInputService _input;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
-		protected virtual string TextView => $"{_building.Name}\n{_balanceTable.BuildPriceFor(_building)} G";
+		private string TextView => $"{_building.Name}\n{_statsTable.BuildPriceFor(_building)} G";
 
 		private void Start() => _textMesh.text = TextView;
 
@@ -31,7 +31,7 @@ namespace Confrontation
 			}
 		}
 
-		protected bool PurchaseBuilding() => _purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell);
+		private bool PurchaseBuilding() => _purchase.BuyBuilding(_user.Player, _building, _input.ClickedCell);
 
 		public class Factory : PlaceholderFactory<Building, BuildingButton>
 		{

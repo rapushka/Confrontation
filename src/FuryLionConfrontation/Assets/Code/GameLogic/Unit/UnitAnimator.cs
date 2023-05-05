@@ -1,17 +1,20 @@
 using UnityEngine;
+using Zenject;
 
 namespace Confrontation
 {
 	public class UnitAnimator : MonoBehaviour
 	{
-		[SerializeField] private Animator _animator;
+		[Inject] private Animator _animator;
 
-		private static readonly int _isMoving = Animator.StringToHash("IsMoving");
+		public bool IsMoving
+		{
+			get => _animator.GetBool(Constants.AnimationHash.IsMoving);
+			private set => _animator.SetBool(Constants.AnimationHash.IsMoving, value);
+		}
 
-		public void StartMoving() => ToggleMoving(true);
+		public void StartMoving() => IsMoving = true;
 
-		public void StopMoving() => ToggleMoving(false);
-
-		private void ToggleMoving(bool isMoving) => _animator.SetBool(_isMoving, isMoving);
+		public void StopMoving() => IsMoving = false;
 	}
 }

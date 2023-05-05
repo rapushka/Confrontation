@@ -25,7 +25,7 @@ namespace Confrontation.Editor
 			}
 
 			var id = cell.OwnerPlayerId;
-			GizmoUtils.SetColorBy(id);
+			GizmoTools.SetColorBy(id);
 
 			Gizmos.DrawSphere(cell.transform.position, GizmoRadius);
 		}

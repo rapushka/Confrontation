@@ -1,12 +1,12 @@
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
 	public class UnitsSquad : Garrison
 	{
-		[SerializeField] private UnitMovement _unitMovement;
-		[SerializeField] private UnitOrderPerformer _unitOrderPerformer;
+		[Inject] private UnitAnimator _animator;
+		[Inject] private UnitMovement _unitMovement;
+		[Inject] private UnitOrderPerformer _unitOrderPerformer;
 
 		private Coordinates _coordinates;
 
@@ -14,9 +14,11 @@ namespace Confrontation
 
 		private void OnDisable() => _unitMovement.TargetReached -= OnTargetCellReached;
 
-		public int OwnerPlayerId { get; set; }
+		public override int OwnerPlayerId { get; set; }
 
 		public Cell LocationCell => Field.Cells[Coordinates];
+
+		public bool IsMoving => _animator.IsMoving;
 
 		public override Coordinates Coordinates
 		{
@@ -53,19 +55,15 @@ namespace Confrontation
 		public new class Factory : PlaceholderFactory<UnitsSquad>
 		{
 			[Inject] private readonly IAssetsService _assets;
-			[Inject] private readonly IBalanceTable _balance;
+			[Inject] private readonly IField _field;
 
 			public UnitsSquad Create(Cell cell, int quantityOfUnits = 0)
 			{
 				var squad = base.Create();
+				_field.AllUnits.Add(squad);
 				_assets.ToGroup(squad.transform);
-
-				squad.transform.position = cell.Coordinates.ToAboveCellPosition();
 				squad.OwnerPlayerId = cell.OwnerPlayerId;
-				squad.Coordinates = cell.Coordinates;
-				squad.QuantityOfUnits = quantityOfUnits;
-				squad.Stats = new UnitStatsDecorator(_balance.UnitStats, squad.OwnerPlayerId, squad.Field);
-				squad.Health = new SquadHealth(squad);
+				squad.SetUp(cell.Coordinates, quantityOfUnits);
 
 				return squad;
 			}

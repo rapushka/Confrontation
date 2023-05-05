@@ -5,7 +5,7 @@ namespace Confrontation
 	public class Barrack : Generator
 	{
 		[Inject] private readonly UnitsSquad.Factory _unitsFactory;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		public override float PassedDuration { get; set; }
 
@@ -19,13 +19,13 @@ namespace Confrontation
 
 		protected float MinAcceleratedCoolDown => CurrentLevelStats.MinAcceleratedCoolDown;
 
-		private LeveledStats<BarrackLevelStats> Stats => BalanceTable.BarrackStats.LeveledStats;
+		private LeveledStats<BarrackLevelStats> Stats => StatsTable.BarrackStats.LeveledStats;
 
 		private bool HaveSquad => LocatedUnits == true;
 
 		private UnitsSquad LocatedUnits => Field.LocatedUnits[Coordinates];
 
-		private BarrackLevelStats CurrentLevelStats => _balanceTable.BarrackStats.LeveledStats[Level];
+		private BarrackLevelStats CurrentLevelStats => _statsTable.BarrackStats.LeveledStats[Level];
 
 		private UnitsSquad ActualUnitsSquad => HaveSquad ? LocatedUnits : _unitsFactory.Create(RelatedCell);
 

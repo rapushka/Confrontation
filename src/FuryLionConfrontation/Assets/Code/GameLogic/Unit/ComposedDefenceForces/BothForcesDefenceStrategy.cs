@@ -1,40 +1,35 @@
+using Zenject;
+
 namespace Confrontation
 {
-	public class BothForcesDefenceStrategy : DefenceStrategyBase
+	public class BothForcesDefenceStrategy : IDefenceStrategy
 	{
-		private readonly Garrison _locatedSquad;
-		private readonly Garrison _garrison;
-		private readonly Cell _cell;
+		[Inject] private readonly UnitsSquad _locatedSquad;
+		[Inject] private readonly Garrison _garrison;
+		[Inject] private readonly Cell _cell;
+		[Inject] private readonly IDestroyService _destroyService;
 
 		private float _pierceRate;
 
-		public BothForcesDefenceStrategy(IDestroyer destroyer, Cell cell, Garrison locatedSquad, Garrison garrison)
-			: base(destroyer)
+		public float BaseDamage => _locatedSquad.BaseDamage + _garrison.BaseDamage;
+
+		public int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
+
+		public float HealthPoints => _locatedSquad.HealthPoints + _garrison.HealthPoints;
+
+		public void Destroy()
 		{
-			_cell = cell;
-			_locatedSquad = locatedSquad;
-			_garrison = garrison;
+			_destroyService.Destroy(_locatedSquad.gameObject);
+			_destroyService.Destroy(_garrison.gameObject);
 		}
 
-		public override float BaseDamage => _locatedSquad.BaseDamage + _garrison.BaseDamage;
-
-		public override int QuantityOfUnits => _locatedSquad.QuantityOfUnits + _garrison.QuantityOfUnits;
-
-		public override float HealthPoints => _locatedSquad.HealthPoints + _garrison.HealthPoints;
-
-		public override void Destroy()
-		{
-			Destroyer.Destroy(_locatedSquad.gameObject);
-			Destroyer.Destroy(_garrison.gameObject);
-		}
-
-		public override void Kill()
+		public void Kill()
 		{
 			_locatedSquad.Kill();
 			_garrison.Kill();
 		}
 
-		public override void TakeDamageOnDefence(float incomingDamage, float pierceRate)
+		public void TakeDamageOnDefence(float incomingDamage, float pierceRate)
 		{
 			_pierceRate = pierceRate;
 			if (TryKillBoth(incomingDamage) == false
@@ -102,8 +97,10 @@ namespace Confrontation
 		private void DistributeTo(float incomingDamage, Garrison fullDamaged, Garrison partiallyDamaged)
 		{
 			var remainedDamage = fullDamaged.Health.TakeDamageOnDefence(incomingDamage, _pierceRate);
-			Destroyer.Destroy(fullDamaged.gameObject);
+			_destroyService.Destroy(fullDamaged.gameObject);
 			partiallyDamaged.Health.TakeDamageOnDefence(remainedDamage, _pierceRate);
 		}
+
+		public class Factory : PlaceholderFactory<UnitsSquad, Garrison, Cell, BothForcesDefenceStrategy> { }
 	}
 }

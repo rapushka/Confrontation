@@ -8,7 +8,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly IField _field;
 		[Inject] private readonly Player _player;
-		[Inject] private readonly IBalanceTable _balanceTable;
+		[Inject] private readonly IStatsTable _statsTable;
 
 		public UnitsSquad[] Units => _field.LocatedUnits.Where(IsOurUnit).AsArray();
 
@@ -18,8 +18,8 @@ namespace Confrontation
 
 		public bool CanBuyPreferredBuilding(out Building building)
 		{
-			building = _balanceTable.EnemiesStats.BuildingsPriority.PickRandom().Prefab;
-			return _player.Resources.Gold.IsEnoughGoldFor(_balanceTable.BuildPriceFor(building));
+			building = _statsTable.EnemiesStats.BuildingsPriority.PickRandom().Prefab;
+			return _player.Resources.Gold.IsEnoughFor(_statsTable.BuildPriceFor(building));
 		}
 
 		public IEnumerable<IPlaceable> NeighboursFor(Cell cell) =>

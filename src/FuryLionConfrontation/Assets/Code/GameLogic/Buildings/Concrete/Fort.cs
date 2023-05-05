@@ -8,7 +8,7 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<FortLevelStats> Stats => BalanceTable.FortStats.LeveledStats;
+		private LeveledStats<FortLevelStats> Stats => StatsTable.FortStats.LeveledStats;
 
 		public FortLevelStats CurrentLevelStats => Stats[Level];
 	}

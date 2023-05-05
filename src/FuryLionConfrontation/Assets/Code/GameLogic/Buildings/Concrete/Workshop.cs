@@ -8,7 +8,7 @@ namespace Confrontation
 
 		protected override int MaxLevel => Stats.MaxLevel;
 
-		private LeveledStats<WorkshopLevelStats> Stats => BalanceTable.WorkshopStats.LeveledStats;
+		private LeveledStats<WorkshopLevelStats> Stats => StatsTable.WorkshopStats.LeveledStats;
 
 		public WorkshopLevelStats CurrentLevelStats => Stats[Level];
 	}
