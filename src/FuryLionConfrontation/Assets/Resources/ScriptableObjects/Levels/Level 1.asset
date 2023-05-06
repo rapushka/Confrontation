@@ -78,5 +78,7 @@ MonoBehaviour:
       _row: 4
       _column: 1
   <TutorialPages>k__BackingField:
-  - {fileID: 6087938506861051399, guid: 6b8da514dcbc1ddc5b839fdf5d786f9a, type: 3}
-  - {fileID: 6087938506861051399, guid: 6b8da514dcbc1ddc5b839fdf5d786f9a, type: 3}
+  - {fileID: 5085345677871900592, guid: 1d8a3b7bc5fb566559223e8a6b0bd21a, type: 3}
+  - {fileID: 5085345677871900592, guid: 9e7606559e65f1ef0b7d554c73ec1fe6, type: 3}
+  - {fileID: 5085345677871900592, guid: 476b2a9f26071f6ff954c843dea91604, type: 3}
+  - {fileID: 5890733197191399759, guid: 1be6b3cccef777ef48de1f50ddc3923a, type: 3}
