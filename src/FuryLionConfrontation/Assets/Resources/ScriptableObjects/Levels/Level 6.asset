@@ -100,11 +100,23 @@ MonoBehaviour:
       _row: 3
       _column: 1
   - _data:
+      _prefab: {fileID: 7023715047983868041, guid: d1baba0de027b3c5184c221fd68405cc, type: 3}
+      _selectionIndex: 7
+    _coordinates:
+      _row: 4
+      _column: 0
+  - _data:
       _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
       _selectionIndex: 0
     _coordinates:
       _row: 4
       _column: 1
+  - _data:
+      _prefab: {fileID: 3181293606828939070, guid: 721fbcf1d672d53c3ba4ec0506f9cc24, type: 3}
+      _selectionIndex: 6
+    _coordinates:
+      _row: 4
+      _column: 2
   - _data:
       _prefab: {fileID: 6529478872557192479, guid: 940a00f79fbc35cd38179258b46abb20, type: 3}
       _selectionIndex: 2
@@ -118,8 +130,8 @@ MonoBehaviour:
       _row: 5
       _column: 1
   - _data:
-      _prefab: {fileID: 1543655047530976274, guid: 767a888a19d2ba20abf6c76e90931c91, type: 3}
-      _selectionIndex: 1
+      _prefab: {fileID: -4268335258964878579, guid: b01b3cabd2c07c1cc8afac167d6a54f7, type: 3}
+      _selectionIndex: 8
     _coordinates:
       _row: 5
       _column: 2
@@ -135,3 +147,8 @@ MonoBehaviour:
     _coordinates:
       _row: 9
       _column: 1
+  <TutorialPages>k__BackingField:
+  - {fileID: 8048225086088727663, guid: 7098c24a8005364958a1cff8c79b692d, type: 3}
+  - {fileID: 8048225086088727663, guid: 84321e22e4499df818122f779bb4d619, type: 3}
+  - {fileID: 8048225086088727663, guid: 5596e7fca891c72d49d4c642dfacec11, type: 3}
+  - {fileID: 8048225086088727663, guid: dc65b8757c6799e8d9a806a69632a8e2, type: 3}
