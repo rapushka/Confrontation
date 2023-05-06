@@ -14,14 +14,28 @@ namespace Confrontation
 
 		protected IEnumerable<Tab> Tabs => _tabs;
 
-		private void OnEnable() => _tabs.ForEach((t) => t.Button.onClick.AddListener(() => Open(t)));
+		private void OnEnable() => _tabs.ForEach(SubscribeOpenButton);
 
 		private void OnDisable() => _tabs.ForEach((t) => t.Button.onClick.RemoveAllListeners());
 
-		private void Start()
+		private void Start() => OpenOnlyFirstTab();
+
+		public void AddTab(Tab tab)
 		{
-			_tabs.ForEach((t) => t.Close());
-			Open(_tabs.First());
+			SubscribeOpenButton(tab);
+			_tabs.Add(tab);
+			OpenOnlyFirstTab();
+		}
+
+		private void SubscribeOpenButton(Tab tab) => tab.Button.onClick.AddListener(() => Open(tab));
+
+		private void OpenOnlyFirstTab()
+		{
+			if (_tabs.Any())
+			{
+				_tabs.ForEach((t) => t.Close());
+				Open(_tabs.First());
+			}
 		}
 
 		private void Open(Tab tab)

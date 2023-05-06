@@ -9,6 +9,9 @@ namespace Confrontation
 		[Inject] private readonly ILevelSelector _levelSelector;
 
 		[SerializeField] private RectTransform _pageRoot;
+		[SerializeField] private RectTransform _buttonsRoot;
+		[SerializeField] private TabsSystem _tabsSystem;
+		[SerializeField] private PageButton _buttonPrefab;
 
 		public override void Open()
 		{
@@ -19,9 +22,16 @@ namespace Confrontation
 
 		private void LoadTutorialPages()
 		{
+			var pageCounter = 1;
 			foreach (var pagePrefab in _levelSelector.SelectedLevel.TutorialPages)
 			{
-				Instantiate(pagePrefab, _pageRoot.transform);
+				var page = Instantiate(pagePrefab, _pageRoot);
+				var pageButton = Instantiate(_buttonPrefab, _buttonsRoot);
+
+				pageButton.PageNumber = pageCounter++;
+				var tab = new Tab(pageButton.Button, page);
+
+				_tabsSystem.AddTab(tab);
 			}
 		}
 
