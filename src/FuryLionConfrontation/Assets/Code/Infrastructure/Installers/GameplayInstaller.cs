@@ -47,6 +47,7 @@ namespace Confrontation
 			Container.Bind<GameplayWindows>().AsSingle();
 			Container.Bind<SpellCaster>().AsSingle();
 
+			Container.BindInterfacesAndSelfTo<Tutorial>().AsSingle();
 		}
 
 		protected override void InstallSpecificFactories()
@@ -60,6 +61,7 @@ namespace Confrontation
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindPrefabFactory<NotEnoughGoldWindow, NotEnoughGoldWindow.Factory>();
 			Container.BindPrefabFactory<SpellBookWindow, SpellBookWindow.Factory>();
+			Container.BindPrefabFactory<TutorialWindow, TutorialWindow.Factory>();
 
 			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
 			         .FromFactory<GameplayWindowsFactory>();
@@ -73,6 +75,5 @@ namespace Confrontation
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
 		}
-
 	}
 }
