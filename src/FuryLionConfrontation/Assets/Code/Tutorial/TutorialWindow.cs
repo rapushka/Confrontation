@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -13,17 +15,22 @@ namespace Confrontation
 		[SerializeField] private TabsSystem _tabsSystem;
 		[SerializeField] private PageButton _buttonPrefab;
 
+		private List<TutorialPage> TutorialPages => _levelSelector.SelectedLevel.TutorialPages;
+
 		public override void Open()
 		{
-			_timeStopService.Stop();
-			LoadTutorialPages();
-			base.Open();
+			if (TutorialPages.Any())
+			{
+				_timeStopService.Stop();
+				LoadTutorialPages();
+				base.Open();
+			}
 		}
 
 		private void LoadTutorialPages()
 		{
 			var pageCounter = 1;
-			foreach (var pagePrefab in _levelSelector.SelectedLevel.TutorialPages)
+			foreach (var pagePrefab in TutorialPages)
 			{
 				var page = Instantiate(pagePrefab, _pageRoot);
 				var pageButton = Instantiate(_buttonPrefab, _buttonsRoot);
