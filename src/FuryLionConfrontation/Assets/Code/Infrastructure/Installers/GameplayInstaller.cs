@@ -12,6 +12,8 @@ namespace Confrontation
 		[SerializeField] private GameplayCameraSwipeMovement _movement;
 		[SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
 		[SerializeField] private Hud _hud;
+		[SerializeField] private RectTransform _buildingButtonsRoot;
+		[SerializeField] private RectTransform _spellButtonsRoots;
 
 		protected override void InstallSpecificBindings()
 		{
@@ -67,10 +69,12 @@ namespace Confrontation
 			         .FromFactory<GameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
-			         .FromComponentInNewPrefab(_buildingButtonPrefab);
+			         .FromComponentInNewPrefab(_buildingButtonPrefab)
+			         .UnderTransform(_buildingButtonsRoot);
 
 			Container.BindFactory<ISpell, ToolTip, SpellButton, SpellButton.Factory>()
-			         .FromComponentInNewPrefab(_spellButtonPrefab);
+			         .FromComponentInNewPrefab(_spellButtonPrefab)
+			         .UnderTransform(_spellButtonsRoots);
 
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);

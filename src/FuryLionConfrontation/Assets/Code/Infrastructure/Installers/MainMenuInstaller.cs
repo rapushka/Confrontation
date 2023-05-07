@@ -11,7 +11,6 @@ namespace Confrontation
 		[SerializeField] private List<LevelScriptableObject> _levels;
 		[SerializeField] private Transform _levelsGridRoot;
 		[SerializeField] private LevelsForEditorPanel _levelsForEditorPanelPrefab;
-
 		[SerializeField] private RectTransform _uiRoot;
 
 		public override void InstallBindings()
