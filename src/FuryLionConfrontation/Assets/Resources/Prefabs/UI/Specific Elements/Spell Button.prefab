@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc49fcb7465c4b91a7aafbe09c7aca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rectTransform: {fileID: 4088640880825717463}
   _titleTextMesh: {fileID: 4088640878929322432}
   _iconImage: {fileID: 6455146520180477831}
 --- !u!224 &4088640880825717463 stripped
