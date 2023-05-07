@@ -21,11 +21,12 @@ namespace Confrontation
 
 		public class Factory : PlaceholderFactory<ILevel, LevelButtonBase>
 		{
-			public T Create<T>(int levelNumber, ILevel level)
+			public T Create<T>(int levelNumber, ILevel level, bool isActive = true)
 				where T : LevelButtonBase
 			{
 				var levelButton = base.Create(level);
 				levelButton._textMesh.text = levelNumber.ToString();
+				levelButton.Interactable = isActive;
 				return (T)levelButton;
 			}
 		}
