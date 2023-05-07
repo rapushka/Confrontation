@@ -35,7 +35,7 @@ namespace Confrontation
 
 		protected override void HandleHold() => _toolTip.Show(withText: _spell.Description, on: transform.position);
 
-		protected override void OnRelease() => _toolTip.Hide();
+		protected override void HandleRelease() => _toolTip.Hide();
 
 		public class Factory : PlaceholderFactory<ISpell, ToolTip, SpellButton>
 		{

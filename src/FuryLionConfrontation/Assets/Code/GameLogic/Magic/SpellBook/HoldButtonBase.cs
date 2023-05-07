@@ -36,20 +36,22 @@ namespace Confrontation
 
 		public void OnPointerUp(PointerEventData eventData)
 		{
-			if (_isPressed && _handled == false)
+			if (_isPressed
+			    && _handled == false
+			    && eventData.delta == Vector2.zero)
 			{
 				HandleClick();
 			}
 
 			ResetButtonState();
-			OnRelease();
+			HandleRelease();
 		}
 
 		protected abstract void HandleClick();
 
 		protected abstract void HandleHold();
 
-		protected virtual void OnRelease() { }
+		protected virtual void HandleRelease() { }
 
 		private void ResetButtonState()
 		{
