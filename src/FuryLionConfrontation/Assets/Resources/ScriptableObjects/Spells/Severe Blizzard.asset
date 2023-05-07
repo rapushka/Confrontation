@@ -15,7 +15,7 @@ MonoBehaviour:
   _title: Severe Blizzard
   _description: Reduces the speed of all currently moving Units (those that haven't
     left yet will put on their skis)
-  _icon: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  _icon: {fileID: -2065013598, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 2
   _duration: 3
   _manaCoast: 1

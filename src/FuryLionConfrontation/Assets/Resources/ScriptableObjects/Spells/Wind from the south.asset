@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Wind from the south
   _description: Temporarily disables the bonus of all farms in the game
-  _icon: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
+  _icon: {fileID: 2063876465, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
   _duration: 5
   _manaCoast: 1

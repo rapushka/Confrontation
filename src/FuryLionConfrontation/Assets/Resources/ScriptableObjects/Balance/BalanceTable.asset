@@ -102,8 +102,8 @@ MonoBehaviour:
       - <UnitsAccelerationCoefficient>k__BackingField: 0.15
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
-      <Min>k__BackingField: -1.5
-      <Max>k__BackingField: -4.5
+      <Min>k__BackingField: 2.5
+      <Max>k__BackingField: 6.5
     <BuildingsPriority>k__BackingField:
       _entries:
       - <Weight>k__BackingField: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
         <Item>k__BackingField:
           _prefab: {fileID: 809301657887772580, guid: 57b1bea01f01fd0a5bbf25aaed5c4d9e, type: 3}
           _selectionIndex: 9
-      - <Weight>k__BackingField: 0.15
+      - <Weight>k__BackingField: 0.687
         <Item>k__BackingField:
           _prefab: {fileID: 363797083312448974, guid: 85bfb1affbae22fdb9bd28c72234aa60, type: 3}
           _selectionIndex: 10

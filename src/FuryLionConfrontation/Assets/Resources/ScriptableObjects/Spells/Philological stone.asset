@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
   m_Name: Philological stone
   m_EditorClassIdentifier: 
-  _title: Wind from the south
+  _title: Philological stone
   _description: '(turns iron into gelatin)
 
     temporarily disables the bonus of
     all forges in the game'
-  _icon: {fileID: 21300000, guid: 144aa74618b85974a9a50f612c2fa8fd, type: 3}
+  _icon: {fileID: 1385096403, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
   _duration: 5
   _manaCoast: 5
