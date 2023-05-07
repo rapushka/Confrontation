@@ -14,13 +14,13 @@ namespace Confrontation
 
 		protected virtual Transform Parent => _levelsGridRoot;
 
-		public void Initialize() => _levels.ForEach(Create);
+		public void Initialize() => _levels.ForEach(level => Create(level));
 
-		private void Create(ILevel level)
+		protected virtual LevelButtonBase Create(ILevel level)
 		{
-			var levelButton = _levelButtonsFactory.Create<LevelButtonBase>(_counter, level);
-			// levelButton.transform.SetParent(Parent);
+			var levelButtonBase = _levelButtonsFactory.Create<LevelButtonBase>(_counter, level);
 			_counter++;
+			return levelButtonBase;
 		}
 	}
 }
