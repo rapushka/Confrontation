@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Not so dim
   _description: temporarily increases income from allied mines
-  _icon: {fileID: 21300000, guid: ae869fe6797f4454cbbf417d87ff637c, type: 3}
+  _icon: {fileID: -33125261, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
   _duration: 5
   _manaCoast: 1
