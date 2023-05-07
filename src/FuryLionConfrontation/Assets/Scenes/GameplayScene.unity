@@ -290,6 +290,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldenAmountValueTextMesh: {fileID: 2007899173}
   _manaPointsValueTextMesh: {fileID: 1562022588}
+--- !u!224 &114492626 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7641518899825135044, guid: 344cbf5c20d0230b68b5a84891ce6a73, type: 3}
+  m_PrefabInstance: {fileID: 2020017322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &166446130
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +384,8 @@ MonoBehaviour:
   _movement: {fileID: 2050588172}
   _accelerateTimeToggle: {fileID: 1465434744}
   _hud: {fileID: 93329112}
+  _buildingButtonsRoot: {fileID: 114492626}
+  _spellButtonsRoots: {fileID: 1359096454}
 --- !u!1 &286574868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2274f97a0e48afb0776cfe5793fecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1359096454 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1335839381095870768, guid: e05e5bc9d0aaa80a8bd29d06b119dec7, type: 3}
+  m_PrefabInstance: {fileID: 2083137415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1463229422
 GameObject:
   m_ObjectHideFlags: 0
