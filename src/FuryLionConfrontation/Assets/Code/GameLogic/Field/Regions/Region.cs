@@ -64,11 +64,11 @@ namespace Confrontation
 
 		private void UpdateOwnerOfUnitsInRegion()
 		{
-			foreach (var cellInRegion in _field.Cells.Where((c) => c.RelatedRegion == this))
+			foreach (var cell in OurCells)
 			{
-				if (cellInRegion.LocatedUnits is not null)
+				if (cell.LocatedUnits is not null)
 				{
-					cellInRegion.LocatedUnits!.OwnerPlayerId = OwnerPlayerId;
+					cell.LocatedUnits!.OwnerPlayerId = OwnerPlayerId;
 				}
 			}
 		}
