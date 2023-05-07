@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,11 +7,8 @@ namespace Confrontation
 	{
 		[Inject] private readonly List<LevelScriptableObject> _levels;
 		[Inject] private readonly LevelButtonBase.Factory _levelButtonsFactory;
-		[Inject] private readonly Transform _levelsGridRoot;
 
 		private int _counter = 1;
-
-		protected virtual Transform Parent => _levelsGridRoot;
 
 		public void Initialize() => _levels.ForEach(level => Create(level));
 
