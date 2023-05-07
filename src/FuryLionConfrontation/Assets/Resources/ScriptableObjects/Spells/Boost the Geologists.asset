@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Boost the Geologists
   _description: temporarily Increases the bonus of allied forges
-  _icon: {fileID: 21300000, guid: 874d8401331ede14087e8d8d486ddda6, type: 3}
+  _icon: {fileID: -1587789106, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
   _duration: 5
   _manaCoast: 5
