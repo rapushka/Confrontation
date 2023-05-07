@@ -19,7 +19,7 @@ namespace Confrontation
 		private void Create(ILevel level)
 		{
 			var levelButton = _levelButtonsFactory.Create<LevelButtonBase>(_counter, level);
-			levelButton.transform.SetParent(Parent);
+			// levelButton.transform.SetParent(Parent);
 			_counter++;
 		}
 	}
