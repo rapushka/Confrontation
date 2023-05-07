@@ -44,13 +44,7 @@ namespace Confrontation
 			}
 		}
 
-		public void UpdateCellsColor()
-		{
-			foreach (var cell in OurCells)
-			{
-				cell.SetColor(OwnerPlayerId);
-			}
-		}
+		public void UpdateCellsColor() => OurCells.ForEach(SetOurColor);
 
 		public static bool operator ==(Region left, Region right) => left is not null && left.Equals(right);
 
@@ -62,16 +56,13 @@ namespace Confrontation
 
 		public void MakeNeutral() => OwnerPlayerId = Constants.NeutralRegion;
 
-		private void UpdateOwnerOfUnitsInRegion()
-		{
-			foreach (var cell in OurCells)
-			{
-				if (cell.LocatedUnits is not null)
-				{
-					cell.LocatedUnits!.OwnerPlayerId = OwnerPlayerId;
-				}
-			}
-		}
+		private void UpdateOwnerOfUnitsInRegion() => OurCells.Where(WithUnits).ForEach(SetOurOwner);
+
+		private bool WithUnits(Cell cell) => cell.LocatedUnits is not null;
+
+		private void SetOurOwner(Cell cell) => cell.LocatedUnits!.OwnerPlayerId = OwnerPlayerId;
+
+		private void SetOurColor(Cell cell) => cell.SetColor(OwnerPlayerId);
 
 		private void CheckIfIsLostCapital(int oldOwnerId)
 		{
@@ -87,8 +78,7 @@ namespace Confrontation
 		private bool PlayerLostAllCapitals(int oldOwnerId) => CapitalsOfPlayer(oldOwnerId).Any() == false;
 
 		private IEnumerable<Capital> CapitalsOfPlayer(int oldOwnerId)
-			=> _field.Buildings.OfType<Capital>()
-			         .Where((c) => c.OwnerPlayerId == oldOwnerId);
+			=> _field.Buildings.OfType<Capital>().Where((c) => c.OwnerPlayerId == oldOwnerId);
 
 		[Serializable]
 		public class Data
