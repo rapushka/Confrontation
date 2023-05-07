@@ -27,7 +27,6 @@ namespace Confrontation
 
 		public int OwnerPlayerId
 		{
-			// ReSharper disable once ConstantNullCoalescingCondition - it is
 			get => _field.Regions[Coordinates]?.OwnerPlayerId ?? -1;
 			set => _field.Regions[Coordinates].OwnerPlayerId = value;
 		}
