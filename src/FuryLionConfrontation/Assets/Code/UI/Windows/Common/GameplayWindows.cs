@@ -6,10 +6,10 @@ namespace Confrontation
 	{
 		[Inject] private readonly WindowsContainer _container;
 
-		private WindowBase _currentWindow;
+		private GameplayWindowBase _currentWindow;
 
 		public void Open<TWindow>()
-			where TWindow : WindowBase
+			where TWindow : GameplayWindowBase
 		{
 			CloseCurrent();
 			_currentWindow = _container.Windows.Get<TWindow>();

@@ -102,8 +102,8 @@ MonoBehaviour:
       - <UnitsAccelerationCoefficient>k__BackingField: 0.15
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
-      <Min>k__BackingField: 1.5
-      <Max>k__BackingField: 4.5
+      <Min>k__BackingField: -1.5
+      <Max>k__BackingField: -4.5
     <BuildingsPriority>k__BackingField:
       _entries:
       - <Weight>k__BackingField: 1
