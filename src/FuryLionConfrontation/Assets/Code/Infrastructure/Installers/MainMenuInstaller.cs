@@ -25,7 +25,8 @@ namespace Confrontation
 			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
 
 			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
-			         .FromComponentInNewPrefab(_playLevelButtonPrefab);
+			         .FromComponentInNewPrefab(_playLevelButtonPrefab)
+			         .UnderTransform(_levelsGridRoot);
 
 			InstallLevelEditor();
 		}
