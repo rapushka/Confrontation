@@ -28,6 +28,8 @@ namespace Confrontation
 
 		[field: SerializeField] public StableStats StableStats { get; private set; }
 
+		[field: SerializeField] public UserProgressionStats UserProgressionStats { get; private set; }
+
 		[field: SerializeField] public EnemiesStats EnemiesStats { get; private set; }
 
 		[field: SerializeField] public TimeStats TimeStats { get; private set; }

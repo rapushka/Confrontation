@@ -1,6 +1,6 @@
 namespace Confrontation
 {
-	public struct PlayerProgress
+	public class PlayerProgress
 	{
 		public int CompletedLevelsCount { get; set; }
 		public int KalymCount           { get; set; }
