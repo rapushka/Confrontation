@@ -29,6 +29,7 @@ namespace Confrontation
 			Container.Bind<ToGameplay>().AsSingle();
 			Container.Bind<ToLevelEditor>().AsSingle();
 			Container.Bind<Progression>().AsSingle();
+			Container.Bind<ProgressionManipulator>().AsSingle();
 
 			Container.Bind<IProgressionStorageService>().To<PlayerPrefsProgressionService>().AsSingle();
 
