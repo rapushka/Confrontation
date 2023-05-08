@@ -10,6 +10,8 @@ namespace Confrontation
 		[Inject] private readonly User _user;
 		[Inject] private readonly IStatsTable _stats;
 
+		public event Action KalymValueChanged;
+
 		private PlayerProgress CurrentPlayer => _progressionStorage.LoadProgress();
 
 		private int CompletedLevel => _user.SelectedLevelNumber;
@@ -32,7 +34,11 @@ namespace Confrontation
 			}
 		}
 
-		private void AddKalymToPlayer() => UpdateProgress(with: (p) => p.KalymCount += LevelReward);
+		private void AddKalymToPlayer()
+		{
+			UpdateProgress(with: (p) => p.KalymCount += LevelReward);
+			KalymValueChanged?.Invoke();
+		}
 
 		private void OpenNewLevel() => UpdateProgress(with: (p) => p.CompletedLevelsCount++);
 
