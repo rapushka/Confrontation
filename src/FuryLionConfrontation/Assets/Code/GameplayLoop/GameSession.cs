@@ -9,6 +9,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly GameplayUiMediator _uiMediator;
+		[Inject] private readonly Progression _progression;
 
 		private readonly HashSet<Player> _activePlayers = new();
 
@@ -42,7 +43,11 @@ namespace Confrontation
 			}
 		}
 
-		private void GameWin() => GameEnd(GameResult.Victory);
+		private void GameWin()
+		{
+			_progression.LevelCompleted();
+			GameEnd(GameResult.Victory);
+		}
 
 		private void GameLost() => GameEnd(GameResult.Loose);
 

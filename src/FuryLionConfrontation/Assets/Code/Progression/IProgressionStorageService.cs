@@ -1,6 +1,6 @@
 namespace Confrontation
 {
-	public interface IProgressionService
+	public interface IProgressionStorageService
 	{
 		PlayerProgress LoadProgress();
 

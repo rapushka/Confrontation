@@ -7,7 +7,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly List<LevelScriptableObject> _levels;
 		[Inject] private readonly LevelButtonBase.Factory _levelButtonsFactory;
-		[Inject] private readonly IProgressionService _progression;
+		[Inject] private readonly IProgressionStorageService _progression;
 
 		private int _counter = 1;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Confrontation
 {
-	public class PlayerPrefsProgressionService : IProgressionService
+	public class PlayerPrefsProgressionService : IProgressionStorageService
 	{
 		private const string CompletedLevelsCount = nameof(PlayerProgress.CompletedLevelsCount);
 		private const string KalymCount = nameof(PlayerProgress.KalymCount);

@@ -11,11 +11,14 @@ namespace Confrontation
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
+		private int _levelNumber;
+
 		protected abstract ToSceneBase ToScene { get; }
 
 		protected override async void OnButtonClick()
 		{
 			User.SelectedLevel = Level;
+			User.SelectedLevelNumber = _levelNumber;
 			await ToScene.Transfer();
 		}
 
@@ -26,6 +29,7 @@ namespace Confrontation
 			{
 				var levelButton = base.Create(level);
 				levelButton._textMesh.text = levelNumber.ToString();
+				levelButton._levelNumber = levelNumber;
 				levelButton.Interactable = isActive;
 				return (T)levelButton;
 			}

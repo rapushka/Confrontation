@@ -4,7 +4,7 @@ namespace Confrontation
 {
 	public class ProgressionManipulator
 	{
-		[Inject] private readonly IProgressionService _progression;
+		[Inject] private readonly IProgressionStorageService _progression;
 
 		private static PlayerProgress EmptyAccount
 			=> new()
