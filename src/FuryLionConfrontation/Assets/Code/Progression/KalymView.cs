@@ -6,12 +6,18 @@ namespace Confrontation
 {
 	public class KalymView : MonoBehaviour
 	{
-		[Inject] private readonly IProgressionStorageService _progression;
+		[Inject] private readonly IProgressionStorageService _progressionStorage;
+		[Inject] private readonly Progression _progression;
 
 		[SerializeField] private TextMeshProUGUI _textMesh;
 
-		private PlayerProgress PlayerProgress => _progression.LoadProgress();
+		private PlayerProgress PlayerProgress => _progressionStorage.LoadProgress();
 
-		private void Start() => _textMesh.text = PlayerProgress.KalymCount.ToString();
+		private void OnEnable()  => _progression.KalymValueChanged += UpdateView;
+		private void OnDisable() => _progression.KalymValueChanged -= UpdateView;
+
+		private void Start() => UpdateView();
+
+		private void UpdateView() => _textMesh.text = PlayerProgress.KalymCount.ToString();
 	}
 }
