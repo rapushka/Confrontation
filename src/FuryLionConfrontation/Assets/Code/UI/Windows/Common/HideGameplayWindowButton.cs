@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Confrontation
 {
-	public class HideWindowButton : ButtonBase
+	public class HideGameplayWindowButton : ButtonBase
 	{
 		[Inject] private readonly GameplayUiMediator _uiMediator;
 

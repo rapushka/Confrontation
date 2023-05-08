@@ -28,6 +28,8 @@ namespace Confrontation
 
 		StableStats StableStats { get; }
 
+		UserProgressionStats UserProgressionStats { get; }
+
 		int BuildPriceFor(Building building);
 	}
 }

@@ -10,6 +10,8 @@ namespace Confrontation
 		private void OnEnable()  => _button.onClick.AddListener(OnButtonClick);
 		private void OnDisable() => _button.onClick.RemoveListener(OnButtonClick);
 
+		public bool Interactable { set => _button.interactable = value; }
+		
 		protected abstract void OnButtonClick();
 	}
 }

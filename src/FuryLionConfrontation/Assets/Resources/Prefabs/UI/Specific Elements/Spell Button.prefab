@@ -119,6 +119,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8996184222419652085, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8996184222419652086, guid: 6a0b075865227253382ddb437fab99ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -237,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc49fcb7465c4b91a7aafbe09c7aca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rectTransform: {fileID: 4088640880825717463}
   _titleTextMesh: {fileID: 4088640878929322432}
   _iconImage: {fileID: 6455146520180477831}
 --- !u!224 &4088640880825717463 stripped
