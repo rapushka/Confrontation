@@ -919,6 +919,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 1724787045}
   _window: {fileID: 887623827}
+--- !u!114 &1738876684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4695576676482204302, guid: 55decf99796c4f3b8998cd0675aad099, type: 3}
+  m_PrefabInstance: {fileID: 468101498131143283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e9c515a12246bdb59c3f40b470a426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814962974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1108,7 @@ MonoBehaviour:
   _levelsGridRoot: {fileID: 2073308227}
   _levelsForEditorPanelPrefab: {fileID: 4812187423862855204, guid: 369fd3a9b1b58a4d6ac67ec67d1f1348, type: 3}
   _uiRoot: {fileID: 580221521}
+  _audioSettingsSection: {fileID: 1738876684}
 --- !u!1 &1947191781
 GameObject:
   m_ObjectHideFlags: 0

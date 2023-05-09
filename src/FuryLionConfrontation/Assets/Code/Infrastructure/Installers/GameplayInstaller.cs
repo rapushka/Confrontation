@@ -14,6 +14,7 @@ namespace Confrontation
 		[SerializeField] private Hud _hud;
 		[SerializeField] private RectTransform _buildingButtonsRoot;
 		[SerializeField] private RectTransform _spellButtonsRoots;
+		[SerializeField] private AudioSettingsSection _audioSettingsSection;
 
 		protected override void InstallSpecificBindings()
 		{
@@ -50,6 +51,8 @@ namespace Confrontation
 			Container.Bind<SpellCaster>().AsSingle();
 
 			Container.BindInterfacesAndSelfTo<Tutorial>().AsSingle();
+
+			Container.BindInterfacesTo<AudioSettingsSection>().FromInstance(_audioSettingsSection).AsTransient();
 		}
 
 		protected override void InstallSpecificFactories()
