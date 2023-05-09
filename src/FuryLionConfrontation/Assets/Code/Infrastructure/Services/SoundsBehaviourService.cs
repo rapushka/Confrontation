@@ -8,6 +8,7 @@ namespace Confrontation
 		[Header("clips")]
 		[SerializeField] private AudioClip _buildingBuilt;
 		[SerializeField] private AudioClip _buildingUpgraded;
+		[SerializeField] private AudioClip _error;
 
 		public void BuildingBuilt(float volume = 1) => _audioSource.PlayOneShot(_buildingBuilt, volume);
 
@@ -48,9 +49,6 @@ namespace Confrontation
 			throw new System.NotImplementedException();
 		}
 
-		public void UiError(float volume = 1)
-		{
-			throw new System.NotImplementedException();
-		}
+		public void UiError(float volume = 1) => _audioSource.PlayOneShot(_error, volume);
 	}
 }
