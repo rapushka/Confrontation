@@ -8,6 +8,7 @@ namespace Confrontation
 		[Inject] private readonly IAssetsService _assets;
 		[Inject] private readonly UnitsSquad _attackers;
 		[Inject] private readonly DefenceStrategyFactory _defenceStrategyFactory;
+		[Inject] private readonly ISoundService _playSound;
 
 		[CanBeNull] private Garrison _garrison;
 		private Cell _cell;
@@ -26,6 +27,7 @@ namespace Confrontation
 
 		public void FightWithSquadOn(Cell cell)
 		{
+			_playSound.UnitsFight(Constants.Audio.VolumeScale.Enemy);
 			_cell = cell;
 			_defenders = PickDefenceStrategy(_cell);
 
