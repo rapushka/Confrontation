@@ -1874,11 +1874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7452847024590370423, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7452847024590370423, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7452847024590370423, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
       propertyPath: m_AnchorMin.x
