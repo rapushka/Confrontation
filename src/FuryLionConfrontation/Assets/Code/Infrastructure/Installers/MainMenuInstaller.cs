@@ -28,7 +28,7 @@ namespace Confrontation
 			         .FromComponentInNewPrefab(_playLevelButtonPrefab)
 			         .UnderTransform(_levelsGridRoot);
 
-			Container.BindInterfacesTo<AudioSettingsSection>().FromInstance(_audioSettingsSection);
+			Container.BindInterfacesTo<AudioSettingsSection>().FromInstance(_audioSettingsSection).AsTransient();
 
 			InstallLevelEditor();
 		}
