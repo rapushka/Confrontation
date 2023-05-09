@@ -1,15 +1,14 @@
-using TMPro;
 using UnityEngine;
 using Zenject;
 
 namespace Confrontation
 {
-	public class KalymView : MonoBehaviour
+	public class KalymHud : MonoBehaviour
 	{
 		[Inject] private readonly IProgressionStorageService _progressionStorage;
 		[Inject] private readonly Progression _progression;
 
-		[SerializeField] private TextMeshProUGUI _textMesh;
+		[SerializeField] private IntPrefixView _kalymView;
 
 		private PlayerProgress PlayerProgress => _progressionStorage.LoadProgress();
 
@@ -18,6 +17,6 @@ namespace Confrontation
 
 		private void Start() => UpdateView();
 
-		private void UpdateView() => _textMesh.text = PlayerProgress.KalymCount.ToString();
+		private void UpdateView() => _kalymView.Value = PlayerProgress.KalymCount;
 	}
 }

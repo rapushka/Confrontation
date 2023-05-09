@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Zenject;
 
 namespace Confrontation
@@ -32,6 +33,14 @@ namespace Confrontation
 			{
 				OpenNewLevel();
 			}
+		}
+
+		public void SpentPlayerKalym(int value)
+		{
+			Assert.IsTrue(value > 0);
+
+			UpdateProgress(with: (p) => p.KalymCount -= value);
+			KalymValueChanged?.Invoke();
 		}
 
 		private void AddKalymToPlayer()
