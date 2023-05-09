@@ -9,5 +9,6 @@ namespace Confrontation
 		GameplayWindowBase Visit(SpellBookWindow window);
 		GameplayWindowBase Visit(NotEnoughManaWindow window);
 		GameplayWindowBase Visit(TutorialWindow window);
+		GameplayWindowBase Visit(PauseWindow window);
 	}
 }
