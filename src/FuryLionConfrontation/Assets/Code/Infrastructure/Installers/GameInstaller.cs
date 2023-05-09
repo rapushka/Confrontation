@@ -9,29 +9,18 @@ namespace Confrontation
 		[SerializeField] private User _user;
 		[SerializeField] private ResourcesService _resources;
 		[SerializeField] private StatsTable _statsTable;
+		[SerializeField] private AudioSource _musicSourcePrefab;
+		[SerializeField] private SoundsBehaviourService _soundService;
 
 		public override void InstallBindings()
 		{
 			BindPrefabs();
-
 			DecorateStatsTable();
 			DecorateTimeService();
-
-			Container.BindInterfacesTo<InputService>().AsSingle();
-			Container.BindInterfacesTo<UniTaskRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
-
-			Container.BindInterfacesTo<AssetsService>().AsSingle();
-			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
-
-			Container.Bind<GameUiMediator>().AsSingle();
-
-			Container.Bind<ToMainMenu>().AsSingle();
-			Container.Bind<ToGameplay>().AsSingle();
-			Container.Bind<ToLevelEditor>().AsSingle();
-			Container.Bind<Progression>().AsSingle();
-			Container.Bind<ProgressionManipulator>().AsSingle();
-
-			Container.Bind<IProgressionStorageService>().To<PlayerPrefsProgressionService>().AsSingle();
+			BindServices();
+			BindTransfers();
+			BindProgression();
+			BindAudio();
 
 			StartGame();
 		}
@@ -41,6 +30,12 @@ namespace Confrontation
 			Container.Bind<LoadingCurtain>().FromComponentInNewPrefab(_loadingCurtainPrefab).AsSingle();
 			Container.BindInterfacesAndSelfTo<User>().FromInstance(_user).AsSingle();
 			Container.BindInstance<IResourcesService>(_resources).AsSingle();
+		}
+
+		private void DecorateStatsTable()
+		{
+			Container.BindSelf<StatsTable>().FromInstance(_statsTable).AsSingle();
+			Container.Bind<IStatsTable>().To<StatsTable>().FromResolve();
 		}
 
 		private void DecorateTimeService()
@@ -56,10 +51,34 @@ namespace Confrontation
 			Container.Bind<IInitializable>().To<TimeAccelerationService>().FromResolve();
 		}
 
-		private void DecorateStatsTable()
+		private void BindServices()
 		{
-			Container.BindSelf<StatsTable>().FromInstance(_statsTable).AsSingle();
-			Container.Bind<IStatsTable>().To<StatsTable>().FromResolve();
+			Container.BindInterfacesTo<InputService>().AsSingle();
+			Container.BindInterfacesTo<UniTaskRunnerService>().FromNewComponentOnNewGameObject().AsSingle();
+			Container.BindInterfacesTo<AssetsService>().AsSingle();
+			Container.Bind<GameUiMediator>().AsSingle();
+		}
+
+		private void BindTransfers()
+		{
+			Container.BindInterfacesTo<SceneTransferService>().AsSingle();
+
+			Container.Bind<ToMainMenu>().AsSingle();
+			Container.Bind<ToGameplay>().AsSingle();
+			Container.Bind<ToLevelEditor>().AsSingle();
+		}
+
+		private void BindProgression()
+		{
+			Container.Bind<Progression>().AsSingle();
+			Container.Bind<ProgressionManipulator>().AsSingle();
+			Container.Bind<IProgressionStorageService>().To<PlayerPrefsProgressionService>().AsSingle();
+		}
+
+		private void BindAudio()
+		{
+			Container.Bind<ISoundService>().FromComponentInNewPrefab(_soundService).AsSingle();
+			Container.InstantiatePrefab(_musicSourcePrefab);
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
