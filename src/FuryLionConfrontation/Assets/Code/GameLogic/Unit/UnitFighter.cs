@@ -27,7 +27,7 @@ namespace Confrontation
 
 		public void FightWithSquadOn(Cell cell)
 		{
-			_playSound.UnitsFight(Constants.Audio.VolumeScale.Enemy);
+			_playSound.UnitsFight();
 			_cell = cell;
 			_defenders = PickDefenceStrategy(_cell);
 
