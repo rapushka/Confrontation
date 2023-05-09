@@ -78,3 +78,6 @@ MonoBehaviour:
   _user: {fileID: 11400000, guid: 18abc074787e98d10b73cc0c1ecbac46, type: 2}
   _resources: {fileID: 11400000, guid: 3ff89a2d7a641949b92024b89ae72519, type: 2}
   _statsTable: {fileID: 11400000, guid: e94b46947bfdc9cd5891af5cb92609cf, type: 2}
+  _musicSourcePrefab: {fileID: 8811976802430912910, guid: 1a5111ebf327d28d7be2ba10448e42bd, type: 3}
+  _soundService: {fileID: -7232154010972427690, guid: efbb146208aeb66c5b3a4e0f0f2a70a7, type: 3}
+  _audioMixerGroup: {fileID: 24300002, guid: f4cc80243fef562128e5feb95cfe22b7, type: 2}

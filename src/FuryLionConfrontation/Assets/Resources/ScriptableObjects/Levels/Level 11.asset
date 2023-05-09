@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8c6c2cba7047f1a264fd1741330b8b, type: 3}
+  m_Name: Level 11
+  m_EditorClassIdentifier: 
+  <Sizes>k__BackingField:
+    _width: 5
+    _height: 4
+  <Regions>k__BackingField:
+  - <OwnerPlayerId>k__BackingField: 1
+    <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 0
+    - _row: 0
+      _column: 1
+    - _row: 1
+      _column: 0
+    - _row: 1
+      _column: 1
+    - _row: 2
+      _column: 0
+    - _row: 2
+      _column: 1
+    - _row: 3
+      _column: 0
+    - _row: 3
+      _column: 1
+  - <OwnerPlayerId>k__BackingField: 0
+    <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 2
+    - _row: 1
+      _column: 2
+    - _row: 2
+      _column: 2
+    - _row: 3
+      _column: 2
+  - <OwnerPlayerId>k__BackingField: 2
+    <CellsCoordinates>k__BackingField:
+    - _row: 0
+      _column: 3
+    - _row: 0
+      _column: 4
+    - _row: 1
+      _column: 3
+    - _row: 1
+      _column: 4
+    - _row: 2
+      _column: 3
+    - _row: 2
+      _column: 4
+    - _row: 3
+      _column: 3
+    - _row: 3
+      _column: 4
+  <Buildings>k__BackingField:
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 1
+      _column: 1
+  - _data:
+      _prefab: {fileID: 4447535946289149498, guid: 693eb03690335e8b18cd32cb2fb6d799, type: 3}
+      _selectionIndex: 3
+    _coordinates:
+      _row: 1
+      _column: 3
+  - _data:
+      _prefab: {fileID: 8409872167996123710, guid: 45861229625f2702d9c25b5518581862, type: 3}
+      _selectionIndex: 0
+    _coordinates:
+      _row: 2
+      _column: 2
+  <TutorialPages>k__BackingField: []

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 namespace Confrontation
@@ -8,19 +7,21 @@ namespace Confrontation
 	{
 		[Inject] private readonly List<LevelScriptableObject> _levels;
 		[Inject] private readonly LevelButtonBase.Factory _levelButtonsFactory;
-		[Inject] private readonly Transform _levelsGridRoot;
+		[Inject] private readonly IProgressionStorageService _progression;
 
 		private int _counter = 1;
 
-		protected virtual Transform Parent => _levelsGridRoot;
+		private bool IsUnlocked => UnlockedLevelsCount >= _counter;
 
-		public void Initialize() => _levels.ForEach(Create);
+		private int UnlockedLevelsCount => _progression.LoadProgress().CompletedLevelsCount + 1;
 
-		private void Create(ILevel level)
+		public void Initialize() => _levels.ForEach(level => Create(level));
+
+		protected virtual LevelButtonBase Create(ILevel level)
 		{
-			var levelButton = _levelButtonsFactory.Create<LevelButtonBase>(_counter, level);
-			levelButton.transform.SetParent(Parent);
+			var levelButtonBase = _levelButtonsFactory.Create<LevelButtonBase>(_counter, level, IsUnlocked);
 			_counter++;
+			return levelButtonBase;
 		}
 	}
 }

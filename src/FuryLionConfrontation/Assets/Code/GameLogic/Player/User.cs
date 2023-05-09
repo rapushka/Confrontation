@@ -10,6 +10,8 @@ namespace Confrontation
 		public Player Player { get; private set; }
 
 		public ILevel SelectedLevel { get; set; }
+		
+		public int SelectedLevelNumber { get; set; }
 
 		public GameResult GameResult { get; set; } = GameResult.None;
 

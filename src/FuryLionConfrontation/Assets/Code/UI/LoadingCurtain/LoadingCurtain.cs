@@ -46,7 +46,7 @@ namespace Confrontation
 		{
 			while (Math.Abs(_curtain.alpha - to) > Constants.MathDeviation)
 			{
-				_passedDuration += _time.DeltaTime;
+				_passedDuration += _time.RealDeltaTime;
 				_curtain.alpha = Mathf.Lerp(from, to, _passedDuration / _fadeDuration);
 				await UniTask.Yield();
 			}

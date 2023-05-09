@@ -32,6 +32,8 @@ namespace Confrontation
 
 		public virtual StableStats StableStats => _decoratee.StableStats;
 
+		public UserProgressionStats UserProgressionStats => _decoratee.UserProgressionStats;
+
 		public virtual int BuildPriceFor(Building building) => _decoratee.BuildPriceFor(building);
 	}
 }

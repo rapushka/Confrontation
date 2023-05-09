@@ -7,6 +7,7 @@ namespace Confrontation
 	public class Cell : MonoBehaviour, ICoordinated
 	{
 		[Inject] private readonly IField _field;
+		[Inject] private readonly User _user;
 
 		[SerializeField] private RegionColor _color;
 
@@ -27,7 +28,6 @@ namespace Confrontation
 
 		public int OwnerPlayerId
 		{
-			// ReSharper disable once ConstantNullCoalescingCondition - it is
 			get => _field.Regions[Coordinates]?.OwnerPlayerId ?? -1;
 			set => _field.Regions[Coordinates].OwnerPlayerId = value;
 		}
@@ -37,6 +37,8 @@ namespace Confrontation
 		public bool IsEmpty => Building is null;
 
 		public bool HasUnits => LocatedUnits is not null;
+
+		public bool IsOur => OwnerPlayerId == _user.PlayerId;
 
 		public Coordinates Coordinates
 		{

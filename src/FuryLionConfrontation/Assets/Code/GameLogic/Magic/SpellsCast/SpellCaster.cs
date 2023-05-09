@@ -6,6 +6,7 @@ namespace Confrontation
 	{
 		[Inject] private readonly User _user;
 		[Inject] private readonly InfluenceMediator _influences;
+		[Inject] private readonly ISoundService _playSound;
 
 		private Resource UserMana => _user.Player.Resources.Mana;
 
@@ -18,6 +19,7 @@ namespace Confrontation
 
 			UserMana.Spend(spell.ManaCoast);
 			_influences.CastSpell(spell);
+			_playSound.SpellCast();
 			return true;
 		}
 

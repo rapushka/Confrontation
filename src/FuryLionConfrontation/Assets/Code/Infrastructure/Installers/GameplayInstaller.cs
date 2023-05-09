@@ -12,6 +12,9 @@ namespace Confrontation
 		[SerializeField] private GameplayCameraSwipeMovement _movement;
 		[SerializeField] private AccelerateTimeToggle _accelerateTimeToggle;
 		[SerializeField] private Hud _hud;
+		[SerializeField] private RectTransform _buildingButtonsRoot;
+		[SerializeField] private RectTransform _spellButtonsRoots;
+		[SerializeField] private AudioSettingsSection _audioSettingsSection;
 
 		protected override void InstallSpecificBindings()
 		{
@@ -47,6 +50,9 @@ namespace Confrontation
 			Container.Bind<GameplayWindows>().AsSingle();
 			Container.Bind<SpellCaster>().AsSingle();
 
+			Container.BindInterfacesAndSelfTo<Tutorial>().AsSingle();
+
+			Container.BindInterfacesTo<AudioSettingsSection>().FromInstance(_audioSettingsSection).AsTransient();
 		}
 
 		protected override void InstallSpecificFactories()
@@ -60,19 +66,21 @@ namespace Confrontation
 			Container.BindPrefabFactory<GameResultsWindow, GameResultsWindow.Factory>();
 			Container.BindPrefabFactory<NotEnoughGoldWindow, NotEnoughGoldWindow.Factory>();
 			Container.BindPrefabFactory<SpellBookWindow, SpellBookWindow.Factory>();
+			Container.BindPrefabFactory<TutorialWindow, TutorialWindow.Factory>();
 
 			Container.BindFactory<GameplayWindowBase, GameplayWindowBase, WindowBase.Factory>()
 			         .FromFactory<GameplayWindowsFactory>();
 
 			Container.BindFactory<Building, BuildingButton, BuildingButton.Factory>()
-			         .FromComponentInNewPrefab(_buildingButtonPrefab);
+			         .FromComponentInNewPrefab(_buildingButtonPrefab)
+			         .UnderTransform(_buildingButtonsRoot);
 
 			Container.BindFactory<ISpell, ToolTip, SpellButton, SpellButton.Factory>()
-			         .FromComponentInNewPrefab(_spellButtonPrefab);
+			         .FromComponentInNewPrefab(_spellButtonPrefab)
+			         .UnderTransform(_spellButtonsRoots);
 
 			Container.BindFactory<Garrison, Garrison.Factory>().FromComponentInNewPrefab(_garrisonPrefab);
 			Container.BindFactory<UnitsSquad, UnitsSquad.Factory>().FromComponentInNewPrefab(_unitPrefab);
 		}
-
 	}
 }

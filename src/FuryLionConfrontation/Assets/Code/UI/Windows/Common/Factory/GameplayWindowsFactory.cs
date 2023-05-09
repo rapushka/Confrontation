@@ -11,6 +11,8 @@ namespace Confrontation
 		[Inject] private readonly NotEnoughGoldWindow.Factory _notEnoughGoldWindowFactory;
 		[Inject] private readonly NotEnoughManaWindow.Factory _notEnoughManaWindowFactory;
 		[Inject] private readonly SpellBookWindow.Factory _spellBookWindowFactory;
+		[Inject] private readonly TutorialWindow.Factory _tutorialWindowFactory;
+		[Inject] private readonly PauseWindow.Factory _pauseWindowFactory;
 
 		private WindowBase _window;
 
@@ -27,5 +29,9 @@ namespace Confrontation
 		public GameplayWindowBase Visit(SpellBookWindow window) => _spellBookWindowFactory.Create(window);
 
 		public GameplayWindowBase Visit(NotEnoughManaWindow window) => _notEnoughManaWindowFactory.Create(window);
+
+		public GameplayWindowBase Visit(TutorialWindow window) => _tutorialWindowFactory.Create(window);
+
+		public GameplayWindowBase Visit(PauseWindow window) => _pauseWindowFactory.Create(window);
 	}
 }

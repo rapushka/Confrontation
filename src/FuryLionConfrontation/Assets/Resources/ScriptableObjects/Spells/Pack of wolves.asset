@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Pack of wolves
   _description: temporarily increases the speed of allied units
-  _icon: {fileID: 21300000, guid: 91976e8b9ce0f0341838727acd55621c, type: 3}
+  _icon: {fileID: -1309099495, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
   _duration: 5
   _manaCoast: 15

@@ -35,5 +35,8 @@ namespace Confrontation
 
 		public static bool IsEqualFloats(this float @this, float other)
 			=> Math.Abs(@this - other) < Constants.MathDeviation;
+
+		public static float Lerp(this float @this, float min, float max)
+			=> Mathf.Lerp(a: min, b: max, t: @this);
 	}
 }

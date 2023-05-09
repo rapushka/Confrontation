@@ -14,6 +14,16 @@ namespace Confrontation
 
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private Image _iconImage;
+		[SerializeField] private Button _button;
+
+		public bool Interactable
+		{
+			set
+			{
+				_button.interactable = value;
+				enabled = value;
+			}
+		}
 
 		public void Initialize()
 		{
@@ -35,14 +45,15 @@ namespace Confrontation
 
 		protected override void HandleHold() => _toolTip.Show(withText: _spell.Description, on: transform.position);
 
-		protected override void OnRelease() => _toolTip.Hide();
+		protected override void HandleRelease() => _toolTip.Hide();
 
 		public class Factory : PlaceholderFactory<ISpell, ToolTip, SpellButton>
 		{
-			public override SpellButton Create(ISpell spell, ToolTip toolTip)
+			public SpellButton Create(ISpell spell, ToolTip toolTip, bool isActive = true)
 			{
 				var spellButton = base.Create(spell, toolTip);
 				spellButton.Initialize();
+				spellButton.Interactable = isActive;
 				return spellButton;
 			}
 		}

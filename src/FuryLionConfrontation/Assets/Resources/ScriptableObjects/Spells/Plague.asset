@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Plague
   _description: one-time reduces the combat strength of all moving Units
-  _icon: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  _icon: {fileID: -1467885679, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 1
   _duration: 5
   _manaCoast: 1

@@ -11,8 +11,8 @@ namespace Confrontation
 		[SerializeField] private List<LevelScriptableObject> _levels;
 		[SerializeField] private Transform _levelsGridRoot;
 		[SerializeField] private LevelsForEditorPanel _levelsForEditorPanelPrefab;
-
 		[SerializeField] private RectTransform _uiRoot;
+		[SerializeField] private AudioSettingsSection _audioSettingsSection;
 
 		public override void InstallBindings()
 		{
@@ -25,7 +25,10 @@ namespace Confrontation
 			Container.BindFactory<Building, Building, Building.Factory>().FromFactory<PrefabFactory<Building>>();
 
 			Container.BindFactory<ILevel, LevelButtonBase, LevelButtonBase.Factory>()
-			         .FromComponentInNewPrefab(_playLevelButtonPrefab);
+			         .FromComponentInNewPrefab(_playLevelButtonPrefab)
+			         .UnderTransform(_levelsGridRoot);
+
+			Container.BindInterfacesTo<AudioSettingsSection>().FromInstance(_audioSettingsSection).AsTransient();
 
 			InstallLevelEditor();
 		}
