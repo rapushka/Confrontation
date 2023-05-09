@@ -8,44 +8,44 @@ namespace Confrontation
 		[Header("clips")]
 		[SerializeField] private AudioClip _buildingBuilt;
 
-		public void BuildingBuilt() => _audioSource.PlayOneShot(_buildingBuilt);
+		public void BuildingBuilt(float volume = 1) => _audioSource.PlayOneShot(_buildingBuilt, volume);
 
-		public void BuildingUpgraded()
+		public void BuildingUpgraded(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void UnitStep()
+		public void UnitStep(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void UnitsFight()
+		public void UnitsFight(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void SpellCast()
+		public void SpellCast(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void EndOfSpell()
+		public void EndOfSpell(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void Victory()
+		public void Victory(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void Loose()
+		public void Loose(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void UiClick()
+		public void UiClick(float volume = 1)
 		{
 			throw new System.NotImplementedException();
 		}

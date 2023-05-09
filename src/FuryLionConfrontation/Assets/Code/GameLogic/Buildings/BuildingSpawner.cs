@@ -1,4 +1,5 @@
 using Zenject;
+using static Confrontation.Constants.Audio;
 
 namespace Confrontation
 {
@@ -11,7 +12,7 @@ namespace Confrontation
 		public void Build(Building buildingPrefab, Cell inputClickedCell)
 		{
 			_field.Buildings.Add(_buildingsFactory.Create(buildingPrefab, inputClickedCell));
-			_playSound.BuildingBuilt();
+			_playSound.BuildingBuilt(inputClickedCell.IsOur ? VolumeScale.User : VolumeScale.Enemy);
 		}
 	}
 }

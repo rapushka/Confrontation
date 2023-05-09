@@ -64,5 +64,14 @@ namespace Confrontation
 		{
 			public const string IsMoving = "IsMoving";
 		}
+
+		public static class Audio
+		{
+			public static class VolumeScale
+			{
+				public const float User = 1f;
+				public const float Enemy = 0.25f;
+			}
+		}
 	}
 }
