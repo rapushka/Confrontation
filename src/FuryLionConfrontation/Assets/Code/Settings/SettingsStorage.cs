@@ -10,16 +10,35 @@ namespace Confrontation
 
 	public class PlayerPrefsSettingsStorage : ISettingsStorage
 	{
+		private const string SoundsVolumePref = nameof(SoundsVolume);
+		private const string MusicVolumePref = nameof(MusicVolume);
+
 		public float MusicVolume
 		{
-			get => PlayerPrefs.GetFloat(nameof(ISettingsStorage.MusicVolume));
-			set => PlayerPrefs.SetFloat(nameof(ISettingsStorage.MusicVolume), value);
+			get
+			{
+				if (PlayerPrefs.HasKey(MusicVolumePref) == false)
+				{
+					MusicVolume = Constants.Audio.DefaultVolume.Music;
+				}
+
+				return PlayerPrefs.GetFloat(MusicVolumePref);
+			}
+			set => PlayerPrefs.SetFloat(MusicVolumePref, value);
 		}
 
 		public float SoundsVolume
 		{
-			get => PlayerPrefs.GetFloat(nameof(ISettingsStorage.SoundsVolume));
-			set => PlayerPrefs.SetFloat(nameof(ISettingsStorage.SoundsVolume), value);
+			get
+			{
+				if (PlayerPrefs.HasKey(SoundsVolumePref) == false)
+				{
+					SoundsVolume = Constants.Audio.DefaultVolume.Sound;
+				}
+
+				return PlayerPrefs.GetFloat(SoundsVolumePref);
+			}
+			set => PlayerPrefs.SetFloat(SoundsVolumePref, value);
 		}
 	}
 }
