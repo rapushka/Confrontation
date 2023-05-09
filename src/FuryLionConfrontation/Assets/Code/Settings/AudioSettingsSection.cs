@@ -16,8 +16,13 @@ namespace Confrontation
 
 		public void Initialize()
 		{
-			_soundsSlider.value = _settingsStorage.SoundsVolume;
-			_musicSlider.value = _settingsStorage.MusicVolume;
+			var soundVolume = _settingsStorage.SoundsVolume;
+			_soundsSlider.value = soundVolume;
+			ChangeSoundsVolume(soundVolume);
+
+			var musicVolume = _settingsStorage.MusicVolume;
+			_musicSlider.value = musicVolume;
+			ChangeMusicVolume(musicVolume);
 		}
 
 		private void OnEnable()
