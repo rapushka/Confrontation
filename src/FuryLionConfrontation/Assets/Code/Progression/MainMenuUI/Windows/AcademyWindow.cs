@@ -15,6 +15,7 @@ namespace Confrontation
 		[SerializeField] private int _spellPrice;
 		[SerializeField] private float _nextSpellPriceMultiplier;
 		[SerializeField] private Button _unlockSpellButton;
+		[SerializeField] private GameObject _thereIsAllBoughtPlug;
 		[Header("Spell elements")]
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private TextMeshProUGUI _descriptionTextMesh;
@@ -29,6 +30,17 @@ namespace Confrontation
 		private int MultiplierForCurrentSpell => Mathf.RoundToInt(_nextSpellPriceMultiplier * LearnedSpellsCount);
 
 		private int LearnedSpellsCount => CurrentPlayer.LearnedSpellsCount;
+
+		private bool IsAllBought
+		{
+			set
+			{
+				_thereIsAllBoughtPlug.SetActive(value);
+				_titleTextMesh.gameObject.SetActive(value == false);
+				_descriptionTextMesh.gameObject.SetActive(value == false);
+				_icon.gameObject.SetActive(value == false);
+			}
+		}
 
 		private void OnEnable()  => _unlockSpellButton.onClick.AddListener(UnlockSpell);
 		private void OnDisable() => _unlockSpellButton.onClick.RemoveListener(UnlockSpell);
@@ -51,17 +63,18 @@ namespace Confrontation
 
 		private void UpdateShowedSpell()
 		{
-			var lastSpell = _spells.Skip(CurrentPlayer.LearnedSpellsCount).FirstOrDefault();
+			var lastNotLearnedSpell = _spells.Skip(CurrentPlayer.LearnedSpellsCount).FirstOrDefault();
 
-			if (lastSpell is null)
+			var isAllBought = lastNotLearnedSpell is null;
+			IsAllBought = isAllBought;
+			if (isAllBought)
 			{
-				Debug.Log("TODO: there is all bought");
 				return;
 			}
 
-			_titleTextMesh.text = lastSpell.Title;
-			_descriptionTextMesh.text = lastSpell.Description;
-			_icon.sprite = lastSpell.Icon;
+			_titleTextMesh.text = lastNotLearnedSpell.Title;
+			_descriptionTextMesh.text = lastNotLearnedSpell.Description;
+			_icon.sprite = lastNotLearnedSpell.Icon;
 		}
 
 		private void UpdateProgress(Action<PlayerProgress> with) => _progression.SaveProgress(CurrentPlayer.With(with));
