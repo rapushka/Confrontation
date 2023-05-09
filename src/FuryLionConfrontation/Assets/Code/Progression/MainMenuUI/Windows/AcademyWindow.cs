@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -20,6 +21,7 @@ namespace Confrontation
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private TextMeshProUGUI _descriptionTextMesh;
 		[SerializeField] private Image _icon;
+		[SerializeField] private IntPrefixPostfixView _priceView;
 		[Header("Spells")]
 		[SerializeField] private List<SpellScriptableObject> _spells;
 
@@ -39,6 +41,7 @@ namespace Confrontation
 				_titleTextMesh.gameObject.SetActive(value == false);
 				_descriptionTextMesh.gameObject.SetActive(value == false);
 				_icon.gameObject.SetActive(value == false);
+				_priceView.gameObject.SetActive(value == false);
 			}
 		}
 
@@ -75,6 +78,7 @@ namespace Confrontation
 			_titleTextMesh.text = lastNotLearnedSpell.Title;
 			_descriptionTextMesh.text = lastNotLearnedSpell.Description;
 			_icon.sprite = lastNotLearnedSpell.Icon;
+			_priceView.Value = CurrentSpellPrice;
 		}
 
 		private void UpdateProgress(Action<PlayerProgress> with) => _progression.SaveProgress(CurrentPlayer.With(with));

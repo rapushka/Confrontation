@@ -733,13 +733,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _window: {fileID: 7452847024590370422}
-  _spellPrice: 100
-  _nextSpellPriceMultiplier: 10
+  _spellPrice: 1
+  _nextSpellPriceMultiplier: 1
   _unlockSpellButton: {fileID: 316555063631210490}
   _thereIsAllBoughtPlug: {fileID: 9034854481480370899}
   _titleTextMesh: {fileID: 913408126590998723}
   _descriptionTextMesh: {fileID: 913408128573520126}
   _icon: {fileID: 1394902409}
+  _priceView: {fileID: 8489815981339113390}
   _spells:
   - {fileID: 11400000, guid: 3f577f0b60a810b34ac962a410cd556c, type: 2}
   - {fileID: 11400000, guid: 36013697b7bfc6b5ea5f09b745358cae, type: 2}
@@ -774,11 +775,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'Price: 000 Kalym'
+      value: 'Price: 0 Kalym'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 67.65
+      value: 80.75
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontColor.b
@@ -882,10 +883,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369559, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_Name
-      value: Price Text
+      value: Price View
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+--- !u!114 &913408127724039744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+  m_PrefabInstance: {fileID: 8699965769109081621}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913408127724039746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &913408127724039746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8363588164123369559, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+  m_PrefabInstance: {fileID: 8699965769109081621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8489815981339113390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913408127724039746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49efc092a0af4c728581eb46d04988ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMesh: {fileID: 913408127724039744}
+  _prefix: 'Price: '
+  _postfix: ' Kalym'
 --- !u!1001 &8699965769361582607
 PrefabInstance:
   m_ObjectHideFlags: 0
