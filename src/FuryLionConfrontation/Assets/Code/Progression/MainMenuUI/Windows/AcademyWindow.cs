@@ -9,7 +9,8 @@ namespace Confrontation
 {
 	public class AcademyWindow : WindowBase
 	{
-		[Inject] private readonly IProgressionStorageService _progression;
+		[Inject] private readonly IProgressionStorageService _progressionStorage;
+		[Inject] private readonly Progression _progression;
 
 		[SerializeField] private int _spellPrice;
 		[SerializeField] private float _nextSpellPriceMultiplier;
@@ -23,13 +24,15 @@ namespace Confrontation
 		[Header("Spells")]
 		[SerializeField] private List<SpellScriptableObject> _spells;
 
-		private PlayerProgress CurrentPlayer => _progression.LoadProgress();
+		private PlayerProgress CurrentPlayer => _progressionStorage.LoadProgress();
 
 		private int CurrentSpellPrice => _spellPrice + MultiplierForCurrentSpell;
 
 		private int MultiplierForCurrentSpell => Mathf.RoundToInt(_nextSpellPriceMultiplier * LearnedSpellsCount);
 
 		private int LearnedSpellsCount => CurrentPlayer.LearnedSpellsCount;
+
+		private PlayerProgress ProgressedPlayer => CurrentPlayer.With((p) => p.LearnedSpellsCount++);
 
 		private bool IsAllBought
 		{
@@ -52,7 +55,8 @@ namespace Confrontation
 		{
 			if (CurrentPlayer.KalymCount >= CurrentSpellPrice)
 			{
-				_progression.SaveProgress(ProgressUnlockedSpell());
+				_progression.SpentPlayerKalym(CurrentSpellPrice);
+				_progressionStorage.SaveProgress(ProgressedPlayer);
 			}
 			else
 			{
@@ -78,10 +82,5 @@ namespace Confrontation
 			_icon.sprite = lastNotLearnedSpell.Icon;
 			_priceView.Value = CurrentSpellPrice;
 		}
-
-		private PlayerProgress ProgressUnlockedSpell()
-			=> CurrentPlayer
-			   .With((p) => p.LearnedSpellsCount++)
-			   .With((p) => p.KalymCount -= CurrentSpellPrice);
 	}
 }
