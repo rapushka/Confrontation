@@ -2062,7 +2062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2292798559759788797, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
       propertyPath: m_Name
-      value: Settings Window Variant
+      value: Settings Window
       objectReference: {fileID: 0}
     - target: {fileID: 2292798559759788797, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
       propertyPath: m_IsActive
@@ -2105,7 +2105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _window: {fileID: 1850609948438823393}
-  _progressSectionView: {fileID: 409809267}
 --- !u!114 &409809267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,6 +2120,20 @@ MonoBehaviour:
   _resetProgressionButton: {fileID: 8838272726366452613}
   _enterCodeButton: {fileID: 8838272726610415948}
   _codeField: {fileID: 850375513}
+--- !u!114 &4695576676482204302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850609948438823393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e9c515a12246bdb59c3f40b470a426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsSlider: {fileID: 8487937195862872682}
+  _musicSlider: {fileID: 3569586129580224390}
 --- !u!1 &6706886650627715885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6587818522091132977, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
@@ -2813,6 +2826,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+      propertyPath: m_Value
+      value: 0.777
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5988362728994959939, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
       propertyPath: m_Name
       value: SFX Slider
@@ -2916,6 +2941,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8644962703008094345, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
   m_PrefabInstance: {fileID: 4145293015542330783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8487937195862872682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+  m_PrefabInstance: {fileID: 4145293015542330783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4518391315475605162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3311,7 +3347,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
       propertyPath: m_Value
-      value: 60
+      value: 0.587
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5988362728994959939, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
       propertyPath: m_Name
@@ -3416,3 +3460,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8644962703008094345, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
   m_PrefabInstance: {fileID: 9062799686405965939}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3569586129580224390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5497839478203852789, guid: d79b796993cd8ecedbc87510d8fdc909, type: 3}
+  m_PrefabInstance: {fileID: 9062799686405965939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

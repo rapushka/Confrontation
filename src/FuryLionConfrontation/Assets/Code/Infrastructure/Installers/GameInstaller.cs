@@ -22,6 +22,7 @@ namespace Confrontation
 			BindTransfers();
 			BindProgression();
 			BindAudio();
+			BindSettings();
 
 			StartGame();
 		}
@@ -80,6 +81,11 @@ namespace Confrontation
 		{
 			Container.Bind<ISoundService>().FromComponentInNewPrefab(_soundService).AsSingle();
 			Container.BindInstance(_audioMixerGroup).AsSingle();
+		}
+
+		private void BindSettings()
+		{
+			Container.Bind<ISettingsStorage>().To<PlayerPrefsSettingsStorage>().AsSingle();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
