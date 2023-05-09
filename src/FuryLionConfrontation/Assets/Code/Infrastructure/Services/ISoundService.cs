@@ -11,5 +11,6 @@ namespace Confrontation
 		void Victory(float volume = 1f);
 		void Loose(float volume = 1f);
 		void UiClick(float volume = 1f);
+		void UiError(float volume = 1f);
 	}
 }

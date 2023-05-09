@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: -8926517606076501150}
   _buildingBuilt: {fileID: 8300000, guid: 490bfbc72255342408984f60044487de, type: 3}
+  _buildingUpgraded: {fileID: 8300000, guid: ba39bf8baf6d13046889b2d64822381a, type: 3}
 --- !u!82 &-8926517606076501150
 AudioSource:
   m_ObjectHideFlags: 0
