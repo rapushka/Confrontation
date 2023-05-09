@@ -16,6 +16,7 @@ namespace Confrontation
 		[SerializeField] private float _nextSpellPriceMultiplier;
 		[SerializeField] private Button _unlockSpellButton;
 		[SerializeField] private GameObject _thereIsAllBoughtPlug;
+		[SerializeField] private NotEnoughKalymWindow _notEnoughKalymWindow;
 		[Header("Spell elements")]
 		[SerializeField] private TextMeshProUGUI _titleTextMesh;
 		[SerializeField] private TextMeshProUGUI _descriptionTextMesh;
@@ -43,6 +44,7 @@ namespace Confrontation
 				_descriptionTextMesh.gameObject.SetActive(value == false);
 				_icon.gameObject.SetActive(value == false);
 				_priceView.gameObject.SetActive(value == false);
+				_unlockSpellButton.interactable = value == false;
 			}
 		}
 
@@ -60,7 +62,7 @@ namespace Confrontation
 			}
 			else
 			{
-				Debug.Log("TODO: not enough kalym");
+				_notEnoughKalymWindow.Open();
 			}
 
 			UpdateShowedSpell();
