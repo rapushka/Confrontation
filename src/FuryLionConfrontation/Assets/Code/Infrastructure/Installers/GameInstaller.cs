@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 namespace Confrontation
@@ -11,6 +12,7 @@ namespace Confrontation
 		[SerializeField] private StatsTable _statsTable;
 		[SerializeField] private AudioSource _musicSourcePrefab;
 		[SerializeField] private SoundsBehaviourService _soundService;
+		[SerializeField] private AudioMixerGroup _audioMixerGroup;
 
 		public override void InstallBindings()
 		{
@@ -78,7 +80,8 @@ namespace Confrontation
 		private void BindAudio()
 		{
 			Container.Bind<ISoundService>().FromComponentInNewPrefab(_soundService).AsSingle();
-			Container.InstantiatePrefab(_musicSourcePrefab);
+			Container.Bind<AudioSource>().FromComponentInNewPrefab(_musicSourcePrefab);
+			Container.BindInstance(_audioMixerGroup);
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
