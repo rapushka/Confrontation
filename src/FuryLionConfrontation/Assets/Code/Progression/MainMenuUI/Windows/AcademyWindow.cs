@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -54,7 +52,7 @@ namespace Confrontation
 		{
 			if (CurrentPlayer.KalymCount >= CurrentSpellPrice)
 			{
-				UpdateProgress(with: (p) => p.LearnedSpellsCount++);
+				_progression.SaveProgress(ProgressUnlockedSpell());
 			}
 			else
 			{
@@ -81,6 +79,9 @@ namespace Confrontation
 			_priceView.Value = CurrentSpellPrice;
 		}
 
-		private void UpdateProgress(Action<PlayerProgress> with) => _progression.SaveProgress(CurrentPlayer.With(with));
+		private PlayerProgress ProgressUnlockedSpell()
+			=> CurrentPlayer
+			   .With((p) => p.LearnedSpellsCount++)
+			   .With((p) => p.KalymCount -= CurrentSpellPrice);
 	}
 }
