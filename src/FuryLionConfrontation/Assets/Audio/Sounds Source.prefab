@@ -49,6 +49,11 @@ MonoBehaviour:
   _audioSource: {fileID: -8926517606076501150}
   _buildingBuilt: {fileID: 8300000, guid: 490bfbc72255342408984f60044487de, type: 3}
   _buildingUpgraded: {fileID: 8300000, guid: ba39bf8baf6d13046889b2d64822381a, type: 3}
+  _unitsFight: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
+  _spellCasted: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  _victory: {fileID: 8300000, guid: be9d5909158ab627986e4bca2f26830b, type: 3}
+  _loose: {fileID: 8300000, guid: d8195dbf7d7c224f491eb018c616b97c, type: 3}
+  _uiClick: {fileID: 0}
   _error: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
 --- !u!82 &-8926517606076501150
 AudioSource:
