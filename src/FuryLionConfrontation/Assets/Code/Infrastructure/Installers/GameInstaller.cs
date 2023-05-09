@@ -10,6 +10,7 @@ namespace Confrontation
 		[SerializeField] private ResourcesService _resources;
 		[SerializeField] private StatsTable _statsTable;
 		[SerializeField] private AudioSource _musicSourcePrefab;
+		[SerializeField] private SoundsBehaviourService _soundService;
 
 		public override void InstallBindings()
 		{
@@ -76,6 +77,7 @@ namespace Confrontation
 
 		private void BindAudio()
 		{
+			Container.Bind<ISoundService>().FromInstance(_soundService).AsSingle();
 			Container.InstantiatePrefab(_musicSourcePrefab);
 		}
 
