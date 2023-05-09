@@ -10,7 +10,6 @@ namespace Confrontation
 		[SerializeField] private User _user;
 		[SerializeField] private ResourcesService _resources;
 		[SerializeField] private StatsTable _statsTable;
-		[SerializeField] private AudioSource _musicSourcePrefab;
 		[SerializeField] private SoundsBehaviourService _soundService;
 		[SerializeField] private AudioMixerGroup _audioMixerGroup;
 
@@ -80,8 +79,7 @@ namespace Confrontation
 		private void BindAudio()
 		{
 			Container.Bind<ISoundService>().FromComponentInNewPrefab(_soundService).AsSingle();
-			Container.Bind<AudioSource>().FromComponentInNewPrefab(_musicSourcePrefab);
-			Container.BindInstance(_audioMixerGroup);
+			Container.BindInstance(_audioMixerGroup).AsSingle();
 		}
 
 		private void StartGame() => Container.BindInterfacesTo<ToBootstrapOnInitialize>().AsSingle();
