@@ -77,7 +77,7 @@ namespace Confrontation
 
 		private void BindAudio()
 		{
-			Container.Bind<ISoundService>().FromInstance(_soundService).AsSingle();
+			Container.Bind<ISoundService>().FromComponentInNewPrefab(_soundService).AsSingle();
 			Container.InstantiatePrefab(_musicSourcePrefab);
 		}
 
