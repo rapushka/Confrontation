@@ -18,8 +18,8 @@ MonoBehaviour:
   _icon: {fileID: -2065013598, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 2
   _duration: 3
-  _manaCoast: 1
+  _manaCoast: 30
   _influences:
-  - <Modifier>k__BackingField: 0.5
+  - <Modifier>k__BackingField: 0.3
     <Target>k__BackingField: 0
     <InfluenceConstraint>k__BackingField: 1

@@ -19,9 +19,9 @@ MonoBehaviour:
     the bonus from allied farms'
   _icon: {fileID: -316052781, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
-  _duration: 5
-  _manaCoast: 1
+  _duration: 15
+  _manaCoast: 25
   _influences:
-  - <Modifier>k__BackingField: 10
+  - <Modifier>k__BackingField: 1.5
     <Target>k__BackingField: 3
     <InfluenceConstraint>k__BackingField: 4
