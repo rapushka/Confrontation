@@ -573,6 +573,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -127.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1546090897235755679, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
+      propertyPath: m_AspectMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2292798558463968729, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
       propertyPath: m_text
       value: Academy
@@ -687,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2292798559759788797, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
       propertyPath: m_Name
-      value: Academy Window Variant
+      value: Academy Window
       objectReference: {fileID: 0}
     - target: {fileID: 2292798559759788797, guid: 6c3dee7d17604c87eb48cb4763b5cce6, type: 3}
       propertyPath: m_IsActive
@@ -737,6 +741,7 @@ MonoBehaviour:
   _nextSpellPriceMultiplier: 1
   _unlockSpellButton: {fileID: 316555063631210490}
   _thereIsAllBoughtPlug: {fileID: 9034854481480370899}
+  _notEnoughKalymWindow: {fileID: 0}
   _titleTextMesh: {fileID: 913408126590998723}
   _descriptionTextMesh: {fileID: 913408128573520126}
   _icon: {fileID: 1394902409}

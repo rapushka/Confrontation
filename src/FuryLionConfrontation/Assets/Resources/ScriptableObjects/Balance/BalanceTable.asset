@@ -101,8 +101,8 @@ MonoBehaviour:
       - <UnitsAccelerationCoefficient>k__BackingField: 0.1
       - <UnitsAccelerationCoefficient>k__BackingField: 0.15
   <UserProgressionStats>k__BackingField:
-    <KalymPerLevel>k__BackingField: 10
-    <LevelNumberMultiplier>k__BackingField: 1.5
+    <KalymPerLevel>k__BackingField: 50
+    <LevelNumberMultiplier>k__BackingField: 1.2
   <EnemiesStats>k__BackingField:
     <DurationRangeBetweenActions>k__BackingField:
       <Min>k__BackingField: 2.5

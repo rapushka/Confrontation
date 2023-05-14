@@ -16,9 +16,9 @@ MonoBehaviour:
   _description: temporarily Increases the bonus of allied forges
   _icon: {fileID: -1587789106, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
-  _duration: 5
-  _manaCoast: 5
+  _duration: 20
+  _manaCoast: 40
   _influences:
-  - <Modifier>k__BackingField: 1.25
+  - <Modifier>k__BackingField: 1.5
     <Target>k__BackingField: 2
     <InfluenceConstraint>k__BackingField: 5

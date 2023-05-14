@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8466e7ebeb49ba87f3157e4ab10a0b, type: 3}
-  m_Name: Pack of wolves
+  m_Name: Wolf Pack
   m_EditorClassIdentifier: 
-  _title: Pack of wolves
+  _title: Wolf Pack
   _description: temporarily increases the speed of allied units
   _icon: {fileID: -1309099495, guid: 9fa108dfcdce4c888a42b45e349aabff, type: 3}
   _spellType: 0
-  _duration: 5
-  _manaCoast: 15
+  _duration: 15
+  _manaCoast: 35
   _influences:
   - <Modifier>k__BackingField: 2
     <Target>k__BackingField: 0
