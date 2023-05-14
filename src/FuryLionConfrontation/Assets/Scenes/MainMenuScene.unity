@@ -2035,9 +2035,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1723366105}
     - target: {fileID: 1723366105, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
+      propertyPath: _spellPrice
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723366105, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
       propertyPath: _notEnoughKalymWindow
       value: 
       objectReference: {fileID: 982058815}
+    - target: {fileID: 1723366105, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
+      propertyPath: _nextSpellPriceMultiplier
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7452847024590370422, guid: d3e2db9e6e9781ceb8f9ce4eb1eb2937, type: 3}
       propertyPath: m_Name
       value: Academy Window

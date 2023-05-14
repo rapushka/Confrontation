@@ -20,6 +20,6 @@ MonoBehaviour:
   _duration: 3
   _manaCoast: 30
   _influences:
-  - <Modifier>k__BackingField: 0.3
+  - <Modifier>k__BackingField: 0.5
     <Target>k__BackingField: 0
     <InfluenceConstraint>k__BackingField: 1
