@@ -18,88 +18,148 @@ MonoBehaviour:
     <BaseArmourMultiplier>k__BackingField: 0.01
     <DefencePierceRate>k__BackingField: 0
     <UnitMaxHp>k__BackingField: 1
-    <DefenseModifier>k__BackingField: 0.3
-    <AttackModifier>k__BackingField: 0.1
+    <DefenseModifier>k__BackingField: 0.1
+    <AttackModifier>k__BackingField: 0
   <GoldenMineStats>k__BackingField:
     <Price>k__BackingField: 5
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 10
+      <UpgradePrice>k__BackingField: 35
       <StatsByLevel>k__BackingField:
-      - <CoolDown>k__BackingField: 3
+      - <CoolDown>k__BackingField: 4
         <Amount>k__BackingField: 1
+      - <CoolDown>k__BackingField: 2.5
+        <Amount>k__BackingField: 1
+      - <CoolDown>k__BackingField: 2.5
+        <Amount>k__BackingField: 2
       - <CoolDown>k__BackingField: 1.5
-        <Amount>k__BackingField: 1
+        <Amount>k__BackingField: 2
+      - <CoolDown>k__BackingField: 1
+        <Amount>k__BackingField: 3
   <TowerOfMagesStats>k__BackingField:
-    <Price>k__BackingField: 1
+    <Price>k__BackingField: 6
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 12
+      <UpgradePrice>k__BackingField: 25
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
       - <CoolDown>k__BackingField: 1.5
         <Amount>k__BackingField: 1
+      - <CoolDown>k__BackingField: 1
+        <Amount>k__BackingField: 2
   <BarrackStats>k__BackingField:
     <Price>k__BackingField: 20
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 20
+      <UpgradePrice>k__BackingField: 30
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3
         <Amount>k__BackingField: 1
         <MinAcceleratedCoolDown>k__BackingField: 0.5
-      - <CoolDown>k__BackingField: 3
+      - <CoolDown>k__BackingField: 2.5
+        <Amount>k__BackingField: 1
+        <MinAcceleratedCoolDown>k__BackingField: 0.5
+      - <CoolDown>k__BackingField: 2.25
         <Amount>k__BackingField: 2
         <MinAcceleratedCoolDown>k__BackingField: 0.5
+      - <CoolDown>k__BackingField: 2
+        <Amount>k__BackingField: 2
+        <MinAcceleratedCoolDown>k__BackingField: 0.1
+      - <CoolDown>k__BackingField: 1.75
+        <Amount>k__BackingField: 2
+        <MinAcceleratedCoolDown>k__BackingField: 0.1
+      - <CoolDown>k__BackingField: 1.25
+        <Amount>k__BackingField: 2
+        <MinAcceleratedCoolDown>k__BackingField: 0.1
   <SettlementStats>k__BackingField:
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 20
+      <UpgradePrice>k__BackingField: 23
       <StatsByLevel>k__BackingField:
       - <CoolDown>k__BackingField: 3.5
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 1
-      - <CoolDown>k__BackingField: 3.5
+      - <CoolDown>k__BackingField: 2.75
         <Amount>k__BackingField: 1
         <MaxInGarrisonNumber>k__BackingField: 3
+      - <CoolDown>k__BackingField: 2
+        <Amount>k__BackingField: 1
+        <MaxInGarrisonNumber>k__BackingField: 3
+      - <CoolDown>k__BackingField: 2
+        <Amount>k__BackingField: 2
+        <MaxInGarrisonNumber>k__BackingField: 4
+      - <CoolDown>k__BackingField: 1.5
+        <Amount>k__BackingField: 2
+        <MaxInGarrisonNumber>k__BackingField: 6
+      - <CoolDown>k__BackingField: 1.5
+        <Amount>k__BackingField: 2
+        <MaxInGarrisonNumber>k__BackingField: 10
   <ForgeStats>k__BackingField:
     <Price>k__BackingField: 20
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 15
+      <UpgradePrice>k__BackingField: 45
       <StatsByLevel>k__BackingField:
-      - <CombatStrengthIncreasesRate>k__BackingField: 0.2
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.1
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.15
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.25
       - <CombatStrengthIncreasesRate>k__BackingField: 0.35
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.4
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.5
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.55
+      - <CombatStrengthIncreasesRate>k__BackingField: 0.6
+      - <CombatStrengthIncreasesRate>k__BackingField: 1
   <FortStats>k__BackingField:
-    <Price>k__BackingField: 5
+    <Price>k__BackingField: 7
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 5
+      <UpgradePrice>k__BackingField: 8
       <StatsByLevel>k__BackingField:
       - <AdditionalDefenceModifier>k__BackingField: 0.1
+      - <AdditionalDefenceModifier>k__BackingField: 0.25
+      - <AdditionalDefenceModifier>k__BackingField: 0.5
+      - <AdditionalDefenceModifier>k__BackingField: 1
   <QuarryStats>k__BackingField:
     <Price>k__BackingField: 10
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 7
+      <UpgradePrice>k__BackingField: 40
       <StatsByLevel>k__BackingField:
       - <IncreasesDamageAbsorptionRate>k__BackingField: 0.2
-      - <IncreasesDamageAbsorptionRate>k__BackingField: 0.3
+      - <IncreasesDamageAbsorptionRate>k__BackingField: 0.35
+      - <IncreasesDamageAbsorptionRate>k__BackingField: 0.55
+      - <IncreasesDamageAbsorptionRate>k__BackingField: 0.75
+      - <IncreasesDamageAbsorptionRate>k__BackingField: 1
   <WorkshopStats>k__BackingField:
-    <Price>k__BackingField: 10
+    <Price>k__BackingField: 15
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 10
+      <UpgradePrice>k__BackingField: 35
       <StatsByLevel>k__BackingField:
       - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.1
-      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.15
+      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.3
+      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.5
+      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.7
+      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 0.9
+      - <DecreaseEnemyDamageAbsorptionRate>k__BackingField: 1.2
   <FarmStats>k__BackingField:
     <Price>k__BackingField: 25
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 25
+      <UpgradePrice>k__BackingField: 35
       <StatsByLevel>k__BackingField:
-      - <SpawnAccelerationCoefficient>k__BackingField: 0.2
+      - <SpawnAccelerationCoefficient>k__BackingField: 0.1
+      - <SpawnAccelerationCoefficient>k__BackingField: 0.25
       - <SpawnAccelerationCoefficient>k__BackingField: 0.35
+      - <SpawnAccelerationCoefficient>k__BackingField: 0.4
+      - <SpawnAccelerationCoefficient>k__BackingField: 0.6
   <StableStats>k__BackingField:
     <Price>k__BackingField: 10
     <LeveledStats>k__BackingField:
-      <UpgradePrice>k__BackingField: 10
+      <UpgradePrice>k__BackingField: 12
       <StatsByLevel>k__BackingField:
       - <UnitsAccelerationCoefficient>k__BackingField: 0.1
-      - <UnitsAccelerationCoefficient>k__BackingField: 0.15
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.2
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.3
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.4
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.5
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.6
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.7
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.8
+      - <UnitsAccelerationCoefficient>k__BackingField: 0.9
+      - <UnitsAccelerationCoefficient>k__BackingField: 2
   <UserProgressionStats>k__BackingField:
     <KalymPerLevel>k__BackingField: 50
     <LevelNumberMultiplier>k__BackingField: 1.2
