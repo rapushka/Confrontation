@@ -230,8 +230,8 @@ PrefabInstance:
       value: 'As you already know, units can only move to a settlement in a neighboring
         region.
 
-        But actually units can also moved to a fort, it gives a
-        tactical advantage and an additional defense bonus to placed units'
+        But actually, units can also move to a fort; it gives a
+        tactical advantage and an additional defense bonus to placed units.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

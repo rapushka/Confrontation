@@ -60,11 +60,11 @@ PrefabInstance:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
       value: "In fact, every time units fight, several modifiers are applied to them
-        at once:\nBase Strength  \u2014 Always triggers and multiplies by units count
-        like all other modifiers\nAttack modifier \u2014 increases the damage of
-        our units on attack\nDefense modifier \u2014 reduces the damage that our
-        units receive on defense\nPiercing Modifier \u2014 reduces the defense modifier
-        of enemy units on attack"
+        at once:\nBase Strength \u2013 Always triggers and multiplies by unit count
+        like all other modifiers.\nAttack modifier \u2013 Increases the damage of
+        our units on attack.\nDefense modifier \u2013 Reduces the damage that our
+        units receive on defense.\nPiercing Modifier \u2013 Reduces the defense modifier
+        of enemy units on attack."
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

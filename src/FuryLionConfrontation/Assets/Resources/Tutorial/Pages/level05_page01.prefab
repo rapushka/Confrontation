@@ -59,12 +59,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'Important point: units can only be sent to a neighboring region. Regions
-        are considered neighboring only if there are no other regions between them'
+      value: 'An important point: units can only be sent to a neighboring region.
+        Regions are considered neighboring only if there are no other regions between
+        them.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 59.95
+      value: 59.55
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontStyle

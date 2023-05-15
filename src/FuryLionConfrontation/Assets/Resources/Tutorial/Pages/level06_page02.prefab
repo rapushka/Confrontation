@@ -227,8 +227,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: "Here are the builds that affect these modifiers:\nForge \u2013 Increases
-        the Base Strength of units"
+      value: "Here are the buildings that affect these modifiers:\nForge \u2013 Increases
+        the Base Strength of units."
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

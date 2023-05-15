@@ -230,7 +230,7 @@ PrefabInstance:
       value: 'For example, a farm
 
         It slightly speeds up unit training in
-        all your barracks'
+        all your barracks.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

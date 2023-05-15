@@ -230,11 +230,11 @@ PrefabInstance:
       value: 'A player loses if no capital city is under his control.
 
         To
-        capture the enemy''s capital, send your squad to it'
+        capture the enemy''s capital, send your squad to it.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 51
+      value: 48.4
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_Pivot.x

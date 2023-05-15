@@ -307,7 +307,7 @@ PrefabInstance:
       value: 'You need to build more army barracks.
 
         To do this, click on
-        an empty cell and select a building from the list'
+        an empty cell and select a building from the list.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

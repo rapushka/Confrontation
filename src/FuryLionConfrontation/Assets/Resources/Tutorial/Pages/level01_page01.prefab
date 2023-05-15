@@ -227,13 +227,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'welcome to Confrontation!
+      value: 'Welcome to Confrontation!
 
-        Strategy game about land capture'
+        A strategy game about land capture.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 55.45
+      value: 55.3
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_Pivot.x

@@ -59,8 +59,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: "And keep in mind that all bonuses are cumulative\n\nso, the more buildings
-        \u2014 the more advantage!"
+      value: 'And keep in mind that all bonuses are cumulative,
+
+        so the more
+        buildings, the more advantage!'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
@@ -69,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontStyle
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_paragraphSpacing
+      value: 67.97
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_HorizontalAlignment

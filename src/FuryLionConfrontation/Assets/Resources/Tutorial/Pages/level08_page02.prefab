@@ -227,14 +227,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'in turn, mana is needed to use various spells from the spell book
+      value: 'Mana is needed to cast spells.
 
-        they
-        are only available to the player, so they can give you a decisive advantage;)'
+        They are not available to enemies,
+        so they can give you a decisive advantage to you.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 52
+      value: 58.45
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontStyle

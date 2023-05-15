@@ -229,11 +229,11 @@ PrefabInstance:
       propertyPath: m_text
       value: There will also be neutral regions on the levels. They are not owned
         by any player, but they are also useful to capture to have more territory
-        for buildings
+        for buildings.
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 42.85
+      value: 42.55
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_Pivot.x

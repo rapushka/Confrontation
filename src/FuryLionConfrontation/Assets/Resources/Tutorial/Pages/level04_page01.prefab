@@ -59,8 +59,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: Also in Confrontation there are buildings that do not produce anything,
-        but give certain bonuses to their owner
+      value: Also in Confrontation, there are buildings that don't produce anything
+        but give certain bonuses to their owner.
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

@@ -395,12 +395,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_text
-      value: 'by the way
+      value: 'By the way,
 
         The golden mine eventually produces gold, which
-        you can use to build houses
+        you can use to build.
 
-        And the barracks train new units'
+        And the barracks train new units.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize

@@ -230,11 +230,15 @@ PrefabInstance:
       value: 'You will fight with other players under the control of the computer.
 
         The
-        blue region belongs to you, the regions of other colors are hostile'
+        blue region belongs to you, while the regions of other colors are hostile.'
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_fontSize
-      value: 43.15
+      value: 41.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363588164123369557, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
+      propertyPath: m_paragraphSpacing
+      value: 22.12
       objectReference: {fileID: 0}
     - target: {fileID: 8363588164123369558, guid: 415e0da41b0b2bd18a7bacb41166d356, type: 3}
       propertyPath: m_Pivot.x
